@@ -50,7 +50,7 @@
                                 <form onsubmit="return deleteData('{{ $d->meet_name }}')" style="display: inline" method="POST" action="{{ url('meet/' . $d->meet_id) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" title="Hapus Data" class="btn btn-danger btn-sm">
+                                    <button type="submit" title="Hapus Data" class="btn btn-danger btn-sm justify-content-center">
                                         <i class="far fa-trash-alt"></i>
                                     </button>
                                 </form>

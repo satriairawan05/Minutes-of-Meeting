@@ -16,13 +16,13 @@
     <nav class="navbar bg-secondary">
         <div class="container-fluid">
             <a class="navbar-brand ms-4 my-2" href="{{ url('/') }}">
-                <img src="{{ asset('/') }}assets/dist/images/logo.png" height="100" >
+                <img src="{{ asset('/') }}assets/dist/images/logo.png" height="100">
             </a>
             <ul class="navbar-nav ms-auto text-white me-4 h3 fw-bold">
                 Board Meeting Minutes
             </ul>
         </div>
-        
+
     </nav>
 
     <div class="container-fluid">
@@ -33,15 +33,13 @@
                         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
                             id="menu">
                             <li class="nav-item mt-3">
-                                <a href="/meet"
-                                    class="nav-link align-middle px-0 text-white fs-6 fw-bold ">
+                                <a href="/meet" class="nav-link align-middle px-0 text-white fs-6 fw-bold ">
                                     <i class="fas fa-rocket px-1"></i><span class="ms-1 d-none d-sm-inline px-1">MEETING
                                         DETAILS</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/action"
-                                    class="nav-link align-middle px-0 text-white fs-6 fw-bold">
+                                <a href="/action" class="nav-link align-middle px-0 text-white fs-6 fw-bold">
                                     <i class="fas fa-handshake px-1"></i><span class="ms-1 d-none d-sm-inline">ACTION
                                         DETAILS</span>
                                 </a>
