@@ -12,17 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('actions', function (Blueprint $table) {
-            $table->char('act_id',18);
-            $table->primary('act_id');
-            $table->string('act_subject',100);
-            $table->string('act_problem',100);
-            $table->string('act_corrective',100);
-            $table->string('act_user',100);
-            $table->string('act_assignby',100);
-            $table->string('act_acc1',100);
-            $table->string('act_acc2',100);
-            $table->date('act_duedate');
-            $table->increments('act_counter');
+            $table->id('act_id')->nullable();
+            $table->string('act_subject',100)->nullable();
+            $table->string('act_problem',100)->nullable();
+            $table->string('act_corrective',100)->nullable();
+            $table->string('act_user',100)->nullable();
+            $table->string('act_assignby',100)->nullable();
+            $table->string('act_acc1',100)->nullable();
+            $table->string('act_acc2',100)->nullable();
+            $table->date('act_duedate')->nullable();
+            $table->increments('act_counter')->nullable();
             $table->timestamps();
         });
     }

@@ -12,14 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('meets', function (Blueprint $table) {
-            $table->char('meet_id',7);
-            $table->primary('meet_id');
-            $table->string('meet_name',100);
-            $table->date('meet_date');
-            $table->time('meet_time');
-            $table->string('meet_preparedby',100);
-            $table->string('meet_locate',100);
-            $table->string('meet_attend',100);
+            $table->id('meet_id')->nullable();
+            $table->string('meet_name',100)->nullable();
+            $table->date('meet_date')->nullable();
+            $table->time('meet_time')->nullable();
+            $table->string('meet_preparedby',100)->nullable();
+            $table->string('meet_locate',100)->nullable();
+            $table->string('meet_attend',100)->nullable();
             $table->timestamps();
         });
     }
