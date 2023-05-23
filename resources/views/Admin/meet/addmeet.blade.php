@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('admin.layout.main')
 
 @section('content')
     <h3>Add New Data Meet</h3>

@@ -17,10 +17,10 @@ class ActionController extends Controller
     {
         $formattedDate = date('Ymd');
         $prefix = "MOM-";
-        $lastCount = $this->select('act_counter')->latest('act_counter')->pluck('act_counter')->first();
+        $lastCount = Action::select('act_counter')->latest('act_counter')->pluck('act_counter')->first();
         $count = $lastCount ++;
         $date = $prefix . str_pad($count, 3, '0', STR_PAD_LEFT) ."/".$formattedDate;
-        return view('action.dataaction', [
+        return view('admin.action.dataaction', [
             'actions' => Action::latest()->get(),
             'date' => $date
         ]);
@@ -51,7 +51,7 @@ class ActionController extends Controller
      */
     public function show(Action $action)
     {
-        return view('action.show',[
+        return view('admin.action.show',[
             'action' => $action
         ]);
     }

@@ -1,10 +1,9 @@
-@extends('layout.main')
+@extends('admin.layout.main')
 
 @section('content')
-    
+
         <h3>Meeting Details</h3>
 
-    
     <div class="card">
         <div class="card-header">
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -32,7 +31,7 @@
                                     <div class="invalid-feedback">
 
 
-                                        
+
                                         {{ $message }}
                                     </div>
                                 @enderror

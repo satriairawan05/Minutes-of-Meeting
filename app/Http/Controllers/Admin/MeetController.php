@@ -16,11 +16,11 @@ class MeetController extends Controller
     public function index()
     {
         $meet = Meet::latest()->take(1)->get();
-        return view('meet.detailmeet', compact('meet'));
+        return view('admin.meet.detailmeet', compact('meet'));
     }
 
     public function list(){
-        return view('meet.data')->with([
+        return view('admin.meet.data')->with([
             'meets' => Meet::all()
         ]);
     }
