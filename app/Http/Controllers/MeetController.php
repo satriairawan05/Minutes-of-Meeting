@@ -33,17 +33,22 @@ class MeetController extends Controller
     {
         $validate = $request->validated();
 
-        $meet = new Meet;
-        $meet->meet_id = $request->txtmid;
-        $meet->meet_name = $request->txtmname; 
-        $meet->meet_date = $request-> txtmdate;
-        $meet->meet_time = $request->txtmtime;
-        $meet->meet_preparedby = $request->txtmprepared;
-        $meet->meet_locate = $request->txtmloc;
-        $meet->meet_attend = $request->txtmatt;
-        $meet->save();
+        if($validate) {
+            $meet = new Meet;
+            $meet->meet_id = $request->txtmid;
+            $meet->meet_name = $request->txtmname; 
+            $meet->meet_date = $request-> txtmdate;
+            $meet->meet_time = $request->txtmtime;
+            $meet->meet_preparedby = $request->txtmprepared;
+            $meet->meet_locate = $request->txtmloc;
+            $meet->meet_attend = $request->txtmatt;
+            $meet->save();
 
-        return redirect('meet')->with('msg','Add New Meeting Successfully');
+            return redirect('meet')->with('msg','Add New Meeting Successfully');
+        } else {
+            return http_response_code(503);
+        }
+
     }
 
     /**
@@ -71,15 +76,20 @@ class MeetController extends Controller
     public function update(UpdateMeetRequest $request, Meet $meets, $meet_id)
     {
         $data = $meets->find($meet_id);
-        $data->meet_name = $request->txtmname; 
-        $data->meet_date = $request-> txtmdate;
-        $data->meet_time = $request->txtmtime;
-        $data->meet_preparedby = $request->txtmprepared;
-        $data->meet_locate = $request->txtmloc;
-        $data->meet_attend = $request->txtmatt;
-        $data->save();
 
-        return redirect('meet/list')->with('msg','Edit Meeting '.$data->meet_name.' ');
+        if($data){
+            $data->meet_name = $request->txtmname; 
+            $data->meet_date = $request-> txtmdate;
+            $data->meet_time = $request->txtmtime;
+            $data->meet_preparedby = $request->txtmprepared;
+            $data->meet_locate = $request->txtmloc;
+            $data->meet_attend = $request->txtmatt;
+            $data->save();
+    
+            return redirect('meet/list')->with('msg','Edit Meeting '.$data->meet_name.' ');
+        } else {
+            return back();
+        }
     }
 
     /**

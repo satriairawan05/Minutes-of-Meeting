@@ -22,7 +22,16 @@ class StoreActionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'act_id' => 'required',
+            'act_subject' => 'required',
+            'act_problem' => 'required',
+            'act_corrective' => 'required',
+            'act_user' => 'required',
+            'act_assignby' => 'required',
+            'act_acc1' => 'required',
+            'act_acc2' => 'required',
+            'act_duedate' => 'required',
+            'act_counter' => 'required'
         ];
     }
 }

@@ -33,14 +33,14 @@
                         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
                             id="menu">
                             <li class="nav-item mt-3">
-                                <a href="{{ url('meet') }}"
+                                <a href="/meet"
                                     class="nav-link align-middle px-0 text-white fs-6 fw-bold ">
                                     <i class="fas fa-rocket px-1"></i><span class="ms-1 d-none d-sm-inline px-1">MEETING
                                         DETAILS</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('/action') }}"
+                                <a href="/action"
                                     class="nav-link align-middle px-0 text-white fs-6 fw-bold">
                                     <i class="fas fa-handshake px-1"></i><span class="ms-1 d-none d-sm-inline">ACTION
                                         DETAILS</span>

@@ -17,15 +17,12 @@ class ActionController extends Controller
      */
     public function index()
     {
-
-
         $formattedDate = date('Ymd');
-        $prefix = "ACT-";
+        $prefix = "MOM-";
         $lastCount = Action::select('act_counter')->latest('act_counter')->pluck('act_counter')->first();
         $count = $lastCount + 1;
         $id_u = $prefix . str_pad($count, 3, '0', STR_PAD_LEFT) ."/".$formattedDate  ;
         return view('action.dataaction', ['actions' => $id_u]);
-
     }
 
     /**
@@ -41,7 +38,11 @@ class ActionController extends Controller
      */
     public function store(StoreActionRequest $request)
     {
-        //
+        $validate = $request->validate();
+
+        Action::create($validate);
+
+        return redirect('/action')->with('Data berhasil ditambahkan');
     }
 
     /**
@@ -49,7 +50,9 @@ class ActionController extends Controller
      */
     public function show(Action $action)
     {
-        //
+        return view('action.show',[
+            'action' => $action
+        ]);
     }
 
     /**
@@ -65,7 +68,15 @@ class ActionController extends Controller
      */
     public function update(UpdateActionRequest $request, Action $action)
     {
-        //
+        $validate = $request->validate();
+
+        if($validate){
+            Action::where('id', $action->id)->update($validate);
+
+            return redirect('/action')->with('success','Data berhasil di edit');
+        } else {
+            return http_response_code(503);
+        }
     }
 
     /**
@@ -73,6 +84,8 @@ class ActionController extends Controller
      */
     public function destroy(Action $action)
     {
-        //
+        Action::destroy($action->id);
+
+        return redirect('/action')->with('success','Data berhasil di hapus');
     }
 }
