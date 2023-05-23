@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Meet;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreMeetRequest;
 use App\Http\Requests\UpdateMeetRequest;
 
@@ -24,7 +25,7 @@ class MeetController extends Controller
         ]);
     }
 
-    
+
 
     /**
      * Store a newly created resource in storage.
@@ -36,7 +37,7 @@ class MeetController extends Controller
         if($validate) {
             $meet = new Meet;
             $meet->meet_id = $request->txtmid;
-            $meet->meet_name = $request->txtmname; 
+            $meet->meet_name = $request->txtmname;
             $meet->meet_date = $request-> txtmdate;
             $meet->meet_time = $request->txtmtime;
             $meet->meet_preparedby = $request->txtmprepared;
@@ -78,14 +79,14 @@ class MeetController extends Controller
         $data = $meets->find($meet_id);
 
         if($data){
-            $data->meet_name = $request->txtmname; 
+            $data->meet_name = $request->txtmname;
             $data->meet_date = $request-> txtmdate;
             $data->meet_time = $request->txtmtime;
             $data->meet_preparedby = $request->txtmprepared;
             $data->meet_locate = $request->txtmloc;
             $data->meet_attend = $request->txtmatt;
             $data->save();
-    
+
             return redirect('meet/list')->with('msg','Edit Meeting '.$data->meet_name.' ');
         } else {
             return back();
