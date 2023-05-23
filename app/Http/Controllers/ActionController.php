@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreActionRequest;
 use App\Http\Requests\UpdateActionRequest;
 use App\Models\Action;
-use Illuminate\Support\Facades\DB;
-use Illuminate\View\View;
 
 
 
@@ -19,10 +17,13 @@ class ActionController extends Controller
     {
         $formattedDate = date('Ymd');
         $prefix = "MOM-";
-        $lastCount = Action::select('act_counter')->latest('act_counter')->pluck('act_counter')->first();
-        $count = $lastCount + 1;
-        $id_u = $prefix . str_pad($count, 3, '0', STR_PAD_LEFT) ."/".$formattedDate  ;
-        return view('action.dataaction', ['actions' => $id_u]);
+        $lastCount = $this->select('act_counter')->latest('act_counter')->pluck('act_counter')->first();
+        $count = $lastCount ++;
+        $date = $prefix . str_pad($count, 3, '0', STR_PAD_LEFT) ."/".$formattedDate;
+        return view('action.dataaction', [
+            'actions' => Action::latest()->get(),
+            'date' => $date
+        ]);
     }
 
     /**

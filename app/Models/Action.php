@@ -11,4 +11,5 @@ class Action extends Model
     protected $primaryKey = 'act_id';
 
     public $timestamps = true;
+
 }
