@@ -10,7 +10,7 @@
                 <div class="alert alert-info">
                     Selamat datang di SuemeruGrup
                 </div>
-                <table class="table table-sm table-striped table-bordered">
+                {{-- <table class="table table-sm table-striped table-bordered">
                     <thead>
                         <tr>
                             <th class="text-center">No</th>
@@ -54,7 +54,7 @@
                         @endforeach
                     </tbody>
     
-                </table>
+                </table> --}}
             </div>
         </div>
     </div>
