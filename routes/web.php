@@ -17,8 +17,10 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', function () {
-    return view('admin.layout.dashboard');
+    return view('admin.layout.meet');
 });
+
+
 
 Auth::routes();
 
