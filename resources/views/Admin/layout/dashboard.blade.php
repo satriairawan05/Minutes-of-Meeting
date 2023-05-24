@@ -4,25 +4,25 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/template/assets/img/apple-icon.png') }}">
-    <link rel="icon" type="image/png" href="{{ asset('assets/template/assets/img/favicon.png') }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/img/apple-icon.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
     <title>
         Board Meeting Minutes : SuemeruGrup
     </title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <!-- Nucleo Icons -->
-    <link href="{{ asset('assets/template/assets/css/nucleo-icons.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/template/assets/css/nucleo-svg.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/css/nucleo-icons.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <link href="{{ asset('assets/template/assets/css/nucleo-svg.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
     <!-- CSS Files -->
-    <link id="pagestyle" href="{{ asset('assets/template/assets/css/soft-ui-dashboard.css?v=1.0.7') }}"
+    <link id="pagestyle" href="{{ asset('assets/css/soft-ui-dashboard.css?v=1.0.7') }}"
         rel="stylesheet" />
     <link href="{{ asset('assets/dist/css/bootstrap.min.css') }}" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link href="{{ asset('assets/plugin/fontawesome/css/all.min.css') }}" rel="stylesheet"">
+    <link href="{{ asset('assets/plugin/fontawesome/css/all.min.css') }}" rel="stylesheet">
     <!-- Nepcha Analytics (nepcha.com) -->
     <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
     <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
@@ -45,7 +45,7 @@
         <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link  active" href="{{ asset('assets/template/pages/dashboard.html') }}">
+                    <a class="nav-link  active" href="{{ asset('assets/pages/dashboard.html') }}">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
@@ -72,7 +72,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  " href="{{ asset('assets/template/pages/tables.html') }}">
+                    <a class="nav-link  " href="{{ asset('assets/pages/tables.html') }}">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
@@ -99,7 +99,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  " href="{{ asset('assets/template/pages/billing.html') }}">
+                    <a class="nav-link  " href="{{ asset('assets/pages/billing.html') }}">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
@@ -126,7 +126,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  " href="{{ asset('assets/template/pages/virtual-reality.html') }}">
+                    <a class="nav-link  " href="{{ asset('assets/pages/virtual-reality.html') }}">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
@@ -156,7 +156,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  " href="{{ asset('assets/template/pages/rtl.html') }}">
+                    <a class="nav-link  " href="{{ asset('assets/pages/rtl.html') }}">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1"
@@ -186,7 +186,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  " href="{{ asset('assets/template/pages/profile.html') }}">
+                    <a class="nav-link  " href="{{ asset('assets/pages/profile.html') }}">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1"
@@ -271,7 +271,7 @@
                                     <a class="dropdown-item border-radius-md" href="javascript:;">
                                         <div class="d-flex py-1">
                                             <div class="my-auto">
-                                                <img src="{{ asset('assets/template/assets/img/team-2.jpg') }}"
+                                                <img src="{{ asset('assets/assets/img/team-2.jpg') }}"
                                                     class="avatar avatar-sm  me-3 ">
                                             </div>
                                             <div class="d-flex flex-column justify-content-center">
@@ -290,7 +290,7 @@
                                     <a class="dropdown-item border-radius-md" href="javascript:;">
                                         <div class="d-flex py-1">
                                             <div class="my-auto">
-                                                <img src="{{ asset('assets/template/assets/img/small-logos/logo-spotify.svg') }}"
+                                                <img src="{{ asset('assets/img/small-logos/logo-spotify.svg') }}"
                                                     class="avatar avatar-sm bg-gradient-dark  me-3 ">
                                             </div>
                                             <div class="d-flex flex-column justify-content-center">
@@ -438,11 +438,11 @@
         </div>
     </div>
     <!--   Core JS Files   -->
-    <script src="{{ asset('/') }}assets/template/assets/js/core/popper.min.js"></script>
-    <script src="{{ asset('/') }}assets/template/assets/js/core/bootstrap.min.js"></script>
-    <script src="{{ asset('/') }}assets/template/assets/js/plugins/perfect-scrollbar.min.js"></script>
-    <script src="{{ asset('/') }}assets/template/assets/js/plugins/smooth-scrollbar.min.js"></script>
-    <script src="{{ asset('/') }}assets/template/assets/js/plugins/chartjs.min.js"></script>
+    <script src="{{ asset('assets/assets/js/core/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/assets/js/core/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ asset('assets/assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
+    <script src="{{ asset('assets/template/assets/js/plugins/chartjs.min.js') }}"></script>
     <script>
         var ctx = document.getElementById("chart-bars").getContext("2d");
 
@@ -625,8 +625,8 @@
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="{{ asset('/') }}assets/template/assets/js/soft-ui-dashboard.min.js?v=1.0.7"></script>
-    <script src="{{ asset('/') }}assets/dist/js/bootstrap.bundle.min.js"
+    <script src="{{ asset('assets/template/assets/js/soft-ui-dashboard.min.js?v=1.0.7') }}"></script>
+    <script src="{{ asset('assets/dist/js/bootstrap.bundle.min.js') }}"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
     </script>
 </body>
