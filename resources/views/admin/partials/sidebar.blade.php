@@ -35,7 +35,7 @@
                             </g>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">Meeting Details</span>
+                    <span class="nav-link-text ms-1">Issues</span>
                 </a>
             </li>
 
