@@ -18,19 +18,22 @@ class UserSeeder extends Seeder
         // Reset cached roles and permissions
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
-        $admin = User::create([
-            'name' => 'Super Admin',
-            'email' => 'admin@suemerugrup.com',
+        $basicSetting = [
             'email_verified_at' => now(),
-            'password' => bcrypt('suemeru'), // password
             'remember_token' => Str::random(10),
-        ]);
+        ];
 
-        $role = Role::create([
-            'name' => 'admin',
+        $superAdmin = User::create(array_merge([
+            'name' => 'Super Admin',
+            'email' => 'super.admin@suemerugrup.com',
+            'password' => bcrypt('suemeru'),
+        ],$basicSetting));
+
+        $roleSuperAdmin = Role::create([
+            'name' => 'super-admin',
             'guard_name' => 'web'
         ]);
 
-        $admin->assignRole($role);
+        $superAdmin->assignRole($roleSuperAdmin);
     }
 }

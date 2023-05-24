@@ -27,3 +27,9 @@ Auth::routes();
 Route::resource('action', ActionController::class);
 
 Route::get('/dashboard', [HomeController::class, 'index']);
+
+// Taroh Route untuk Admin disini
+Route::group(['middleware' => ['role:super-admin']],function () {
+    // Taroh Route::resoruce atau Route yang satuan disini
+
+});
