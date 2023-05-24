@@ -15,7 +15,8 @@ use App\Http\Controllers\HomeController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', function(){
+
+Route::get('/', function () {
     return view('welcome');
 });
 
@@ -23,4 +24,4 @@ Auth::routes();
 
 Route::resource('action', ActionController::class);
 
-Route::get('/home',[HomeController::class, 'index']);
+Route::get('/dashboard', [HomeController::class, 'index']);
