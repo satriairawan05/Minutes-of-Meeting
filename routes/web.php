@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ActionController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\MeetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,13 @@ Route::get('/', function () {
     return view('admin.layout.meet');
 });
 
+Route::get('/meet/list', [MeetController::class,'list']);
 
+Route::get('/meet/add', function () {
+    return view('admin.meet.addmeet');
+});
+
+Route::resource('meet', MeetController::class);
 
 Auth::routes();
 
