@@ -2,9 +2,10 @@
 
 @section('content')
 <form action="/resume/{{ $detail->id }}" method="post">
+  @method('put')
   @csrf
   <div class="mb-3">
-    <input type="radio" name="is_private" id="is_private" onclick="change()" value="{{ $detail->is_private }}">
+    <input type="radio" name="is_private" id="is_private" onclick="change()" value="{{ old('is_private',$detail->is_private) }}">
     <label for="is_private">Private</label>
   </div>
   <div class="mb-3">

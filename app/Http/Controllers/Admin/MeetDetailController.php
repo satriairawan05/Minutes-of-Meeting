@@ -120,10 +120,10 @@ class MeetDetailController extends Controller
     public function destroy(MeetDetail $meetDetail)
     {
         // cek apakah ada id nya
-        $hapus = MeetDetail::destroy($meetDetail);
+        MeetDetail::destroy($meetDetail);
 
         // menghapus file
-        $meetDetail->file ? Storage::delete([$meetDetail->file]) : $hapus;
+        $meetDetail->file ? Storage::delete([$meetDetail->file]) : null;
 
         // mengembalikan ke halaman resume
         return redirect()->to('/resume')->with('success','Deleted Successfully!');
