@@ -15,7 +15,7 @@ class MeetController extends Controller
      */
     public function index()
     {
-        $meet = Meet::where('meet_locate','=','Head Office')->latest('updated_at')->get();
+        $meet = Meet::where('meet_locate','=','Head Office')->latest('updated_at')->lazy();
         return view('admin.meet.detailmeet', compact('meet'));
     }
 

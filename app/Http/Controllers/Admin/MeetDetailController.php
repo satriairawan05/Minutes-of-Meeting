@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\MeetDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class MeetDetailController extends Controller
 {
@@ -14,7 +15,7 @@ class MeetDetailController extends Controller
     public function index()
     {
         return view('admin.detail.index',[
-            'details' => MeetDetail::all()
+            'res' =>  MeetDetail::all()
         ]);
     }
 
@@ -31,7 +32,30 @@ class MeetDetailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validasi yang wajib diisi
+        $validate = $request->validate([
+            'project' => 'required',
+            'tracker' => 'required',
+            'subject' => 'required',
+            'description' => 'required',
+            'status' => 'required',
+            'priority' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+        ]);
+
+        // cek apakah radio is_private di tekan
+        $validate['is_private'] ? true : false;
+
+        // cek apakah ada upload file
+        $request->file('file') ? $validate['file'] = $request->file('image')->store('images') : $validate;
+
+        // menginsert data
+        MeetDetail::create($validate);
+
+        // mengembalikan ke halaman resume
+        return redirect()->to('')->with('success','Added Successfully!');
+
     }
 
     /**
@@ -39,7 +63,9 @@ class MeetDetailController extends Controller
      */
     public function show(MeetDetail $meetDetail)
     {
-        return view('admin.detail.show');
+        return view('admin.detail.show',[
+            'detail' => $meetDetail
+        ]);
     }
 
     /**
@@ -57,7 +83,35 @@ class MeetDetailController extends Controller
      */
     public function update(Request $request, MeetDetail $meetDetail)
     {
-        //
+        // yang wajib diisi
+        $rules = [
+            'project' => 'required',
+            'tracker' => 'required',
+            'subject' => 'required',
+            'description' => 'required',
+            'status' => 'required',
+            'priority' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+        ];
+
+        // memasukan rules ke validasi
+        $validate = $request->validate($rules);
+
+        // cek apakah gambarnya ada diinput yang baur
+        if($request->file('file')){
+            // cek nilai gambar lama nya
+            if($request->oldFile){
+                Storage::delete([$request->oldFile]);
+            }
+            $validate['file'] = $request->file('image')->store('images');
+        }
+
+        // mengupdate ke database
+        MeetDetail::where('id',$meetDetail->id)->update($validate);
+
+        // mengembalikan ke halaman resume
+        return redirect()->to('')->with('success','Updated Successfully!');
     }
 
     /**
@@ -65,6 +119,13 @@ class MeetDetailController extends Controller
      */
     public function destroy(MeetDetail $meetDetail)
     {
-        //
+        // cek apakah ada id nya
+        $hapus = MeetDetail::destroy($meetDetail);
+
+        // menghapus file
+        $meetDetail->file ? Storage::delete([$meetDetail->file]) : $hapus;
+
+        // mengembalikan ke halaman resume
+        return redirect()->to('')->with('success','Deleted Successfully!');
     }
 }

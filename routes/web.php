@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ActionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\MeetController;
+use App\Http\Controllers\Admin\MeetDetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,8 @@ Route::get('/meet/add', function () {
 });
 
 Route::resource('meet', MeetController::class);
+
+Route::get('/resume', [MeetDetailController::class,'index'])->name('resume.index');
 
 // Taroh Route untuk Admin disini
 Route::group(['middleware' => ['role:super-admin']],function () {

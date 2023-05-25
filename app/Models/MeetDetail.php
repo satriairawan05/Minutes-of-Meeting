@@ -9,7 +9,7 @@ class MeetDetail extends Model
 {
     use HasFactory;
 
-    protected $table = 'meets_details';
+    protected $table = 'meet_details';
     protected $guarded = 'id';
 
     protected $fillable = [
