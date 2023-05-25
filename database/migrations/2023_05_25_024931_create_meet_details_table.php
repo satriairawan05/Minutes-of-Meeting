@@ -19,6 +19,8 @@ return new class extends Migration
             $table->longText('description');
             $table->string('status');
             $table->string('priority');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->string('file')->nullable();
             $table->boolean('is_private');
             $table->timestamps();
