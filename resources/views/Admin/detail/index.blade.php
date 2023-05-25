@@ -19,11 +19,6 @@
             <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">Subject</th>
             <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">Description</th>
             <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">Status</th>
-            <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">Priority</th>
-            <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">Start Date</th>
-            <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">End Date</th>
-            <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">File</th>
-            <th class="opacity-7 text-dark">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -35,6 +30,23 @@
             <td class="text-uppercase text-dark text-xxs font-weight-bolder opacity-4 align-content-center">{{ $data->subject }}</td>
             <td class="text-uppercase text-dark text-xxs font-weight-bolder opacity-4 align-content-center">{{ $data->description }}</td>
             <td class="text-uppercase text-dark text-xxs font-weight-bolder opacity-4 align-content-center">{{ $data->status }}</td>
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
+      <table class="table align-items-center mb-0">
+        <thead>
+          <tr>
+            <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">Priority</th>
+            <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">Start Date</th>
+            <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">End Date</th>
+            <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-7">File</th>
+            <th class="opacity-7 text-dark">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach ($meetDetails as $data)
+          <tr>
             <td class="text-uppercase text-dark text-xxs font-weight-bolder opacity-4 align-content-center">{{ $data->priority }}</td>
             <td class="text-uppercase text-dark text-xxs font-weight-bolder opacity-4 align-content-center">{{ $data->start_date }}</td>
             <td class="text-uppercase text-dark text-xxs font-weight-bolder opacity-4 align-content-center">{{ $data->end_date }}</td>
