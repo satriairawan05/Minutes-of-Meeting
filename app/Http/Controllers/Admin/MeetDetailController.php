@@ -15,7 +15,7 @@ class MeetDetailController extends Controller
     public function index()
     {
         return view('admin.detail.index',[
-            'res' =>  MeetDetail::all()
+            'meetDetails' =>  MeetDetail::all()
         ]);
     }
 
@@ -45,16 +45,16 @@ class MeetDetailController extends Controller
         ]);
 
         // cek apakah radio is_private di tekan
-        $validate['is_private'] ? true : false;
+        $request->is_private ? $validate['is_private'] = true : $validate['is_private'] = false;
 
         // cek apakah ada upload file
-        $request->file('file') ? $validate['file'] = $request->file('image')->store('images') : $validate;
+        $request->file('file') ? $validate['file'] = $request->file('image')->store('images') : null;
 
         // menginsert data
         MeetDetail::create($validate);
 
         // mengembalikan ke halaman resume
-        return redirect()->to('')->with('success','Added Successfully!');
+        return redirect()->to('/resume')->with('success','Added Successfully!');
 
     }
 
@@ -64,7 +64,7 @@ class MeetDetailController extends Controller
     public function show(MeetDetail $meetDetail)
     {
         return view('admin.detail.show',[
-            'detail' => $meetDetail
+            'meet_details' => $meetDetail
         ]);
     }
 
