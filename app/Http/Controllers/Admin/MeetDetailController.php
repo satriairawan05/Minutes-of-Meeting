@@ -13,7 +13,9 @@ class MeetDetailController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.detail.index',[
+            'details' => MeetDetail::all()
+        ]);
     }
 
     /**
@@ -21,7 +23,7 @@ class MeetDetailController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.detail.create');
     }
 
     /**
@@ -37,7 +39,7 @@ class MeetDetailController extends Controller
      */
     public function show(MeetDetail $meetDetail)
     {
-        //
+        return view('admin.detail.show');
     }
 
     /**
@@ -45,7 +47,9 @@ class MeetDetailController extends Controller
      */
     public function edit(MeetDetail $meetDetail)
     {
-        //
+        return view('admin.detail.edit',[
+            'detail' => $meetDetail
+        ]);
     }
 
     /**

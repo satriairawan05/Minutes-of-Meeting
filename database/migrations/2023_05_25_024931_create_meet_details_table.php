@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('meet_details', function (Blueprint $table) {
             $table->id();
+            $table->string('departemen');
+            $table->string('category');
+            $table->string('status');
             $table->timestamps();
         });
     }
