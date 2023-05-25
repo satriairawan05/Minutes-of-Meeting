@@ -126,6 +126,6 @@ class MeetDetailController extends Controller
         $meetDetail->file ? Storage::delete([$meetDetail->file]) : $hapus;
 
         // mengembalikan ke halaman resume
-        return redirect()->to('')->with('success','Deleted Successfully!');
+        return redirect()->to('/resume')->with('success','Deleted Successfully!');
     }
 }
