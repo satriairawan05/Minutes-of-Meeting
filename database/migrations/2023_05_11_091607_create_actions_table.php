@@ -15,14 +15,14 @@ class CreateActionsTable extends Migration
     {
         Schema::create('actions', function (Blueprint $table) {
             $table->bigIncrements('act_id');
-            $table->string('act_subject', 100)->nullable();
-            $table->string('act_problem', 100)->nullable();
-            $table->string('act_corrective', 100)->nullable();
-            $table->string('act_user', 100)->nullable();
-            $table->string('act_assignby', 100)->nullable();
-            $table->string('act_acc1', 100)->nullable();
-            $table->string('act_acc2', 100)->nullable();
-            $table->date('act_duedate')->nullable();
+            $table->string('act_subject', 100);
+            $table->string('act_problem', 100);
+            $table->string('act_corrective', 100);
+            $table->string('act_user', 100);
+            $table->string('act_assignby', 100);
+            $table->string('act_acc1', 100);
+            $table->string('act_acc2', 100);
+            $table->date('act_duedate');
             $table->timestamps();
         });
     }

@@ -21,6 +21,9 @@ Route::get('/', function () {
     return view('admin.layout.meet');
 });
 
+Auth::routes();
+Route::get('/dashboard', [HomeController::class, 'index']);
+
 Route::get('/meet/list', [MeetController::class,'list']);
 
 Route::get('/meet/add', function () {
@@ -28,12 +31,6 @@ Route::get('/meet/add', function () {
 });
 
 Route::resource('meet', MeetController::class);
-
-Auth::routes();
-
-Route::resource('action', ActionController::class);
-
-Route::get('/dashboard', [HomeController::class, 'index']);
 
 // Taroh Route untuk Admin disini
 Route::group(['middleware' => ['role:super-admin']],function () {

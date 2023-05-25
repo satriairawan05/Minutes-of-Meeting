@@ -15,7 +15,7 @@ class MeetController extends Controller
      */
     public function index()
     {
-        $meet = Meet::latest()->take(1)->get();
+        $meet = Meet::where('meet_locate','=','Head Office')->latest('updated_at')->get();
         return view('admin.meet.detailmeet', compact('meet'));
     }
 
@@ -46,7 +46,7 @@ class MeetController extends Controller
             $meet->meet_attend = $request->txtmatt;
             $meet->save();
 
-            return redirect('meet')->with('msg', 'Add New Meeting Successfully');
+            return redirect('meet/list')->with('msg', 'Add New Meeting Successfully');
         } else {
             return http_response_code(503);
         }
@@ -58,7 +58,7 @@ class MeetController extends Controller
     public function show(Meet $meets, $meet_id)
     {
         $data = $meets->find($meet_id);
-        return view('meet.editmeet')->with([
+        return view('admin.meet.editmeet')->with([
             'txtmid' => $data->meet_id,
             'txtmname' => $data->meet_name,
             'txtmdate' => $data->meet_date,
