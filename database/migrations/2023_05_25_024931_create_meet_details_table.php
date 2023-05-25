@@ -13,9 +13,14 @@ return new class extends Migration
     {
         Schema::create('meet_details', function (Blueprint $table) {
             $table->id();
-            $table->string('departemen');
-            $table->string('category');
+            $table->string('project');
+            $table->string('tracker');
+            $table->string('subject');
+            $table->longText('description');
             $table->string('status');
+            $table->string('priority');
+            $table->string('file')->nullable();
+            $table->boolean('is_private');
             $table->timestamps();
         });
     }
