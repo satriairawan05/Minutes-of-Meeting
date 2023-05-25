@@ -12,17 +12,6 @@ class MeetDetail extends Model
     protected $table = 'meets_details';
     protected $guarded = 'id';
 
-    // $table->string('project');
-    // $table->string('tracker');
-    // $table->string('subject');
-    // $table->longText('description');
-    // $table->string('status');
-    // $table->string('priority');
-    // $table->date('start_date');
-    // $table->date('end_date');
-    // $table->string('file')->nullable();
-    // $table->boolean('is_private');
-
     protected $fillable = [
         'project',
         'tracker',
