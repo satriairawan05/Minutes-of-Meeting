@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ActionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\MeetController;
 use App\Http\Controllers\Admin\MeetDetailController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,7 @@ use App\Http\Controllers\Admin\MeetDetailController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('users', [UserController::class, 'index'])->name('users.index');
 
 Route::get('/', function () {
     return view('admin.layout.meet');
