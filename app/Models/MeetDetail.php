@@ -10,18 +10,8 @@ class MeetDetail extends Model
     use HasFactory;
 
     protected $table = 'meet_details';
-    protected $guarded = 'id';
+    protected $primaryKey = 'id';
 
-    protected $fillable = [
-        'project',
-        'tracker',
-        'subject',
-        'description',
-        'status',
-        'priority',
-        'start_daye',
-        'end_date',
-        'file',
-        'is_private'
-    ];
+    public $incrementing = false;
+    public $timestamps = true;
 }

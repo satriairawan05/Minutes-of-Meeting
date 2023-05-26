@@ -111,19 +111,19 @@ class MeetDetailController extends Controller
         MeetDetail::where('id',$meetDetail->id)->update($validate);
 
         // mengembalikan ke halaman resume
-        return redirect()->to('')->with('success','Updated Successfully!');
+        return redirect()->to('/issue')->with('success','Updated Successfully!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(MeetDetail $meetDetail)
+    public function destroy(MeetDetail $meetDetail, $meet_id)
     {
         // cek apakah ada id nya
-        MeetDetail::destroy($meetDetail);
+        $data = MeetDetail::find($meet_id);
 
         // menghapus file
-        $meetDetail->file ? Storage::delete([$meetDetail->file]) : null;
+        $meetDetail->file ? Storage::delete([$meetDetail->file]) : $data->delete();
 
         // mengembalikan ke halaman resume
         return redirect()->to('/issue')->with('success','Deleted Successfully!');
