@@ -1,12 +1,12 @@
 @extends('admin.layout.dashboard')
 
 @section('content')
-    <form action="/issue/{{ $detail->id }}" method="post">
+    <form action="/issue/{{ $data->id }}" method="post">
         @method('put')
         @csrf
         <div class="mb-3">
             <input type="radio" name="is_private" id="is_private" onclick="change()"
-                value="{{ old('is_private', $detail->is_private) }}">
+                value="{{ old('is_private', $data->is_private) }}">
             <label for="is_private">Private</label>
         </div>
         <div class="mb-3">
@@ -15,7 +15,7 @@
                 class="form-control @error('project')
             is_invalid
         @enderror" required
-                value="{{ old('project', $detail->project) }}" />
+                value="{{ old('project', $data->project) }}" />
             @error('project')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -28,7 +28,7 @@
                 class="form-control @error('tracker')
             is_invalid
         @enderror" required
-                value="{{ old('tracker', $detail->tracker) }}" />
+                value="{{ old('tracker', $data->tracker) }}" />
             @error('tracker')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -41,7 +41,7 @@
                 class="form-control @error('subject')
             is_invalid
         @enderror" required
-                value="{{ old('subject', $detail->subject) }}" />
+                value="{{ old('subject', $data->subject) }}" />
             @error('subject')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -51,7 +51,7 @@
         <div class="mb-3">
             <label id="description_label" for="description">Description</label>
             <input name="description" id="description" cols="30" rows="10" required
-                value="{{ old('description', $detail->description) }}"
+                value="{{ old('description', $data->description) }}"
                 class="form-control @error('description')
         is-invalid
     @enderror" />
@@ -67,7 +67,7 @@
                 class="form-control @error('status')
             is_invalid
         @enderror" required
-                value="{{ old('status', $detail->status) }}" />
+                value="{{ old('status', $data->status) }}" />
             @error('status')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -80,7 +80,7 @@
                 class="form-control @error('priority')
             is_invalid
         @enderror" required
-                value="{{ old('priority', $detail->priority) }}" />
+                value="{{ old('priority', $data->priority) }}" />
             @error('priority')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -93,7 +93,7 @@
                 class="form-control @error('start_date')
             is_invalid
         @enderror" required
-                value="{{ old('start_date', $detail->start_date) }}" />
+                value="{{ old('start_date', $data->start_date) }}" />
             @error('start_date')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -106,7 +106,7 @@
                 class="form-control @error('end_date')
             is_invalid
         @enderror" required
-                value="{{ old('end_date', $detail->end_date) }}" />
+                value="{{ old('end_date', $data->end_date) }}" />
             @error('end_date')
                 <div class="invalid-feedback">
                     {{ $message }}

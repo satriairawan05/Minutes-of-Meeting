@@ -71,11 +71,10 @@ class MeetDetailController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(MeetDetail $meetDetail)
+    public function edit(MeetDetail $meetDetail, $meet_id)
     {
-        return view('admin.detail.edit',[
-            'detail' => $meetDetail
-        ]);
+        $data = MeetDetail::find($meet_id);
+        return view('admin.detail.edit',compact('data'));
     }
 
     /**
