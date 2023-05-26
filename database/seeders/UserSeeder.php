@@ -29,11 +29,35 @@ class UserSeeder extends Seeder
             'password' => bcrypt('suemeru'),
         ],$basicSetting));
 
+        $teamNine = User::create(array_merge([
+            'name' => 'Team 9',
+            'email' => 'team9@suemerugrup.com',
+            'password' => bcrypt('suemeru'),
+        ],$basicSetting));
+
+        $member = User::create(array_merge([
+            'name' => 'Member',
+            'email' => 'member@suemerugrup.com',
+            'password' => bcrypt('suemeru'),
+        ],$basicSetting));
+
         $roleSuperAdmin = Role::create([
             'name' => 'super-admin',
             'guard_name' => 'web'
         ]);
 
+        $roleTeamNine = Role::create([
+            'name' => 'team-nine',
+            'guard_name' => 'web'
+        ]);
+
+        $roleMember = Role::create([
+            'name' => 'member',
+            'guard_name' => 'web'
+        ]);
+
         $superAdmin->assignRole($roleSuperAdmin);
+        $teamNine->assignRole($roleTeamNine);
+        $member->assignRole($roleMember);
     }
 }
