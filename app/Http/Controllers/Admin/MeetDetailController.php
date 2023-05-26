@@ -61,10 +61,11 @@ class MeetDetailController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(MeetDetail $meetDetail)
+    public function show(MeetDetail $meetDetail, $meet_id)
     {
+        $meet = MeetDetail::find($meet_id);
         return view('admin.detail.show',[
-            'meet_details' => $meetDetail
+            'meet' => $meet
         ]);
     }
 
