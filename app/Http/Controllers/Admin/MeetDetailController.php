@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\MeetDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Storage;
 
 class MeetDetailController extends Controller
@@ -50,6 +51,11 @@ class MeetDetailController extends Controller
 
         // cek apakah ada upload file
         $request->file('file') ? $validate['file'] = $request->file('image')->store('images') : null;
+
+        // cek apakah ada inputan, kalau enggak ada RTO
+        if(!$request){
+            return JsonResponse::HTTP_REQUEST_TIMEOUT;
+        }
 
         // menginsert data
         MeetDetail::create($validate);
@@ -107,6 +113,11 @@ class MeetDetailController extends Controller
                 Storage::delete([$request->oldFile]);
             }
             $validate['file'] = $request->file('image')->store('images');
+        }
+
+        // cek apakah ada inputan, kalau enggak ada RTO
+        if(!$request){
+            return JsonResponse::HTTP_REQUEST_TIMEOUT;
         }
 
         // mengupdate ke database

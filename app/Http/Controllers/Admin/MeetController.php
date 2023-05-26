@@ -6,6 +6,7 @@ use App\Models\Meet;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreMeetRequest;
 use App\Http\Requests\UpdateMeetRequest;
+use Illuminate\Http\JsonResponse;
 
 
 class MeetController extends Controller
@@ -35,7 +36,7 @@ class MeetController extends Controller
     {
         $validate = $request->validated();
 
-        if ($validate) {
+        if ($request || $validate) {
             $meet = new Meet;
             $meet->meet_id = $request->txtmid;
             $meet->meet_name = $request->txtmname;
@@ -48,7 +49,7 @@ class MeetController extends Controller
 
             return redirect('meet/list')->with('msg', 'Add New Meeting Successfully');
         } else {
-            return http_response_code(503);
+            return JsonResponse::HTTP_REQUEST_TIMEOUT;
         }
     }
 
@@ -89,7 +90,7 @@ class MeetController extends Controller
 
             return redirect('meet/list')->with('msg', 'Edit Meeting ' . $data->meet_name . ' ');
         } else {
-            return back();
+            return JsonResponse::HTTP_REQUEST_TIMEOUT;
         }
     }
 
