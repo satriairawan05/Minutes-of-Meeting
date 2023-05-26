@@ -109,8 +109,4 @@
             </div>
         </div>
 
-        <div class="card-body">
-
-
-        </div>
     @endsection
