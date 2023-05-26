@@ -9,7 +9,7 @@ class MeetDetail extends Model
 {
     use HasFactory;
 
-    protected $table = 'meet_details';
+    protected $table = 'issues';
     protected $primaryKey = 'id';
 
     public $incrementing = false;

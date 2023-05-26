@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('meet_details', function (Blueprint $table) {
+        Schema::create('issues', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('project',50);
             $table->string('tracker',50);
@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('priority',100);
             $table->date('start_date');
             $table->date('end_date');
-            $table->fullText('c_action');
-            $table->string('assigned',100);
+            $table->text('c_action');
+            $table->string('assigned',100)->nullable();
             $table->string('file')->nullable();
             $table->boolean('is_private');
             $table->timestamps();
