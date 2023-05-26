@@ -54,7 +54,7 @@ class MeetDetailController extends Controller
         MeetDetail::create($validate);
 
         // mengembalikan ke halaman resume
-        return redirect()->to('/resume')->with('success','Added Successfully!');
+        return redirect()->to('/issue')->with('success','Added Successfully!');
 
     }
 
@@ -126,6 +126,6 @@ class MeetDetailController extends Controller
         $meetDetail->file ? Storage::delete([$meetDetail->file]) : null;
 
         // mengembalikan ke halaman resume
-        return redirect()->to('/resume')->with('success','Deleted Successfully!');
+        return redirect()->to('/issue')->with('success','Deleted Successfully!');
     }
 }

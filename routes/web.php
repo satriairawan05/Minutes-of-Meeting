@@ -33,7 +33,7 @@ Route::get('/meet/add', function () {
 
 Route::resource('meet', MeetController::class);
 
-Route::resource('resume', MeetDetailController::class);
+Route::resource('issue', MeetDetailController::class);
 
 // Taroh Route untuk Admin disini
 Route::group(['middleware' => ['role:super-admin']],function () {

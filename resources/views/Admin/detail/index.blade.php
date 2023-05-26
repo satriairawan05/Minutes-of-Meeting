@@ -1,14 +1,20 @@
 @extends('admin.layout.dashboard')
 
 @section('content')
+    <h3 class="mb-2">Issue Details</h3>
     @if (session('success'))
         <div class="alert alert-success container container-fluid" role="alert">
             {{ session('success') }}
         </div>
     @endif
-    <a href="/resume/create" class="btn btn-sm btn-success">Add</a>
+
     <div class="card">
         <div class="card-body">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="button" class="btn btn-sm btn-success float-right"
+                    onclick="window.location='{{ url('issue/create') }}'">Add</button>
+            </div>
+
             <div class="table-responsive p-0">
                 <table class="table align-items-center mb-0">
                     <thead>
@@ -79,12 +85,12 @@
                                     class="text-uppercase text-dark text-xxs font-weight-bolder opacity-4 align-content-center">
                                     {{ $data->file }}</td>
                                 <td>
-                                    <a href="/resume/{{ $data->id }}" class="btn btn-info text-sm">Show</a>
-                                    <a href="/resume/{{ $data->id }}/edit" class="btn btn-warning text-sm">Edit</a>
-                                    <form action="/resume/{{ $data->id }}" method="post" class="d-inline">
+                                    <a href="/issue/{{ $data->id }}" class="btn btn-info text-sm">Show</a>
+                                    <a href="/issue/{{ $data->id }}/edit" class="btn btn-warning text-sm">Edit</a>
+                                    <form action="/issue/{{ $data->id }}" method="post" class="d-inline">
                                         @method('delete')
                                         @csrf
-                                        <button href="/resume/{{ $data->id }}" class="btn btn-danger text-sm"
+                                        <button href="/issue/{{ $data->id }}" class="btn btn-danger text-sm"
                                             type="submit" onclick="return confirm('Are you sure?')">Delete</button>
                                     </form>
                                 </td>

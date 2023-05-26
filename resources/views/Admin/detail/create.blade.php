@@ -1,7 +1,7 @@
 @extends('admin.layout.dashboard')
 
 @section('content')
-<form action="{{ route('resume.store') }}" method="post">
+<form action="{{ route('issue.store') }}" method="post">
   @csrf
   <div class="mb-3">
     <input type="radio" name="is_private" id="is_private" onclick="change()">

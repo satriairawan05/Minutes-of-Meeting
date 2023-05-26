@@ -1,7 +1,7 @@
 @extends('admin.layout.dashboard')
 
 @section('content')
-<form action="/resume/{{ $detail->id }}" method="post">
+<form action="/issue/{{ $detail->id }}" method="post">
   @method('put')
   @csrf
   <div class="mb-3">
