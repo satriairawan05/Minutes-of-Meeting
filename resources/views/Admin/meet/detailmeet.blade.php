@@ -1,8 +1,7 @@
 @extends('admin.layout.dashboard')
 
 @section('content')
-
-        <h3>Meeting Details</h3>
+    <h3>Meeting Details</h3>
 
     <div class="card">
         <div class="card-header">
@@ -108,5 +107,4 @@
                 </form>
             </div>
         </div>
-
     @endsection

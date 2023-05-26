@@ -8,7 +8,7 @@
                 Kembali
             </button>
             <div class="card-body">
-                <form method="POST" action="{{ url('meet/'.$txtmid) }}" class="">
+                <form method="POST" action="{{ url('meet/' . $txtmid) }}" class="">
                     @csrf
                     @method('PUT')
                     <div class="row mb-3">

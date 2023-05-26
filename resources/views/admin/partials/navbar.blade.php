@@ -145,7 +145,8 @@
                         <div class="col-lg-6">
                             <ul class="nav nav-footer justify-content-center justify-content-lg-end mb-3">
                                 <li class="nav-item">
-                                    <a href="https://suemerugrup.com/" class="font-weight-bold" target="_blank">SuemeruGrup©</a>
+                                    <a href="https://suemerugrup.com/" class="font-weight-bold"
+                                        target="_blank">SuemeruGrup©</a>
 
                                     <script>
                                         document.write(new Date().getFullYear())

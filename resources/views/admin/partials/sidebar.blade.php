@@ -13,7 +13,8 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link  active" href="/">
+                <a class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}"
+                    href="{{ route('dashboard') }}">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
@@ -40,7 +41,8 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link  " href="/issue">
+                <a class="nav-link {{ request()->routeIs('issue.index') ? 'active' : '' }}"
+                    href="{{ route('issue.index') }}">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
@@ -62,12 +64,13 @@
                             </g>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">Issues</span>
+                    <span class="nav-link-text ms-1">Issue</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link  " href="/meet">
+                <a class="nav-link {{ request()->routeIs('meet.index') ? 'active' : '' }}"
+                    href="{{ route('meet.index') }}">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
@@ -100,7 +103,8 @@
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>box-3d-50</title>
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <g transform="translate(-2319.000000, -291.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                                <g transform="translate(-2319.000000, -291.000000)" fill="#FFFFFF"
+                                    fill-rule="nonzero">
                                     <g transform="translate(1716.000000, 291.000000)">
                                         <g transform="translate(603.000000, 0.000000)">
                                             <path class="color-background"

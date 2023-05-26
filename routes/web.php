@@ -20,12 +20,12 @@ use App\Http\Controllers\Admin\MeetDetailController;
 
 Route::get('/', function () {
     return view('admin.layout.meet');
-});
+})->name('dashboard');
 
 Auth::routes();
 Route::get('/dashboard', [HomeController::class, 'index']);
 
-Route::get('/meet/list', [MeetController::class,'list']);
+Route::get('/meet/list', [MeetController::class,'list'])->name('meet.list');
 
 Route::get('/meet/add', function () {
     return view('admin.meet.addmeet');
