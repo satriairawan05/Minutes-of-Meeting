@@ -42,6 +42,7 @@ class MeetDetailController extends Controller
             'priority' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
+            'c_action' => 'required',
         ]);
 
         // cek apakah radio is_private di tekan
@@ -93,6 +94,7 @@ class MeetDetailController extends Controller
             'priority' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
+            'c_action' => 'required',
         ];
 
         // memasukan rules ke validasi
