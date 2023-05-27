@@ -17,13 +17,5 @@ class MeetDetail extends Model
     public $incrementing = false;
     public $timestamps = true;
 
-    /**
-     * Get the document that owns the MeetDetail
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function document(): BelongsTo
-    {
-        return $this->belongsTo(Document::class);
-    }
+    protected $touches = 'document';
 }

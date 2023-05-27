@@ -6,7 +6,6 @@ use App\Models\Meet;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreMeetRequest;
 use App\Http\Requests\UpdateMeetRequest;
-use App\Models\Document;
 use Illuminate\Http\JsonResponse;
 
 
@@ -48,7 +47,7 @@ class MeetController extends Controller
             $meet->meet_attend = $request->txtmatt;
             $meet->save();
 
-            $meet->attach(Document::class,'meet_id');
+            $meet->document()->attach();
 
             return redirect('meet/list')->with('msg', 'Add New Meeting Successfully');
         } else {
@@ -91,7 +90,7 @@ class MeetController extends Controller
             $data->meet_attend = $request->txtmatt;
             $data->save();
 
-            $data->attach(Document::class,'meet_id');
+            $data->document()->attach();
 
             return redirect('meet/list')->with('msg', 'Edit Meeting ' . $data->meet_name . ' ');
         } else {
@@ -108,7 +107,7 @@ class MeetController extends Controller
 
         $data->delete();
 
-        $data->detach(Document::class, 'meet_id');
+        $data->document()->detach();
 
         return redirect('meet/list')->with('msg', 'Data Meeting ' . $data->meet_name . ' dihapus');
     }

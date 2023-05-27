@@ -17,14 +17,6 @@ class Meet extends Model
     public $incrementing = false;
     public $timestamps = true;
 
-    /**
-     * Get the dosument that owns the Meet
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function dosument(): BelongsTo
-    {
-        return $this->belongsTo(Document::class);
-    }
+    protected $touches = 'document';
 
 }

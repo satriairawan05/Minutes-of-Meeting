@@ -15,6 +15,8 @@ class Document extends Model
     protected $table = 'documents';
     protected $guarded = 'id';
 
+    protected $with = ['meets','issues'];
+
     /**
      * Get all of the meets for the Document
      *
@@ -32,6 +34,6 @@ class Document extends Model
      */
     public function issues(): HasMany
     {
-        return $this->hasMany(MeetDetail::class,'id');
+        return $this->hasMany(MeetDetail::class);
     }
 }
