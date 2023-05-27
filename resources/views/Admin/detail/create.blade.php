@@ -113,12 +113,25 @@
         </div>
         <div class="mb-3">
             <label id="c_action_label" for="c_action">Corrective Action</label>
-            <input id="c_action" name="c_action" type="date"
+            <input id="c_action" name="c_action" type="text"
                 class="form-control @error('c_action')
             is_invalid
         @enderror" required
                 value="{{ old('c_action') }}" />
             @error('c_action')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <label id="assigned_label" for="assigned">Assigned</label>
+            <input id="assigned" name="assigned" type="text"
+                class="form-control @error('assigned')
+            is_invalid
+        @enderror" required
+                value="{{ old('assigned') }}" />
+            @error('assigned')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>

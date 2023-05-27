@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Models\MeetDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Storage;
 
 class MeetDetailController extends Controller
@@ -33,35 +32,24 @@ class MeetDetailController extends Controller
      */
     public function store(Request $request)
     {
-        // validasi yang wajib diisi
-        $validate = $request->validate([
-            'project' => 'required',
-            'tracker' => 'required',
-            'subject' => 'required',
-            'description' => 'required',
-            'status' => 'required',
-            'priority' => 'required',
-            'start_date' => 'required',
-            'end_date' => 'required',
-            'c_action' => 'required',
-        ]);
+        $issues = new MeetDetail();
 
-        // attach ke relasi
-        $validate['id']->document()->attach();
-
-        // cek apakah radio is_private di tekan
-        $request->is_private ? $validate['is_private'] = true : $validate['is_private'] = false;
+        $issues->project = $request->project;
+        $issues->tracker = $request->tracker;
+        $issues->description = $request->description;
+        $issues->status = $request->status;
+        $issues->priority = $request->priority;
+        $issues->is_private = $request->is_private;
+        $issues->start_date = $request->start_date;
+        $issues->end_date = $request->end_date;
+        $issues->c_action = $request->c_action;
+        $issues->assigned = $request->assigned;
+        $issues->file = $request->file;
 
         // cek apakah ada upload file
-        $request->file('file') ? $validate['file'] = $request->file('image')->store('images') : null;
+        $request->file('file') ? $request->file('image')->store('images') : 'Harap Masukan Gambar';
 
-        // cek apakah ada inputan, kalau enggak ada RTO
-        if(!$request){
-            return JsonResponse::HTTP_REQUEST_TIMEOUT;
-        }
-
-        // menginsert data
-        MeetDetail::create($validate);
+        $issues->save();
 
         // mengembalikan ke halaman resume
         return redirect()->to('/issue')->with('success','Added Successfully!');
@@ -93,7 +81,6 @@ class MeetDetailController extends Controller
      */
     public function update(Request $request, MeetDetail $meetDetail)
     {
-        // yang wajib diisi
         $rules = [
             'project' => 'required',
             'tracker' => 'required',
@@ -106,11 +93,15 @@ class MeetDetailController extends Controller
             'c_action' => 'required',
         ];
 
-        // memasukan rules ke validasi
         $validate = $request->validate($rules);
 
-        // attach ke relasi
-        $validate['id']->document()->attach();
+        if(isset($request->is_private)){
+            $validate['is_private'] = true;
+        }
+
+        if(isset($request->assigned)){
+            $validate['assigned'] = 'required';
+        }
 
         // cek apakah gambarnya ada diinput yang baur
         if($request->file('file')){
@@ -118,12 +109,8 @@ class MeetDetailController extends Controller
             if($request->oldFile){
                 Storage::delete([$request->oldFile]);
             }
-            $validate['file'] = $request->file('image')->store('images');
-        }
-
-        // cek apakah ada inputan, kalau enggak ada RTO
-        if(!$request){
-            return JsonResponse::HTTP_REQUEST_TIMEOUT;
+            $validate['file'] = 'required';
+            $request->file('image')->store('images');
         }
 
         // mengupdate ke database
@@ -140,9 +127,6 @@ class MeetDetailController extends Controller
     {
         // cek apakah ada id nya
         $data = MeetDetail::find($meet_id);
-
-        // detach ke relasi
-        $data->document()->detach();
 
         // menghapus file
         $meetDetail->file ? Storage::delete([$meetDetail->file]) : $data->delete();

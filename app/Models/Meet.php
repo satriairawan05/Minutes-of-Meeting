@@ -17,6 +17,6 @@ class Meet extends Model
     public $incrementing = false;
     public $timestamps = true;
 
-    protected $touches = 'document';
+    protected $touches = 'documents';
 
 }

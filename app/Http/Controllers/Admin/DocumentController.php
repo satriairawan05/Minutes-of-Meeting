@@ -20,8 +20,6 @@ class DocumentController extends Controller
         ->crossJoin('issues')
         ->get();
 
-        // return dd($documents);
-
         return view('admin.document.index',[
             'documents' => $documents
         ]);

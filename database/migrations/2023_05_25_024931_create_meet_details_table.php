@@ -21,10 +21,10 @@ return new class extends Migration
             $table->string('priority',100);
             $table->date('start_date');
             $table->date('end_date');
-            $table->text('c_action');
+            $table->longText('c_action');
             $table->string('assigned',100)->nullable();
             $table->string('file')->nullable();
-            $table->boolean('is_private');
+            $table->boolean('is_private')->nullable();
             $table->timestamps();
         });
     }
