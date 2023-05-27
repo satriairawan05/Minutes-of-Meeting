@@ -6,6 +6,7 @@ use App\Models\Meet;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreMeetRequest;
 use App\Http\Requests\UpdateMeetRequest;
+use App\Models\Document;
 use Illuminate\Http\JsonResponse;
 
 
@@ -46,6 +47,8 @@ class MeetController extends Controller
             $meet->meet_locate = $request->txtmloc;
             $meet->meet_attend = $request->txtmatt;
             $meet->save();
+
+            $meet->attach(Document::class,'meet_id');
 
             return redirect('meet/list')->with('msg', 'Add New Meeting Successfully');
         } else {
@@ -88,6 +91,8 @@ class MeetController extends Controller
             $data->meet_attend = $request->txtmatt;
             $data->save();
 
+            $data->attach(Document::class,'meet_id');
+
             return redirect('meet/list')->with('msg', 'Edit Meeting ' . $data->meet_name . ' ');
         } else {
             return JsonResponse::HTTP_REQUEST_TIMEOUT;
@@ -100,7 +105,11 @@ class MeetController extends Controller
     public function destroy(Meet $meets, $meet_id)
     {
         $data = $meets->find($meet_id);
+
         $data->delete();
+
+        $data->detach(Document::class, 'meet_id');
+
         return redirect('meet/list')->with('msg', 'Data Meeting ' . $data->meet_name . ' dihapus');
     }
 }

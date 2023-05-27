@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ActionController;
+use App\Http\Controllers\Admin\DocumentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\MeetController;
 use App\Http\Controllers\Admin\MeetDetailController;
@@ -36,6 +37,8 @@ Route::get('/meet/add', function () {
 Route::resource('meet', MeetController::class);
 
 Route::resource('issue', MeetDetailController::class);
+
+Route::get('/document',[DocumentController::class,'index'])->name('document.index');
 
 // Taroh Route untuk Admin disini
 Route::group(['middleware' => ['role:super-admin']],function () {

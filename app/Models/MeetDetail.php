@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Document;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class MeetDetail extends Model
 {
@@ -14,4 +16,14 @@ class MeetDetail extends Model
 
     public $incrementing = false;
     public $timestamps = true;
+
+    /**
+     * Get the document that owns the MeetDetail
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function document(): BelongsTo
+    {
+        return $this->belongsTo(Document::class);
+    }
 }

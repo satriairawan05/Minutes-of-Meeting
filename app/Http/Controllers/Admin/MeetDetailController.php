@@ -57,6 +57,8 @@ class MeetDetailController extends Controller
             return JsonResponse::HTTP_REQUEST_TIMEOUT;
         }
 
+        $validate['id']->attach(Document::class,'id');
+
         // menginsert data
         MeetDetail::create($validate);
 
@@ -106,6 +108,8 @@ class MeetDetailController extends Controller
         // memasukan rules ke validasi
         $validate = $request->validate($rules);
 
+        $validate['id']->attach(Document::class,'id');
+
         // cek apakah gambarnya ada diinput yang baur
         if($request->file('file')){
             // cek nilai gambar lama nya
@@ -134,6 +138,7 @@ class MeetDetailController extends Controller
     {
         // cek apakah ada id nya
         $data = MeetDetail::find($meet_id);
+        $data->detach(Document::class,'id');
 
         // menghapus file
         $meetDetail->file ? Storage::delete([$meetDetail->file]) : $data->delete();
