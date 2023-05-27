@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Meet;
 use App\Models\Document;
-use App\Models\MeetDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class DocumentController extends Controller
@@ -15,12 +14,16 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        $meets = Meet::all();
-        $issues = MeetDetail::all();
+        $documents = DB::table('documents')
+        ->select('*')
+        ->crossJoin('meets')
+        ->crossJoin('issues')
+        ->get();
+
+        // return dd($documents);
 
         return view('admin.document.index',[
-            'meets' => $meets,
-            'issues' => $issues
+            'documents' => $documents
         ]);
     }
 
