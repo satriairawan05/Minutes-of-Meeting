@@ -34,22 +34,15 @@ class MeetDetailController extends Controller
     {
         $issues = new MeetDetail();
 
-        $issues->project = $request->project;
-        $issues->tracker = $request->tracker;
-        $issues->description = $request->description;
-        $issues->status = $request->status;
-        $issues->priority = $request->priority;
-        $issues->is_private = $request->is_private;
-        $issues->start_date = $request->start_date;
-        $issues->end_date = $request->end_date;
-        $issues->c_action = $request->c_action;
-        $issues->assigned = $request->assigned;
-        $issues->file = $request->file;
+        // cek apakah radio is_private di tekan
+        $request->is_private ? $validate['is_private'] = true : $validate['is_private'] = false;
 
         // cek apakah ada upload file
         $request->file('file') ? $request->file('image')->store('images') : 'Harap Masukan Gambar';
 
-        $issues->save();
+
+        // menginsert data
+        MeetDetail::create($validate);
 
         // mengembalikan ke halaman resume
         return redirect()->to('/issue')->with('success','Added Successfully!');
@@ -95,13 +88,8 @@ class MeetDetailController extends Controller
 
         $validate = $request->validate($rules);
 
-        if(isset($request->is_private)){
-            $validate['is_private'] = true;
-        }
-
-        if(isset($request->assigned)){
-            $validate['assigned'] = 'required';
-        }
+        // attach ke relasi
+        $validate['id']->document()->attach();
 
         // cek apakah gambarnya ada diinput yang baur
         if($request->file('file')){
@@ -127,6 +115,9 @@ class MeetDetailController extends Controller
     {
         // cek apakah ada id nya
         $data = MeetDetail::find($meet_id);
+
+        // detach ke relasi
+        $data->document()->detach();
 
         // menghapus file
         $meetDetail->file ? Storage::delete([$meetDetail->file]) : $data->delete();

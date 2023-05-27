@@ -55,6 +55,18 @@
                                     name: 'tracker'
                                 },
                                 {
+                                    data: 'subject',
+                                    name: 'subject'
+                                },
+                                {
+                                    data: 'description',
+                                    name: 'description'
+                                },
+                                {
+                                    data: 'status',
+                                    name: 'status'
+                                },
+                                {
                                     data: 'action',
                                     name: 'action',
                                     orderable: false,

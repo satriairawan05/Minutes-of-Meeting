@@ -45,7 +45,7 @@ class MeetController extends Controller
             $meet->meet_locate = $request->txtmloc;
             $meet->meet_attend = $request->txtmatt;
             $meet->save();
-
+            
             return redirect('meet/list')->with('msg', 'Add New Meeting Successfully');
         }
     }
@@ -83,6 +83,7 @@ class MeetController extends Controller
         $data->meet_locate = $request->txtmloc;
         $data->meet_attend = $request->txtmatt;
         $data->save();
+
 
         return redirect('meet/list')->with('msg', 'Edit Meeting ' . $data->meet_name . ' ');
     }
