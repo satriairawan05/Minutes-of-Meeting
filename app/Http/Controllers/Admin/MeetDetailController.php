@@ -46,8 +46,6 @@ class MeetDetailController extends Controller
             'c_action' => 'required',
         ]);
 
-        // attach ke relasi
-        $validate['id']->document()->attach();
 
         // cek apakah radio is_private di tekan
         $request->is_private ? $validate['is_private'] = true : $validate['is_private'] = false;
@@ -55,10 +53,7 @@ class MeetDetailController extends Controller
         // cek apakah ada upload file
         $request->file('file') ? $validate['file'] = $request->file('image')->store('images') : null;
 
-        // cek apakah ada inputan, kalau enggak ada RTO
-        if(!$request){
-            return JsonResponse::HTTP_REQUEST_TIMEOUT;
-        }
+       
 
         // menginsert data
         MeetDetail::create($validate);
@@ -110,7 +105,6 @@ class MeetDetailController extends Controller
         $validate = $request->validate($rules);
 
         // attach ke relasi
-        $validate['id']->document()->attach();
 
         // cek apakah gambarnya ada diinput yang baur
         if($request->file('file')){
@@ -142,7 +136,6 @@ class MeetDetailController extends Controller
         $data = MeetDetail::find($meet_id);
 
         // detach ke relasi
-        $data->document()->detach();
 
         // menghapus file
         $meetDetail->file ? Storage::delete([$meetDetail->file]) : $data->delete();

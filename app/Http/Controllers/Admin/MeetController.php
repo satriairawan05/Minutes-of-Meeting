@@ -47,7 +47,6 @@ class MeetController extends Controller
             $meet->meet_attend = $request->txtmatt;
             $meet->save();
 
-            $meet->document()->attach();
 
             return redirect('meet/list')->with('msg', 'Add New Meeting Successfully');
         } else {
@@ -90,7 +89,6 @@ class MeetController extends Controller
             $data->meet_attend = $request->txtmatt;
             $data->save();
 
-            $data->document()->attach();
 
             return redirect('meet/list')->with('msg', 'Edit Meeting ' . $data->meet_name . ' ');
         } else {
