@@ -46,6 +46,9 @@ class MeetDetailController extends Controller
             'c_action' => 'required',
         ]);
 
+        // attach ke relasi
+        $validate['id']->document()->attach();
+
         // cek apakah radio is_private di tekan
         $request->is_private ? $validate['is_private'] = true : $validate['is_private'] = false;
 
@@ -106,6 +109,9 @@ class MeetDetailController extends Controller
         // memasukan rules ke validasi
         $validate = $request->validate($rules);
 
+        // attach ke relasi
+        $validate['id']->document()->attach();
+
         // cek apakah gambarnya ada diinput yang baur
         if($request->file('file')){
             // cek nilai gambar lama nya
@@ -134,6 +140,9 @@ class MeetDetailController extends Controller
     {
         // cek apakah ada id nya
         $data = MeetDetail::find($meet_id);
+
+        // detach ke relasi
+        $data->document()->detach();
 
         // menghapus file
         $meetDetail->file ? Storage::delete([$meetDetail->file]) : $data->delete();
