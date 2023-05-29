@@ -33,21 +33,18 @@ class MeetController extends Controller
      */
     public function store(StoreMeetRequest $request)
     {
-        $validate = $request->validate($request->all());
+        $meet = new Meet;
+        $meet->meet_id = $request->txtmid;
+        $meet->meet_name = $request->txtmname;
+        $meet->meet_date = $request->txtmdate;
+        $meet->meet_time = $request->txtmtime;
+        $meet->meet_preparedby = $request->txtmprepared;
+        $meet->meet_locate = $request->txtmloc;
+        $meet->meet_attend = $request->txtmatt;
+        $meet->save();
 
-        if ($request || $validate) {
-            $meet = new Meet;
-            $meet->meet_id = $request->txtmid;
-            $meet->meet_name = $request->txtmname;
-            $meet->meet_date = $request->txtmdate;
-            $meet->meet_time = $request->txtmtime;
-            $meet->meet_preparedby = $request->txtmprepared;
-            $meet->meet_locate = $request->txtmloc;
-            $meet->meet_attend = $request->txtmatt;
-            $meet->save();
-            
-            return redirect('meet/list')->with('msg', 'Add New Meeting Successfully');
-        }
+        return redirect('meet/list')->with('msg', 'Add New Meeting Successfully');
+
     }
 
     /**
