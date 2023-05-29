@@ -132,7 +132,7 @@
           </div>
           @enderror
         </div>
-        <div class="mb-3">
+        {{-- <div class="mb-3">
           <label id="meet_id_label" for="meet_id">Meet</label>
           <select class="form-select" id="meet_id" name="meet_id">
           @foreach ($meets as $meet)
@@ -148,7 +148,7 @@
             {{ $message }}
           </div>
           @enderror
-        </div>
+        </div> --}}
         <button type="submit" class="btn btn-sm btn-success">Save</button>
       </form>
 
