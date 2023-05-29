@@ -15,92 +15,92 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
-            <table class="table table-sm table-striped table-bordered">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>ID</th>
-                        <th>Projects Name</th>
-                        <th>Date Of Meeting</th>
-                        <th>Time Of Meeting</th>
-                        <th>Minutes Prepared by</th>
-                        <th>Meeting Locate</th>
-                        <th>Attendees</th>
-                        <th>
-                            <button type="button" class="btn btn-sm btn-warning" title="Edit Data">
-                                <i class="fas fa-cog"></i>
-                            </button>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($meets as $d)
+            <div class="table-responsive">
+                <table class="table table-sm table-striped table-bordered">
+                    <thead>
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $d->meet_id }}</td>
-                            <td>{{ $d->meet_name }}</td>
-                            <td>{{ $d->meet_date }}</td>
-                            <td>{{ $d->meet_time }}</td>
-                            <td>{{ $d->meet_preparedby }}</td>
-                            <td>{{ $d->meet_locate }}</td>
-                            <td>{{ $d->meet_attend }}</td>
-                            <td>
-                                {{-- Edit Modal Trigger --}}
-                                <button type="button"
-                                    onclick="window.location='{{ url('meet/' . $d->meet_id) }}'"class="btn bg-gradient-info"
-                                    title="Edit Data">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                                {{-- End of edit Modal Trigger --}}
-                                <form onsubmit="return deleteData('{{ $d->meet_name }}')" style="display: inline"
-                                    method="POST" action="{{ url('meet/' . $d->meet_id) }}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" title="Hapus Data" class="btn btn-danger btn-sm">
-                                        <i class="far fa-trash-alt"></i>
-                                    </button>
-                                    {{-- Delete Modal Trigger --}}
-
-                                        {{-- End of Delete Modal Trigger --}}
-
-                                        <!-- Delete Modal -->
-                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Delete Data</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        Apakah anda yakin?
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn bg-gradient-secondary"
-                                                            data-bs-dismiss="modal">Close</button>
-                                                        <button type="button" class="btn bg-gradient-primary">Save
-                                                            changes</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {{-- End of Delete Modal --}}
-                                    </form>
-                            </td>
+                            <th style="text-align: center;">No</th>
+                            <th style="text-align: center;" class="d-none d-sm-table-cell">ID</th>
+                            <th style="text-align: center;">Projects Name</th>
+                            <th style="text-align: center;">Date Of Meeting</th>
+                            <th style="text-align: center;">Time Of Meeting</th>
+                            <th style="text-align: center;">Minutes Prepared by</th>
+                            <th style="text-align: center;">Meeting Locate</th>
+                            <th style="text-align: center;" class="d-none d-sm-table-cell">Attendees</th>
+                            <th style="text-align: center;">Actions</th>
                         </tr>
-                    @endforeach
-                </tbody>
+                        <tr>
+                            <th colspan="9">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="toggleColumns">
+                                    <label class="form-check-label" for="toggleColumns">
+                                        Toggle Columns
+                                    </label>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        @foreach ($meets as $d)
+                            <tr>
+                                <td style="text-align: center;">{{ $loop->iteration }}</td>
+                                <td style="text-align: center;" class="d-none d-sm-table-cell">{{ $d->meet_id }}</td>
+                                <td style="text-align: center;">{{ $d->meet_name }}</td>
+                                <td style="text-align: center;">{{ $d->meet_date }}</td>
+                                <td style="text-align: center;">{{ $d->meet_time }}</td>
+                                <td style="text-align: center;">{{ $d->meet_preparedby }}</td>
+                                <td style="text-align: center;">{{ $d->meet_locate }}</td>
+                                <td style="text-align: center;" class="d-none d-sm-table-cell">{{ $d->meet_attend }}</td>
+                                <td style="text-align: center;">
+                                    {{-- Edit Modal Trigger --}}
+                                    <button type="button" onclick="window.location='{{ url('meet/' . $d->meet_id) }}'"
+                                        class="btn bg-gradient-info" title="Edit Data">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    {{-- End of Edit Modal Trigger --}}
 
-            </table>
+                                    {{-- Delete Modal Trigger --}}
+                                    <form onsubmit="return deleteData('{{ $d->meet_name }}')" style="display: inline"
+                                        method="POST" action="{{ url('meet/' . $d->meet_id) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" title="Hapus Data" class="btn bg-gradient-danger">
+                                            <i class="far fa-trash-alt"></i>
+                                        </button>
+                                    </form>
+                                    {{-- End of Delete Modal Trigger --}}
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <script>
-        function deleteData(name) {
-            return true;
-
-        }
+        $(document).ready(function() {
+            // Hide and Show Columns
+            $('#toggleColumns').on('change', function() {
+                var column = $(this).attr('id');
+                $('.' + column).toggle();
+            });
+    
+            // Expandable Columns
+            $('.expandable-column').on('click', function() {
+                $(this).toggleClass('expanded');
+                $(this).siblings('.expand-content').toggle();
+            });
+        });
+    </script>
+    
+    <script>
+        $(document).ready(function() {
+            // Hide and Show Columns
+            $('#toggleColumns').on('change', function() {
+                var column = $(this).val();
+                $('.' + column).toggle();
+            });
+        });
     </script>
 @endsection
