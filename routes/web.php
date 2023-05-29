@@ -1,13 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\ActionController;
-use App\Http\Controllers\Admin\DocumentController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Admin\MeetController;
-use App\Http\Controllers\Admin\MeetDetailController;
-use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,29 +12,21 @@ use App\Http\Controllers\UserController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('users', [UserController::class, 'index'])->name('users.index');
 
 Route::get('/', function () {
-    return view('admin.layout.meet');
+    return view('layout.meet');
 })->name('dashboard');
 
-Auth::routes();
-Route::get('/dashboard', [HomeController::class, 'index']);
+Route::get('/main', function () {
+    return view('layout.meet');
+});
 
-Route::get('/meet/list', [MeetController::class,'list'])->name('meet.list');
+Route::get('/meet/list', [App\Http\Controllers\MeetController::class, 'list'])->name('issue');
 
 Route::get('/meet/add', function () {
-    return view('admin.meet.addmeet');
+    return view('meet.addmeet');
 });
 
-Route::resource('meet', MeetController::class);
 
-Route::resource('issue', MeetDetailController::class);
 
-Route::get('/document',[DocumentController::class,'index'])->name('document.index');
-
-// Taroh Route untuk Admin disini
-Route::group(['middleware' => ['role:super-admin']],function () {
-    // Taroh Route::resoruce atau Route yang satuan disini
-
-});
+Route::resource('meet', \App\Http\Controllers\MeetController::class);
