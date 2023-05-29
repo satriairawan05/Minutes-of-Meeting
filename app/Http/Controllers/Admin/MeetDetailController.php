@@ -40,7 +40,7 @@ class MeetDetailController extends Controller
         $issues->project = $request->project;
         $issues->subject = $request->subject;
         $issues->tracker = $request->tracker;
-        $issues->priority = $request->priority;
+        $issues->priority  = $request->priority;
         $issues->description = $request->description;
         $issues->status = $request->status;
         $issues->start_date = $request->start_date;
@@ -52,7 +52,7 @@ class MeetDetailController extends Controller
         $issues->is_private = $request->is_private ? true : false;
 
         // cek apakah ada upload file
-        $issues->file = $request->file('file') ? $request->file('image')->store('images') : null;
+        $issues->file = $request->file('file') ? $request->file('image')->store('images') : 'Harap Masukan Gambar';
 
         // menginsert data
         $issues->save();
@@ -79,8 +79,7 @@ class MeetDetailController extends Controller
     public function edit(MeetDetail $meetDetail, $meet_id)
     {
         $data = MeetDetail::find($meet_id);
-        $meets = Meet::all();
-        return view('admin.detail.edit',compact(['data','meets']));
+        return view('admin.detail.edit',compact('data'));
     }
 
     /**
@@ -100,9 +99,6 @@ class MeetDetailController extends Controller
         $issues->c_action = $request->c_action;
         $issues->assigned = $request->assigned;
         $issues->priority = $request->priority;
-
-        // cek apakah radio is_private di tekan
-        $issues->is_private = $request->is_private ? true : false;
 
         // cek apakah gambarnya ada diinput yang baru
         if($request->file('file')){
