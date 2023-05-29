@@ -35,7 +35,7 @@ class MeetDetailController extends Controller
      */
     public function store(Request $request)
     {
-        $issues = new MeetDetail();
+        $issues = new MeetDetail;
         $issues->meet_id = $request->meet_id;
         $issues->project = $request->project;
         $issues->subject = $request->subject;
@@ -87,7 +87,7 @@ class MeetDetailController extends Controller
      */
     public function update(Request $request, MeetDetail $meetDetail)
     {
-        $issues = new MeetDetail();
+        $issues = new MeetDetail;
         $issues->meet_id = $request->meet_id;
         $issues->project = $request->project;
         $issues->subject = $request->subject;
