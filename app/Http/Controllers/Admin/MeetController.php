@@ -15,7 +15,7 @@ class MeetController extends Controller
      */
     public function index()
     {
-        $meet = Meet::where('meet_locate','=','Head Office')->latest('updated_at')->lazy();
+        $meet = Meet::where('meet_locate', '=', 'Head Office')->latest('updated_at')->lazy();
         return view('admin.meet.detailmeet', compact('meet'));
     }
 
@@ -44,7 +44,6 @@ class MeetController extends Controller
         $meet->save();
 
         return redirect('meet/list')->with('msg', 'Add New Meeting Successfully');
-
     }
 
     /**
@@ -53,6 +52,11 @@ class MeetController extends Controller
     public function show(Meet $meets, $meet_id)
     {
         $data = $meets->find($meet_id);
+
+        if (!$data) {
+            return redirect('meet/list')->with('error', 'Meeting not found');
+        }
+
         return view('admin.meet.editmeet')->with([
             'txtmid' => $data->meet_id,
             'txtmname' => $data->meet_name,
@@ -61,6 +65,7 @@ class MeetController extends Controller
             'txtmprepared' => $data->meet_preparedby,
             'txtmloc' => $data->meet_locate,
             'txtmatt' => $data->meet_attend
+            // Add other variables here
         ]);
     }
 
