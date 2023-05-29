@@ -23,9 +23,7 @@ Route::get('/main', function () {
 
 Route::get('/meet/list', [App\Http\Controllers\MeetController::class, 'list'])->name('issue');
 
-Route::get('/meet/add', function () {
-    return view('meet.addmeet');
-});
+Route::get('/meet/add',[App\Http\Controllers\MeetController::class, 'addData'])->name('meet.add');
 
 Route::resource('meet', \App\Http\Controllers\MeetController::class);
 

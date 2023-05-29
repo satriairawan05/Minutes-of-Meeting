@@ -1,6 +1,7 @@
 @extends('layout.main')
 
 @section('content')
+
 <h3>Add New Data Meet</h3>
 <div class="card">
   <div class="card-header">
@@ -8,12 +9,12 @@
       Kembali
     </button>
     <div class="card-body">
-      <form action="{{ url('meet') }}" class="" method="POST">
+      <form action="{{ route('meet.store') }}" class="" method="POST">
         @csrf
         <div class="row mb-3">
           <label for="txtmid" class="col-sm-2 col-form-label">ID Meet</label>
           <div class="col-sm-4">
-            <input type="text" class="form-control form-control-sm @error('txtmid') is-invalid @enderror" id="txtmid" name="txtmid" value="{{ old('txtmid') }}">
+            <input type="text" class="form-control form-control-sm @error('txtmid') is-invalid @enderror" id="disabledTextInput" name="txtmid" value="{{ $meets }}">
             @error('txtmid')
             <div class="invalid-feedback">
               {{ $message }}

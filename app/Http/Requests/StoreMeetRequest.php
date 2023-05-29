@@ -22,14 +22,14 @@ class StoreMeetRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'txtmid' => 'required|unique:meets,meet_id|min:3|max:7',
+            'txtmid' => 'required',
             'txtmname' => 'required',
             'txtmdate' => 'required',
             'txtmtime' => 'required',
             'txtmprepared' => 'required',
             'txtmloc' => 'required',
-            'txtmatt' => 'required' 
-            
+            'txtmatt' => 'required'
+
 
 
         ];
