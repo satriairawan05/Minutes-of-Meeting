@@ -52,7 +52,7 @@ class MeetDetailController extends Controller
         $issues->is_private = $request->is_private ? true : false;
 
         // cek apakah ada upload file
-        $issues->file = $request->file('file') ? $request->file('image')->store('images') : 'Harap Masukan Gambar';
+        $issues->file = $request->file('file') ? $request->file('image')->store('images') : null;
 
         // menginsert data
         $issues->save();
@@ -110,7 +110,7 @@ class MeetDetailController extends Controller
         }
 
         // mengupdate ke database
-        MeetDetail::where('id',$meetDetail->id)->update($issues);
+        $issues->save();
 
         // mengembalikan ke halaman resume
         return redirect()->to('/issue')->with('success','Updated Successfully!');
