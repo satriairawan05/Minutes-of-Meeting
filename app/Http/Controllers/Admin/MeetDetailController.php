@@ -35,24 +35,24 @@ class MeetDetailController extends Controller
      */
     public function store(Request $request)
     {
-        $issues = new MeetDetail();
-        $issues->meet_id = $request->meet_id;
+        $issues = new MeetDetail;
         $issues->project = $request->project;
         $issues->subject = $request->subject;
         $issues->tracker = $request->tracker;
-        $issues->priority = $request->priority;
+        $issues->priority  = $request->priority;
         $issues->description = $request->description;
         $issues->status = $request->status;
         $issues->start_date = $request->start_date;
         $issues->end_date = $request->end_date;
         $issues->c_action = $request->c_action;
         $issues->assigned = $request->assigned;
+        $issues->meet_id = $request->meet_id;
 
         // cek apakah radio is_private di tekan
         $issues->is_private = $request->is_private ? true : false;
 
         // cek apakah ada upload file
-        $issues->file = $request->file('file') ? $request->file('image')->store('images') : null;
+        $issues->file = $request->file ? $request->file('image')->store('images') : null;
 
         // menginsert data
         $issues->save();
@@ -79,8 +79,7 @@ class MeetDetailController extends Controller
     public function edit(MeetDetail $meetDetail, $meet_id)
     {
         $data = MeetDetail::find($meet_id);
-        $meets = Meet::all();
-        return view('admin.detail.edit',compact(['data','meets']));
+        return view('admin.detail.edit',compact('data'));
     }
 
     /**
@@ -88,7 +87,7 @@ class MeetDetailController extends Controller
      */
     public function update(Request $request, MeetDetail $meetDetail)
     {
-        $issues = new MeetDetail();
+        $issues = new MeetDetail;
         $issues->meet_id = $request->meet_id;
         $issues->project = $request->project;
         $issues->subject = $request->subject;
@@ -101,9 +100,6 @@ class MeetDetailController extends Controller
         $issues->assigned = $request->assigned;
         $issues->priority = $request->priority;
 
-        // cek apakah radio is_private di tekan
-        $issues->is_private = $request->is_private ? true : false;
-
         // cek apakah gambarnya ada diinput yang baru
         if($request->file('file')){
             // cek nilai gambar lama nya
@@ -114,7 +110,7 @@ class MeetDetailController extends Controller
         }
 
         // mengupdate ke database
-        MeetDetail::where('id',$meetDetail->id)->update($issues);
+        $issues->save();
 
         // mengembalikan ke halaman resume
         return redirect()->to('/issue')->with('success','Updated Successfully!');

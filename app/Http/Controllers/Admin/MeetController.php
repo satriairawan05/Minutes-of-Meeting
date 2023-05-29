@@ -53,10 +53,6 @@ class MeetController extends Controller
     {
         $data = $meets->find($meet_id);
 
-        if (!$data) {
-            return redirect('meet/list')->with('error', 'Meeting not found');
-        }
-
         return view('admin.meet.editmeet')->with([
             'txtmid' => $data->meet_id,
             'txtmname' => $data->meet_name,
