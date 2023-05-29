@@ -35,7 +35,7 @@
 
                 </body>
 
-                <script type="text/javascript">
+                {{-- <script type="text/javascript">
                     $(function() {
 
                         var table = $('.data-table').DataTable({
@@ -77,37 +77,9 @@
                         });
 
                     });
-                </script>
+                </script> --}}
             </div>
 
-            {{-- -edit,delete --}}
-
-            {{-- @foreach ($meetDetails as $data)
-                <tr>
-                    <td
-                        class="text-uppercase text-dark text-xxs font-weight-bolder opacity-4 align-content-center">
-                        {{ $data->priority }}</td>
-                    <td
-                        class="text-uppercase text-dark text-xxs font-weight-bolder opacity-4 align-content-center">
-                        {{ $data->start_date }}</td>
-                    <td
-                        class="text-uppercase text-dark text-xxs font-weight-bolder opacity-4 align-content-center">
-                        {{ $data->end_date }}</td>
-                    <td
-                        class="text-uppercase text-dark text-xxs font-weight-bolder opacity-4 align-content-center">
-                        {{ $data->file }}</td>
-                    <td>
-                        <a href="/issue/{{ $data->id }}" class="btn btn-info text-sm">Show</a>
-                        <a href="/issue/{{ $data->id }}/edit" class="btn btn-warning text-sm">Edit</a>
-                        <form action="/issue/{{ $data->id }}" method="post" class="d-inline">
-                            @method('delete')
-                            @csrf
-                            <button href="/issue/{{ $data->id }}" class="btn btn-danger text-sm"
-                                type="submit" onclick="return confirm('Are you sure?')">Delete</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach --}}
         </div>
     </div>
 @endsection

@@ -127,13 +127,13 @@
             @enderror
         </div>
         <div class="mb-3">
-            <label id="assigned_label" for="assigned">Assigned</label>
-            <input id="assigned" name="assigned" type="text"
+            <label id="assignee_label" for="assignee">Assignee</label>
+            <input id="assignee" name="assignee" type="text"
                 class="form-control @error('assigned')
             is_invalid
         @enderror" required
-                value="{{ old('assigned',$data->assigned) }}" />
-            @error('assigned')
+                value="{{ old('assignee',$data->assigned) }}" />
+            @error('assignee')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
@@ -151,23 +151,6 @@
                     {{ $message }}
                 </div>
             @enderror
-        </div>
-        <div class="mb-3">
-          <label id="meet_id_label" for="meet_id">Meet</label>
-          <select class="form-select" id="meet_id" name="meet_id">
-          @foreach ($meets as $meet)
-            @if(old('meet_id') == $meet->meet_id)
-            <option value="{{ $meet->meet_id }}" selected>{{ $meet->meet_name }}</option>
-            @else
-            <option value="{{ $meet->meet_id }}">{{ $meet->meet_name }}</option>
-            @endif
-          @endforeach
-          </select>
-          @error('meet_id')
-          <div class="invalid-feedback">
-            {{ $message }}
-          </div>
-          @enderror
         </div>
         <button type="submit" class="btn btn-sm btn-success">Save</button>
     </form>

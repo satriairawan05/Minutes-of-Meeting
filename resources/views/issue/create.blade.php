@@ -111,11 +111,11 @@
           @enderror
         </div>
         <div class="mb-3">
-          <label id="assigned_label" for="assigned">Assigned</label>
-          <input id="assigned" name="assigned" type="text" class="form-control @error('assigned')
+          <label id="assignee_label" for="assignee">Assigned</label>
+          <input id="assignee" name="assignee" type="text" class="form-control @error('assignee')
             is_invalid
-        @enderror" required value="{{ old('assigned') }}" />
-          @error('assigned')
+        @enderror" required value="{{ old('assignee') }}" />
+          @error('assignee')
           <div class="invalid-feedback">
             {{ $message }}
           </div>
