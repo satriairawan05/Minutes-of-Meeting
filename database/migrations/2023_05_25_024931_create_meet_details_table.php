@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('issues', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->foreignId('meet_id');
             $table->string('project',50);
             $table->string('tracker',50);
             $table->string('subject',100);
