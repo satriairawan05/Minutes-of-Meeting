@@ -33,16 +33,24 @@ class MeetDetailController extends Controller
     public function store(Request $request)
     {
         $issues = new MeetDetail();
+        $issues->meet_id = $request->meet_id;
+        $issues->project = $request->project;
+        $issues->subject = $request->subject;
+        $issues->description = $request->description;
+        $issues->status = $request->status;
+        $issues->start_date = $request->start_date;
+        $issues->end_date = $request->end_date;
+        $issues->c_action = $request->c_action;
+        $issues->assigned = $request->assigned;
 
         // cek apakah radio is_private di tekan
-        $request->is_private ? $validate['is_private'] = true : $validate['is_private'] = false;
+        $issues->is_private = $request->is_private ? true : false;
 
         // cek apakah ada upload file
-        $request->file('file') ? $request->file('image')->store('images') : 'Harap Masukan Gambar';
-
+        $issues->file = $request->file('file') ? $request->file('image')->store('images') : 'Harap Masukan Gambar';
 
         // menginsert data
-        MeetDetail::create($validate);
+        $issues->save();
 
         // mengembalikan ke halaman resume
         return redirect()->to('/issue')->with('success','Added Successfully!');
@@ -74,35 +82,28 @@ class MeetDetailController extends Controller
      */
     public function update(Request $request, MeetDetail $meetDetail)
     {
-        $rules = [
-            'project' => 'required',
-            'tracker' => 'required',
-            'subject' => 'required',
-            'description' => 'required',
-            'status' => 'required',
-            'priority' => 'required',
-            'start_date' => 'required',
-            'end_date' => 'required',
-            'c_action' => 'required',
-        ];
+        $issues = new MeetDetail();
+        $issues->meet_id = $request->meet_id;
+        $issues->project = $request->project;
+        $issues->subject = $request->subject;
+        $issues->description = $request->description;
+        $issues->status = $request->status;
+        $issues->start_date = $request->start_date;
+        $issues->end_date = $request->end_date;
+        $issues->c_action = $request->c_action;
+        $issues->assigned = $request->assigned;
 
-        $validate = $request->validate($rules);
-
-        // attach ke relasi
-        $validate['id']->document()->attach();
-
-        // cek apakah gambarnya ada diinput yang baur
+        // cek apakah gambarnya ada diinput yang baru
         if($request->file('file')){
             // cek nilai gambar lama nya
             if($request->oldFile){
                 Storage::delete([$request->oldFile]);
             }
-            $validate['file'] = 'required';
-            $request->file('image')->store('images');
+            $issues->file = $request->file('image')->store('images');
         }
 
         // mengupdate ke database
-        MeetDetail::where('id',$meetDetail->id)->update($validate);
+        MeetDetail::where('id',$meetDetail->id)->update($issues);
 
         // mengembalikan ke halaman resume
         return redirect()->to('/issue')->with('success','Updated Successfully!');
@@ -115,9 +116,6 @@ class MeetDetailController extends Controller
     {
         // cek apakah ada id nya
         $data = MeetDetail::find($meet_id);
-
-        // detach ke relasi
-        $data->document()->detach();
 
         // menghapus file
         $meetDetail->file ? Storage::delete([$meetDetail->file]) : $data->delete();
