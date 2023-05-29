@@ -49,13 +49,50 @@
                                     class="btn btn-sm btn-info" title="Edit Data">
                                     <i class="fas fa-edit"></i>
                                 </button>
-                                <form onsubmit="return deleteData('{{ $d->meet_name }}')" style="display: inline" method="POST" action="{{ url('meet/' . $d->meet_id) }}">
+                                <form onsubmit="return deleteData('{{ $d->meet_name }}')" style="display: inline"
+                                    method="POST" action="{{ url('meet/' . $d->meet_id) }}">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" title="Hapus Data" class="btn btn-danger btn-sm">
                                         <i class="far fa-trash-alt"></i>
                                     </button>
-                                </form>
+                                    {{-- Delete Modal Trigger --}}
+                                    <form onsubmit="return deleteData('{{ $d->meet_name }}')" style="display: inline"
+                                        method="POST" action="{{ url('meet/' . $d->meet_id) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="button" class="btn bg-gradient-primary" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal">
+                                            <i class="far fa-trash-alt"></i>
+                                        </button>
+                                        {{-- End of Delete Modal Trigger --}}
+
+                                        <!-- Delete Modal -->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Delete Data</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Apakah anda yakin?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn bg-gradient-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn bg-gradient-primary">Save
+                                                            changes</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{-- End of Delete Modal --}}
+                                    </form>
                             </td>
                         </tr>
                     @endforeach
@@ -65,9 +102,9 @@
         </div>
     </div>
     <script>
-        function deleteData(name){
+        function deleteData(name) {
             pesan = confirm(`Ingin Menghapus ${name} ?`);
-            if(pesan) return true;
+            if (pesan) return true;
             else return false;
         }
     </script>
