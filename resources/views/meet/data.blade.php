@@ -3,7 +3,7 @@
 @section('content')
     <h3>Issues Data</h3>
     <div class="card">
-        <div class="card-header">
+        <div class="card-header d-flex justify-content-end">
             <button type="button" class="btn btn-sm btn-primary" onclick="window.location='{{ url('meet/add') }}'">
                 <i class="fas fa-plus-circle"></i> Add New Data
             </button>
@@ -16,9 +16,9 @@
                 </div>
             @endif
             <div class="table-responsive">
-                <table class="table table-sm table-striped table-bordered">
+                <table class="table table-sm table-striped table-bordered table-hover">
                     <thead>
-                        <tr>
+                        <tr style="background: linear-gradient(to bottom, #007bff, #ffffff);">
                             <th style="text-align: center;">No</th>
                             <th style="text-align: center;" class="d-none d-sm-table-cell">ID</th>
                             <th style="text-align: center;">Projects Name</th>
@@ -30,17 +30,17 @@
                             <th style="text-align: center;">Actions</th>
                         </tr>
                         <tr>
-                            <th colspan="9">
+                            {{-- <th colspan="9">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="toggleColumns">
                                     <label class="form-check-label" for="toggleColumns">
                                         Toggle Columns
                                     </label>
                                 </div>
-                            </th>
+                            </th> --}}
                         </tr>
                     </thead>
-                    
+
                     <tbody>
                         @foreach ($meets as $d)
                             <tr>
@@ -61,21 +61,54 @@
                                     {{-- End of Edit Modal Trigger --}}
 
                                     {{-- Delete Modal Trigger --}}
-                                    <form onsubmit="return deleteData('{{ $d->meet_name }}')" style="display: inline"
-                                        method="POST" action="{{ url('meet/' . $d->meet_id) }}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" title="Hapus Data" class="btn bg-gradient-danger">
-                                            <i class="far fa-trash-alt"></i>
-                                        </button>
-                                    </form>
+                                    <button type="button" class="btn bg-gradient-primary" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal{{ $d->meet_id }}">
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
                                     {{-- End of Delete Modal Trigger --}}
+
+                                    {{-- Delete Modal --}}
+                                    <div class="modal fade" id="deleteModal{{ $d->meet_id }}" tabindex="-1"
+                                        role="dialog" aria-labelledby="deleteModalLabel{{ $d->meet_id }}"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="deleteModalLabel{{ $d->meet_id }}">Delete
+                                                        Data</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Apakah anda yakin?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn bg-gradient-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <form onsubmit="return deleteData('{{ $d->meet_name }}')"
+                                                        style="display: inline" method="POST"
+                                                        action="{{ url('meet/' . $d->meet_id) }}">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" title="Hapus Data"
+                                                            class="btn bg-gradient-danger">
+                                                            <i class="far fa-trash-alt"></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- End of Delete Modal --}}
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
+
         </div>
     </div>
     <script>
@@ -85,7 +118,7 @@
                 var column = $(this).attr('id');
                 $('.' + column).toggle();
             });
-    
+
             // Expandable Columns
             $('.expandable-column').on('click', function() {
                 $(this).toggleClass('expanded');
@@ -93,7 +126,7 @@
             });
         });
     </script>
-    
+
     <script>
         $(document).ready(function() {
             // Hide and Show Columns
