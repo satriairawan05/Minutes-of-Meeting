@@ -152,6 +152,23 @@
                 </div>
             @enderror
         </div>
+        <div class="mb-3">
+          <label id="meet_id_label" for="meet_id">Meet</label>
+          <select class="form-select" id="meet_id" name="meet_id">
+          @foreach ($meets as $meet)
+            @if(old('meet_id') == $meet->meet_id)
+            <option value="{{ $meet->meet_id }}" selected>{{ $meet->meet_name }}</option>
+            @else
+            <option value="{{ $meet->meet_id }}">{{ $meet->meet_name }}</option>
+            @endif
+          @endforeach
+          </select>
+          @error('meet_id')
+          <div class="invalid-feedback">
+            {{ $message }}
+          </div>
+          @enderror
+        </div>
         <button type="submit" class="btn btn-sm btn-success">Save</button>
     </form>
 
