@@ -8,14 +8,45 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
     <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/css/bootstrap.min.css">
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/img/apple-icon.png') }}">
     <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
+    <script>
+        $(document).ready(function() {
+            // Hide and Show Columns
+            $('#toggleColumns').on('change', function() {
+                var column = $(this).val();
+                $('.' + column).toggle();
+            });
+
+            // Expandable Columns
+            $('.expandable-column').on('click', function() {
+                $(this).toggleClass('expanded');
+                $(this).siblings('.expand-content').toggle();
+            });
+        });
+    </script>
+    <style>
+        .expandable-column {
+            cursor: pointer;
+        }
+
+        .expand-content {
+            display: none;
+        }
+
+        .expanded .expand-icon {
+            transform: rotate(90deg);
+        }
+    </style>
     <title>
         Board Meeting Minutes : SuemeruGrup
     </title>
