@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Models\Action;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreActionRequest;
 use App\Http\Requests\UpdateActionRequest;
 
