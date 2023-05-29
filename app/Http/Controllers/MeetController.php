@@ -14,30 +14,39 @@ class MeetController extends Controller
      */
     public function index()
     {
-       
 
         $meet = Meet::latest()->paginate(1);
         return view('meet.detailmeet', compact('meet'));
     }
 
     public function list(){
+        $formattedDate = date('Ymd');
+        $prefix = "MOM-";
+        $lastCount = Meet::select('meet_id')->latest('meet_id')->pluck('meet_id')->first();
+        $count = $lastCount ++;
+        $id = $prefix . str_pad($count, 3, '0', STR_PAD_LEFT) ."/".$formattedDate;
         return view('meet.data')->with([
-            'meets' => Meet::all()
+            'meets' => Meet::all(),
+            'id' => $id
         ]);
     }
 
-    
+
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(StoreMeetRequest $request)
     {
-        $validate = $request->validated();
+        $formattedDate = date('Ymd');
+        $prefix = "MOM-";
+        $lastCount = Meet::select('meet_id')->latest('meet_id')->pluck('meet_id')->first();
+        $count = $lastCount ++;
+        $id = $prefix . str_pad($count, 3, '0', STR_PAD_LEFT) ."/".$formattedDate;
 
         $meet = new Meet;
-        $meet->meet_id = $request->txtmid;
-        $meet->meet_name = $request->txtmname; 
+        $meet->meet_id = $id;
+        $meet->meet_name = $request->txtmname;
         $meet->meet_date = $request-> txtmdate;
         $meet->meet_time = $request->txtmtime;
         $meet->meet_preparedby = $request->txtmprepared;
@@ -73,7 +82,7 @@ class MeetController extends Controller
     public function update(UpdateMeetRequest $request, Meet $meets, $meet_id)
     {
         $data = $meets->find($meet_id);
-        $data->meet_name = $request->txtmname; 
+        $data->meet_name = $request->txtmname;
         $data->meet_date = $request-> txtmdate;
         $data->meet_time = $request->txtmtime;
         $data->meet_preparedby = $request->txtmprepared;

@@ -37,7 +37,7 @@
                     @foreach ($meets as $d)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $d->meet_id }}</td>
+                            <td>{{ $id }}</td>
                             <td>{{ $d->meet_name }}</td>
                             <td>{{ $d->meet_date }}</td>
                             <td>{{ $d->meet_time }}</td>
