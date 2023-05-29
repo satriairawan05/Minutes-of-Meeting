@@ -101,6 +101,9 @@ class MeetDetailController extends Controller
         $issues->assigned = $request->assigned;
         $issues->priority = $request->priority;
 
+        // cek apakah radio is_private di tekan
+        $issues->is_private = $request->is_private ? true : false;
+
         // cek apakah gambarnya ada diinput yang baru
         if($request->file('file')){
             // cek nilai gambar lama nya
