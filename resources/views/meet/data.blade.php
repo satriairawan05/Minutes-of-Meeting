@@ -1,7 +1,7 @@
 @extends('layout.main')
 
 @section('content')
-    <h3>Data Meet</h3>
+    <h3>Issues Data</h3>
     <div class="card">
         <div class="card-header">
             <button type="button" class="btn btn-sm btn-primary" onclick="window.location='{{ url('meet/add') }}'">
@@ -45,10 +45,13 @@
                             <td>{{ $d->meet_locate }}</td>
                             <td>{{ $d->meet_attend }}</td>
                             <td>
-                                <button type="button" onclick="window.location='{{ url('meet/' . $d->meet_id) }}'"
-                                    class="btn btn-sm btn-info" title="Edit Data">
+                                {{-- Edit Modal Trigger --}}
+                                <button type="button"
+                                    onclick="window.location='{{ url('meet/' . $d->meet_id) }}'"class="btn bg-gradient-info"
+                                    title="Edit Data">
                                     <i class="fas fa-edit"></i>
                                 </button>
+                                {{-- End of edit Modal Trigger --}}
                                 <form onsubmit="return deleteData('{{ $d->meet_name }}')" style="display: inline"
                                     method="POST" action="{{ url('meet/' . $d->meet_id) }}">
                                     @csrf
@@ -57,14 +60,7 @@
                                         <i class="far fa-trash-alt"></i>
                                     </button>
                                     {{-- Delete Modal Trigger --}}
-                                    <form onsubmit="return deleteData('{{ $d->meet_name }}')" style="display: inline"
-                                        method="POST" action="{{ url('meet/' . $d->meet_id) }}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="button" class="btn bg-gradient-primary" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal">
-                                            <i class="far fa-trash-alt"></i>
-                                        </button>
+
                                         {{-- End of Delete Modal Trigger --}}
 
                                         <!-- Delete Modal -->
@@ -103,9 +99,8 @@
     </div>
     <script>
         function deleteData(name) {
-            pesan = confirm(`Ingin Menghapus ${name} ?`);
-            if (pesan) return true;
-            else return false;
+            return true;
+
         }
     </script>
 @endsection
