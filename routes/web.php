@@ -27,6 +27,4 @@ Route::get('/meet/add', function () {
     return view('meet.addmeet');
 });
 
-
-
 Route::resource('meet', \App\Http\Controllers\MeetController::class);
