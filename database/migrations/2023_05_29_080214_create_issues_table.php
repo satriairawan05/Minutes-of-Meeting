@@ -25,7 +25,7 @@ return new class extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->string('file')->nullable();
-            $table->tinyInteger('is_private');
+            $table->tinyInteger('is_private')->nullable();
             $table->timestamps();
         });
     }

@@ -8,7 +8,7 @@
       <form action="{{ route('issue.store') }}" method="post">
         @csrf
         <div class="mb-3">
-          <input type="radio" name="is_private" id="is_private" onclick="change()">
+          <input type="radio" name="is_private" id="is_private" onclick="change(this)">
           <label for="is_private">Private</label>
         </div>
         <div class="mb-3">
@@ -111,7 +111,18 @@
           @enderror
         </div>
         <div class="mb-3">
-          <label id="assignee_label" for="assignee">Assigned</label>
+          <label id="category_label" for="category">Category</label>
+          <input id="category" name="category" type="text" class="form-control @error('category')
+            is_invalid
+        @enderror" required value="{{ old('category') }}" />
+          @error('category')
+          <div class="invalid-feedback">
+            {{ $message }}
+          </div>
+          @enderror
+        </div>
+        <div class="mb-3">
+          <label id="assignee_label" for="assignee">Assignee</label>
           <input id="assignee" name="assignee" type="text" class="form-control @error('assignee')
             is_invalid
         @enderror" required value="{{ old('assignee') }}" />
@@ -123,9 +134,11 @@
         </div>
         <div class="mb-3">
           <label id="file_label" for="file">File</label>
-          <input id="file" name="file" type="file" class="form-control form-control-file text-dark @error('file')
+          <div id="targetLayer"></div>
+          <div class="icon-choose-image"></div>
+          <input id="file" name="file" type="file" class="form-control form-control-file @error('file')
             is_invalid
-        @enderror" value="{{ old('file') }}" />
+        @enderror" value="{{ old('file') }}" onchange="return showPreview(this)" />
           @error('file')
           <div class="invalid-feedback">
             {{ $message }}
@@ -138,33 +151,47 @@
           @foreach ($meets as $meet)
             @if(old('meet_id') == $meet->meet_id)
             <option value="{{ $meet->meet_id }}" selected>{{ $meet->meet_name }}</option>
-            @else
-            <option value="{{ $meet->meet_id }}">{{ $meet->meet_name }}</option>
-            @endif
-          @endforeach
-          </select>
-          @error('meet_id')
-          <div class="invalid-feedback">
-            {{ $message }}
-          </div>
-          @enderror
-        </div> --}}
-        <button type="submit" class="btn btn-sm btn-success">Save</button>
-      </form>
+        @else
+        <option value="{{ $meet->meet_id }}">{{ $meet->meet_name }}</option>
+        @endif
+        @endforeach
+        </select>
+        @error('meet_id')
+        <div class="invalid-feedback">
+          {{ $message }}
+        </div>
+        @enderror
+    </div> --}}
+    <button type="submit" class="btn btn-sm btn-success">Save</button>
+    </form>
 
-      <script>
-        const btnPrivate = document.getElementById('is_private');
+    <script>
+      const { value } = document.getElementById('is_private');
 
-        const change = () => {
-          if (btnPrivate) {
-            btnPrivate.value = true;
-          } else {
-            btnPrivate.value = false;
-          }
+      const change = (e) => {
+        e.preventDefault();
+        if (value) {
+          value = 1;
+        } else {
+          value = 0;
         }
+      }
 
-      </script>
-    </div>
+      const showPreview = (objFileInput) => {
+        if (objFileInput.files[0]) {
+          var fileReader = new FileReader();
+          fileReader.onload = function(e) {
+            $('#blah').attr('src', e.target.result);
+            $("#targetLayer").html('<img src="' + e.target.result + '" class="img-fluid w-25 h-25 m-md-2" />');
+            $("#targetLayer").css('opacity', '0.7');
+            $(".icon-choose-image").css('opacity', '0.5');
+          }
+          fileReader.readAsDataURL(objFileInput.files[0]);
+        }
+      }
+
+    </script>
   </div>
+</div>
 </div>
 @endsection
