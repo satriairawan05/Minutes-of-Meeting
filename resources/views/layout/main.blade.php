@@ -47,6 +47,17 @@
             transform: rotate(90deg);
         }
     </style>
+    <style>
+        .table-header {
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+            color: #ffffff;
+        }
+
+        .btn-data {
+            background: linear-gradient(to bottom, #313f77, #764ba2);
+            color: #ffffff;
+        }
+    </style>
     <title>
         Board Meeting Minutes : SuemeruGrup
     </title>

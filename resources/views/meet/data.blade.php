@@ -4,7 +4,7 @@
     <h3>Issues Data</h3>
     <div class="card">
         <div class="card-header d-flex justify-content-end">
-            <button type="button" class="btn btn-sm btn-primary" onclick="window.location='{{ url('meet/add') }}'">
+            <button type="button" class="btn-data" onclick="window.location='{{ url('meet/add') }}'">
                 <i class="fas fa-plus-circle"></i> Add New Data
             </button>
         </div>
@@ -17,17 +17,17 @@
             @endif
             <div class="table-responsive">
                 <table class="table table-sm table-striped table-bordered table-hover">
-                    <thead>
-                        <tr style="background: linear-gradient(to bottom, #007bff, #ffffff);">
-                            <th style="text-align: center;">No</th>
-                            <th style="text-align: center;" class="d-none d-sm-table-cell">ID</th>
-                            <th style="text-align: center;">Projects Name</th>
-                            <th style="text-align: center;">Date Of Meeting</th>
-                            <th style="text-align: center;">Time Of Meeting</th>
-                            <th style="text-align: center;">Minutes Prepared by</th>
-                            <th style="text-align: center;">Meeting Locate</th>
-                            <th style="text-align: center;" class="d-none d-sm-table-cell">Attendees</th>
-                            <th style="text-align: center;">Actions</th>
+
+                    <thead class="table-header">
+                        <th style="text-align: center;">No</th>
+                        <th style="text-align: center;" class="d-none d-sm-table-cell">ID</th>
+                        <th style="text-align: center;">Projects Name</th>
+                        <th style="text-align: center;">Date Of Meeting</th>
+                        <th style="text-align: center;">Time Of Meeting</th>
+                        <th style="text-align: center;">Minutes Prepared by</th>
+                        <th style="text-align: center;">Meeting Locate</th>
+                        <th style="text-align: center;" class="d-none d-sm-table-cell">Attendees</th>
+                        <th style="text-align: center;">Actions</th>
                         </tr>
                         <tr>
                             {{-- <th colspan="9">
@@ -85,16 +85,15 @@
                                                     Apakah anda yakin?
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn bg-gradient-secondary"
-                                                        data-bs-dismiss="modal">Close</button>
                                                     <form onsubmit="return deleteData('{{ $d->meet_name }}')"
-                                                        style="display: inline" method="POST"
-                                                        action="{{ url('meet/' . $d->meet_id) }}">
+                                                        method="POST" action="{{ url('meet/' . $d->meet_id) }}">
                                                         @csrf
+                                                        <button type="button" class="btn bg-gradient-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+
                                                         @method('DELETE')
-                                                        <button type="submit" title="Hapus Data"
-                                                            class="btn bg-gradient-danger">
-                                                            <i class="far fa-trash-alt"></i>
+                                                        <button type="submit" class="btn bg-gradient-danger"
+                                                            data-bs-dismiss="modal"></button>
                                                         </button>
                                                     </form>
                                                 </div>
