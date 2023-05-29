@@ -12,7 +12,7 @@ class Meet extends Model
     protected $table = 'meets';
     protected $primaryKey = 'meet_id';
 
-    public $incrementing = false;
+    public $incrementing = true;
     public $timestamps = true;
-    
+
 }
