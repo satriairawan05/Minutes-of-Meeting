@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('issues', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->foreignId('meet_id');
             $table->string('project',50);
             $table->string('tracker',50);
             $table->string('subject',100);
@@ -21,10 +22,10 @@ return new class extends Migration
             $table->string('priority',100);
             $table->date('start_date');
             $table->date('end_date');
-            $table->text('c_action');
+            $table->longText('c_action');
             $table->string('assigned',100)->nullable();
             $table->string('file')->nullable();
-            $table->boolean('is_private');
+            $table->boolean('is_private')->nullable();
             $table->timestamps();
         });
     }

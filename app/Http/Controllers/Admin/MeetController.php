@@ -6,7 +6,6 @@ use App\Models\Meet;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreMeetRequest;
 use App\Http\Requests\UpdateMeetRequest;
-use Illuminate\Http\JsonResponse;
 
 
 class MeetController extends Controller
@@ -34,7 +33,7 @@ class MeetController extends Controller
      */
     public function store(StoreMeetRequest $request)
     {
-        $validate = $request->validated();
+        $validate = $request->validate($request->all());
 
         if ($request || $validate) {
             $meet = new Meet;
@@ -46,11 +45,8 @@ class MeetController extends Controller
             $meet->meet_locate = $request->txtmloc;
             $meet->meet_attend = $request->txtmatt;
             $meet->save();
-
-
+            
             return redirect('meet/list')->with('msg', 'Add New Meeting Successfully');
-        } else {
-            return JsonResponse::HTTP_REQUEST_TIMEOUT;
         }
     }
 
@@ -80,20 +76,16 @@ class MeetController extends Controller
     {
         $data = $meets->find($meet_id);
 
-        if ($data) {
-            $data->meet_name = $request->txtmname;
-            $data->meet_date = $request->txtmdate;
-            $data->meet_time = $request->txtmtime;
-            $data->meet_preparedby = $request->txtmprepared;
-            $data->meet_locate = $request->txtmloc;
-            $data->meet_attend = $request->txtmatt;
-            $data->save();
+        $data->meet_name = $request->txtmname;
+        $data->meet_date = $request->txtmdate;
+        $data->meet_time = $request->txtmtime;
+        $data->meet_preparedby = $request->txtmprepared;
+        $data->meet_locate = $request->txtmloc;
+        $data->meet_attend = $request->txtmatt;
+        $data->save();
 
 
-            return redirect('meet/list')->with('msg', 'Edit Meeting ' . $data->meet_name . ' ');
-        } else {
-            return JsonResponse::HTTP_REQUEST_TIMEOUT;
-        }
+        return redirect('meet/list')->with('msg', 'Edit Meeting ' . $data->meet_name . ' ');
     }
 
     /**
@@ -104,8 +96,6 @@ class MeetController extends Controller
         $data = $meets->find($meet_id);
 
         $data->delete();
-
-        $data->document()->detach();
 
         return redirect('meet/list')->with('msg', 'Data Meeting ' . $data->meet_name . ' dihapus');
     }
