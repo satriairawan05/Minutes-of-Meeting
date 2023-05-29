@@ -85,16 +85,15 @@
                                                     Apakah anda yakin?
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn bg-gradient-secondary"
-                                                        data-bs-dismiss="modal">Close</button>
                                                     <form onsubmit="return deleteData('{{ $d->meet_name }}')"
-                                                        style="display: inline" method="POST"
-                                                        action="{{ url('meet/' . $d->meet_id) }}">
+                                                        method="POST" action="{{ url('meet/' . $d->meet_id) }}">
                                                         @csrf
+                                                        <button type="button" class="btn bg-gradient-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+
                                                         @method('DELETE')
-                                                        <button type="submit" title="Hapus Data"
-                                                            class="btn bg-gradient-danger">
-                                                            <i class="far fa-trash-alt"></i>
+                                                        <button type="submit" class="btn bg-gradient-danger"
+                                                            data-bs-dismiss="modal"></button>
                                                         </button>
                                                     </form>
                                                 </div>
