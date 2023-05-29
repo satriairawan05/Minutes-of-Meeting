@@ -36,7 +36,6 @@ class MeetDetailController extends Controller
     public function store(Request $request)
     {
         $issues = new MeetDetail;
-        $issues->meet_id = $request->meet_id;
         $issues->project = $request->project;
         $issues->subject = $request->subject;
         $issues->tracker = $request->tracker;
@@ -47,12 +46,13 @@ class MeetDetailController extends Controller
         $issues->end_date = $request->end_date;
         $issues->c_action = $request->c_action;
         $issues->assigned = $request->assigned;
+        $issues->meet_id = $request->meet_id;
 
         // cek apakah radio is_private di tekan
         $issues->is_private = $request->is_private ? true : false;
 
         // cek apakah ada upload file
-        $issues->file = $request->file('file') ? $request->file('image')->store('images') : null;
+        $issues->file = $request->file ? $request->file('image')->store('images') : null;
 
         // menginsert data
         $issues->save();
