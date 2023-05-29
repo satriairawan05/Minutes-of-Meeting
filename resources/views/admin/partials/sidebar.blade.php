@@ -63,7 +63,7 @@
                             </g>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">Meet</span>
+                    <span class="nav-link-text ms-1">Meeting</span>
                 </a>
             </li>
             <li class="nav-item">
