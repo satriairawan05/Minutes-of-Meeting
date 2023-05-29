@@ -51,7 +51,7 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label id="description_label" for="description">Description</label>
+                        <label id="description_label" for="description">Subject Description</label>
                         <input name="description" id="description" cols="30" rows="10" required
                             value="{{ old('description') }}"
                             class="form-control @error('description')
@@ -90,32 +90,6 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label id="start_date_label" for="start_date">Start Date</label>
-                        <input id="start_date" name="start_date" type="date"
-                            class="form-control @error('start_date')
-            is_invalid
-        @enderror" required
-                            value="{{ old('start_date') }}" />
-                        @error('start_date')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label id="end_date_label" for="end_date">End Date</label>
-                        <input id="end_date" name="end_date" type="date"
-                            class="form-control @error('end_date')
-            is_invalid
-        @enderror" required
-                            value="{{ old('end_date') }}" />
-                        @error('end_date')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
                         <label id="c_action_label" for="c_action">Corrective Action</label>
                         <input id="c_action" name="c_action" type="text"
                             class="form-control @error('c_action')
@@ -141,6 +115,33 @@
                             </div>
                         @enderror
                     </div>
+                    <div class="mb-3">
+                        <label id="start_date_label" for="start_date">Start Date</label>
+                        <input id="start_date" name="start_date" type="date"
+                            class="form-control @error('start_date')
+            is_invalid
+        @enderror" required
+                            value="{{ old('start_date') }}" />
+                        @error('start_date')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label id="end_date_label" for="end_date">End Date</label>
+                        <input id="end_date" name="end_date" type="date"
+                            class="form-control @error('end_date')
+            is_invalid
+        @enderror" required
+                            value="{{ old('end_date') }}" />
+                        @error('end_date')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
                     <div class="mb-3">
                         <label id="file_label" for="file">File</label>
                         <input id="file" name="file" type="file"
