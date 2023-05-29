@@ -20,14 +20,8 @@ class MeetController extends Controller
     }
 
     public function list(){
-        $formattedDate = date('Ymd');
-        $prefix = "MOM-";
-        $lastCount = Meet::select('meet_id')->latest('meet_id')->pluck('meet_id')->first();
-        $count = $lastCount ++;
-        $id = $prefix . str_pad($count, 3, '0', STR_PAD_LEFT) ."/".$formattedDate;
         return view('meet.data')->with([
-            'meets' => Meet::all(),
-            'id' => $id
+            'meets' => Meet::all()
         ]);
     }
 
