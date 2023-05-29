@@ -26,8 +26,7 @@ return new class extends Migration
             $table->date('end_date');
             $table->string('file')->nullable();
             $table->tinyInteger('is_private');
-            $table->timestamps('created_at');
-            $table->timestamps('updated_at');
+            $table->timestamps();
         });
     }
 
