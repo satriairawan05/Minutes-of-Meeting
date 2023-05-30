@@ -17,7 +17,7 @@
     <div class="table-responsive">
 
       <table class="table table-bordered data-table table-responsive table-sm table-striped table-hover">
-        <thead>
+        <thead class="text-center">
           <tr>
             <th>No</th>
             <th>Project</th>
@@ -29,7 +29,7 @@
             <th width="100px">Action</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="text-center">
         @foreach ($issues as $i)
           <tr>
             <th scope="row">{!! $loop->iteration !!}</th>

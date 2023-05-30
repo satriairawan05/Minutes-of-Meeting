@@ -33,19 +33,18 @@ class MeetController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-
-     public function addData(){
+     public function create()
+     {
         $formattedDate = date('Ymd');
         $prefix = "MOM-";
         $lastCount = Meet::select('meet_id')->latest('meet_id')->pluck('meet_id')->first();
         $count = $lastCount + 1;
-        $id_u = $prefix . str_pad($count, 3, '0', STR_PAD_LEFT) ."/".$formattedDate;
+        $id_u = $prefix . str_pad($count, 3, '0', STR_PAD_LEFT) . "/" . $formattedDate;
         return view('meet.addmeet', ['meets' => $id_u]);
      }
 
     public function store(StoreMeetRequest $request)
     {
-
         $meet = new Meet;
         $meet->meet_xid = $request->txtmid;
         $meet->meet_name = $request->txtmname;

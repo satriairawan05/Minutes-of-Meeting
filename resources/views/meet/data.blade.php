@@ -4,9 +4,9 @@
     <h3>Meeting Data</h3>
     <div class="card">
         <div class="card-header d-flex justify-content-end">
-            <button type="button" class="btn-data" onclick="window.location='{{ url('meet/add') }}'">
+            <a href="{{route('meet.create')}}" class="btn-data btn text-decoration-none text-white">
                 <i class="fas fa-plus-circle"></i> Add New Data
-            </button>
+            </a>
         </div>
         <div class="card-body">
             @if (session('msg'))
