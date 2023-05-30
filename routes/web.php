@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MeetController;
 use App\Http\Controllers\IssueController;
@@ -27,3 +28,6 @@ Route::resource('meet', MeetController::class);
 Route::resource('issue',IssueController::class);
 
 Route::resource('management',UserManagementController::class);
+
+Route::get('login',[LoginController::class,'showLoginForm'])->name('login.form');
+Route::post('login',[LoginController::class,'loginStore'])->name('login.store');

@@ -33,7 +33,7 @@ class UserManagementController extends Controller
         $validate = $this->validate($request,[
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'max:255', 'confirmed'],
         ]);
 
         $validate['password'] = bcrypt($request->input('password'));
@@ -71,7 +71,7 @@ class UserManagementController extends Controller
         $rules = [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'max:255', 'confirmed'],
         ];
 
         $validate = $request->validate($rules);
