@@ -25,6 +25,7 @@
             <th>Subject</th>
             <th>Description</th>
             <th>Status</th>
+            <th>Priority</th>
             <th>File</th>
             <th width="100px">Action</th>
           </tr>
@@ -38,6 +39,7 @@
             <td>{!! $i->subject !!}</td>
             <td>{!! $i->description !!}</td>
             <td>{!! $i->status !!}</td>
+            <td>{!! $i->priority !!}</td>
             <td>
             @if($i->file)
             <img src="{{ asset('storage/'. $i->file) }}" alt="{{ $i->c_action }}" class="img-responsive h-75 w-75">
