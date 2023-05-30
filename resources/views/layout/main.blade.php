@@ -49,12 +49,12 @@
     </style>
     <style>
         .table-header {
-            background: linear-gradient(to bottom, #667eea, #764ba2);
+            background: linear-gradient(to bottom, #F27121,#E94057, #8A2387);
             color: #ffffff;
         }
 
         .btn-data {
-            background: linear-gradient(to bottom, #313f77, #764ba2);
+            background: linear-gradient(to bottom, #F27121,#E94057, #F27121);
             color: #ffffff;
         }
     </style>
@@ -80,8 +80,8 @@
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
-    @include('admin.partials.sidebar')
-    @extends('admin.partials.navbar')
+    @include('partials.sidebar')
+    @extends('partials.navbar')
 
     <!--   Core JS Files   -->
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
