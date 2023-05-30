@@ -5,7 +5,7 @@
 <div class="card">
   <div class="card-header">
     <div class="card-body">
-      <form action="{{ route('issue.store') }}" method="post" enctype="multipart/form-data">
+      <form action="/management" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form-check">
           <input class="form-check-input" type="checkbox" id="is_private" name="is_private" value="true">
@@ -26,7 +26,7 @@
           <label id="project_label" for="project">Project</label>
           <input id="project" name="project" type="text" class="form-control @error('project')
             is_invalid
-        @enderror" required value="{{ old('project') }}" />
+        @enderror" required value="{{ old('project') }}" placeholder="Masukan Project" />
           @error('project')
           <div class="invalid-feedback">
             {{ $message }}
@@ -37,7 +37,7 @@
           <label id="tracker_label" for="tracker">Tracker</label>
           <input id="tracker" name="tracker" type="text" class="form-control @error('tracker')
             is_invalid
-        @enderror" required value="{{ old('tracker') }}" />
+        @enderror" required value="{{ old('tracker') }}" placeholder="Masukan Tracker" />
           @error('tracker')
           <div class="invalid-feedback">
             {{ $message }}
@@ -48,7 +48,7 @@
           <label id="subject_label" for="subject">Subject</label>
           <input id="subject" name="subject" type="text" class="form-control @error('subject')
             is_invalid
-        @enderror" required value="{{ old('subject') }}" />
+        @enderror" required value="{{ old('subject') }}" placeholder="Masukan Subject" />
           @error('subject')
           <div class="invalid-feedback">
             {{ $message }}
@@ -59,7 +59,7 @@
           <label id="description_label" for="description">Description</label>
           <input name="description" id="description" required value="{{ old('description') }}" class="form-control @error('description')
         is-invalid
-    @enderror"/>
+    @enderror" placeholder="Masukan Description"/>
           @error('description')
           <div class="invalid-feedback">
             {{ $message }}
@@ -70,7 +70,7 @@
           <label id="status_label" for="status">Status</label>
           <input id="status" name="status" type="text" class="form-control @error('status')
             is_invalid
-        @enderror" required value="{{ old('status') }}" />
+        @enderror" required value="{{ old('status') }}" placeholder="Masukan Status" />
           @error('status')
           <div class="invalid-feedback">
             {{ $message }}
@@ -81,7 +81,7 @@
           <label id="priority_label" for="priority">Priority</label>
           <input id="priority" name="priority" type="text" class="form-control @error('priority')
             is_invalid
-        @enderror" required value="{{ old('priority') }}" />
+        @enderror" required value="{{ old('priority') }}" placeholder="Masukan Priority" />
           @error('priority')
           <div class="invalid-feedback">
             {{ $message }}
@@ -114,7 +114,7 @@
           <label id="c_action_label" for="c_action">Corrective Action</label>
           <input id="c_action" name="c_action" type="text" class="form-control @error('c_action')
             is_invalid
-        @enderror" required value="{{ old('c_action') }}" />
+        @enderror" required value="{{ old('c_action') }}" placeholder="Masukan Corrective Action" />
           @error('c_action')
           <div class="invalid-feedback">
             {{ $message }}
@@ -125,7 +125,7 @@
           <label id="category_label" for="category">Category</label>
           <input id="category" name="category" type="text" class="form-control @error('category')
             is_invalid
-        @enderror" required value="{{ old('category') }}" />
+        @enderror" required value="{{ old('category') }}" placeholder="Masukan Category" />
           @error('category')
           <div class="invalid-feedback">
             {{ $message }}
@@ -136,7 +136,7 @@
           <label id="assignee_label" for="assignee">Assignee</label>
           <input id="assignee" name="assignee" type="text" class="form-control @error('assignee')
             is_invalid
-        @enderror" required value="{{ old('assignee') }}" />
+        @enderror" required value="{{ old('assignee') }}" placeholder="Masukan Assignee" />
           @error('assignee')
           <div class="invalid-feedback">
             {{ $message }}

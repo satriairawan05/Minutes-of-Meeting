@@ -12,8 +12,8 @@ class UserManagementController extends Controller
      */
     public function index()
     {
-        return view('user.index',[
-            'users' => User::get()
+        return view('user.index', [
+            'users' => User::all()
         ]);
     }
 
@@ -30,7 +30,17 @@ class UserManagementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $this->validate($request,[
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        $validate['password'] = bcrypt($request->input('password'));
+
+        User::create($validate);
+
+        return redirect('management')->with('Success','Added User Successfully!');
     }
 
     /**
@@ -38,7 +48,7 @@ class UserManagementController extends Controller
      */
     public function show(User $user)
     {
-        return view('user.show',[
+        return view('user.show', [
             'user' => $user
         ]);
     }
@@ -46,10 +56,11 @@ class UserManagementController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit(User $user, $user_id)
     {
-        return view('user.edit',[
-            'user' => $user
+        return view('user.edit', [
+            'user' => User::find($user_id),
+            'id' => $user_id
         ]);
     }
 
@@ -58,7 +69,19 @@ class UserManagementController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $rules = [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ];
+
+        $validate = $request->validate($rules);
+
+        $validate['password'] = bcrypt($request->input('password'));
+
+        User::where('id',$user->id)->update($validate);
+
+        return redirect('management')->with('Success','Updated User Successfully!');
     }
 
     /**
@@ -66,6 +89,8 @@ class UserManagementController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        User::destroy($user->id);
+
+        return redirect('management')->with('success', 'Deleted User Successfully!');
     }
 }

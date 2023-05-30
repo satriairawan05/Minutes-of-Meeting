@@ -23,7 +23,7 @@
     <label id="project_label" for="project">Project</label>
     <input id="project" name="project" type="text" class="form-control @error('project')
             is_invalid
-        @enderror" required value="{{ old('project', $data->project) }}" />
+        @enderror" required value="{{ old('project', $data->project) }}" placeholder="Masukan Project" />
     @error('project')
     <div class="invalid-feedback">
       {{ $message }}
@@ -34,7 +34,7 @@
     <label id="tracker_label" for="tracker">Tracker</label>
     <input id="tracker" name="tracker" type="text" class="form-control @error('tracker')
             is_invalid
-        @enderror" required value="{{ old('tracker', $data->tracker) }}" />
+        @enderror" required value="{{ old('tracker', $data->tracker) }}" placeholder="Masukan Tracker" />
     @error('tracker')
     <div class="invalid-feedback">
       {{ $message }}
@@ -45,7 +45,7 @@
     <label id="subject_label" for="subject">Subject</label>
     <input id="subject" name="subject" type="text" class="form-control @error('subject')
             is_invalid
-        @enderror" required value="{{ old('subject', $data->subject) }}" />
+        @enderror" required value="{{ old('subject', $data->subject) }}" placeholder="Masukan Subject" />
     @error('subject')
     <div class="invalid-feedback">
       {{ $message }}
@@ -56,7 +56,7 @@
     <label id="description_label" for="description">Description</label>
     <input name="description" id="description" required value="{{ old('description', $data->description) }}" class="form-control @error('description')
         is-invalid
-    @enderror"/>
+    @enderror" placeholder="Masukan Description"/>
     @error('description')
     <div class="invalid-feedback">
       {{ $message }}
@@ -67,7 +67,7 @@
     <label id="status_label" for="status">Status</label>
     <input id="status" name="status" type="text" class="form-control @error('status')
             is_invalid
-        @enderror" required value="{{ old('status', $data->status) }}" />
+        @enderror" required value="{{ old('status', $data->status) }}" placeholder="Masukan Status" />
     @error('status')
     <div class="invalid-feedback">
       {{ $message }}
@@ -78,7 +78,7 @@
     <label id="priority_label" for="priority">Priority</label>
     <input id="priority" name="priority" type="text" class="form-control @error('priority')
             is_invalid
-        @enderror" required value="{{ old('priority', $data->priority) }}" />
+        @enderror" required value="{{ old('priority', $data->priority) }}" placeholder="Masukan Priority" />
     @error('priority')
     <div class="invalid-feedback">
       {{ $message }}
@@ -111,7 +111,7 @@
     <label id="c_action_label" for="c_action">Corrective Action</label>
     <input id="c_action" name="c_action" type="text" class="form-control @error('c_action')
             is_invalid
-        @enderror" required value="{{ old('c_action', $data->c_action) }}" />
+        @enderror" required value="{{ old('c_action', $data->c_action) }}" placeholder="Masukan Corrective Action" />
     @error('c_action')
     <div class="invalid-feedback">
       {{ $message }}
@@ -122,7 +122,7 @@
     <label id="category_label" for="category">Category</label>
     <input id="category" name="category" type="text" class="form-control @error('category')
             is_invalid
-        @enderror" required value="{{ old('category',$data->category) }}" />
+        @enderror" required value="{{ old('category',$data->category) }}" placeholder="Masukan Category" />
     @error('category')
     <div class="invalid-feedback">
       {{ $message }}
@@ -131,9 +131,9 @@
   </div>
   <div class="mb-3">
     <label id="assignee_label" for="assignee">Assignee</label>
-    <input id="assignee" name="assignee" type="text" class="form-control @error('assigned')
+    <input id="assignee" name="assignee" type="text" class="form-control @error('assignee')
             is_invalid
-        @enderror" required value="{{ old('assignee',$data->assignee) }}" />
+        @enderror" required value="{{ old('assignee',$data->assignee) }}" placeholder="Masukan Assignee" />
     @error('assignee')
     <div class="invalid-feedback">
       {{ $message }}
