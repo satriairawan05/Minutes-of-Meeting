@@ -1,4 +1,4 @@
-@extends('admin.layout.dashboard')
+@extends('layout.dashboard')
 
 @section('content')
 <h3 class="mb-2">Issue Details</h3>
@@ -16,7 +16,7 @@
 
     <div class="table-responsive">
 
-      <table class="table table-bordered data-table table-responsive">
+      <table class="table table-bordered data-table table-responsive table-sm table-striped table-hover">
         <thead>
           <tr>
             <th>No</th>
@@ -42,7 +42,7 @@
             @if($i->file)
             <img src="{{ asset('storage/'. $i->file) }}" alt="{{ $i->c_action }}" class="img-responsive h-75 w-75">
             @else
-            <h1 class="text-danger fs1 h1">Harap Masukan Gambar</h1>
+            <h1 class="text-danger fs-1 h1 font-bold">Harap Masukan Gambar</h1>
             @endif
             </td>
             <td class="d-inline">

@@ -74,7 +74,7 @@ class IssueController extends Controller
     public function show(Issue $issue)
     {
         return view('issue.show',[
-            'meet' => $issue
+            'data' => $issue
         ]);
     }
 

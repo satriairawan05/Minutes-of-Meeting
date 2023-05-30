@@ -1,4 +1,4 @@
-@extends('admin.layout.dashboard')
+@extends('layout.dashboard')
 
 @section('content')
 <form action="/issue/{{ $data->issue_id }}" method="post" enctype="multipart/form-data">
@@ -54,9 +54,9 @@
   </div>
   <div class="mb-3">
     <label id="description_label" for="description">Description</label>
-    <textarea name="description" id="description" cols="30" rows="10" required value="{{ old('description', $data->description) }}" class="form-control @error('description')
+    <input name="description" id="description" required value="{{ old('description', $data->description) }}" class="form-control @error('description')
         is-invalid
-    @enderror"></textarea>
+    @enderror"/>
     @error('description')
     <div class="invalid-feedback">
       {{ $message }}
