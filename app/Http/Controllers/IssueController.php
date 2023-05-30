@@ -93,8 +93,7 @@ class IssueController extends Controller
      */
     public function update(Request $request, Issue $issue)
     {
-        return dd($request->all());
-        $issue = Issue::find($issue->id);
+        $issue = Issue::find($issue->issue_id);
         $issue->project = $request->input('project');
         $issue->tracker = $request->input('tracker');
         $issue->subject = $request->input('subject');

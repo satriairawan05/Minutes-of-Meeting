@@ -165,8 +165,6 @@
     oldFile.style.display = 'none';
   });
 
-  console.log(olfFile);
-  console.log(newFile);
   const showPreview = (objFileInput) => {
     if (objFileInput.files[0]) {
       var fileReader = new FileReader();
