@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MeetController;
 use App\Http\Controllers\IssueController;
+use App\Http\Controllers\UserManagementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,5 @@ Route::get('/meet/list', [MeetController::class, 'list'])->name('meet.data');
 Route::resource('meet', MeetController::class);
 
 Route::resource('issue',IssueController::class);
+
+Route::resource('management',UserManagementController::class);
