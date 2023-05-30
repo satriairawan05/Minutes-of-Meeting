@@ -12,10 +12,11 @@
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
         <a href="{{ route('management.create') }}" class="btn btn-sm btn-success float-right">Add</a>
       </div>
+      @if ($users)
       <table class="table table-bordered data-table table-responsive table-sm table-striped table-hover">
         <thead>
           <tr>
-            <th scope="col">#</th>
+            <th scope="col">No</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Password</th>
@@ -42,6 +43,9 @@
           @endforeach
         </tbody>
       </table>
+      @else
+      <div class="text-danger font-bold text-center text-capitalize">Data tidak tersedia</div>
+      @endif
     </div>
   </div>
 @endsection

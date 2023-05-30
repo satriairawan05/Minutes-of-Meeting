@@ -46,10 +46,10 @@ class UserManagementController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(User $user)
+    public function show(User $user, $user_id)
     {
         return view('user.show', [
-            'user' => $user
+            'user' => $user->find($user_id)
         ]);
     }
 
@@ -59,8 +59,7 @@ class UserManagementController extends Controller
     public function edit(User $user, $user_id)
     {
         return view('user.edit', [
-            'user' => User::find($user_id),
-            'id' => $user_id
+            'user' => $user->find($user_id)
         ]);
     }
 
@@ -87,9 +86,9 @@ class UserManagementController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+    public function destroy(User $user, $user_id)
     {
-        User::destroy($user->id);
+        User::destroy($user->find($user_id));
 
         return redirect('management')->with('success', 'Deleted User Successfully!');
     }
