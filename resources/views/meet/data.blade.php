@@ -1,7 +1,7 @@
 @extends('layout.main')
 
 @section('content')
-    <h3>Issues Data</h3>
+    <h3>Meeting Data</h3>
     <div class="card">
         <div class="card-header d-flex justify-content-end">
             <button type="button" class="btn-data" onclick="window.location='{{ url('meet/add') }}'">
@@ -45,7 +45,7 @@
                         @foreach ($meets as $d)
                             <tr>
                                 <td style="text-align: center;">{{ $loop->iteration }}</td>
-                                <td style="text-align: center;" class="d-none d-sm-table-cell">{{ $d->meet_id }}</td>
+                                <td style="text-align: center;" class="d-none d-sm-table-cell">{{ $d->meet_xid }}</td>
                                 <td style="text-align: center;">{{ $d->meet_name }}</td>
                                 <td style="text-align: center;">{{ $d->meet_date }}</td>
                                 <td style="text-align: center;">{{ $d->meet_time }}</td>

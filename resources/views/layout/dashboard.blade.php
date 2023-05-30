@@ -8,7 +8,7 @@
             </div>
             <div class="card-body">
                 <div class="alert alert-info">
-                    Selamat datang di SuemeruGrup
+                    Selamat datang di PT SuemeruGrup
                 </div>
             </div>
         </div>

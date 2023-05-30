@@ -12,10 +12,10 @@
                     @csrf
                     @method('PUT')
                     <div class="row mb-3">
-                        <label for="txtmid" class="col-sm-2 col-form-label">ID Meet</label>
+                        <label for="txtmxid" class="col-sm-2 col-form-label">ID Meet</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control-plaintext" id="txtmid" name="txtmid"
-                                value="{{ $txtmid }}">
+                            <input type="text" class="form-control-plaintext" id="txtmxid" name="txtmxid"
+                                value="{{ $txtmxid }}">
                         </div>
                     </div>
                     <div class="row mb-3">

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MeetController;
+use App\Http\Controllers\IssueController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,17 +16,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layout.meet');
+    return view('layout.dashboard');
 })->name('dashboard');
 
-Route::get('/main', function () {
-    return view('layout.meet');
-});
+Route::get('/meet/list', [MeetController::class, 'list'])->name('meet.data');
 
-Route::get('/meet/list', [App\Http\Controllers\MeetController::class, 'list'])->name('meet.data');
+Route::get('/meet/add',[MeetController::class, 'addData'])->name('meet.add');
 
-Route::get('/meet/add',[App\Http\Controllers\MeetController::class, 'addData'])->name('meet.add');
+Route::resource('meet', MeetController::class);
 
-Route::resource('meet', \App\Http\Controllers\MeetController::class);
-
-Route::resource('issue',\App\Http\Controllers\IssueController::class);
+Route::resource('issue',IssueController::class);

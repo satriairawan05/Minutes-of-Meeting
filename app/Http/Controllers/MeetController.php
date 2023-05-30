@@ -15,8 +15,11 @@ class MeetController extends Controller
     public function index()
     {
 
-        $meet = Meet::latest()->paginate(1);
-        return view('meet.detailmeet', compact('meet'));
+        // $meet = Meet::latest()->paginate(1);
+        // return view('meet.detailmeet', compact('meet'));
+        return view('meet.data')->with([
+            'meets' => Meet::all()
+        ]);
     }
 
     public function list(){
@@ -64,6 +67,7 @@ class MeetController extends Controller
         $data = $meets->find($meet_id);
         return view('meet.editmeet')->with([
             'txtmid' => $data->meet_id,
+            'txtmxid' => $data->meet_xid,
             'txtmname' => $data->meet_name,
             'txtmdate' => $data->meet_date,
             'txtmtime' => $data->meet_time,
@@ -81,6 +85,7 @@ class MeetController extends Controller
     public function update(UpdateMeetRequest $request, Meet $meets, $meet_id)
     {
         $data = $meets->find($meet_id);
+        $data->meet_xid = $request->txtmxid;
         $data->meet_name = $request->txtmname;
         $data->meet_date = $request-> txtmdate;
         $data->meet_time = $request->txtmtime;
