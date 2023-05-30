@@ -1,15 +1,26 @@
-@extends('admin.layout.dashboard')
+@extends('layout.main')
 
 @section('content')
 <h3 class="mb-2">Add Issue</h3>
 <div class="card">
   <div class="card-header">
     <div class="card-body">
-      <form action="{{ route('issue.store') }}" method="post">
+      <form action="{{ route('issue.store') }}" method="post" enctype="multipart/form-data">
         @csrf
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="is_private" name="is_private" value="true">
+          <label class="form-check-label" for="is_private">
+            Private
+          </label>
+        </div>
         <div class="mb-3">
-          <input type="radio" name="is_private" id="is_private" onclick="change(this)">
-          <label for="is_private">Private</label>
+          <label for="issue_xid">ID Issues</label>
+            <input type="text" class="form-control @error('issue_xid') is-invalid @enderror" id="issue_xid" name="issue_xid" value="{{ $issue }}" readonly>
+            @error('issue_xid')
+            <div class="invalid-feedback">
+              {{ $message }}
+            </div>
+            @enderror
         </div>
         <div class="mb-3">
           <label id="project_label" for="project">Project</label>
@@ -46,9 +57,9 @@
         </div>
         <div class="mb-3">
           <label id="description_label" for="description">Description</label>
-          <input name="description" id="description" cols="30" rows="10" required value="{{ old('description') }}" class="form-control @error('description')
+          <textarea name="description" id="description" cols="30" rows="10" required value="{{ old('description') }}" class="form-control @error('description')
         is-invalid
-    @enderror" />
+    @enderror"></textarea>
           @error('description')
           <div class="invalid-feedback">
             {{ $message }}
@@ -166,17 +177,6 @@
     </form>
 
     <script>
-      const { value } = document.getElementById('is_private');
-
-      const change = (e) => {
-        e.preventDefault();
-        if (value) {
-          value = 1;
-        } else {
-          value = 0;
-        }
-      }
-
       const showPreview = (objFileInput) => {
         if (objFileInput.files[0]) {
           var fileReader = new FileReader();

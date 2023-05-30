@@ -21,8 +21,7 @@ Route::get('/', function () {
 
 Route::get('/meet/list', [MeetController::class, 'list'])->name('meet.data');
 
-Route::get('/meet/add',[MeetController::class, 'addData'])->name('meet.add');
-
 Route::resource('meet', MeetController::class);
+Route::get('/meet/add',[MeetController::class, 'addData'])->name('meet.add');
 
 Route::resource('issue',IssueController::class);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Issue;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class IssueController extends Controller
 {
@@ -13,7 +14,7 @@ class IssueController extends Controller
     public function index()
     {
         return view('issue.index',[
-            'issues' => Issue::latest()->get()
+            'issues' => Issue::get()
         ]);
     }
 
@@ -22,7 +23,14 @@ class IssueController extends Controller
      */
     public function create()
     {
-        return view('issue.create');
+        $formattedDate = date('Ymd');
+        $prefix = "ISSUE-";
+        $lastCount = Issue::select('issue_id')->latest('issue_id')->pluck('issue_id')->first();
+        $count = $lastCount + 1;
+        $id = $prefix . str_pad($count, 3, '0', STR_PAD_LEFT) ."/".$formattedDate;
+        return view('issue.create',[
+            'issue' => $id
+        ]);
     }
 
     /**
@@ -31,20 +39,30 @@ class IssueController extends Controller
     public function store(Request $request)
     {
         $issue = new Issue;
-        $issue->project = $request->project;
-        $issue->tracker = $request->tracker;
-        $issue->subject = $request->subject;
-        $issue->category = $request->category;
-        $issue->status = $request->status;
-        $issue->priority = $request->priority;
-        $issue->description = $request->description;
-        $issue->start_date = $request->start_date;
-        $issue->end_date = $request->end_date;
-        $issue->c_action = $request->c_action;
-        $issue->assignee = $request->assignee;
-        $request->file('file') ? $request->file('file')->store('images') : null;
-        $issue->is_private = $request->is_private;
+        $issue->issue_xid = $request->input('issue_xid');
+        $issue->project = $request->input('project');
+        $issue->tracker = $request->input('tracker');
+        $issue->subject = $request->input('subject');
+        $issue->category = $request->input('category');
+        $issue->status = $request->input('status');
+        $issue->priority = $request->input('priority');
+        $issue->description = $request->input('description');
+        $issue->start_date = $request->input('start_date');
+        $issue->end_date = $request->input('end_date');
+        $issue->c_action = $request->input('c_action');
+        $issue->assignee = $request->input('assignee');
         $issue->created_at;
+
+        if($request->file('file')){
+            $issue->file = $request->file('file')->store('images');
+        }
+
+        if($request->input('is_private')){
+            $issue->is_private = $request->is_private;
+        } else {
+            $issue->is_private = 0;
+        }
+
         $issue->save();
 
         return redirect('issue')->with('success','Added Successfully!');
@@ -75,20 +93,31 @@ class IssueController extends Controller
      */
     public function update(Request $request, Issue $issue)
     {
+        return dd($request->all());
         $issue = Issue::find($issue->id);
-        $issue->project = $request->project;
-        $issue->tracker = $request->tracker;
-        $issue->subject = $request->subject;
-        $issue->category = $request->category;
-        $issue->status = $request->status;
-        $issue->priority = $request->priority;
-        $issue->description = $request->description;
-        $issue->start_date = $request->start_date;
-        $issue->end_date = $request->end_date;
-        $issue->c_action = $request->c_action;
-        $issue->assignee = $request->assignee;
-        $request->file('file') ? $request->file('file')->store('images') : null;
-        $issue->is_private = $request->is_private;
+        $issue->project = $request->input('project');
+        $issue->tracker = $request->input('tracker');
+        $issue->subject = $request->input('subject');
+        $issue->category = $request->input('category');
+        $issue->status = $request->input('status');
+        $issue->priority = $request->input('priority');
+        $issue->description = $request->input('description');
+        $issue->start_date = $request->input('start_date');
+        $issue->end_date = $request->input('end_date');
+        $issue->c_action = $request->input('c_action');
+        $issue->assignee = $request->input('assignee');
+        if($request->file('file')){
+            if($request->oldFile){
+                Storage::delete([$request->oldFile]);
+            }
+            $issue->file = $request->file('file')->store('images');
+        }
+
+        if($request->input('is_private') == $issue->is_private){
+            $issue->is_private = $request->is_private;
+        } else {
+            $issue->is_private = 0;
+        }
         $issue->updated_at;
         $issue->save();
 
@@ -101,6 +130,10 @@ class IssueController extends Controller
     public function destroy(Issue $issue)
     {
         Issue::destroy($issue->id);
+
+        if($issue->file){
+            Storage::delete([$issue->file]);
+        }
 
         return redirect('issue')->with('success','Deleted Successfully!');
     }
