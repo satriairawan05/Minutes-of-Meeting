@@ -128,7 +128,7 @@ class IssueController extends Controller
      */
     public function destroy(Issue $issue)
     {
-        Issue::destroy($issue->id);
+        Issue::destroy($issue->issue_id);
 
         if($issue->file){
             Storage::delete([$issue->file]);
