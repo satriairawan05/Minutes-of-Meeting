@@ -13,8 +13,6 @@ return new class extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('meet_id');
-            $table->foreignId('issue_id');
             $table->timestamps();
         });
     }

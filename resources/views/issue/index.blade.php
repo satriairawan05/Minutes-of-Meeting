@@ -44,7 +44,7 @@
             @if($i->file)
             <img src="{{ asset('storage/'. $i->file) }}" alt="{{ $i->c_action }}" class="img-responsive h-75 w-75">
             @else
-            <h1 class="text-danger fs-1 h1 font-bold">Harap Masukan Gambar</h1>
+
             @endif
             </td>
             <td class="d-inline">

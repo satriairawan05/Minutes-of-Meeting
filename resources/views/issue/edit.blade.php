@@ -66,9 +66,9 @@
     <div class="mb-3">
         <label id="status_label" for="status">Status</label>
         <select class="form-select" name="status">
-            <option name="status" value="new">New</option>
-            <option name="status" value="continue">Continue</option>
-            <option name="status" value="closed">Closed</option>
+            <option name="status" value="New">New</option>
+            <option name="status" value="Continue">Continue</option>
+            <option name="status" value="Closed">Closed</option>
         </select>
         @error('status')
         <div class="invalid-feedback">
@@ -79,9 +79,9 @@
     <div class="mb-3">
         <label id="priority_label" for="priority">Priority</label>
         <select class="form-select" name="priority">
-            <option name="priority" value="low">Low</option>
-            <option name="priority" value="medium">Medium</option>
-            <option name="priority" value="high">High</option>
+            <option name="priority" value="Low">Low</option>
+            <option name="priority" value="Medium">Medium</option>
+            <option name="priority" value="High">High</option>
         </select>
         @error('priority')
         <div class="invalid-feedback">
