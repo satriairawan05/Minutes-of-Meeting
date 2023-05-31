@@ -1,7 +1,7 @@
 @extends('layout.dashboard')
 
 @section('content')
-<form action="{{ route('management.store') }}" method="post">
+<form action="{{ route('user.store') }}" method="post">
   @csrf
   <div class="mb-3">
     <label for="name" class="form-label">{{ __('Name') }}</label>

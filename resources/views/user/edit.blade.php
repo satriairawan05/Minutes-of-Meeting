@@ -1,7 +1,7 @@
 @extends('layout.dashboard')
 
 @section('content')
-<form action="/management/{{ $user->id }}" method="post">
+<form action="/user/{{ $user->id }}" method="post">
   @csrf
   @method('put')
   <div class="mb-3">
