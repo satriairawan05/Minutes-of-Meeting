@@ -29,5 +29,9 @@ Route::resource('issue',IssueController::class);
 
 Route::resource('management',UserManagementController::class);
 
-Route::get('login',[LoginController::class,'showLoginForm'])->name('login.form');
-Route::post('login',[LoginController::class,'loginStore'])->name('login.store');
+Route::middleware(['guest'])->group(function(){
+    Route::get('login',[LoginController::class,'showLoginForm'])->name('login.form');
+    Route::post('login',[LoginController::class,'loginStore'])->name('login.store');
+});
+
+Route::post('logout',[LoginController::class,'logout'])->name('logout');

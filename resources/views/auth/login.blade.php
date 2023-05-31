@@ -37,9 +37,9 @@
         ">
             <div class="auth-box bg-dark border-top border-secondary">
                 <div id="loginform">
-                    @if (session('success'))
-                    <div class="alert alert-success container container-fluid" role="alert">
-                        {{ session('success') }}
+                    @if (session('error'))
+                    <div class="alert alert-error container container-fluid" role="alert">
+                        {{ session('error') }}
                     </div>
                     @endif
                     <div class="text-center pt-3 pb-3">
