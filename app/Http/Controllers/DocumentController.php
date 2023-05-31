@@ -14,11 +14,12 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        $issue = Issue::where('status','=','closed')->get();
+        $issue = Issue::where('status','like','closed')->get();
+        $meet = Meet::where('meet_attend','like','member')->get();
 
-        return dd($issue);
         return view('doc.index',[
-            'docs' => $issue
+            'issues' => $issue,
+            'meets' => $meet,
         ]);
     }
 
