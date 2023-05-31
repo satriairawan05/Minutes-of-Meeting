@@ -1,10 +1,10 @@
 @extends('layout.main')
 
 @section('content')
-    <h3>Meeting Data</h3>
+    <h3 class="mb-2">Meeting Data</h3>
     <div class="card">
         <div class="card-header d-flex justify-content-end">
-            <a href="{{route('meet.create')}}" class="btn-data btn text-decoration-none text-white">
+            <a href="{{ route('meet.create') }}" class="btn-data btn text-decoration-none text-white">
                 <i class="fas fa-plus-circle"></i> Add New Data
             </a>
         </div>
@@ -17,7 +17,6 @@
             @endif
             <div class="table-responsive">
                 <table class="table table-sm table-striped table-bordered table-hover">
-
                     <thead class="table-header">
                         <th style="text-align: center;">No</th>
                         <th style="text-align: center;" class="d-none d-sm-table-cell">ID</th>
@@ -93,7 +92,7 @@
 
                                                         @method('DELETE')
                                                         <button type="submit" class="btn bg-gradient-danger"
-                                                            data-bs-dismiss="modal"></button>
+                                                            data-bs-dismiss="modal">Delete</button>
                                                         </button>
                                                     </form>
                                                 </div>
