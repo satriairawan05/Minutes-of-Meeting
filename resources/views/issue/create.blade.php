@@ -23,10 +23,10 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label id="project_label" for="project">Project</label>
+                    <label id="project_label" for="project">Meeting</label>
                     <input id="project" name="project" type="text" class="form-control @error('project')
             is_invalid
-        @enderror" required value="{{ old('project') }}" placeholder="Masukan Project" />
+        @enderror" required value="{{ $meet->meet_xid }}" placeholder="Masukan Meeting" readonly />
                     @error('project')
                     <div class="invalid-feedback">
                         {{ $message }}

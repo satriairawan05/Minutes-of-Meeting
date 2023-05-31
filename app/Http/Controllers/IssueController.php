@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Meet;
 use App\Models\User;
 use App\Models\Issue;
 use Illuminate\Http\Request;
@@ -31,7 +32,8 @@ class IssueController extends Controller
         $id = $prefix . str_pad($count, 3, '0', STR_PAD_LEFT) ."/".$formattedDate;
         return view('issue.create',[
             'issue' => $id,
-            'users' => User::get()
+            'users' => User::get(),
+            'meet' => Meet::latest()->first()
         ]);
     }
 
@@ -86,7 +88,8 @@ class IssueController extends Controller
     public function edit(Issue $issue)
     {
         return view('issue.edit',[
-            'data' => $issue
+            'data' => $issue,
+            'meet' => Meet::latest()->first()
         ]);
     }
 

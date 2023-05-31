@@ -20,10 +20,10 @@
         @enderror
     </div>
     <div class="mb-3">
-        <label id="project_label" for="project">Project</label>
+        <label id="project_label" for="project">Meeting</label>
         <input id="project" name="project" type="text" class="form-control @error('project')
             is_invalid
-        @enderror" required value="{{ old('project', $data->project) }}" placeholder="Masukan Project" />
+        @enderror" required value="{{ $meet->meet_xid }}" placeholder="Masukan Meeting" readonly />
         @error('project')
         <div class="invalid-feedback">
             {{ $message }}
@@ -32,7 +32,7 @@
     </div>
     <div class="mb-3">
         <label id="tracker_label" for="tracker">Departemen</label>
-        <input name="tracker" id="tracker" required value="{{ old('tracker') }}" class="form-control @error('tracker')
+        <input name="tracker" id="tracker" required value="{{ old('tracker',$data->tracker) }}" class="form-control @error('tracker')
         is-invalid
     @enderror" placeholder="Masukan tracker" />
         @error('tracker')
@@ -139,7 +139,7 @@
         <label id="file_label" for="file">File</label>
         <div id="targetLayer"></div>
         <div class="icon-choose-image"></div>
-        <img src="{{ asset('storage/'. $data->file) }}" alt="{{ $data->c_action }}" name="oldFile" id="oldFile" class="img-responsive w-25 h-25 opacity-7 img-fluid m-md-2">
+        <img src="{{ asset('storage/'. $data->file) }}" alt="{{ $data->project }}" name="oldFile" id="oldFile" class="img-responsive w-25 h-25 opacity-7 img-fluid m-md-2">
         <input id="file" name="file" type="file" class="form-control form-control-file @error('file')
             is_invalid
         @enderror" value="{{ old('file') }}" onchange="return showPreview(this)" />

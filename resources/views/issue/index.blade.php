@@ -19,8 +19,8 @@
                 <thead class="table-header text-center">
                     <tr>
                         <th>No</th>
-                        <th>Project</th>
-                        <th>Tracker</th>
+                        <th>Meeting</th>
+                        <th>Dept</th>
                         <th>Subject</th>
                         <th>Description</th>
                         <th>Status</th>

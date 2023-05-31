@@ -6,7 +6,7 @@ use App\Models\Meet;
 use App\Models\User;
 use App\Http\Requests\StoreMeetRequest;
 use App\Http\Requests\UpdateMeetRequest;
-
+use App\Models\Issue;
 
 class MeetController extends Controller
 {
