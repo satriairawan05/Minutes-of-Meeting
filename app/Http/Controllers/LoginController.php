@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,7 +24,7 @@ class LoginController extends Controller
         {
             $request->session()->regenerate();
 
-            return redirect()->intended('/');
+            return redirect()->intended();
         }
 
         return back()->with('error','Login Failed');
@@ -38,6 +39,6 @@ class LoginController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect()->to('/');
     }
 }

@@ -111,15 +111,19 @@
                             </li>
                         </ul>
                     </li>
-                    @auth
+                    @if(auth()->user())
                     <li class="nav-item dropdown p-2 d-flex align-items-center">
                         <form action="{{ route('logout') }}" method="post">
                             @method('post')
                             @csrf
-                            <button class="nav-link text-body btn mt-3 fixed-plugin-button-nav cursor-pointer shadow-none" type="submit" onclick="return confirm('Are you sure?')"><i class="fa fa-close"></i></button>
+                            <button class="nav-link text-body btn mt-3 fixed-plugin-button-nav cursor-pointer shadow-none" type="submit" onclick="return confirm('Are you sure?')"><i class="fa fa-window-close"></i></button>
                         </form>
                     </li>
-                    @endauth
+                    @else
+                    <li class="nav-item dropdown p-2 d-flex align-items-center">
+                        <a href="{{ route('login.form') }}" class="nav-link text-body btn mt-3 fixed-plugin-button-nav cursor-pointer shadow-none"><i class="fa fa-user-cog"></i></a>
+                    </li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -160,4 +164,3 @@
     </div>
 
 </main>
-

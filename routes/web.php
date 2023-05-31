@@ -31,7 +31,7 @@ Route::middleware(['guest'])->group(function () {
     Route::post('login', [LoginController::class, 'loginStore'])->name('login.store');
 });
 
-Route::middleware(['guest'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 });
 
