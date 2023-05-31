@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('subject',100);
             $table->longText('c_action');
             $table->longText('description');
-            $table->string('category',50);
             $table->string('status',100);
             $table->string('priority',100);
             $table->date('start_date');

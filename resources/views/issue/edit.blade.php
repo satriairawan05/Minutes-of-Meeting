@@ -125,17 +125,6 @@
         @enderror
     </div>
     <div class="mb-3">
-        <label id="category_label" for="category">Category</label>
-        <input id="category" name="category" type="text" class="form-control @error('category')
-            is_invalid
-        @enderror" required value="{{ old('category',$data->category) }}" placeholder="Masukan Category" />
-        @error('category')
-        <div class="invalid-feedback">
-            {{ $message }}
-        </div>
-        @enderror
-    </div>
-    <div class="mb-3">
         <label id="assignee_label" for="assignee">Assignee</label>
         <input id="assignee" name="assignee" type="text" class="form-control @error('assignee')
             is_invalid

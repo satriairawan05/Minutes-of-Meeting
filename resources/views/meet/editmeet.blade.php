@@ -20,8 +20,23 @@
                 <div class="row mb-3">
                     <label for="txtmname" class="col-sm-2 col-form-label">Meeting Name</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control form-control-sm @error('txtmname') is-invalid @enderror" id="txtmname" name="txtmname" value="{{ $txtmname }}">
+                        <input type="text" class="form-control form-control-sm @error('project') is-invalid @enderror" id="txtmname" name="txtmname" value="{{ old('txtmname') }}">
                         @error('txtmname')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="project" class="col-sm-2 col-form-label">Project</label>
+                    <div class="col-sm-4">
+                        <select class="form-select" name="project">
+                            <option name="project" value="MEETING HO">MEETING HO</option>
+                            <option name="project" value="MEETING TEAM 9">MEETING TEAM 9</option>
+                            <option name="project" value="MEETING SITE">MEETING SITE</option>
+                        </select>
+                        @error('project')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -37,7 +52,6 @@
                             {{ $message }}
                         </div>
                         @enderror
-
                     </div>
                 </div>
                 <div class="row mb-3">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Document;
 use App\Models\Issue;
+use App\Models\Meet;
 use Illuminate\Http\Request;
 
 class DocumentController extends Controller
@@ -13,7 +14,7 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        $issue = Issue::where('status','like','closed')->get();
+        $issue = Issue::where('status','=','closed')->get();
 
         return dd($issue);
         return view('doc.index',[

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Issue;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -29,7 +30,8 @@ class IssueController extends Controller
         $count = $lastCount + 1;
         $id = $prefix . str_pad($count, 3, '0', STR_PAD_LEFT) ."/".$formattedDate;
         return view('issue.create',[
-            'issue' => $id
+            'issue' => $id,
+            'users' => User::get()
         ]);
     }
 
@@ -38,13 +40,12 @@ class IssueController extends Controller
      */
     public function store(Request $request)
     {
-        return dd($request->all());
+        // return dd($request->all());
         $issue = new Issue;
         $issue->issue_xid = $request->input('issue_xid');
         $issue->project = $request->input('project');
         $issue->tracker = $request->input('tracker');
         $issue->subject = $request->input('subject');
-        $issue->category = $request->input('category');
         $issue->status = $request->input('status');
         $issue->priority = $request->input('priority');
         $issue->description = $request->input('description');
@@ -98,7 +99,6 @@ class IssueController extends Controller
         $issue->project = $request->input('project');
         $issue->tracker = $request->input('tracker');
         $issue->subject = $request->input('subject');
-        $issue->category = $request->input('category');
         $issue->status = $request->input('status');
         $issue->priority = $request->input('priority');
         $issue->description = $request->input('description');

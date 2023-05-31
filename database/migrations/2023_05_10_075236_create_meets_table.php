@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('meets', function (Blueprint $table) {
             $table->increments('meet_id');
             $table->string('meet_xid',50);
+            $table->string('meet_project',20);
             $table->string('meet_name',100);
             $table->date('meet_date');
             $table->time('meet_time');

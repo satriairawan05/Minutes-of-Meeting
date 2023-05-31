@@ -48,6 +48,7 @@ class MeetController extends Controller
     {
         $meet = new Meet;
         $meet->meet_xid = $request->txtmid;
+        $meet->meet_project = $request->project;
         $meet->meet_name = $request->txtmname;
         $meet->meet_date = $request-> txtmdate;
         $meet->meet_time = $request->txtmtime;
@@ -74,6 +75,7 @@ class MeetController extends Controller
             'txtmprepared' => $data->meet_preparedby,
             'txtmloc' => $data->meet_locate,
             'txtmatt' => $data->meet_attend,
+            'project' => $data->meet_project,
             'users' => User::get()
         ]);
     }
@@ -87,6 +89,7 @@ class MeetController extends Controller
     {
         $data = $meets->find($meet_id);
         $data->meet_xid = $request->txtmxid;
+        $data->meet_project = $request->project;
         $data->meet_name = $request->txtmname;
         $data->meet_date = $request-> txtmdate;
         $data->meet_time = $request->txtmtime;

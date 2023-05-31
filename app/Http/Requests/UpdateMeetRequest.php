@@ -27,7 +27,8 @@ class UpdateMeetRequest extends FormRequest
             'txtmtime' => 'required',
             'txtmprepared' => 'required',
             'txtmloc' => 'required',
-            'txtmatt' => 'required' 
+            'txtmatt' => 'required',
+            'project' => 'required'
         ];
     }
 }

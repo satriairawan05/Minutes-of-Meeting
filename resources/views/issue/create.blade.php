@@ -34,17 +34,6 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label id="departemen_label" for="departemen">Departemen</label>
-                    <input id="departemen" name="departemen" type="text" class="form-control @error('departemen')
-            is_invalid
-        @enderror" required value="{{ old('departemen') }}" placeholder="Masukan Departemen" />
-                    @error('departemen')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                    @enderror
-                </div>
-                <div class="mb-3">
                     <label id="subject_label" for="subject">Subject</label>
                     <input id="subject" name="subject" type="text" class="form-control @error('subject')
             is_invalid
@@ -67,6 +56,17 @@
                     @enderror
                 </div>
                 <div class="mb-3">
+                    <label id="description_label" for="description">Description</label>
+                    <input name="description" id="description" required value="{{ old('description') }}" class="form-control @error('description')
+        is-invalid
+    @enderror" placeholder="Masukan Description" />
+                    @error('description')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+                <div class="mb-3">
                     <label id="c_action_label" for="c_action">Corrective Action</label>
                     <input id="c_action" name="c_action" type="text" class="form-control @error('c_action')
             is_invalid
@@ -82,7 +82,7 @@
                     <select class="form-select" name="status">
                         <option name="status" value="New">New</option>
                         <option name="status" value="Continue">Continue</option>
-                        <option name="status" value="Progress">Progress</option>
+                        <option name="status" value="In Progress">In Progress</option>
                         <option name="status" value="Over Due">Over Due</option>
                         <option name="status" value="Closed">Closed</option>
                     </select>
@@ -122,17 +122,6 @@
             is_invalid
         @enderror" required value="{{ old('end_date') }}" />
                     @error('end_date')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                    @enderror
-                </div>
-                <div class="mb-3">
-                    <label id="category_label" for="category">Category</label>
-                    <input id="category" name="category" type="text" class="form-control @error('category')
-            is_invalid
-        @enderror" required value="{{ old('category') }}" placeholder="Masukan Category" />
-                    @error('category')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
