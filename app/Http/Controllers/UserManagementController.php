@@ -13,7 +13,7 @@ class UserManagementController extends Controller
     public function index()
     {
         return view('user.index', [
-            'users' => User::all()
+            'users' => User::paginate(15)
         ]);
     }
 
@@ -40,7 +40,7 @@ class UserManagementController extends Controller
 
         User::create($validate);
 
-        return redirect('management')->with('Success','Added User Successfully!');
+        return redirect('user')->with('Success','Added User Successfully!');
     }
 
     /**
@@ -80,16 +80,16 @@ class UserManagementController extends Controller
 
         User::where('id',$user->id)->update($validate);
 
-        return redirect('management')->with('Success','Updated User Successfully!');
+        return redirect('user')->with('Success','Updated User Successfully!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user, $user_id)
+    public function destroy(User $user)
     {
-        User::destroy($user->find($user_id));
+        User::destroy($user->id);
 
-        return redirect('management')->with('success', 'Deleted User Successfully!');
+        return redirect('user')->with('Success','Deleted User Successfully!');
     }
 }

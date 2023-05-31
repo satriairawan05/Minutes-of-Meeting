@@ -14,17 +14,14 @@ class MeetController extends Controller
      */
     public function index()
     {
-
-        // $meet = Meet::latest()->paginate(1);
-        // return view('meet.detailmeet', compact('meet'));
         return view('meet.data')->with([
-            'meets' => Meet::all()
+            'meets' => Meet::paginate(15)
         ]);
     }
 
     public function list(){
         return view('meet.data')->with([
-            'meets' => Meet::all()
+            'meets' => Meet::paginate(15)
         ]);
     }
 

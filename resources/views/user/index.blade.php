@@ -72,11 +72,10 @@
                                                         Apakah anda yakin?
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <form onsubmit="return deleteData('{{ $user->id }}')" method="POST" action="{{ route('issue.destroy', $user->id) }}">
+                                                        <form method="post" action="{{ route('user.destroy',$user->id) }}">
+                                                        <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
                                                             @csrf
-                                                            <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-
-                                                            @method('DELETE')
+                                                            @method('delete')
                                                             <button type="submit" class="btn bg-gradient-danger" data-bs-dismiss="modal">Delete</button>
                                                             </button>
                                                         </form>
