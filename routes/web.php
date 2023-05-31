@@ -26,4 +26,4 @@ Route::resource('meet', MeetController::class);
 
 Route::resource('issue',IssueController::class);
 
-Route::resource('management',UserManagementController::class);
+Route::resource('user',UserManagementController::class);

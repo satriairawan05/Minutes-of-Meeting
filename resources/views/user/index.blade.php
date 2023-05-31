@@ -1,4 +1,4 @@
-@extends('layout.dashboard')
+@extends('layout.main')
 
 @section('content')
 <h3 class="mb-2">User Details</h3>
@@ -10,7 +10,7 @@
   <div class="card container container-fluid">
     <div class="card-body">
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <a href="{{ route('management.create') }}" class="btn btn-sm btn-success float-right">Add</a>
+        <a href="{{ route('user.create') }}" class="btn btn-sm btn-success float-right">Add</a>
       </div>
       @if ($users)
       <table class="table table-bordered data-table table-responsive table-sm table-striped table-hover">
