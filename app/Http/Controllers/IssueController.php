@@ -38,6 +38,7 @@ class IssueController extends Controller
      */
     public function store(Request $request)
     {
+        return dd($request->all());
         $issue = new Issue;
         $issue->issue_xid = $request->input('issue_xid');
         $issue->project = $request->input('project');

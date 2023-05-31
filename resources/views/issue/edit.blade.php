@@ -31,11 +31,11 @@
         @enderror
     </div>
     <div class="mb-3">
-        <label id="departemen_label" for="departemen">Departemen</label>
-        <input id="departemen" name="departemen" type="text" class="form-control @error('departemen')
-            is_invalid
-        @enderror" required value="{{ old('departemen') }}" placeholder="Masukan Departemen" />
-        @error('departemen')
+        <label id="tracker_label" for="tracker">Departemen</label>
+        <input name="tracker" id="tracker" required value="{{ old('tracker') }}" class="form-control @error('tracker')
+        is-invalid
+    @enderror" placeholder="Masukan tracker" />
+        @error('tracker')
         <div class="invalid-feedback">
             {{ $message }}
         </div>

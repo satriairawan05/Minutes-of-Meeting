@@ -56,11 +56,11 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label id="description_label" for="description">Description</label>
-                    <input name="description" id="description" required value="{{ old('description') }}" class="form-control @error('description')
+                    <label id="tracker_label" for="tracker">Departemen</label>
+                    <input name="tracker" id="tracker" required value="{{ old('tracker') }}" class="form-control @error('tracker')
         is-invalid
-    @enderror" placeholder="Masukan Description" />
-                    @error('description')
+    @enderror" placeholder="Masukan tracker" />
+                    @error('tracker')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>

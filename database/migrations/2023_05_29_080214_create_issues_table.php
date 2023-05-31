@@ -15,7 +15,7 @@ return new class extends Migration
             $table->increments('issue_id');
             $table->string('issue_xid',50);
             $table->string('project',50);
-            $table->string('departemen',50);
+            $table->string('tracker',50);
             $table->string('subject',100);
             $table->longText('c_action');
             $table->longText('description');
