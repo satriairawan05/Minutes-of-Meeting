@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MeetController;
 use App\Http\Controllers\IssueController;
 use App\Http\Controllers\UserManagementController;
@@ -25,6 +26,7 @@ Route::get('/meet/list', [MeetController::class, 'list'])->name('meet.data');
 Route::resource('meet', MeetController::class);
 Route::resource('issue', IssueController::class);
 Route::resource('user',UserManagementController::class);
+Route::resource('document',DocumentController::class);
 
 Route::middleware(['guest'])->group(function () {
     Route::get('login', [LoginController::class, 'showLoginForm'])->name('login.form');

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Document;
+use App\Models\Issue;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class DocumentController extends Controller
 {
@@ -13,14 +13,11 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        $documents = DB::table('documents')
-        ->select('*')
-        ->crossJoin('meets')
-        ->crossJoin('issues')
-        ->get();
+        $issue = Issue::where('status','like','closed')->get();
 
-        return view('admin.document.index',[
-            'documents' => $documents
+        return dd($issue);
+        return view('doc.index',[
+            'docs' => $issue
         ]);
     }
 
@@ -37,7 +34,22 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $doc = new Document;
+        $doc->issue_xid = $request->issue_xid;
+        $doc->project = $request->project;
+        $doc->tracker = $request->tracker;
+        $doc->assignee = $request->assignee;
+        $doc->subject = $request->subject;
+        $doc->description = $request->description;
+        $doc->category = $request->category;
+        $doc->status = $request->status;
+        $doc->priority = $request->priority;
+        $doc->c_action = $request->c_action;
+        $doc->file = $request->file;
+        $doc->start_date = $request->start_date;
+        $doc->end_date = $request->end_date;
+        $doc->is_private = $request->is_private;
+        $doc->save();
     }
 
     /**

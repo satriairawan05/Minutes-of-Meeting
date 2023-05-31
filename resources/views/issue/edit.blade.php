@@ -31,11 +31,11 @@
         @enderror
     </div>
     <div class="mb-3">
-        <label id="tracker_label" for="tracker">Tracker</label>
-        <input id="tracker" name="tracker" type="text" class="form-control @error('tracker')
+        <label id="departemen_label" for="departemen">Departemen</label>
+        <input id="departemen" name="departemen" type="text" class="form-control @error('departemen')
             is_invalid
-        @enderror" required value="{{ old('tracker', $data->tracker) }}" placeholder="Masukan Tracker" />
-        @error('tracker')
+        @enderror" required value="{{ old('departemen') }}" placeholder="Masukan Departemen" />
+        @error('departemen')
         <div class="invalid-feedback">
             {{ $message }}
         </div>
@@ -64,10 +64,23 @@
         @enderror
     </div>
     <div class="mb-3">
+        <label id="c_action_label" for="c_action">Corrective Action</label>
+        <input id="c_action" name="c_action" type="text" class="form-control @error('c_action')
+            is_invalid
+        @enderror" required value="{{ old('c_action', $data->c_action) }}" placeholder="Masukan Corrective Action" />
+        @error('c_action')
+        <div class="invalid-feedback">
+            {{ $message }}
+        </div>
+        @enderror
+    </div>
+    <div class="mb-3">
         <label id="status_label" for="status">Status</label>
         <select class="form-select" name="status">
             <option name="status" value="New">New</option>
             <option name="status" value="Continue">Continue</option>
+            <option name="status" value="Progress">Progress</option>
+            <option name="status" value="Over Due">Over Due</option>
             <option name="status" value="Closed">Closed</option>
         </select>
         @error('status')
@@ -106,17 +119,6 @@
             is_invalid
         @enderror" required value="{{ old('end_date', $data->end_date) }}" />
         @error('end_date')
-        <div class="invalid-feedback">
-            {{ $message }}
-        </div>
-        @enderror
-    </div>
-    <div class="mb-3">
-        <label id="c_action_label" for="c_action">Corrective Action</label>
-        <input id="c_action" name="c_action" type="text" class="form-control @error('c_action')
-            is_invalid
-        @enderror" required value="{{ old('c_action', $data->c_action) }}" placeholder="Masukan Corrective Action" />
-        @error('c_action')
         <div class="invalid-feedback">
             {{ $message }}
         </div>

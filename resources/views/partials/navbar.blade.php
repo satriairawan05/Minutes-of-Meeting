@@ -19,7 +19,7 @@
                             @auth
                             <span class="d-sm-inline d-none">{{ auth()->user()->name }}</span>
                             @else
-                            <span class="d-sm-inline d-none">Super Admin</span>
+                            <span class="d-sm-inline d-none">Minutes of Meeting</span>
                             @endauth
                         </div>
                     </li>

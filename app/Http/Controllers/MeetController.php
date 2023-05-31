@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Meet;
+use App\Models\User;
 use App\Http\Requests\StoreMeetRequest;
 use App\Http\Requests\UpdateMeetRequest;
 
@@ -37,7 +38,10 @@ class MeetController extends Controller
         $lastCount = Meet::select('meet_id')->latest('meet_id')->pluck('meet_id')->first();
         $count = $lastCount + 1;
         $id_u = $prefix . str_pad($count, 3, '0', STR_PAD_LEFT) . "/" . $formattedDate;
-        return view('meet.addmeet', ['meets' => $id_u]);
+        return view('meet.addmeet', [
+            'meets' => $id_u,
+            'users' => User::get()
+        ]);
      }
 
     public function store(StoreMeetRequest $request)
@@ -69,7 +73,8 @@ class MeetController extends Controller
             'txtmtime' => $data->meet_time,
             'txtmprepared' => $data->meet_preparedby,
             'txtmloc' => $data->meet_locate,
-            'txtmatt' => $data->meet_attend
+            'txtmatt' => $data->meet_attend,
+            'users' => User::get()
         ]);
     }
 

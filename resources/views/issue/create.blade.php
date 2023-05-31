@@ -34,11 +34,11 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label id="tracker_label" for="tracker">Tracker</label>
-                    <input id="tracker" name="tracker" type="text" class="form-control @error('tracker')
+                    <label id="departemen_label" for="departemen">Departemen</label>
+                    <input id="departemen" name="departemen" type="text" class="form-control @error('departemen')
             is_invalid
-        @enderror" required value="{{ old('tracker') }}" placeholder="Masukan Tracker" />
-                    @error('tracker')
+        @enderror" required value="{{ old('departemen') }}" placeholder="Masukan Departemen" />
+                    @error('departemen')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
@@ -67,10 +67,23 @@
                     @enderror
                 </div>
                 <div class="mb-3">
+                    <label id="c_action_label" for="c_action">Corrective Action</label>
+                    <input id="c_action" name="c_action" type="text" class="form-control @error('c_action')
+            is_invalid
+        @enderror" required value="{{ old('c_action') }}" placeholder="Masukan Corrective Action" />
+                    @error('c_action')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+                <div class="mb-3">
                     <label id="status_label" for="status">Status</label>
                     <select class="form-select" name="status">
                         <option name="status" value="New">New</option>
                         <option name="status" value="Continue">Continue</option>
+                        <option name="status" value="Progress">Progress</option>
+                        <option name="status" value="Over Due">Over Due</option>
                         <option name="status" value="Closed">Closed</option>
                     </select>
                     @error('status')
@@ -115,17 +128,6 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label id="c_action_label" for="c_action">Corrective Action</label>
-                    <input id="c_action" name="c_action" type="text" class="form-control @error('c_action')
-            is_invalid
-        @enderror" required value="{{ old('c_action') }}" placeholder="Masukan Corrective Action" />
-                    @error('c_action')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                    @enderror
-                </div>
-                <div class="mb-3">
                     <label id="category_label" for="category">Category</label>
                     <input id="category" name="category" type="text" class="form-control @error('category')
             is_invalid
@@ -160,42 +162,25 @@
                     </div>
                     @enderror
                 </div>
-                {{-- <div class="mb-3">
-          <label id="meet_id_label" for="meet_id">Meet</label>
-          <select class="form-select" id="meet_id" name="meet_id">
-          @foreach ($meets as $meet)
-            @if(old('meet_id') == $meet->meet_id)
-            <option value="{{ $meet->meet_id }}" selected>{{ $meet->meet_name }}</option>
-                @else
-                <option value="{{ $meet->meet_id }}">{{ $meet->meet_name }}</option>
-                @endif
-                @endforeach
-                </select>
-                @error('meet_id')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-                @enderror
-        </div> --}}
-        <button type="submit" class="btn btn-sm btn-success">Save</button>
-        </form>
+                <button type="submit" class="btn btn-sm btn-success">Save</button>
+            </form>
 
-        <script>
-            const showPreview = (objFileInput) => {
-                if (objFileInput.files[0]) {
-                    var fileReader = new FileReader();
-                    fileReader.onload = function(e) {
-                        $('#blah').attr('src', e.target.result);
-                        $("#targetLayer").html('<img src="' + e.target.result + '" class="img-fluid w-25 h-25 m-md-2" />');
-                        $("#targetLayer").css('opacity', '0.7');
-                        $(".icon-choose-image").css('opacity', '0.5');
-                    }
-                    fileReader.readAsDataURL(objFileInput.files[0]);
-                }
-            }
-
-        </script>
+        </div>
     </div>
 </div>
-</div>
+<script>
+    const showPreview = (objFileInput) => {
+        if (objFileInput.files[0]) {
+            var fileReader = new FileReader();
+            fileReader.onload = function(e) {
+                $('#blah').attr('src', e.target.result);
+                $("#targetLayer").html('<img src="' + e.target.result + '" class="img-fluid w-25 h-25 m-md-2" />');
+                $("#targetLayer").css('opacity', '0.7');
+                $(".icon-choose-image").css('opacity', '0.5');
+            }
+            fileReader.readAsDataURL(objFileInput.files[0]);
+        }
+    }
+
+</script>
 @endsection

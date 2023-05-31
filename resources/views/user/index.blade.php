@@ -37,7 +37,7 @@
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{!! $user->name !!}</td>
                                     <td>{!! $user->email !!}</td>
-                                    <td>{!! $user->password !!}</td>
+                                    <td>{!! Crypt::descrypt($user->password) !!}</td>
                                     <td clas="d-inline">
                                         {{-- Show Modal Trigger --}}
                                         <button type="button" onclick="window.location='{{ route('user.show', $user->id) }}'" class="btn bg-gradient-warning" title="Show Data">
