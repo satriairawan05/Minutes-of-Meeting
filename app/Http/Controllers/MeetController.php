@@ -33,7 +33,7 @@ class MeetController extends Controller
      */
      public function create()
      {
-        $formattedDate = date('Ym');
+        $formattedDate = date('mY');
         $prefix = "MOM-";
         $lastCount = Meet::select('meet_id')->latest('meet_id')->pluck('meet_id')->first();
         $count = $lastCount + 1;
@@ -47,14 +47,14 @@ class MeetController extends Controller
     public function store(StoreMeetRequest $request)
     {
         $meet = new Meet;
-        $meet->meet_xid = $request->txtmid;
-        $meet->meet_project = $request->project;
-        $meet->meet_name = $request->txtmname;
-        $meet->meet_date = $request-> txtmdate;
-        $meet->meet_time = $request->txtmtime;
-        $meet->meet_preparedby = $request->txtmprepared;
-        $meet->meet_locate = $request->txtmloc;
-        $meet->meet_attend = $request->txtmatt;
+        $meet->meet_xid = $request->input('txtmid');
+        $meet->meet_project = $request->input('project');
+        $meet->meet_name = $request->input('txtmname');
+        $meet->meet_date = $request-> input('txtmdate');
+        $meet->meet_time = $request->input('txtmtime');
+        $meet->meet_preparedby = $request->input('txtmprepared');
+        $meet->meet_locate = $request->input('txtmloc');
+        $meet->meet_attend = $request->input('txtmatt');
         $meet->save();
 
         return redirect('meet')->with('msg','Add New Meeting Successfully');
@@ -88,14 +88,14 @@ class MeetController extends Controller
     public function update(UpdateMeetRequest $request, Meet $meets, $meet_id)
     {
         $data = $meets->find($meet_id);
-        $data->meet_xid = $request->txtmxid;
-        $data->meet_project = $request->project;
-        $data->meet_name = $request->txtmname;
-        $data->meet_date = $request-> txtmdate;
-        $data->meet_time = $request->txtmtime;
-        $data->meet_preparedby = $request->txtmprepared;
-        $data->meet_locate = $request->txtmloc;
-        $data->meet_attend = $request->txtmatt;
+        $data->meet_xid = $request->input('txtmid');
+        $data->meet_project = $request->input('project');
+        $data->meet_name = $request->input('txtmname');
+        $data->meet_date = $request-> input('txtmdate');
+        $data->meet_time = $request->input('txtmtime');
+        $data->meet_preparedby = $request->input('txtmprepared');
+        $data->meet_locate = $request->input('txtmloc');
+        $data->meet_attend = $request->input('txtmatt');
         $data->save();
 
         return redirect('meet')->with('msg','Edit Meeting '.$data->meet_name.' ');

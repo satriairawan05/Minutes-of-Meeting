@@ -7,8 +7,7 @@
                 <div class="main-header-center">
                     <div class="responsive-logo">
                         <a href="index.html"><img src="assets/img/brand/logo.png" class="mobile-logo" alt="logo"></a>
-                        <a href="index.html"><img src="assets/img/brand/logo-light.png" class="mobile-logo-dark"
-                                alt="logo"></a>
+                        <a href="index.html"><img src="assets/img/brand/logo-light.png" class="mobile-logo-dark" alt="logo"></a>
                     </div>
                     <div class="input-group">
                         <div class="input-group-btn search-panel">
@@ -66,10 +65,7 @@
                                         </select>
                                     </div>
                                     <input type="search" class="form-control" placeholder="Search for anything...">
-                                    <button class="btn search-btn"><svg xmlns="http://www.w3.org/2000/svg"
-                                            width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" class="feather feather-search">
+                                    <button class="btn search-btn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
                                             <circle cx="11" cy="11" r="8"></circle>
                                             <line x1="21" y1="21" x2="16.65" y2="16.65">
                                             </line>
@@ -92,8 +88,7 @@
                         </a>
                         <div class="dropdown-menu">
                             <div class="header-navheading">
-                                <p class="main-notification-text">You have 1 unread notification<span
-                                        class="badge badge-pill badge-primary ml-3">View all</span></p>
+                                <p class="main-notification-text">You have 1 unread notification<span class="badge badge-pill badge-primary ml-3">View all</span></p>
                             </div>
                             <div class="main-notification-list">
                                 <div class="media new">
@@ -130,13 +125,29 @@
                         <div class="nav-link text-body font-weight-bold px-0">
                             <i class="fa fa-user me-sm-1"></i>
                             @auth
-                                <span class="d-sm-inline d-none">
-                                    {{ auth()->user()->name }}
-                                </span>
+                            <span class="d-sm-inline d-none">
+                                {{ auth()->user()->name }}
+                            </span>
                             @else
-                                <span class="d-sm-inline d-none">
-                                    Minutes of Meeting
-                                </span>
+                            <span class="d-sm-inline d-none">
+                                Minutes of Meeting
+                            </span>
+                            @endauth
+                            @guest
+                            <i class="fa fa-sign-in me-sm-1"></i>
+                            <span class="d-sm-inline d-none">
+                                <a href="{{ route('login.form') }}" class="text-decoration-none text-capitalize">Sign In</a>
+                            </span>
+                            @endguest
+                            @auth
+                            <i class="fa fa-sign-out me-sm-1"></i>
+                            <span class="d-sm-inline d-none">
+                                <form action="{{ route('logout') }}" method="post">
+                                    @csrf
+                                    @method('post')
+                                    <button type="submit" class="btn btn-light btn-sm d-inline-block bg-white border-white" onclick="return confirm('Are you sure?')">Sign Out</button>
+                                </form>
+                            </span>
                             @endauth
                         </div>
                         {{-- logout --}}
@@ -144,32 +155,23 @@
                         {{-- @if (auth()->user())
                             <li class="nav-item dropdown p-2 d-flex align-items-center">
                                 <form action="{{ route('logout') }}" method="post">
-                                    @method('post')
-                                    @csrf
-                                    <button
-                                        class="nav-link text-body btn mt-3 fixed-plugin-button-nav cursor-pointer shadow-none"
-                                        type="submit" onclick="return confirm('Are you sure?')"><i
-                                            class="fa fa-window-close"></i></button>
-                                </form>
-                            </li>
+                        @method('post')
+                        @csrf
+                        <button class="nav-link text-body btn mt-3 fixed-plugin-button-nav cursor-pointer shadow-none" type="submit" onclick="return confirm('Are you sure?')"><i class="fa fa-window-close"></i></button>
+                        </form>
+                        </li>
                         @else
-                            <li class="nav-item dropdown p-2 d-flex align-items-center">
-                                <a href="{{ route('login.form') }}"
-                                    class="nav-link text-body btn mt-3 fixed-plugin-button-nav cursor-pointer shadow-none"><i
-                                        class="fa fa-user-cog"></i></a>
-                            </li>
+                        <li class="nav-item dropdown p-2 d-flex align-items-center">
+                            <a href="{{ route('login.form') }}" class="nav-link text-body btn mt-3 fixed-plugin-button-nav cursor-pointer shadow-none"><i class="fa fa-user-cog"></i></a>
+                        </li>
                         @endif
                         <li class="nav-item dropdown p-2 d-flex align-items-center">
-                            <a href="{{ route('login.form') }}"
-                                class="nav-link text-body btn mt-3 fixed-plugin-button-nav cursor-pointer shadow-none"><i
-                                    class="fa fa-user-cog"></i></a>
+                            <a href="{{ route('login.form') }}" class="nav-link text-body btn mt-3 fixed-plugin-button-nav cursor-pointer shadow-none"><i class="fa fa-user-cog"></i></a>
                         </li> --}}
 
                         {{-- end of logout --}}
                     </div>
-                    <button class="navbar-toggler navresponsive-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler navresponsive-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fe fe-more-vertical header-icons navbar-toggler-icon"></i>
                     </button>
                     <!-- Navresponsive closed -->

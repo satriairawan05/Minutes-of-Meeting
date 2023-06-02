@@ -24,7 +24,7 @@
                 <div class="row mb-3">
                     <label for="txtmname" class="col-sm-2 col-form-label">Meeting Name</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control form-control-sm @error('project') is-invalid @enderror" id="txtmname" name="txtmname" value="{{ old('txtmname') }}">
+                        <input type="text" class="form-control form-control-sm @error('project') is-invalid @enderror" id="txtmname" name="txtmname" value="{{ old('txtmname') }}" placeholder="Masukan Meeting Name" >
                         @error('txtmname')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -72,7 +72,7 @@
                 <div class="row mb-3">
                     <label for="txtmprepared" class="col-sm-2 col-form-label">Minutes Prepared by</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control form-control-sm @error('txtmprepared') is-invalid @enderror" id="txtmprepared" name="txtmprepared" value="{{ old('txtmprepared') }}">
+                        <input type="text" class="form-control form-control-sm @error('txtmprepared') is-invalid @enderror" id="txtmprepared" name="txtmprepared" value="{{ old('txtmprepared') }}" placeholder="Masukan Minutes Prepared By">
                         @error('txtmprepared')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -83,7 +83,7 @@
                 <div class="row mb-3">
                     <label for="txtmloc" class="col-sm-2 col-form-label">Meeting Locate</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control form-control-sm @error('txtmloc') is-invalid @enderror" id="txtmloc" name="txtmloc" value="{{ old('txtmloc') }}">
+                        <input type="text" class="form-control form-control-sm @error('txtmloc') is-invalid @enderror" id="txtmloc" name="txtmloc" value="{{ old('txtmloc') }}" placeholder="Masukan Meeting Locate">
                         @error('txtmloc')
                         <div class="invalid-feedback">
                             {{ $message }}
