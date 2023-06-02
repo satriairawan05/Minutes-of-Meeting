@@ -131,11 +131,12 @@
                             <i class="fa fa-user me-sm-1"></i>
                             @auth
                                 <span class="d-sm-inline d-none">
-                                    {{-- bangsat --}}
-                                    {{-- {{ auth()->user()->name }} --}}
-                                    {{-- bangsat --}}
+                                    {{ auth()->user()->name }}
                                 </span>
                             @else
+                                <span class="d-sm-inline d-none">
+                                    Minutes of Meeting
+                                </span>
                             @endauth
                         </div>
                     </div>

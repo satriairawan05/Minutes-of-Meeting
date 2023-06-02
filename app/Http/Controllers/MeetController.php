@@ -33,7 +33,7 @@ class MeetController extends Controller
      */
      public function create()
      {
-        $formattedDate = date('Ymd');
+        $formattedDate = date('Ym');
         $prefix = "MOM-";
         $lastCount = Meet::select('meet_id')->latest('meet_id')->pluck('meet_id')->first();
         $count = $lastCount + 1;
