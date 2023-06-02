@@ -190,6 +190,7 @@
         @include('partials.sidebar')
         @include('partials.navbar')
         <!-- Main Content-->
+
         @yield('content')
 
         <!-- End Page -->
