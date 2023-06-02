@@ -1,281 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Mirrored from laravel.spruko.com/spruha/ltr/index by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 01 Jun 2023 01:44:30 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
-    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.7.2/dist/css/bootstrap.min.css">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/img/apple-icon.png') }}">
-    <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
-    <script>
-        $(document).ready(function() {
-            // Hide and Show Columns
-            $('#toggleColumns').on('change', function() {
-                var column = $(this).val();
-                $('.' + column).toggle();
-            });
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <meta name="description" content="Spruha -  Admin Panel laravel Dashboard Template">
+    <meta name="author" content="Spruko Technologies Private Limited">
+    <meta name="keywords"
+        content="admin laravel template, template laravel admin, laravel css template, best admin template for laravel, laravel blade admin template, template admin laravel, laravel admin template bootstrap 4, laravel bootstrap 4 admin template, laravel admin bootstrap 4, admin template bootstrap 4 laravel, bootstrap 4 laravel admin template, bootstrap 4 admin template laravel, laravel bootstrap 4 template, bootstrap blade template, laravel bootstrap admin template">
 
-            // Expandable Columns
-            $('.expandable-column').on('click', function() {
-                $(this).toggleClass('expanded');
-                $(this).siblings('.expand-content').toggle();
-            });
-        });
-    </script>
-    <style>
-        .expandable-column {
-            cursor: pointer;
-        }
+    <!-- Favicon -->
+    <link rel="icon" href="{{ asset('assets/img/brand/favicon.ico') }}" type="image/x-icon" />
 
-        .expand-content {
-            display: none;
-        }
+    <!-- Title -->
+    <title>Minutes of Meeting</title>
 
-        .expanded .expand-icon {
-            transform: rotate(90deg);
-        }
-    </style>
-    <style>
-        .table-header {
-            background: linear-gradient(to bottom, #F27121,#E94057, #8A2387);
-            color: #ffffff;
-        }
+    <!-- Bootstrap css-->
+    <link href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
 
-        .btn-data {
-            background: linear-gradient(to bottom, #F27121,#E94057, #F27121);
-            color: #ffffff;
-        }
-    </style>
-    <title>
-        Board Meeting Minutes : SuemeruGrup
-    </title>
-    <!--     Fonts and icons     -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-    <!-- Nucleo Icons -->
-    <link href="{{ asset('assets/css/nucleo-icons.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
-    <!-- Font Awesome Icons -->
-    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
-    <!-- CSS Files -->
-    <link id="pagestyle" href="{{ asset('assets/css/soft-ui-dashboard.css?v=1.0.7') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/dist/css/bootstrap.min.css') }}" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link href="{{ asset('assets/plugin/fontawesome/css/all.min.css') }}" rel="stylesheet">
-    <!-- Nepcha Analytics (nepcha.com) -->
-    <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
-    <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+    <!-- Icons css-->
+    <link href="{{ asset('assets/plugins/web-fonts/icons.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/plugins/web-fonts/font-awesome/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/plugins/web-fonts/plugin.css') }}" rel="stylesheet" />
+
+    <!-- Style css-->
+    <link href="{{ asset('assets/css/style/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/skins.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/dark-style.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/colors/default.css') }}" rel="stylesheet">
+
+    <!-- Color css-->
+    <link id="theme" rel="stylesheet" type="text/css" media="all"
+        href="{{ asset('assets/css/colors/color.css') }}">
+
+    <!-- Select2 css-->
+    <link href="{{ asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
+
+    <!-- Mutipleselect css-->
+    <link rel="stylesheet" href="{{ asset('assets/plugins/multipleselect/multiple-select.css') }}">
+
+    <!-- Sidemenu css-->
+    <link href="{{ asset('assets/css/sidemenu/sidemenu.css') }}" rel="stylesheet">
+
+    <!-- Switcher css-->
+    <link href="{{ asset('assets/switcher/css/switcher.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/switcher/demo.css') }}" rel="stylesheet">
 </head>
 
-<body class="g-sidenav-show  bg-gray-100">
-    @include('partials.sidebar')
-    @extends('partials.navbar')
+<body class="main-body leftmenu">
 
-    <!--   Core JS Files   -->
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-    <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
-    <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins/chartjs.min.js') }}"></script>
-    <script>
-        var ctx = document.getElementById("chart-bars").getContext("2d");
+    <!-- Switcher -->
+    <div class="switcher-wrapper">
+        <div class="demo_changer">
+            <div class="demo-icon bg_dark">
+                <i class="fa fa-cog fa-spin  text_primary"></i>
+            </div>
+            <div class="form_holder sidebar-right1">
+                <div class="row">
+                    <div class="predefined_styles">
+                        <div class="swichermainleft text-center">
+                            <div class="p-3">
+                                <a href="https://laravel.spruko.com/spruha/index.html"
+                                    class="btn btn-primary btn-block mt-0">View Demo</a>
+                                <a href="https://themeforest.net/item/spruha-laravel-admin-dashboard-template/29818213"
+                                    class="btn btn-secondary btn-block">Buy Now</a>
+                                <a href="https://themeforest.net/user/spruko/portfolio"
+                                    class="btn btn-info btn-block">Our Portfolio</a>
+                            </div>
+                        </div>
+                        <div class="swichermainleft">
+                            <h4>Navigation Style</h4>
+                            <div class="p-3">
+                                <a href="index.html" class="btn btn-primary btn-block mt-0">LTR VERSION</a>
+                                <a href="https://laravel.spruko.com/spruha/rtl/index"
+                                    class="btn btn-success btn-block">RTL VERSION</a>
+                            </div>
+                        </div>
+                        <div class="swichermainleft">
+                            <h4>Layout Style</h4>
+                            <div class="p-3">
+                                <a href="index.html" class="btn btn-primary btn-block mt-0">Left Menu</a>
+                                <a href="horizontal.html" class="btn btn-success btn-block">Horizontal Menu</a>
+                            </div>
+                        </div>
+                        <div class="swichermainleft">
+                            <h4 class="font-bold text-sm mr-3">Default Theme Switcher</h4>
+                            <div class="swichermainleft my-4">
+                                <a class="wscolorcode red-btn color blackborder color1" href="#"
+                                    data-theme="assets/css/colors/color1.css"></a>
+                                <a class="wscolorcode purple-btn color blackborder color2" href="#"
+                                    data-theme="assets/css/colors/color2.css"></a>
+                                <a class="wscolorcode green-btn color blackborder color3" href="#"
+                                    data-theme="assets/css/colors/color3.css"></a>
+                                <a class="wscolorcode pink-btn color blackborder color4" href="#"
+                                    data-theme="assets/css/colors/color4.css"></a>
+                                <a class="wscolorcode orange-btn color blackborder color5" href="#"
+                                    data-theme="assets/css/colors/color5.css"></a>
+                            </div>
+                        </div>
+                        <div class="swichermainleft">
+                            <h4>Ions Styles</h4>
+                            <div class="switch_section my-2">
+                                <div class="switch-toggle d-flex">
+                                    <span class="mr-auto">Icon Style</span>
+                                    <div class="onoffswitch2">
+                                        <input type="checkbox" name="onoffswitch2" id="myonoffswitch51"
+                                            class="onoffswitch2-checkbox">
+                                        <label for="myonoffswitch51" class="onoffswitch2-label"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="switch_section my-2">
+                                <div class="switch-toggle d-flex">
+                                    <span class="mr-auto">Theme Style</span>
+                                    <div class="onoffswitch2">
+                                        <input type="checkbox" name="onoffswitch2" id="myonoffswitch52"
+                                            class="onoffswitch2-checkbox">
+                                        <label for="myonoffswitch52" class="onoffswitch2-label"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swichermainleft">
+                            <h4>Theme Layout</h4>
+                            <div class="switch_section d-flex my-4">
+                                <div class="d-block text-center mx-auto">
+                                    <button type="button" id="background5"
+                                        class="bg5 mb-3 wscolorcode1 blackborder"></button>
+                                    <span class="badge badge-light tx-12">Dark layout</span>
+                                </div>
+                                <div class="d-block text-center mx-auto">
+                                    <button type="button" id="background6"
+                                        class="bg6 mb-3 wscolorcode1 blackborder"></button>
+                                    <span class="badge badge-light tx-12">Light layout</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swichermainleft">
+                            <h4>Header Styles Mode</h4>
+                            <div class="switch_section d-flex my-4">
+                                <div class="d-block text-center mx-auto">
+                                    <button type="button" id="background3"
+                                        class="bg3 mb-3 wscolorcode1 blackborder"></button>
+                                    <span class="badge badge-light tx-12">Dark Header</span>
+                                </div>
+                                <div class="d-block text-center mx-auto">
+                                    <button type="button" id="background4"
+                                        class="bg4 mb-3 wscolorcode1 blackborder"></button>
+                                    <span class="badge badge-light tx-12">Color Header</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swichermainleft">
+                            <h4>Leftmenu Styles Mode</h4>
+                            <div class="switch_section d-flex my-4">
+                                <div class="d-block text-center mx-auto">
+                                    <button type="button" id="background1"
+                                        class="bg1 wscolorcode1 blackborder"></button>
+                                    <span class="badge badge-light tx-12">Color Menu</span>
+                                </div>
+                                <div class="d-block text-center mx-auto">
+                                    <button type="button" id="background2"
+                                        class="bg2 wscolorcode1 blackborder"></button>
+                                    <span class="badge badge-light tx-12">Light Menu</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Switcher -->
 
-        new Chart(ctx, {
-            type: "bar",
-            data: {
-                labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                datasets: [{
-                    label: "Sales",
-                    tension: 0.4,
-                    borderWidth: 0,
-                    borderRadius: 4,
-                    borderSkipped: false,
-                    backgroundColor: "#fff",
-                    data: [450, 200, 100, 220, 500, 100, 400, 230, 500],
-                    maxBarThickness: 6
-                }, ],
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false,
-                    }
-                },
-                interaction: {
-                    intersect: false,
-                    mode: 'index',
-                },
-                scales: {
-                    y: {
-                        grid: {
-                            drawBorder: false,
-                            display: false,
-                            drawOnChartArea: false,
-                            drawTicks: false,
-                        },
-                        ticks: {
-                            suggestedMin: 0,
-                            suggestedMax: 500,
-                            beginAtZero: true,
-                            padding: 15,
-                            font: {
-                                size: 14,
-                                family: "Open Sans",
-                                style: 'normal',
-                                lineHeight: 2
-                            },
-                            color: "#fff"
-                        },
-                    },
-                    x: {
-                        grid: {
-                            drawBorder: false,
-                            display: false,
-                            drawOnChartArea: false,
-                            drawTicks: false
-                        },
-                        ticks: {
-                            display: false
-                        },
-                    },
-                },
-            },
-        });
+    <!-- Loader -->
+    <div id="global-loader">
+        <img src="assets/img/loader.svg" class="loader-img" alt="Loader">
+    </div>
+    <!-- End Loader -->
 
+    <!-- Page -->
+    <div class="page">
 
-        var ctx2 = document.getElementById("chart-line").getContext("2d");
+        @include('partials.sidebar')
+        @include('partials.navbar')
+        <!-- Main Content-->
+        @yield('content')
 
-        var gradientStroke1 = ctx2.createLinearGradient(0, 230, 0, 50);
+        <!-- End Page -->
 
-        gradientStroke1.addColorStop(1, 'rgba(203,12,159,0.2)');
-        gradientStroke1.addColorStop(0.2, 'rgba(72,72,176,0.0)');
-        gradientStroke1.addColorStop(0, 'rgba(203,12,159,0)'); //purple colors
+        <!-- Back-to-top -->
+        <a href="#top" id="back-to-top"><i class="fe fe-arrow-up"></i></a>
 
-        var gradientStroke2 = ctx2.createLinearGradient(0, 230, 0, 50);
+        <!-- Jquery js-->
+        <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
 
-        gradientStroke2.addColorStop(1, 'rgba(20,23,39,0.2)');
-        gradientStroke2.addColorStop(0.2, 'rgba(72,72,176,0.0)');
-        gradientStroke2.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
+        <!-- Bootstrap js-->
+        <script src="{{ asset('assets/plugins/bootstrap/js/popper.min.js') }}"></script>
+        <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 
-        new Chart(ctx2, {
-            type: "line",
-            data: {
-                labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                datasets: [{
-                        label: "Mobile apps",
-                        tension: 0.4,
-                        borderWidth: 0,
-                        pointRadius: 0,
-                        borderColor: "#cb0c9f",
-                        borderWidth: 3,
-                        backgroundColor: gradientStroke1,
-                        fill: true,
-                        data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-                        maxBarThickness: 6
+        <!-- Select2 js-->
+        <script src="{{ asset('assets/plugins/select2/js/select2.min.js') }}"></script>
 
-                    },
-                    {
-                        label: "Websites",
-                        tension: 0.4,
-                        borderWidth: 0,
-                        pointRadius: 0,
-                        borderColor: "#3A416F",
-                        borderWidth: 3,
-                        backgroundColor: gradientStroke2,
-                        fill: true,
-                        data: [30, 90, 40, 140, 290, 290, 340, 230, 400],
-                        maxBarThickness: 6
-                    },
-                ],
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false,
-                    }
-                },
-                interaction: {
-                    intersect: false,
-                    mode: 'index',
-                },
-                scales: {
-                    y: {
-                        grid: {
-                            drawBorder: false,
-                            display: true,
-                            drawOnChartArea: true,
-                            drawTicks: false,
-                            borderDash: [5, 5]
-                        },
-                        ticks: {
-                            display: true,
-                            padding: 10,
-                            color: '#b2b9bf',
-                            font: {
-                                size: 11,
-                                family: "Open Sans",
-                                style: 'normal',
-                                lineHeight: 2
-                            },
-                        }
-                    },
-                    x: {
-                        grid: {
-                            drawBorder: false,
-                            display: false,
-                            drawOnChartArea: false,
-                            drawTicks: false,
-                            borderDash: [5, 5]
-                        },
-                        ticks: {
-                            display: true,
-                            color: '#b2b9bf',
-                            padding: 20,
-                            font: {
-                                size: 11,
-                                family: "Open Sans",
-                                style: 'normal',
-                                lineHeight: 2
-                            },
-                        }
-                    },
-                },
-            },
-        });
-    </script>
-    <script>
-        var win = navigator.platform.indexOf('Win') > -1;
-        if (win && document.querySelector('#sidenav-scrollbar')) {
-            var options = {
-                damping: '0.5'
-            }
-            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-        }
-    </script>
-    <!-- Github buttons -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="{{ asset('assets/js/soft-ui-dashboard.min.js?v=1.0.7') }}"></script>
-    <script src="{{ asset('assets/dist/js/bootstrap.bundle.min.js') }}"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
-    </script>
+        <!-- Perfect-scrollbar js -->
+        <script src="{{ asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
+
+        <!-- Sidemenu js -->
+        <script src="{{ asset('assets/plugins/sidemenu/sidemenu.js') }}"></script>
+
+        <!-- Sidebar js -->
+        <script src="{{ asset('assets/plugins/sidebar/sidebar.js') }}"></script>
+
+        <!-- Internal Chart.Bundle js-->
+        <script src="{{ asset('assets/plugins/chart.js/Chart.bundle.min.js') }}"></script>
+
+        <!-- Peity js-->
+        <script src="{{ asset('assets/plugins/peity/jquery.peity.min.js') }}"></script>
+
+        <!-- Internal Morris js -->
+        <script src="{{ asset('assets/plugins/raphael/raphael.min.js') }}"></script>
+        <script src="{{ asset('assets/plugins/morris.js/morris.min.js') }}"></script>
+
+        <!-- Circle Progress js-->
+        <script src="{{ asset('assets/js/circle-progress.min.j') }}s"></script>
+        <script src="{{ asset('assets/js/chart-circle.js') }}"></script>
+
+        <!-- Internal Dashboard js-->
+        <script src="{{ asset('assets/js/index.js') }}"></script>
+
+        <!-- Sticky js -->
+        <script src="{{ asset('assets/js/sticky.js') }}"></script>
+
+        <!-- Custom js -->
+        <script src="{{ asset('assets/js/custom.js') }}"></script>
+
+        <!-- Switcher js -->
+        <script src="{{ asset('assets/switcher/js/switcher.js') }}"></script>
 </body>
+
+<!-- Mirrored from laravel.spruko.com/spruha/ltr/index by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 01 Jun 2023 01:44:48 GMT -->
 
 </html>

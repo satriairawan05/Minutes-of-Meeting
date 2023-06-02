@@ -1,166 +1,344 @@
-<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-    <!-- Navbar -->
-    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
-        <div class="container-fluid py-1 px-3">
-            <nav aria-label="breadcrumb">
-
-            </nav>
-            <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-                <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                    {{-- <div class="input-group">
-          <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-          <input type="text" class="form-control" placeholder="Type here...">
-        </div> --}}
+        <!-- Main Header-->
+        <div class="main-header side-header sticky">
+            <div class="container-fluid">
+                <div class="main-header-left">
+                    <a class="main-header-menu-icon" href="#" id="mainSidebarToggle"><span></span></a>
                 </div>
-                <ul class="navbar-nav  justify-content-end">
-                    <li class="nav-item d-flex align-items-center">
+                <div class="main-header-center">
+                    <div class="responsive-logo">
+                        <a href="index.html"><img src="assets/img/brand/logo.png" class="mobile-logo" alt="logo"></a>
+                        <a href="index.html"><img src="assets/img/brand/logo-light.png" class="mobile-logo-dark"
+                                alt="logo"></a>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-btn search-panel">
+                            <select class="form-control select2-no-search">
+                                <option label="All categories">
+                                </option>
+                                <option value="IT Projects">
+                                    IT Projects
+                                </option>
+                                <option value="Business Case">
+                                    Business Case
+                                </option>
+                                <option value="Microsoft Project">
+                                    Microsoft Project
+                                </option>
+                                <option value="Risk Management">
+                                    Risk Management
+                                </option>
+                                <option value="Team Building">
+                                    Team Building
+                                </option>
+                            </select>
+                        </div>
+                        <input type="search" class="form-control" placeholder="Search for anything...">
+                        <button class="btn search-btn"><i class="fe fe-search"></i></button>
+                    </div>
+                </div>
+                <div class="main-header-right">
+                    <div class="dropdown header-search">
+                        <a class="nav-link icon header-search">
+                            <i class="fe fe-search header-icons"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="main-form-search p-2">
+                                <div class="input-group">
+                                    <div class="input-group-btn search-panel">
+                                        <select class="form-control select2-no-search">
+                                            <option label="All categories">
+                                            </option>
+                                            <option value="IT Projects">
+                                                IT Projects
+                                            </option>
+                                            <option value="Business Case">
+                                                Business Case
+                                            </option>
+                                            <option value="Microsoft Project">
+                                                Microsoft Project
+                                            </option>
+                                            <option value="Risk Management">
+                                                Risk Management
+                                            </option>
+                                            <option value="Team Building">
+                                                Team Building
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <input type="search" class="form-control" placeholder="Search for anything...">
+                                    <button class="btn search-btn"><svg xmlns="http://www.w3.org/2000/svg"
+                                            width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" class="feather feather-search">
+                                            <circle cx="11" cy="11" r="8"></circle>
+                                            <line x1="21" y1="21" x2="16.65" y2="16.65">
+                                            </line>
+                                        </svg></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dropdown d-md-flex">
+                        <a class="nav-link icon full-screen-link" href="#">
+                            <i class="fe fe-maximize fullscreen-button fullscreen header-icons"></i>
+                            <i class="fe fe-minimize fullscreen-button exit-fullscreen header-icons"></i>
+                        </a>
+                    </div>
+                    <div class="dropdown main-header-notification">
+                        <a class="nav-link icon" href="#">
+                            <i class="fe fe-bell header-icons"></i>
+                            <span class="badge badge-danger nav-link-badge">!</span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="header-navheading">
+                                <p class="main-notification-text">You have 1 unread notification<span
+                                        class="badge badge-pill badge-primary ml-3">View all</span></p>
+                            </div>
+                            <div class="main-notification-list">
+                                <div class="media new">
+                                    <div class="main-img-user online"><img alt="avatar" src="assets/img/users/5.jpg">
+                                    </div>
+                                    <div class="media-body">
+                                        <p>Congratulate <strong>Olivia James</strong> for New template start</p>
+                                        <span>Oct 15 12:32pm</span>
+                                    </div>
+                                </div>
+                                <div class="media">
+                                    <div class="main-img-user"><img alt="avatar" src="assets/img/users/2.jpg">
+                                    </div>
+                                    <div class="media-body">
+                                        <p><strong>Joshua Gray</strong> New Message Received</p><span>Oct 13
+                                            02:56am</span>
+                                    </div>
+                                </div>
+                                <div class="media">
+                                    <div class="main-img-user online"><img alt="avatar" src="assets/img/users/3.jpg">
+                                    </div>
+                                    <div class="media-body">
+                                        <p><strong>Elizabeth Lewis</strong> added new schedule realease</p><span>Oct 12
+                                            10:40pm</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dropdown-footer">
+                                <a href="#">View All Notifications</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown main-profile-menu">
                         <div class="nav-link text-body font-weight-bold px-0">
                             <i class="fa fa-user me-sm-1"></i>
                             @auth
-                            <span class="d-sm-inline d-none">{{ auth()->user()->name }}</span>
+                                <span class="d-sm-inline d-none">
+                                    {{-- bangsat --}}
+                                    {{-- {{ auth()->user()->name }} --}}
+                                    {{-- bangsat --}}
+                                </span>
                             @else
-                            <span class="d-sm-inline d-none">Minutes of Meeting</span>
                             @endauth
                         </div>
-                    </li>
-                    <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-                        <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
-                            <div class="sidenav-toggler-inner">
-                                <i class="sidenav-toggler-line"></i>
-                                <i class="sidenav-toggler-line"></i>
-                                <i class="sidenav-toggler-line"></i>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="nav-item px-3 d-flex align-items-center">
-                        <a href="javascript:;" class="nav-link text-body p-0">
-                            <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown pe-2 d-flex align-items-center">
-                        <div class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-bell cursor-pointer"></i>
-                        </div>
-                        <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-                            <li class="mb-2">
-                                <a class="dropdown-item border-radius-md" href="javascript:;">
-                                    <div class="d-flex py-1">
-                                        <div class="my-auto">
-                                            <img src="{{ asset('assets/assets/img/team-2.jpg') }}" class="avatar avatar-sm  me-3 ">
-                                        </div>
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="text-sm font-weight-normal mb-1">
-                                                <span class="font-weight-bold">New message</span> from Laur
-                                            </h6>
-                                            <p class="text-xs text-secondary mb-0 ">
-                                                <i class="fa fa-clock me-1"></i>
-                                                13 minutes ago
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a class="dropdown-item border-radius-md" href="javascript:;">
-                                    <div class="d-flex py-1">
-                                        <div class="my-auto">
-                                            <img src="{{ asset('assets/img/small-logos/logo-spotify.svg') }}" class="avatar avatar-sm bg-gradient-dark  me-3 ">
-                                        </div>
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="text-sm font-weight-normal mb-1">
-                                                <span class="font-weight-bold">New album</span> by Travis Scott
-                                            </h6>
-                                            <p class="text-xs text-secondary mb-0 ">
-                                                <i class="fa fa-clock me-1"></i>
-                                                1 day
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item border-radius-md" href="javascript:;">
-                                    <div class="d-flex py-1">
-                                        <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
-                                            <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                                <title>credit-card</title>
-                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                    <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                                                        <g transform="translate(1716.000000, 291.000000)">
-                                                            <g transform="translate(453.000000, 454.000000)">
-                                                                <path class="color-background" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z" opacity="0.593633743"></path>
-                                                                <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z">
-                                                                </path>
-                                                            </g>
-                                                        </g>
-                                                    </g>
-                                                </g>
-                                            </svg>
-                                        </div>
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="text-sm font-weight-normal mb-1">
-                                                Payment successfully completed
-                                            </h6>
-                                            <p class="text-xs text-secondary mb-0 ">
-                                                <i class="fa fa-clock me-1"></i>
-                                                2 days
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    @if(auth()->user())
-                    <li class="nav-item dropdown p-2 d-flex align-items-center">
-                        <form action="{{ route('logout') }}" method="post">
-                            @method('post')
-                            @csrf
-                            <button class="nav-link text-body btn mt-3 fixed-plugin-button-nav cursor-pointer shadow-none" type="submit" onclick="return confirm('Are you sure?')"><i class="fa fa-window-close"></i></button>
-                        </form>
-                    </li>
-                    @else
-                    <li class="nav-item dropdown p-2 d-flex align-items-center">
-                        <a href="{{ route('login.form') }}" class="nav-link text-body btn mt-3 fixed-plugin-button-nav cursor-pointer shadow-none"><i class="fa fa-user-cog"></i></a>
-                    </li>
-                    @endif
-                </ul>
+                    </div>
+                    <button class="navbar-toggler navresponsive-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fe fe-more-vertical header-icons navbar-toggler-icon"></i>
+                    </button><!-- Navresponsive closed -->
+                </div>
             </div>
         </div>
-    </nav>
-    <!-- End Navbar -->
-
-    <div class="container-fluid">
-        <div class="container-fluid py-4">
-
-            @yield('content')
-
-
-            <footer class="footer pt-3  ">
-                <div class="container-fluid">
-                    <div class="row align-items-center justify-content-lg-between">
-                        <div class="col-lg-6 mb-lg-0 mb-4">
-                            <div class="copyright text-center text-sm text-muted text-lg-start">
-
+        <!-- End Main Header-->
+        <!-- Mobile-header -->
+        <div class="mobile-main-header">
+            <div class="mb-1 navbar navbar-expand-lg  nav nav-item  navbar-nav-right responsive-navbar navbar-dark  ">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+                    <div class="d-flex order-lg-2 ml-auto">
+                        <div class="dropdown header-search">
+                            <a class="nav-link icon header-search">
+                                <i class="fe fe-search header-icons"></i>
+                            </a>
+                            <div class="dropdown-menu">
+                                <div class="main-form-search p-2">
+                                    <div class="input-group">
+                                        <div class="input-group-btn search-panel">
+                                            <select class="form-control select2-no-search">
+                                                <option label="All categories">
+                                                </option>
+                                                <option value="IT Projects">
+                                                    IT Projects
+                                                </option>
+                                                <option value="Business Case">
+                                                    Business Case
+                                                </option>
+                                                <option value="Microsoft Project">
+                                                    Microsoft Project
+                                                </option>
+                                                <option value="Risk Management">
+                                                    Risk Management
+                                                </option>
+                                                <option value="Team Building">
+                                                    Team Building
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <input type="search" class="form-control"
+                                            placeholder="Search for anything...">
+                                        <button class="btn search-btn"><svg xmlns="http://www.w3.org/2000/svg"
+                                                width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" class="feather feather-search">
+                                                <circle cx="11" cy="11" r="8"></circle>
+                                                <line x1="21" y1="21" x2="16.65" y2="16.65">
+                                                </line>
+                                            </svg></button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <ul class="nav nav-footer justify-content-center justify-content-lg-end mb-3">
-                                <li class="nav-item">
-                                    <a href="https://suemerugrup.com/" class="font-weight-bold" target="_blank">SuemeruGrup©</a>
-
-                                    <script>
-                                        document.write(new Date().getFullYear())
-
-                                    </script>
-                                </li>
-
-                            </ul>
+                        <div class="dropdown main-header-notification flag-dropdown">
+                            <a class="nav-link icon country-Flag">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <circle cx="256" cy="256" r="256" fill="#f0f0f0" />
+                                    <g fill="#0052b4">
+                                        <path
+                                            d="M52.92 100.142c-20.109 26.163-35.272 56.318-44.101 89.077h133.178L52.92 100.142zM503.181 189.219c-8.829-32.758-23.993-62.913-44.101-89.076l-89.075 89.076h133.176zM8.819 322.784c8.83 32.758 23.993 62.913 44.101 89.075l89.074-89.075H8.819zM411.858 52.921c-26.163-20.109-56.317-35.272-89.076-44.102v133.177l89.076-89.075zM100.142 459.079c26.163 20.109 56.318 35.272 89.076 44.102V370.005l-89.076 89.074zM189.217 8.819c-32.758 8.83-62.913 23.993-89.075 44.101l89.075 89.075V8.819zM322.783 503.181c32.758-8.83 62.913-23.993 89.075-44.101l-89.075-89.075v133.176zM370.005 322.784l89.075 89.076c20.108-26.162 35.272-56.318 44.101-89.076H370.005z" />
+                                    </g>
+                                    <g fill="#d80027">
+                                        <path
+                                            d="M509.833 222.609H289.392V2.167A258.556 258.556 0 00256 0c-11.319 0-22.461.744-33.391 2.167v220.441H2.167A258.556 258.556 0 000 256c0 11.319.744 22.461 2.167 33.391h220.441v220.442a258.35 258.35 0 0066.783 0V289.392h220.442A258.533 258.533 0 00512 256c0-11.317-.744-22.461-2.167-33.391z" />
+                                        <path
+                                            d="M322.783 322.784L437.019 437.02a256.636 256.636 0 0015.048-16.435l-97.802-97.802h-31.482v.001zM189.217 322.784h-.002L74.98 437.019a256.636 256.636 0 0016.435 15.048l97.802-97.804v-31.479zM189.217 189.219v-.002L74.981 74.98a256.636 256.636 0 00-15.048 16.435l97.803 97.803h31.481zM322.783 189.219L437.02 74.981a256.328 256.328 0 00-16.435-15.047l-97.802 97.803v31.482z" />
+                                    </g>
+                                </svg>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a href="#" class="dropdown-item d-flex ">
+                                    <span class="avatar  mr-3 align-self-center bg-transparent"><img
+                                            src="assets/img/flags/french_flag.jpg" alt="img"></span>
+                                    <div class="d-flex">
+                                        <span class="mt-2">French</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="dropdown-item d-flex">
+                                    <span class="avatar  mr-3 align-self-center bg-transparent"><img
+                                            src="assets/img/flags/germany_flag.jpg" alt="img"></span>
+                                    <div class="d-flex">
+                                        <span class="mt-2">Germany</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="dropdown-item d-flex">
+                                    <span class="avatar mr-3 align-self-center bg-transparent"><img
+                                            src="assets/img/flags/italy_flag.jpg" alt="img"></span>
+                                    <div class="d-flex">
+                                        <span class="mt-2">Italy</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="dropdown-item d-flex">
+                                    <span class="avatar mr-3 align-self-center bg-transparent"><img
+                                            src="assets/img/flags/russia_flag.jpg" alt="img"></span>
+                                    <div class="d-flex">
+                                        <span class="mt-2">Russia</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="dropdown-item d-flex">
+                                    <span class="avatar  mr-3 align-self-center bg-transparent"><img
+                                            src="assets/img/flags/spain_flag.jpg" alt="img"></span>
+                                    <div class="d-flex">
+                                        <span class="mt-2">spain</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="dropdown ">
+                            <a class="nav-link icon full-screen-link">
+                                <i class="fe fe-maximize fullscreen-button fullscreen header-icons"></i>
+                                <i class="fe fe-minimize fullscreen-button exit-fullscreen header-icons"></i>
+                            </a>
+                        </div>
+                        <div class="dropdown main-header-notification">
+                            <a class="nav-link icon" href="#">
+                                <i class="fe fe-bell header-icons"></i>
+                                <span class="badge badge-danger nav-link-badge">4</span>
+                            </a>
+                            <div class="dropdown-menu">
+                                <div class="header-navheading">
+                                    <p class="main-notification-text">You have 1 unread notification<span
+                                            class="badge badge-pill badge-primary ml-3">View all</span></p>
+                                </div>
+                                <div class="main-notification-list">
+                                    <div class="media new">
+                                        <div class="main-img-user online"><img alt="avatar"
+                                                src="assets/img/users/5.jpg"></div>
+                                        <div class="media-body">
+                                            <p>Congratulate <strong>Olivia James</strong> for New template start</p>
+                                            <span>Oct 15 12:32pm</span>
+                                        </div>
+                                    </div>
+                                    <div class="media">
+                                        <div class="main-img-user"><img alt="avatar" src="assets/img/users/2.jpg">
+                                        </div>
+                                        <div class="media-body">
+                                            <p><strong>Joshua Gray</strong> New Message Received</p><span>Oct 13
+                                                02:56am</span>
+                                        </div>
+                                    </div>
+                                    <div class="media">
+                                        <div class="main-img-user online"><img alt="avatar"
+                                                src="assets/img/users/3.jpg"></div>
+                                        <div class="media-body">
+                                            <p><strong>Elizabeth Lewis</strong> added new schedule realease</p><span>Oct
+                                                12 10:40pm</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-footer">
+                                    <a href="#">View All Notifications</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-header-notification mt-2">
+                            <a class="nav-link icon" href="chat.html">
+                                <i class="fe fe-message-square header-icons"></i>
+                                <span class="badge badge-success nav-link-badge">6</span>
+                            </a>
+                        </div>
+                        <div class="dropdown main-profile-menu">
+                            <a class="d-flex" href="#">
+                                <span class="main-img-user"><img alt="avatar" src="assets/img/users/1.jpg"></span>
+                            </a>
+                            <div class="dropdown-menu">
+                                <div class="header-navheading">
+                                    <h6 class="main-notification-title">Sonia Taylor</h6>
+                                    <p class="main-notification-text">Web Designer</p>
+                                </div>
+                                <a class="dropdown-item border-top" href="profile.html">
+                                    <i class="fe fe-user"></i> My Profile
+                                </a>
+                                <a class="dropdown-item" href="profile.html">
+                                    <i class="fe fe-edit"></i> Edit Profile
+                                </a>
+                                <a class="dropdown-item" href="profile.html">
+                                    <i class="fe fe-settings"></i> Account Settings
+                                </a>
+                                <a class="dropdown-item" href="profile.html">
+                                    <i class="fe fe-settings"></i> Support
+                                </a>
+                                <a class="dropdown-item" href="profile.html">
+                                    <i class="fe fe-compass"></i> Activity
+                                </a>
+                                <a class="dropdown-item" href="signin.html">
+                                    <i class="fe fe-power"></i> Sign Out
+                                </a>
+                            </div>
+                        </div>
+                        <div class="dropdown  header-settings">
+                            <a href="#" class="nav-link icon" data-toggle="sidebar-right"
+                                data-target=".sidebar-right">
+                                <i class="fe fe-align-right header-icons"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
-            </footer>
+            </div>
         </div>
-    </div>
-
-</main>
+        <!-- Mobile-header closed -->
