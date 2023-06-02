@@ -30,12 +30,12 @@ class DocumentController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'document' => ['required','mimes:pdf']
+            'doc_document' => ['required','mimes:pdf']
         ]);
 
         if($request->file('document'))
         {
-            $validate['document'] = $request->file('document')->store('documents');
+            $validate['doc_document'] = $request->file('doc_document')->store('documents');
         }
 
         Document::create($validate);
@@ -67,18 +67,18 @@ class DocumentController extends Controller
     public function update(Request $request, Document $document)
     {
         $rules = [
-            'document' => ['required','mimes:pdf']
+            'doc_document' => ['required','mimes:pdf']
         ];
 
         $validate = $request->validate($rules);
 
-        if($request->file('document'))
+        if($request->file('doc_document'))
         {
             if($request->oldDocument)
             {
                 Storage::delete([$request->oldDocument]);
             }
-            $validate['document'] = $request->file('document')->store('documents');
+            $validate['doc_document'] = $request->file('doc_document')->store('documents');
         }
 
         Document::where('id',$document->id)->update($validate);

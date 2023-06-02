@@ -4,9 +4,9 @@
 <form action="{{ route('document.store') }}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="mb-3">
-        <label id="document_label" for="document">Document</label>
-        <input type="file" name="document" id="document" class="form-control form-control-file" onchange="showPreview(this)">
-        @error('document')
+        <label id="document_label" for="doc_document">Document</label>
+        <input type="file" name="doc_document" id="doc_document" class="form-control form-control-file" onchange="showPreview(this)">
+        @error('doc_document')
         <div class="invalid-feedback">
             {{ $message }}
         </div>
