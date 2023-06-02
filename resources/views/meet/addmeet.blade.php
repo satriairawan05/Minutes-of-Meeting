@@ -24,7 +24,7 @@
                 <div class="row mb-3">
                     <label for="txtmname" class="col-sm-2 col-form-label">Meeting Name</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control form-control-sm @error('project') is-invalid @enderror" id="txtmname" name="txtmname" value="{{ old('txtmname') }}" placeholder="Masukan Meeting Name" >
+                        <input type="text" class="form-control form-control-sm @error('project') is-invalid @enderror" id="txtmname" name="txtmname" value="{{ old('txtmname') }}" placeholder="Masukan Meeting Name">
                         @error('txtmname')
                         <div class="invalid-feedback">
                             {{ $message }}

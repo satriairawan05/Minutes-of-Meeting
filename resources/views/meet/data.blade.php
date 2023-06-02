@@ -125,12 +125,12 @@
                                                             <div class="modal-footer">
                                                                 <form onsubmit="return deleteData('{{ $d->meet_name }}')"
                                                                     method="POST"
-                                                                    action="{{ url('meet/' . $d->meet_id) }}">
+                                                                    action="{{ route('meet.destroy',$d->meet_id) }}">
                                                                     @csrf
                                                                     <button type="button" class="btn bg-gradient-secondary"
                                                                         data-bs-dismiss="modal">Close</button>
 
-                                                                    @method('DELETE')
+                                                                    @method('delete')
                                                                     <button type="submit" class="btn bg-gradient-danger"
                                                                         data-bs-dismiss="modal">Delete</button>
                                                                     </button>
