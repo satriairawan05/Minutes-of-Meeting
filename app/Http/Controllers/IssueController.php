@@ -25,7 +25,7 @@ class IssueController extends Controller
      */
     public function create()
     {
-        $formattedDate = date('Ymd');
+        $formattedDate = date('mY');
         $prefix = "ISSUE-";
         $lastCount = Issue::select('issue_id')->latest('issue_id')->pluck('issue_id')->first();
         $count = $lastCount + 1;
