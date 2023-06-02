@@ -11,7 +11,7 @@
                     <div>
                         <h2 class="main-content-title tx-24 mg-b-5">Meeting Data</h2>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Meeting</li>
                         </ol>
                     </div>
@@ -33,7 +33,8 @@
 
                 <!--Row-->
                 <div class="card ">
-                    <div class="d-flex justify-content-end">
+
+                    <div class="text-right">
                         <button type="button" class="btn btn-green btn-icon-text my-2 mr-2">
                             <a href="{{ route('meet.create') }}" class="btn-data btn text-decoration-none text-black">
                                 <i class="fas fa-plus-circle"></i> Add New Data
@@ -178,20 +179,6 @@
             </div>
         </div>
         <!-- End Main Content-->
-
-        <!-- Main Footer-->
-        <div class="main-footer text-center">
-            <div class="container">
-                <div class="row row-sm">
-                    <div class="col-md-12">
-                        <span>Copyright © 2023 <a href="#">BSS</a> <a href="https://suemerugrup.com/"></a>
-                            All
-                            rights reserved.</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--End Footer-->
         <!-- Sidebar -->
         <div class="sidebar sidebar-right sidebar-animate">
             <div class="sidebar-icon">

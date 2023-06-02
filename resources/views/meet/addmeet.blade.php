@@ -24,7 +24,7 @@
                 <div class="row mb-3">
                     <label for="txtmname" class="col-sm-2 col-form-label">Meeting Name</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control form-control-sm @error('project') is-invalid @enderror" id="txtmname" name="txtmname" value="{{ old('txtmname') }}" placeholder="Masukan Meeting Name">
+                        <input type="text" class="form-control form-control-sm @error('project') is-invalid @enderror" id="txtmname" name="txtmname" value="{{ old('txtmname') }}" placeholder="Masukan Meeting Name" >
                         @error('txtmname')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -104,35 +104,37 @@
                 @enderror
         </div>
     </div> --}}
-    <div class="row mb-3">
-        <label for="select1" class="col-sm-2 col-form-label" for="txtmatt">Attendees</label>
-        <div class="col-sm-4">
-            <select id="select1" class="form-select form-control form-control-sm" id="txtmatt" name="txtmatt">
-                @foreach($users as $user)
-                @if(old('txtmatt') == $user->id)
-                <option name="txtmatt" value="{{ $user->name }}" selected>{{ $user->name }}</option>
-                @else
-                <option name="txtmatt" value="{{ $user->name }}">{{ $user->name }}</option>
-                @endif
-                @endforeach
-            </select>
+                    <div class="row mb-3">
+                        <label for="select1" class="col-sm-2 col-form-label" for="txtmatt">Attendees</label>
+                        <div class="col-sm-4">
+                            <select id="select1" class="form-select form-control form-control-sm" id="txtmatt"
+                                name="txtmatt">
+                                @foreach ($users as $user)
+                                    @if (old('txtmatt') == $user->id)
+                                        <option name="txtmatt" value="{{ $user->name }}" selected>{{ $user->name }}
+                                        </option>
+                                    @else
+                                        <option name="txtmatt" value="{{ $user->name }}">{{ $user->name }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-4">
+                            <button type="submit" class="btn btn-sm btn-success">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card-body">
+
 
         </div>
-    </div>
-
-    <div class="row mb-3">
-        <label for="" class="col-sm-2 col-form-label"></label>
-        <div class="col-sm-4">
-            <button type="submit" class="btn btn-sm btn-success">
-                Submit
-            </button>
-        </div>
-    </div>
-    </form>
-</div>
-</div>
-<div class="card-body">
-
-
-</div>
-@endsection
+    @endsection
