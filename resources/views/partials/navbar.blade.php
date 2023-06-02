@@ -138,18 +138,46 @@
                             @else
                             @endauth
                         </div>
+                        {{-- logout --}}
+
+                        {{-- @if (auth()->user())
+                            <li class="nav-item dropdown p-2 d-flex align-items-center">
+                                <form action="{{ route('logout') }}" method="post">
+                                    @method('post')
+                                    @csrf
+                                    <button
+                                        class="nav-link text-body btn mt-3 fixed-plugin-button-nav cursor-pointer shadow-none"
+                                        type="submit" onclick="return confirm('Are you sure?')"><i
+                                            class="fa fa-window-close"></i></button>
+                                </form>
+                            </li>
+                        @else
+                            <li class="nav-item dropdown p-2 d-flex align-items-center">
+                                <a href="{{ route('login.form') }}"
+                                    class="nav-link text-body btn mt-3 fixed-plugin-button-nav cursor-pointer shadow-none"><i
+                                        class="fa fa-user-cog"></i></a>
+                            </li>
+                        @endif
+                        <li class="nav-item dropdown p-2 d-flex align-items-center">
+                            <a href="{{ route('login.form') }}"
+                                class="nav-link text-body btn mt-3 fixed-plugin-button-nav cursor-pointer shadow-none"><i
+                                    class="fa fa-user-cog"></i></a>
+                        </li> --}}
+
+                        {{-- end of logout --}}
                     </div>
                     <button class="navbar-toggler navresponsive-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4"
                         aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fe fe-more-vertical header-icons navbar-toggler-icon"></i>
-                    </button><!-- Navresponsive closed -->
+                    </button>
+                    <!-- Navresponsive closed -->
                 </div>
             </div>
         </div>
         <!-- End Main Header-->
         <!-- Mobile-header -->
-        <div class="mobile-main-header">
+        {{-- <div class="mobile-main-header">
             <div class="mb-1 navbar navbar-expand-lg  nav nav-item  navbar-nav-right responsive-navbar navbar-dark  ">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
                     <div class="d-flex order-lg-2 ml-auto">
@@ -340,5 +368,5 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- Mobile-header closed -->
