@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Document;
-use App\Models\Issue;
-use App\Models\Meet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DocumentController extends Controller
 {
@@ -14,13 +13,7 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        $issue = Issue::where('status','like','closed')->get();
-        $meet = Meet::where('meet_attend','like','member')->get();
-
-        return view('doc.index',[
-            'issues' => $issue,
-            'meets' => $meet,
-        ]);
+        return view('doc.index');
     }
 
     /**
@@ -28,7 +21,7 @@ class DocumentController extends Controller
      */
     public function create()
     {
-        //
+        return view('doc.create');
     }
 
     /**
@@ -36,22 +29,18 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
-        $doc = new Document;
-        $doc->issue_xid = $request->issue_xid;
-        $doc->project = $request->project;
-        $doc->tracker = $request->tracker;
-        $doc->assignee = $request->assignee;
-        $doc->subject = $request->subject;
-        $doc->description = $request->description;
-        $doc->category = $request->category;
-        $doc->status = $request->status;
-        $doc->priority = $request->priority;
-        $doc->c_action = $request->c_action;
-        $doc->file = $request->file;
-        $doc->start_date = $request->start_date;
-        $doc->end_date = $request->end_date;
-        $doc->is_private = $request->is_private;
-        $doc->save();
+        $validate = $request->validate([
+            'document' => ['required','mimes:pdf']
+        ]);
+
+        if($request->file('document'))
+        {
+            $validate['document'] = $request->file('document')->store('documents');
+        }
+
+        Document::create($validate);
+
+        return redirect('/document')->with('success','Added Document Successfully');
     }
 
     /**
@@ -67,7 +56,9 @@ class DocumentController extends Controller
      */
     public function edit(Document $document)
     {
-        //
+        return view('doc.edit',[
+            'doc' => $document
+        ]);
     }
 
     /**
@@ -75,7 +66,24 @@ class DocumentController extends Controller
      */
     public function update(Request $request, Document $document)
     {
-        //
+        $rules = [
+            'document' => ['required','mimes:pdf']
+        ];
+
+        $validate = $request->validate($rules);
+
+        if($request->file('document'))
+        {
+            if($request->oldDocument)
+            {
+                Storage::delete([$request->oldDocument]);
+            }
+            $validate['document'] = $request->file('document')->store('documents');
+        }
+
+        Document::where('id',$document->id)->update($validate);
+
+        return redirect('/document')->with('success','Updated Document Successfully');
     }
 
     /**
@@ -83,6 +91,12 @@ class DocumentController extends Controller
      */
     public function destroy(Document $document)
     {
-        //
+        Document::destroy($document->id);
+
+        if($document->document){
+            Storage::delete([$document->document]);
+        }
+
+        return redirect('/document')->with('success','Deleted Document Successfully');
     }
 }
