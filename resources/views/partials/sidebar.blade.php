@@ -21,12 +21,12 @@
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('meet.index') ? 'active' : '' }}"
                             href="{{ route('meet.index') }}"><span class="shape1"></span><span class="shape2"></span><i
-                                class="ti-agenda sidemenu-icon"></i><span class="sidemenu-label">Meeting</span></i></a>
+                                class="ti-agenda sidemenu-icon"></i><span class="sidemenu-label">Meeting Data</span></i></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('issue.index') ? 'active' : '' }}"
                             href="{{ route('issue.index') }}"><span class="shape1"></span><span class="shape2"></span><i
-                                class="ti-write sidemenu-icon"></i><span class="sidemenu-label">Issue</span></a>
+                                class="ti-write sidemenu-icon"></i><span class="sidemenu-label">Issue Details</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('document.index') ? 'active' : '' }}"
