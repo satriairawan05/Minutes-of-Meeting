@@ -53,7 +53,8 @@
                                 <thead class="table-header">
                                     <th style="text-align: center;">No</th>
                                     <th style="text-align: center;" class="d-none d-sm-table-cell">ID</th>
-                                    <th style="text-align: center;">Projects Name</th>
+                                    <th style="text-align: center;">Meeting Name</th>
+                                    <th style="text-align: center;">Project Name</th>
                                     <th style="text-align: center;">Date Of Meeting</th>
                                     <th style="text-align: center;">Time Of Meeting</th>
                                     <th style="text-align: center;">Minutes Prepared by</th>
@@ -80,6 +81,7 @@
                                             <td style="text-align: center;" class="d-none d-sm-table-cell">
                                                 {{ $d->meet_xid }}</td>
                                             <td style="text-align: center;">{{ $d->meet_name }}</td>
+                                            <td style="text-align: center;">{{ $d->meet_project }}</td>
                                             <td style="text-align: center;">{{ $d->meet_date }}</td>
                                             <td style="text-align: center;">{{ $d->meet_time }}</td>
                                             <td style="text-align: center;">{{ $d->meet_preparedby }}</td>
