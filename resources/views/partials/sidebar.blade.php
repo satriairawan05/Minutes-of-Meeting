@@ -1,7 +1,7 @@
         <!-- Sidemenu -->
         <div class="main-sidebar main-sidebar-sticky side-menu">
             <div class="sidemenu-logo">
-                <a class="main-logo" href="index.html">
+                <a class="main-logo" href="/">
                     <img src="{{ asset('assets/img/brand/logo.ico') }}" class="header-brand-img desktop-logo"
                         alt="logo">
                     <img src="{{ asset('assets/img/brand/logo.ico') }}" class="header-brand-img icon-logo" alt="logo">
@@ -21,7 +21,8 @@
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('meet.index') ? 'active' : '' }}"
                             href="{{ route('meet.index') }}"><span class="shape1"></span><span class="shape2"></span><i
-                                class="ti-agenda sidemenu-icon"></i><span class="sidemenu-label">Meeting Data</span></i></a>
+                                class="ti-agenda sidemenu-icon"></i><span class="sidemenu-label">Meeting
+                                Data</span></i></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('issue.index') ? 'active' : '' }}"
@@ -37,10 +38,14 @@
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('user.index') ? 'active' : '' }}"
                             href="{{ route('user.index') }}"><span class="shape1"></span><span class="shape2"></span><i
-                                class="ti-email sidemenu-icon"></i><span class="sidemenu-label">User Management</span><span
-                                class="badge badge-warning side-badge">2</span></a>
+                                class="ti-email sidemenu-icon"></i><span class="sidemenu-label">User
+                            </a>   </li>
 
-                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                            href="#"><span class="shape1"></span><span class="shape2"></span><i
+                                class="ti-email sidemenu-icon"></i><span class="sidemenu-label">Preferences
+                                Management</a> </li>
 
                 </ul>
             </div>
