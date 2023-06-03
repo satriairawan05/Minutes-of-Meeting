@@ -31,15 +31,12 @@
 
                 <!--Row-->
                 <div class="card ">
-
-                    <div class="text-right">
-                        <button type="button" class="btn btn-green btn-icon-text my-2 mr-2">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-end">
                             <a href="{{ route('meet.create') }}" class="btn-data btn text-decoration-none text-black">
                                 <i class="fas fa-plus-circle"></i> Add New Data
                             </a>
-                        </button>
-                    </div>
-
+                        </div>
                     <div class="card-body">
                         @if(session('success'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -167,7 +164,5 @@
                 </script>
                 <!-- Row end -->
             </div>
-        </div>
         <!-- End Main Content-->
-    </div>
 @endsection

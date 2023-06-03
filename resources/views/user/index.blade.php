@@ -31,8 +31,8 @@
 
                                 @if ($users)
                                     <div class="table-responsive">
-                                        <div
-                                            class="table table-bordered data-table table-responsive table-sm table-striped table-hover">
+                                        <table class="table table-sm table-striped table-bordered table-hover">
+
                                             <table
                                                 class="table table-bordered data-table table-responsive table-sm table-striped table-hover">
                                                 <thead class="table-header text-center">
