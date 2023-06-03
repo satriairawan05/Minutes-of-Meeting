@@ -76,7 +76,7 @@
                         </div>
                         <div class="mb-3">
                             <label id="tracker_label" for="tracker">Departemen</label>
-                            <select id="select1" class="form-select form-control form-control-sm" id="tracker" name="tracker">
+                            <select class="form-select form-control form-control-sm" id="tracker" name="tracker">
                                 @foreach ($depts as $dept)
                                 @if (old('tracker') == $dept->id)
                                 <option name="tracker" value="{{ $dept->name }}" selected>{{ $dept->name }}</option>
@@ -166,7 +166,7 @@
                         </div>
                         <div class="mb-3">
                             <label id="assignee_label" for="assignee">Assignee</label>
-                            <select id="select1" class="form-select form-control form-control-sm" id="assignee" name="assignee">
+                            <select class="form-select form-control form-control-sm" id="assignee" name="assignee">
                                 @foreach ($users as $user)
                                 @if (old('assignee') == $user->id)
                                 <option name="assignee" value="{{ $user->name }}" selected>{{ $user->name }}</option>

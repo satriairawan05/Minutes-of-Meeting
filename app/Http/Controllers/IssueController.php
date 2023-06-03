@@ -55,8 +55,7 @@ class IssueController extends Controller
             'start_date' => ['required'],
             'end_date' => ['required'],
             'c_action' => ['required'],
-            'assignee' => ['required'],
-            'file' => ['required','mimes:jpg,png']
+            'assignee' => ['required']
         ]);
 
 
@@ -92,7 +91,9 @@ class IssueController extends Controller
     {
         return view('issue.edit',[
             'data' => $issue,
-            'meet' => Meet::latest()->first()
+            'meet' => Meet::latest()->first(),
+            'depts' => Departemen::get(),
+            'users' => User::get()
         ]);
     }
 
@@ -108,14 +109,15 @@ class IssueController extends Controller
             'subject' => ['required'],
             'c_action' => ['required'],
             'description' => ['required'],
-            'status' => ['required'],
-            'priority' => ['required'],
             'start_date' => ['required'],
             'end_date' => ['required'],
-            'assignee' => ['required']
+            'assignee' => ['required'],
+            'status' => ['required']
         ];
 
         $validate = $request->validate($rules);
+        $validate['status'] = $request->input('status');
+        $validate['priority'] = $request->input('priority');
 
         if($request->file('file')){
             if($request->oldFile){

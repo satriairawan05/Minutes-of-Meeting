@@ -66,9 +66,15 @@
                         </div>
                         <div class="mb-3">
                             <label id="tracker_label" for="tracker">Departemen</label>
-                            <input name="tracker" id="tracker" required value="{{ old('tracker',$data->tracker) }}" class="form-control @error('tracker')
-        is-invalid
-    @enderror" placeholder="Masukan tracker" />
+                            <select class="form-select form-control form-control-sm" id="tracker" name="tracker">
+                                @foreach ($depts as $dept)
+                                @if (old('tracker') == $dept->id)
+                                <option name="tracker" value="{{ $dept->name }}" selected>{{ $dept->name }}</option>
+                                @else
+                                <option name="tracker" value="{{ $dept->name }}">{{ $dept->name }}</option>
+                                @endif
+                                @endforeach
+                            </select>
                             @error('tracker')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -161,9 +167,15 @@
                         </div>
                         <div class="mb-3">
                             <label id="assignee_label" for="assignee">Assignee</label>
-                            <input id="assignee" name="assignee" type="text" class="form-control @error('assignee')
-            is_invalid
-        @enderror" required value="{{ old('assignee',$data->assignee) }}" placeholder="Masukan Assignee" />
+                            <select class="form-select form-control form-control-sm" id="assignee" name="assignee">
+                                @foreach ($users as $user)
+                                @if (old('assignee') == $user->id)
+                                <option name="assignee" value="{{ $user->name }}" selected>{{ $user->name }}</option>
+                                @else
+                                <option name="assignee" value="{{ $user->name }}">{{ $user->name }}</option>
+                                @endif
+                                @endforeach
+                            </select>
                             @error('assignee')
                             <div class="invalid-feedback">
                                 {{ $message }}
