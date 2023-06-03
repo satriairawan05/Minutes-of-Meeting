@@ -71,7 +71,7 @@
                                     @foreach ($depts as $dept)
                                         <tr>
                                             <td style="text-align: center;">{{ $loop->iteration }}</td>
-                                            <td style="text-align: center;">{{ $dept->name }}</td>
+                                            <td style="text-align: center;">Departemen {{ $dept->name }}</td>
                                             <td style="text-align: center;">
                                                 {{-- Edit Modal Trigger --}}
                                                 <button type="button"

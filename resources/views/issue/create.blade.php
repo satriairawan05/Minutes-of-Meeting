@@ -1,14 +1,41 @@
 @extends('layout.main')
 
 @section('content')
-<div class="container container-fluid">
-    <div class="col-md-2 ms-auto"></div>
-    <div class="col-md-10 ms-auto">
-        <h3 class="mb-2">Add Issue</h3>
-        <div class="card">
-            <div class="card-header">
+<div class="main-content side-content pt-0">
+    <div class="container-fluid">
+        <div class="inner-body">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div>
+                    <h2 class="main-content-title tx-24 mg-b-5">Add Issue</h2>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Issue</li>
+                    </ol>
+                </div>
+                <div class="d-flex">
+                    <div class="justify-content-center">
+                        <button type="button" class="btn btn-white btn-icon-text my-2 mr-2">
+                            <i class="fe fe-download mr-2"></i> Import
+                        </button>
+                        <button type="button" class="btn btn-white btn-icon-text my-2 mr-2">
+                            <i class="fe fe-filter mr-2"></i> Filter
+                        </button>
+                        <button type="button" class="btn btn-primary my-2 btn-icon-text">
+                            <i class="fe fe-download-cloud mr-2"></i> Download Report
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- End Page Header -->
+            <div class="card">
+                <div class="card-header d-flex justify-content-end">
+                    <a href="{{ route('issue.create') }}" class="btn-data btn text-decoration-none text-black">
+                        <i class="fas fa-plus-circle"></i> Add New Data
+                    </a>
+                </div>
                 <div class="card-body">
-                    <form action="/issue" method="post" enctype="multipart/form-data">
+                <form action="/issue" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="is_private" name="is_private" value="1">
@@ -138,9 +165,15 @@
                         </div>
                         <div class="mb-3">
                             <label id="assignee_label" for="assignee">Assignee</label>
-                            <input id="assignee" name="assignee" type="text" class="form-control @error('assignee')
-            is_invalid
-        @enderror" required value="{{ old('assignee') }}" placeholder="Masukan Assignee" />
+                            <select id="select1" class="form-select form-control form-control-sm" id="assignee" name="assignee">
+                                @foreach ($users as $user)
+                                @if (old('assignee') == $user->id)
+                                <option name="assignee" value="{{ $user->name }}" selected>{{ $user->name }}</option>
+                                @else
+                                <option name="assignee" value="{{ $user->name }}">{{ $user->name }}</option>
+                                @endif
+                                @endforeach
+                            </select>
                             @error('assignee')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -163,20 +196,58 @@
                         <div class="d-flex justify-content-end align-items-end">
                             <button type="submit" class="btn btn-sm btn-success ">Save</button>
                         </div>
-                    </form>
-
+                    </form>    
+                </div>
                 </div>
             </div>
+
+            <script>
+                $(document).ready(function() {
+                    // Hide and Show Columns
+                    $('#toggleColumns').on('change', function() {
+                        var column = $(this).attr('id');
+                        $('.' + column).toggle();
+                    });
+
+                    // Expandable Columns
+                    $('.expandable-column').on('click', function() {
+                        $(this).toggleClass('expanded');
+                        $(this).siblings('.expand-content').toggle();
+                    });
+                });
+
+            </script>
+
+            <script>
+                $(document).ready(function() {
+                    // Hide and Show Columns
+                    $('#toggleColumns').on('change', function() {
+                        var column = $(this).val();
+                        $('.' + column).toggle();
+                    });
+                });
+
+            </script>
+
+
         </div>
     </div>
 </div>
+
 <script>
+    const olfFile = document.getElementById('oldFile');
+    const newFile = document.getElementById('file');
+
+    newFile.addEventListener('change', function(e) {
+        oldFile.style.display = 'none';
+    });
+
     const showPreview = (objFileInput) => {
         if (objFileInput.files[0]) {
             var fileReader = new FileReader();
             fileReader.onload = function(e) {
                 $('#blah').attr('src', e.target.result);
-                $("#targetLayer").html('<img src="' + e.target.result + '" class="img-fluid w-25 h-25 m-md-2" />');
+                $("#targetLayer").html('<img src="' + e.target.result + '" class="img-responsive w-25 h-25 img-fluid m-md-2" />');
                 $("#targetLayer").css('opacity', '0.7');
                 $(".icon-choose-image").css('opacity', '0.5');
             }

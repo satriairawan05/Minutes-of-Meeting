@@ -29,6 +29,9 @@ Route::resource('issue', IssueController::class);
 Route::resource('user',UserManagementController::class);
 Route::resource('document',DocumentController::class);
 Route::resource('departemen',DepartemenController::class);
+Route::get('preference', function(){
+    return view('pref.index');
+})->name('preference');
 
 Route::middleware(['guest'])->group(function () {
     Route::get('login', [LoginController::class, 'showLoginForm'])->name('login.form');

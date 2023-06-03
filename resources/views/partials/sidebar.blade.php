@@ -40,13 +40,12 @@
                             href="{{ route('user.index') }}"><span class="shape1"></span><span class="shape2"></span><i
                                 class="ti-email sidemenu-icon"></i><span class="sidemenu-label">User
                             </a>   </li>
-
                     <li class="nav-item">
                         <a class="nav-link"
-                            href="#"><span class="shape1"></span><span class="shape2"></span><i
+                            href="{{ route('preference') }}"><span class="shape1"></span><span class="shape2"></span><i
                                 class="ti-email sidemenu-icon"></i><span class="sidemenu-label">Preferences
-                                Management</a> </li>
-
+                                Management</a> 
+                    </li>
                 </ul>
             </div>
         </div>

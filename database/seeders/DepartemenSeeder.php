@@ -16,43 +16,43 @@ class DepartemenSeeder extends Seeder
         //'Engginering','HSE','Coal & Berging','FAT','HRGA','IT','LOGISTIC','PLANT','PRODUCTION','PURCASHING'
 
         Departemen::create([
-            'name' => 'Departemen Engginering'
+            'name' => 'Engginering'
         ]);
 
         Departemen::create([
-            'name' => 'Departemen HSE'
+            'name' => 'HSE'
         ]);
 
         Departemen::create([
-            'name' => 'Departemen Coal & Berging'
+            'name' => 'Coal & Berging'
         ]);
 
         Departemen::create([
-            'name' => 'Departemen FAT'
+            'name' => 'FAT'
         ]);
 
         Departemen::create([
-            'name' => 'Departemen HRGA'
+            'name' => 'HRGA'
         ]);
 
         Departemen::create([
-            'name' => 'Departemen IT'
+            'name' => 'IT'
         ]);
 
         Departemen::create([
-            'name' => 'Departemen Logistic'
+            'name' => 'Logistic'
         ]);
 
         Departemen::create([
-            'name' => 'Departemen PLANT'
+            'name' => 'PLANT'
         ]);
 
         Departemen::create([
-            'name' => 'Departemen PRODUCTION'
+            'name' => 'PRODUCTION'
         ]);
 
         Departemen::create([
-            'name' => 'Departemen PURCASHING'
+            'name' => 'PURCASHING'
         ]);
 
     }

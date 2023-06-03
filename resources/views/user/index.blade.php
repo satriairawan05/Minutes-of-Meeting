@@ -42,7 +42,6 @@
                                                         <th scope="col">No</th>
                                                         <th scope="col">Name</th>
                                                         <th scope="col">Email</th>
-                                                        <th scope="col">Password</th>
                                                         <th scope="col">Action</th>
                                                     </tr>
                                                 </thead>
@@ -52,7 +51,6 @@
                                                             <th scope="row">{{ $loop->iteration }}</th>
                                                             <td>{!! $user->name !!}</td>
                                                             <td>{!! $user->email !!}</td>
-                                                            <td>{!! $user->password !!}</td>
                                                             <td clas="d-inline">
                                                                 {{-- Show Modal Trigger --}}
                                                                 <button type="button"

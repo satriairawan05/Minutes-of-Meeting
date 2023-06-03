@@ -22,7 +22,7 @@ class DepartemenController extends Controller
      */
     public function create()
     {
-        //
+        return view('dept.create');
     }
 
     /**
@@ -30,7 +30,13 @@ class DepartemenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'name' => ['required']
+        ]);
+
+        Departemen::create($validate);
+
+        return redirect('/departemen')->with('success','Add Departemen Successfully!');
     }
 
     /**
@@ -44,9 +50,11 @@ class DepartemenController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Departemen $departemen)
+    public function edit(Departemen $departemen, $dept_id)
     {
-        //
+        return view('dept.edit',[
+            'dept' => $departemen->find($dept_id)
+        ]);
     }
 
     /**
@@ -54,7 +62,15 @@ class DepartemenController extends Controller
      */
     public function update(Request $request, Departemen $departemen)
     {
-        //
+        $rules = [
+            'name' => ['required']
+        ];
+
+        $validate = $request->validate($rules);
+
+        Departemen::where('id',$departemen->id)->update($validate);
+
+        return redirect('/departemen')->with('success','Updated Departemen Successfully');
     }
 
     /**
