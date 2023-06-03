@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Departemen;
 use App\Models\Meet;
 use App\Models\User;
 use App\Models\Issue;
@@ -33,7 +34,8 @@ class IssueController extends Controller
         return view('issue.create',[
             'issue' => $id,
             'users' => User::get(),
-            'meet' => Meet::latest()->first()
+            'meet' => Meet::latest()->first(),
+            'depts' => Departemen::get()
         ]);
     }
 

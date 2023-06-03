@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Departemen;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Issue extends Model
 {
@@ -14,5 +15,4 @@ class Issue extends Model
 
     public $incrementing = true;
     public $timestamps = true;
-
 }

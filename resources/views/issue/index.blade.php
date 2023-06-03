@@ -9,7 +9,7 @@
                 <!-- Page Header -->
                 <div class="page-header">
                     <div>
-                        <h2 class="main-content-title tx-24 mg-b-5">Meeting Data</h2>
+                        <h2 class="main-content-title tx-24 mg-b-5">Issue Data</h2>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Issue Details</li>
@@ -154,6 +154,7 @@
                         </div>
                     </div>
                 </div>
+
                 <script>
                     $(document).ready(function() {
                         // Hide and Show Columns
