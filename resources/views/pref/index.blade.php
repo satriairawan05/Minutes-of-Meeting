@@ -7,10 +7,10 @@
                 <!-- Page Header -->
                 <div class="page-header">
                     <div>
-                        <h2 class="main-content-title tx-24 mg-b-5">User Data</h2>
+                        <h2 class="main-content-title tx-24 mg-b-5">Preferences</h2>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">User Management</li>
+                            <li class="breadcrumb-item active" aria-current="page">Preferences</li>
                         </ol>
                     </div>
                 </div>
@@ -18,12 +18,12 @@
                 <div class="card">
                     <div class="text-right">
                         <button type="button" class="btn btn-green btn-icon-text my-2 mr-2">
-                            <a href="{{ route('user.create') }}" class="btn-data btn text-decoration-none text-black">
+                            <a href="#" class="btn-data btn text-decoration-none text-black">
                                 <i class="fas fa-plus-circle"></i> Add New Data
                             </a>
                         </button>
                     </div>
-                    <div class="card-body">
+                    {{--  <div class="card-body">
                         @if (session('success'))
                             <div class="alert alert-success container container-fluid" role="alert">
                                 {{ session('success') }}
@@ -130,7 +130,7 @@
                                     <div class="text-danger font-bold text-center text-capitalize">Data tidak tersedia</div>
                                 @endif
 
-                    </div>
+                    </div>  --}}
                 </div>
 
                 <script>
