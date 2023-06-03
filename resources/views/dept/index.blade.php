@@ -132,6 +132,7 @@
                             </table>
                         </div>
 
+                    {{ $depts->links() }}
                     </div>
                 </div>
                 <script>

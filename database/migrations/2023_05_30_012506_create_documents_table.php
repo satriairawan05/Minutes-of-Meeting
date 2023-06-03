@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
-            $table->string('meet_id');
             $table->string('issue_id');
             $table->string('doc_document')->nullable();
             $table->timestamps();
