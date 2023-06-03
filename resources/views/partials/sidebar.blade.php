@@ -21,30 +21,30 @@
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('meet.index') ? 'active' : '' }}"
                             href="{{ route('meet.index') }}"><span class="shape1"></span><span class="shape2"></span><i
-                                class="ti-agenda sidemenu-icon"></i><span class="sidemenu-label">Meeting
-                                Data</span></i></a>
+                                class="fa fa-calendar-minus-o sidemenu-icon"></i><span class="sidemenu-label">Meeting
+                                </span></i></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('issue.index') ? 'active' : '' }}"
                             href="{{ route('issue.index') }}"><span class="shape1"></span><span class="shape2"></span><i
-                                class="ti-write sidemenu-icon"></i><span class="sidemenu-label">Issue Details</span></a>
+                                class="fas fa-newspaper sidemenu-icon"></i><span class="sidemenu-label">Issue</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('document.index') ? 'active' : '' }}"
                             href="{{ route('document.index') }}"><span class="shape1"></span><span
-                                class="shape2"></span><i class="ti-server sidemenu-icon"></i><span
+                                class="shape2"></span><i class="ti-archive sidemenu-icon"></i><span
                                 class="sidemenu-label">Documents</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('user.index') ? 'active' : '' }}"
                             href="{{ route('user.index') }}"><span class="shape1"></span><span class="shape2"></span><i
-                                class="ti-email sidemenu-icon"></i><span class="sidemenu-label">User
+                                class="fe fe-users sidemenu-icon"></i><span class="sidemenu-label">User
                             </a>   </li>
                     <li class="nav-item">
                         <a class="nav-link"
                             href="{{ route('preference') }}"><span class="shape1"></span><span class="shape2"></span><i
-                                class="ti-email sidemenu-icon"></i><span class="sidemenu-label">Preferences
-                                Management</a> 
+                                class="ti-settings sidemenu-icon"></i><span class="sidemenu-label">Preferences
+                                </a>
                     </li>
                 </ul>
             </div>
