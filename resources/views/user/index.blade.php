@@ -16,12 +16,10 @@
                 </div>
 
                 <div class="card">
-                    <div class="text-right">
-                        <button type="button" class="btn btn-green btn-icon-text my-2 mr-2">
-                            <a href="{{ route('user.create') }}" class="btn-data btn text-decoration-none text-black">
-                                <i class="fas fa-plus-circle"></i> Add New Data
-                            </a>
-                        </button>
+                    <div class="card-header d-flex justify-content-end">
+                        <a href="{{ route('user.create') }}" class="btn-data btn text-decoration-none text-black">
+                            <i class="fas fa-plus-circle"></i> Add New Data
+                        </a>
                     </div>
                     <div class="card-body">
                         @if (session('success'))
