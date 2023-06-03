@@ -44,7 +44,7 @@ class DepartemenController extends Controller
      */
     public function show(Departemen $departemen)
     {
-        //
+        Departemen::destroy($departemen->id);
     }
 
     /**
@@ -78,6 +78,8 @@ class DepartemenController extends Controller
      */
     public function destroy(Departemen $departemen)
     {
-        //
+        Departemen::destroy($departemen->id);
+
+        return redirect('/departemen')->with('success','Deleted Departemen Successfully');
     }
 }

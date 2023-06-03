@@ -41,9 +41,9 @@
                     </div>
 
                     <div class="card-body">
-                        @if (session('msg'))
+                        @if(session('success'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <strong>Success</strong> {{ session('msg') }}
+                                <strong>Success</strong>{{ session('success') }}
                                 <button type="button" class="btn-close" data-bs-dismiss="alert"
                                     aria-label="Close"></button>
                             </div>
@@ -89,7 +89,7 @@
                                             <td style="text-align: center;">
                                                 {{-- Edit Modal Trigger --}}
                                                 <button type="button"
-                                                    onclick="window.location='{{ url('meet/' . $d->meet_id) }}'"
+                                                    onclick="window.location='{{ route('meet.edit',$d->meet_id) }}'"
                                                     class="btn bg-gradient-info" title="Edit Data">
                                                     <i class="fas fa-edit"></i>
                                                 </button>

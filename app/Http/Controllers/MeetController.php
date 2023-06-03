@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Meet;
 use App\Models\User;
-use App\Http\Requests\StoreMeetRequest;
-use App\Http\Requests\UpdateMeetRequest;
-use App\Models\Issue;
+use Illuminate\Http\Request;
 
 class MeetController extends Controller
 {
@@ -15,99 +13,99 @@ class MeetController extends Controller
      */
     public function index()
     {
-        return view('meet.data')->with([
-            'meets' => Meet::paginate(15)
+
+        return view('meet.index',[
+            'meets' => Meet::get()
         ]);
     }
-
-    public function list(){
-        return view('meet.data')->with([
-            'meets' => Meet::paginate(15)
-        ]);
-    }
-
-
 
     /**
-     * Store a newly created resource in storage.
+     * Show the form for creating a new resource.
      */
-     public function create()
-     {
+    public function create()
+    {
         $formattedDate = date('mY');
         $prefix = "MOM-";
         $lastCount = Meet::select('meet_id')->latest('meet_id')->pluck('meet_id')->first();
         $count = $lastCount + 1;
         $id_u = $prefix . str_pad($count, 3, '0', STR_PAD_LEFT) . "/" . $formattedDate;
-        return view('meet.addmeet', [
-            'meets' => $id_u,
+
+        return view('meet.create',[
+            'meet_id' => $id_u,
             'users' => User::get()
         ]);
-     }
+    }
 
-    public function store(StoreMeetRequest $request)
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
     {
-        $meet = new Meet;
-        $meet->meet_xid = $request->input('txtmid');
-        $meet->meet_project = $request->input('project');
-        $meet->meet_name = $request->input('txtmname');
-        $meet->meet_date = $request-> input('txtmdate');
-        $meet->meet_time = $request->input('txtmtime');
-        $meet->meet_preparedby = $request->input('txtmprepared');
-        $meet->meet_locate = $request->input('txtmloc');
-        $meet->meet_attend = $request->input('txtmatt');
-        $meet->save();
+        $validate = $request->validate([
+            'meet_xid' => ['required'],
+            'meet_name' => ['required'],
+            'meet_project' => ['required'],
+            'meet_date' => ['required'],
+            'meet_time' => ['required'],
+            'meet_attend' => ['required'],
+            'meet_preparedby' => ['required'],
+            'meet_locate' => ['required'],
+        ]);
 
-        return redirect('meet')->with('msg','Add New Meeting Successfully');
+        Meet::create($validate);
+
+        return redirect('/meet')->with('success','Added Meet Successfully!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Meet $meets, $meet_id)
+    public function show(Meet $meet)
     {
-        $data = $meets->find($meet_id);
-        return view('meet.editmeet')->with([
-            'txtmid' => $data->meet_id,
-            'txtmxid' => $data->meet_xid,
-            'txtmname' => $data->meet_name,
-            'txtmdate' => $data->meet_date,
-            'txtmtime' => $data->meet_time,
-            'txtmprepared' => $data->meet_preparedby,
-            'txtmloc' => $data->meet_locate,
-            'txtmatt' => $data->meet_attend,
-            'project' => $data->meet_project,
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Meet $meet)
+    {
+        return view('meet.edit',[
+            'meet' => $meet,
             'users' => User::get()
         ]);
     }
 
-
-
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateMeetRequest $request, Meet $meets, $meet_id)
+    public function update(Request $request, Meet $meet)
     {
-        $data = $meets->find($meet_id);
-        $data->meet_xid = $request->input('txtmid');
-        $data->meet_project = $request->input('project');
-        $data->meet_name = $request->input('txtmname');
-        $data->meet_date = $request-> input('txtmdate');
-        $data->meet_time = $request->input('txtmtime');
-        $data->meet_preparedby = $request->input('txtmprepared');
-        $data->meet_locate = $request->input('txtmloc');
-        $data->meet_attend = $request->input('txtmatt');
-        $data->save();
+        $rules = [
+            'meet_xid' => ['required'],
+            'meet_name' => ['required'],
+            'meet_project' => ['required'],
+            'meet_date' => ['required'],
+            'meet_time' => ['required'],
+            'meet_attend' => ['required'],
+            'meet_preparedby' => ['required'],
+            'meet_locate' => ['required'],
+        ];
 
-        return redirect('meet')->with('msg','Edit Meeting '.$data->meet_name.' ');
+        $validate = $request->validate($rules);
+
+        Meet::where('meet_id',$meet->meet_id)->update($validate);
+
+        return redirect('/meet')->with('success','Updated Meet Successfully!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Meet $meets, $meet_id)
+    public function destroy(Meet $meet)
     {
-        $data = $meets->find($meet_id);
-        $data->delete();
-        return redirect('meet')->with('msg','Data Meeting '.$data->meet_name.' dihapus');
+        Meet::destroy($meet->meet_id);
+
+        return redirect('/meet')->with('success','Deleted Meet Successfully!');
     }
 }

@@ -23,7 +23,6 @@ Route::get('/', function () {
     return view('layout.dashboard');
 })->name('dashboard');
 
-Route::get('/meet/list', [MeetController::class, 'list'])->name('meet.data');
 Route::resource('meet', MeetController::class);
 Route::resource('issue', IssueController::class);
 Route::resource('user',UserManagementController::class);

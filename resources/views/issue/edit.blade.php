@@ -110,11 +110,12 @@
                         </div>
                         <div class="mb-3">
                             <label id="status_label" for="status">Status</label>
-                            <select class="form-select" name="status">
+                            <select class="form-select form-control form-control-sm" name="status">
                                 <option name="status" value="New">New</option>
                                 <option name="status" value="Continue">Continue</option>
                                 <option name="status" value="Progress">Progress</option>
                                 <option name="status" value="Over Due">Over Due</option>
+                                <option name="status" value="Complete">Complete</option>
                                 <option name="status" value="Closed">Closed</option>
                             </select>
                             @error('status')
@@ -125,7 +126,7 @@
                         </div>
                         <div class="mb-3">
                             <label id="priority_label" for="priority">Priority</label>
-                            <select class="form-select" name="priority">
+                            <select class="form-select form-control form-control-sm" name="priority">
                                 <option name="priority" value="Low">Low</option>
                                 <option name="priority" value="Medium">Medium</option>
                                 <option name="priority" value="High">High</option>

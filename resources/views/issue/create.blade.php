@@ -120,6 +120,7 @@
                                 <option name="status" value="Continue">Continue</option>
                                 <option name="status" value="In Progress">In Progress</option>
                                 <option name="status" value="Over Due">Over Due</option>
+                                <option name="status" value="Complete">Complete</option>
                                 <option name="status" value="Closed">Closed</option>
                             </select>
                             @error('status')
@@ -196,7 +197,7 @@
                         <div class="d-flex justify-content-end align-items-end">
                             <button type="submit" class="btn btn-sm btn-success ">Save</button>
                         </div>
-                    </form>    
+                    </form>
                 </div>
                 </div>
             </div>

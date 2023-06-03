@@ -14,6 +14,19 @@ return new class extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
             $table->string('issue_id');
+            $table->string('issue_xid',50);
+            $table->string('project',50);
+            $table->string('tracker',50);
+            $table->string('subject',100);
+            $table->longText('c_action');
+            $table->longText('description');
+            $table->string('status',100);
+            $table->string('priority',100);
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->string('file')->nullable();
+            $table->string('assignee',100);
+            $table->tinyInteger('is_private')->nullable();
             $table->string('doc_document')->nullable();
             $table->timestamps();
         });

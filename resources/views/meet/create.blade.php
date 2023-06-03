@@ -7,7 +7,7 @@
             <!-- Page Header -->
             <div class="page-header">
                 <div>
-                    <h2 class="main-content-title tx-24 mg-b-5">Edit Meeting</h2>
+                    <h2 class="main-content-title tx-24 mg-b-5">Add Meeting</h2>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Meeting</li>
@@ -32,20 +32,13 @@
             <!--Row-->
             <div class="card col-12">
                 <div class="card-body">
-                    <form method="POST" action="{{ url('meet/'.$txtmid) }}" class="">
+                    <form action="{{ route('meet.store') }}" method="POST">
                         @csrf
-                        @method('PUT')
                         <div class="row mb-3">
-                            <label for="txtmxid" class="col-sm-2 col-form-label">ID Meet</label>
+                            <label for="meet_xid" class="col-sm-2 col-form-label">ID Meet</label>
                             <div class="col-12">
-                                <input type="text" class="form-control-plaintext" id="txtmxid" name="txtmxid" value="{{ $txtmxid }}">
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="txtmname" class="col-sm-2 col-form-label">Meeting Name</label>
-                            <div class="col-12">
-                                <input type="text" class="form-control form-control-sm @error('project') is-invalid @enderror" id="txtmname" name="txtmname" value="{{ old('txtmname') }}" placeholder="Masukan Meeting Name">
-                                @error('txtmname')
+                                <input type="text" class="form-control form-control-sm @error('meet_xid') is-invalid @enderror" id="meet_xid" name="meet_xid" value="{{ $meet_id }}" readonly>
+                                @error('meet_xid')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -53,14 +46,25 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="project" class="col-sm-2 col-form-label">Project</label>
+                            <label for="meet_name" class="col-sm-2 col-form-label">Meeting Name</label>
                             <div class="col-12">
-                                <select class="form-select form-control form-control-sm" name="project">
-                                    <option name="project" value="MEETING HO">MEETING HO</option>
-                                    <option name="project" value="MEETING TEAM 9">MEETING TEAM 9</option>
-                                    <option name="project" value="MEETING SITE">MEETING SITE</option>
+                                <input type="text" class="form-control form-control-sm @error('project') is-invalid @enderror" id="meet_name" name="meet_name" value="{{ old('meet_name') }}" placeholder="Masukan Meeting Name">
+                                @error('meet_name')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="meet_project" class="col-sm-2 col-form-label">Project</label>
+                            <div class="col-12">
+                                <select class="form-select form-control form-control-sm" name="meet_project">
+                                    <option name="meet_project" value="MEETING HO">MEETING HO</option>
+                                    <option name="meet_project" value="MEETING TEAM 9">MEETING TEAM 9</option>
+                                    <option name="meet_project" value="MEETING SITE">MEETING SITE</option>
                                 </select>
-                                @error('project')
+                                @error('meet_project')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -68,10 +72,10 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="txtmdate" class="col-sm-2 col-form-label">Date Of Meeting</label>
+                            <label for="meet_date" class="col-sm-2 col-form-label">Date Of Meeting</label>
                             <div class="col-12">
-                                <input type="date" class="form-control form-control-sm @error('txtmdate') is-invalid @enderror" id="txtmdate" name="txtmdate" value="{{ $txtmdate }}">
-                                @error('txtmdate')
+                                <input type="date" class="form-control form-control-sm @error('meet_date') is-invalid @enderror" id="meet_date" name="meet_date" value="{{ old('meet_date') }}">
+                                @error('meet_date')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -79,10 +83,10 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="txtmtime" class="col-sm-2 col-form-label">Time Of Meeting</label>
+                            <label for="meet_time" class="col-sm-2 col-form-label">Time Of Meeting</label>
                             <div class="col-12">
-                                <input type="time" class="form-control form-control-sm @error('txtmtime') is-invalid @enderror" id="txtmtime" name="txtmtime" value="{{ $txtmtime }}">
-                                @error('txtmtime')
+                                <input type="time" class="form-control form-control-sm @error('meet_time') is-invalid @enderror" id="meet_time" name="meet_time" value="{{ old('meet_time') }}">
+                                @error('meet_time')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -90,10 +94,10 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="txtmprepared" class="col-sm-2 col-form-label">Minutes Prepared by</label>
+                            <label for="meet_preparedby" class="col-sm-2 col-form-label">Minutes Prepared by</label>
                             <div class="col-12">
-                                <input type="text" class="form-control form-control-sm @error('txtmprepared') is-invalid @enderror" id="txtmprepared" name="txtmprepared" value="{{ $txtmprepared }}" placeholder="Masukan Minutes Prepared By">
-                                @error('txtmprepared')
+                                <input type="text" class="form-control form-control-sm @error('meet_preparedby') is-invalid @enderror" id="meet_preparedby" name="meet_preparedby" value="{{ old('meet_preparedby') }}" placeholder="Masukan Minutes Prepared By">
+                                @error('meet_preparedby')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -101,10 +105,10 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="txtmloc" class="col-sm-2 col-form-label">Meeting Locate</label>
+                            <label for="meet_locate" class="col-sm-2 col-form-label">Meeting Locate</label>
                             <div class="col-12">
-                                <input type="text" class="form-control form-control-sm @error('txtmloc') is-invalid @enderror" id="txtmloc" name="txtmloc" value="{{ $txtmloc }}" placeholder="Masukan Meeting Locate">
-                                @error('txtmloc')
+                                <input type="text" class="form-control form-control-sm @error('meet_locate') is-invalid @enderror" id="meet_locate" name="meet_locate" value="{{ old('meet_locate') }}" placeholder="Masukan Meeting Locate">
+                                @error('meet_locate')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -112,25 +116,27 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="select1" class="col-sm-2 col-form-label" for="txtmatt">Attendees</label>
+                            <label class="col-sm-2 col-form-label" for="meet_attend">Attendees</label>
                             <div class="col-12">
-                                <select id="select1" class="form-select form-control form-control-sm" id="txtmatt" name="txtmatt">
-                                    @foreach($users as $user)
-                                    @if(old('txtmatt') == $user->id)
-                                    <option name="txtmatt" value="{{ $user->name }}" selected>{{ $user->name }}</option>
+                                <select id="meet_attend" class="form-select form-control form-control-sm" name="meet_attend">
+                                    @foreach ($users as $user)
+                                    @if (old('meet_attend') == $user->id)
+                                    <option name="meet_attend" value="{{ $user->name }}" selected>{{ $user->name }}
+                                    </option>
                                     @else
-                                    <option name="txtmatt" value="{{ $user->name }}">{{ $user->name }}</option>
+                                    <option name="meet_attend" value="{{ $user->name }}">{{ $user->name }}</option>
                                     @endif
                                     @endforeach
                                 </select>
 
                             </div>
                         </div>
+
                         <div class="row mb-3">
                             <label for="" class="col-sm-2 col-form-label"></label>
                             <div class="col-12">
                                 <button type="submit" class="btn btn-sm btn-success">
-                                    Update
+                                    Submit
                                 </button>
                             </div>
                         </div>

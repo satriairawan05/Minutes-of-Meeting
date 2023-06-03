@@ -44,31 +44,33 @@ class IssueController extends Controller
      */
     public function store(Request $request)
     {
-        $issue = new Issue;
-        $issue->issue_xid = $request->input('issue_xid');
-        $issue->project = $request->input('project');
-        $issue->tracker = $request->input('tracker');
-        $issue->subject = $request->input('subject');
-        $issue->status = $request->input('status');
-        $issue->priority = $request->input('priority');
-        $issue->description = $request->input('description');
-        $issue->start_date = $request->input('start_date');
-        $issue->end_date = $request->input('end_date');
-        $issue->c_action = $request->input('c_action');
-        $issue->assignee = $request->input('assignee');
-        $issue->created_at;
+        $validate = $request->validate([
+            'issue_xid' => ['required'],
+            'project' => ['required'],
+            'tracker' => ['required'],
+            'subject' => ['required'],
+            'status' => ['required'],
+            'priority' => ['required'],
+            'description' => ['required'],
+            'start_date' => ['required'],
+            'end_date' => ['required'],
+            'c_action' => ['required'],
+            'assignee' => ['required'],
+            'file' => ['required','mimes:jpg,png']
+        ]);
+
 
         if($request->file('file')){
-            $issue->file = $request->file('file')->store('images');
+            $validate['file'] = $request->file('file')->store('images');
         }
 
         if($request->input('is_private')){
-            $issue->is_private = $request->is_private;
+            $validate['is_private'] = $request->is_private;
         } else {
-            $issue->is_private = 0;
+            $validate['is_private'] = 0;
         }
 
-        $issue->save();
+        Issue::create($validate);
 
         return redirect('issue')->with('success','Added Successfully!');
     }
@@ -99,31 +101,36 @@ class IssueController extends Controller
      */
     public function update(Request $request, Issue $issue)
     {
-        $issue = Issue::find($issue->issue_id);
-        $issue->project = $request->input('project');
-        $issue->tracker = $request->input('tracker');
-        $issue->subject = $request->input('subject');
-        $issue->status = $request->input('status');
-        $issue->priority = $request->input('priority');
-        $issue->description = $request->input('description');
-        $issue->start_date = $request->input('start_date');
-        $issue->end_date = $request->input('end_date');
-        $issue->c_action = $request->input('c_action');
-        $issue->assignee = $request->input('assignee');
+        $rules = [
+            'issue_xid' => ['required'],
+            'project' => ['required'],
+            'tracker' => ['required'],
+            'subject' => ['required'],
+            'c_action' => ['required'],
+            'description' => ['required'],
+            'status' => ['required'],
+            'priority' => ['required'],
+            'start_date' => ['required'],
+            'end_date' => ['required'],
+            'assignee' => ['required']
+        ];
+
+        $validate = $request->validate($rules);
+
         if($request->file('file')){
             if($request->oldFile){
                 Storage::delete([$request->oldFile]);
             }
-            $issue->file = $request->file('file')->store('images');
+            $validate['file'] = $request->file('file')->store('images');
         }
 
-        if($request->input('is_private') == $issue->is_private){
-            $issue->is_private = $request->is_private;
+        if($request->input('is_private')){
+            $validate['is_private'] = $request->is_private;
         } else {
-            $issue->is_private = 0;
+            $validate['is_private'] = 0;
         }
-        $issue->updated_at;
-        $issue->save();
+
+        Issue::where('issue_id',$issue->id)->update($validate);
 
         return redirect('issue')->with('success','Updated Successfully!');
     }

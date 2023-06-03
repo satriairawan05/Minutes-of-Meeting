@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Document;
+use App\Models\Issue;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -13,6 +14,9 @@ class DocumentController extends Controller
      */
     public function index()
     {
+        $data = Issue::where('status','=','Closed')->get();
+        return dd($data);
+
         return view('doc.index');
     }
 
