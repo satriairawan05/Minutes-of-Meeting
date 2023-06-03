@@ -60,7 +60,8 @@
                         <div class="row mb-3">
                             <label for="meet_project" class="col-sm-2 col-form-label">Project</label>
                             <div class="col-12">
-                                <select class="form-select form-control form-control-sm" name="meet_project">
+                                <select class="form-select form-control form-control-sm" name="meet_project" ">
+                                    <option name="meet_project" >{{ old('meet_name',$meet->meet_project) }}</option>
                                     <option name="meet_project" value="MEETING HO">MEETING HO</option>
                                     <option name="meet_project" value="MEETING TEAM 9">MEETING TEAM 9</option>
                                     <option name="meet_project" value="MEETING SITE">MEETING SITE</option>

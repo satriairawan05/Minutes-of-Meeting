@@ -78,7 +78,7 @@
                             <label id="tracker_label" for="tracker">Departemen</label>
                             <select class="form-select form-control form-control-sm" id="tracker" name="tracker">
                                 @foreach ($depts as $dept)
-                                @if (old('tracker') == $dept->id)
+                                @if (old('tracker') == $dept->name)
                                 <option name="tracker" value="{{ $dept->name }}" selected>{{ $dept->name }}</option>
                                 @else
                                 <option name="tracker" value="{{ $dept->name }}">{{ $dept->name }}</option>
