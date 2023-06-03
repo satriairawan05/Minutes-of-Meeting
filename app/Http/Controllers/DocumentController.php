@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Document;
+use App\Models\Meet;
+use App\Models\User;
 use App\Models\Issue;
+use App\Models\Document;
+use App\Models\Departemen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -14,10 +17,11 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        $data = Issue::where('status','=','Closed')->get();
-        return dd($data);
+        $data = Issue::where('status', '=', 'Closed')->get();
 
-        return view('doc.index');
+        return view('doc.index', [
+            'docs' => $data
+        ]);
     }
 
     /**
@@ -25,7 +29,11 @@ class DocumentController extends Controller
      */
     public function create()
     {
-        return view('doc.create');
+        return view('doc.create',[
+            'issue' => Issue::where('status', '=', 'Closed')->get(),
+            'depts' => Departemen::get(),
+            'users' => User::get()
+        ]);
     }
 
     /**
@@ -33,18 +41,22 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
-        $validate = $request->validate([
-            'doc_document' => ['required','mimes:pdf']
-        ]);
+        $doc = new Document;
+        $doc->issue_xid = $request->issue_xid;
+        $doc->start_date = $request->start_date;
+        $doc->end_date = $request->end_date;
+        $doc->project = $request->project;
+        $doc->tracker = $request->tracker;
+        $doc->assignee = $request->assignee;
+        $doc->description = $request->description;
+        $doc->subject = $request->subject;
+        $doc->status = $request->status;
+        $doc->c_action = $request->c_action;
+        $doc->file = $request->file;
+        $doc->is_private = $request->is_private;
+        $doc->save();
 
-        if($request->file('document'))
-        {
-            $validate['doc_document'] = $request->file('doc_document')->store('documents');
-        }
-
-        Document::create($validate);
-
-        return redirect('/document')->with('success','Added Document Successfully');
+        return redirect('/document')->with('success', 'Added Document Successfully');
     }
 
     /**
@@ -60,8 +72,10 @@ class DocumentController extends Controller
      */
     public function edit(Document $document)
     {
-        return view('doc.edit',[
-            'doc' => $document
+        return view('doc.edit', [
+            'doc' => Issue::where('status', '=', 'Closed')->get(),
+            'depts' => Departemen::get(),
+            'users' => User::get()
         ]);
     }
 
@@ -70,24 +84,22 @@ class DocumentController extends Controller
      */
     public function update(Request $request, Document $document)
     {
-        $rules = [
-            'doc_document' => ['required','mimes:pdf']
-        ];
+        $doc = new Document;
+        $doc->issue_xid = $request->issue_xid;
+        $doc->start_date = $request->start_date;
+        $doc->end_date = $request->end_date;
+        $doc->project = $request->project;
+        $doc->tracker = $request->tracker;
+        $doc->assignee = $request->assignee;
+        $doc->description = $request->description;
+        $doc->subject = $request->subject;
+        $doc->status = $request->status;
+        $doc->c_action = $request->c_action;
+        $doc->file = $request->file;
+        $doc->is_private = $request->is_private;
+        $doc->save();
 
-        $validate = $request->validate($rules);
-
-        if($request->file('doc_document'))
-        {
-            if($request->oldDocument)
-            {
-                Storage::delete([$request->oldDocument]);
-            }
-            $validate['doc_document'] = $request->file('doc_document')->store('documents');
-        }
-
-        Document::where('id',$document->id)->update($validate);
-
-        return redirect('/document')->with('success','Updated Document Successfully');
+        return redirect('/document')->with('success', 'Updated Document Successfully');
     }
 
     /**
@@ -97,10 +109,10 @@ class DocumentController extends Controller
     {
         Document::destroy($document->id);
 
-        if($document->document){
+        if ($document->document) {
             Storage::delete([$document->document]);
         }
 
-        return redirect('/document')->with('success','Deleted Document Successfully');
+        return redirect('/document')->with('success', 'Deleted Document Successfully');
     }
 }
