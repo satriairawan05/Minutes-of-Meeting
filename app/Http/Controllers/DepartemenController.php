@@ -12,7 +12,9 @@ class DepartemenController extends Controller
      */
     public function index()
     {
-        //
+        return view('dept.index',[
+            'depts' => Departemen::paginate(5)
+        ]);
     }
 
     /**

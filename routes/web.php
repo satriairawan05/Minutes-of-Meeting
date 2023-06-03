@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DepartemenController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\LoginController;
@@ -27,6 +28,7 @@ Route::resource('meet', MeetController::class);
 Route::resource('issue', IssueController::class);
 Route::resource('user',UserManagementController::class);
 Route::resource('document',DocumentController::class);
+Route::resource('departemen',DepartemenController::class);
 
 Route::middleware(['guest'])->group(function () {
     Route::get('login', [LoginController::class, 'showLoginForm'])->name('login.form');
