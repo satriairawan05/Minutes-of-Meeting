@@ -27,7 +27,6 @@ return new class extends Migration
             $table->string('file')->nullable();
             $table->string('assignee',100);
             $table->tinyInteger('is_private')->nullable();
-            $table->string('doc_document')->nullable();
             $table->timestamps();
         });
     }
