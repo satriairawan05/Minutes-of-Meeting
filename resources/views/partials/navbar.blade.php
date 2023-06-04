@@ -128,13 +128,13 @@
                     </div>
                     <div class="dropdown main-profile-menu">
                         <div class="nav-link text-body font-weight-bold px-0">
-                            <i class="fa fa-user me-sm-1"></i>
+                            <i class="fa fa-user me-sm-1 text-white"></i>
                             @auth
-                                <span class="d-sm-inline d-none">
+                                <span class="d-sm-inline d-none text-white">
                                     {{ auth()->user()->name }}
                                 </span>
                             @else
-                                <span class="d-sm-inline d-none">
+                                <span class="d-sm-inline d-none text-white">
                                     Administrator
                                 </span>
                             @endauth

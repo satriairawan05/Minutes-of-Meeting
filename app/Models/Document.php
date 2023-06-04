@@ -13,27 +13,5 @@ class Document extends Model
     use HasFactory;
 
     protected $table = 'documents';
-    protected $guarded = 'id';
-
-    protected $with = ['meets','issues'];
-
-    /**
-     * Get all of the meets for the Document
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function meets(): HasMany
-    {
-        return $this->hasMany(Meet::class,'meet_id');
-    }
-
-    /**
-     * Get all of the issues for the Document
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function issues(): HasMany
-    {
-        return $this->hasMany(MeetDetail::class);
-    }
+    protected $guarded = 'doc_id';
 }
