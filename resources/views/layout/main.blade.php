@@ -48,7 +48,7 @@
     <link href="{{ asset('assets/switcher/demo.css') }}" rel="stylesheet">
 </head>
 
-<body class="main-body leftmenu">
+<body class="main-body leftmenu dark-theme">
 
     <!-- Switcher -->
     <div class="switcher-wrapper">
