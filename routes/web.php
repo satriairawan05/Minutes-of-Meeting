@@ -34,7 +34,8 @@ Route::resource('document',DocumentController::class);
 Route::get('issue/{issue}/doc', [DocumentController::class, 'showForm'])->name('issueDoc.form');
 
 // Update data Issue ke Document yang sudah ada
-Route::get('issue/{issue}/doc/{doc}',[DocumentController::class, 'updateForm'])->name('issueDoc.update');
+Route::get('issue/{issue}/doc/{doc}/edit',[DocumentController::class, 'editForm'])->name('issue.document.edit');
+Route::put('issue/{issue}/doc',[DocumentController::class, 'updateForm'])->name('issueDoc.update');
 
 
 Route::get('preference', function(){

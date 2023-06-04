@@ -46,6 +46,46 @@
                     </div>
                     @endif
                     <div class="table-responsive">
+                        <div class="d-flex justify-content-end align-items-end ms-lg-auto">
+                            <table class="table table-bordered data-table table-responsive table-sm table-striped table-hover">
+                                <thead class="table-header text-center">
+                                    <tr>
+                                        <th>Meet ID</th>
+                                        <td>{!! $meet->meet_xid !!}</td>
+                                    </tr>
+                                </thead>
+                                <tbody class="table-header text-center">
+                                    <tr>
+                                        <th>Meet Name</th>
+                                        <td>{!! $meet->meet_name !!}</td>
+                                    </tr>
+                                </tbody>
+                                <tbody class="table-header text-center">
+                                    <tr>
+                                        <th>Prepared By</th>
+                                        <td>{!! $meet->meet_preparedby !!}</td>
+                                    </tr>
+                                </tbody>
+                                <tbody class="table-header text-center">
+                                    <tr>
+                                        <th>Locate</th>
+                                        <td>{!! $meet->meet_locate !!}</td>
+                                    </tr>
+                                </tbody>
+                                <tbody class="table-header text-center">
+                                    <tr>
+                                        <th>Date & Time</th>
+                                        <td>{!! $meet->meet_date !!}/{!! $meet->meet_time !!}</td>
+                                    </tr>
+                                </tbody>
+                                <tbody class="table-header text-center">
+                                    <tr>
+                                        <th>Attendances</th>
+                                        <td>{!! $meet->meet_attend !!}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                         <table class="table table-bordered data-table table-responsive table-sm table-striped table-hover">
                             <thead class="table-header text-center">
                                 <tr>
@@ -53,6 +93,9 @@
                                     <th>Issue ID</th>
                                     <th>Meet ID</th>
                                     <th>Status</th>
+                                    <th>Priority</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
                                     <th width="100px">Action</th>
                                 </tr>
                             </thead>
@@ -63,15 +106,20 @@
                                     <td>{!! $doc->issue_xid !!}</td>
                                     <td>{!! $doc->project !!}</td>
                                     <td>{!! $doc->status !!}</td>
+                                    <td>{!! $doc->priority !!}</td>
+                                    <td>{!! Carbon\Carbon::parse($doc->start_date)->format('l, d M Y') !!}</td>
+                                    <td>{!! Carbon\Carbon::parse($doc->end_date)->format('l, d M Y') !!}</td>
                                     <td>
                                         <a href="{{ route('issueDoc.form',$doc->issue_id) }}" class="btn bg-gradient-info">
                                             <i class="fas fa-plus"></i>
                                         </a>
-                                        @foreach ($documents as $document)
-                                        <a href="/issue/{{ $doc->issue_id }}/doc/{{ $document->doc_id }}" class="btn bg-gradient-info">
+                                        {{-- @foreach ($documents as $document)
+                                        <a href="{{ route('issue.document.edit',[$doc->issue_id,$document->doc_id]) }}" class="btn bg-gradient-info">
+                                            <input type="hidden" name="doc_id" value="{{ $document->doc_id }}">
+                                            <input type="hidden" name="issue_id" value="{{ $doc->issue_id }}">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        @endforeach
+                                        @endforeach --}}
                                     </td>
                                 </tr>
                                 @endforeach

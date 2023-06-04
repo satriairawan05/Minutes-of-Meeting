@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Departemen;
+use App\Models\Meet;
 use App\Models\Issue;
 use App\Models\Document;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DocumentController extends Controller
@@ -17,7 +20,8 @@ class DocumentController extends Controller
 
         return view('doc.index', [
             'docs' => $data,
-            'documents' => Document::get()
+            'meet' => Meet::latest()->get()->first(),
+            'documents' => Document::paginate(15)
         ]);
     }
 
@@ -86,26 +90,37 @@ class DocumentController extends Controller
         }
     }
 
+    public function editForm(Document $document, Issue $issue)
+    {
+        return view('doc.issue_edit',[
+            'depts' => Departemen::get(),
+            'users' => User::get(),
+            'document' => $document,
+            'issue' => $issue
+        ]);
+    }
+
     public function updateForm(Document $document, Issue $issue)
     {
         // cek priority atau tracker atau status sebelumnya sama
         if ($document->tracker == $issue->tracker || $document->status == $issue->status || $document->priority == $issue->priority) {
             // update datanya
-            $document->issue_id = $issue->issue_id;
-            $document->issue_xid = $issue->issue_xid;
-            $document->project = $issue->project;
-            $document->tracker = $issue->tracker;
-            $document->subject = $issue->subject;
-            $document->c_action = $issue->c_action;
-            $document->description = $issue->description;
-            $document->status = $issue->status;
-            $document->priority = $issue->priority;
-            $document->start_date = $issue->start_date;
-            $document->end_date = $issue->end_date;
-            $document->assignee = $issue->assignee;
-            $document->file = $issue->file;
-            $document->is_private = $issue->is_private;
-            $document->save();
+            $document->where('doc_id',$document->doc_id)->update([
+                $document->issue_id = $issue->issue_id,
+                $document->issue_xid = $issue->issue_xid,
+                $document->project = $issue->project,
+                $document->tracker = $issue->tracker,
+                $document->subject = $issue->subject,
+                $document->c_action = $issue->c_action,
+                $document->description = $issue->description,
+                $document->status = $issue->status,
+                $document->priority = $issue->priority,
+                $document->start_date = $issue->start_date,
+                $document->end_date = $issue->end_date,
+                $document->assignee = $issue->assignee,
+                $document->file = $issue->file,
+                $document->is_private = $issue->is_private,
+            ]);
 
             return redirect('document')->with('success', 'Updated Archive Successfully');
         }
