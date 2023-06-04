@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="{{ asset('assets/img/brand/favicon.ico') }}" type="image/x-icon" />
     <title>BSS: Login MoM</title>
 
     <!-- Font Icon -->
@@ -23,7 +24,7 @@
             <div class="container">
                 <div class="signin-content">
                     <div class="signin-image">
-                        <figure><img src="{{ asset('assetslogin/images/signin-image.jpg') }}" alt="sing up image"></figure>
+                        <figure><img src="{{ asset('assetslogin/images/signin-image.png') }}" alt="sing up image"></figure>
                         <!-- <a href="#" class="signup-image-link">Create an account</a> -->
                     </div>
 
