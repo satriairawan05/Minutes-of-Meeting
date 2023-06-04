@@ -46,7 +46,8 @@
                                 <thead class="table-header text-center">
                                     <tr>
                                         <th>No</th>
-                                        <th>Meeting</th>
+                                        <th>Issue ID</th>
+                                        <th>Meeting ID</th>
                                         <th>Dept</th>
                                         <th>Subject</th>
                                         <th>Description</th>
@@ -60,6 +61,7 @@
                                     @foreach ($issues as $i)
                                         <tr>
                                             <th scope="row">{!! $loop->iteration !!}</th>
+                                            <td>{!! $i->issue_xid !!}</td>
                                             <td>{!! $i->project !!}</td>
                                             <td>{!! $i->tracker !!}</td>
                                             <td>{!! $i->subject !!}</td>

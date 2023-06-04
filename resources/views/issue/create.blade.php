@@ -64,17 +64,6 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label id="subject_label" for="subject">Subject</label>
-                            <input id="subject" name="subject" type="text" class="form-control @error('subject')
-            is_invalid
-        @enderror" required value="{{ old('subject') }}" placeholder="Masukan Subject" />
-                            @error('subject')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
                             <label id="tracker_label" for="tracker">Departemen</label>
                             <select class="form-select form-control form-control-sm" id="tracker" name="tracker">
                                 @foreach ($depts as $dept)
@@ -91,6 +80,18 @@
                             </div>
                             @enderror
                         </div>
+                        <div class="mb-3">
+                            <label id="subject_label" for="subject">Subject</label>
+                            <input id="subject" name="subject" type="text" class="form-control @error('subject')
+            is_invalid
+        @enderror" required value="{{ old('subject') }}" placeholder="Masukan Subject" />
+                            @error('subject')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+
                         <div class="mb-3">
                             <label id="description_label" for="description">Problem Identification</label>
                             <input name="description" id="description" required value="{{ old('description') }}" class="form-control @error('description')
