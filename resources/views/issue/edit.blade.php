@@ -116,7 +116,8 @@
                         </div>
                         <div class="mb-3">
                             <label id="status_label" for="status">Status</label>
-                            <select class="form-select form-control form-control-sm" name="status" value="{{ old('c_action', $data->status) }}>
+                            <select class="form-select form-control form-control-sm" name="status" >
+                                <option name="status">{{ $data->status }}</option>
                                 <option name="status" value="New">New</option>
                                 <option name="status" value="Continue">Continue</option>
                                 <option name="status" value="Progress">Progress</option>

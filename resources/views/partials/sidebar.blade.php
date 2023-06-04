@@ -27,7 +27,7 @@
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('issue.index') ? 'active' : '' }}"
                             href="{{ route('issue.index') }}"><span class="shape1"></span><span class="shape2"></span><i
-                                class="fas fa-newspaper sidemenu-icon"></i><span class="sidemenu-label">Issue</span></a>
+                                class="fas fa-exclamation-circle sidemenu-icon"></i><span class="sidemenu-label">Issue</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('document.index') ? 'active' : '' }}"
