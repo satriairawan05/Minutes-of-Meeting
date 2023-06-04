@@ -75,12 +75,15 @@
                                 <tbody class="table-header text-center">
                                     <tr>
                                         <th>Date & Time</th>
-                                        <td>{!! $meet->meet_date !!}/{!! $meet->meet_time !!}</td>
+                                        <td>{!! Carbon\Carbon::parse($meet->meet_date)->format('l, d M Y') !!} {!! Carbon\Carbon::parse($meet->meet_time)->format('H:i') !!}</td>
                                     </tr>
                                 </tbody>
                                 <tbody class="table-header text-center">
                                     <tr>
                                         <th>Attendances</th>
+                                        @if(!$meet->meet_attend)
+                                            <td></td>
+                                        @endif
                                         <td>{!! $meet->meet_attend !!}</td>
                                     </tr>
                                 </tbody>
