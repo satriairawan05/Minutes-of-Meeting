@@ -99,6 +99,7 @@
                                     <th>Priority</th>
                                     <th>Start Date</th>
                                     <th>End Date</th>
+                                    <th>File</th>
                                     <th width="100px">Action</th>
                                 </tr>
                             </thead>
@@ -112,6 +113,9 @@
                                     <td>{!! $doc->priority !!}</td>
                                     <td>{!! Carbon\Carbon::parse($doc->start_date)->format('l, d M Y') !!}</td>
                                     <td>{!! Carbon\Carbon::parse($doc->end_date)->format('l, d M Y') !!}</td>
+                                    <td>
+                                    <img src="{!! asset('storage/'. $doc->file) !!}" alt="{{ $doc->project }}" name="file" class="w-50 h-50 img-responsive img-fluid"/>
+                                    </td>
                                     <td>
                                         <a href="{{ route('issueDoc.form',$doc->issue_id) }}" class="btn bg-gradient-info">
                                             <i class="fas fa-plus"></i>
