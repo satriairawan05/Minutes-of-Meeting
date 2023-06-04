@@ -26,14 +26,6 @@ class UserSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
 
-        $teamNine = User::create([
-            'name' => 'Team 9',
-            'email' => 'team9@suemerugrup.com',
-            'password' => bcrypt('suemeru'),
-            'email_verified_at' => now(),
-            'remember_token' => Str::random(10),
-        ]);
-
         $member = User::create([
             'name' => 'Member',
             'email' => 'member@suemerugrup.com',
@@ -58,7 +50,6 @@ class UserSeeder extends Seeder
         ]);
 
         $superAdmin->assignRole($roleSuperAdmin);
-        $teamNine->assignRole($roleTeamNine);
         $member->assignRole($roleMember);
     }
 }
