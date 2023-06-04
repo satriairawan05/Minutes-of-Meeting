@@ -74,7 +74,7 @@
                                 </tbody>
                                 <tbody class="table-header text-center">
                                     <tr>
-                                        <th>Date & Time</th>
+                                        <th>Date Time</th>
                                         <td>{!! Carbon\Carbon::parse($meet->meet_date)->format('l, d M Y') !!} {!! Carbon\Carbon::parse($meet->meet_time)->format('H:i') !!}</td>
                                     </tr>
                                 </tbody>
