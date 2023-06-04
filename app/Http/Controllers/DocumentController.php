@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Meet;
-use App\Models\User;
 use App\Models\Issue;
 use App\Models\Document;
-use App\Models\Departemen;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class DocumentController extends Controller
 {
@@ -20,7 +16,8 @@ class DocumentController extends Controller
         $data = Issue::where('status', '=', 'Closed')->get();
 
         return view('doc.index', [
-            'docs' => $data
+            'docs' => $data,
+            'documents' => Document::get()
         ]);
     }
 
@@ -29,11 +26,7 @@ class DocumentController extends Controller
      */
     public function create()
     {
-        return view('doc.create',[
-            'issue' => Issue::where('status', '=', 'Closed')->get(),
-            'depts' => Departemen::get(),
-            'users' => User::get()
-        ]);
+        //
     }
 
     /**
@@ -41,22 +34,7 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
-        $doc = new Document;
-        $doc->issue_xid = $request->issue_xid;
-        $doc->start_date = $request->start_date;
-        $doc->end_date = $request->end_date;
-        $doc->project = $request->project;
-        $doc->tracker = $request->tracker;
-        $doc->assignee = $request->assignee;
-        $doc->description = $request->description;
-        $doc->subject = $request->subject;
-        $doc->status = $request->status;
-        $doc->c_action = $request->c_action;
-        $doc->file = $request->file;
-        $doc->is_private = $request->is_private;
-        $doc->save();
-
-        return redirect('/document')->with('success', 'Added Document Successfully');
+        //
     }
 
     /**
@@ -72,11 +50,66 @@ class DocumentController extends Controller
      */
     public function edit(Document $document)
     {
-        return view('doc.edit', [
-            'doc' => Issue::where('status', '=', 'Closed')->get(),
-            'depts' => Departemen::get(),
-            'users' => User::get()
-        ]);
+        //
+    }
+
+    public function showForm(Document $document, Issue $issue)
+    {
+        // cek apa isunya ada, atau sama dengan 1 atau kurang dari 0
+        if ($issue != null || $issue == 1 || $issue < 0) {
+            // cek apakah dod_id nya tidak kosong
+            if ($document->doc_id == null) {
+                // tambah kan 1 setiap tombol di klik
+                $document->doc_id = +1;
+            }
+            // menyimpan data ke document
+            $document->issue_id = $issue->issue_id;
+            $document->issue_xid = $issue->issue_xid;
+            $document->project = $issue->project;
+            $document->tracker = $issue->tracker;
+            $document->subject = $issue->subject;
+            $document->c_action = $issue->c_action;
+            $document->description = $issue->description;
+            $document->status = $issue->status;
+            $document->priority = $issue->priority;
+            $document->start_date = $issue->start_date;
+            $document->end_date = $issue->end_date;
+            $document->assignee = $issue->assignee;
+            $document->file = $issue->file;
+            $document->is_private = $issue->is_private;
+            $document->save();
+
+            return redirect('document')->with('success', 'Added Archive Successfully');
+        } else {
+            // jika data tidak sesuai
+            return back()->with('fail', 'Not Found');
+        }
+    }
+
+    public function updateForm(Document $document, Issue $issue)
+    {
+        // cek priority atau tracker atau status sebelumnya sama
+        if ($document->tracker == $issue->tracker || $document->status == $issue->status || $document->priority == $issue->priority) {
+            // update datanya
+            $document->issue_id = $issue->issue_id;
+            $document->issue_xid = $issue->issue_xid;
+            $document->project = $issue->project;
+            $document->tracker = $issue->tracker;
+            $document->subject = $issue->subject;
+            $document->c_action = $issue->c_action;
+            $document->description = $issue->description;
+            $document->status = $issue->status;
+            $document->priority = $issue->priority;
+            $document->start_date = $issue->start_date;
+            $document->end_date = $issue->end_date;
+            $document->assignee = $issue->assignee;
+            $document->file = $issue->file;
+            $document->is_private = $issue->is_private;
+            $document->save();
+
+            return redirect('document')->with('success', 'Updated Archive Successfully');
+        }
+
     }
 
     /**
@@ -84,22 +117,7 @@ class DocumentController extends Controller
      */
     public function update(Request $request, Document $document)
     {
-        $doc = new Document;
-        $doc->issue_xid = $request->issue_xid;
-        $doc->start_date = $request->start_date;
-        $doc->end_date = $request->end_date;
-        $doc->project = $request->project;
-        $doc->tracker = $request->tracker;
-        $doc->assignee = $request->assignee;
-        $doc->description = $request->description;
-        $doc->subject = $request->subject;
-        $doc->status = $request->status;
-        $doc->c_action = $request->c_action;
-        $doc->file = $request->file;
-        $doc->is_private = $request->is_private;
-        $doc->save();
-
-        return redirect('/document')->with('success', 'Updated Document Successfully');
+        //
     }
 
     /**
@@ -107,12 +125,6 @@ class DocumentController extends Controller
      */
     public function destroy(Document $document)
     {
-        Document::destroy($document->id);
-
-        if ($document->document) {
-            Storage::delete([$document->document]);
-        }
-
-        return redirect('/document')->with('success', 'Deleted Document Successfully');
+        //
     }
 }

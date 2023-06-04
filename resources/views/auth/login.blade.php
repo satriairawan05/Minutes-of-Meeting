@@ -8,7 +8,7 @@
     <title>BSS: Login MoM</title>
 
     <!-- Font Icon -->
-    <link rel="stylesheet" href="{{ asset('assetslogin/fonts/material-icon/css/material-design-iconic-font.min.css') }}">
+    <link rel="icon" href="{{ asset('assets/img/brand/favicon.ico') }}" type="image/x-icon" />
 
     <!-- Main css -->
     <link rel="stylesheet" href="{{ asset('assetslogin/css/style.css') }}">

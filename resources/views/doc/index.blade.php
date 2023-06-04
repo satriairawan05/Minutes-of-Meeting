@@ -40,6 +40,11 @@
                         {{ session('success') }}
                     </div>
                     @endif
+                    @if (session('fail'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ session('fail') }}
+                    </div>
+                    @endif
                     <div class="table-responsive">
                         <table class="table table-bordered data-table table-responsive table-sm table-striped table-hover">
                             <thead class="table-header text-center">
@@ -59,9 +64,14 @@
                                     <td>{!! $doc->project !!}</td>
                                     <td>{!! $doc->status !!}</td>
                                     <td>
-                                        <a href="{{ route('document.create') }}" class="btn bg-gradient-info">
+                                        <a href="{{ route('issueDoc.form',$doc->issue_id) }}" class="btn bg-gradient-info">
+                                            <i class="fas fa-plus"></i>
+                                        </a>
+                                        @foreach ($documents as $document)
+                                        <a href="/issue/{{ $doc->issue_id }}/doc/{{ $document->doc_id }}" class="btn bg-gradient-info">
                                             <i class="fas fa-edit"></i>
                                         </a>
+                                        @endforeach
                                     </td>
                                 </tr>
                                 @endforeach

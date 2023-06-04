@@ -102,22 +102,19 @@ class IssueController extends Controller
      */
     public function update(Request $request, Issue $issue)
     {
-        $rules = [
+        $validate = $request->validate([
             'issue_xid' => ['required'],
             'project' => ['required'],
             'tracker' => ['required'],
             'subject' => ['required'],
-            'c_action' => ['required'],
+            'status' => ['required'],
+            'priority' => ['required'],
             'description' => ['required'],
             'start_date' => ['required'],
             'end_date' => ['required'],
-            'assignee' => ['required'],
-            'status' => ['required']
-        ];
-
-        $validate = $request->validate($rules);
-        $validate['status'] = $request->input('status');
-        $validate['priority'] = $request->input('priority');
+            'c_action' => ['required'],
+            'assignee' => ['required']
+        ]);
 
         if($request->file('file')){
             if($request->oldFile){
@@ -132,7 +129,7 @@ class IssueController extends Controller
             $validate['is_private'] = 0;
         }
 
-        Issue::where('issue_id',$issue->id)->update($validate);
+        Issue::where('issue_id',$issue->issue_id)->update($validate);
 
         return redirect('issue')->with('success','Updated Successfully!');
     }
