@@ -39,12 +39,10 @@
                         </div>
                         <div class="card-body">
                             @if (session('success'))
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    <strong>Success</strong>{{ session('success') }}
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                        aria-label="Close"></button>
-                                </div>
-                            @endif
+                            <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ session('success') }}
+                            </div>
+                        @endif
                             <div class="table-responsive">
                                 <table class="table table-sm table-striped table-bordered table-hover">
                                     <thead class="table-header">
@@ -166,6 +164,17 @@
                             });
                         });
                     </script>
+                    @if (session('success'))
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            var successAlert = document.getElementById('success-alert');
+                            successAlert.style.display = 'block';
+                            setTimeout(function() {
+                                successAlert.style.display = 'none';
+                            }, 5000); // Adjust the timeout value (in milliseconds) as needed
+                        });
+                    </script>
+                @endif
                     <!-- Row end -->
                 </div>
                 <!-- End Main Content-->
