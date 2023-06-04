@@ -5,7 +5,7 @@
 
     <div class="card">
         <div class="card-header">
-            <a href="{{ route('issue.index') }}" class="btn btn-sm btn-info">Back</a>
+            <a href="{{ route('issue.index') }}" class="btn btn-md btn-info">Back</a>
         </div>
         <div class="card-body">
             @if ($data)
@@ -189,7 +189,7 @@
                             </div>
                         @enderror
                     </div>
-                    <button type="submit" class="btn btn-sm btn-success" readonly>Save</button>
+                    <button type="submit" class="btn btn-md btn-success" readonly>Save</button>
                 </form>
             @else
                 <p>Invalid or missing 'meet' variable.</p>

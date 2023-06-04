@@ -49,7 +49,7 @@
                             </div>
                         @endif
                         <div class="table-responsive">
-                            <table class="table table-sm table-striped table-bordered table-hover">
+                            <table class="table table-sm table-bordered table-hover">
                                 <thead class="table-header">
                                     <th style="text-align: center;">No</th>
                                     <th style="text-align: center;">Name</th>

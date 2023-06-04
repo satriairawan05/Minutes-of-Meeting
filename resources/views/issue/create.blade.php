@@ -10,7 +10,8 @@
                         <h2 class="main-content-title tx-24 mg-b-5">Add Issue</h2>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Issue</li>
+                            <li class="breadcrumb-item"><a href="/issue">Issue</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Add Issue</li>
                         </ol>
                     </div>
                     <div class="d-flex">
@@ -214,7 +215,7 @@
                                 @enderror
                             </div>
                             <div class="d-flex justify-content-end align-items-end">
-                                <button type="submit" class="btn btn-sm btn-success ">Save</button>
+                                <button type="submit" class="btn btn-md btn-success ">Save</button>
                             </div>
                         </form>
                     </div>

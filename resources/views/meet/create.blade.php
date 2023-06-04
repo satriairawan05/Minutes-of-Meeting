@@ -10,7 +10,8 @@
                         <h2 class="main-content-title tx-24 mg-b-5">Add Meeting</h2>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Meeting</li>
+                            <li class="breadcrumb-item"><a href="/meet">Meeting</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Add Meet</li>
                         </ol>
                     </div>
                     <div class="d-flex">
@@ -153,7 +154,7 @@
                             <div class="row mb-3">
                                 <label for="" class="col-sm-2 col-form-label"></label>
                                 <div class="col-12">
-                                    <button type="submit" class="btn btn-sm btn-success">
+                                    <button type="submit" class="btn btn-md btn-success">
                                         Submit
                                     </button>
                                 </div>

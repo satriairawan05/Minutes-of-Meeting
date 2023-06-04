@@ -45,7 +45,7 @@
                                 </div>
                             @enderror
                             <div class="d-flex justify-content-end align-items-end mt-3">
-                                <button type="submit" class="btn btn-sm btn-success">Add</button>
+                                <button type="submit" class="btn btn-md btn-success">Add</button>
                             </div>
                         </form>
                     </div>
