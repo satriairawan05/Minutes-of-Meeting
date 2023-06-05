@@ -46,7 +46,18 @@
     <!-- Switcher css-->
     <link href="{{ asset('assets/switcher/css/switcher.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/switcher/demo.css') }}" rel="stylesheet">
+    <!-- Internal DataTables css-->
+    <link href="{{ asset('assets/plugins/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/plugins/datatable/responsivebootstrap4.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/plugins/datatable/fileexport/buttons.bootstrap4.min.css') }}"rel="stylesheet">
+    <!-- Select2 css-->
+    <link href="{{ asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
+    <!-- Internal DataTables css-->
+    <link href="{{ asset('assets/plugins/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/plugins/datatable/responsivebootstrap4.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/plugins/datatable/fileexport/buttons.bootstrap4.min.css') }}"rel="stylesheet">
 </head>
+
 
 <body class="main-body leftmenu dark-theme">
 
@@ -199,8 +210,23 @@
         <script src="{{ asset('assets/plugins/morris.js/morris.min.js') }}"></script>
 
         <!-- Circle Progress js-->
-        <script src="{{ asset('assets/js/circle-progress.min.j') }}s"></script>
+        <script src="{{ asset('assets/js/circle-progress.min.j') }}"></script>
         <script src="{{ asset('assets/js/chart-circle.js') }}"></script>
+
+
+        <!-- Internal Data Table js -->
+        <script src="{{ asset('assets/plugins/datatable/fileexport/buttons.bootstrap4.min.css') }}"></script>
+        <script src="{{ asset('assets/plugins/datatable/dataTables.bootstrap4.min.js') }}"></script>
+        <script src="{{ asset('assets/plugins/datatable/dataTables.responsive.min.js') }}"></script>
+        <script src="{{ asset('assets/plugins/datatable/fileexport/dataTables.buttons.min.js') }}"></script>
+        <script src="{{ asset('assets/plugins/datatable/fileexport/buttons.bootstrap4.min.js') }}"></script>
+        <script src="{{ asset('assets/plugins/datatable/fileexport/jszip.min.js') }}"></script>
+        <script src="{{ asset('assets/plugins/datatable/fileexport/pdfmake.min.js') }}"></script>
+        <script src="{{ asset('assets/plugins/datatable/fileexport/vfs_fonts.js') }}"></script>
+        <script src="{{ asset('assets/plugins/datatable/fileexport/buttons.html5.min.js') }}"></script>
+        <script src="{{ asset('assets/plugins/datatable/fileexport/buttons.print.min.js') }}"></script>
+        <script src="{{ asset('assets/plugins/datatable/fileexport/buttons.colVis.min.js') }}"></script>
+        <script src="{{ asset('assets/js/table-data.js') }}"></script>
 
         <!-- Internal Dashboard js-->
         <script src="{{ asset('assets/js/index.js') }}"></script>
