@@ -34,7 +34,7 @@
                                                         {{-- bangsat --}}
                                                         {{-- {{ auth()->user()->name }} --}}
                                                         {{-- bangsat --}}
-                                                        !</span>
+                                                        Assalamualaikum {{ auth()->user()->name }}!</span>
                                                 </h4>
                                                 <p class="tx-white-7 mb-1">You have two projects to finish, you
                                                     had completed <b class="text-warning">57%</b> from your montly
