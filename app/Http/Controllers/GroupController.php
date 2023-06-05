@@ -35,6 +35,7 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
+        // return dd($request->all());
         try {
             $validate = $request->validate([
                 'group_name' => 'required|min:5|max:255',
@@ -49,12 +50,12 @@ class GroupController extends Controller
                     $groupPage = new GroupPage;
                     $groupPage->page_id = $page->page_id;
                     $groupPage->group_id = $group->group_id;
-                    $action = $request->input($page->page_name.$page->action) == "on" ? 1 : 0;
-                    $groupPage->action = $action;
+                    $groupPage->action = $request->input($page->page_name.$page->action) === "on" ? true : false;
                     $groupPage->save();
                 }
             }
-            return redirect('group')->with('success','Added Roles Successfully!');
+
+            return redirect()->to('group')->with('success','Added Role Successfully!')->withInput();
         } catch (\Throwable $th) {
             return $th->getMessage();
         }

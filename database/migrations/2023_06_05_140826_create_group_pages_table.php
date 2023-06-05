@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('group_id');
             $table->foreignId('page_id');
-            $table->unsignedBigInteger('access');
+            $table->string('access');
             $table->timestamps();
         });
     }
