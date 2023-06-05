@@ -50,7 +50,7 @@ class GroupController extends Controller
 
             return redirect()->to('group')->with('success', 'Added Role Successfully!')->withInput();
         } catch (\Throwable $th) {
-            return $th->getMessage();
+            return redirect('group')->with('failed',$th->getMessage());
         }
     }
 
@@ -68,7 +68,9 @@ class GroupController extends Controller
     public function edit(Group $group)
     {
         return view('group.edit', [
-            'group' => $group
+            'group' => $group,
+            'page_distincts' => Page::distinct('page_name')->get('page_name'),
+            'pages' => GroupPage::leftJoin('pages','pages.page_id','=','group_pages.page_id')->get()
         ]);
     }
 
@@ -78,13 +80,16 @@ class GroupController extends Controller
     public function update(Request $request, Group $group)
     {
         try {
-            $rules = [
-                'group_name' => ['required', 'max:255']
-            ];
-
-            $validate = $request->validate($rules);
-
-            Group::where('id', $group->id)->update($validate);
+            $validate = $request->validate([
+                'group_name' => 'required'
+            ]);
+            $group = Group::where('group_id',$group->group_id)->update($validate);
+            $pages = GroupPage::leftJoin('pages','pages.page_id','=','group_pages.page_id')->get();
+            foreach ($pages as $page) {
+                $groupPage = GroupPage::get();
+                $groupPage->access = $request->input($page->page_name . $page->action) == "on" ? 1 : 0;
+                $groupPage->update();
+            }
 
             return redirect('group')->with('success', 'Updated Roles Successfully!');
         } catch (\Throwable $th) {
