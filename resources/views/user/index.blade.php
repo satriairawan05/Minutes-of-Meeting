@@ -28,17 +28,23 @@
                             </div>
                         @endif
 
+                        @if (session('success'))
+                            <div class="alert alert-success container container-fluid" role="alert">
+                                {{ session('success') }}
+                            </div>
+                        @endif
 
                         @if ($users)
                             <div class="table-responsive">
 
-                                <table class="table table-sm table-bordered table-hover">
+                                <table class="table table-sm table-bordered table-hover" id="exportexample">
 
                                     <thead class="table-header text-center">
                                         <tr>
                                             <th scope="col">No</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Email</th>
+                                            <th scope="col">Roles</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
@@ -48,6 +54,7 @@
                                                 <th scope="row">{{ $loop->iteration }}</th>
                                                 <td>{!! $user->name !!}</td>
                                                 <td>{!! $user->email !!}</td>
+                                                <td>{!! $user->group_name !!}</td>
                                                 <td clas="d-inline">
                                                     {{-- Show Modal Trigger --}}
                                                     <button type="button"
