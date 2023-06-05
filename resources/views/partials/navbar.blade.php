@@ -126,9 +126,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="dropdown main-profile-menu">
-                        <a class="d-flex" href="#">
-                            <span class="main-img-user"><img alt="avatar" src="assets/img/users/1.png"></span>
+                    <div class="dropdown main-header-notification">
+                        <a class="nav-link icon" href="#">
+                            <i class="fe fe-user header-icons"></i>
+                            <span class="badge badge-danger nav-link-badge"></span>
                         </a>
                         <div class="dropdown-menu">
                             <div class="header-navheading">
