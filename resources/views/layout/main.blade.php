@@ -49,13 +49,13 @@
     <!-- Internal DataTables css-->
     <link href="{{ asset('assets/plugins/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/plugins/datatable/responsivebootstrap4.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/plugins/datatable/fileexport/buttons.bootstrap4.min.css') }}"rel="stylesheet">
+    <link href="{{ asset('assets/plugins/datatable/fileexport/buttons.bootstrap4.min.css') }}" rel="stylesheet">
     <!-- Select2 css-->
     <link href="{{ asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
     <!-- Internal DataTables css-->
     <link href="{{ asset('assets/plugins/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/plugins/datatable/responsivebootstrap4.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/plugins/datatable/fileexport/buttons.bootstrap4.min.css') }}"rel="stylesheet">
+    <link href="{{ asset('assets/plugins/datatable/fileexport/buttons.bootstrap4.min.css') }}" rel="stylesheet">
 </head>
 
 
@@ -216,7 +216,6 @@
 
         <!-- Internal Data Table js -->
         <script src="{{ asset('assets/plugins/datatable/jquery.dataTables.min.js') }}"></script>
-        <script src="{{ asset('assets/plugins/datatable/fileexport/buttons.bootstrap4.min.css') }}"></script>
         <script src="{{ asset('assets/plugins/datatable/dataTables.bootstrap4.min.js') }}"></script>
         <script src="{{ asset('assets/plugins/datatable/dataTables.responsive.min.js') }}"></script>
         <script src="{{ asset('assets/plugins/datatable/fileexport/dataTables.buttons.min.js') }}"></script>
