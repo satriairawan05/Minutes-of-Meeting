@@ -42,7 +42,7 @@
                                         export:</p>
                                 </div>
                                 <div class="table-responsive">
-                                    <table id="exportexample"
+                                    <table id="exportexample2"
                                         class="table table-bordered border-t0 key-buttons text-nowrap w-100">
                                         <thead>
                                             <tr>
@@ -536,28 +536,28 @@
                                 </div>
                             @endif
                             <div class="table-responsive">
-                                <table class="table table-sm table-striped table-bordered table-hover">
+                                <table class="table table-bordered border-t0 key-buttons text-nowrap w-100" id="exportexample">
                                     <thead class="table-header">
-                                        <th style="text-align: center;">No</th>
-                                        <th style="text-align: center;" class="d-none d-sm-table-cell">ID</th>
-                                        <th style="text-align: center;">Meeting Name</th>
-                                        <th style="text-align: center;">Project Name</th>
-                                        <th style="text-align: center;">Date Of Meeting</th>
-                                        <th style="text-align: center;">Time Of Meeting</th>
-                                        <th style="text-align: center;">Minutes Prepared by</th>
-                                        <th style="text-align: center;">Meeting Locate</th>
-                                        <th style="text-align: center;" class="d-none d-sm-table-cell">Attendees</th>
-                                        <th style="text-align: center;">Actions</th>
-                                        </tr>
                                         <tr>
-                                            {{-- <th colspan="9">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="toggleColumns">
-                                            <label class="form-check-label" for="toggleColumns">
-                                                Toggle Columns
-                                            </label>
-                                        </div>
-                                    </th> --}}
+                                            <th style="text-align: center;">No</th>
+                                            <th style="text-align: center;" class="d-none d-sm-table-cell">ID</th>
+                                            <th style="text-align: center;">Meeting Name</th>
+                                            <th style="text-align: center;">Project Name</th>
+                                            <th style="text-align: center;">Date Of Meeting</th>
+                                            <th style="text-align: center;">Time Of Meeting</th>
+                                            <th style="text-align: center;">Minutes Prepared by</th>
+                                            <th style="text-align: center;">Meeting Locate</th>
+                                            <th style="text-align: center;" class="d-none d-sm-table-cell">Attendees</th>
+                                            <th style="text-align: center;">Actions</th>
+                                            
+                                                {{-- <th colspan="9">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="toggleColumns">
+                                                <label class="form-check-label" for="toggleColumns">
+                                                    Toggle Columns
+                                                </label>
+                                            </div>
+                                        </th> --}}      
                                         </tr>
                                     </thead>
 
