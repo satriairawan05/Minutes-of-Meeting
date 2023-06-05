@@ -210,11 +210,12 @@
         <script src="{{ asset('assets/plugins/morris.js/morris.min.js') }}"></script>
 
         <!-- Circle Progress js-->
-        <script src="{{ asset('assets/js/circle-progress.min.j') }}"></script>
+        <script src="{{ asset('assets/js/circle-progress.min.js') }}"></script>
         <script src="{{ asset('assets/js/chart-circle.js') }}"></script>
 
 
         <!-- Internal Data Table js -->
+        <script src="{{ asset('assets/plugins/datatable/jquery.dataTables.min.js') }}"></script>
         <script src="{{ asset('assets/plugins/datatable/fileexport/buttons.bootstrap4.min.css') }}"></script>
         <script src="{{ asset('assets/plugins/datatable/dataTables.bootstrap4.min.js') }}"></script>
         <script src="{{ asset('assets/plugins/datatable/dataTables.responsive.min.js') }}"></script>
