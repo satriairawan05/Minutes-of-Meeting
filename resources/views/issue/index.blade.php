@@ -9,7 +9,7 @@
                 <!-- Page Header -->
                 <div class="page-header">
                     <div>
-                        <h2 class="main-content-title tx-24 mg-b-5">Meeting Data</h2>
+                        <h2 class="main-content-title tx-24 mg-b-5">Issue Data</h2>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Issue Details</li>
@@ -88,11 +88,11 @@
                                             {{-- start modal  --}}
                                             <td>
                                                 {{-- Show Modal Trigger --}}
-                                                <button type="button"
+                                                {{-- <button type="button"
                                                     onclick="window.location='{{ route('issue.show', $i->issue_id) }}'"
                                                     class="btn bg-gradient-warning" title="Show Data">
                                                     <i class="fas fa-binoculars"></i>
-                                                </button>
+                                                </button> --}}
                                                 {{-- End of Show Modal Trigger --}}
 
                                                 {{-- Edit Modal Trigger --}}
