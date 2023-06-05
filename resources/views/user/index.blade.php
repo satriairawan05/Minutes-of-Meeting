@@ -23,7 +23,8 @@
                     </div>
                     <div class="card-body">
                         @if (session('success'))
-                            <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
+                            <div data-effect="effect-scale"id="success-alert"
+                                class="alert alert-success alert-dismissible fade show" role="alert">
                                 {{ session('success') }}
                             </div>
                         @endif
