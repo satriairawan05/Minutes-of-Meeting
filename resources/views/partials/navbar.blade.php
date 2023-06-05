@@ -126,58 +126,24 @@
                             </div>
                         </div>
                     </div>
-                    <div class="dropdown main-profile-menu">
-                        <div class="nav-link text-body font-weight-bold px-0">
-                            <i class="fa fa-user me-sm-1 text-white"></i>
-                            @auth
-                                <span class="d-sm-inline d-none text-white">
-                                    {{ auth()->user()->name }}
-                                </span>
-                            @else
-                                <span class="d-sm-inline d-none text-white">
-                                    Administrator
-                                </span>
-                            @endauth
-                            @guest
-                                <i class="fa fa-sign-in me-sm-1"></i>
-                                <span class="d-sm-inline d-none">
-                                    <a href="{{ route('login.form') }}" class="text-decoration-none text-capitalize">Sign
-                                        In</a>
-                                </span>
-                            @endguest
-                            @auth
-                                <i class="fa fa-sign-out me-sm-1"></i>
-                                <span class="d-sm-inline d-none">
-                                    <form action="{{ route('logout') }}" method="post">
-                                        @csrf
-                                        @method('post')
-                                        <button type="submit"
-                                            class="btn btn-light btn-sm d-inline-block bg-white border-white"
-                                            onclick="return confirm('Are you sure?')">Sign Out</button>
-                                    </form>
-                                </span>
-                            @endauth
+                    <div class="dropdown main-header-notification">
+                        <a class="nav-link icon" href="#">
+                            <i class="fe fe-user header-icons"></i>
+                            <span class="badge badge-danger nav-link-badge"></span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="header-navheading">
+                                <h6 class="main-notification-title">{{ auth()->user()->name }}</h6>
+                                <p class="main-notification-text">{{ auth()->user()->email }}</p>
+                            </div>
+                            <form action="{{ route('logout') }}" method="post">
+                                @csrf
+                                <button type="submit" class="dropdown-item border-top">
+                                    <i class="fe fe-power"></i> Logout
+                                </button>
+                            </form>
+
                         </div>
-                        {{-- logout --}}
-
-                        {{-- @if (auth()->user())
-                            <li class="nav-item dropdown p-2 d-flex align-items-center">
-                                <form action="{{ route('logout') }}" method="post">
-                        @method('post')
-                        @csrf
-                        <button class="nav-link text-body btn mt-3 fixed-plugin-button-nav cursor-pointer shadow-none" type="submit" onclick="return confirm('Are you sure?')"><i class="fa fa-window-close"></i></button>
-                        </form>
-                        </li>
-                        @else
-                        <li class="nav-item dropdown p-2 d-flex align-items-center">
-                            <a href="{{ route('login.form') }}" class="nav-link text-body btn mt-3 fixed-plugin-button-nav cursor-pointer shadow-none"><i class="fa fa-user-cog"></i></a>
-                        </li>
-                        @endif
-                        <li class="nav-item dropdown p-2 d-flex align-items-center">
-                            <a href="{{ route('login.form') }}" class="nav-link text-body btn mt-3 fixed-plugin-button-nav cursor-pointer shadow-none"><i class="fa fa-user-cog"></i></a>
-                        </li> --}}
-
-                        {{-- end of logout --}}
                     </div>
                     <button class="navbar-toggler navresponsive-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4"

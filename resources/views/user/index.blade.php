@@ -30,12 +30,6 @@
                             </div>
                         @endif
 
-                        @if (session('failed'))
-                            <div class="alert alert-danger container container-fluid" role="alert">
-                                {{ session('failed') }}
-                            </div>
-                        @endif
-
                         @if ($users)
                             <div class="table-responsive">
 
@@ -150,4 +144,15 @@
                     });
                 });
             </script>
+            @if (session('success'))
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        var successAlert = document.getElementById('success-alert');
+                        successAlert.style.display = 'block';
+                        setTimeout(function() {
+                            successAlert.style.display = 'none';
+                        }, 5000); // Adjust the timeout value (in milliseconds) as needed
+                    });
+                </script>
+            @endif
         @endsection
