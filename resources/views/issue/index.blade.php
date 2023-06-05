@@ -4,10 +4,12 @@
     <div class="main-content side-content pt-0">
         <div class="container-fluid">
             <div class="inner-body">
+
+
                 <!-- Page Header -->
                 <div class="page-header">
                     <div>
-                        <h2 class="main-content-title tx-24 mg-b-5">Issue Data</h2>
+                        <h2 class="main-content-title tx-24 mg-b-5">Meeting Data</h2>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Issue Details</li>
@@ -19,7 +21,7 @@
                                 <i class="fe fe-download mr-2"></i> Import
                             </button>
                             <button type="button" class="btn btn-white btn-icon-text my-2 mr-2">
-                                <i class="fe fe-filter mr-2"></i> Filter
+                                <i class="fe fe-filter mr-2"></i> Filter Colum
                             </button>
                             <button type="button" class="btn btn-primary my-2 btn-icon-text">
                                 <i class="fe fe-download-cloud mr-2"></i> Download Report
@@ -36,32 +38,31 @@
                     </div>
                     <div class="card-body">
                         @if (session('success'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
                                 {{ session('success') }}
                             </div>
                         @endif
+
                         <div class="table-responsive">
-                            <table
-                                class="table table-bordered data-table table-responsive table-sm table-striped table-hover">
+                            <table class="table table-sm table-bordered table-hover">
+
                                 <thead class="table-header text-center">
                                     <tr>
                                         <th>No</th>
-                                        <th>Issue ID</th>
-                                        <th>Meeting ID</th>
+                                        <th>Meeting</th>
                                         <th>Dept</th>
                                         <th>Subject</th>
                                         <th>Description</th>
                                         <th>Status</th>
                                         <th>Priority</th>
                                         <th>File</th>
-                                        <th>Action</th>
+                                        <th width="100px">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-center">
                                     @foreach ($issues as $i)
                                         <tr>
                                             <th scope="row">{!! $loop->iteration !!}</th>
-                                            <td>{!! $i->issue_xid !!}</td>
                                             <td>{!! $i->project !!}</td>
                                             <td>{!! $i->tracker !!}</td>
                                             <td>{!! $i->subject !!}</td>
@@ -74,32 +75,41 @@
                                                         class="img-responsive h-75 w-75">
                                                 @endif
                                             </td>
-                                            <td>
+                                            {{-- <td class="d-inline">
+                                    <a href="{{ route('issue.show', $i->issue_id) }}" class="btn btn-info btn-sm" title="Show Detail"><i class="fas fa-binoculars"></i></a>
+                        <a href="{{ route('issue.edit', $i->issue_id) }}" class="btn btn-warning btn-sm" title="Edit Data"><i class="fas fa-edit"></i></a>
+                        <form action="{{ route('issue.destroy', $i->issue_id) }}" method="post" class="d-inline-block">
+                            @csrf
+                            @method('Delete')
+                            <button type="submit" onclick="return confirm('are you sure?')" class="btn btn-danger btn-sm" title="Delete Data"><i class="far fa-trash-alt"></i></button>
+                        </form>
+                        </td> --}}
+
                                             {{-- start modal  --}}
+                                            <td>
+                                                {{-- Show Modal Trigger --}}
+                                                <button type="button"
+                                                    onclick="window.location='{{ route('issue.show', $i->issue_id) }}'"
+                                                    class="btn bg-gradient-warning" title="Show Data">
+                                                    <i class="fas fa-binoculars"></i>
+                                                </button>
+                                                {{-- End of Show Modal Trigger --}}
 
-                                            {{-- Show Modal Trigger --}}
-                                            <button type="button"
-                                                onclick="window.location='{{ route('issue.show', $i->issue_id) }}'"
-                                                class="btn bg-gradient-warning" title="Show Data">
-                                                <i class="fas fa-binoculars"></i>
-                                            </button>
-                                            {{-- End of Show Modal Trigger --}}
+                                                {{-- Edit Modal Trigger --}}
+                                                <button type="button"
+                                                    onclick="window.location='{{ route('issue.edit', $i->issue_id) }}'"
+                                                    class="btn bg-gradient-info" title="Edit Data">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                {{-- End of Edit Modal Trigger --}}
 
-                                            {{-- Edit Modal Trigger --}}
-                                            <button type="button"
-                                                onclick="window.location='{{ route('issue.edit', $i->issue_id) }}'"
-                                                class="btn bg-gradient-info" title="Edit Data">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            {{-- End of Edit Modal Trigger --}}
-
-                                            {{-- Delete Modal Trigger --}}
-                                            <button type="button" class="btn bg-gradient-danger" data-bs-toggle="modal"
-                                                data-bs-target="#deleteModal{{ $i->issue_id }}"
-                                                onclick="{{ route('issue.destroy', $i->issue_id) }}">
-                                                <i class="far fa-trash-alt"></i>
-                                            </button>
-                                            {{-- End of Delete Modal Trigger --}}
+                                                {{-- Delete Modal Trigger --}}
+                                                <button type="button" class="btn bg-gradient-danger" data-bs-toggle="modal"
+                                                    data-bs-target="#deleteModal{{ $i->issue_id }}"
+                                                    onclick="{{ route('issue.destroy', $i->issue_id) }}">
+                                                    <i class="far fa-trash-alt"></i>
+                                                </button>
+                                                {{-- End of Delete Modal Trigger --}}
 
                                                 {{-- Delete Modal --}}
                                                 <div class="modal fade" id="deleteModal{{ $i->issue_id }}" tabindex="-1"
@@ -145,7 +155,6 @@
                         </div>
                     </div>
                 </div>
-
                 <script>
                     $(document).ready(function() {
                         // Hide and Show Columns
@@ -171,9 +180,18 @@
                         });
                     });
                 </script>
-
+                @if (session('success'))
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            var successAlert = document.getElementById('success-alert');
+                            successAlert.style.display = 'block';
+                            setTimeout(function() {
+                                successAlert.style.display = 'none';
+                            }, 5000); // Adjust the timeout value (in milliseconds) as needed
+                        });
+                    </script>
+                @endif
 
             </div>
-        </div>
-    </div>
-@endsection
+            <!-- End Main Content-->
+        @endsection

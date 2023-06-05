@@ -1,256 +1,276 @@
 @extends('layout.main')
 
 @section('content')
-<div class="main-content side-content pt-0">
-    <div class="container-fluid">
-        <div class="inner-body">
-            <!-- Page Header -->
-            <div class="page-header">
-                <div>
-                    <h2 class="main-content-title tx-24 mg-b-5">Add Archive</h2>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Archive</li>
-                    </ol>
+    <div class="main-content side-content pt-0">
+        <div class="container-fluid">
+            <div class="inner-body">
+                <!-- Page Header -->
+                <div class="page-header">
+                    <div>
+                        <h2 class="main-content-title tx-24 mg-b-5">Add Archive</h2>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Archive</li>
+                        </ol>
+                    </div>
+                    <div class="d-flex">
+                        <div class="justify-content-center">
+                            <button type="button" class="btn btn-white btn-icon-text my-2 mr-2">
+                                <i class="fe fe-download mr-2"></i> Import
+                            </button>
+                            <button type="button" class="btn btn-white btn-icon-text my-2 mr-2">
+                                <i class="fe fe-filter mr-2"></i> Filter
+                            </button>
+                            <button type="button" class="btn btn-primary my-2 btn-icon-text">
+                                <i class="fe fe-download-cloud mr-2"></i> Download Report
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div class="d-flex">
-                    <div class="justify-content-center">
-                        <button type="button" class="btn btn-white btn-icon-text my-2 mr-2">
-                            <i class="fe fe-download mr-2"></i> Import
-                        </button>
-                        <button type="button" class="btn btn-white btn-icon-text my-2 mr-2">
-                            <i class="fe fe-filter mr-2"></i> Filter
-                        </button>
-                        <button type="button" class="btn btn-primary my-2 btn-icon-text">
-                            <i class="fe fe-download-cloud mr-2"></i> Download Report
-                        </button>
+                <!-- End Page Header -->
+                <div class="card">
+                    <div class="card-header d-flex justify-content-end">
+
+                    </div>
+                    <div class="card-body">
+                        <form action="{{ route('document.store') }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="is_private" name="is_private"
+                                    value="1">
+                                <label class="form-check-label" for="is_private">
+                                    Private
+                                </label>
+                            </div>
+                            <div class="mb-3">
+                                <label for="issue_xid">ID Issues</label>
+                                <input type="hidden" name="issue_id" value="{{ $issue->issue_id }}">
+                                <input type="text" class="form-control @error('issue_xid') is-invalid @enderror"
+                                    id="issue_xid" name="issue_xid" value="{{ $issue->issue_xid }}" readonly>
+                                @error('issue_xid')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label id="project_label" for="project">Meeting</label>
+                                <input id="project" name="project" type="text"
+                                    class="form-control @error('project')
+            is_invalid
+        @enderror" readonly
+                                    value="{{ $issue->project }}" placeholder="Masukan Meeting" readonly />
+                                @error('project')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label id="subject_label" for="subject">Subject</label>
+                                <input id="subject" name="subject" type="text"
+                                    class="form-control @error('subject')
+            is_invalid
+        @enderror" readonly
+                                    value="{{ $issue->subject }}" placeholder="Masukan Subject" readonly />
+                                @error('subject')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label id="tracker_label" for="tracker">Departemen</label>
+                                <select class="form-select form-control form-control-sm" id="tracker" name="tracker">
+                                    @foreach ($depts as $dept)
+                                        @if (old('tracker') == $dept->name)
+                                            <option name="tracker" value="{{ $dept->name }}" selected>{{ $dept->name }}
+                                            </option>
+                                        @else
+                                            <option name="tracker" value="{{ $dept->name }}">{{ $dept->name }}
+                                            </option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                                @error('tracker')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label id="description_label" for="description">Problem Identification</label>
+                                <input name="description" id="description" readonly value="{{ $issue->description }}"
+                                    class="form-control @error('description')
+        is-invalid
+    @enderror"
+                                    placeholder="Masukan Description" />
+                                @error('description')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label id="c_action_label" for="c_action">Corrective Action</label>
+                                <input id="c_action" name="c_action" type="text"
+                                    class="form-control @error('c_action')
+            is_invalid
+        @enderror"
+                                    readonly value="{{ $issue->c_action }}" placeholder="Masukan Corrective Action" />
+                                @error('c_action')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label id="status_label" for="status">Status</label>
+                                <select class="form-select form-control form-control-sm" name="status">
+                                    @if ($issue)
+                                        <option name="status" value="{{ $issue->status }}">{{ $issue->status }}
+                                        </option>
+                                    @endif
+                                </select>
+                                @error('status')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label id="priority_label" for="priority">Priority</label>
+                                <select class="form-select form-control form-control-sm" name="priority">
+                                    @if ($issue)
+                                        <option name="priority" value="{{ $issue->priority }}" selected>
+                                            {{ $issue->piority }}</option>
+                                    @endif
+                                </select>
+                                @error('priority')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label id="start_date_label" for="start_date">Start Date</label>
+                                <input id="start_date" name="start_date" type="date"
+                                    class="form-control @error('start_date')
+            is_invalid
+        @enderror"
+                                    readonly value="{{ $issue->start_date }}" />
+                                @error('start_date')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label id="end_date_label" for="end_date">End Date</label>
+                                <input id="end_date" name="end_date" type="date"
+                                    class="form-control @error('end_date')
+            is_invalid
+        @enderror"
+                                    readonly value="{{ $issue->end_date }}" />
+                                @error('end_date')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label id="assignee_label" for="assignee">Assignee</label>
+                                <select class="form-select form-control form-control-sm" id="assignee" name="assignee">
+                                    @foreach ($users as $user)
+                                        @if (old('assignee') == $user->name)
+                                            <option name="assignee" value="{{ $user->name }}" selected>
+                                                {{ $user->name }}</option>
+                                        @else
+                                            <option name="assignee" value="{{ $user->name }}">{{ $user->name }}
+                                            </option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                                @error('assignee')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label id="file_label" for="file">File</label>
+                                <div id="targetLayer"></div>
+                                <div class="icon-choose-image"></div>
+                                <input id="file" name="file" type="file"
+                                    class="form-control form-control-file @error('file')
+            is_invalid
+        @enderror"
+                                    value="{{ $issue->file }}" onchange="return showPreview(this)" />
+                                @error('file')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="d-flex justify-content-end align-items-end">
+                                <button type="submit" class="btn btn-md btn-success ">Save</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            <!-- End Page Header -->
-            <div class="card">
-                <div class="card-header d-flex justify-content-end">
 
-                </div>
-                <div class="card-body">
-                    <form action="{{ route('document.store') }}" method="post" enctype="multipart/form-data">
-                        @csrf
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="is_private" name="is_private" value="1">
-                            <label class="form-check-label" for="is_private">
-                                Private
-                            </label>
-                        </div>
-                        <div class="mb-3">
-                            <label for="issue_xid">ID Issues</label>
-                            <input type="hidden" name="issue_id" value="{{ $issue->issue_id }}">
-                            <input type="text" class="form-control @error('issue_xid') is-invalid @enderror" id="issue_xid" name="issue_xid" value="{{ $issue->issue_xid }}" readonly>
-                            @error('issue_xid')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label id="project_label" for="project">Meeting</label>
-                            <input id="project" name="project" type="text" class="form-control @error('project')
-            is_invalid
-        @enderror" readonly value="{{ $issue->project }}" placeholder="Masukan Meeting" readonly />
-                            @error('project')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label id="subject_label" for="subject">Subject</label>
-                            <input id="subject" name="subject" type="text" class="form-control @error('subject')
-            is_invalid
-        @enderror" readonly value="{{ $issue->subject }}" placeholder="Masukan Subject" readonly />
-                            @error('subject')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label id="tracker_label" for="tracker">Departemen</label>
-                            <select class="form-select form-control form-control-sm" id="tracker" name="tracker">
-                                @foreach ($depts as $dept)
-                                @if (old('tracker') == $dept->name)
-                                <option name="tracker" value="{{ $dept->name }}" selected>{{ $dept->name }}</option>
-                                @else
-                                <option name="tracker" value="{{ $dept->name }}">{{ $dept->name }}</option>
-                                @endif
-                                @endforeach
-                            </select>
-                            @error('tracker')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label id="description_label" for="description">Problem Identification</label>
-                            <input name="description" id="description" readonly value="{{ $issue->description }}" class="form-control @error('description')
-        is-invalid
-    @enderror" placeholder="Masukan Description" />
-                            @error('description')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label id="c_action_label" for="c_action">Corrective Action</label>
-                            <input id="c_action" name="c_action" type="text" class="form-control @error('c_action')
-            is_invalid
-        @enderror" readonly value="{{ $issue->c_action }}" placeholder="Masukan Corrective Action" />
-                            @error('c_action')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label id="status_label" for="status">Status</label>
-                            <select class="form-select form-control form-control-sm" name="status">
-                            @if($issue)
-                                <option name="status" value="{{ $issue->status }}">{{ $issue->status }}</option>
-                            @endif
-                            </select>
-                            @error('status')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label id="priority_label" for="priority">Priority</label>
-                            <select class="form-select form-control form-control-sm" name="priority">
-                            @if($issue)
-                                <option name="priority" value="{{ $issue->priority }}" selected>{{ $issue->piority }}</option>
-                            @endif
-                            </select>
-                            @error('priority')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label id="start_date_label" for="start_date">Start Date</label>
-                            <input id="start_date" name="start_date" type="date" class="form-control @error('start_date')
-            is_invalid
-        @enderror" readonly value="{{ $issue->start_date }}" />
-                            @error('start_date')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label id="end_date_label" for="end_date">End Date</label>
-                            <input id="end_date" name="end_date" type="date" class="form-control @error('end_date')
-            is_invalid
-        @enderror" readonly value="{{ $issue->end_date }}" />
-                            @error('end_date')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label id="assignee_label" for="assignee">Assignee</label>
-                            <select class="form-select form-control form-control-sm" id="assignee" name="assignee">
-                                @foreach ($users as $user)
-                                @if (old('assignee') == $user->name)
-                                <option name="assignee" value="{{ $user->name }}" selected>{{ $user->name }}</option>
-                                @else
-                                <option name="assignee" value="{{ $user->name }}">{{ $user->name }}</option>
-                                @endif
-                                @endforeach
-                            </select>
-                            @error('assignee')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label id="file_label" for="file">File</label>
-                            <div id="targetLayer"></div>
-                            <div class="icon-choose-image"></div>
-                            <input id="file" name="file" type="file" class="form-control form-control-file @error('file')
-            is_invalid
-        @enderror" value="{{ $issue->file }}" onchange="return showPreview(this)" />
-                            @error('file')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                        <div class="d-flex justify-content-end align-items-end">
-                            <button type="submit" class="btn btn-sm btn-success ">Save</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            <script>
+                $(document).ready(function() {
+                    // Hide and Show Columns
+                    $('#toggleColumns').on('change', function() {
+                        var column = $(this).attr('id');
+                        $('.' + column).toggle();
+                    });
+
+                    // Expandable Columns
+                    $('.expandable-column').on('click', function() {
+                        $(this).toggleClass('expanded');
+                        $(this).siblings('.expand-content').toggle();
+                    });
+                });
+            </script>
+
+            <script>
+                $(document).ready(function() {
+                    // Hide and Show Columns
+                    $('#toggleColumns').on('change', function() {
+                        var column = $(this).val();
+                        $('.' + column).toggle();
+                    });
+                });
+            </script>
+
+
         </div>
-
-        <script>
-            $(document).ready(function() {
-                // Hide and Show Columns
-                $('#toggleColumns').on('change', function() {
-                    var column = $(this).attr('id');
-                    $('.' + column).toggle();
-                });
-
-                // Expandable Columns
-                $('.expandable-column').on('click', function() {
-                    $(this).toggleClass('expanded');
-                    $(this).siblings('.expand-content').toggle();
-                });
-            });
-
-        </script>
-
-        <script>
-            $(document).ready(function() {
-                // Hide and Show Columns
-                $('#toggleColumns').on('change', function() {
-                    var column = $(this).val();
-                    $('.' + column).toggle();
-                });
-            });
-
-        </script>
-
-
     </div>
-</div>
-</div>
+    </div>
 
-<script>
-    const olfFile = document.getElementById('oldFile');
-    const newFile = document.getElementById('file');
+    <script>
+        const olfFile = document.getElementById('oldFile');
+        const newFile = document.getElementById('file');
 
-    newFile.addEventListener('change', function(e) {
-        oldFile.style.display = 'none';
-    });
+        newFile.addEventListener('change', function(e) {
+            oldFile.style.display = 'none';
+        });
 
-    const showPreview = (objFileInput) => {
-        if (objFileInput.files[0]) {
-            var fileReader = new FileReader();
-            fileReader.onload = function(e) {
-                $('#blah').attr('src', e.target.result);
-                $("#targetLayer").html('<img src="' + e.target.result + '" class="img-responsive w-25 h-25 img-fluid m-md-2" />');
-                $("#targetLayer").css('opacity', '0.7');
-                $(".icon-choose-image").css('opacity', '0.5');
+        const showPreview = (objFileInput) => {
+            if (objFileInput.files[0]) {
+                var fileReader = new FileReader();
+                fileReader.onload = function(e) {
+                    $('#blah').attr('src', e.target.result);
+                    $("#targetLayer").html('<img src="' + e.target.result +
+                        '" class="img-responsive w-25 h-25 img-fluid m-md-2" />');
+                    $("#targetLayer").css('opacity', '0.7');
+                    $(".icon-choose-image").css('opacity', '0.5');
+                }
+                fileReader.readAsDataURL(objFileInput.files[0]);
             }
-            fileReader.readAsDataURL(objFileInput.files[0]);
         }
-    }
-
-</script>
+    </script>
 @endsection

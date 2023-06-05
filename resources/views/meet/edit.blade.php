@@ -1,181 +1,199 @@
 @extends('layout.main')
 
 @section('content')
-<div class="main-content side-content pt-0">
-    <div class="container-fluid">
-        <div class="inner-body">
-            <!-- Page Header -->
-            <div class="page-header">
-                <div>
-                    <h2 class="main-content-title tx-24 mg-b-5">Add Meeting</h2>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Meeting</li>
-                    </ol>
-                </div>
-                <div class="d-flex">
-                    <div class="justify-content-center">
-                        <button type="button" class="btn btn-white btn-icon-text my-2 mr-2">
-                            <i class="fe fe-download mr-2"></i> Import
-                        </button>
-                        <button type="button" class="btn btn-white btn-icon-text my-2 mr-2">
-                            <i class="fe fe-filter mr-2"></i> Filter
-                        </button>
-                        <button type="button" class="btn btn-primary my-2 btn-icon-text">
-                            <i class="fe fe-download-cloud mr-2"></i> Download Report
-                        </button>
+    <div class="main-content side-content pt-0">
+        <div class="container-fluid">
+            <div class="inner-body">
+                <!-- Page Header -->
+                <div class="page-header">
+                    <div>
+                        <h2 class="main-content-title tx-24 mg-b-5">Edit Meeting</h2>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/meet">Meeting</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Edit Meet</li>
+                        </ol>
+                    </div>
+                    <div class="d-flex">
+                        <div class="justify-content-center">
+                            <button type="button" class="btn btn-white btn-icon-text my-2 mr-2">
+                                <i class="fe fe-download mr-2"></i> Import
+                            </button>
+                            <button type="button" class="btn btn-white btn-icon-text my-2 mr-2">
+                                <i class="fe fe-filter mr-2"></i> Filter
+                            </button>
+                            <button type="button" class="btn btn-primary my-2 btn-icon-text">
+                                <i class="fe fe-download-cloud mr-2"></i> Download Report
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- End Page Header -->
+                <!-- End Page Header -->
 
-            <!--Row-->
-            <div class="card col-12">
-                <div class="card-body">
-                    <form action="/meet/{{ $meet->meet_id }}" method="POST">
-                        @csrf
-                        @method('put')
-                        <div class="row mb-3">
-                            <label for="meet_xid" class="col-sm-2 col-form-label">ID Meet</label>
-                            <div class="col-12">
-                                <input type="text" class="form-control form-control-sm @error('meet_xid') is-invalid @enderror" id="meet_xid" name="meet_xid" value="{{ $meet->meet_xid }}" readonly>
-                                @error('meet_xid')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
+                <!--Row-->
+                <div class="card col-12">
+                    <div class="card-body">
+                        <form action="/meet/{{ $meet->meet_id }}" method="POST">
+                            @csrf
+                            @method('put')
+                            <div class="row mb-3">
+                                <label for="meet_xid" class="col-sm-2 col-form-label">ID Meet</label>
+                                <div class="col-12">
+                                    <input type="text"
+                                        class="form-control form-control-sm @error('meet_xid') is-invalid @enderror"
+                                        id="meet_xid" name="meet_xid" value="{{ $meet->meet_xid }}" readonly>
+                                    @error('meet_xid')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
-                                @enderror
                             </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="meet_name" class="col-sm-2 col-form-label">Meeting Name</label>
-                            <div class="col-12">
-                                <input type="text" class="form-control form-control-sm @error('project') is-invalid @enderror" id="meet_name" name="meet_name" value="{{ old('meet_name',$meet->meet_name) }}" placeholder="Masukan Meeting Name">
-                                @error('meet_name')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
+                            <div class="row mb-3">
+                                <label for="meet_name" class="col-sm-2 col-form-label">Meeting Name</label>
+                                <div class="col-12">
+                                    <input type="text"
+                                        class="form-control form-control-sm @error('project') is-invalid @enderror"
+                                        id="meet_name" name="meet_name" value="{{ old('meet_name', $meet->meet_name) }}"
+                                        placeholder="Masukan Meeting Name">
+                                    @error('meet_name')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
-                                @enderror
                             </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="meet_project" class="col-sm-2 col-form-label">Project</label>
-                            <div class="col-12">
-                                <select class="form-select form-control form-control-sm" name="meet_project" ">
-                                    <option name="meet_project" >{{ old('meet_name',$meet->meet_project) }}</option>
-                                    <option name="meet_project" value="MEETING HO">MEETING HO</option>
-                                    <option name="meet_project" value="MEETING TEAM 9">MEETING TEAM 9</option>
-                                    <option name="meet_project" value="MEETING SITE">MEETING SITE</option>
-                                </select>
-                                @error('meet_project')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
+                            <div class="row mb-3">
+                                <label for="meet_project" class="col-sm-2 col-form-label">Project</label>
+                                <div class="col-12">
+                                    <select class="form-select form-control form-control-sm" name="meet_project">
+                                        <option name="meet_project" value="MEETING HO">MEETING HO</option>
+                                        <option name="meet_project" value="MEETING TEAM 9">MEETING TEAM 9</option>
+                                        <option name="meet_project" value="MEETING SITE">MEETING SITE</option>
+                                    </select>
+                                    @error('meet_project')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
-                                @enderror
                             </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="meet_date" class="col-sm-2 col-form-label">Date Of Meeting</label>
-                            <div class="col-12">
-                                <input type="date" class="form-control form-control-sm @error('meet_date') is-invalid @enderror" id="meet_date" name="meet_date" value="{{ old('meet_date',$meet->meet_date) }}">
-                                @error('meet_date')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
+                            <div class="row mb-3">
+                                <label for="meet_date" class="col-sm-2 col-form-label">Date Of Meeting</label>
+                                <div class="col-12">
+                                    <input type="date"
+                                        class="form-control form-control-sm @error('meet_date') is-invalid @enderror"
+                                        id="meet_date" name="meet_date" value="{{ old('meet_date', $meet->meet_date) }}">
+                                    @error('meet_date')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
-                                @enderror
                             </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="meet_time" class="col-sm-2 col-form-label">Time Of Meeting</label>
-                            <div class="col-12">
-                                <input type="time" class="form-control form-control-sm @error('meet_time') is-invalid @enderror" id="meet_time" name="meet_time" value="{{ old('meet_time',$meet->meet_time) }}">
-                                @error('meet_time')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
+                            <div class="row mb-3">
+                                <label for="meet_time" class="col-sm-2 col-form-label">Time Of Meeting</label>
+                                <div class="col-12">
+                                    <input type="time"
+                                        class="form-control form-control-sm @error('meet_time') is-invalid @enderror"
+                                        id="meet_time" name="meet_time" value="{{ old('meet_time', $meet->meet_time) }}">
+                                    @error('meet_time')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
-                                @enderror
                             </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="meet_preparedby" class="col-sm-2 col-form-label">Minutes Prepared by</label>
-                            <div class="col-12">
-                                <input type="text" class="form-control form-control-sm @error('meet_preparedby') is-invalid @enderror" id="meet_preparedby" name="meet_preparedby" value="{{ old('meet_preparedby',$meet->meet_preparedby) }}" placeholder="Masukan Minutes Prepared By">
-                                @error('meet_preparedby')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
+                            <div class="row mb-3">
+                                <label for="meet_preparedby" class="col-sm-2 col-form-label">Minutes Prepared by</label>
+                                <div class="col-12">
+                                    <input type="text"
+                                        class="form-control form-control-sm @error('meet_preparedby') is-invalid @enderror"
+                                        id="meet_preparedby" name="meet_preparedby"
+                                        value="{{ old('meet_preparedby', $meet->meet_preparedby) }}"
+                                        placeholder="Masukan Minutes Prepared By">
+                                    @error('meet_preparedby')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
-                                @enderror
                             </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="meet_locate" class="col-sm-2 col-form-label">Meeting Locate</label>
-                            <div class="col-12">
-                                <input type="text" class="form-control form-control-sm @error('meet_locate') is-invalid @enderror" id="meet_locate" name="meet_locate" value="{{ old('meet_locate',$meet->meet_locate) }}" placeholder="Masukan Meeting Locate">
-                                @error('meet_locate')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
+                            <div class="row mb-3">
+                                <label for="meet_locate" class="col-sm-2 col-form-label">Meeting Locate</label>
+                                <div class="col-12">
+                                    <input type="text"
+                                        class="form-control form-control-sm @error('meet_locate') is-invalid @enderror"
+                                        id="meet_locate" name="meet_locate"
+                                        value="{{ old('meet_locate', $meet->meet_locate) }}"
+                                        placeholder="Masukan Meeting Locate">
+                                    @error('meet_locate')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
-                                @enderror
                             </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="meet_attend">Attendees</label>
-                            <div class="col-12">
-                                <select id="meet_attend" class="form-select form-control form-control-sm" name="meet_attend">
-                                    @foreach ($users as $user)
-                                    @if (old('meet_attend') == $user->id)
-                                    <option name="meet_attend" value="{{ $user->name }}" selected>{{ $user->name }}
-                                    </option>
-                                    @else
-                                    <option name="meet_attend" value="{{ $user->name }}">{{ $user->name }}</option>
-                                    @endif
-                                    @endforeach
-                                </select>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label" for="meet_attend">Attendees</label>
+                                <div class="col-12">
+                                    <select id="meet_attend" class="form-select form-control form-control-sm"
+                                        name="meet_attend">
+                                        @foreach ($users as $user)
+                                            @if (old('meet_attend') == $user->id)
+                                                <option name="meet_attend" value="{{ $user->name }}" selected>
+                                                    {{ $user->name }}
+                                                </option>
+                                            @else
+                                                <option name="meet_attend" value="{{ $user->name }}">
+                                                    {{ $user->name }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
 
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="row mb-3">
-                            <label for="" class="col-sm-2 col-form-label"></label>
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-sm btn-success">
-                                    Submit
-                                </button>
+                            <div class="row mb-3">
+                                <label for="" class="col-sm-2 col-form-label"></label>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-md btn-success">
+                                        Submit
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
+                <script>
+                    $(document).ready(function() {
+                        // Hide and Show Columns
+                        $('#toggleColumns').on('change', function() {
+                            var column = $(this).attr('id');
+                            $('.' + column).toggle();
+                        });
+
+                        // Expandable Columns
+                        $('.expandable-column').on('click', function() {
+                            $(this).toggleClass('expanded');
+                            $(this).siblings('.expand-content').toggle();
+                        });
+                    });
+                </script>
+
+                <script>
+                    $(document).ready(function() {
+                        // Hide and Show Columns
+                        $('#toggleColumns').on('change', function() {
+                            var column = $(this).val();
+                            $('.' + column).toggle();
+                        });
+                    });
+                </script>
+                <!-- Row end -->
             </div>
-            <script>
-                $(document).ready(function() {
-                    // Hide and Show Columns
-                    $('#toggleColumns').on('change', function() {
-                        var column = $(this).attr('id');
-                        $('.' + column).toggle();
-                    });
-
-                    // Expandable Columns
-                    $('.expandable-column').on('click', function() {
-                        $(this).toggleClass('expanded');
-                        $(this).siblings('.expand-content').toggle();
-                    });
-                });
-
-            </script>
-
-            <script>
-                $(document).ready(function() {
-                    // Hide and Show Columns
-                    $('#toggleColumns').on('change', function() {
-                        var column = $(this).val();
-                        $('.' + column).toggle();
-                    });
-                });
-
-            </script>
-            <!-- Row end -->
         </div>
-    </div>
-    <!-- End Main Content-->
+        <!-- End Main Content-->
 
-</div>
+    </div>
 @endsection

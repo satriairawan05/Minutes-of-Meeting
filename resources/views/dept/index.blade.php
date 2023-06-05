@@ -1,7 +1,7 @@
 @extends('layout.main')
 
 @section('content')
-<div class="main-content side-content pt-0">
+    <div class="main-content side-content pt-0">
         <div class="container-fluid">
             <div class="inner-body">
                 <!-- Page Header -->
@@ -49,7 +49,7 @@
                             </div>
                         @endif
                         <div class="table-responsive">
-                            <table class="table table-sm table-striped table-bordered table-hover">
+                            <table class="table table-sm table-bordered table-hover">
                                 <thead class="table-header">
                                     <th style="text-align: center;">No</th>
                                     <th style="text-align: center;">Name</th>
@@ -75,7 +75,7 @@
                                             <td style="text-align: center;">
                                                 {{-- Edit Modal Trigger --}}
                                                 <button type="button"
-                                                    onclick="window.location='{{ route('departemen.edit',$dept->id) }}'"
+                                                    onclick="window.location='{{ route('departemen.edit', $dept->id) }}'"
                                                     class="btn bg-gradient-info" title="Edit Data">
                                                     <i class="fas fa-edit"></i>
                                                 </button>
@@ -83,8 +83,7 @@
 
                                                 {{-- Delete Modal Trigger --}}
                                                 <button type="button" class="btn bg-gradient-primary"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#deleteModal{{ $dept->id }}">
+                                                    data-bs-toggle="modal" data-bs-target="#deleteModal{{ $dept->id }}">
                                                     <i class="far fa-trash-alt"></i>
                                                 </button>
                                                 {{-- End of Delete Modal Trigger --}}
@@ -110,7 +109,7 @@
                                                             <div class="modal-footer">
                                                                 <form onsubmit="return deleteData('{{ $dept->id }}')"
                                                                     method="POST"
-                                                                    action="{{ route('meet.destroy',$dept->id) }}">
+                                                                    action="{{ route('meet.destroy', $dept->id) }}">
                                                                     @csrf
                                                                     <button type="button" class="btn bg-gradient-secondary"
                                                                         data-bs-dismiss="modal">Close</button>
@@ -132,7 +131,7 @@
                             </table>
                         </div>
 
-                    {{ $depts->links() }}
+                        {{ $depts->links() }}
                     </div>
                 </div>
                 <script>

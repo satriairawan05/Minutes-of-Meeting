@@ -194,7 +194,7 @@
                             @enderror
                         </div>
                         <div class="d-flex justify-content-end align-items-end">
-                        <button type="submit" class="btn btn-sm btn-success">Update</button>
+                        <button type="submit" class="btn btn-md btn-success">Update</button>
                         </div>
                     </form>
                 </div>
