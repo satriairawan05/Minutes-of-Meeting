@@ -34,6 +34,7 @@
                     <div class="card-body">
                         <a href="{{ route('departemen.index') }}" class="btn btn-sm btn-success">Departemen</a>
                         <a href="{{ route('user.index') }}" class="btn btn-sm btn-info">User Management</a>
+                        <a href="{{ route('group.index') }}" class="btn btn-sm btn-primary">Roles</a>
                     </div>
                 </div>
                 <script>

@@ -59,6 +59,7 @@
                     <span class="sidemenu-label">User</span>
                 </a>
             </li>
+            @if(auth()->user()->name == 'Super Admin')
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('preference') }}">
                     <span class="shape1"></span>
@@ -67,6 +68,7 @@
                     <span class="sidemenu-label">Preferences</span>
                 </a>
             </li>
+            @endif
         </ul>
     </div>
 </div>

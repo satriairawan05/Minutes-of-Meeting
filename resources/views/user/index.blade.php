@@ -16,7 +16,9 @@
                 </div>
 
                 <div class="card">
-                    <div class="card-header d-flex justify-content-end">
+                    <div class="card-header d-flex justify-content-center align-items-center">
+                        <a href="{{ route('group.index') }}" class="btn-data btn text-decoration-none text-black">
+                        <i class="fas fa-user-cog"></i> Setting</a>
                         <a href="{{ route('user.create') }}" class="btn-data btn text-decoration-none text-black">
                             <i class="fas fa-plus-circle"></i> Add New Data
                         </a>
@@ -28,9 +30,9 @@
                             </div>
                         @endif
 
-                        @if (session('success'))
-                            <div class="alert alert-success container container-fluid" role="alert">
-                                {{ session('success') }}
+                        @if (session('failed'))
+                            <div class="alert alert-danger container container-fluid" role="alert">
+                                {{ session('failed') }}
                             </div>
                         @endif
 

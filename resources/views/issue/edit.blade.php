@@ -220,7 +220,10 @@
                                     </div>
                                 @enderror
                             </div>
-                            <button type="submit" class="btn btn-md btn-success">Save</button>
+                             <div class="col-12 d-flex justify-content-center align-items-center">
+                            <a href="{{ route('issue.index') }}" class="btn btn-md btn-primary mr-3">Back</a>
+                            <button type="submit" class="btn btn-md btn-success">Submit</button>
+                        </div>
                         </form>
                     </div>
                 </div>

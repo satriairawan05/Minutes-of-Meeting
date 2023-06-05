@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GroupPage;
 use App\Models\Page;
 use Illuminate\Http\Request;
 
-class PageController extends Controller
+class SettingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +21,9 @@ class PageController extends Controller
      */
     public function create()
     {
-        //
+        return view('setting.create',[
+            'pages' => Page::get()
+        ]);
     }
 
     /**
@@ -34,7 +37,7 @@ class PageController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Page $page)
+    public function show(GroupPage $groupPage)
     {
         //
     }
@@ -42,7 +45,7 @@ class PageController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Page $page)
+    public function edit(GroupPage $groupPage)
     {
         //
     }
@@ -50,7 +53,7 @@ class PageController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Page $page)
+    public function update(Request $request, GroupPage $groupPage)
     {
         //
     }
@@ -58,7 +61,7 @@ class PageController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Page $page)
+    public function destroy(GroupPage $groupPage)
     {
         //
     }

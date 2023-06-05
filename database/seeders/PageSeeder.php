@@ -92,25 +92,5 @@ class PageSeeder extends Seeder
             'page_name' => 'User',
             'action' => 'Delete'
         ]);
-
-        Page::create([
-            'page_name' => 'Preferences',
-            'action' => 'Create'
-        ]);
-
-        Page::create([
-            'page_name' => 'Preferences',
-            'action' => 'Read'
-        ]);
-
-        Page::create([
-            'page_name' => 'Preferences',
-            'action' => 'Update'
-        ]);
-
-        Page::create([
-            'page_name' => 'Preferences',
-            'action' => 'Delete'
-        ]);
     }
 }

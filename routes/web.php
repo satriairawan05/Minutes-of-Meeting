@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\DepartemenController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DepartemenController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\GroupController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MeetController;
 use App\Http\Controllers\IssueController;
-use App\Http\Controllers\PagesController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\UserManagementController;
 
 /*
@@ -46,6 +47,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('issue/{issue}/doc/{doc}/edit',[DocumentController::class, 'editForm'])->name('issue.document.edit');
     Route::put('issue/{issue}/doc',[DocumentController::class, 'updateForm'])->name('issueDoc.update');
 
+    Route::resource('group', GroupController::class);
+    Route::get('user/setting/create',[SettingController::class,'create'])->name('setting.create');
 
     Route::get('preference', function(){
         return view('pref.index');

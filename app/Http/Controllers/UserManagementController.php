@@ -13,9 +13,17 @@ class UserManagementController extends Controller
      */
     public function index()
     {
-        return view('user.index', [
-            'users' => User::leftJoin('groups','users.group_id','=','groups.id')->paginate(15)
-        ]);
+        
+        if(auth()->user()->name == 'Super Admin')
+        {
+            return view('user.index', [
+                'users' => User::leftJoin('groups','users.group_id','=','groups.id')->paginate(15)
+            ]);
+        } else {
+            return view('user.index',[
+                'users' => User::where('name','=',auth()->user()->name)->get()
+            ]);
+        }
     }
 
     /**

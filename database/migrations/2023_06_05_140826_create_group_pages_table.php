@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pages', function (Blueprint $table) {
-            $table->increments('page_id');
-            $table->string('page_name');
-            $table->string('action');
+        Schema::create('group_pages', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('group_id');
+            $table->foreignId('page_id');
+            $table->unsignedBigInteger('access');
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pages');
+        Schema::dropIfExists('user_group_pages');
     }
 };
