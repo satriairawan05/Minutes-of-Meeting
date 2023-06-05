@@ -7,7 +7,7 @@
                 <!-- Page Header -->
                 <div class="page-header">
                     <div>
-                        <h2 class="main-content-title tx-24 mg-b-5">Doc Data</h2>
+                        <h2 class="main-content-title tx-24 mg-b-5">Document Data</h2>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Document Details</li>
@@ -29,11 +29,6 @@
                 </div>
                 <!-- End Page Header -->
                 <div class="card">
-                    <div class="card-header d-flex justify-content-end">
-                        <a href="{{ route('document.create') }}" class="btn-data btn text-decoration-none text-black">
-                            <i class="fas fa-plus-circle"></i> Add New Data
-                        </a>
-                    </div>
                     <div class="card-body">
                         @if (session('success'))
                             <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
@@ -91,7 +86,7 @@
                                 </table>
                             </div>
                             <table id="exportexample"class="table table-bordered border-t0 key-buttons text-nowrap w-100">
- 
+
                                 <thead class="table-header text-center">
                                     <tr>
                                         <th>No</th>

@@ -29,12 +29,6 @@
                             </div>
                         @endif
 
-                        @if (session('success'))
-                            <div class="alert alert-success container container-fluid" role="alert">
-                                {{ session('success') }}
-                            </div>
-                        @endif
-
                         @if ($users)
                             <div class="table-responsive">
 
