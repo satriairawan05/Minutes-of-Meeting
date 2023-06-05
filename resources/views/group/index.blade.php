@@ -4,15 +4,13 @@
 <div class="main-content side-content pt-0">
     <div class="container-fluid">
         <div class="inner-body">
-
-
             <!-- Page Header -->
             <div class="page-header">
                 <div>
-                    <h2 class="main-content-title tx-24 mg-b-5">Issue Data</h2>
+                    <h2 class="main-content-title tx-24 mg-b-5">Role Data</h2>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Issue Details</li>
+                        <li class="breadcrumb-item active" aria-current="page">Role Details</li>
                     </ol>
                 </div>
                 <div class="d-flex">

@@ -18,7 +18,7 @@ class GroupSeeder extends Seeder
         ]);
 
         Group::create([
-            'group_name' => 'Direksi'
+            'group_name' => 'PIC'
         ]);
 
         Group::create([

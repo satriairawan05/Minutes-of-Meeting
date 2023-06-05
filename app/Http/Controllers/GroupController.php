@@ -41,16 +41,16 @@ class GroupController extends Controller
                 'group_name' => 'required|min:5|max:255',
             ]);
 
-            if($validate){
+            if($validate == $request){
                 $group = new Group;
                 $group->group_name = $request->group_name;
                 $group->save();
-                $pages = new Page;
+                $pages = Page::all();
                 foreach($pages as $page){
                     $groupPage = new GroupPage;
                     $groupPage->page_id = $page->page_id;
                     $groupPage->group_id = $group->group_id;
-                    $groupPage->action = $request->input($page->page_name.$page->action) === "on" ? true : false;
+                    $groupPage->action = $request->input($page->page_name.$page->action) == "on" ? 1 : 0;
                     $groupPage->save();
                 }
             }

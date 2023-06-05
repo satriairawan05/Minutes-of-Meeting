@@ -28,8 +28,8 @@ class UserSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'Direksi',
-            'email' => 'direksi@suemerugrup.com',
+            'name' => 'PIC',
+            'email' => 'pic@suemerugrup.com',
             'password' => bcrypt('suemeru'),
             'email_verified_at' => now(),
             'group_id' => 2,
