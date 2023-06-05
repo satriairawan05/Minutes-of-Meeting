@@ -23,7 +23,7 @@
                     </div>
                     <div class="card-body">
                         @if (session('success'))
-                            <div class="alert alert-success container container-fluid" role="alert">
+                            <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
                                 {{ session('success') }}
                             </div>
                         @endif
@@ -141,4 +141,15 @@
                     });
                 });
             </script>
+            @if (session('success'))
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        var successAlert = document.getElementById('success-alert');
+                        successAlert.style.display = 'block';
+                        setTimeout(function() {
+                            successAlert.style.display = 'none';
+                        }, 5000); // Adjust the timeout value (in milliseconds) as needed
+                    });
+                </script>
+            @endif
         @endsection
