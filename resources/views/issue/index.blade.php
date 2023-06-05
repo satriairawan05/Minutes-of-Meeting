@@ -44,7 +44,7 @@
                         @endif
 
                         <div class="table-responsive">
-                            <table class="table table-sm table-bordered table-hover">
+                            <table id="exportexample"class="table table-bordered border-t0 key-buttons text-nowrap w-100">
 
                                 <thead class="table-header text-center">
                                     <tr>
