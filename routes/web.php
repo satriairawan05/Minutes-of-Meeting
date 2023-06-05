@@ -6,6 +6,7 @@ use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MeetController;
 use App\Http\Controllers\IssueController;
+use App\Http\Controllers\PagesController;
 use App\Http\Controllers\UserManagementController;
 
 /*

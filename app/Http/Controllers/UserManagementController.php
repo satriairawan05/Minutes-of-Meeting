@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Group;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,7 @@ class UserManagementController extends Controller
     public function index()
     {
         return view('user.index', [
-            'users' => User::paginate(15)
+            'users' => User::leftJoin('groups','users.group_id','=','groups.id')->paginate(15)
         ]);
     }
 
@@ -22,7 +23,9 @@ class UserManagementController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+        return view('user.create',[
+            'roles' => Group::get()
+        ]);
     }
 
     /**
@@ -30,26 +33,31 @@ class UserManagementController extends Controller
      */
     public function store(Request $request)
     {
-        $validate = $this->validate($request,[
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'max:255', 'confirmed'],
-        ]);
+        try {
+            $validate = $this->validate($request,[
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'max:255', 'confirmed'],
+                'group_id' => ['required']
+            ]);
 
-        $validate['password'] = bcrypt($request->input('password'));
+            $validate['password'] = bcrypt($request->input('password'));
 
-        User::create($validate);
+            User::create($validate);
 
-        return redirect('user')->with('Success','Added User Successfully!');
+            return redirect('user')->with('Success','Added User Successfully!');
+        } catch (\Throwable $th) {
+            return redirect('user')->with('failed',$th->getMessage());
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(User $user, $user_id)
+    public function show(User $user)
     {
         return view('user.show', [
-            'user' => $user->find($user_id)
+            'user' => $user
         ]);
     }
 
@@ -59,7 +67,8 @@ class UserManagementController extends Controller
     public function edit(User $user)
     {
         return view('user.edit', [
-            'user' => $user
+            'user' => $user,
+            'roles' => Group::get()
         ]);
     }
 
@@ -68,19 +77,24 @@ class UserManagementController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $rules = [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255'],
-            'password' => ['required', 'string', 'max:255', 'confirmed'],
-        ];
+        try {
+            $rules = [
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255'],
+                'password' => ['required', 'string', 'max:255', 'confirmed'],
+                'group_id' => ['required']
+            ];
 
-        $validate = $request->validate($rules);
+            $validate = $request->validate($rules);
 
-        $validate['password'] = bcrypt($request->input('password'));
+            $validate['password'] = bcrypt($request->input('password'));
 
-        User::where('id',$user->id)->update($validate);
+            User::where('id',$user->id)->update($validate);
 
-        return redirect('user')->with('Success','Updated User Successfully!');
+            return redirect('user')->with('Success','Updated User Successfully!');
+        } catch (\Throwable $th) {
+            return redirect('user')->with('failed',$th->getMessage());
+        }
     }
 
     /**
