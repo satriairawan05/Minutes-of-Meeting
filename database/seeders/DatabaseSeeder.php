@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Database\Seeders\PageSeeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\GroupSeeder;
+use Database\Seeders\GroupPageSeeder;
 use Database\Seeders\DepartemenSeeder;
 
 class DatabaseSeeder extends Seeder
@@ -27,6 +28,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             GroupSeeder::class,
             PageSeeder::class,
+            GroupPageSeeder::class,
             DepartemenSeeder::class
         ]);
     }

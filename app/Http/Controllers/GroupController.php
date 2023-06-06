@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Group;
 use App\Models\GroupPage;
 use App\Models\Page;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class GroupController extends Controller
@@ -49,8 +50,8 @@ class GroupController extends Controller
             }
 
             return redirect()->to('group')->with('success', 'Added Role Successfully!')->withInput();
-        } catch (\Throwable $th) {
-            return redirect('group')->with('failed',$th->getMessage());
+        } catch (QueryException $e) {
+            return $e->getMessage();
         }
     }
 
@@ -70,7 +71,7 @@ class GroupController extends Controller
         return view('group.edit', [
             'group' => $group,
             'page_distincts' => Page::distinct('page_name')->get('page_name'),
-            'pages' => GroupPage::leftJoin('pages','pages.page_id','=','group_pages.page_id')->get()
+            'pages' => GroupPage::leftJoin('pages','pages.page_id','=','group_pages.page_id')->where('group_id','=',$group->group_id)->get()
         ]);
     }
 
@@ -79,21 +80,19 @@ class GroupController extends Controller
      */
     public function update(Request $request, Group $group)
     {
+        // return dd($request->all());
         try {
-            $validate = $request->validate([
-                'group_name' => 'required'
-            ]);
-            $group = Group::where('group_id',$group->group_id)->update($validate);
+            $group = Group::where('group_id','=',$group->group_id);
             $pages = GroupPage::leftJoin('pages','pages.page_id','=','group_pages.page_id')->get();
             foreach ($pages as $page) {
-                $groupPage = GroupPage::get();
-                $groupPage->access = $request->input($page->page_name . $page->action) == "on" ? 1 : 0;
-                $groupPage->update();
+                $groupPage = GroupPage::where('page_id','=',$page->page_id);
+                $access = $request->input($page->page_name . $page->action) == "on" ? 1 : 0;
+                $groupPage->update($access);
             }
 
             return redirect('group')->with('success', 'Updated Roles Successfully!');
-        } catch (\Throwable $th) {
-            return redirect('group')->with('failed', $th->getMessage());
+        } catch (QueryException $e) {
+            return $e->getMessage();
         }
     }
 
