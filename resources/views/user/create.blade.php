@@ -64,9 +64,9 @@
                             <select name="group_id" id="group_id" class="form-select form-control form-control-sm">
                                 @foreach ($roles as $role)
                                 @if (old('group_id') == $role->id)
-                                <option name="group_id" value="{{ $role->group_name }}" selected>{{ $role->group_name }}</option>
+                                <option name="group_id" value="{{ $role->group_id }}" selected>{{ $role->group_name }}</option>
                                 @else
-                                <option name="group_id" value="{{ $role->group_name }}">{{ $role->group_name }}
+                                <option name="group_id" value="{{ $role->group_id }}">{{ $role->group_name }}
                                 </option>
                                 @endif
                                 @endforeach

@@ -17,7 +17,7 @@ class UserManagementController extends Controller
         if(auth()->user()->name == 'Super Admin')
         {
             return view('user.index', [
-                'users' => User::paginate(15)
+                'users' => User::leftJoin('groups','groups.group_id','=','users.group_id')->paginate(15)
             ]);
         } else {
             return view('user.index',[

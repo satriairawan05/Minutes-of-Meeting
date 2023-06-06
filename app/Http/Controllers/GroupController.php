@@ -42,10 +42,9 @@ class GroupController extends Controller
     public function store(Request $request, Group $group, Page $page, GroupPage $groupPage)
     {
         try {
-            $create = $this->validate($request, [
-                'group_name' => 'required'
-            ]);
-            Group::create($create);
+            $group = new Group;
+            $group->group_name = $request->group_name;
+            $group->save();
             $pages = Page::all();
             foreach ($pages as $page) {
                 $groupPage = new GroupPage;
