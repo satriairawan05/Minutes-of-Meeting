@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Providers\RouteServiceProvider;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,15 +21,13 @@ class LoginController extends Controller
             'password' => ['required', 'string', 'max:255',],
         ]);
 
-        if(Auth::attempt($credentials))
-        {
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
             return redirect()->intended();
         }
 
-        return back()->with('error','Login Failed');
-
+        return back()->with('error', 'Login Failed');
     }
 
     public function logout(Request $request)

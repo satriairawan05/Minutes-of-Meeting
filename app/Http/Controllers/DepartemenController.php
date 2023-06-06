@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Departemen;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class DepartemenController extends Controller
@@ -30,13 +31,17 @@ class DepartemenController extends Controller
      */
     public function store(Request $request)
     {
-        $validate = $request->validate([
-            'name' => ['required']
-        ]);
+        try {
+            $validate = $request->validate([
+                'name' => ['required']
+            ]);
 
-        Departemen::create($validate);
+            Departemen::create($validate);
 
-        return redirect('/departemen')->with('success','Add Departemen Successfully!');
+            return redirect('/departemen')->with('success','Add Departemen Successfully!');
+        } catch(QueryException $e){
+            return $e->getMessage();
+        }
     }
 
     /**
@@ -44,7 +49,7 @@ class DepartemenController extends Controller
      */
     public function show(Departemen $departemen)
     {
-        Departemen::destroy($departemen->id);
+        //
     }
 
     /**
@@ -62,15 +67,19 @@ class DepartemenController extends Controller
      */
     public function update(Request $request, Departemen $departemen)
     {
-        $rules = [
-            'name' => ['required']
-        ];
+        try {
+            $rules = [
+                'name' => ['required']
+            ];
 
-        $validate = $request->validate($rules);
+            $validate = $request->validate($rules);
 
-        Departemen::where('id',$departemen->id)->update($validate);
+            Departemen::where('id',$departemen->id)->update($validate);
 
-        return redirect('/departemen')->with('success','Updated Departemen Successfully');
+            return redirect('/departemen')->with('success','Updated Departemen Successfully');
+        } catch (QueryException $e) {
+            return $e->getMessage();
+        }
     }
 
     /**

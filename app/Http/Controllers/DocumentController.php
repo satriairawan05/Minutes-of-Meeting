@@ -18,7 +18,7 @@ class DocumentController extends Controller
     public function index()
     {
         $data = Issue::join('meets', fn (JoinClause $join) => $join->on('issues.project','=','meets.meet_xid'))->get();
-        // return dd($data);
+
         return view('doc.index', [
             'docs' => $data,
             'meet' => Meet::latest()->get()->first(),

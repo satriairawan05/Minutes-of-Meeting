@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\DepartemenController;
+use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\UserManagementController;
 
 /*

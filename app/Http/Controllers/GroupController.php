@@ -122,7 +122,6 @@ class GroupController extends Controller
                     'group_id' => $group->group_id,
                     'page_id' => $page->page_id
                 ])->first();
-                return dd($groupPage);
                 if ($groupPage) {
                     $groupPage->delete();
                 }

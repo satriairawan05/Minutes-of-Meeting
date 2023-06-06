@@ -62,7 +62,8 @@
                                     <tr>
                                         <td style="text-align: center;">{{ $loop->iteration }}</td>
                                         <td style="text-align: center;" class="d-none d-sm-table-cell">
-                                            {{ $d->meet_xid }}</td>
+                                            <a href="{{ route('meet.show',$d->meet_id) }}" class="text-decoration-none text-monospace">{{ $d->meet_xid }}</a>
+                                        </td>
                                         <td style="text-align: center;">{{ $d->meet_name }}</td>
                                         <td style="text-align: center;">{{ $d->meet_project }}</td>
                                         <td style="text-align: center;">{{ \Carbon\Carbon::parse($d->meet_date)->format('l, d M Y') }}</td>

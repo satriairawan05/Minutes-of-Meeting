@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Group;
 use App\Models\User;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class UserManagementController extends Controller
@@ -110,8 +111,12 @@ class UserManagementController extends Controller
      */
     public function destroy(User $user)
     {
-        User::destroy($user->id);
+        try {
+            User::destroy($user->id);
 
-        return redirect('user')->with('Success','Deleted User Successfully!');
+            return redirect('user')->with('Success','Deleted User Successfully!');
+        } catch (QueryException $e) {
+            return $e->getMessage();
+        }
     }
 }
