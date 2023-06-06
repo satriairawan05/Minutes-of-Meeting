@@ -28,7 +28,7 @@
                     <span class="sidemenu-label">Dashboard</span>
                 </a>
             </li>
-            @if(App\Models\GroupPage::where('page_id','<=',4)->orWhere('access','=',1)->get())
+            @if(App\Models\GroupPage::where('page_id','=',2)->orWhere('access','=',1)->get())
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('meet.index') ? 'active' : '' }}"
                     href="{{ route('meet.index') }}">
@@ -39,7 +39,7 @@
                 </a>
             </li>
             @endif
-            @if (App\Models\GroupPage::where('page_id','=',5)->orWhere('page_id','<=',8)->orWhere('access','=',1)->get())
+            @if (App\Models\GroupPage::where('page_id','=',6)->orWhere('access','=',1)->get())
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('issue.index') ? 'active' : '' }}"
                     href="{{ route('issue.index') }}">
@@ -50,7 +50,7 @@
                 </a>
             </li>
             @endif
-            @if(App\Models\GroupPage::where('page_id','=',9)->orWhere('page_id','<=',12)->orWhere('access','=',1)->get())
+            @if(App\Models\GroupPage::where('page_id','=',10)->orWhere('access','=',1)->get())
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('document.index') ? 'active' : '' }}"
                     href="{{ route('document.index') }}">
@@ -61,7 +61,7 @@
                 </a>
             </li>
             @endif
-            @if(App\Models\GroupPage::where('page_id','=',13)->orWhere('page_id','<=',16)->orWhere('access','=',1)->get())
+            @if(App\Models\GroupPage::where('page_id','=',14)->orWhere('access','=',1)->get())
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('user.index') ? 'active' : '' }}"
                     href="{{ route('user.index') }}">

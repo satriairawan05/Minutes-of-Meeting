@@ -27,6 +27,9 @@
                                 {{ session('fail') }}
                             </div>
                         @endif
+                        @if(App\Models\GroupPage::where('page_id','=',9)->orWhere('access','=',1)->get())
+                            {{-- Tombol Create disini --}}
+                        @endif
                         <div class="table-responsive">
                             <div class="d-flex justify-content-end align-items-end ms-lg-auto">
                                 <table
@@ -106,6 +109,12 @@
                                                     class="btn bg-gradient-info">
                                                     <i class="fas fa-plus"></i>
                                                 </a>
+                                                @if(App\Models\GroupPage::where('page_id','=',11)->orWhere('access','=',1)->get())
+                                                    {{-- Tombol Edit disini --}}
+                                                @endif
+                                                @if(App\Models\GroupPage::where('page_id','=',12)->orWhere('access','=',1)->get())
+                                                    {{-- Tombol Hapus disini --}}
+                                                @endif
                                                 {{-- @foreach ($documents as $document)
                                         <a href="{{ route('issue.document.edit',[$doc->issue_id,$document->doc_id]) }}" class="btn bg-gradient-info">
                                             <input type="hidden" name="doc_id" value="{{ $document->doc_id }}">

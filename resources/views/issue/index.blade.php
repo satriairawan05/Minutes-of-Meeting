@@ -18,11 +18,13 @@
             </div>
             <!-- End Page Header -->
             <div class="card">
+            @if(App\Models\GroupPage::where('page_id','=',5)->orWhere('access','=',1)->get())
                 <div class="card-header d-flex justify-content-end">
                     <a href="{{ route('issue.create') }}" class="btn-data btn text-decoration-none text-black">
                         <i class="fas fa-plus-circle"></i> Add New Data
                     </a>
                 </div>
+            @endif
                 <div class="card-body">
                     @if (session('success'))
                     <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
@@ -82,15 +84,19 @@
                                         {{-- End of Show Modal Trigger --}}
 
                                         {{-- Edit Modal Trigger --}}
+                                        @if(App\Models\GroupPage::where('page_id','=',7)->orWhere('access','=',1)->get())
                                         <button type="button" onclick="window.location='{{ route('issue.edit', $i->issue_id) }}'" class="btn bg-gradient-info" title="Edit Data">
                                             <i class="fas fa-edit"></i>
                                         </button>
+                                        @endif
                                         {{-- End of Edit Modal Trigger --}}
 
                                         {{-- Delete Modal Trigger --}}
+                                        @if(App\Models\GroupPage::where('page_id','=',8)->orWhere('access','=',1)->get())
                                         <button type="button" class="btn bg-gradient-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $i->issue_id }}" onclick="{{ route('issue.destroy', $i->issue_id) }}">
                                             <i class="far fa-trash-alt"></i>
                                         </button>
+                                        @endif
                                         {{-- End of Delete Modal Trigger --}}
 
                                         {{-- Delete Modal --}}
