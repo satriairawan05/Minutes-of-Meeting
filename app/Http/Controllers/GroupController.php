@@ -37,9 +37,10 @@ class GroupController extends Controller
     public function store(Request $request, Group $group, Page $page, GroupPage $groupPage)
     {
         try {
-            $group = new Group;
-            $group->group_name = $request->group_name;
-            $group->save();
+            $create = $this->validate($request, [
+                'group_name' => 'required'
+            ]);
+            Group::create($create);
             $pages = Page::all();
             foreach ($pages as $page) {
                 $groupPage = new GroupPage;
@@ -49,7 +50,7 @@ class GroupController extends Controller
                 $groupPage->save();
             }
 
-            return redirect()->to('group')->with('success', 'Added Role Successfully!')->withInput();
+            return redirect()->to('group')->with('success', 'Added Role Successfully!');
         } catch (QueryException $e) {
             return $e->getMessage();
         }
@@ -71,25 +72,32 @@ class GroupController extends Controller
         return view('group.edit', [
             'group' => $group,
             'page_distincts' => Page::distinct('page_name')->get('page_name'),
-            'pages' => GroupPage::leftJoin('pages','pages.page_id','=','group_pages.page_id')->where('group_id','=',$group->group_id)->get()
+            'pages' => GroupPage::leftJoin('pages', 'pages.page_id', '=', 'group_pages.page_id')->where('group_id', '=', $group->group_id)->get()
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Group $group, $group_id)
+    public function update(Request $request, Group $group, Page $page, GroupPage $groupPage)
     {
         // return dd($request->all());
         try {
-            $group = Group::select('group_id');
-            $group->update($group_id);
-            $pages = GroupPage::leftJoin('pages','pages.page_id','=','group_pages.page_id')->get();
+            $update = $this->validate($request, [
+                'group_name' => 'required'
+            ]);
+            Group::where('group_id', $group->group_id)->update($update);
+            $pages = Page::all();
             foreach ($pages as $page) {
-                $groupPage = GroupPage::where('page_id');
-                $groupPage->update($request->input($page->page_name . $page->action) == "on" ? 1 : 0);
+                $access = $request->input($page->page_name . $page->action) == "on" ? 1 : 0;
+                $groupPage = GroupPage::where([
+                    'group_id' => $group->group_id,
+                    'page_id' => $page->page_id
+                ]);
+                $groupPage->update([
+                    'access' => $access
+                ]);
             }
-
             return redirect('group')->with('success', 'Updated Roles Successfully!');
         } catch (QueryException $e) {
             return $e->getMessage();
@@ -102,11 +110,23 @@ class GroupController extends Controller
     public function destroy(Group $group)
     {
         try {
-            Group::destroy($group->id);
+            Group::where('group_id', $group->group_id)->delete();
+
+            $pages = Page::all();
+            foreach ($pages as $page) {
+                $groupPage = GroupPage::where([
+                    'group_id' => $group->group_id,
+                    'page_id' => $page->page_id
+                ])->first();
+                return dd($groupPage);
+                if ($groupPage) {
+                    $groupPage->delete();
+                }
+            }
 
             return redirect('group')->with('success', 'Deleted Roles Successfully!');
-        } catch (\Throwable $th) {
-            return redirect('group')->with('failed', $th->getMessage());
+        } catch (QueryException $e) {
+            return $e->getMessage();
         }
     }
 }

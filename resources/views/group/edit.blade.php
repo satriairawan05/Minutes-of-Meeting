@@ -17,7 +17,7 @@
             <!-- End Page Header -->
             <div class="card">
                 <div class="card-body">
-                    <form action="/group/{{ $group->group_id }}" method="post">
+                    <form action="{{ route('group.update',$group->group_id) }}" method="post">
                         @csrf
                         @method('put')
                         <div class="col-12 mb-3">

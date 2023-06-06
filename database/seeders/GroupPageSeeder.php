@@ -236,5 +236,117 @@ class GroupPageSeeder extends Seeder
             'page_id' => 16,
             'access' => 0
         ]);
+
+        GroupPage::create([
+            'id' => 33,
+            'group_id' => 3,
+            'page_id' => 1,
+            'access' => 1
+        ]);
+
+        GroupPage::create([
+            'id' => 34,
+            'group_id' => 3,
+            'page_id' => 2,
+            'access' => 1
+        ]);
+
+        GroupPage::create([
+            'id' => 35,
+            'group_id' => 3,
+            'page_id' => 3,
+            'access' => 1
+        ]);
+
+        GroupPage::create([
+            'id' => 36,
+            'group_id' => 3,
+            'page_id' => 4,
+            'access' => 1
+        ]);
+
+        GroupPage::create([
+            'id' => 37,
+            'group_id' => 3,
+            'page_id' => 5,
+            'access' => 1
+        ]);
+
+        GroupPage::create([
+            'id' => 38,
+            'group_id' => 3,
+            'page_id' => 6,
+            'access' => 1
+        ]);
+
+        GroupPage::create([
+            'id' => 39,
+            'group_id' => 3,
+            'page_id' => 7,
+            'access' => 1
+        ]);
+
+        GroupPage::create([
+            'id' => 40,
+            'group_id' => 3,
+            'page_id' => 8,
+            'access' => 1
+        ]);
+
+        GroupPage::create([
+            'id' => 41,
+            'group_id' => 3,
+            'page_id' => 9,
+            'access' => 1
+        ]);
+
+        GroupPage::create([
+            'id' => 42,
+            'group_id' => 3,
+            'page_id' => 10,
+            'access' => 1
+        ]);
+
+        GroupPage::create([
+            'id' => 43,
+            'group_id' => 3,
+            'page_id' => 11,
+            'access' => 1
+        ]);
+
+        GroupPage::create([
+            'id' => 44,
+            'group_id' => 3,
+            'page_id' => 12,
+            'access' => 1
+        ]);
+
+        GroupPage::create([
+            'id' => 45,
+            'group_id' => 3,
+            'page_id' => 13,
+            'access' => 0
+        ]);
+
+        GroupPage::create([
+            'id' => 46,
+            'group_id' => 3,
+            'page_id' => 14,
+            'access' => 1
+        ]);
+
+        GroupPage::create([
+            'id' => 47,
+            'group_id' => 3,
+            'page_id' => 15,
+            'access' => 0
+        ]);
+
+        GroupPage::create([
+            'id' => 48,
+            'group_id' => 3,
+            'page_id' => 16,
+            'access' => 0
+        ]);
     }
 }

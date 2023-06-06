@@ -71,7 +71,7 @@
                                         {{-- End of Edit Modal Trigger --}}
 
                                         {{-- Delete Modal Trigger --}}
-                                        <button type="button" class="btn bg-gradient-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $group->group_id }}" onclick="{{ route('issue.destroy', $group->group_id) }}">
+                                        <button type="button" class="btn bg-gradient-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $group->group_id }}" onclick="{{ route('group.destroy',$group->group_id) }}">
                                             <i class="far fa-trash-alt"></i>
                                         </button>
                                         {{-- End of Delete Modal Trigger --}}
@@ -93,9 +93,9 @@
                                                     <div class="modal-footer">
                                                         <form method="POST" action="{{ route('group.destroy', $group->group_id) }}">
                                                             @csrf
+                                                            @method('delete')
                                                             <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
 
-                                                            @method('DELETE')
                                                             <button type="submit" class="btn bg-gradient-danger" data-bs-dismiss="modal">Delete</button>
                                                             </button>
                                                         </form>
