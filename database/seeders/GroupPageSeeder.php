@@ -213,28 +213,28 @@ class GroupPageSeeder extends Seeder
             'id' => 29,
             'group_id' => 2,
             'page_id' => 13,
-            'access' => 1
+            'access' => 0
         ]);
 
         GroupPage::create([
             'id' => 30,
             'group_id' => 2,
             'page_id' => 14,
-            'access' => 1
+            'access' => 0
         ]);
 
         GroupPage::create([
             'id' => 31,
             'group_id' => 2,
             'page_id' => 15,
-            'access' => 1
+            'access' => 0
         ]);
 
         GroupPage::create([
             'id' => 32,
             'group_id' => 2,
             'page_id' => 16,
-            'access' => 1
+            'access' => 0
         ]);
     }
 }

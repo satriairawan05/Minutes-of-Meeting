@@ -78,11 +78,12 @@ class GroupController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Group $group)
+    public function update(Request $request, Group $group, $group_id)
     {
         // return dd($request->all());
         try {
-            $group = Group::where('group_id');
+            $group = Group::select('group_id');
+            $group->update($group_id);
             $pages = GroupPage::leftJoin('pages','pages.page_id','=','group_pages.page_id')->get();
             foreach ($pages as $page) {
                 $groupPage = GroupPage::where('page_id');

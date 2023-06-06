@@ -35,14 +35,5 @@ class UserSeeder extends Seeder
             'group_id' => 2,
             'remember_token' => Str::random(10),
         ]);
-
-        User::create([
-            'name' => 'Member',
-            'email' => 'member@suemerugrup.com',
-            'password' => bcrypt('suemeru'),
-            'email_verified_at' => now(),
-            'group_id' => 3,
-            'remember_token' => Str::random(10),
-        ]);
     }
 }
