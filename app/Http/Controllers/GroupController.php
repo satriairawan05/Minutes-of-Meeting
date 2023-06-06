@@ -18,7 +18,7 @@ class GroupController extends Controller
         if(auth()->user()->name == "Super Admin"){
             $group = Group::get();
         } else {
-            $group = Group::where('group_id','!=',1)->get();
+            $group = Group::where('group_id','!=',1)->orWhere('name','=',auth()->user()->name)->get();
         }
         return view('group.index', [
             'groups' => $group
