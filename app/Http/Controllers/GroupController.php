@@ -15,8 +15,13 @@ class GroupController extends Controller
      */
     public function index()
     {
+        if(auth()->user()->name == "Super Admin"){
+            $group = Group::get();
+        } else {
+            $group = Group::where('group_id','!=',0)->get();
+        }
         return view('group.index', [
-            'groups' => Group::get()
+            'groups' => $group
         ]);
     }
 
