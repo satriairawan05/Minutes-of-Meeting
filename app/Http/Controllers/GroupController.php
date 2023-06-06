@@ -82,12 +82,11 @@ class GroupController extends Controller
     {
         // return dd($request->all());
         try {
-            $group = Group::where('group_id','=',$group->group_id);
+            $group = Group::where('group_id');
             $pages = GroupPage::leftJoin('pages','pages.page_id','=','group_pages.page_id')->get();
             foreach ($pages as $page) {
-                $groupPage = GroupPage::where('page_id','=',$page->page_id);
-                $access = $request->input($page->page_name . $page->action) == "on" ? 1 : 0;
-                $groupPage->update($access);
+                $groupPage = GroupPage::where('page_id');
+                $groupPage->update($request->input($page->page_name . $page->action) == "on" ? 1 : 0);
             }
 
             return redirect('group')->with('success', 'Updated Roles Successfully!');
