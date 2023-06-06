@@ -7,6 +7,7 @@ use App\Models\Meet;
 use App\Models\Issue;
 use App\Models\Document;
 use App\Models\User;
+use Illuminate\Database\Query\JoinClause;
 use Illuminate\Http\Request;
 
 class DocumentController extends Controller
@@ -16,8 +17,8 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        $data = Issue::where('status', '=', 'Closed')->get();
-
+        $data = Issue::join('meets', fn (JoinClause $join) => $join->on('issues.project','=','meets.meet_xid'))->get();
+        // return dd($data);
         return view('doc.index', [
             'docs' => $data,
             'meet' => Meet::latest()->get()->first(),

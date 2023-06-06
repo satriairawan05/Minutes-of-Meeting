@@ -2,7 +2,6 @@
     $modules = App\Models\GroupPage::where('group_id','=',auth()->user()->group_id)->get()
 @endphp
 
-{{-- @dd($modules) --}}
 <!-- Sidemenu -->
 <div class="main-sidebar main-sidebar-sticky side-menu">
     <div class="sidemenu-logo">
