@@ -59,24 +59,20 @@
                                                     {{-- End of Show Modal Trigger --}}
 
                                                     {{-- Edit Modal Trigger --}}
-                                                    @if(App\Models\GroupPage::where('page_id','=',15)->orWhere('access','=',1)->get())
                                                     <button type="button"
                                                         onclick="window.location='{{ route('user.edit', $user->id) }}'"
                                                         class="btn bg-gradient-info" title="Edit Data">
                                                         <i class="fas fa-edit"></i>
                                                     </button>
-                                                    @endif
                                                     {{-- End of Edit Modal Trigger --}}
 
                                                     {{-- Delete Modal Trigger --}}
-                                                    @if(App\Models\GroupPage::where('page_id','=',16)->orWhere('access','=',1)->get())
                                                     <button type="button" class="btn bg-gradient-danger"
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#deleteModal{{ $user->id }}"
                                                         onclick="{{ route('user.destroy', $user->id) }}">
                                                         <i class="far fa-trash-alt"></i>
                                                     </button>
-                                                    @endif
                                                     {{-- End of Delete Modal Trigger --}}
 
                                                     {{-- Delete Modal --}}
