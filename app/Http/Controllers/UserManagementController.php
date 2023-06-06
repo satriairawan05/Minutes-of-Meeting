@@ -21,7 +21,7 @@ class UserManagementController extends Controller
             ]);
         } else {
             return view('user.index',[
-                'users' => User::where('name','=',auth()->user()->name)->get()
+                'users' => User::where('name','=',auth()->user()->name)->leftJoin('groups','groups.group_id','=','users.group_id')->get()
             ]);
         }
     }

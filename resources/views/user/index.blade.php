@@ -16,13 +16,21 @@
                 </div>
 
                 <div class="card">
+                @if(App\Models\GroupPage::where('page_id','=',13)->orWhere('access','=',1)->get())
                     <div class="card-header d-flex justify-content-center align-items-center">
-                        <a href="{{ route('group.index') }}" class="btn-data btn text-decoration-none text-black">
-                        <i class="fas fa-user-cog"></i> Setting</a>
                         <a href="{{ route('user.create') }}" class="btn-data btn text-decoration-none text-black">
                             <i class="fas fa-plus-circle"></i> Add New Data
                         </a>
                     </div>
+                @else
+                    <div class="d-none">
+                        <div class="card-header d-flex justify-content-center align-items-center">
+                        <a href="{{ route('user.create') }}" class="btn-data btn text-decoration-none text-black">
+                            <i class="fas fa-plus-circle"></i> Add New Data
+                        </a>
+                    </div>
+                    </div>
+                @endif
                     <div class="card-body">
                         @if (session('success'))
                             <div class="alert alert-success container container-fluid" role="alert">
@@ -32,9 +40,7 @@
 
                         @if ($users)
                             <div class="table-responsive">
-
                                 <table class="table table-sm table-bordered table-hover" id="exportexample">
-
                                     <thead class="table-header text-center">
                                         <tr>
                                             <th scope="col">No</th>

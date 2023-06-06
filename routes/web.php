@@ -1,13 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DepartemenController;
-use App\Http\Controllers\DocumentController;
-use App\Http\Controllers\GroupController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MeetController;
+use App\Http\Controllers\GroupController;
 use App\Http\Controllers\IssueController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\DepartemenController;
 use App\Http\Controllers\UserManagementController;
 
 /*

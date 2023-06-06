@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\GroupPage;
-use App\Models\Page;
 use Illuminate\Http\Request;
 
 class SettingController extends Controller
@@ -13,7 +12,9 @@ class SettingController extends Controller
      */
     public function index()
     {
-        //
+        return view('partials.sidebar',[
+            'groupPages' => GroupPage::where('group_id','=',auth()->user()->group_id)->get()
+        ]);
     }
 
     /**
@@ -21,9 +22,7 @@ class SettingController extends Controller
      */
     public function create()
     {
-        return view('setting.create',[
-            'pages' => Page::get()
-        ]);
+        //
     }
 
     /**
