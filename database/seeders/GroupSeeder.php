@@ -14,17 +14,17 @@ class GroupSeeder extends Seeder
     public function run(): void
     {
         Group::create([
-            'group_id' => 0,
+            'group_id' => 1,
             'group_name' => 'Super Admin'
         ]);
 
         Group::create([
-            'group_id' => 1,
+            'group_id' => 2,
             'group_name' => 'PIC'
         ]);
 
         Group::create([
-            'group_id' => 2,
+            'group_id' => 3,
             'group_name' => 'Member'
         ]);
     }
