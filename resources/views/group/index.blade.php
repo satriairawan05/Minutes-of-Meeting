@@ -10,13 +10,14 @@
                     <h2 class="main-content-title tx-24 mg-b-5">Role Data</h2>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('preference') }}">Preferences</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Role Details</li>
                     </ol>
                 </div>
             </div>
             <!-- End Page Header -->
             <div class="card">
-                <div class="card-header d-flex justify-content-end">
+                <div class="card-header d-flex justify-content-center">
                     <a href="{{ route('group.create') }}" class="btn-data btn text-decoration-none text-black">
                         <i class="fas fa-plus-circle"></i> Add New Data
                     </a>

@@ -75,7 +75,7 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-12 d-flex justify-content-center align-items-center">
-                                <a href="{{ route('meet.index') }}" class="btn btn-md btn-primary mr-3">Back</a>
+                                <a href="{{ route('user.index') }}" class="btn btn-md btn-primary mr-3">Back</a>
                                 <button type="submit" class="btn btn-md btn-success">Submit</button>
                             </div>
                         </div>

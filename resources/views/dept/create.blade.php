@@ -10,7 +10,9 @@
                     <h2 class="main-content-title tx-24 mg-b-5">Add Departemen</h2>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Departemen</li>
+                        <li class="breadcrumb-item"><a href="{{ route('preference') }}">Preferences</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('departemen.index') }}">Departemen</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Add Departemen</li>
                     </ol>
                 </div>
             </div>
@@ -32,9 +34,9 @@
                             </div>
                             @enderror
                         </div>
-                        <div class="d-flex justify-content-end align-items-end mt-3">
-                            <a href="{{ route('departemen.index') }}" class="btn btn-md btn-primary">Back</a>
-                            <button type="submit" class="btn btn-md btn-success mr-3">Add</button>
+                        <div class="col-12 d-flex justify-content-center align-items-center">
+                            <a href="{{ route('departemen.index') }}" class="btn btn-md btn-primary mr-3">Back</a>
+                            <button type="submit" class="btn btn-md btn-success">Submit</button>
                         </div>
                     </form>
                 </div>

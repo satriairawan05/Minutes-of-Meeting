@@ -6,8 +6,8 @@
                 </div>
                 <div class="main-header-center">
                     <div class="responsive-logo">
-                        <a href="index.html"><img src="assets/img/brand/logo.png" class="mobile-logo" alt="logo"></a>
-                        <a href="index.html"><img src="assets/img/brand/logo-light.png" class="mobile-logo-dark"
+                        <a href="index.html"><img src="assets/img/brand/logo-m.png" class="mobile-logo" alt="logo"></a>
+                        <a href="index.html"><img src="assets/img/brand/logo-m.png" class="mobile-logo-dark"
                                 alt="logo"></a>
                     </div>
                     {{--  <div class="input-group">
@@ -145,11 +145,6 @@
 
                         </div>
                     </div>
-                    <button class="navbar-toggler navresponsive-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fe fe-more-vertical header-icons navbar-toggler-icon"></i>
-                    </button>
                     <!-- Navresponsive closed -->
                 </div>
             </div>
