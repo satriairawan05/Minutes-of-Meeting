@@ -113,6 +113,11 @@
                                         <button type="button" onclick="window.location='{{ route('resume.issue.edit', $i->issue_id) }}'" class="btn bg-gradient-info" title="Edit Data">
                                             <i class="fas fa-edit"></i>
                                         </button>
+                                        <form action="{{ route('resume.issue.delete',$i->issue_id) }}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn bg-gradient-primary"><i class="far fa-trash-alt"></i></button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach

@@ -216,7 +216,17 @@
             });
 
         </script>
-
+        @if (session('success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var successAlert = document.getElementById('success-alert');
+                successAlert.style.display = 'block';
+                setTimeout(function() {
+                    successAlert.style.display = 'none';
+                }, 5000); // Adjust the timeout value (in milliseconds) as needed
+            });
+        </script>
+        @endif
 
     </div>
 </div>

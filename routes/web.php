@@ -46,6 +46,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('resume/{meet}',[ResumeController::class, 'store'])->name('resume.meet.store');
     Route::get('resume/{issue}/edit',[ResumeController::class, 'edit'])->name('resume.issue.edit');
     Route::put('resume/{issue}',[ResumeController::class, 'update'])->name('resume.issue.update');
+    Route::delete('resume/{issue}',[ResumeController::class, 'destroy'])->name('resume.issue.delete');
 
     // Store data Issue ke Document
     Route::get('issue/{issue}/doc', [DocumentController::class, 'showForm'])->name('issueDoc.form');

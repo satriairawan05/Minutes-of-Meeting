@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'Member',
-            'email' => 'member@suemerugrup.com',
+            'email' => 'member@bsscoal.com',
             'password' => bcrypt('suemeru'),
             'email_verified_at' => now(),
             'group_id' => 3,

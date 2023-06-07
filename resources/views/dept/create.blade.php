@@ -33,7 +33,8 @@
                             @enderror
                         </div>
                         <div class="d-flex justify-content-end align-items-end mt-3">
-                            <button type="submit" class="btn btn-md btn-success">Add</button>
+                            <a href="{{ route('departemen.index') }}" class="btn btn-md btn-primary">Back</a>
+                            <button type="submit" class="btn btn-md btn-success mr-3">Add</button>
                         </div>
                     </form>
                 </div>
