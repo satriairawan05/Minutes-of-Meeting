@@ -7,13 +7,14 @@ use App\Models\User;
 use App\Models\Issue;
 use App\Models\Departemen;
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
 
 class ResumeController extends Controller
 {
-    public function resume(Meet $meet, Issue $issue)
+    public function resume(Meet $meet)
     {
         $meets = Meet::select('meet_xid')->latest('meet_xid')->pluck('meet_xid')->first();
-        $issues = Issue::select('project')->leftJoin('meets', 'meets.meet_xid', '=', 'issues.project')->update(['project' => $meets]);
+        $issues = Issue::select('project')->leftJoin('meets', 'meets.meet_xid', '=', 'issues.project')->where('status','!=','Closed')->update(['project' => $meets]);
 
         return view('resume.index', [
             'meet' => $meet,
@@ -37,8 +38,48 @@ class ResumeController extends Controller
         ]);
     }
 
-    public function store(Request $request, Meet $meet, Issue $issue)
+    public function store(Request $request)
     {
+        try {
+            $validate = $request->validate([
+                'issue_xid' => ['required'],
+                'project' => ['required'],
+                'tracker' => ['required'],
+                'subject' => ['required'],
+                'status' => ['required'],
+                'priority' => ['required'],
+                'description' => ['required'],
+                'start_date' => ['required'],
+                'end_date' => ['required'],
+                'c_action' => ['required'],
+                'assignee' => ['required']
+            ]);
 
+            if ($request->file('file')) {
+                $validate['file'] = $request->file('file')->store('images');
+            }
+
+            if ($request->input('is_private')) {
+                $validate['is_private'] = $request->is_private;
+            } else {
+                $validate['is_private'] = 0;
+            }
+
+            Issue::create($validate);
+
+            return back()->with('success', 'Added Successfully!');
+        } catch (QueryException $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function edit(Issue $issue)
+    {
+        return view('resume.edit', [
+            'data' => $issue,
+            'meet' => Meet::latest()->first(),
+            'depts' => Departemen::get(),
+            'users' => User::get()
+        ]);
     }
 }

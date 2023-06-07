@@ -16,9 +16,9 @@
                 </div>
             </div>
             <!-- End Page Header -->
-            <div class="card
+            <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('resume.meet.store',$meet->meet_id) }}" method="post" enctype="multipart/form-data">
+                    <form action="/resume/{{ $meet->meet_id }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="is_private" name="is_private" value="1">

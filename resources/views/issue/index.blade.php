@@ -18,13 +18,13 @@
             </div>
             <!-- End Page Header -->
             <div class="card">
-            @if(App\Models\GroupPage::where('page_id','=',5)->orWhere('access','=',1)->get())
+                @if(App\Models\GroupPage::where('page_id','=',5)->orWhere('access','=',1)->get())
                 <div class="card-header d-flex justify-content-end">
                     <a href="{{ route('issue.create') }}" class="btn-data btn text-decoration-none text-black">
                         <i class="fas fa-plus-circle"></i> Add New Data
                     </a>
                 </div>
-            @endif
+                @endif
                 <div class="card-body">
                     @if (session('success'))
                     <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
@@ -38,41 +38,42 @@
                             <thead class="table-header text-center">
                                 <tr>
                                     <th>No</th>
-                                    <th>Meeting</th>
-                                    <th>Dept</th>
-                                    <th>Subject</th>
+                                    <th>Issue ID</th>
+                                    <th>Meet ID</th>
+                                    <th>Departemen</th>
+                                    <th>Issue</th>
+                                    <th>Corrective Action</th>
                                     <th>Description</th>
                                     <th>Status</th>
                                     <th>Priority</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Asiggnee</th>
                                     <th>File</th>
+                                    <th>Private</th>
                                     <th width="100px">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
                                 @foreach ($issues as $i)
                                 <tr>
-                                    <th scope="row">{!! $loop->iteration !!}</th>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{!! $i->issue_xid !!}</td>
                                     <td>{!! $i->project !!}</td>
                                     <td>{!! $i->tracker !!}</td>
                                     <td>{!! $i->subject !!}</td>
+                                    <td>{!! $i->c_action !!}</td>
                                     <td>{!! $i->description !!}</td>
                                     <td>{!! $i->status !!}</td>
                                     <td>{!! $i->priority !!}</td>
-                                    <td>
-                                        @if ($i->file)
-                                        <img src="{{ asset('storage/' . $i->file) }}" alt="{{ $i->c_action }}" class="img-responsive h-75 w-75">
+                                    <td>{!! \Carbon\Carbon::parse($i->start_date)->format('l, d M Y') !!}</td>
+                                    <td>{!! \Carbon\Carbon::parse($i->end_date)->format('l, d M Y') !!}</td>
+                                    <td>{!! $i->assignee !!}</td>
+                                    <td>@if ($i->file)
+                                        <img src="{{ asset('storage/' . $i->file) }}" alt="{{ $i->c_action }}" class="img-responsive h-75 w-75"/>
                                         @endif
                                     </td>
-                                    {{-- <td class="d-inline">
-                                    <a href="{{ route('issue.show', $i->issue_id) }}" class="btn btn-info btn-sm" title="Show Detail"><i class="fas fa-binoculars"></i></a>
-                                    <a href="{{ route('issue.edit', $i->issue_id) }}" class="btn btn-warning btn-sm" title="Edit Data"><i class="fas fa-edit"></i></a>
-                                    <form action="{{ route('issue.destroy', $i->issue_id) }}" method="post" class="d-inline-block">
-                                        @csrf
-                                        @method('Delete')
-                                        <button type="submit" onclick="return confirm('are you sure?')" class="btn btn-danger btn-sm" title="Delete Data"><i class="far fa-trash-alt"></i></button>
-                                    </form>
-                                    </td> --}}
-
+                                    <td>{!! $i->is_private == 1 ? "Yes" : "No" !!}</td>
                                     {{-- start modal  --}}
                                     <td>
                                         {{-- Show Modal Trigger --}}
@@ -176,5 +177,7 @@
             @endif
 
         </div>
-        <!-- End Main Content-->
-        @endsection
+    </div>
+</div>
+<!-- End Main Content-->
+@endsection
