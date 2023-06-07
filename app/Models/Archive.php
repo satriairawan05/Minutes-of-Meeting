@@ -10,4 +10,8 @@ class Archive extends Model
     use HasFactory;
 
     protected $table = 'archives';
+    protected $primaryKey = 'archive_id';
+
+    public $incrementing = true;
+    public $timestamps = true;
 }
