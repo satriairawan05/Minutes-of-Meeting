@@ -18,8 +18,11 @@
             <!--Row-->
             <div class="card">
                 <div class="card-header d-flex justify-content-end">
+                    <a href="{{ route('archive.meet.create',$meet->meet_id) }}" class="btn-data btn text-decoration-none text-black">
+                        <i class="fas fa-folder-plus"></i> Add New Archive
+                    </a>
                     <a href="{{ route('resume.meet.create',$meet->meet_id) }}" class="btn-data btn text-decoration-none text-black">
-                        <i class="fas fa-plus-circle"></i> Add New Data
+                        <i class="fas fa-plus-circle"></i> Add New Data Issue
                     </a>
                     <div class="d-flex justify-content-end align-items-end mb-3">
                         <a href="{{ route('meet.index') }}" class="btn btn-md btn-primary">Back</a>

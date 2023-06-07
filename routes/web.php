@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArchiveController;
 use App\Http\Controllers\DailyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MeetController;
@@ -41,6 +42,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('meet', MeetController::class);
     Route::resource('issue', IssueController::class);
     Route::resource('document',DocumentController::class);
+    Route::resource('archive', ArchiveController::class)->except(['create']);
+    Route::get('archive/{meet}/create',[ArchiveController::class, 'create'])->name('archive.meet.create');
 
     Route::get('resume/{meet}',[ResumeController::class, 'resume'])->name('resume.meet');
     Route::get('resume/{meet}/create',[ResumeController::class, 'create'])->name('resume.meet.create');

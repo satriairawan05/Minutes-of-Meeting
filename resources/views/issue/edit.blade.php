@@ -169,7 +169,7 @@
                                 <label id="assignee_label" for="assignee">Assignee</label>
                                 <select class="form-select form-control form-control-sm" id="assignee" name="assignee">
                                     @foreach ($users as $user)
-                                        @if (old('assignee',$data->assigne) == $user->id)
+                                        @if (old('assignee',$data->assigne) == $user->name)
                                             <option name="assignee" value="{{ $user->name }}" selected>
                                                 {{ $user->name }}</option>
                                         @else
