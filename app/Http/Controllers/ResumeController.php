@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ResumeController extends Controller
 {
-    public function resume(Meet $meet, User $user, Departemen $departemen)
+    public function resume(Meet $meet)
     {
         $meets = Meet::select('meet_xid')->latest('meet_xid')->pluck('meet_xid')->first();
         $issues = Issue::select('project')->leftJoin('meets', 'meets.meet_xid', '=', 'issues.project')->where('status', '!=', 'Closed')->update(['project' => $meets]);
