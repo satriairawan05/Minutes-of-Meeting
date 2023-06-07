@@ -49,6 +49,17 @@
                 </a>
             </li>
             @endif
+            @if (App\Models\GroupPage::where('page_id','=',6)->orWhere('access','=',1)->get())
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('issue.index') ? 'active' : '' }}"
+                    href="{{ route('issue.index') }}">
+                    <span class="shape1"></span>
+                    <span class="shape2"></span>
+                    <i class="fas fa-exclamation-circle sidemenu-icon"></i>
+                    <span class="sidemenu-label">Daily</span>
+                </a>
+            </li>
+            @endif
             @if(App\Models\GroupPage::where('page_id','=',10)->orWhere('access','=',1)->get())
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('document.index') ? 'active' : '' }}"
