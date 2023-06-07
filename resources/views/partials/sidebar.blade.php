@@ -64,6 +64,16 @@ $modules = App\Models\GroupPage::where('group_id','=',auth()->user()->group_id)-
                 </a>
             </li>
             @endif
+            @if(App\Models\GroupPage::where('page_id','=',14)->orWhere('access','=',1)->get())
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
+                    <span class="shape1"></span>
+                    <span class="shape2"></span>
+                    <i class="ti-folder sidemenu-icon"></i>
+                    <span class="sidemenu-label">Archieve</span>
+                </a>
+            </li>
+            @endif
             @if(App\Models\GroupPage::where('page_id','=',18)->orWhere('access','=',1)->get())
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('user.index') ? 'active' : '' }}" href="{{ route('user.index') }}">
