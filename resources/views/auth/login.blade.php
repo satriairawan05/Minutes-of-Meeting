@@ -25,7 +25,7 @@
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="{{ asset('assetslogin/images/signin-image.png') }}" alt="sing up image"></figure>
-                        <!-- <a href="#" class="signup-image-link">Create an account</a> -->
+
                     </div>
 
                     <div class="signin-form">
@@ -83,5 +83,17 @@
     <!-- JS -->
     <script src="{{ asset('assetslogin/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('assetslogin/js/main.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if($message = Session::get('error'))
+
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: '{{ $message }}'
+          });
+    </script>
+    @endif
 </body>
 </html>

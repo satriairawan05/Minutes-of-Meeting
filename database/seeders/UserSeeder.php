@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
     {
         User::create([
             'name' => 'Super Admin',
-            'email' => 'super.admin@suemerugrup.com',
+            'email' => 'admin@bsscoal.com',
             'password' => bcrypt('suemeru'),
             'email_verified_at' => now(),
             'group_id' => 1,
@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'PIC',
-            'email' => 'pic@suemerugrup.com',
+            'email' => 'pic@bsscoal.com',
             'password' => bcrypt('suemeru'),
             'email_verified_at' => now(),
             'group_id' => 2,
