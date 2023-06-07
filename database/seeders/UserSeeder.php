@@ -106,32 +106,32 @@ class UserSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'Plant',
+            'name' => 'PLANT',
             'email' => 'plant@bsscoal.com',
             'password' => bcrypt('bsscoal'),
             'email_verified_at' => now(),
             'group_id' => 3,
-            'departemen' => 'Plant',
+            'departemen' => 'PLANT',
             'remember_token' => Str::random(10),
         ]);
 
         User::create([
-            'name' => 'Production',
+            'name' => 'PRODUCTION',
             'email' => 'production@bsscoal.com',
             'password' => bcrypt('bsscoal'),
             'email_verified_at' => now(),
             'group_id' => 3,
-            'departemen' => 'Production',
+            'departemen' => 'PRODUCTION',
             'remember_token' => Str::random(10),
         ]);
 
         User::create([
-            'name' => 'purcashing',
+            'name' => 'PURCASHING',
             'email' => 'purcashing@bsscoal.com',
             'password' => bcrypt('bsscoal'),
             'email_verified_at' => now(),
             'group_id' => 3,
-            'departemen' => 'purcashing',
+            'departemen' => 'PURCASHING',
             'remember_token' => Str::random(10),
         ]);
         //'Engginering','HSE','Coal & Berging','FAT','HRGA','IT','LOGISTIC','PLANT','PRODUCTION','PURCASHING'
