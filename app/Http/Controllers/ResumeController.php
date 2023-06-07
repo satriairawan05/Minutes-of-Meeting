@@ -39,7 +39,7 @@ class ResumeController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Meet $meet)
     {
         try {
             $validate = $request->validate([
@@ -68,7 +68,7 @@ class ResumeController extends Controller
 
             Issue::create($validate);
 
-            return back()->with('success', 'Added Successfully!');
+            return redirect()->route('resume.meet',$meet->meet_id)->with('success', 'Added Successfully!');
         } catch (QueryException $e) {
             return $e->getMessage();
         }
@@ -84,7 +84,7 @@ class ResumeController extends Controller
         ]);
     }
 
-    public function update(Request $request, Issue $issue)
+    public function update(Request $request, Issue $issue, Meet $meet)
     {
         try {
             $validate = $request->validate([
@@ -116,20 +116,20 @@ class ResumeController extends Controller
 
             Issue::where('issue_id', $issue->issue_id)->update($validate);
 
-            return back()->with('success', 'Updated Successfully!');
+            return redirect()->route('resume.meet',$meet->meet_id)->with('success', 'Updated Successfully!');
         } catch (QueryException $e) {
             return $e->getMessage();
         }
     }
 
-    public function destroy(Issue $issue)
+    public function destroy(Issue $issue, Meet $meet)
     {
         try {
             Issue::destroy($issue->issue_id);
 
             $issue->file ? Storage::delete([$issue->file]) : Issue::destroy($issue->issue_id);
 
-            return back()->with('success', 'Deleted Successfully!');
+            return redirect()->route('resume.meet',$meet->meet_id)->with('success', 'Deleted Successfully!');
         } catch(QueryException $e) {
             return $e->getMessage();
         }
