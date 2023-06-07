@@ -41,6 +41,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('issue', IssueController::class);
     Route::resource('document',DocumentController::class);
 
+    Route::get('resume/{meet}',[ResumeController::class, 'resume'])->name('resume.meet');
+    Route::get('resume/{meet}/create',[ResumeController::class, 'create'])->name('resume.meet.create');
+    Route::post('resume/{meet}',[ResumeController::class, 'store'])->name('resume.meet.store');
+
     // Store data Issue ke Document
     Route::get('issue/{issue}/doc', [DocumentController::class, 'showForm'])->name('issueDoc.form');
 

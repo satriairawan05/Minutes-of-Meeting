@@ -62,7 +62,7 @@
                                     <tr>
                                         <td style="text-align: center;">{{ $loop->iteration }}</td>
                                         <td style="text-align: center;" class="d-none d-sm-table-cell">
-                                            <a href="{{ route('meet.show',$d->meet_id) }}" class="text-decoration-none text-monospace">{{ $d->meet_xid }}</a>
+                                            <a href="{{ route('resume.meet',$d->meet_id) }}" class="text-decoration-none text-monospace">{{ $d->meet_xid }}</a>
                                         </td>
                                         <td style="text-align: center;">{{ $d->meet_name }}</td>
                                         <td style="text-align: center;">{{ $d->meet_project }}</td>

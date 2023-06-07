@@ -16,9 +16,9 @@
                 </div>
             </div>
             <!-- End Page Header -->
-            <div class="card">
+            <div class="card
                 <div class="card-body">
-                    <form action="/issue" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('resume.meet.store',$meet->meet_id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="is_private" name="is_private" value="1">
@@ -181,7 +181,7 @@
                             @enderror
                         </div>
                         <div class="col-12 d-flex justify-content-center align-items-center">
-                            <a href="{{ route('issue.index') }}" class="btn btn-md btn-primary mr-3">Back</a>
+                            <a href="{{ route('resume.meet',$meet->meet_id) }}" class="btn btn-md btn-primary mr-3">Back</a>
                             <button type="submit" class="btn btn-md btn-success">Submit</button>
                         </div>
                     </form>

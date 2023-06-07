@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Issue;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Meet extends Model
 {
@@ -15,4 +17,8 @@ class Meet extends Model
     public $incrementing = true;
     public $timestamps = true;
 
+    public function issue() : BelongsTo
+    {
+        return $this->belongsTo(Issue::class);
+    }
 }

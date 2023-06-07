@@ -17,11 +17,6 @@
                 </div>
                 <!-- End Page Header -->
                 <div class="card">
-                    <div class="card-header d-flex justify-content-end">
-                        <a href="{{ route('issue.create') }}" class="btn-data btn text-decoration-none text-black">
-                            <i class="fas fa-plus-circle"></i> Add New Data
-                        </a>
-                    </div>
                     <div class="card-body">
                         <form action="/issue/{{ $data->issue_id }}" method="post" enctype="multipart/form-data">
                             @csrf
@@ -33,7 +28,7 @@
                                     Private
                                 </label>
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3 col-12">
                                 <label for="issue_xid">ID Issues</label>
                                 <input type="text" class="form-control @error('issue_xid') is-invalid @enderror"
                                     id="issue_xid" name="issue_xid" value="{{ $data->issue_xid }}" readonly>
@@ -43,7 +38,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3 col-12">
                                 <label id="project_label" for="project">Meeting</label>
                                 <input id="project" name="project" type="text"
                                     class="form-control @error('project')
@@ -56,7 +51,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3 col-12">
                                 <label id="tracker_label" for="tracker">Departemen</label>
                                 <select class="form-select form-control form-control-sm" id="tracker" name="tracker">
                                     @foreach ($depts as $dept)
@@ -74,7 +69,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3 col-12">
                                 <label id="subject_label" for="subject">Subject</label>
                                 <input id="subject" name="subject" type="text"
                                     class="form-control @error('subject')
@@ -87,7 +82,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3 col-12">
                                 <label id="description_label" for="description">Problem Identification</label>
                                 <input name="description" id="description" required
                                     value="{{ old('description', $data->description) }}"
@@ -101,7 +96,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3 col-12">
                                 <label id="c_action_label" for="c_action">Corrective Action</label>
                                 <input id="c_action" name="c_action" type="text"
                                     class="form-control @error('c_action')
@@ -115,7 +110,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3 col-12">
                                 <label id="status_label" for="status">Status</label>
                                 <select class="form-select form-control form-control-sm" name="status">
                                     <option name="status" value="New">New</option>
@@ -131,7 +126,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3 col-12">
                                 <label id="priority_label" for="priority">Priority</label>
                                 <select class="form-select form-control form-control-sm" name="priority">
                                     <option name="priority" value="Low">Low</option>
@@ -144,7 +139,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3 col-12">
                                 <label id="start_date_label" for="start_date">Start Date</label>
                                 <input id="start_date" name="start_date" type="date"
                                     class="form-control @error('start_date')
@@ -157,7 +152,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3 col-12">
                                 <label id="end_date_label" for="end_date">End Date</label>
                                 <input id="end_date" name="end_date" type="date"
                                     class="form-control @error('end_date')
@@ -170,7 +165,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3 col-12">
                                 <label id="assignee_label" for="assignee">Assignee</label>
                                 <select class="form-select form-control form-control-sm" id="assignee" name="assignee">
                                     @foreach ($users as $user)
@@ -189,7 +184,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3 col-12">
                                 <label id="file_label" for="file">File</label>
                                 <div id="targetLayer"></div>
                                 <div class="icon-choose-image"></div>

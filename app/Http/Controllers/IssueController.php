@@ -32,15 +32,15 @@ class IssueController extends Controller
         $lastCount = Issue::select('issue_id')->latest('issue_id')->pluck('issue_id')->first();
         $count = $lastCount + 1;
         $id = $prefix . str_pad($count, 3, '0', STR_PAD_LEFT) . "/" . $formattedDate;
-        if (Issue::whereNull('project')->latest()->get()) {
-            return redirect('meet/create');
+        if (Issue::whereNotNull('project')->latest()->get()) {
+            return view('issue.create', [
+                'issue' => $id,
+                'users' => User::get(),
+                'meet' => Meet::latest()->first(),
+                'depts' => Departemen::get()
+            ]);
         }
-        return view('issue.create', [
-            'issue' => $id,
-            'users' => User::get(),
-            'meet' => Meet::latest()->first(),
-            'depts' => Departemen::get()
-        ]);
+        return redirect('meet/create');
     }
 
     /**
