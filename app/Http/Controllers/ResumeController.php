@@ -15,7 +15,7 @@ class ResumeController extends Controller
     public function resume(Meet $meet)
     {
         $meets = Meet::select('meet_xid')->latest('meet_xid')->pluck('meet_xid')->first();
-        $issues = Issue::select('project')->leftJoin('meets', 'meets.meet_xid', '=', 'issues.project')->where('status','!=','Closed')->update(['project' => $meets]);
+        $issues = Issue::select('project')->leftJoin('meets', 'meets.meet_xid', '=', 'issues.project')->where('status', '!=', 'Closed')->update(['project' => $meets]);
 
         return view('resume.index', [
             'meet' => $meet,
@@ -124,16 +124,12 @@ class ResumeController extends Controller
 
     public function destroy(Issue $issue)
     {
-        try {
-            Issue::destroy($issue);
+        Issue::destroy($issue->issue_id);
 
-            if ($issue->file) {
-                Storage::delete([$issue->file]);
-            }
-
-            return back()->with('success','Deleted Successfully!');
-        } catch (QueryException $e) {
-            return $e->getMessage();
+        if ($issue->file) {
+            Storage::delete([$issue->file]);
         }
+
+        return back()->with('success', 'Deleted Successfully!');
     }
 }
