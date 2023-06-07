@@ -150,7 +150,7 @@
                                             </div>
                                             <div class="card-item-body">
                                                 <div class="card-item-stat">
-                                                    <h4 class="font-weight-bold">248</h4>
+                                                    <h4 class="font-weight-bold">{{ App\Models\Issue::count() }}</h4>
                                                     <small><b class="text-success">15%</b> increase</small>
                                                 </div>
                                             </div>
