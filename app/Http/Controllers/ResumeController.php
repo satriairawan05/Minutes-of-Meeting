@@ -20,8 +20,11 @@ class ResumeController extends Controller
         if(auth()->user()->name == "Super Admin"){
             $data = Issue::get();
         } else {
-            $data = Issue::leftJoin('users','users.departemen','=','issues.tracker')->leftJoin('departemens','departemens.name','=','issues.tracker')->where('tracker','=',$user->departemen)->orWhere('tracker','=',$departemen->name)->get();
+            $data = Issue::leftJoin('users','users.departemen','=','issues.tracker')
+            ->leftJoin('departemens','departemens.name','=','issues.tracker')
+            ->get();
         }
+
         return view('resume.index', [
             'meet' => $meet,
             'issues' => $issues,
