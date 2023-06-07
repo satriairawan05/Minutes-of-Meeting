@@ -9,8 +9,11 @@
                     <div>
                         <h2 class="main-content-title tx-24 mg-b-5">Departemen Data</h2>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Departemen</li>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('preference') }}">Preferences</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Departemen</li>
+                            </ol>
                         </ol>
                     </div>
                 </div>
@@ -19,13 +22,12 @@
                 <!--Row-->
                 <div class="card ">
 
-                    <div class="text-right">
-                        <button type="button" class="btn btn-green btn-icon-text my-2 mr-2">
-                            <a href="{{ route('departemen.create') }}" class="btn-data btn text-decoration-none text-black">
-                                <i class="fas fa-plus-circle"></i> Add New Data
-                            </a>
-                        </button>
+                    <div class="card-header d-flex justify-content-center">
+                        <a href="{{ route('departemen.create') }}" class="btn-data btn text-decoration-none text-black">
+                            <i class="fas fa-plus-circle"></i> Add New Data
+                        </a>
                     </div>
+                    
 
                     <div class="card-body">
                         @if (session('success'))
@@ -105,6 +107,7 @@
                                                                     <button type="submit" class="btn bg-gradient-danger"
                                                                         data-bs-dismiss="modal">Delete</button>
                                                                     </button>
+
                                                                 </form>
                                                             </div>
                                                         </div>
@@ -117,7 +120,6 @@
                                 </tbody>
                             </table>
                         </div>
-
                         {{ $depts->links() }}
                     </div>
                 </div>
