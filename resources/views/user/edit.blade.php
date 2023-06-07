@@ -73,6 +73,24 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="mb-3 col-12">
+                                <label id="departemen_label" for="departemen">{{ __('Departemen') }}</label>
+                                <select class="form-select form-control form-control-sm" id="departemen" name="departemen">
+                                    @foreach ($depts as $dept)
+                                        @if (old('departemen',$User->departemen) == $dept->name)
+                                            <option name="departemen" value="{{ $dept->name }}" selected>{{ $dept->name }}
+                                            </option>
+                                        @else
+                                            <option name="departemen" value="{{ $dept->name }}">{{ $dept->name }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                                @error('departemen')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
                         <div class="row mb-3">
                             <div class="col-12 d-flex justify-content-center align-items-center">
                                 <a href="{{ route('user.index') }}" class="btn btn-md btn-primary mr-3">Back</a>

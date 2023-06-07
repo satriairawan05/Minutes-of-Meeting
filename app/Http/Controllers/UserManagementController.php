@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Departemen;
 use App\Models\Group;
 use App\Models\User;
 use Illuminate\Database\QueryException;
@@ -33,7 +34,8 @@ class UserManagementController extends Controller
     public function create()
     {
         return view('user.create',[
-            'roles' => Group::get()
+            'roles' => Group::get(),
+            'depts' => Departemen::get()
         ]);
     }
 
@@ -47,7 +49,8 @@ class UserManagementController extends Controller
                 'name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => ['required', 'string', 'max:255', 'confirmed'],
-                'group_id' => ['required']
+                'group_id' => ['required'],
+                'departemen' => ['required']
             ]);
 
             $validate['password'] = bcrypt($request->input('password'));
@@ -77,7 +80,8 @@ class UserManagementController extends Controller
     {
         return view('user.edit', [
             'user' => $user,
-            'roles' => Group::get()
+            'roles' => Group::get(),
+            'depts' => Departemen::get()
         ]);
     }
 
@@ -91,7 +95,8 @@ class UserManagementController extends Controller
                 'name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255'],
                 'password' => ['required', 'string', 'max:255', 'confirmed'],
-                'group_id' => ['required']
+                'group_id' => ['required'],
+                'departemen' => ['required']
             ];
 
             $validate = $request->validate($rules);

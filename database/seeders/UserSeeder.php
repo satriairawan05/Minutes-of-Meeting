@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('suemeru'),
             'email_verified_at' => now(),
             'group_id' => 2,
-            'departemen' => 'HRGA',
+            'departemen' => '',
             'remember_token' => Str::random(10),
         ]);
 

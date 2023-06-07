@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ResumeController extends Controller
 {
-    public function resume(Meet $meet)
+    public function resume(Meet $meet, User $user, Departemen $departemen)
     {
         $meets = Meet::select('meet_xid')->latest('meet_xid')->pluck('meet_xid')->first();
         $issues = Issue::select('project')->leftJoin('meets', 'meets.meet_xid', '=', 'issues.project')->where('status', '!=', 'Closed')->update(['project' => $meets]);
@@ -20,9 +20,7 @@ class ResumeController extends Controller
         if(auth()->user()->name == "Super Admin"){
             $data = Issue::get();
         } else {
-            $usDept = User::select('departemen')->pluck('departemen')->get();
-            $depName = Departemen::select('name')->pluck('name')->get();
-            $data = Issue::leftJoin('users','users.departemen','=','issues.tracker')->leftJoin('departemens','departemens.name','=','issues.tracker')->where('tracker','=',$usDept)->orWhere('tracker','=',$depName)->get();
+            $data = Issue::leftJoin('users','users.departemen','=','issues.tracker')->leftJoin('departemens','departemens.name','=','issues.tracker')->where('tracker','=',$user->departemen)->orWhere('tracker','=',$departemen->name)->get();
         }
         return view('resume.index', [
             'meet' => $meet,
