@@ -19,7 +19,7 @@
             <!-- End Page Header -->
             <div class="card">
                 @if(App\Models\GroupPage::where('page_id','=',5)->orWhere('access','=',1)->get())
-                <div class="card-header d-flex justify-content-center align-items-center">
+                <div class="card-header d-flex justify-content-end align-items-end">
                     <a href="{{ route('issue.create') }}" class="btn-data btn text-decoration-none text-black">
                         <i class="fas fa-plus-circle"></i> Add New Data
                     </a>

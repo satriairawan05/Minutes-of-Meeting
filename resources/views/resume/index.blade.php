@@ -27,7 +27,7 @@
                 </div>
                 <div class="card-body">
                     <div class="ms-lg-auto">
-                        <table class="table table-bordered data-table table-responsive table-sm table-striped table-hover">
+                        <table class="table table-sm table-bordered table-hover">
                             <thead class="table-header text-center">
                                 <tr>
                                     <th>Meet ID</th>
