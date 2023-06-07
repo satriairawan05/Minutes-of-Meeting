@@ -154,9 +154,7 @@ class IssueController extends Controller
         try {
             Issue::destroy($issue->issue_id);
 
-            if ($issue->file) {
-                Storage::delete([$issue->file]);
-            }
+            $issue->file ? Storage::delete([$issue->file]) : Issue::destroy($issue->issue_id);
 
             return redirect('issue')->with('success', 'Deleted Successfully!');
         } catch (QueryException $e) {

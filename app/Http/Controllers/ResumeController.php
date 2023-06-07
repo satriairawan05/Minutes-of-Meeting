@@ -124,12 +124,14 @@ class ResumeController extends Controller
 
     public function destroy(Issue $issue)
     {
-        Issue::destroy($issue->issue_id);
+        try {
+            Issue::destroy($issue->issue_id);
 
-        if ($issue->file) {
-            Storage::delete([$issue->file]);
+            $issue->file ? Storage::delete([$issue->file]) : Issue::destroy($issue->issue_id);
+
+            return back()->with('success', 'Deleted Successfully!');
+        } catch(QueryException $e) {
+            return $e->getMessage();
         }
-
-        return back()->with('success', 'Deleted Successfully!');
     }
 }
