@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('suemeru'),
             'email_verified_at' => now(),
             'group_id' => 1,
+            'departemen' => '',
             'remember_token' => Str::random(10),
         ]);
 
@@ -29,15 +30,17 @@ class UserSeeder extends Seeder
             'password' => bcrypt('suemeru'),
             'email_verified_at' => now(),
             'group_id' => 2,
+            'departemen' => 'HRGA',
             'remember_token' => Str::random(10),
         ]);
 
         User::create([
-            'name' => 'Member',
-            'email' => 'member@bsscoal.com',
+            'name' => 'IT',
+            'email' => 'it@bsscoal.com',
             'password' => bcrypt('suemeru'),
             'email_verified_at' => now(),
             'group_id' => 3,
+            'departemen' => 'IT',
             'remember_token' => Str::random(10),
         ]);
     }

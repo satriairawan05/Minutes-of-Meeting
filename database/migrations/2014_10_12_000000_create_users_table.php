@@ -18,6 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->foreignId('group_id');
+            $table->string('departemen')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
