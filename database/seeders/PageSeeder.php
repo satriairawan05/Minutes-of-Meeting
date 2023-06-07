@@ -63,47 +63,71 @@ class PageSeeder extends Seeder
 
         // 9
         Page::create([
-            'page_name' => 'Documents',
+            'page_name' => 'Daily',
             'action' => 'Create'
         ]);
 
         // 10
         Page::create([
-            'page_name' => 'Documents',
+            'page_name' => 'Daily',
             'action' => 'Read'
         ]);
 
         // 11
         Page::create([
-            'page_name' => 'Documents',
+            'page_name' => 'Daily',
             'action' => 'Update'
         ]);
 
         // 12
         Page::create([
-            'page_name' => 'Documents',
+            'page_name' => 'Daily',
             'action' => 'Delete'
         ]);
 
         // 13
         Page::create([
-            'page_name' => 'User',
+            'page_name' => 'Documents',
             'action' => 'Create'
         ]);
 
         // 14
         Page::create([
-            'page_name' => 'User',
+            'page_name' => 'Documents',
             'action' => 'Read'
         ]);
 
         // 15
         Page::create([
-            'page_name' => 'User',
+            'page_name' => 'Documents',
             'action' => 'Update'
         ]);
 
         // 16
+        Page::create([
+            'page_name' => 'Documents',
+            'action' => 'Delete'
+        ]);
+
+        // 17
+        Page::create([
+            'page_name' => 'User',
+            'action' => 'Create'
+        ]);
+
+        // 18
+        Page::create([
+            'page_name' => 'User',
+            'action' => 'Read'
+        ]);
+
+        // 19
+        Page::create([
+            'page_name' => 'User',
+            'action' => 'Update'
+        ]);
+
+        // 20
         Page::create([
             'page_name' => 'User',
             'action' => 'Delete'

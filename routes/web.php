@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DailyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MeetController;
 use App\Http\Controllers\GroupController;
@@ -47,6 +48,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('resume/{issue}/edit',[ResumeController::class, 'edit'])->name('resume.issue.edit');
     Route::put('resume/{issue}',[ResumeController::class, 'update'])->name('resume.issue.update');
     Route::delete('resume/{issue}',[ResumeController::class, 'destroy'])->name('resume.issue.delete');
+
+    Route::resource('daily',DailyController::class);
 
     // Store data Issue ke Document
     Route::get('issue/{issue}/doc', [DocumentController::class, 'showForm'])->name('issueDoc.form');
