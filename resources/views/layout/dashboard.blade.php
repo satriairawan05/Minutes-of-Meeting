@@ -20,7 +20,7 @@
 
                 <!--Row-->
                 <div class="row row-sm">
-                    <div class="col-sm-12 col-lg-12 col-xl-8">
+                    <div class="col-sm-12 col-lg-12">
 
                         <!--Row-->
                         <div class="row row-sm  mt-lg-4">
@@ -31,8 +31,6 @@
                                             <div class="offset-xl-3 offset-sm-6 col-xl-8 col-sm-6 col-12 img-bg ">
                                                 <h4 class="d-flex  mb-3">
                                                     <span class="font-weight-bold text-white ">
-                                                        {{-- bangsat --}}
-                                                        {{-- {{ auth()->user()->name }} --}}
                                                         {{-- bangsat --}}
                                                         Assalamualaikum {{ auth()->user()->name }}!</span>
                                                 </h4>
