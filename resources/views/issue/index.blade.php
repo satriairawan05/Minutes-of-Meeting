@@ -4,8 +4,6 @@
 <div class="main-content side-content pt-0">
     <div class="container-fluid">
         <div class="inner-body">
-
-
             <!-- Page Header -->
             <div class="page-header">
                 <div>
@@ -18,13 +16,20 @@
             </div>
             <!-- End Page Header -->
             <div class="card">
-                @if(App\Models\GroupPage::where('page_id','=',5)->orWhere('access','=',1)->get())
                 <div class="card-header d-flex justify-content-end align-items-end">
+                    {{-- <form action="{{ route('archive.issue.store',$issues->issue_id) }}" method="post">
+                        @csrf
+                        @foreach ($issues as $isu)
+                            <input type="hidden" name="issue_id" id="issue_id" value="{{ $isu->issue_id }}">
+                        @endforeach
+                        <button type="submit" id="submit" class="btn-data btn text-decoration-none text-black">
+                            <i class="fas fa-folder-plus"></i> Add Archive Issue
+                        </button>
+                    </form> --}}
                     <a href="{{ route('issue.create') }}" class="btn-data btn text-decoration-none text-black">
                         <i class="fas fa-plus-circle"></i> Add New Data
                     </a>
                 </div>
-                @endif
                 <div class="card-body">
                     @if (session('success'))
                     <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
@@ -70,7 +75,7 @@
                                     <td>{!! \Carbon\Carbon::parse($i->end_date)->format('l, d M Y') !!}</td>
                                     <td>{!! $i->assignee !!}</td>
                                     <td>@if ($i->file)
-                                        <img src="{{ asset('storage/' . $i->file) }}" alt="{{ $i->c_action }}" class="img-responsive h-75 w-75"/>
+                                        <img src="{{ asset('storage/' . $i->file) }}" alt="{{ $i->c_action }}" class="img-responsive h-75 w-75" />
                                         @endif
                                     </td>
                                     <td>{!! $i->is_private == 1 ? "Yes" : "No" !!}</td>
@@ -85,19 +90,15 @@
                                         {{-- End of Show Modal Trigger --}}
 
                                         {{-- Edit Modal Trigger --}}
-                                        @if(App\Models\GroupPage::where('page_id','=',7)->orWhere('access','=',1)->get())
                                         <button type="button" onclick="window.location='{{ route('issue.edit', $i->issue_id) }}'" class="btn bg-gradient-info" title="Edit Data">
                                             <i class="fas fa-edit"></i>
                                         </button>
-                                        @endif
                                         {{-- End of Edit Modal Trigger --}}
 
                                         {{-- Delete Modal Trigger --}}
-                                        @if(App\Models\GroupPage::where('page_id','=',8)->orWhere('access','=',1)->get())
                                         <button type="button" class="btn bg-gradient-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $i->issue_id }}" onclick="{{ route('issue.destroy', $i->issue_id) }}">
                                             <i class="far fa-trash-alt"></i>
                                         </button>
-                                        @endif
                                         {{-- End of Delete Modal Trigger --}}
 
                                         {{-- Delete Modal --}}
