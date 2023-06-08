@@ -22,10 +22,12 @@
                 <!--Row-->
                 <div class="card ">
 
-                    <div class="card-header d-flex justify-content-center">
-                        <a href="{{ route('departemen.create') }}" class="btn-data btn text-decoration-none text-black">
-                            <i class="fas fa-plus-circle"></i> Add New Data
-                        </a>
+                    <div class="card-header d-flex justify-content-end">
+                        <div class="card-header d-flex justify-content-end align-items-end">
+                            <a href="{{ route('departemen.create') }}" class="btn-data btn text-decoration-none text-black">
+                                <i class="fas fa-plus-circle"></i> Add New Data
+                            </a>
+                        </div>
                     </div>
                     
 
