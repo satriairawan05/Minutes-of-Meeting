@@ -60,4 +60,3 @@ Route::middleware(['auth'])->group(function () {
         return view('pref.index');
     })->name('preference');
 });
-

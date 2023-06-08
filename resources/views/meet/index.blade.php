@@ -18,6 +18,7 @@
             <!--Row-->
             <div class="card ">
                 <div class="card">
+                    
                     @if(App\Models\GroupPage::where('page_id','=',1)->orWhere('access','=',1)->get())
                     <div class="card-header d-flex justify-content-end">
                         <a href="{{ route('meet.create') }}" class="btn-data btn text-decoration-none text-black">
