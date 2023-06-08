@@ -1,5 +1,5 @@
 @php
-    $modules =
+    $modules = session()->all();
 @endphp
 
 <div class="main-sidebar main-sidebar-sticky side-menu">
