@@ -77,7 +77,7 @@
                                 <label id="departemen_label" for="departemen">{{ __('Departemen') }}</label>
                                 <select class="form-select form-control form-control-sm" id="departemen" name="departemen">
                                     @foreach ($depts as $dept)
-                                        @if (old('departemen',$User->departemen) == $dept->name)
+                                        @if (old('departemen',$user->departemen) == $dept->name)
                                             <option name="departemen" value="{{ $dept->name }}" selected>{{ $dept->name }}
                                             </option>
                                         @else
