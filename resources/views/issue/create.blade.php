@@ -85,35 +85,29 @@
                                 @enderror
                             </div>
 
-                            <div class="mb-3 col-12">
+                            <div class="mb-3 col-12 form-group">
                                 <label id="description_label" for="description">Problem Identification</label>
                                 <textarea name="description" rows="4" id="description" required value="{{ old('description') }}"
-                                    class="form-control @error('description')
-        is-invalid
-    @enderror" placeholder="Masukan Description"
-                                    <textarea class="form-control" name="example-textarea-input" rows="4" placeholder="text here.."></textarea>
-
+                                    class="form-control @error('description') is-invalid @enderror" placeholder="Masukan Description"></textarea>
                                 @error('description')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
-                            <div class="mb-3 col-12">
-                                <label id="c_action_label" for="c_action">Corrective Action</label>
-                                <textarea id="c_action" name="c_action" rows="4"type="text"
-                                    class="form-control @error('c_action')
-            is_invalid
-        @enderror" required
-                                    value="{{ old('c_action') }}" placeholder="Masukan Corrective Action" <textarea class="form-control"
-                                    name="example-textarea-input" rows="4" placeholder="text here.."></textarea>
 
+                            <div class="mb-3 col-12 form-group">
+                                <label id="c_action_label" for="c_action">Corrective Action</label>
+                                <textarea id="c_action" name="c_action" rows="4" type="text"
+                                    class="form-control @error('c_action') is-invalid @enderror" required value="{{ old('c_action') }}"
+                                    placeholder="Masukan Corrective Action"></textarea>
                                 @error('c_action')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
+
                             <div class="mb-3 col-12">
                                 <label id="status_label" for="status">Status</label>
                                 <select class="form-select form-control form-control-sm" name="status">

@@ -82,34 +82,30 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="mb-3 col-12">
+                            <div class="mb-3 col-12 form-group">
                                 <label id="description_label" for="description">Problem Identification</label>
-                                <input name="description" id="description" required
-                                    value="{{ old('description', $data->description) }}"
-                                    class="form-control @error('description')
-        is-invalid
-    @enderror"
-                                    placeholder="Masukan Description" />
+                                <textarea name="description" id="description" rows="4" required
+                                    class="form-control @error('description') is-invalid @enderror"
+                                    placeholder="Masukan Description">{{ old('description', $data->description) }}</textarea>
                                 @error('description')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
-                            <div class="mb-3 col-12">
+                            
+                            <div class="mb-3 col-12 form-group">
                                 <label id="c_action_label" for="c_action">Corrective Action</label>
-                                <input id="c_action" name="c_action" type="text"
-                                    class="form-control @error('c_action')
-            is_invalid
-        @enderror"
-                                    required value="{{ old('c_action', $data->c_action) }}"
-                                    placeholder="Masukan Corrective Action" />
+                                <textarea id="c_action" name="c_action" rows="4" required
+                                    class="form-control @error('c_action') is-invalid @enderror"
+                                    placeholder="Masukan Corrective Action">{{ old('c_action', $data->c_action) }}</textarea>
                                 @error('c_action')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
+                            
                             <div class="mb-3 col-12">
                                 <label id="status_label" for="status">Status</label>
                                 <select class="form-select form-control form-control-sm" name="status">
