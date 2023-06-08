@@ -8,7 +8,6 @@ use App\Http\Controllers\GroupController;
 use App\Http\Controllers\IssueController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SettingController;
-use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\DepartemenController;
 use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\UserManagementController;
@@ -41,7 +40,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('meet', MeetController::class);
     Route::resource('issue', IssueController::class);
-    Route::resource('document',DocumentController::class);
     Route::resource('archive', ArchiveController::class)->except(['create']);
     Route::get('archive/{meet}/create',[ArchiveController::class, 'create'])->name('archive.meet.create');
 
@@ -54,12 +52,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('daily',DailyController::class);
 
-    // Store data Issue ke Document
-    Route::get('issue/{issue}/doc', [DocumentController::class, 'showForm'])->name('issueDoc.form');
-
-    // Update data Issue ke Document yang sudah ada
-    Route::get('issue/{issue}/doc/{doc}/edit',[DocumentController::class, 'editForm'])->name('issue.document.edit');
-    Route::put('issue/{issue}/doc',[DocumentController::class, 'updateForm'])->name('issueDoc.update');
 
     Route::resource('group', GroupController::class);
     Route::get('user/setting/create',[SettingController::class,'create'])->name('setting.create');

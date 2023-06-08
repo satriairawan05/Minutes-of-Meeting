@@ -62,22 +62,11 @@
                 @endif
                 @if (App\Models\GroupPage::where('page_id', '=', 14)->orWhere('access', '=', 1)->get())
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('document.index') ? 'active' : '' }}"
-                            href="{{ route('document.index') }}">
-                            <span class="shape1"></span>
-                            <span class="shape2"></span>
-                            <i class="ti-archive sidemenu-icon"></i>
-                            <span class="sidemenu-label">Documents</span>
-                        </a>
-                    </li>
-                @endif
-                @if (App\Models\GroupPage::where('page_id', '=', 14)->orWhere('access', '=', 1)->get())
-                    <li class="nav-item">
                         <a class="nav-link {{ request()->is('dashboard') ? 'active' : '' }}"
                             href="{{ route('archive.index') }}">
                             <span class="shape1"></span>
                             <span class="shape2"></span>
-                            <i class="ti-folder sidemenu-icon"></i>
+                            <i class="ti-archive sidemenu-icon"></i>
                             <span class="sidemenu-label">Archieve</span>
                         </a>
                     </li>
