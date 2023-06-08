@@ -28,7 +28,7 @@ class ResumeController extends Controller
         return view('resume.index', [
             'meet' => $meet,
             'issues' => $issues,
-            'issue' => $data
+            'issue' => $data,
         ]);
     }
 

@@ -43,7 +43,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('issue', IssueController::class);
     Route::resource('document',DocumentController::class);
     Route::resource('archive', ArchiveController::class)->except(['create']);
-    Route::get('archive/{meet}/create',[ArchiveController::class, 'create'])->name('archive.meet.create');
+    Route::post('archive/{meet}',[ArchiveController::class, 'store'])->name('archive.meet.store');
 
     Route::get('resume/{meet}',[ResumeController::class, 'resume'])->name('resume.meet');
     Route::get('resume/{meet}/create',[ResumeController::class, 'create'])->name('resume.meet.create');

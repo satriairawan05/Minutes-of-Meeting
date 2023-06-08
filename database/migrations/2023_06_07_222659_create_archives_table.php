@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('archives', function (Blueprint $table) {
             $table->increments('archive_id');
             $table->string('meet_id');
-            $table->string('meet_xid');
+            $table->string('meet_xid',50);
             $table->string('meet_project',20);
             $table->string('meet_name',100);
             $table->date('meet_date');
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('meet_locate',100);
             $table->string('meet_attend',100);
             $table->string('issue_id');
-            $table->string('issue_xid');
+            $table->string('issue_xid',50);
             $table->string('project',50);
             $table->string('tracker',50);
             $table->string('subject',100);

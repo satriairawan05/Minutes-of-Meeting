@@ -18,14 +18,25 @@
             <!--Row-->
             <div class="card">
                 <div class="card-header d-flex justify-content-end">
-                    <a href="{{ route('archive.meet.create',$meet->meet_id) }}" class="btn-data btn text-decoration-none text-black">
-                        <i class="fas fa-folder-plus"></i> Add New Archive
-                    </a>
-                    <a href="{{ route('resume.meet.create',$meet->meet_id) }}" class="btn-data btn text-decoration-none text-black">
-                        <i class="fas fa-plus-circle"></i> Add New Data Issue
-                    </a>
                     <div class="d-flex justify-content-end align-items-end mb-3">
-                        <a href="{{ route('meet.index') }}" class="btn btn-md btn-primary">Back</a>
+                        <div class="card-header d-flex justify-content-end align-items-end">
+                            <form action="{{ route('archive.meet.store',$meet->meet_id) }}" method="post">
+                                @csrf
+                                <input type="hidden" name="meet_id" id="meet_id" value="{{ $meet->meet_id }}">
+                                @foreach ($issue as $isu)
+                                    <input type="hidden" name="issue_id" id="issue_id" value="{{ $isu->issue_id }}">
+                                @endforeach
+                                <button type="submit" id="submit" class="btn-data btn text-decoration-none text-black">
+                                    <i class="fas fa-folder-plus"></i> Add Archive Meet
+                                </button>
+                            </form>
+                            <a href="{{ route('issue.create') }}" class="btn-data btn text-decoration-none text-black">
+                                <i class="fas fa-plus-circle"></i> Add New Data Issue
+                            </a>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end align-items-end mb-3">
+                        <a href="{{ route('meet.index') }}" class="btn btn-md btn-primary ml-3">Back</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -91,7 +102,6 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <input type="hidden" name="project" id="project" readonly value="{{ $issues }}">
                             <tbody>
                                 @foreach ($issue as $i)
                                 <tr>
@@ -117,9 +127,9 @@
                                             <i class="fas fa-edit"></i>
                                         </button>
                                         <form action="{{ route('resume.issue.delete',$i->issue_id) }}" method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit" class="btn bg-gradient-primary"><i class="far fa-trash-alt"></i></button>
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn bg-gradient-primary"><i class="far fa-trash-alt"></i></button>
                                         </form>
                                     </td>
                                 </tr>
@@ -133,13 +143,11 @@
             <!-- End Main Content-->
             @if (session('success'))
             <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    var successAlert = document.getElementById('success-alert');
-                    successAlert.style.display = 'block';
-                    setTimeout(function() {
-                        successAlert.style.display = 'none';
-                    }, 5000); // Adjust the timeout value (in milliseconds) as needed
-                });
+                var successAlert = document.getElementById('success-alert');
+                successAlert.style.display = 'block';
+                setTimeout(function() {
+                    successAlert.style.display = 'none';
+                }, 5000);
 
             </script>
             @endif

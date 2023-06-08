@@ -7,7 +7,6 @@ use App\Models\User;
 use App\Models\Issue;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
-use Illuminate\Database\Query\JoinClause;
 
 class MeetController extends Controller
 {
