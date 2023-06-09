@@ -26,29 +26,31 @@
                                 Private
                             </label>
                         </div>
-                        <div class="mb-3 col-12">
-                            <label for="daily_xid">ID Daily</label>
-                            <input type="text" class="form-control @error('daily_xid') is-invalid @enderror" id="daily_xid" name="daily_xid" value="{{ $daily }}" readonly>
-                            @error('daily_xid')
-                            <div class="invalid-feedback">
-                                {{ $message }}
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="daily_xid">ID Daily</label>
+                                <input type="text" class="form-control @error('daily_xid') is-invalid @enderror" id="daily_xid" name="daily_xid" value="{{ $daily }}" readonly>
+                                @error('daily_xid')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
-                            @enderror
-                        </div>
 
-                        <div class="mb-3 col-12">
-                            <label id="subject_label" for="subject">Subject</label>
-                            <input id="subject" name="subject" type="text" class="form-control @error('subject')
+                            <div class="col-md-6">
+                                <label id="subject_label" for="subject">Subject</label>
+                                <input id="subject" name="subject" type="text" class="form-control @error('subject')
             is_invalid
         @enderror" required placeholder="Masukan Subject" value="{{ old('subject') }}" />
-                            @error('subject')
-                            <div class="invalid-feedback">
-                                {{ $message }}
+                                @error('subject')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
-                            @enderror
                         </div>
-
-                        <div class="mb-3 col-12">
+                        <div class="row mb-3">
+                        <div class="col-md-6">
                             <label id="departemen_label" for="departemen">Departemen</label>
                             <select class="form-select form-control form-control-sm" id="departemen" name="departemen">
                                 @if(old('departemen') == null)
@@ -69,9 +71,20 @@
                             </div>
                             @enderror
                         </div>
+                        <div class="col-md-6">
+                            <label id="status_label" for="status">Status</label>
+                            <select class="form-select form-control form-control-sm" name="status">
+                                <option name="status" value="High" selected>High</option>
+                            </select>
+                            @error('status')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
                         <div class="mb-3 col-12">
                             <label id="description_label" for="description">Problem Identification</label>
-                            <input name="description" id="description" required value="{{ old('description') }}" class="form-control @error('description')
+                            <input name="description_daily" id="description" required value="{{ old('description') }}" class="form-control @error('description')
         is-invalid
     @enderror" placeholder="Masukan Description" />
                             @error('description')
@@ -91,17 +104,7 @@
                             </div>
                             @enderror
                         </div>
-                        <div class="mb-3 col-12">
-                            <label id="status_label" for="status">Status</label>
-                            <select class="form-select form-control form-control-sm" name="status">
-                                <option name="status" value="High" selected>High</option>
-                            </select>
-                            @error('status')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
+
                         <div class="mb-3 col-12">
                             <label id="start_date_label" for="start_date">Start Date</label>
                             <input id="start_date" name="start_date" type="date" class="form-control @error('start_date')

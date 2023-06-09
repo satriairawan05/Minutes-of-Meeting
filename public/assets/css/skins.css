@@ -1181,6 +1181,7 @@ body.theme-style.dark-theme .owl-theme:after {
 .light-theme.light-horizontal.light-leftmenu.theme-style .sidemenu-logo {
     border-right: 0 solid #f0f0ff
 }
+
 #success-alert {
     position: fixed;
     bottom: 20px;

@@ -246,9 +246,14 @@
         <script src="{{ asset('assets/js/form-editor.js') }}"></script>
 
         <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+        
         <script>
-            CKEDITOR.replace('description');
+            CKEDITOR.replace('description_daily',{
+                uiColor: '#7A88A1',
+            });
+
         </script>
+        
 
 </body>
 
