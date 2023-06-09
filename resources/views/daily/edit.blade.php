@@ -29,6 +29,7 @@
                         </div>
                         <div class="mb-3 col-12">
                             <label for="daily_xid">ID Daily</label>
+                            <input type="hidden" name="daily_id" id="daily_id" value="{{ $daily->daily_id }}">
                             <input type="text" class="form-control @error('daily_xid') is-invalid @enderror" id="daily_xid" name="daily_xid" value="{{ $daily->daily_xid }}" readonly>
                             @error('daily_xid')
                             <div class="invalid-feedback">
@@ -52,9 +53,6 @@
                         <div class="mb-3 col-12">
                             <label id="departemen_label" for="departemen">Departemen</label>
                             <select class="form-select form-control form-control-sm" id="departemen" name="departemen">
-                                @if (old('departemen') == null)
-                                <option name="departemen">Masukan Departemen</option>
-                                @endif
                                 @foreach ($depts as $dept)
                                 @if (old('departemen', $daily->departemen) == $dept->id)
                                 <option name="departemen" value="{{ $dept->name }}" selected>

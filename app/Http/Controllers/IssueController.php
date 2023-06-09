@@ -151,7 +151,7 @@ class IssueController extends Controller
                 Issue::where('issue_id', $issue->issue_id)->update($validate);
             }
 
-            return redirect('issue')->with(['success'],['Update Issue Successfully!','Added Archive Successfully!']);
+            return redirect('issue')->with('success','Update Issue Successfully!');
         } catch (QueryException $e) {
             return $e->getMessage();
         }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ArchiveDaily;
 use App\Models\User;
 use App\Models\Daily;
 use App\Models\Departemen;
@@ -46,19 +47,24 @@ class DailyController extends Controller
     public function store(Request $request)
     {
         try {
-            $daily = new Daily;
-            $daily->daily_xid = $request->xid;
-            $daily->departemen = $request->input('departemen');
-            $daily->subject = $request->input('subject');
-            $daily->c_action = $request->input('c_action');
-            $daily->status = $request->input('status');
-            $daily->assignee = $request->input('assigne');
-            $daily->start_date = $request->input('start_date');
-            $daily->end_date = $request->input('end_date');
-            $daily->description = $request->input('description_daily');
-            $request->file('file') ? $request->file('file')->store('dailies') : '';
-            $request->input('is_private') ? $request->is_private : 0;
-            $daily->save();
+            $validate = $this->validate($request,[
+                'daily_xid' => 'required',
+                'departemen' => 'required',
+                'subject' => 'required',
+                'c_action' => 'required',
+                'description' => 'required',
+                'status' => 'required',
+                'assignee' => 'required',
+                'start_date' => 'required',
+                'end_date' => 'required',
+            ]);
+
+            $validate['daily_id'] = +1;
+            $validate['file'] = $request->file('file') ? $request->file('file')->store('dailies') : null;
+            $validate['is_private'] = $request->input('is_private') ? $request->is_private : 0;
+            Daily::create($validate);
+            ArchiveDaily::create($validate);
+
 
             return redirect('/daily')->with('sucess','Added Daily Successfully!');
         } catch (QueryException $e) {
@@ -91,10 +97,11 @@ class DailyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Daily $daily)
+    public function update(Request $request, Daily $daily, ArchiveDaily $archiveDaily)
     {
         try {
             $validate = $this->validate($request,[
+                'daily_id' => 'required',
                 'daily_xid' => 'required',
                 'departemen' => 'required',
                 'subject' => 'required',
@@ -106,10 +113,11 @@ class DailyController extends Controller
                 'end_date' => 'required',
             ]);
 
-            $request->file('file') ? $request->file('file')->store('dailies') : null;
-            $request->input('is_private') ? $request->is_private : 0;
+            $validate['file'] = $request->file('file') ? $request->file('file')->store('dailies') : null;
+            $validate['is_private'] = $request->input('is_private') ? $request->is_private : 0;
 
             Daily::where('daily_id',$daily->daily_id)->update($validate);
+            ArchiveDaily::where('arc_daily_id',$archiveDaily->arc_daily_id)->update($validate);
 
             return redirect('/daily')->with('sucess','Updated Daily Successfully!');
         } catch (QueryException $e) {

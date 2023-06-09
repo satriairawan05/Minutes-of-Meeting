@@ -63,25 +63,25 @@ class PageSeeder extends Seeder
 
         // 9
         Page::create([
-            'page_name' => 'Daily',
+            'page_name' => 'DWM Report',
             'action' => 'Create'
         ]);
 
         // 10
         Page::create([
-            'page_name' => 'Daily',
+            'page_name' => 'DWM Report',
             'action' => 'Read'
         ]);
 
         // 11
         Page::create([
-            'page_name' => 'Daily',
+            'page_name' => 'DWM Report',
             'action' => 'Update'
         ]);
 
         // 12
         Page::create([
-            'page_name' => 'Daily',
+            'page_name' => 'DWM Report',
             'action' => 'Delete'
         ]);
 
