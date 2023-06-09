@@ -87,25 +87,25 @@ class PageSeeder extends Seeder
 
         // 13
         Page::create([
-            'page_name' => 'Documents',
+            'page_name' => 'Archives',
             'action' => 'Create'
         ]);
 
         // 14
         Page::create([
-            'page_name' => 'Documents',
+            'page_name' => 'Archives',
             'action' => 'Read'
         ]);
 
         // 15
         Page::create([
-            'page_name' => 'Documents',
+            'page_name' => 'Archives',
             'action' => 'Update'
         ]);
 
         // 16
         Page::create([
-            'page_name' => 'Documents',
+            'page_name' => 'Archives',
             'action' => 'Delete'
         ]);
 

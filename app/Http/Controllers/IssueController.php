@@ -18,7 +18,7 @@ class IssueController extends Controller
     public function index()
     {
         return view('issue.index', [
-            'issues' => Issue::get()
+            'issues' => Issue::distinct('tracker')->orderBy('tracker')->get('tracker')
         ]);
     }
 
@@ -88,7 +88,7 @@ class IssueController extends Controller
     public function show(Issue $issue)
     {
         return view('issue.show', [
-            'data' => $issue
+            'issue' => Issue::where('tracker',$issue->tracker)->get()
         ]);
     }
 
@@ -140,7 +140,7 @@ class IssueController extends Controller
 
             Issue::where('issue_id', $issue->issue_id)->update($validate);
 
-            return redirect('issue')->with('success', 'Updated Successfully!');
+            return redirect()->route('issue.show',$issue->tracker)->with('success', 'Updated Successfully!');
         } catch (QueryException $e) {
             return $e->getMessage();
         }

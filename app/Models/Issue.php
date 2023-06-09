@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Departemen;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -15,4 +14,14 @@ class Issue extends Model
 
     public $incrementing = true;
     public $timestamps = true;
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName(): string
+    {
+        return 'tracker';
+    }
 }
