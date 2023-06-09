@@ -82,6 +82,7 @@
                                 <label id="description_label" for="description">Problem Identification</label>
                                 <textarea name="description" rows="4" id="description" required value="{{ old('description') }}" class="form-control @error('description') is-invalid @enderror" placeholder="Masukan Description"></textarea>
                                 @error('description')
+
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -183,22 +184,6 @@
                                 @enderror
                             </div>
                         </div>
-                        <!-- Row -->
-                        <div class="row row-sm">
-                            <div class="col-lg-12 col-md-12">
-                                <div class="card custom-card">
-                                    <div class="card-body">
-                                        <div>
-                                            <h6 class="main-content-label mb-1">Summernote</h6>
-                                            <p class="text-muted card-sub-title">Adding a Plugin to Summernote is as easy as adding Summernote to the page you want Summernote to appear in.</p>
-                                        </div>
-                                        <div id="summernote"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Row -->
-
                         <div class="col-12 d-flex justify-content-center">
                             <a href="{{ route('issue.index') }}" class="btn btn-md btn-primary mr-3">Back</a>
                             <button type="submit" class="btn btn-md btn-success">Submit</button>

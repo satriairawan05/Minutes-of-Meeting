@@ -44,7 +44,7 @@
                     <span class="shape1"></span>
                     <span class="shape2"></span>
                     <i class="fas fa-exclamation-circle sidemenu-icon"></i>
-                    <span class="sidemenu-label">Daily</span>
+                    <span class="sidemenu-label">DWM Report</span>
                 </a>
             </li>
             <li class="nav-item">
