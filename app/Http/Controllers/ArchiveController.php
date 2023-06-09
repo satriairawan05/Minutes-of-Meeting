@@ -16,7 +16,7 @@ class ArchiveController extends Controller
     public function index()
     {
         return view('archive.index', [
-            'archives' => Archive::all()
+            'archives' => Archive::get(),
         ]);
     }
 
@@ -34,7 +34,7 @@ class ArchiveController extends Controller
     public function store(Request $request, Archive $archive, Meet $meet, Issue $issue)
     {
         try {
-            $issue = Issue::leftJoin('meets', 'meets.meet_xid', '=', 'issues.project')->where('issues.project','=',$meet->meet_xid)->get();
+            $issue = Issue::leftJoin('meets', 'meets.meet_xid', '=', 'issues.project')->where('issues.project', '=', $meet->meet_xid)->get();
 
             foreach ($issue as $isu) {
                 $arc = new Archive;
