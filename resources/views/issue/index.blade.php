@@ -17,15 +17,6 @@
             <!-- End Page Header -->
             <div class="card">
                 <div class="card-header d-flex justify-content-end align-items-end">
-                    {{-- <form action="{{ route('archive.issue.store',$issues->issue_id) }}" method="post">
-                        @csrf
-                        @foreach ($issues as $isu)
-                            <input type="hidden" name="issue_id" id="issue_id" value="{{ $isu->issue_id }}">
-                        @endforeach
-                        <button type="submit" id="submit" class="btn-data btn text-decoration-none text-black">
-                            <i class="fas fa-folder-plus"></i> Add Archive Issue
-                        </button>
-                    </form> --}}
                     <a href="{{ route('issue.create') }}" class="btn-data btn text-decoration-none text-black">
                         <i class="fas fa-plus-circle"></i> Add New Data
                     </a>
@@ -36,6 +27,7 @@
                             <thead class="table-header text-center">
                                 <tr>
                                     <th>#</th>
+                                    <th>ID</th>
                                     <th>Subject</th>
                                     <th>Departemen</th>
                                     <th>Status</th>
@@ -50,6 +42,7 @@
                                 @foreach ($issues as $i)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
+                                    <td>{!! $i->issue_xid !!}</td>
                                     <td>{!! $i->subject !!}</td>
                                     <td><a href="{{ route('issue.document',$i->issue_id) }}" class="text-decoration-none text-capitalize">{!! $i->tracker !!}</a></td>
                                     <td>{!! $i->status !!}</td>
@@ -68,23 +61,23 @@
                                         {{-- End of Show Modal Trigger --}}
 
                                         {{-- Edit Modal Trigger --}}
-                                        <button type="button" onclick="window.location='{{ route('issue.edit', strtolower($i->tracker)) }}'" class="btn bg-gradient-info" title="Edit Data">
+                                        <button type="button" onclick="window.location='{{ route('issue.edit', $i->issue_id) }}'" class="btn bg-gradient-info" title="Edit Data">
                                             <i class="fas fa-edit"></i>
                                         </button>
                                         {{-- End of Edit Modal Trigger --}}
 
                                         {{-- Delete Modal Trigger --}}
-                                        <button type="button" class="btn bg-gradient-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ strtolower($i->tracker) }}" onclick="{{ route('issue.destroy', strtolower($i->tracker)) }}">
+                                        <button type="button" class="btn bg-gradient-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $i->issue_id }}" onclick="{{ route('issue.destroy', $i->issue_id) }}">
                                             <i class="far fa-trash-alt"></i>
                                         </button>
                                         {{-- End of Delete Modal Trigger --}}
 
                                         {{-- Delete Modal --}}
-                                        <div class="modal fade" id="deleteModal{{ strtolower($i->tracker) }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ strtolower($i->tracker) }}" aria-hidden="true">
+                                        <div class="modal fade" id="deleteModal{{ $i->issue_id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $i->issue_id }}" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="deleteModalLabel{{ strtolower($i->tracker) }}">Delete
+                                                        <h5 class="modal-title" id="deleteModalLabel{{ $i->issue_id }}">Delete
                                                             Data</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
@@ -94,7 +87,7 @@
                                                         Apakah anda yakin?
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <form onsubmit="return deleteData('{{ $i->subject }}')" method="POST" action="{{ route('issue.destroy', strtolower($i->tracker)) }}">
+                                                        <form onsubmit="return deleteData('{{ $i->subject }}')" method="POST" action="{{ route('issue.destroy', $i->issue_id) }}">
                                                             @csrf
                                                             <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
 

@@ -31,6 +31,7 @@
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <label for="issue_xid">ID Issues</label>
+                                    <input type="hidden" name="issue_id" id="issue_id" value="{{ $data->issue_id }}">
                                     <input type="text" class="form-control @error('issue_xid') is-invalid @enderror"
                                         id="issue_xid" name="issue_xid" value="{{ $data->issue_xid }}" readonly>
                                     @error('issue_xid')

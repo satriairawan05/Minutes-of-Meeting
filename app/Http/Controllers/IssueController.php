@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ArchiveIssue;
 use App\Models\Departemen;
 use App\Models\Meet;
 use App\Models\User;
@@ -120,6 +121,7 @@ class IssueController extends Controller
     {
         try {
             $validate = $request->validate([
+                'issue_id' => ['required'],
                 'issue_xid' => ['required'],
                 'project' => ['required'],
                 'tracker' => ['required'],
@@ -140,15 +142,16 @@ class IssueController extends Controller
                 $validate['file'] = $request->file('file')->store('images');
             }
 
-            if ($request->input('is_private')) {
-                $validate['is_private'] = $request->is_private;
+            $request->input('is_private') ? $request->is_private : 0;
+
+            if($request->input('status') == "Closed") {
+                Issue::where('issue_id', $issue->issue_id)->update($validate);
+                ArchiveIssue::create($validate);
             } else {
-                $validate['is_private'] = 0;
+                Issue::where('issue_id', $issue->issue_id)->update($validate);
             }
 
-            Issue::where('issue_id', $issue->issue_id)->update($validate);
-
-            return redirect('issue')->with('success', 'Updated Successfully!');
+            return redirect('issue')->with(['success'],['Update Issue Successfully!','Added Archive Successfully!']);
         } catch (QueryException $e) {
             return $e->getMessage();
         }

@@ -18,14 +18,11 @@
             <!--Row-->
             <div class="card ">
                 <div class="card">
-                    
-                    @if(App\Models\GroupPage::where('page_id','=',1)->orWhere('access','=',1)->get())
                     <div class="card-header d-flex justify-content-end">
                         <a href="{{ route('meet.create') }}" class="btn-data btn text-decoration-none text-black">
                             <i class="fas fa-plus-circle"></i> Add New Data
                         </a>
                     </div>
-                    @endif
                     <div class="card-body">
                         @if (session('success'))
                         <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">

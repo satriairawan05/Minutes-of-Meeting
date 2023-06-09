@@ -9,8 +9,8 @@ class Archive extends Model
 {
     use HasFactory;
 
-    protected $table = 'archives';
-    protected $primaryKey = 'archive_id';
+    protected $table = 'archive_meets';
+    protected $primaryKey = 'arc_meeet_id';
 
     public $incrementing = true;
     public $timestamps = true;

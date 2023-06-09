@@ -1,15 +1,16 @@
 <?php
 
-use App\Http\Controllers\ArchiveController;
-use App\Http\Controllers\DailyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MeetController;
+use App\Http\Controllers\DailyController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\IssueController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ResumeController;
+use App\Http\Controllers\ArchiveController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\DepartemenController;
-use App\Http\Controllers\ResumeController;
+use App\Http\Controllers\ArchiveIssueController;
 use App\Http\Controllers\UserManagementController;
 
 /*
@@ -52,6 +53,7 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('resume/{issue}',[ResumeController::class, 'destroy'])->name('resume.issue.delete');
 
     Route::resource('daily',DailyController::class);
+
 
     Route::resource('group', GroupController::class);
     Route::get('user/setting/create',[SettingController::class,'create'])->name('setting.create');

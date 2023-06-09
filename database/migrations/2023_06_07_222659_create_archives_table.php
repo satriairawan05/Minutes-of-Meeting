@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('archives', function (Blueprint $table) {
-            $table->increments('archive_id');
+        Schema::create('archive_meets', function (Blueprint $table) {
+            $table->increments('arc_meeet_id');
             $table->string('meet_id');
             $table->string('meet_xid',50);
             $table->string('meet_project',20);
