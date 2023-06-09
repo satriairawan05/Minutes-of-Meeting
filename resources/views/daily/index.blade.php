@@ -43,8 +43,6 @@
                                     <th>Start Date</th>
                                     <th>End Date</th>
                                     <th>Asiggnee</th>
-                                    <th>File</th>
-                                    <th>Private</th>
                                     <th width="100px">Action</th>
                                 </tr>
                             </thead>
@@ -54,19 +52,13 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{!! $i->daily_xid !!}</td>
                                     <td>{!! $i->departemen !!}</td>
-                                    <td>{!! $i->subject !!}</td>
+                                    <td><a href="{{ route('daily.show',$i->daily_id) }}" class="text-decoration-none">{!! $i->subject !!}</a></td>
                                     <td>{!! $i->c_action !!}</td>
                                     <td>{!! $i->description !!}</td>
                                     <td>{!! $i->status !!}</td>
                                     <td>{!! \Carbon\Carbon::parse($i->start_date)->format('l, d M Y') !!}</td>
                                     <td>{!! \Carbon\Carbon::parse($i->end_date)->format('l, d M Y') !!}</td>
                                     <td>{!! $i->assignee !!}</td>
-                                    <td>
-                                    @if ($i->file)
-                                        <img src="{{ asset('storage/' . $i->file) }}" alt="{{ $i->daily_xid }}" class="img-responsive h-75 w-75" />
-                                        @endif
-                                    </td>
-                                    <td>{!! $i->is_private == 1 ? "Yes" : "No" !!}</td>
                                     {{-- start modal  --}}
                                     <td>
                                         {{-- Show Modal Trigger --}}

@@ -81,7 +81,9 @@ class DailyController extends Controller
      */
     public function show(Daily $daily)
     {
-        //
+        return view('daily.document',[
+            'daily' => $daily
+        ]);
     }
 
     /**
