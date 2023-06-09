@@ -17,8 +17,8 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'Super Admin',
-            'email' => 'admin@bsscoal.com',
-            'password' => bcrypt('bsscoal'),
+            'email' => 'admin@bss.com',
+            'password' => bcrypt('bss'),
             'email_verified_at' => now(),
             'group_id' => 1,
             'departemen' => '',
@@ -27,8 +27,8 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'PIC',
-            'email' => 'pic@bsscoal.com',
-            'password' => bcrypt('bsscoal'),
+            'email' => 'pic@bss.com',
+            'password' => bcrypt('bss'),
             'email_verified_at' => now(),
             'group_id' => 2,
             'departemen' => '',
@@ -37,8 +37,8 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'Engginering',
-            'email' => 'engginering@bsscoal.com',
-            'password' => bcrypt('bsscoal'),
+            'email' => 'engginering@bss.com',
+            'password' => bcrypt('bss'),
             'email_verified_at' => now(),
             'group_id' => 3,
             'departemen' => 'Engginering',
@@ -47,8 +47,8 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'HSE',
-            'email' => 'hse@bsscoal.com',
-            'password' => bcrypt('bsscoal'),
+            'email' => 'hse@bss.com',
+            'password' => bcrypt('bss'),
             'email_verified_at' => now(),
             'group_id' => 3,
             'departemen' => 'HSE',
@@ -56,19 +56,19 @@ class UserSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'Coal & Berging',
-            'email' => 'cnb@bsscoal.com',
-            'password' => bcrypt('bsscoal'),
+            'name' => ' & Berging',
+            'email' => 'cnb@bss.com',
+            'password' => bcrypt('bss'),
             'email_verified_at' => now(),
             'group_id' => 3,
-            'departemen' => 'Coal & Berging',
+            'departemen' => ' & Berging',
             'remember_token' => Str::random(10),
         ]);
 
         User::create([
             'name' => 'FAT',
-            'email' => 'fat@bsscoal.com',
-            'password' => bcrypt('bsscoal'),
+            'email' => 'fat@bss.com',
+            'password' => bcrypt('bss'),
             'email_verified_at' => now(),
             'group_id' => 3,
             'departemen' => 'FAT',
@@ -77,8 +77,8 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'HRGA',
-            'email' => 'hrga@bsscoal.com',
-            'password' => bcrypt('bsscoal'),
+            'email' => 'hrga@bss.com',
+            'password' => bcrypt('bss'),
             'email_verified_at' => now(),
             'group_id' => 3,
             'departemen' => 'HRGA',
@@ -87,8 +87,8 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'IT',
-            'email' => 'it@bsscoal.com',
-            'password' => bcrypt('bsscoal'),
+            'email' => 'it@bss.com',
+            'password' => bcrypt('bss'),
             'email_verified_at' => now(),
             'group_id' => 3,
             'departemen' => 'IT',
@@ -97,8 +97,8 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'Logistic',
-            'email' => 'logistic@bsscoal.com',
-            'password' => bcrypt('bsscoal'),
+            'email' => 'logistic@bss.com',
+            'password' => bcrypt('bss'),
             'email_verified_at' => now(),
             'group_id' => 3,
             'departemen' => 'Logistic',
@@ -107,8 +107,8 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'PLANT',
-            'email' => 'plant@bsscoal.com',
-            'password' => bcrypt('bsscoal'),
+            'email' => 'plant@bss.com',
+            'password' => bcrypt('bss'),
             'email_verified_at' => now(),
             'group_id' => 3,
             'departemen' => 'PLANT',
@@ -117,8 +117,8 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'PRODUCTION',
-            'email' => 'production@bsscoal.com',
-            'password' => bcrypt('bsscoal'),
+            'email' => 'production@bss.com',
+            'password' => bcrypt('bss'),
             'email_verified_at' => now(),
             'group_id' => 3,
             'departemen' => 'PRODUCTION',
@@ -127,13 +127,13 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'PURCASHING',
-            'email' => 'purcashing@bsscoal.com',
-            'password' => bcrypt('bsscoal'),
+            'email' => 'purcashing@bss.com',
+            'password' => bcrypt('bss'),
             'email_verified_at' => now(),
             'group_id' => 3,
             'departemen' => 'PURCASHING',
             'remember_token' => Str::random(10),
         ]);
-        //'Engginering','HSE','Coal & Berging','FAT','HRGA','IT','LOGISTIC','PLANT','PRODUCTION','PURCASHING'
+        //'Engginering','HSE',' & Berging','FAT','HRGA','IT','LOGISTIC','PLANT','PRODUCTION','PURCASHING'
     }
 }
