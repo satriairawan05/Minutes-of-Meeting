@@ -94,29 +94,20 @@ class DailyController extends Controller
     public function update(Request $request, Daily $daily)
     {
         try {
-            $rules = [
-                'daily_xid' => ['required'],
-                'departemen' => ['required'],
-                'subject' => ['required'],
-                'c_action' => ['required'],
-                'description' => ['required'],
-                'status' => ['required'],
-                'assignee' => ['required'],
-                'start_date' => ['required'],
-                'end_date' => ['required'],
-            ];
+            $validate = $this->validate($request,[
+                'daily_xid' => 'required',
+                'departemen' => 'required',
+                'subject' => 'required',
+                'c_action' => 'required',
+                'description' => 'required',
+                'status' => 'required',
+                'assignee' => 'required',
+                'start_date' => 'required',
+                'end_date' => 'required',
+            ]);
 
-            $validate = $request->validate($rules);
-
-            if ($request->file('file')) {
-                $validate['file'] = $request->file('file')->store('dailies');
-            }
-
-            if ($request->input('is_private')) {
-                $validate['is_private'] = $request->is_private;
-            } else {
-                $validate['is_private'] = 0;
-            }
+            $request->file('file') ? $request->file('file')->store('dailies') : null;
+            $request->input('is_private') ? $request->is_private : 0;
 
             Daily::where('daily_id',$daily->daily_id)->update($validate);
 

@@ -57,7 +57,7 @@
                                     <option name="departemen">Masukan Departemen</option>
                                     @endif
                                     @foreach ($depts as $dept)
-                                    @if (old('departemen') == $dept->id)
+                                    @if (old('departemen') == $dept->name)
                                     <option name="departemen" value="{{ $dept->name }}" selected>{{ $dept->name }}
                                     </option>
                                     @else
@@ -85,10 +85,10 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <label id="description_label" for="description">Problem Identification</label>
-                                <input name="description_daily" id="description" required value="{{ old('description') }}" class="form-control @error('description')
+                                <label id="description_label" for="description">Description</label>
+                                <textarea name="description" id="description" rows="14" required value="{{ old('description') }}" class="form-control @error('description')
         is-invalid
-    @enderror" placeholder="Masukan Description" />
+    @enderror" placeholder="Masukan Description"></textarea>
                                 @error('description')
                                 <div class="invalid-feedback">
                                     {{ $message }}
