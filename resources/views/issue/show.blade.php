@@ -35,43 +35,28 @@
                         <table id="exportexample" class="table table-bordered border-t0 key-buttons text-nowrap w-100">
                             <thead class="table-header text-center">
                                 <tr>
-                                    <th>No</th>
-                                    <th>Issue ID</th>
-                                    <th>Meet ID</th>
+                                    <th>#</th>
+                                    <th>Subject</th>
                                     <th>Departemen</th>
-                                    <th>Issue</th>
-                                    <th>Corrective Action</th>
-                                    <th>Description</th>
                                     <th>Status</th>
                                     <th>Priority</th>
                                     <th>Start Date</th>
                                     <th>End Date</th>
                                     <th>Asiggnee</th>
-                                    <th>File</th>
-                                    <th>Private</th>
                                     <th width="100px">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
                                 @foreach ($issue as $i)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{!! $i->issue_xid !!}</td>
-                                    <td>{!! $i->project !!}</td>
-                                    <td>{!! $i->tracker !!}</td>
+                                    <td><a href="{{ route('issue.document',strtolower($i->tracker)) }}">{!! $i->issue_id !!}</a></td>
                                     <td>{!! $i->subject !!}</td>
-                                    <td>{!! $i->c_action !!}</td>
-                                    <td>{!! $i->description !!}</td>
+                                    <td>{!! $i->tracker !!}</td>
                                     <td>{!! $i->status !!}</td>
                                     <td>{!! $i->priority !!}</td>
                                     <td>{!! \Carbon\Carbon::parse($i->start_date)->format('l, d M Y') !!}</td>
                                     <td>{!! \Carbon\Carbon::parse($i->end_date)->format('l, d M Y') !!}</td>
                                     <td>{!! $i->assignee !!}</td>
-                                    <td>@if ($i->file)
-                                        <img src="{{ asset('storage/' . $i->file) }}" alt="{{ $i->c_action }}" class="img-responsive h-75 w-75" />
-                                        @endif
-                                    </td>
-                                    <td>{!! $i->is_private == 1 ? "Yes" : "No" !!}</td>
                                     {{-- start modal  --}}
                                     <td>
                                         {{-- Show Modal Trigger --}}

@@ -18,7 +18,7 @@ class IssueController extends Controller
     public function index()
     {
         return view('issue.index', [
-            'issues' => Issue::distinct('tracker')->orderBy('tracker')->get('tracker')
+            'issues' => Issue::distinct('tracker')->orderBy('tracker')->paginate(15)
         ]);
     }
 
@@ -92,6 +92,14 @@ class IssueController extends Controller
         ]);
     }
 
+    public function documentIssue(Issue $issue)
+    {
+        return view('issue.document',[
+            'issue' => $issue
+        ]);
+
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -140,7 +148,7 @@ class IssueController extends Controller
 
             Issue::where('issue_id', $issue->issue_id)->update($validate);
 
-            return redirect()->route('issue.show',$issue->tracker)->with('success', 'Updated Successfully!');
+            return redirect('issue')->with('success', 'Updated Successfully!');
         } catch (QueryException $e) {
             return $e->getMessage();
         }

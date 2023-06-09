@@ -41,7 +41,7 @@
                             <label id="subject_label" for="subject">Subject</label>
                             <input id="subject" name="subject" type="text" class="form-control @error('subject')
             is_invalid
-        @enderror" required placeholder="Masukan Subject" value="{{ old('subject',$daily->subject) }}" />
+        @enderror" required placeholder="Masukan Subject" value="{{ old('subject', $daily->subject) }}" />
                             @error('subject')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -52,15 +52,17 @@
                         <div class="mb-3 col-12">
                             <label id="departemen_label" for="departemen">Departemen</label>
                             <select class="form-select form-control form-control-sm" id="departemen" name="departemen">
-                                @if(old('departemen') == null)
+                                @if (old('departemen') == null)
                                 <option name="departemen">Masukan Departemen</option>
                                 @endif
                                 @foreach ($depts as $dept)
-                                @if (old('departemen',$daily->departemen) == $dept->id)
-                                <option name="departemen" value="{{ $dept->name }}" selected>{{ $dept->name }}
+                                @if (old('departemen', $daily->departemen) == $dept->id)
+                                <option name="departemen" value="{{ $dept->name }}" selected>
+                                    {{ $dept->name }}
                                 </option>
                                 @else
-                                <option name="departemen" value="{{ $dept->name }}">{{ $dept->name }}</option>
+                                <option name="departemen" value="{{ $dept->name }}">{{ $dept->name }}
+                                </option>
                                 @endif
                                 @endforeach
                             </select>
@@ -71,8 +73,8 @@
                             @enderror
                         </div>
                         <div class="mb-3 col-12">
-                            <label id="description_label" for="description">Problem Identification</label>
-                            <input name="description" id="description" required value="{{ old('description',$daily->description) }}" class="form-control @error('description')
+                            <label id="description_label" for="description">Description</label>
+                            <input name="description" id="description" required value="{{ old('description', $daily->description) }}" class="form-control @error('description')
         is-invalid
     @enderror" placeholder="Masukan Description" />
                             @error('description')
@@ -85,7 +87,7 @@
                             <label id="c_action_label" for="c_action">Corrective Action</label>
                             <input id="c_action" name="c_action" type="text" class="form-control @error('c_action')
             is_invalid
-        @enderror" required value="{{ old('c_action',$daily->c_action) }}" placeholder="Masukan Corrective Action" />
+        @enderror" required value="{{ old('c_action', $daily->c_action) }}" placeholder="Masukan Corrective Action" />
                             @error('c_action')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -107,7 +109,7 @@
                             <label id="start_date_label" for="start_date">Start Date</label>
                             <input id="start_date" name="start_date" type="date" class="form-control @error('start_date')
             is_invalid
-        @enderror" required value="{{ old('start_date',$daily->start_date) }}" />
+        @enderror" required value="{{ old('start_date', $daily->start_date) }}" />
                             @error('start_date')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -118,7 +120,7 @@
                             <label id="end_date_label" for="end_date">End Date</label>
                             <input id="end_date" name="end_date" type="date" class="form-control @error('end_date')
             is_invalid
-        @enderror" required value="{{ old('end_date',$daily->end_date) }}" />
+        @enderror" required value="{{ old('end_date', $daily->end_date) }}" />
                             @error('end_date')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -129,7 +131,7 @@
                             <label id="assignee_label" for="assignee">Assignee</label>
                             <select class="form-select form-control form-control-sm" id="assignee" name="assignee">
                                 @foreach ($users as $user)
-                                @if (old('assignee',$daily->assignee) == $user->name)
+                                @if (old('assignee', $daily->assignee) == $user->name)
                                 <option name="assignee" value="{{ $user->name }}" selected>
                                     {{ $user->name }}</option>
                                 @else
@@ -221,5 +223,6 @@
             fileReader.readAsDataURL(objFileInput.files[0]);
         }
     }
+
 </script>
 @endsection

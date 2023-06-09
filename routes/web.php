@@ -40,6 +40,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('meet', MeetController::class);
     Route::resource('issue', IssueController::class);
+    Route::get('issue/{issue}/document',[IssueController::class, 'documentIssue'])->name('issue.document');
     Route::resource('archive', ArchiveController::class)->except(['create']);
     Route::post('archive/{meet}',[ArchiveController::class, 'store'])->name('archive.meet.store');
 
@@ -51,7 +52,6 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('resume/{issue}',[ResumeController::class, 'destroy'])->name('resume.issue.delete');
 
     Route::resource('daily',DailyController::class);
-
 
     Route::resource('group', GroupController::class);
     Route::get('user/setting/create',[SettingController::class,'create'])->name('setting.create');

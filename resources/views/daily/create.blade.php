@@ -70,7 +70,7 @@
                             @enderror
                         </div>
                         <div class="mb-3 col-12">
-                            <label id="description_label" for="description">Problem Identification</label>
+                            <label id="description_label" for="description">Description</label>
                             <input name="description" id="description" required value="{{ old('description') }}" class="form-control @error('description')
         is-invalid
     @enderror" placeholder="Masukan Description" />
