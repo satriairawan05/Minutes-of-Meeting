@@ -51,7 +51,7 @@ class DailyController extends Controller
                 'departemen' => ['required'],
                 'subject' => ['required'],
                 'c_action' => ['required'],
-                'description' => ['required'],
+                'description_daily' => ['required'],
                 'status' => ['required'],
                 'assignee' => ['required'],
                 'start_date' => ['required'],
