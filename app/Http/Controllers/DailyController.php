@@ -47,24 +47,20 @@ class DailyController extends Controller
     public function store(Request $request)
     {
         try {
-            $validate = $this->validate($request,[
-                'daily_xid' => 'required',
-                'departemen' => 'required',
-                'subject' => 'required',
-                'c_action' => 'required',
-                'description' => 'required',
-                'status' => 'required',
-                'assignee' => 'required',
-                'start_date' => 'required',
-                'end_date' => 'required',
-            ]);
-
-            $validate['daily_id'] = +1;
-            $validate['file'] = $request->file('file') ? $request->file('file')->store('dailies') : null;
-            $validate['is_private'] = $request->input('is_private') ? $request->is_private : 0;
-            Daily::create($validate);
-            ArchiveDaily::create($validate);
-
+            return dd($request->all());
+            $daily = new Daily;
+            $daily->daily_xid = $request->daily_xid;
+            $daily->departemen = $request->departemen;
+            $daily->subject = $request->subject;
+            $daily->c_action = $request->c_action;
+            $daily->descition = $request->descition;
+            $daily->status = $request->status;
+            $daily->assignee = $request->assignee;
+            $daily->start_date = $request->start_date;
+            $daily->end_date = $request->end_date;
+            $daily->file = $request->file('file') ? $request->file('file')->store('dailies') : null;
+            $daily->is_private = $request->input('is_private') ? $request->is_private : 0;
+            $daily->save();
 
             return redirect('/daily')->with('sucess','Added Daily Successfully!');
         } catch (QueryException $e) {
