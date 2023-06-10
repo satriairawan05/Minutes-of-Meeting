@@ -72,19 +72,15 @@
                                             {{ $d->meet_attend }}</td>
                                         <td style="text-align: center;">
                                             {{-- Edit Modal Trigger --}}
-                                            @if(App\Models\GroupPage::where('page_id','=',3)->orWhere('access','=',1)->get())
-                                            <button type="button" onclick="window.location='{{ route('meet.edit', $d->meet_id) }}'" class="btn bg-gradient-info" title="Edit Data">
+                                            <a href="{{ route('meet.edit', $d->meet_id) }}" class="btn bg-gradient-info" title="Edit Data">
                                                 <i class="fas fa-edit"></i>
-                                            </button>
-                                            @endif
+                                            </a>
                                             {{-- End of Edit Modal Trigger --}}
 
                                             {{-- Delete Modal Trigger --}}
-                                            @if(App\Models\GroupPage::where('page_id','=',4)->orWhere('access','=',1)->get())
                                             <button type="button" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $d->meet_id }}">
                                                 <i class="far fa-trash-alt"></i>
                                             </button>
-                                            @endif
                                             {{-- End of Delete Modal Trigger --}}
 
                                             {{-- Delete Modal --}}
