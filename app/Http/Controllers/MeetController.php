@@ -43,14 +43,16 @@ class MeetController extends Controller
      */
     public function store(Request $request)
     {
+        return dd($request->all());
         try {
+            // 'Engginering','HSE','Coal & Berging','FAT','HRGA','IT','LOGISTIC','PLANT','PRODUCTION','PURCASHING'
             $validate = $request->validate([
                 'meet_xid' => ['required'],
                 'meet_name' => ['required'],
                 'meet_project' => ['required'],
                 'meet_date' => ['required'],
                 'meet_time' => ['required'],
-                'meet_attend' => ['required'],
+                'meet_attend' => ['required','multiple_of:Engginering,HSE,Coal & Berging,HRGA,IT,LOGISTIC,PLANT,PRODUCTION,PURCASHING'],
                 'meet_preparedby' => ['required'],
                 'meet_locate' => ['required'],
             ]);
