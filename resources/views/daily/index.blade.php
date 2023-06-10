@@ -47,7 +47,7 @@
                                     <td>{!! $i->departemen !!}</td>
                                     <td>{!! $i->subject !!}</td>
                                     <td>{!! $i->c_action !!}</td>
-                                    <td>{!! $i->description !!}</td>
+                                    <td>{!! $i->description_daily !!}</td>
                                     <td>{!! $i->status !!}</td>
                                     <td>{!! \Carbon\Carbon::parse($i->start_date)->format('l, d M Y') !!}</td>
                                     <td>{!! \Carbon\Carbon::parse($i->end_date)->format('l, d M Y') !!}</td>

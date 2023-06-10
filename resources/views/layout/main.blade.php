@@ -241,10 +241,6 @@
             });
          };
         </script>
-
-
-
-
 </body>
 
 <!-- Main Footer -->
