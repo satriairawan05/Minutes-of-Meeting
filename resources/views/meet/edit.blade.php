@@ -45,13 +45,20 @@
                                 @enderror
                             </div>
                         </div>
+                        @php
+                        $meeting = array("MEETING HO","MEETING TEAM 9","MEETING SITE");
+                        @endphp
                         <div class="row mb-3">
                             <label for="meet_project" class="col-sm-2 col-form-label">Project</label>
                             <div class="col-sm-10">
                                 <select class="form-select form-control form-control-sm" name="meet_project">
-                                    <option name="meet_project" value="MEETING HO">MEETING HO</option>
-                                    <option name="meet_project" value="MEETING TEAM 9">MEETING TEAM 9</option>
-                                    <option name="meet_project" value="MEETING SITE">MEETING SITE</option>
+                                    @foreach ($meeting as $meet)
+                                    @if (old('meet_project') == $meet)
+                                    <option name="meet_project" value="{{ $meet }}" selected>{{ $meet }}</option>
+                                    @else
+                                    <option name="meet_project" value="{{ $meet }}">{{ $meet }}</option>
+                                    @endif
+                                    @endforeach
                                 </select>
                                 @error('meet_project')
                                 <div class="invalid-feedback">
@@ -86,11 +93,18 @@
                             <label for="meet_preparedby" class="col-sm-2 col-form-label">Minutes Prepared by</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control form-control-sm @error('meet_preparedby') is-invalid @enderror" id="meet_preparedby" name="meet_preparedby" value="{{ old('meet_preparedby', $meet->meet_preparedby) }}" placeholder="Masukan Minutes Prepared By">
-                                @error('meet_preparedby')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
+                                <select id="meet_preparedby" class="form-select form-control form-control-sm"
+                                        name="meet_preparedby">
+                                        @foreach ($users as $user)
+                                            @if (old('meet_preparedby',$meet->meet_preparedby) == $user->name)
+                                                <option name="meet_preparedby" value="{{ $user->name }}" selected>
+                                                    {{ $user->name }}
+                                                </option>
+                                            @else
+                                                <option name="meet_preparedby" value="{{ $user->name }}">
+                                                    {{ $user->name }}</option>
+                                            @endif
+                                        @endforeach
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -107,22 +121,20 @@
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="meet_attend">Attendees</label>
                             <div class="col-sm-10">
-                                <select id="meet_attend" class="form-select form-control form-control-sm" name="meet_attend">
+                                <select id="meet_attend" name="meet_attend" class="form-select form-control form-control-sm select2-no-search" multiple="multiple">
                                     @foreach ($users as $user)
-                                    @if (old('meet_attend') == $user->id)
-                                    <option name="meet_attend" value="{{ $user->name }}" selected>
+                                    @if (old('meet_attend') == $user->name)
+                                    <option name="meet_attend" value="{{ $user->name }}" selected multiple="multiple">
                                         {{ $user->name }}
                                     </option>
                                     @else
-                                    <option name="meet_attend" value="{{ $user->name }}">
+                                    <option name="meet_attend" value="{{ $user->name }}" multiple="multiple">
                                         {{ $user->name }}</option>
                                     @endif
                                     @endforeach
                                 </select>
-
                             </div>
                         </div>
-
                         <div class="row mb-3">
                             <div class="col-12 d-flex justify-content-center align-items-center">
                                 <a href="{{ route('meet.index') }}" class="btn btn-md btn-primary mr-3">Back</a>

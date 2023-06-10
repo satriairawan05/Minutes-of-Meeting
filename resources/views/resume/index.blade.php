@@ -123,9 +123,9 @@
                                     </td>
                                     <td>{!! $i->is_private == 1 ? "Yes" : "No" !!}</td>
                                     <td>
-                                        <button type="button" onclick="window.location='{{ route('resume.issue.edit', $i->issue_id) }}'" class="btn bg-gradient-info" title="Edit Data">
+                                        <a href="{{ route('resume.issue.edit',$i->issue_id) }}" class="btn bg-gradient-info" title="Edit Data">
                                             <i class="fas fa-edit"></i>
-                                        </button>
+                                        </a>
                                         <form action="{{ route('resume.issue.delete',$i->issue_id) }}" method="post">
                                             @csrf
                                             @method('delete')
