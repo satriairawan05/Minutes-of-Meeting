@@ -71,11 +71,11 @@
                             @enderror
                         </div>
                         <div class="mb-3 col-12">
-                            <label id="description_label" for="description">Description</label>
-                            <input type="text" name="description" id="description" required value="{{ old('description', $daily->description) }}" class="form-control @error('description')
+                            <label id="description_label" for="escription_daily">Description</label>
+                            <input type="text" name="description_daily" id="description_daily" required value="{{ old('description_daily', $daily->escription_daily) }}" class="form-control @error('description_daily')
         is-invalid
     @enderror" placeholder="Masukan Description" />
-                            @error('description')
+                            @error('description_daily')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
