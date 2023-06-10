@@ -57,6 +57,8 @@
     <link href="{{ asset('assets/plugins/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/plugins/datatable/responsivebootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/plugins/datatable/fileexport/buttons.bootstrap4.min.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 
 
@@ -246,14 +248,16 @@
         <script src="{{ asset('assets/js/form-editor.js') }}"></script>
 
         <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
-        
+
         <script>
             CKEDITOR.replace('description_daily',{
                 uiColor: '#7A88A1',
             });
 
         </script>
-        
+
+
+
 
 </body>
 
