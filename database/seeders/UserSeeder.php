@@ -56,7 +56,7 @@ class UserSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => ' & Berging',
+            'name' => 'Coal & Berging',
             'email' => 'cnb@bss.com',
             'password' => bcrypt('bss'),
             'email_verified_at' => now(),
