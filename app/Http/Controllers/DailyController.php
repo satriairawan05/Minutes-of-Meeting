@@ -47,13 +47,13 @@ class DailyController extends Controller
     public function store(Request $request)
     {
         try {
-            return dd($request->all());
+            // return dd($request->all());
             $daily = new Daily;
             $daily->daily_xid = $request->daily_xid;
             $daily->departemen = $request->departemen;
             $daily->subject = $request->subject;
             $daily->c_action = $request->c_action;
-            $daily->descition = $request->descition;
+            $daily->description_daily = $request->description_daily;
             $daily->status = $request->status;
             $daily->assignee = $request->assignee;
             $daily->start_date = $request->start_date;
