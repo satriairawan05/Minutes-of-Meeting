@@ -7,7 +7,8 @@
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
     <meta name="description" content="Spruha -  Admin Panel laravel Dashboard Template">
     <meta name="author" content="Spruko Technologies Private Limited">
-    <meta name="keywords" content="admin laravel template, template laravel admin, laravel css template, best admin template for laravel, laravel blade admin template, template admin laravel, laravel admin template bootstrap 4, laravel bootstrap 4 admin template, laravel admin bootstrap 4, admin template bootstrap 4 laravel, bootstrap 4 laravel admin template, bootstrap 4 admin template laravel, laravel bootstrap 4 template, bootstrap blade template, laravel bootstrap admin template">
+    <meta name="keywords"
+        content="admin laravel template, template laravel admin, laravel css template, best admin template for laravel, laravel blade admin template, template admin laravel, laravel admin template bootstrap 4, laravel bootstrap 4 admin template, laravel admin bootstrap 4, admin template bootstrap 4 laravel, bootstrap 4 laravel admin template, bootstrap 4 admin template laravel, laravel bootstrap 4 template, bootstrap blade template, laravel bootstrap admin template">
 
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('assets/img/brand/favicon.ico') }}" type="image/x-icon" />
@@ -30,7 +31,8 @@
     <link href="{{ asset('assets/css/colors/default.css') }}" rel="stylesheet">
 
     <!-- Color css-->
-    <link id="theme" rel="stylesheet" type="text/css" media="all" href="{{ asset('assets/css/colors/color.css') }}">
+    <link id="theme" rel="stylesheet" type="text/css" media="all"
+        href="{{ asset('assets/css/colors/color.css') }}">
 
     <!-- Select2 css-->
     <link href="{{ asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
@@ -55,9 +57,6 @@
     <link href="{{ asset('assets/plugins/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/plugins/datatable/responsivebootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/plugins/datatable/fileexport/buttons.bootstrap4.min.css') }}" rel="stylesheet">
-    <!-- Toastify -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css')}}">
-
 </head>
 
 
@@ -75,11 +74,16 @@
                         <div class="swichermainleft">
                             <h4 class="font-bold text-sm mr-3">Default Theme Switcher</h4>
                             <div class="swichermainleft my-4">
-                                <a class="wscolorcode red-btn color blackborder color1" href="#" data-theme="assets/css/colors/color1.css"></a>
-                                <a class="wscolorcode purple-btn color blackborder color2" href="#" data-theme="assets/css/colors/color2.css"></a>
-                                <a class="wscolorcode green-btn color blackborder color3" href="#" data-theme="assets/css/colors/color3.css"></a>
-                                <a class="wscolorcode pink-btn color blackborder color4" href="#" data-theme="assets/css/colors/color4.css"></a>
-                                <a class="wscolorcode orange-btn color blackborder color5" href="#" data-theme="assets/css/colors/color5.css"></a>
+                                <a class="wscolorcode red-btn color blackborder color1" href="#"
+                                    data-theme="assets/css/colors/color1.css"></a>
+                                <a class="wscolorcode purple-btn color blackborder color2" href="#"
+                                    data-theme="assets/css/colors/color2.css"></a>
+                                <a class="wscolorcode green-btn color blackborder color3" href="#"
+                                    data-theme="assets/css/colors/color3.css"></a>
+                                <a class="wscolorcode pink-btn color blackborder color4" href="#"
+                                    data-theme="assets/css/colors/color4.css"></a>
+                                <a class="wscolorcode orange-btn color blackborder color5" href="#"
+                                    data-theme="assets/css/colors/color5.css"></a>
                             </div>
                         </div>
                         <div class="swichermainleft">
@@ -88,7 +92,8 @@
                                 <div class="switch-toggle d-flex">
                                     <span class="mr-auto">Icon Style</span>
                                     <div class="onoffswitch2">
-                                        <input type="checkbox" name="onoffswitch2" id="myonoffswitch51" class="onoffswitch2-checkbox">
+                                        <input type="checkbox" name="onoffswitch2" id="myonoffswitch51"
+                                            class="onoffswitch2-checkbox">
                                         <label for="myonoffswitch51" class="onoffswitch2-label"></label>
                                     </div>
                                 </div>
@@ -97,7 +102,8 @@
                                 <div class="switch-toggle d-flex">
                                     <span class="mr-auto">Theme Style</span>
                                     <div class="onoffswitch2">
-                                        <input type="checkbox" name="onoffswitch2" id="myonoffswitch52" class="onoffswitch2-checkbox">
+                                        <input type="checkbox" name="onoffswitch2" id="myonoffswitch52"
+                                            class="onoffswitch2-checkbox">
                                         <label for="myonoffswitch52" class="onoffswitch2-label"></label>
                                     </div>
                                 </div>
@@ -107,11 +113,13 @@
                             <h4>Theme Layout</h4>
                             <div class="switch_section d-flex my-4">
                                 <div class="d-block text-center mx-auto">
-                                    <button type="button" id="background5" class="bg5 mb-3 wscolorcode1 blackborder"></button>
+                                    <button type="button" id="background5"
+                                        class="bg5 mb-3 wscolorcode1 blackborder"></button>
                                     <span class="badge badge-light tx-12">Dark layout</span>
                                 </div>
                                 <div class="d-block text-center mx-auto">
-                                    <button type="button" id="background6" class="bg6 mb-3 wscolorcode1 blackborder"></button>
+                                    <button type="button" id="background6"
+                                        class="bg6 mb-3 wscolorcode1 blackborder"></button>
                                     <span class="badge badge-light tx-12">Light layout</span>
                                 </div>
                             </div>
@@ -120,11 +128,13 @@
                             <h4>Header Styles Mode</h4>
                             <div class="switch_section d-flex my-4">
                                 <div class="d-block text-center mx-auto">
-                                    <button type="button" id="background3" class="bg3 mb-3 wscolorcode1 blackborder"></button>
+                                    <button type="button" id="background3"
+                                        class="bg3 mb-3 wscolorcode1 blackborder"></button>
                                     <span class="badge badge-light tx-12">Dark Header</span>
                                 </div>
                                 <div class="d-block text-center mx-auto">
-                                    <button type="button" id="background4" class="bg4 mb-3 wscolorcode1 blackborder"></button>
+                                    <button type="button" id="background4"
+                                        class="bg4 mb-3 wscolorcode1 blackborder"></button>
                                     <span class="badge badge-light tx-12">Color Header</span>
                                 </div>
                             </div>
@@ -133,11 +143,13 @@
                             <h4>Leftmenu Styles Mode</h4>
                             <div class="switch_section d-flex my-4">
                                 <div class="d-block text-center mx-auto">
-                                    <button type="button" id="background1" class="bg1 wscolorcode1 blackborder"></button>
+                                    <button type="button" id="background1"
+                                        class="bg1 wscolorcode1 blackborder"></button>
                                     <span class="badge badge-light tx-12">Color Menu</span>
                                 </div>
                                 <div class="d-block text-center mx-auto">
-                                    <button type="button" id="background2" class="bg2 wscolorcode1 blackborder"></button>
+                                    <button type="button" id="background2"
+                                        class="bg2 wscolorcode1 blackborder"></button>
                                     <span class="badge badge-light tx-12">Light Menu</span>
                                 </div>
                             </div>
@@ -202,9 +214,7 @@
         <script src="{{ asset('assets/js/circle-progress.min.js') }}"></script>
         <script src="{{ asset('assets/js/chart-circle.js') }}"></script>
 
-        <!-- Toastify Js-->
-        <script type="text/javascript" src="{{ asset('https://cdn.jsdelivr.net/npm/toastify-js') }}"></script>
-        
+
         <!-- Internal Data Table js -->
         <script src="{{ asset('assets/plugins/datatable/jquery.dataTables.min.js') }}"></script>
         <script src="{{ asset('assets/plugins/datatable/dataTables.bootstrap4.min.js') }}"></script>
@@ -236,14 +246,14 @@
         <script src="{{ asset('assets/js/form-editor.js') }}"></script>
 
         <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
-
+        
         <script>
-            CKEDITOR.replace('description_daily', {
-                uiColor: '#7A88A1'
-            , });
+            CKEDITOR.replace('description_daily',{
+                uiColor: '#7A88A1',
+            });
 
         </script>
-
+        
 
 </body>
 

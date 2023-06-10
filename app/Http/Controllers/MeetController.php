@@ -16,7 +16,7 @@ class MeetController extends Controller
     public function index()
     {
 
-        return view('meet.index', [
+        return view('meet.index',[
             'meets' => Meet::get()
         ]);
     }
@@ -32,7 +32,7 @@ class MeetController extends Controller
         $count = $lastCount + 1;
         $id_u = $prefix . str_pad($count, 3, '0', STR_PAD_LEFT) . "/" . $formattedDate;
 
-        return view('meet.create', [
+        return view('meet.create',[
             'meet_id' => $id_u,
             'users' => User::get()
         ]);
@@ -57,8 +57,8 @@ class MeetController extends Controller
 
             Meet::create($validate);
 
-            return redirect('/meet')->with('success', 'Added Meet Successfully!');
-        } catch (QueryException $e) {
+            return redirect('/meet')->with('success','Added Meet Successfully!');
+        } catch (QueryException $e){
             return $e->getMessage();
         }
     }
@@ -68,7 +68,7 @@ class MeetController extends Controller
      */
     public function show(Meet $meet)
     {
-        return view('meet.rapat', [
+        return view('meet.rapat',[
             'meet' => $meet,
             'issue' => Issue::get()
         ]);
@@ -79,7 +79,7 @@ class MeetController extends Controller
      */
     public function edit(Meet $meet)
     {
-        return view('meet.edit', [
+        return view('meet.edit',[
             'meet' => $meet,
             'users' => User::get()
         ]);
@@ -104,9 +104,9 @@ class MeetController extends Controller
 
             $validate = $request->validate($rules);
 
-            Meet::where('meet_id', $meet->meet_id)->update($validate);
+            Meet::where('meet_id',$meet->meet_id)->update($validate);
 
-            return redirect('/meet')->with('success', 'Updated Meet Successfully!');
+            return redirect('/meet')->with('success','Updated Meet Successfully!');
         } catch (QueryException $e) {
             return $e->getMessage();
         }
@@ -120,8 +120,8 @@ class MeetController extends Controller
         try {
             Meet::destroy($meet->meet_id);
 
-            return redirect('/meet')->with('success', 'Deleted Meet Successfully!');
-        } catch (QueryException $e) {
+            return redirect('/meet')->with('success','Deleted Meet Successfully!');
+        } catch (QueryException $e){
             return $e->getMessage();
         }
     }

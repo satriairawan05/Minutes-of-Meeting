@@ -18,11 +18,6 @@
             <!--Row-->
             <div class="card ">
                 <div class="card">
-<<<<<<< Updated upstream
-=======
-
-                    @if(App\Models\GroupPage::where('page_id','=',1)->orWhere('access','=',1)->get())
->>>>>>> Stashed changes
                     <div class="card-header d-flex justify-content-end">
                         <a href="{{ route('meet.create') }}" class="btn-data btn text-decoration-none text-black">
                             <i class="fas fa-plus-circle"></i> Add New Data
@@ -146,27 +141,18 @@
 
                 </script>
 
-
+                @if (session('success'))
                 <script>
-                    // Function to display a success toast notification
-                    function showSuccessToast(message) {
-                        Toastify({
-                            text: message
-                            , duration: 3000, // The duration in milliseconds for how long the toast should be displayed
-                            close: true, // Show a close button on the toast
-                            gravity: "bottom", // Position the toast at the bottom
-                            position: "right", // Position the toast on the right side
-                            backgroundColor: "#28a745", // Customize the background color
-                            className: "success-toast" // Add a custom CSS class for further styling
-                        }).showToast();
-                    }
-
-                    // Check if a success message exists and display the toast notification
-                    @if(session('success'))
-                    showSuccessToast("{{ session('success') }}");
-                    @endif
+                    document.addEventListener('DOMContentLoaded', function() {
+                        var successAlert = document.getElementById('success-alert');
+                        successAlert.style.display = 'block';
+                        setTimeout(function() {
+                            successAlert.style.display = 'none';
+                        }, 5000); // Adjust the timeout value (in milliseconds) as needed
+                    });
 
                 </script>
+                @endif
                 <!-- Row end -->
             </div>
             <!-- End Main Content-->
