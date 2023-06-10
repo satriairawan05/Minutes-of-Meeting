@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ArchiveDaily;
 use App\Models\User;
 use App\Models\Daily;
 use App\Models\Departemen;
+use App\Models\ArchiveDaily;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Storage;
@@ -18,7 +18,7 @@ class DailyController extends Controller
     public function index()
     {
         return view('daily.index', [
-            'dailies' => Daily::get()
+            'dailies' => Daily::distinct('departemen')->get()
         ]);
     }
 
@@ -82,7 +82,7 @@ class DailyController extends Controller
         ]);
     }
 
-    /**
+       /**
      * Show the form for editing the specified resource.
      */
     public function edit(Daily $daily)
