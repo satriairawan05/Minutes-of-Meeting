@@ -169,6 +169,7 @@
                         });
                     });
                 </script>
+                <script> 
                 <!-- Row end -->
             </div>
         </div>
