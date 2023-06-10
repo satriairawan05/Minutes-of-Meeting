@@ -116,7 +116,7 @@
                                 </select>
                             </div>
                             @php
-                            $prorities = array("Low","Medium","High");
+                            $priorities = array("Low","Medium","High");
                             @endphp
                             <div class="col-md-6">
                                 <label id="priority_label" for="priority">Priority</label>

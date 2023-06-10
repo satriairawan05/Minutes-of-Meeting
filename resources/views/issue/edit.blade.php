@@ -113,7 +113,7 @@
                                 <label id="status_label" for="status">Status</label>
                                 <select class="form-select form-control form-control-sm" name="status">
                                     @foreach ($statuses as $status)
-                                    @if (old('status') == $status)
+                                    @if (old('status',$data->status) == $status)
                                     <option name="status" value="{{ $status }}" selected>{{ $status }}</option>
                                     @else
                                     <option name="status" value="{{ $status }}">{{ $status }}</option>
@@ -122,7 +122,7 @@
                                 </select>
                             </div>
                             @php
-                            $prorities = array("Low","Medium","High");
+                            $priorities = array("Low","Medium","High");
                             @endphp
                             <div class="col-md-6">
                                 <label id="priority_label" for="priority">Priority</label>
