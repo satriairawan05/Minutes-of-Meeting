@@ -235,10 +235,11 @@
         <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
 
         <script>
-            CKEDITOR.appendTo('description_daily', {
+         window.onload = function() {
+            CKEDITOR.replace('description_daily', {
                 uiColor: '#7A88A1',
             });
-
+         };
         </script>
 
 
