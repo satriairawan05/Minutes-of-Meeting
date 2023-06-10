@@ -31,10 +31,8 @@
                                 <p class="text-bold">Departemen : </p>{{ $daily->departemen }}
                             </div>
                             <div class="col-6">
-                                <p class="text-bold text-uppercase">Start Date : </p>
-                                    {{ \Carbon\Carbon::parse($daily->start_date)->format('l, d M Y') }}
-                                <p class="text-bold text-uppercase">End Date : </p>
-                                    {{ \Carbon\Carbon::parse($daily->end_date)->format('l, d M Y') }}
+                                <p class="text-bold text-uppercase">Start Date : {{ \Carbon\Carbon::parse($daily->start_date)->format('l, d M Y') }} </p>
+                                <p class="text-bold text-uppercase">End Date : {{ \Carbon\Carbon::parse($daily->end_date)->format('l, d M Y') }} </p>
                             </div>
                         </div>
                         <div class="row">
@@ -54,8 +52,7 @@
                                 @endif
                             </div>
                             <div class="col-12">
-                                <p class="text-bold">Private</p>
-                                <p>{{ $daily->is_private == 1 ? 'Yes' : 'No' }}</p>
+                                <p class="text-bold">Private : {{ $daily->is_private == 1 ? 'Yes' : 'No' }}</p>
                             </div>
                         </div>
                     </div>

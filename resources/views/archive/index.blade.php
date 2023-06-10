@@ -35,7 +35,6 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Meeting</th>
-
                                     <th width="100px">Action</th>
                                 </tr>
                             </thead>
@@ -44,35 +43,24 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{!! $a->meet_name !!}</td>
-
                                     {{-- start modal  --}}
                                     <td>
-                                        {{-- Show Modal Trigger --}}
-                                        {{-- <button type="button"
-                                                    onclick="window.location='{{ route('issue.show', strtolower($issue->tracker)) }}'"
-                                        class="btn bg-gradient-warning" title="Show Data">
-                                        <i class="fas fa-binoculars"></i>
-                                        </button> --}}
-                                        {{-- End of Show Modal Trigger --}}
-
                                         {{-- Edit Modal Trigger --}}
-                                        <button type="button" onclick="window.location='{{ route('issue.edit', strtolower($a->archive_id)) }}'" class="btn bg-gradient-info" title="Edit Data">
+                                        <button type="button" onclick="window.location='{{ route('issue.edit', $a->archive_id) }}'" class="btn bg-gradient-info" title="Edit Data">
                                             <i class="fas fa-edit"></i>
                                         </button>
                                         {{-- End of Edit Modal Trigger --}}
-
                                         {{-- Delete Modal Trigger --}}
-                                        <button type="button" class="btn bg-gradient-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ strtolower($a->archive_id) }}" onclick="{{ route('issue.destroy', strtolower($a->archive_id)) }}">
+                                        <button type="button" class="btn bg-gradient-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $a->archive_id }}" onclick="{{ route('issue.destroy', $a->archive_id) }}">
                                             <i class="far fa-trash-alt"></i>
                                         </button>
                                         {{-- End of Delete Modal Trigger --}}
-
                                         {{-- Delete Modal --}}
-                                        <div class="modal fade" id="deleteModal{{ strtolower($a->archive_id) }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ strtolower($a->archive_id) }}" aria-hidden="true">
+                                        <div class="modal fade" id="deleteModal{{ $a->archive_id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $a->archive_id }}" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="deleteModalLabel{{ strtolower($a->archive_id) }}">Delete
+                                                        <h5 class="modal-title" id="deleteModalLabel{{ $a->archive_id }}">Delete
                                                             Data</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
@@ -82,10 +70,9 @@
                                                         Apakah anda yakin?
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <form onsubmit="return deleteData('{{ $a->archive_id }}')" method="POST" action="{{ route('issue.destroy', strtolower($a->archive_id)) }}">
+                                                        <form onsubmit="return deleteData('{{ $a->archive_id }}')" method="POST" action="{{ route('issue.destroy', $a->archive_id) }}">
                                                             @csrf
                                                             <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-
                                                             @method('DELETE')
                                                             <button type="submit" class="btn bg-gradient-danger" data-bs-dismiss="modal">Delete</button>
                                                             </button>
@@ -103,7 +90,6 @@
                     </div>
                 </div>
             </div>
-
             <script>
                 $(document).ready(function() {
                     // Hide and Show Columns
@@ -111,16 +97,13 @@
                         var column = $(this).attr('id');
                         $('.' + column).toggle();
                     });
-
                     // Expandable Columns
                     $('.expandable-column').on('click', function() {
                         $(this).toggleClass('expanded');
                         $(this).siblings('.expand-content').toggle();
                     });
                 });
-
             </script>
-
             <script>
                 $(document).ready(function() {
                     // Hide and Show Columns
@@ -138,12 +121,10 @@
                     successAlert.style.display = 'block';
                     setTimeout(function() {
                         successAlert.style.display = 'none';
-                    }, 5000); // Adjust the timeout value (in milliseconds) as needed
+                    }, 5000);
                 });
-
             </script>
             @endif
-
         </div>
     </div>
 </div>
