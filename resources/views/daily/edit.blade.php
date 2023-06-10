@@ -72,7 +72,7 @@
                         </div>
                         <div class="mb-3 col-12">
                             <label id="description_label" for="description">Description</label>
-                            <input name="description" id="description" required value="{{ old('description', $daily->description) }}" class="form-control @error('description')
+                            <input type="text" name="description" id="description" required value="{{ old('description', $daily->description) }}" class="form-control @error('description')
         is-invalid
     @enderror" placeholder="Masukan Description" />
                             @error('description')
