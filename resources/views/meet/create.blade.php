@@ -119,7 +119,7 @@
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="meet_attend">Attendees</label>
                             <div class="col-sm-10">
-                                <select id="meet_attend" class="form-select form-control form-control-sm" name="meet_attend">
+                                <select id="meet_attend" class="form-select form-control form-control-sm select2" name="meet_attend" multiple="multiple">
                                     @foreach ($users as $user)
                                     @if (old('meet_attend') == $user->name)
                                     <option name="meet_attend" value="{{ $user->name }}" selected>

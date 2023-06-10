@@ -100,34 +100,35 @@
                         </div>
 
                         <div class="row mb-3">
+                            @php
+                            $statuses = array("New","Continue","In Progress","Over Due","Complete","Closed")
+                            @endphp
                             <div class="col-md-6">
                                 <label id="status_label" for="status">Status</label>
                                 <select class="form-select form-control form-control-sm" name="status">
-                                    <option name="status" value="New">New</option>
-                                    <option name="status" value="Continue">Continue</option>
-                                    <option name="status" value="In Progress">In Progress</option>
-                                    <option name="status" value="Over Due">Over Due</option>
-                                    <option name="status" value="Complete">Complete</option>
-                                    <option name="status" value="Closed">Closed</option>
+                                    @foreach ($statuses as $status)
+                                    @if (old('status') == $status)
+                                    <option name="status" value="{{ $status }}" selected>{{ $status }}</option>
+                                    @else
+                                    <option name="status" value="{{ $status }}">{{ $status }}</option>
+                                    @endif
+                                    @endforeach
                                 </select>
-                                @error('status')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
                             </div>
+                            @php
+                            $prorities = array("Low","Medium","High");
+                            @endphp
                             <div class="col-md-6">
                                 <label id="priority_label" for="priority">Priority</label>
                                 <select class="form-select form-control form-control-sm" name="priority">
-                                    <option name="priority" value="Low">Low</option>
-                                    <option name="priority" value="Medium">Medium</option>
-                                    <option name="priority" value="High">High</option>
+                                    @foreach ($priorities as $priority)
+                                    @if (old('priority') == $priority)
+                                    <option name="priority" value="{{ $priority }}" selected>{{ $priority }}</option>
+                                    @else
+                                    <option name="priority" value="{{ $priority }}">{{ $priority }}</option>
+                                    @endif
+                                    @endforeach
                                 </select>
-                                @error('priority')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
                             </div>
                         </div>
 
