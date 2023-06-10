@@ -51,15 +51,15 @@
                     $countIssues = App\Models\Issue::count();
                     @endphp
                     <!-- Row -->
-                    <div class="row row-sm">
+                    <div class="row row-sm justify-content-center">
                         <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
                             <div class="card custom-card">
                                 <div class="card-body">
                                     <div class="card-widget ">
-                                        <label class="main-content-label mb-3 pt-1">ISSUES HANDLED</label>
+                                        <label class="main-content-label mb-3 pt-1">MEETING HELD</label>
                                         <h2 class="text-right card-item-icon card-icon">
                                             <i class="zmdi zmdi-collection-bookmark  icon-size float-left text-primary"></i><span class="font-weight-bold">{{ $countMeet }}</span></h2>
-                                        <p class="mb-0 text-muted">Total of Issues Handled<span class="float-right"></span></p>
+                                        <p class="mb-0 text-muted">Total of Meeting Handled<span class="float-right"></span></p>
                                     </div>
                                 </div>
                             </div>
@@ -77,19 +77,19 @@
                             </div>
                         </div>
                         <!-- COL END -->
-                        <!--/Row-->
+                    </div>
+                    <!--/Row-->
 
 
 
-
-                    </div><!-- col end -->
-                    <!-- col end -->
-                </div>
-                <!-- Row end -->
+                </div><!-- col end -->
+                <!-- col end -->
             </div>
+            <!-- Row end -->
         </div>
-        <!-- End Main Content-->
-
-
     </div>
-    @endsection
+    <!-- End Main Content-->
+
+
+</div>
+@endsection
