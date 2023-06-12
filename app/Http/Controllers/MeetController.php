@@ -44,20 +44,16 @@ class MeetController extends Controller
     public function store(Request $request)
     {
         try {
-            $rules = [
-                'meet_xid' => 'required',
-                'meet_name' => 'required',
-                'meet_project' => 'required',
-                'meet_date' => 'required',
-                'meet_time' => 'required',
-                'meet_attend' => 'required',
-                'meet_preparedby' => 'required',
-                'meet_locate' => 'required',
-            ];
-
-            $rules['attend'] = implode(" ", $request->meet_attend);
-
-            $validate = $request->validate($rules);
+            $validate = $request->validate([
+                'meet_xid' => ['required'],
+                'meet_name' => ['required'],
+                'meet_project' => ['required'],
+                'meet_date' => ['required'],
+                'meet_time' => ['required'],
+                'meet_attend' => ['required'],
+                'meet_preparedby' => ['required'],
+                'meet_locate' => ['required'],
+            ]);
 
             Meet::create($validate);
 
@@ -96,17 +92,15 @@ class MeetController extends Controller
     {
         try {
             $rules = [
-                'meet_xid' => 'required',
-                'meet_name' => 'required',
-                'meet_project' => 'required',
-                'meet_date' => 'required',
-                'meet_time' => 'required',
-                'meet_attend' => 'required',
-                'meet_preparedby' => 'required',
-                'meet_locate' => 'required',
+                'meet_xid' => ['required'],
+                'meet_name' => ['required'],
+                'meet_project' => ['required'],
+                'meet_date' => ['required'],
+                'meet_time' => ['required'],
+                'meet_attend' => ['required'],
+                'meet_preparedby' => ['required'],
+                'meet_locate' => ['required'],
             ];
-
-            $rules['attend'] = implode(" ", $request->meet_attend);
 
             $validate = $request->validate($rules);
 
