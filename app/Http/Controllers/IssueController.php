@@ -18,8 +18,17 @@ class IssueController extends Controller
      */
     public function index()
     {
+        $pages = User::leftJoin('group_pages', 'users.group_id', '=', 'group_pages.group_id')
+        ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
+        ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
+        ->whereBetween('pages.page_id',[5,8])
+        ->orWhere('pages.page_name', 'meeting')
+        ->orWhere('group_pages.access', 1)
+        ->get();
+
         return view('issue.index', [
-            'issues' => Issue::distinct('tracker')->orderBy('tracker')->paginate(15)
+            'issues' => Issue::distinct('tracker')->orderBy('tracker')->paginate(15),
+            'pages' => $pages
         ]);
     }
 

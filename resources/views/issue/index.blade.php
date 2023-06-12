@@ -1,5 +1,12 @@
 @extends('layout.main')
 
+@php
+    $create = $pages[15]['access'] == 1;
+    $read = $pages[14]['access'] == 1;
+    $update = $pages[13]['access'] == 1;
+    $delete = $pages[12]['access'] == 1;
+@endphp
+
 @section('content')
 <div class="main-content side-content pt-0">
     <div class="container-fluid">
@@ -17,9 +24,11 @@
             <!-- End Page Header -->
             <div class="card">
                 <div class="card-header d-flex justify-content-end align-items-end">
-                    <a type="button" class="btn ripple btn-success btn-icon" href="{{ route('issue.create') }}" data-toggle="tooltip" title="Add new data">
-                        <i class="fe fe-plus"></i>
+                @if($create)
+                    <a type="button" href="{{ route('issue.create') }}" class="btn-data btn text-decoration-none text-black">
+                        <i class="fe fe-plus"></i> Add New Data
                     </a>
+                @endif
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -42,6 +51,7 @@
                             </thead>
                             <tbody class="text-center">
                                 @foreach ($issues as $i)
+                                @if($read)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{!! $i->issue_xid !!}</td>
@@ -55,24 +65,20 @@
                                     <td>{!! $i->assignee !!}</td>
                                     {{-- start modal  --}}
                                     <td>
-                                        {{-- Show Modal Trigger --}}
-                                        {{-- <button type="button"
-                                                    onclick="window.location='{{ route('issue.show', strtolower($issue->tracker)) }}'"
-                                        class="btn bg-gradient-warning" title="Show Data">
-                                        <i class="fas fa-binoculars"></i>
-                                        </button> --}}
-                                        {{-- End of Show Modal Trigger --}}
-
                                         {{-- Edit Modal Trigger --}}
+                                        @if($update)
                                         <a href="{{ route('issue.edit', $i->issue_id) }}" class="btn ripple btn-primary btn-sm" data-toggle="tooltip" title="Edit Data">
                                             <i class="fas fa-edit"></i>
                                         </a>
+                                        @endif
                                         {{-- End of Edit Modal Trigger --}}
 
                                         {{-- Delete Modal Trigger --}}
+                                        @if($delete)
                                         <button type="button" class="btn ripple btn-danger btn-sm" data-toggle="tooltip" title="Delete Data" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $i->issue_id }}" onclick="{{ route('issue.destroy', $i->issue_id) }}">
                                             <i class="far fa-trash-alt"></i>
                                         </button>
+                                        @endif
                                         {{-- End of Delete Modal Trigger --}}
 
                                         {{-- Delete Modal --}}
@@ -105,6 +111,7 @@
                                         {{-- End of Delete Modal --}}
                                     </td>
                                 </tr>
+                                @endif
                                 @endforeach
                             </tbody>
                         </table>
