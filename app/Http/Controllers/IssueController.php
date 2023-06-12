@@ -22,7 +22,7 @@ class IssueController extends Controller
         ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
         ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
         ->whereBetween('pages.page_id',[5,8])
-        ->orWhere('pages.page_name', 'meeting')
+        ->orWhere('pages.page_name', 'Issue')
         ->orWhere('group_pages.access', 1)
         ->get();
 
@@ -71,7 +71,7 @@ class IssueController extends Controller
                 'end_date' => ['required'],
                 'assignee' => ['required']
             ]);
-            
+
             if($request->input('c_action')) {
                 $validate['c_action'] == $request->c_action;
             }
@@ -148,7 +148,7 @@ class IssueController extends Controller
                 'end_date' => ['required'],
                 'assignee' => ['required']
             ]);
-            
+
              if($request->input('c_action')) {
                 $validate['c_action'] == $request->c_action;
             }
