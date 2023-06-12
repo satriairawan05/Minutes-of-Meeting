@@ -19,8 +19,8 @@
             <div class="card ">
                 <div class="card">
                     <div class="card-header d-flex justify-content-end">
-                        <a href="{{ route('meet.create') }}" class="btn-data btn text-decoration-none text-black">
-                            <i class="fas fa-plus-circle"></i> Add New Data
+                        <a type="button" class="btn ripple btn-success btn-icon" href="{{ route('meet.create') }}" data-toggle="tooltip" title="Add new data">
+                            <i class="fe fe-plus"></i>
                         </a>
                     </div>
                     <div class="card-body">
@@ -35,7 +35,7 @@
                             <thead class="table-header">
                                 <tr>
                     </div>
-                    @endif --}}
+                    {{-- @endif  --}}
                     <div class="table-responsive">
                         <table id="exportexample" class="table table-bordered border-t0 key-buttons text-nowrap w-100">
                             <thead class="table-header">
@@ -95,81 +95,81 @@
                                     <td style="text-align: center;">
                                         {{-- Edit Modal Trigger --}}
                                         @if (App\Models\GroupPage::where('page_id', '=', 3)->orWhere('access', '=', 1)->get())
-                                        <button type="button" onclick="window.location='{{ route('meet.edit', $d->meet_id) }}'" class="btn bg-gradient-info" title="Edit Data">
+                                        <button type="button" onclick="window.location='{{ route('meet.edit', $d->meet_id) }}'" class="btn ripple btn-primary btn-sm" data-toggle="tooltip" title="Edit Data">
                                             <i class="fas fa-edit"></i>
                                         </button>
                                         @endif
                                         {{-- End of Edit Modal Trigger --}}
 
-                                            {{-- Delete Modal Trigger --}}
-                                            <button type="button" class="btn ripple btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $d->meet_id }}">
-                                                <i class="far fa-trash-alt"></i>
-                                            </button>
-                                            {{-- End of Delete Modal Trigger --}}
+                                        {{-- Delete Modal Trigger --}}
+                                        <button type="button" class="btn ripple btn-danger btn-sm"data-toggle="tooltip" title="Delete Data" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $d->meet_id }}">
+                                            <i class="far fa-trash-alt"></i>
+                                        </button>
+                                        {{-- End of Delete Modal Trigger --}}
 
-                                            {{-- Delete Modal --}}
-                                            <div class="modal fade" id="deleteModal{{ $d->meet_id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $d->meet_id }}" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="deleteModalLabel{{ $d->meet_id }}">Delete
-                                                                Data</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            Apakah anda yakin?
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <form onsubmit="return deleteData('{{ $d->meet_name }}')" method="POST" action="{{ route('meet.destroy', $d->meet_id) }}">
-                                                                @csrf
-                                                                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                                                                {{-- Delete Modal --}}
-                                                                <div class="modal fade" id="deleteModal{{ $d->meet_id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $d->meet_id }}" aria-hidden="true">
-                                                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title" id="deleteModalLabel{{ $d->meet_id }}">Delete
-                                                                                    Data</h5>
-                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                                                                    <span aria-hidden="true">&times;</span>
+                                        {{-- Delete Modal --}}
+                                        <div class="modal fade" id="deleteModal{{ $d->meet_id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $d->meet_id }}" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="deleteModalLabel{{ $d->meet_id }}">Delete
+                                                            Data</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Apakah anda yakin?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <form onsubmit="return deleteData('{{ $d->meet_name }}')" method="POST" action="{{ route('meet.destroy', $d->meet_id) }}">
+                                                            @csrf
+                                                            <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                                                            {{-- Delete Modal --}}
+                                                            <div class="modal fade" id="deleteModal{{ $d->meet_id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $d->meet_id }}" aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="deleteModalLabel{{ $d->meet_id }}">Delete
+                                                                                Data</h5>
+                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            Apakah anda yakin?
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <form onsubmit="return deleteData('{{ $d->meet_name }}')" method="POST" action="{{ route('meet.destroy', $d->meet_id) }}">
+                                                                                @csrf
+                                                                                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+
+                                                                                @method('delete')
+                                                                                <button type="submit" class="btn bg-gradient-danger" data-bs-dismiss="modal">Delete</button>
                                                                                 </button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                Apakah anda yakin?
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <form onsubmit="return deleteData('{{ $d->meet_name }}')" method="POST" action="{{ route('meet.destroy', $d->meet_id) }}">
-                                                                                    @csrf
-                                                                                    <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-
-                                                                                    @method('delete')
-                                                                                    <button type="submit" class="btn bg-gradient-danger" data-bs-dismiss="modal">Delete</button>
-                                                                                    </button>
-                                                                                </form>
-                                                                            </div>
+                                                                            </form>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                {{-- End of Delete Modal --}}
-                                                        </div>
+                                                            </div>
+                                                            {{-- End of Delete Modal --}}
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        {{-- End of Delete Modal --}}
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
                     </div>
+                    {{-- End of Delete Modal --}}
+                    </td>
+                    </tr>
                     @endforeach
+                    </tbody>
+                    </table>
                 </div>
+                {{-- @endforeach --}}
             </div>
         </div>
     </div>
+</div>
 </div>
 
 </div>
