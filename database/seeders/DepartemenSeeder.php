@@ -13,10 +13,8 @@ class DepartemenSeeder extends Seeder
      */
     public function run(): void
     {
-        //'Engginering','HSE','Coal & Berging','FAT','HRGA','IT','LOGISTIC','PLANT','PRODUCTION','PURCASHING'
-
         Departemen::create([
-            'name' => 'Engginering'
+            'name' => 'ENGINERING'
         ]);
 
         Departemen::create([
@@ -24,7 +22,7 @@ class DepartemenSeeder extends Seeder
         ]);
 
         Departemen::create([
-            'name' => 'Coal & Berging'
+            'name' => 'COAL & BERGING'
         ]);
 
         Departemen::create([
@@ -40,7 +38,7 @@ class DepartemenSeeder extends Seeder
         ]);
 
         Departemen::create([
-            'name' => 'Logistic'
+            'name' => 'LOGISTIC'
         ]);
 
         Departemen::create([
@@ -53,6 +51,10 @@ class DepartemenSeeder extends Seeder
 
         Departemen::create([
             'name' => 'PURCASHING'
+        ]);
+
+        Departemen::create([
+            'name' => 'OPERATION'
         ]);
 
     }

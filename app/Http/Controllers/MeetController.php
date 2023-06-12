@@ -44,22 +44,16 @@ class MeetController extends Controller
     public function store(Request $request)
     {
         try {
-            $rules = [
-                'meet_xid' => 'required',
-                'meet_name' => 'required',
-                'meet_project' => 'required',
-                'meet_date' => 'required',
-                'meet_time' => 'required',
-                'meet_attend' => 'required',
-                'meet_preparedby' => 'required',
-                'meet_locate' => 'required',
-            ];
-
-            $rules['attend'] = implode(" ", $request->meet_attend);
-
-            $validate = $request->validate($rules);
-
-            Meet::create($validate);
+            $meet = new Meet;
+            $meet->meet_xid = $request->meet_xid;
+            $meet->meet_name = $request->meet_name;
+            $meet->meet_project = $request->meet_project;
+            $meet->meet_preparedby = $request->meet_preparedby;
+            $meet->meet_date = $request->meet_date;
+            $meet->meet_time = $request->meet_time;
+            $meet->meet_attend = implode(" ", $request->meet_attend);
+            $meet->meet_locate = $request->meet_locate;
+            $meet->save();
 
             return redirect('/meet')->with('success','Added Meet Successfully!');
         } catch (QueryException $e){
@@ -84,7 +78,7 @@ class MeetController extends Controller
     public function edit(Meet $meet)
     {
         return view('meet.edit',[
-            'meet' => $meet,
+            'meets' => $meet,
             'users' => User::get()
         ]);
     }
@@ -106,7 +100,7 @@ class MeetController extends Controller
                 'meet_locate' => 'required',
             ];
 
-            $rules['attend'] = implode(" ", $request->meet_attend);
+            $rules['meet_attend'] = implode(" ", $request->meet_attend);
 
             $validate = $request->validate($rules);
 

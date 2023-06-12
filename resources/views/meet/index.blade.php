@@ -69,7 +69,7 @@
                                         <td style="text-align: center;">{{ $d->meet_preparedby }}</td>
                                         <td style="text-align: center;">{{ $d->meet_locate }}</td>
                                         <td style="text-align: center;" class="d-none d-sm-table-cell">
-                                            {{ $d->meet_attend }}</td>
+                                            {!! $d->meet_attend !!}</td>
                                         <td style="text-align: center;">
                                             {{-- Edit Modal Trigger --}}
                                             <a href="{{ route('meet.edit', $d->meet_id) }}" class="btn bg-gradient-info" title="Edit Data">

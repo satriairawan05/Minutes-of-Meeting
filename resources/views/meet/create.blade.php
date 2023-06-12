@@ -108,7 +108,7 @@
                         <div class="row mb-3">
                             <label for="meet_locate" class="col-sm-2 col-form-label">Meeting Locate</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control form-control-sm @error('meet_locate') is-invalid @enderror" id="meet_locate" name="meet_locate" value="{{ old('meet_locate') }}" placeholder="Masukan Meeting Locate">
+                                <input type="text" class="form-control form-control-sm @error('meet_locate') is-invalid @enderror" id="meet_locate" name="meet_locate" value="{{ old('meet_locate') }}" placeholder="Masukan Meeting Location">
                                 @error('meet_locate')
                                 <div class="invalid-feedback">
                                     {{ $message }}
