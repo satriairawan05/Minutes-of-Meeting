@@ -1,5 +1,12 @@
 @extends('layout.main')
 
+@php
+$create = $pages[19]['access'] == 1;
+$read = $pages[18]['access'] == 1;
+$update = $pages[17]['access'] == 1;
+$delete = $pages[16]['access'] == 1;
+@endphp
+
 @section('content')
 <div class="main-content side-content pt-0">
     <div class="container-fluid">
@@ -19,9 +26,11 @@
             <div class="card ">
                 <div class="card">
                     <div class="card-header d-flex justify-content-end">
+                        @if($create)
                         <a href="{{ route('meet.create') }}" class="btn-data btn text-decoration-none text-black">
                             <i class="fas fa-plus-circle"></i> Add New Data
                         </a>
+                        @endif
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -37,11 +46,14 @@
                                         <th style="text-align: center;">Minutes Prepared by</th>
                                         <th style="text-align: center;">Meeting Locate</th>
                                         <th style="text-align: center;" class="d-none d-sm-table-cell">Attendees</th>
+                                        @if($update || $delete)
                                         <th style="text-align: center;">Actions</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($meets as $d)
+                                    @if($read)
                                     <tr>
                                         <td style="text-align: center;">{{ $loop->iteration }}</td>
                                         <td style="text-align: center;" class="d-none d-sm-table-cell">
@@ -59,15 +71,19 @@
                                             {{ $d->meet_attend }}</td>
                                         <td style="text-align: center;">
                                             {{-- Edit Modal Trigger --}}
+                                            @if($update)
                                             <button type="button" onclick="window.location='{{ route('meet.edit', $d->meet_id) }}'" class="btn bg-gradient-info" title="Edit Data">
                                                 <i class="fas fa-edit"></i>
                                             </button>
+                                            @endif
                                             {{-- End of Edit Modal Trigger --}}
 
                                             {{-- Delete Modal Trigger --}}
+                                            @if($delete)
                                             <button type="button" class="btn ripple btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $d->meet_id }}">
                                                 <i class="far fa-trash-alt"></i>
                                             </button>
+                                            @endif
                                             {{-- End of Delete Modal Trigger --}}
 
                                             {{-- Delete Modal --}}
@@ -120,6 +136,10 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                        </td>
+                                    </tr>
+                                    @endif
+                            </table>
                         </div>
                     </div>
                     @endforeach
