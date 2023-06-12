@@ -49,13 +49,9 @@
                             <label for="meet_project" class="col-sm-2 col-form-label">Project</label>
                             <div class="col-sm-10">
                                 <select class="form-select form-control form-control-sm" name="meet_project">
-                                    @foreach ($meeting as $meet)
-                                    @if (old('meet_project',$meets->meet_project) == $meet)
-                                    <option name="meet_project" value="{{ $meet }}" selected>{{ $meet }}</option>
-                                    @else
-                                    <option name="meet_project" value="{{ $meet }}">{{ $meet }}</option>
-                                    @endif
-                                    @endforeach
+                                    <option name="meet_project" value="MEETING HO">MEETING HO</option>
+                                    <option name="meet_project" value="MEETING TEAM 9">MEETING TEAM 9</option>
+                                    <option name="meet_project" value="MEETING SITE">MEETING SITE</option>
                                 </select>
                                 @error('meet_project')
                                 <div class="invalid-feedback">

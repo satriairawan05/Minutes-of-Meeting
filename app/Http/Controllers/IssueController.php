@@ -60,10 +60,12 @@ class IssueController extends Controller
                 'description' => ['required'],
                 'start_date' => ['required'],
                 'end_date' => ['required'],
-                'c_action' => ['required'],
                 'assignee' => ['required']
             ]);
 
+            if($request->input('c_action')){
+                $validate['c_action'] = $request->c_action;
+            }
 
             if ($request->file('file')) {
                 $validate['file'] = $request->file('file')->store('images');
@@ -131,9 +133,12 @@ class IssueController extends Controller
                 'description' => ['required'],
                 'start_date' => ['required'],
                 'end_date' => ['required'],
-                'c_action' => ['required'],
                 'assignee' => ['required']
             ]);
+
+            if($request->input('c_action')){
+                $validate['c_action'] = $request->c_action;
+            }
 
             if ($request->file('file')) {
                 if ($request->oldFile) {

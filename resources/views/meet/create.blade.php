@@ -86,7 +86,7 @@
                             <div class="col-sm-10">
                                 <select id="meet_preparedby" class="form-select form-control form-control-sm " name="meet_preparedby">
                                     @foreach ($users as $user)
-                                    @if (old('meet_preparedby',$meets->meet_preparedby) == $user->name)
+                                    @if (old('meet_preparedby') == $user->name)
                                     <option name="meet_preparedby" value="{{ $user->name }}" selected>
                                         {{ $user->name }}
                                     </option>
@@ -98,7 +98,6 @@
                                 </select>
                             </div>
                         </div>
-                </div>
                 <div class="row mb-3">
                     <label for="meet_locate" class="col-sm-2 col-form-label">Meeting Locate</label>
                     <div class="col-sm-10">
@@ -134,6 +133,7 @@
                     </div>
                 </div>
                 </form>
+                </div>
             </div>
         </div>
         <script>

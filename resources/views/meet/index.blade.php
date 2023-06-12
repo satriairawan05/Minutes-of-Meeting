@@ -19,9 +19,11 @@
             <div class="card ">
                 <div class="card">
                     <div class="card-header d-flex justify-content-end">
+                    @can('meet-create')
                         <a href="{{ route('meet.create') }}" class="btn-data btn text-decoration-none text-black">
                             <i class="fas fa-plus-circle"></i> Add New Data
                         </a>
+                    @endcan
                     </div>
                     <div class="card-body">
                         {{-- @if (session('success'))

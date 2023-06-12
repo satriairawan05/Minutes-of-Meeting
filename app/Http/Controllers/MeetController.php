@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Issue;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Gate;
 
 class MeetController extends Controller
 {
@@ -16,7 +17,7 @@ class MeetController extends Controller
     public function index()
     {
 
-        return view('meet.index',[
+        return view('meet.index', [
             'meets' => Meet::get()
         ]);
     }
@@ -26,16 +27,21 @@ class MeetController extends Controller
      */
     public function create()
     {
-        $formattedDate = date('mY');
-        $prefix = "MOM-";
-        $lastCount = Meet::select('meet_id')->latest('meet_id')->pluck('meet_id')->first();
-        $count = $lastCount + 1;
-        $id_u = $prefix . str_pad($count, 3, '0', STR_PAD_LEFT) . "/" . $formattedDate;
+        if(Gate::check('meet-create',)){
+            $formattedDate = date('mY');
+            $prefix = "MOM-";
+            $lastCount = Meet::select('meet_id')->latest('meet_id')->pluck('meet_id')->first();
+            $count = $lastCount + 1;
+            $id_u = $prefix . str_pad($count, 3, '0', STR_PAD_LEFT) . "/" . $formattedDate;
 
-        return view('meet.create',[
-            'meet_id' => $id_u,
-            'users' => User::get()
-        ]);
+            return view('meet.create', [
+                'meet_id' => $id_u,
+                'users' => User::get()
+            ]);
+
+        } else {
+            return abort(403);
+        }
     }
 
     /**
@@ -55,8 +61,8 @@ class MeetController extends Controller
             $meet->meet_locate = $request->meet_locate;
             $meet->save();
 
-            return redirect('/meet')->with('success','Added Meet Successfully!');
-        } catch (QueryException $e){
+            return redirect('/meet')->with('success', 'Added Meet Successfully!');
+        } catch (QueryException $e) {
             return $e->getMessage();
         }
     }
@@ -66,7 +72,7 @@ class MeetController extends Controller
      */
     public function show(Meet $meet)
     {
-        return view('meet.rapat',[
+        return view('meet.rapat', [
             'meet' => $meet,
             'issue' => Issue::get()
         ]);
@@ -77,7 +83,7 @@ class MeetController extends Controller
      */
     public function edit(Meet $meet)
     {
-        return view('meet.edit',[
+        return view('meet.edit', [
             'meets' => $meet,
             'users' => User::get()
         ]);
@@ -89,24 +95,18 @@ class MeetController extends Controller
     public function update(Request $request, Meet $meet)
     {
         try {
-            $rules = [
-                'meet_xid' => ['required'],
-                'meet_name' => ['required'],
-                'meet_project' => ['required'],
-                'meet_date' => ['required'],
-                'meet_time' => ['required'],
-                'meet_attend' => ['required'],
-                'meet_preparedby' => ['required'],
-                'meet_locate' => ['required'],
-            ];
+            $validate['meet_xid'] = $request->input('meet_xid');
+            $validate['meet_name'] = $request->input('meet_name');
+            $validate['meet_project'] = $request->input('meet_project');
+            $validate['meet_date'] = $request->input('meet_date');
+            $validate['meet_time'] = $request->input('meet_time');
+            $validate['meet_preparedby'] = $request->input('meet_preparedby');
+            $validate['meet_locate'] = $request->input('meet_locate');
+            $validate['meet_attend'] = implode(" ", $request->meet_attend);
 
-            $rules['meet_attend'] = implode(" ", $request->meet_attend);
+            Meet::where('meet_id', $meet->meet_id)->update($validate);
 
-            $validate = $request->validate($rules);
-
-            Meet::where('meet_id',$meet->meet_id)->update($validate);
-
-            return redirect('/meet')->with('success','Updated Meet Successfully!');
+            return redirect('/meet')->with('success', 'Updated Meet Successfully!');
         } catch (QueryException $e) {
             return $e->getMessage();
         }
@@ -120,8 +120,8 @@ class MeetController extends Controller
         try {
             Meet::destroy($meet->meet_id);
 
-            return redirect('/meet')->with('success','Deleted Meet Successfully!');
-        } catch (QueryException $e){
+            return redirect('/meet')->with('success', 'Deleted Meet Successfully!');
+        } catch (QueryException $e) {
             return $e->getMessage();
         }
     }
