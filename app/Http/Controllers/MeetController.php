@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\GroupPage;
 use App\Models\Meet;
 use App\Models\User;
 use App\Models\Issue;
