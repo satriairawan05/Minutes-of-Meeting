@@ -267,7 +267,7 @@
         <div class="row row-sm">
             <div class="col-md-12 text-right">
                 <span>
-                    Copyright © 2023 <a href="#">BSS</a> <a href="https://suemerugrup.com/"></a>
+                    Copyright © 2023 <a href="https://bss.id/">PT BANGUN SEMERU SEJAHTERA</a></a>
                     All rights reserved.
                 </span>
             </div>
@@ -275,6 +275,5 @@
     </div>
 </div>
 
-<!-- Mirrored from laravel.spruko.com/spruha/ltr/index by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 01 Jun 2023 01:44:48 GMT -->
 
 </html>
