@@ -104,54 +104,51 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="row mb-3">
-                                <label for="meet_locate" class="col-sm-2 col-form-label">Meeting Locate</label>
-                                <div class="col-sm-10">
-                                    <input type="text"
-                                        class="form-control form-control-sm @error('meet_locate') is-invalid @enderror"
-                                        id="meet_locate" name="meet_locate" value="{{ old('meet_locate') }}"
-                                        placeholder="Masukan Meeting Locate">
-                                    @error('meet_locate')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
+                        </div>
+                        <div class="row mb-3">
+                            <label for="meet_locate" class="col-sm-2 col-form-label">Meeting Locate</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control form-control-sm @error('meet_locate') is-invalid @enderror" id="meet_locate" name="meet_locate" value="{{ old('meet_locate') }}" placeholder="Masukan Meeting Locate">
+                                @error('meet_locate')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
                                 </div>
+                                @enderror
                             </div>
-                            <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" for="meet_attend">Attendees</label>
-                                <div class="col-sm-10">
-                                    <select id="meet_attend" class="form-select form-control form-control-sm"
-                                        name="meet_attend">
-                                        @foreach ($users as $user)
-                                            @if (old('meet_attend') == $user->id)
-                                                <option name="meet_attend" value="{{ $user->name }}" selected>
-                                                    {{ $user->name }}
-                                                </option>
-                                            @else
-                                                <option name="meet_attend" value="{{ $user->name }}">
-                                                    {{ $user->name }}</option>
-                                            @endif
-                                        @endforeach
-                                    </select>
-                                </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label" for="meet_attend">Attendees</label>
+                            <div class="col-sm-10">
+                                <select id="meet_attend" name="meet_attend[]" class="form-select form-control form-control-sm select2-no-search multiple-selected" multiple>
+                                    @foreach ($users as $user)
+                                    @if (old('meet_attend') == $user->name)
+                                    <option name="meet_attend" value="{{ $user->name }}" selected>
+                                        {{ $user->name }}
+                                    </option>
+                                    @else
+                                    <option name="meet_attend" value="{{ $user->name }}">
+                                        {{ $user->name }}</option>
+                                    @endif
+                                    @endforeach
+                                </select>
                             </div>
-                            <div class="row mb-3">
-                                <div class="col-12 d-flex justify-content-center align-items-center">
-                                    <a href="{{ route('meet.index') }}" class="btn btn-md btn-primary mr-3">Back</a>
-                                    <button type="submit" class="btn btn-md btn-success">Submit</button>
-                                </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-12 d-flex justify-content-center align-items-center">
+                                <a href="{{ route('meet.index') }}" class="btn btn-md btn-primary mr-3">Back</a>
+                                <button type="submit" class="btn btn-md btn-success">Submit</button>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
-                <script>
-                    $(document).ready(function() {
-                        // Hide and Show Columns
-                        $('#toggleColumns').on('change', function() {
-                            var column = $(this).attr('id');
-                            $('.' + column).toggle();
-                        });
+            </div>
+            <script>
+                $(document).ready(function() {
+                    // Hide and Show Columns
+                    $('#toggleColumns').on('change', function() {
+                        var column = $(this).attr('id');
+                        $('.' + column).toggle();
+                    });
 
                         // Expandable Columns
                         $('.expandable-column').on('click', function() {
