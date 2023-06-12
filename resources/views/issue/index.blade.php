@@ -17,12 +17,13 @@
             <!-- End Page Header -->
             <div class="card">
                 <div class="card-header d-flex justify-content-end align-items-end">
-                    <a href="{{ route('issue.create') }}" class="btn-data btn text-decoration-none text-black">
-                        <i class="fas fa-plus-circle"></i> Add New Data
+                    <a type="button" class="btn ripple btn-success btn-icon" href="{{ route('issue.create') }}" data-toggle="tooltip" title="Add new data">
+                        <i class="fe fe-plus"></i>
                     </a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
+                        
                         <table id="exportexample" class="table table-bordered border-t0 key-buttons text-nowrap w-100">
                             <thead class="table-header text-center">
                                 <tr>
@@ -69,7 +70,7 @@
                                         {{-- End of Edit Modal Trigger --}}
 
                                         {{-- Delete Modal Trigger --}}
-                                        <button type="button" class="btn bg-gradient-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $i->issue_id }}" onclick="{{ route('issue.destroy', $i->issue_id) }}">
+                                        <button type="button" class="btn ripple btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $i->issue_id }}" onclick="{{ route('issue.destroy', $i->issue_id) }}">
                                             <i class="far fa-trash-alt"></i>
                                         </button>
                                         {{-- End of Delete Modal Trigger --}}

@@ -2,7 +2,12 @@
 
 namespace App\Providers;
 
-// use Illuminate\Support\Facades\Gate;
+use App\Models\Meet;
+use App\Models\Page;
+use App\Models\User;
+use App\Models\GroupPage;
+use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -21,6 +26,20 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Gate::define('meet-create', function (User $user, GroupPage $groupPage, Page $page) {
+            $isGroupAdmin = $user->group_id === 1;
+            $isGroupPageAdmin = $groupPage->page_id === 1 || $groupPage->access === 1;
+            $isPageAdmin = $page->page_id === 1;
+
+            if ($isGroupAdmin || $isGroupPageAdmin || $isPageAdmin) {
+                return Response::allow();
+            } else {
+                return Response::deny('Group not defined');
+            }
+        });
+
+        Gate::define('meet-edit', function(User $user){
+            return $user->group_id === 1 ? Response::allow() : Response::deny('group not define');
+        });
     }
 }

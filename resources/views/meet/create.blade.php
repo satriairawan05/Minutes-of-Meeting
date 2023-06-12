@@ -153,6 +153,29 @@
                             $('.' + column).toggle();
                         });
 
+                // Expandable Columns
+                $('.expandable-column').on('click', function() {
+                    $(this).toggleClass('expanded');
+                    $(this).siblings('.expand-content').toggle();
+                });
+            });
+
+        </script>
+        <script>
+            $(document).ready(function() {
+                // Hide and Show Columns
+                $('#toggleColumns').on('change', function() {
+                    var column = $(this).val();
+                    $('.' + column).toggle();
+                });
+            });
+
+        </script>
+        <!-- Row end -->
+    </div>
+</div>
+<!-- End Main Content-->
+</div>
                         // Expandable Columns
                         $('.expandable-column').on('click', function() {
                             $(this).toggleClass('expanded');

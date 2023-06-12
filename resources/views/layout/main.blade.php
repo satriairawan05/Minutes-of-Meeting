@@ -62,7 +62,7 @@
 </head>
 
 
-<body class="main-body leftmenu dark-theme">
+<body class="main-body leftmenu">
 
     <!-- Switcher -->
     <div class="switcher-wrapper">
@@ -250,11 +250,18 @@
         <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
 
         <script>
+            CKEDITOR.replace('description_daily', {
+                uiColor: '#7A88A1'
+            , });
             CKEDITOR.replace('description_daily',{
                 uiColor: '#7A88A1',
             });
 
         </script>
+
+
+
+
 
 
 
@@ -267,13 +274,14 @@
         <div class="row row-sm">
             <div class="col-md-12 text-right">
                 <span>
-                    Copyright © 2023 <a href="#">BSS</a> <a href="https://suemerugrup.com/"></a>
+                    Copyright © 2023 <a href="https://bss.id/">PT BANGUN SEMERU SEJAHTERA</a></a>
                     All rights reserved.
                 </span>
             </div>
         </div>
     </div>
 </div>
+
 
 <!-- Mirrored from laravel.spruko.com/spruha/ltr/index by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 01 Jun 2023 01:44:48 GMT -->
 

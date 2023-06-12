@@ -1062,7 +1062,7 @@ body.theme-style .btn-white {
 }
 
 body.theme-style.dark-theme .custom-card {
-    border: 1px solid rgba(234, 237, 247, .1)
+    border: 1px solid rgba(48, 43, 58, 0.05)
 }
 
 body.theme-style.dark-theme .main-footer {

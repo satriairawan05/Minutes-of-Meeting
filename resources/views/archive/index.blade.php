@@ -46,12 +46,12 @@
                                     {{-- start modal  --}}
                                     <td>
                                         {{-- Edit Modal Trigger --}}
-                                        <button type="button" onclick="window.location='{{ route('issue.edit', $a->archive_id) }}'" class="btn bg-gradient-info" title="Edit Data">
+                                        <button type="button" onclick="window.location='{{ route('issue.edit', $a->archive_id) }}'" class="btn ripple btn-primary btn-sm" title="Edit Data">
                                             <i class="fas fa-edit"></i>
                                         </button>
                                         {{-- End of Edit Modal Trigger --}}
                                         {{-- Delete Modal Trigger --}}
-                                        <button type="button" class="btn bg-gradient-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $a->archive_id }}" onclick="{{ route('issue.destroy', $a->archive_id) }}">
+                                        <button type="button" class="btn ripple btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $a->archive_id }}" onclick="{{ route('issue.destroy', $a->archive_id) }}">
                                             <i class="far fa-trash-alt"></i>
                                         </button>
                                         {{-- End of Delete Modal Trigger --}}

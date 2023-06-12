@@ -1,7 +1,6 @@
 @php
-    $modules = session()->all();
+    $admin = auth()->user()->name == "Super Admin";
 @endphp
-
 <div class="main-sidebar main-sidebar-sticky side-menu">
     <div class="sidemenu-logo">
         <a class="main-logo" href="/">
@@ -12,7 +11,6 @@
         </a>
     </div>
     <br><br>
-    @if ($modules)
     <div class="main-sidebar-body">
         <ul class="nav">
             <li class="nav-item">
@@ -55,6 +53,7 @@
                     <span class="sidemenu-label">Archieve</span>
                 </a>
             </li>
+        
             <li class="nav-item">
                 <a class="nav-link {{ request()->is('user.index') ? 'active' : '' }}" href="{{ route('user.index') }}">
                     <span class="shape1"></span>
@@ -63,7 +62,7 @@
                     <span class="sidemenu-label">User</span>
                 </a>
             </li>
-            @if (auth()->user()->name == 'Super Admin')
+            @if($admin)
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('preference') }}">
                     <span class="shape1"></span>
@@ -75,6 +74,5 @@
             @endif
         </ul>
     </div>
-    @endif
 </div>
 <!-- End Sidemenu -->

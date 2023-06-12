@@ -58,7 +58,7 @@ class DailyController extends Controller
             $daily->start_date = $request->start_date;
             $daily->end_date = $request->end_date;
             $daily->file = $request->file('file') ? $request->file('file')->store('dailies') : null;
-            $daily->is_private = $request->input('is_private') ? $request->is_private : 0;
+            $daily->is_private = $request->input('is_private',0);
             $daily->save();
 
             $archiveDaily = new ArchiveDaily;
@@ -73,7 +73,7 @@ class DailyController extends Controller
             $archiveDaily->start_date = $request->start_date;
             $archiveDaily->end_date = $request->end_date;
             $archiveDaily->file = $request->file('file') ? $request->file('file')->store('dailies') : null;
-            $archiveDaily->is_private = $request->input('is_private') ? $request->is_private : 0;
+            $archiveDaily->is_private = $request->input('is_private',0);
             $archiveDaily->save();
 
             return redirect('/daily')->with('sucess','Added Daily Successfully!');

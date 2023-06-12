@@ -22,28 +22,27 @@
             <div class="row row-sm">
                 <div class="col-sm-12 col-lg-12">
 
-                    <!--Row 1-->
-                    <div class="row row-sm mt-lg-4">
+                    <!--Row-->
+                    <div class="row row-sm  mt-lg-4">
                         <div class="col-sm-12 col-lg-12 col-xl-12">
                             <div class="card bg-primary custom-card card-box">
-                                <div class="card-body">
+                                <div class="card-body p-4">
                                     <div class="row align-items-center">
-                                        <div class="offset-xl-3 offset-sm-6 col-xl-8 col-sm-6 col-12 img-bg">
-                                            <h4 class="d-flex mb-3">
-                                                <span class="font-weight-bold text-white">
-                                                    Assalamualaikum {{ auth()->user()->name }}!</span>
+                                        <div class="offset-xl-3 offset-sm-6 col-xl-8 col-sm-6 col-12 img-bg ">
+                                            <h4 class="d-flex  mb-3">
+                                                <span class="font-weight-bold text-white ">Assalamualaikum Wr.Wb., {{ auth()->user()->name }}</span>
                                             </h4>
-                                            <p class="tx-white-7 mb-1">You have two projects to finish, you had completed <b class="text-warning">57%</b> from your monthly level, Keep going to your level</p>
-                                        </div>
-                                        <div class="col-xl-3 col-sm-6 col-12">
-                                            <img src="assets/img/pngs/work3.png" alt="user-img" class="wd-100">
-                                        </div>
+                                            <p class="tx-white-7 mb-1">You have two projects to finish, you had completed <b class="text-warning">57%</b> from your montly level,
+                                                Keep going to your level
+                                        </div class="col-xl-3 col-sm-6 col-12">
+                                        <img src="{{ asset('assets/img/ic_mom.png') }}" alt="user-img" class="wd-200">
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!--/Row 1 -->
+                    <!--Row -->
 
                     <!--Row 2-->
                     @php

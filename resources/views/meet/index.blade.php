@@ -19,14 +19,23 @@
             <div class="card ">
                 <div class="card">
                     <div class="card-header d-flex justify-content-end">
+                    @can('meet-create')
                         <a href="{{ route('meet.create') }}" class="btn-data btn text-decoration-none text-black">
                             <i class="fas fa-plus-circle"></i> Add New Data
                         </a>
+                    @endcan
                     </div>
                     <div class="card-body">
                         {{-- @if (session('success'))
+                        {{-- @if (session('success'))
                         <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
                             {{ session('success') }}
+                    </div>
+                    @endif --}}
+                    <div class="table-responsive">
+                        <table id="exportexample" class="table table-bordered border-t0 key-buttons text-nowrap w-100">
+                            <thead class="table-header">
+                                <tr>
                     </div>
                     @endif --}}
                     <div class="table-responsive">
@@ -46,6 +55,18 @@
                                     <th style="text-align: center;">Actions</th>
                                 </tr>
                                 {{-- <th colspan="9">
+                                    <th style="text-align: center;">No</th>
+                                    <th style="text-align: center;" class="d-none d-sm-table-cell">ID</th>
+                                    <th style="text-align: center;">Meeting Name</th>
+                                    <th style="text-align: center;">Project Name</th>
+                                    <th style="text-align: center;">Date Of Meeting</th>
+                                    <th style="text-align: center;">Time Of Meeting</th>
+                                    <th style="text-align: center;">Minutes Prepared by</th>
+                                    <th style="text-align: center;">Meeting Locate</th>
+                                    <th style="text-align: center;" class="d-none d-sm-table-cell">Attendees</th>
+                                    <th style="text-align: center;">Actions</th>
+                                </tr>
+                                {{-- <th colspan="9">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" id="toggleColumns">
                                             <label class="form-check-label" for="toggleColumns">
@@ -53,6 +74,7 @@
                                             </label>
                                         </div>
                                     </th> --}}
+                            </thead>
                             </thead>
 
                             <tbody>
@@ -107,7 +129,40 @@
                                                         <form onsubmit="return deleteData('{{ $d->meet_name }}')" method="POST" action="{{ route('meet.destroy', $d->meet_id) }}">
                                                             @csrf
                                                             <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                                        {{-- Delete Modal --}}
+                                        <div class="modal fade" id="deleteModal{{ $d->meet_id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $d->meet_id }}" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="deleteModalLabel{{ $d->meet_id }}">Delete
+                                                            Data</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Apakah anda yakin?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <form onsubmit="return deleteData('{{ $d->meet_name }}')" method="POST" action="{{ route('meet.destroy', $d->meet_id) }}">
+                                                            @csrf
+                                                            <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
 
+                                                            @method('delete')
+                                                            <button type="submit" class="btn bg-gradient-danger" data-bs-dismiss="modal">Delete</button>
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{-- End of Delete Modal --}}
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                                                             @method('delete')
                                                             <button type="submit" class="btn bg-gradient-danger" data-bs-dismiss="modal">Delete</button>
                                                             </button>
@@ -133,6 +188,15 @@
                         var column = $(this).attr('id');
                         $('.' + column).toggle();
                     });
+                </div>
+            </div>
+            <script>
+                $(document).ready(function() {
+                    // Hide and Show Columns
+                    $('#toggleColumns').on('change', function() {
+                        var column = $(this).attr('id');
+                        $('.' + column).toggle();
+                    });
 
                     // Expandable Columns
                     $('.expandable-column').on('click', function() {
@@ -140,7 +204,15 @@
                         $(this).siblings('.expand-content').toggle();
                     });
                 });
+                    // Expandable Columns
+                    $('.expandable-column').on('click', function() {
+                        $(this).toggleClass('expanded');
+                        $(this).siblings('.expand-content').toggle();
+                    });
+                });
 
+            </script>
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
             </script>
             <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
@@ -156,7 +228,25 @@
                         background: "linear-gradient(to right, #38ef7d, #38ef7d)"
                     , }
                 }).showToast();
+            @if ($message = Session::get('success'))
+            <script>
+                Toastify({
+                    text: "{{ $message }}"
+                    , duration: 3000
+                    , close: true // Include close button
+                    , gravity: "bottom" // Set gravity to "bottom"
+                    , position: "right" // Set position to "right"
+                    , style: {
+                        background: "linear-gradient(to right, #38ef7d, #38ef7d)"
+                    , }
+                }).showToast();
 
+            </script>
+            @endif
+            <!-- Row end -->
+        </div>
+        <!-- End Main Content-->
+        @endsection
             </script>
             @endif
             <!-- Row end -->

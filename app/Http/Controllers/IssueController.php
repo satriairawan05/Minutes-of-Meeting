@@ -67,6 +67,9 @@ class IssueController extends Controller
                 $validate['c_action'] == $request->c_action;
             }
 
+            if($request->input('c_action')){
+                $validate['c_action'] = $request->c_action;
+            }
 
             if ($request->file('file')) {
                 $validate['file'] = $request->file('file')->store('images');
@@ -139,6 +142,10 @@ class IssueController extends Controller
             
              if($request->input('c_action')) {
                 $validate['c_action'] == $request->c_action;
+            }
+
+            if($request->input('c_action')){
+                $validate['c_action'] = $request->c_action;
             }
 
             if ($request->file('file')) {

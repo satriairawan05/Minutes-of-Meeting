@@ -79,8 +79,8 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-6 form-group">
-                                <label id="description_label" for="description">Problem Identification</label>
-                                <textarea name="description" rows="4" id="description" required value="{{ old('description') }}" class="form-control @error('description') is-invalid @enderror" placeholder="Masukan Description"></textarea>
+                                <label id="description_label" for="description">Remarks</label>
+                                <textarea name="description" rows="4" id="description" required value="{{ old('description') }}" class="form-control @error('description') is-invalid @enderror" placeholder="Masukan Remarks"></textarea>
                                 @error('description')
 
                                 <div class="invalid-feedback">

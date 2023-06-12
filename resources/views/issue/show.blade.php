@@ -26,9 +26,6 @@
                             <i class="fas fa-folder-plus"></i> Add Archive Issue
                         </button>
                     </form> --}}
-                    <a href="{{ route('issue.create') }}" class="btn-data btn text-decoration-none text-black">
-                        <i class="fas fa-plus-circle"></i> Add New Data
-                    </a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -68,13 +65,13 @@
                                         {{-- End of Show Modal Trigger --}}
 
                                         {{-- Edit Modal Trigger --}}
-                                        <button type="button" onclick="window.location='{{ route('issue.edit', strtolower($i->tracker)) }}'" class="btn bg-gradient-info" title="Edit Data">
+                                        <button type="button" onclick="window.location='{{ route('issue.edit', strtolower($i->tracker)) }}'" class="btn ripple btn-primary btn-sm" title="Edit Data">
                                             <i class="fas fa-edit"></i>
                                         </button>
                                         {{-- End of Edit Modal Trigger --}}
 
                                         {{-- Delete Modal Trigger --}}
-                                        <button type="button" class="btn bg-gradient-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ strtolower($i->tracker) }}" onclick="{{ route('issue.destroy', strtolower($i->tracker)) }}">
+                                        <button type="button" class="btn ripple btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ strtolower($i->tracker) }}" onclick="{{ route('issue.destroy', strtolower($i->tracker)) }}">
                                             <i class="far fa-trash-alt"></i>
                                         </button>
                                         {{-- End of Delete Modal Trigger --}}

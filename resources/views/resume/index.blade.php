@@ -24,14 +24,14 @@
                                 @csrf
                                 <input type="hidden" name="meet_id" id="meet_id" value="{{ $meet->meet_id }}">
                                 @foreach ($issue as $isu)
-                                    <input type="hidden" name="issue_id" id="issue_id" value="{{ $isu->issue_id }}">
+                                <input type="hidden" name="issue_id" id="issue_id" value="{{ $isu->issue_id }}">
                                 @endforeach
                                 <button type="submit" id="submit" class="btn-data btn text-decoration-none text-black">
                                     <i class="fas fa-folder-plus"></i> Add Archive Meet
                                 </button>
                             </form>
-                            <a href="{{ route('issue.create') }}" class="btn-data btn text-decoration-none text-black">
-                                <i class="fas fa-plus-circle"></i> Add New Data Issue
+                            <a type="button" class="btn ripple btn-success btn-icon" href="{{ route('issue.create') }}" data-toggle="tooltip" title="Add new data">
+                                <i class="fe fe-plus"></i>
                             </a>
                         </div>
                     </div>
@@ -123,13 +123,13 @@
                                     </td>
                                     <td>{!! $i->is_private == 1 ? "Yes" : "No" !!}</td>
                                     <td>
-                                        <a href="{{ route('resume.issue.edit',$i->issue_id) }}" class="btn bg-gradient-info" title="Edit Data">
+                                        <a href="{{ route('resume.issue.edit',$i->issue_id) }}" class="btn ripple btn-primary btn-sm" title="Edit Data">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         <form action="{{ route('resume.issue.delete',$i->issue_id) }}" method="post">
                                             @csrf
                                             @method('delete')
-                                            <button type="submit" class="btn bg-gradient-primary"><i class="far fa-trash-alt"></i></button>
+                                            <button type="submit" class="btn ripple btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
                                         </form>
                                     </td>
                                 </tr>
