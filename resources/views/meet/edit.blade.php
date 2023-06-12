@@ -45,9 +45,6 @@
                                 @enderror
                             </div>
                         </div>
-                        @php
-                        $meeting = array("MEETING HO","MEETING TEAM 9","MEETING SITE");
-                        @endphp
                         <div class="row mb-3">
                             <label for="meet_project" class="col-sm-2 col-form-label">Project</label>
                             <div class="col-sm-10">
@@ -131,8 +128,10 @@
                                     @endif
                                     @endforeach
                                 </select>
+
                             </div>
                         </div>
+
                         <div class="row mb-3">
                             <div class="col-12 d-flex justify-content-center align-items-center">
                                 <a href="{{ route('meet.index') }}" class="btn btn-md btn-primary mr-3">Back</a>
@@ -155,8 +154,6 @@
                         $(this).toggleClass('expanded');
                         $(this).siblings('.expand-content').toggle();
                     });
-
-                    $('.multiple-selected').select2();
                 });
 
             </script>
