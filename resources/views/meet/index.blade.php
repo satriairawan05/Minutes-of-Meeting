@@ -1,5 +1,12 @@
 @extends('layout.main')
 
+@php
+$create = $pages[19]['access'] == 1;
+$read = $pages[18]['access'] == 1;
+$update = $pages[17]['access'] == 1;
+$delete = $pages[16]['access'] == 1;
+@endphp
+
 @section('content')
 <div class="main-content side-content pt-0">
     <div class="container-fluid">
@@ -19,93 +26,65 @@
             <div class="card ">
                 <div class="card">
                     <div class="card-header d-flex justify-content-end">
-                        <a type="button" class="btn ripple btn-success btn-icon" href="{{ route('meet.create') }}" data-toggle="tooltip" title="Add new data">
-                            <i class="fe fe-plus"></i>
+                        @if($create)
+                        <a href="{{ route('meet.create') }}" class="btn-data btn text-decoration-none text-black">
+                            <i class="fas fa-plus-circle"></i> Add New Data
                         </a>
+                        @endif
                     </div>
                     <div class="card-body">
-                        {{-- @if (session('success'))
-                        {{-- @if (session('success'))
-                        <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
-                            {{ session('success') }}
-                    </div>
-                    @endif --}}
-                    <div class="table-responsive">
-                        <table id="exportexample" class="table table-bordered border-t0 key-buttons text-nowrap w-100">
-                            <thead class="table-header">
-                                <tr>
-                    </div>
-                    {{-- @endif  --}}
-                    <div class="table-responsive">
-                        <table id="exportexample" class="table table-bordered border-t0 key-buttons text-nowrap w-100">
-                            <thead class="table-header">
-                                <tr>
-
-                                    <th style="text-align: center;">No</th>
-                                    <th style="text-align: center;" class="d-none d-sm-table-cell">ID</th>
-                                    <th style="text-align: center;">Meeting Name</th>
-                                    <th style="text-align: center;">Project Name</th>
-                                    <th style="text-align: center;">Date Of Meeting</th>
-                                    <th style="text-align: center;">Time Of Meeting</th>
-                                    <th style="text-align: center;">Minutes Prepared by</th>
-                                    <th style="text-align: center;">Meeting Locate</th>
-                                    <th style="text-align: center;" class="d-none d-sm-table-cell">Attendees</th>
-                                    <th style="text-align: center;">Actions</th>
-                                </tr>
-                                {{-- <th colspan="9">
-                                    <th style="text-align: center;">No</th>
-                                    <th style="text-align: center;" class="d-none d-sm-table-cell">ID</th>
-                                    <th style="text-align: center;">Meeting Name</th>
-                                    <th style="text-align: center;">Project Name</th>
-                                    <th style="text-align: center;">Date Of Meeting</th>
-                                    <th style="text-align: center;">Time Of Meeting</th>
-                                    <th style="text-align: center;">Minutes Prepared by</th>
-                                    <th style="text-align: center;">Meeting Locate</th>
-                                    <th style="text-align: center;" class="d-none d-sm-table-cell">Attendees</th>
-                                    <th style="text-align: center;">Actions</th>
-                                </tr>
-                                {{-- <th colspan="9">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="toggleColumns">
-                                            <label class="form-check-label" for="toggleColumns">
-                                                Toggle Columns
-                                            </label>
-                                        </div>
-                                    </th> --}}
-                            </thead>
-                            </thead>
-
-                            <tbody>
-                                @foreach ($meets as $d)
-                                <tr>
-                                    <td style="text-align: center;">{{ $loop->iteration }}</td>
-                                    <td style="text-align: center;" class="d-none d-sm-table-cell">
-                                        <a href="{{ route('resume.meet', $d->meet_id) }}" class="text-decoration-none text-monospace">{{ $d->meet_xid }}</a>
-                                    </td>
-                                    <td style="text-align: center;">{{ $d->meet_name }}</td>
-                                    <td style="text-align: center;">{{ $d->meet_project }}</td>
-                                    <td style="text-align: center;">
-                                        {{ \Carbon\Carbon::parse($d->meet_date)->format('l, d M Y') }}</td>
-                                    <td style="text-align: center;">
-                                        {{ \Carbon\Carbon::parse($d->meet_time)->format('H:i') }}</td>
-                                    <td style="text-align: center;">{{ $d->meet_preparedby }}</td>
-                                    <td style="text-align: center;">{{ $d->meet_locate }}</td>
-                                    <td style="text-align: center;" class="d-none d-sm-table-cell">
-                                        {{ $d->meet_attend }}</td>
-                                    <td style="text-align: center;">
-                                        {{-- Edit Modal Trigger --}}
-                                        @if (App\Models\GroupPage::where('page_id', '=', 3)->orWhere('access', '=', 1)->get())
-                                        <button type="button" onclick="window.location='{{ route('meet.edit', $d->meet_id) }}'" class="btn ripple btn-primary btn-sm" data-toggle="tooltip" title="Edit Data">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
+                        <div class="table-responsive">
+                            <table id="exportexample" class="table table-bordered border-t0 key-buttons text-nowrap w-100">
+                                <thead class="table-header">
+                                    <tr>
+                                        <th style="text-align: center;">No</th>
+                                        <th style="text-align: center;" class="d-none d-sm-table-cell">ID</th>
+                                        <th style="text-align: center;">Meeting Name</th>
+                                        <th style="text-align: center;">Project Name</th>
+                                        <th style="text-align: center;">Date Of Meeting</th>
+                                        <th style="text-align: center;">Time Of Meeting</th>
+                                        <th style="text-align: center;">Minutes Prepared by</th>
+                                        <th style="text-align: center;">Meeting Locate</th>
+                                        <th style="text-align: center;" class="d-none d-sm-table-cell">Attendees</th>
+                                        @if($update || $delete)
+                                        <th style="text-align: center;">Actions</th>
                                         @endif
-                                        {{-- End of Edit Modal Trigger --}}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($meets as $d)
+                                    @if($read)
+                                    <tr>
+                                        <td style="text-align: center;">{{ $loop->iteration }}</td>
+                                        <td style="text-align: center;" class="d-none d-sm-table-cell">
+                                            <a href="{{ route('resume.meet', $d->meet_id) }}" class="text-decoration-none text-monospace">{{ $d->meet_xid }}</a>
+                                        </td>
+                                        <td style="text-align: center;">{{ $d->meet_name }}</td>
+                                        <td style="text-align: center;">{{ $d->meet_project }}</td>
+                                        <td style="text-align: center;">
+                                            {{ \Carbon\Carbon::parse($d->meet_date)->format('l, d M Y') }}</td>
+                                        <td style="text-align: center;">
+                                            {{ \Carbon\Carbon::parse($d->meet_time)->format('H:i') }}</td>
+                                        <td style="text-align: center;">{{ $d->meet_preparedby }}</td>
+                                        <td style="text-align: center;">{{ $d->meet_locate }}</td>
+                                        <td style="text-align: center;" class="d-none d-sm-table-cell">
+                                            {{ $d->meet_attend }}</td>
+                                        <td style="text-align: center;">
+                                            {{-- Edit Modal Trigger --}}
+                                            @if($update)
+                                            <button type="button" onclick="window.location='{{ route('meet.edit', $d->meet_id) }}'" class="btn bg-gradient-info" title="Edit Data">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            @endif
+                                            {{-- End of Edit Modal Trigger --}}
 
-                                        {{-- Delete Modal Trigger --}}
-                                        <button type="button" class="btn ripple btn-danger btn-sm"data-toggle="tooltip" title="Delete Data" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $d->meet_id }}">
-                                            <i class="far fa-trash-alt"></i>
-                                        </button>
-                                        {{-- End of Delete Modal Trigger --}}
+                                            {{-- Delete Modal Trigger --}}
+                                            @if($delete)
+                                            <button type="button" class="btn ripple btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $d->meet_id }}">
+                                                <i class="far fa-trash-alt"></i>
+                                            </button>
+                                            @endif
+                                            {{-- End of Delete Modal Trigger --}}
 
                                         {{-- Delete Modal --}}
                                         <div class="modal fade" id="deleteModal{{ $d->meet_id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $d->meet_id }}" aria-hidden="true">
@@ -144,23 +123,25 @@
                                                                                 @csrf
                                                                                 <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
 
-                                                                                @method('delete')
-                                                                                <button type="submit" class="btn bg-gradient-danger" data-bs-dismiss="modal">Delete</button>
-                                                                                </button>
-                                                                            </form>
+                                                                                    @method('delete')
+                                                                                    <button type="submit" class="btn bg-gradient-danger" data-bs-dismiss="modal">Delete</button>
+                                                                                    </button>
+                                                                                </form>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            {{-- End of Delete Modal --}}
+                                                                {{-- End of Delete Modal --}}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </td>
+                                    </tr>
+                                    @endif
+                            </table>
+                        </div>
                     </div>
-                    {{-- End of Delete Modal --}}
-                    </td>
-                    </tr>
                     @endforeach
                     </tbody>
                     </table>
