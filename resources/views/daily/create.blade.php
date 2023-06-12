@@ -70,7 +70,7 @@
                                 @enderror
                             </div>
                             <div class="col-md-6">
-                                <label id="status_label" for="status">Status</label>
+                                <label id="status_label" for="status">Priority</label>
                                 <select class="form-select form-control form-control-sm" name="status">
                                     <option name="status" value="High" selected>High</option>
                                 </select>
@@ -83,7 +83,7 @@
                         </div>
                         <div class="mb-3 col-13">
                             <label id="description_label" for="description_daily">Problem Identification</label>
-                            <textarea type="text" name="description_daily" id="description_daily" required value="{{ old('description_daily') }}" class="form-control @error('description') is-invalid @enderror" placeholder="Masukan Description"></textarea>
+                            <textarea type="text" name="description_daily" id="description_daily" value="{{ old('description_daily') }}" class="form-control @error('description') is-invalid @enderror" placeholder="Masukan Description"></textarea>
                             @error('description_daily')
                             <div class="invalid-feedback">
                                 {{ $message }}
