@@ -16,7 +16,7 @@ class ArchiveController extends Controller
     public function index()
     {
         return view('archive.index', [
-            'archives' => Archive::get(),
+            'archives' => Archive::get()->dd()
         ]);
     }
 

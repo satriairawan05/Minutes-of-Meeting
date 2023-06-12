@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ArchiveDaily;
 use App\Models\User;
 use App\Models\Daily;
 use App\Models\Departemen;
+use App\Models\ArchiveDaily;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Storage;
@@ -18,7 +18,7 @@ class DailyController extends Controller
     public function index()
     {
         return view('daily.index', [
-            'dailies' => Daily::get()
+            'dailies' => Daily::distinct('departemen')->get()
         ]);
     }
 
@@ -47,24 +47,34 @@ class DailyController extends Controller
     public function store(Request $request)
     {
         try {
-            $validate = $this->validate($request,[
-                'daily_xid' => 'required',
-                'departemen' => 'required',
-                'subject' => 'required',
-                'c_action' => 'required',
-                'description' => 'required',
-                'status' => 'required',
-                'assignee' => 'required',
-                'start_date' => 'required',
-                'end_date' => 'required',
-            ]);
+            $daily = new Daily;
+            $daily->daily_xid = $request->daily_xid;
+            $daily->departemen = $request->departemen;
+            $daily->subject = $request->subject;
+            $daily->c_action = $request->c_action;
+            $daily->description_daily = $request->description_daily;
+            $daily->status = $request->status;
+            $daily->assignee = $request->assignee;
+            $daily->start_date = $request->start_date;
+            $daily->end_date = $request->end_date;
+            $daily->file = $request->file('file') ? $request->file('file')->store('dailies') : null;
+            $daily->is_private = $request->input('is_private') ? $request->is_private : 0;
+            $daily->save();
 
-            $validate['daily_id'] = +1;
-            $validate['file'] = $request->file('file') ? $request->file('file')->store('dailies') : null;
-            $validate['is_private'] = $request->input('is_private') ? $request->is_private : 0;
-            Daily::create($validate);
-            ArchiveDaily::create($validate);
-
+            $archiveDaily = new ArchiveDaily;
+            $archiveDaily->daily_id = +1;
+            $archiveDaily->daily_xid = $request->daily_xid;
+            $archiveDaily->departemen = $request->departemen;
+            $archiveDaily->subject = $request->subject;
+            $archiveDaily->c_action = $request->c_action;
+            $archiveDaily->description = $request->description_daily;
+            $archiveDaily->status = $request->status;
+            $archiveDaily->assignee = $request->assignee;
+            $archiveDaily->start_date = $request->start_date;
+            $archiveDaily->end_date = $request->end_date;
+            $archiveDaily->file = $request->file('file') ? $request->file('file')->store('dailies') : null;
+            $archiveDaily->is_private = $request->input('is_private') ? $request->is_private : 0;
+            $archiveDaily->save();
 
             return redirect('/daily')->with('sucess','Added Daily Successfully!');
         } catch (QueryException $e) {
@@ -82,7 +92,7 @@ class DailyController extends Controller
         ]);
     }
 
-    /**
+       /**
      * Show the form for editing the specified resource.
      */
     public function edit(Daily $daily)
