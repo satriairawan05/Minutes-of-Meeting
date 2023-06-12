@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('project',50);
             $table->string('tracker',50);
             $table->string('subject',100);
-            $table->longText('c_action');
+            $table->longText('c_action')->nullable();
             $table->longText('description');
             $table->string('status',100);
             $table->string('priority',100);

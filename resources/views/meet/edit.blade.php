@@ -87,7 +87,7 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="meet_preparedby" class="col-sm-2 col-form-label">Minutes Prepared by</label>
+                            <label for="meet_preparedby" class="col-sm-2 col-form-label">Notulen</label>
                             <div class="col-sm-10">
                                 <select id="meet_preparedby" class="form-select form-control form-control-sm " name="meet_preparedby">
                                     @foreach ($users as $user)
@@ -100,6 +100,7 @@
                                         {{ $user->name }}</option>
                                     @endif
                                     @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="row mb-3">
