@@ -67,13 +67,13 @@
                                                 {{-- Edit Modal Trigger --}}
                                                 <button type="button"
                                                     onclick="window.location='{{ route('departemen.edit', $dept->id) }}'"
-                                                    class="btn bg-gradient-info" title="Edit Data">
+                                                    class="btn ripple btn-primary btn-sm" title="Edit Data">
                                                     <i class="fas fa-edit"></i>
                                                 </button>
                                                 {{-- End of Edit Modal Trigger --}}
 
                                                 {{-- Delete Modal Trigger --}}
-                                                <button type="button" class="btn bg-gradient-primary"
+                                                <button type="button" class="btn ripple btn-danger btn-sm"
                                                     data-bs-toggle="modal" data-bs-target="#deleteModal{{ $dept->id }}">
                                                     <i class="far fa-trash-alt"></i>
                                                 </button>

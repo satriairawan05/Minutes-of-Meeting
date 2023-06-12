@@ -57,31 +57,31 @@
                                     </th> --}}
                             </thead>
 
-                                <tbody>
-                                    @foreach ($meets as $d)
-                                    <tr>
-                                        <td style="text-align: center;">{{ $loop->iteration }}</td>
-                                        <td style="text-align: center;" class="d-none d-sm-table-cell">
-                                            <a href="{{ route('resume.meet',$d->meet_id) }}" class="text-decoration-none text-monospace">{{ $d->meet_xid }}</a>
-                                        </td>
-                                        <td style="text-align: center;">{{ $d->meet_name }}</td>
-                                        <td style="text-align: center;">{{ $d->meet_project }}</td>
-                                        <td style="text-align: center;">{{ \Carbon\Carbon::parse($d->meet_date)->format('l, d M Y') }}</td>
-                                        <td style="text-align: center;">{{ \Carbon\Carbon::parse($d->meet_time)->format('H:i') }}</td>
-                                        <td style="text-align: center;">{{ $d->meet_preparedby }}</td>
-                                        <td style="text-align: center;">{{ $d->meet_locate }}</td>
-                                        <td style="text-align: center;" class="d-none d-sm-table-cell">
-                                            {!! $d->meet_attend !!}</td>
-                                        <td style="text-align: center;">
-                                            {{-- Edit Modal Trigger --}}
-                                            <a href="{{ route('meet.edit', $d->meet_id) }}" class="btn bg-gradient-info" title="Edit Data">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            {{-- End of Edit Modal Trigger --}}
+                            <tbody>
+                                @foreach ($meets as $d)
+                                <tr>
+                                    <td style="text-align: center;">{{ $loop->iteration }}</td>
+                                    <td style="text-align: center;" class="d-none d-sm-table-cell">
+                                        <a href="{{ route('resume.meet',$d->meet_id) }}" class="text-decoration-none text-monospace">{{ $d->meet_xid }}</a>
+                                    </td>
+                                    <td style="text-align: center;">{{ $d->meet_name }}</td>
+                                    <td style="text-align: center;">{{ $d->meet_project }}</td>
+                                    <td style="text-align: center;">{{ \Carbon\Carbon::parse($d->meet_date)->format('l, d M Y') }}</td>
+                                    <td style="text-align: center;">{{ \Carbon\Carbon::parse($d->meet_time)->format('H:i') }}</td>
+                                    <td style="text-align: center;">{{ $d->meet_preparedby }}</td>
+                                    <td style="text-align: center;">{{ $d->meet_locate }}</td>
+                                    <td style="text-align: center;" class="d-none d-sm-table-cell">
+                                        {!! $d->meet_attend !!}</td>
+                                    <td style="text-align: center;">
+                                        {{-- Edit Modal Trigger --}}
+                                        <a href="{{ route('meet.edit', $d->meet_id) }}" class="btn ripple btn-primary btn-sm" title="Edit Data">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        {{-- End of Edit Modal Trigger --}}
 
                                         {{-- Delete Modal Trigger --}}
                                         @if (App\Models\GroupPage::where('page_id', '=', 4)->orWhere('access', '=', 1)->get())
-                                        <button type="button" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $d->meet_id }}">
+                                        <button type="button" class="btn ripple btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $d->meet_id }}">
                                             <i class="far fa-trash-alt"></i>
                                         </button>
                                         @endif
