@@ -60,11 +60,3 @@ Route::middleware(['auth'])->group(function () {
         return view('pref.index');
     })->name('preference');
 });
-
-Route::middleware(['isSuperAdmin'])->group(function () {
-    Route::get('preference', function(){
-        return view('pref.index');
-    })->name('preference');
-
-    Route::resource('user',UserManagementController::class);
-});

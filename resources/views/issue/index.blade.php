@@ -23,6 +23,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
+                        
                         <table id="exportexample" class="table table-bordered border-t0 key-buttons text-nowrap w-100">
                             <thead class="table-header text-center">
                                 <tr>

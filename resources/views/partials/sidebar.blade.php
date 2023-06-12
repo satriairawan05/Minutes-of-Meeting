@@ -53,9 +53,7 @@
                     <span class="sidemenu-label">Archieve</span>
                 </a>
             </li>
-            @can('isAdmin')
-
-            @endcan
+        
             <li class="nav-item">
                 <a class="nav-link {{ request()->is('user.index') ? 'active' : '' }}" href="{{ route('user.index') }}">
                     <span class="shape1"></span>
