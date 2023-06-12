@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GroupPage;
 use App\Models\Meet;
 use App\Models\User;
 use App\Models\Issue;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
-use Illuminate\Support\Facades\Gate;
 
 class MeetController extends Controller
 {
@@ -16,7 +16,6 @@ class MeetController extends Controller
      */
     public function index()
     {
-
         return view('meet.index', [
             'meets' => Meet::get()
         ]);
@@ -27,21 +26,16 @@ class MeetController extends Controller
      */
     public function create()
     {
-        if(Gate::check('meet-create',)){
-            $formattedDate = date('mY');
-            $prefix = "MOM-";
-            $lastCount = Meet::select('meet_id')->latest('meet_id')->pluck('meet_id')->first();
-            $count = $lastCount + 1;
-            $id_u = $prefix . str_pad($count, 3, '0', STR_PAD_LEFT) . "/" . $formattedDate;
+        $formattedDate = date('mY');
+        $prefix = "MOM-";
+        $lastCount = Meet::select('meet_id')->latest('meet_id')->pluck('meet_id')->first();
+        $count = $lastCount + 1;
+        $id_u = $prefix . str_pad($count, 3, '0', STR_PAD_LEFT) . "/" . $formattedDate;
 
-            return view('meet.create', [
-                'meet_id' => $id_u,
-                'users' => User::get()
-            ]);
-
-        } else {
-            return abort(403);
-        }
+        return view('meet.create', [
+            'meet_id' => $id_u,
+            'users' => User::get()
+        ]);
     }
 
     /**

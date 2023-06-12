@@ -21,6 +21,7 @@
                 <div class="card-body">
                     <form action="/departemen/{{ $dept->id }}" method="post">
                         @csrf
+                        @method('put')
                         <div class="mb-3 col-12">
                             <label for="name" class="form-label">Departemen</label>
                             <input type="text" name="name" id="name" value="{{ old('name', $dept->name) }}" placeholder="Masukan Name" class="form-control form-control-sm @error('name')

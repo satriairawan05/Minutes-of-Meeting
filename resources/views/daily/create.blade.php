@@ -92,7 +92,7 @@
                         </div>
                         <div class="mb-3 col-13">
                             <label id="c_action_label" for="c_action">Corrective Action</label>
-                            <textarea id="c_action" name="c_action" rows="14" type="text" class="form-control @error('c_action') is-invalid @enderror" required value="{{ old('c_action') }}" placeholder="Masukan Corrective Action"></textarea>
+                            <textarea id="c_action" name="c_action" rows="14" type="text" class="form-control @error('c_action') is-invalid @enderror" value="{{ old('c_action') }}" placeholder="Masukan Corrective Action"></textarea>
                             @error('c_action')
                             <div class="invalid-feedback">
                                 {{ $message }}
