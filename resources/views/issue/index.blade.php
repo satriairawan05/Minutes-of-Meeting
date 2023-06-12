@@ -30,6 +30,7 @@
                                     <th>ID</th>
                                     <th>Subject</th>
                                     <th>Departemen</th>
+                                    <th>Description</th>
                                     <th>Status</th>
                                     <th>Priority</th>
                                     <th>Start Date</th>
@@ -45,6 +46,7 @@
                                     <td>{!! $i->issue_xid !!}</td>
                                     <td>{!! $i->subject !!}</td>
                                     <td><a href="{{ route('issue.document',$i->issue_id) }}" class="text-decoration-none text-capitalize">{!! $i->tracker !!}</a></td>
+                                    <td>{!! $i->description !!}</td>
                                     <td>{!! $i->status !!}</td>
                                     <td>{!! $i->priority !!}</td>
                                     <td>{!! \Carbon\Carbon::parse($i->start_date)->format('l, d M Y') !!}</td>

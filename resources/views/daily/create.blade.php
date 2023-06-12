@@ -82,9 +82,9 @@
                             </div>
                         </div>
                         <div class="mb-3 col-13">
-                            <label id="description_label" for="description">Problem Identification</label>
-                            <input name="description" id="description" required value="{{ old('description') }}" class="form-control @error('description') is-invalid @enderror" placeholder="Masukan Description" />
-                            @error('description')
+                            <label id="description_label" for="description_daily">Problem Identification</label>
+                            <textarea type="text" name="description_daily" id="description_daily" required value="{{ old('description_daily') }}" class="form-control @error('description') is-invalid @enderror" placeholder="Masukan Description"></textarea>
+                            @error('description_daily')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -123,7 +123,7 @@
                                     <label id="assignee_label" for="assignee">Assignee</label>
                                     <select class="form-select form-control form-control-sm" id="assignee" name="assignee">
                                         @foreach ($users as $user)
-                                        @if (old('assignee') == $user->id)
+                                        @if (old('assignee') == $user->name)
                                         <option name="assignee" value="{{ $user->name }}" selected>
                                             {{ $user->name }}</option>
                                         @else

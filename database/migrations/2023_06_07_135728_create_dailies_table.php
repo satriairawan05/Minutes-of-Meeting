@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('departemen',50);
             $table->string('subject',100);
             $table->longText('c_action');
-            $table->longText('description');
+            $table->longText('description_daily');
             $table->string('status',100);
             $table->date('start_date');
             $table->date('end_date');
