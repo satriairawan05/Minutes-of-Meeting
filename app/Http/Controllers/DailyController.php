@@ -17,8 +17,19 @@ class DailyController extends Controller
      */
     public function index()
     {
+        $pages = User::leftJoin('group_pages', 'users.group_id', '=', 'group_pages.group_id')
+        ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
+        ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
+        ->whereBetween('pages.page_id',[9,12])
+        ->orWhere('pages.page_name', 'DWM Report')
+        ->orWhere('group_pages.access', 1)
+        ->get();
+
+        $departemen = Departemen::select('name')->get();
+
         return view('daily.index', [
-            'dailies' => Daily::distinct('departemen')->get()
+            'dailies' => Daily::distinct('departemen')->get(),
+            'pages' => $pages
         ]);
     }
 

@@ -19,7 +19,7 @@ class MeetController extends Controller
         ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
         ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
         ->where('pages.page_id', '<=', 4)
-        ->orWhere('pages.page_name', 'meeting')
+        ->orWhere('pages.page_name', 'Meeting')
         ->orWhere('group_pages.access', 1)
         ->get();
 
