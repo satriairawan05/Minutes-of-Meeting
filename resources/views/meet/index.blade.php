@@ -86,42 +86,42 @@ $delete = $pages[16]['access'] == 1;
                                             @endif
                                             {{-- End of Delete Modal Trigger --}}
 
-                                        {{-- Delete Modal --}}
-                                        <div class="modal fade" id="deleteModal{{ $d->meet_id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $d->meet_id }}" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="deleteModalLabel{{ $d->meet_id }}">Delete
-                                                            Data</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        Apakah anda yakin?
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <form onsubmit="return deleteData('{{ $d->meet_name }}')" method="POST" action="{{ route('meet.destroy', $d->meet_id) }}">
-                                                            @csrf
-                                                            <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                                                            {{-- Delete Modal --}}
-                                                            <div class="modal fade" id="deleteModal{{ $d->meet_id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $d->meet_id }}" aria-hidden="true">
-                                                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h5 class="modal-title" id="deleteModalLabel{{ $d->meet_id }}">Delete
-                                                                                Data</h5>
-                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                                                                <span aria-hidden="true">&times;</span>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            Apakah anda yakin?
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <form onsubmit="return deleteData('{{ $d->meet_name }}')" method="POST" action="{{ route('meet.destroy', $d->meet_id) }}">
-                                                                                @csrf
-                                                                                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                                            {{-- Delete Modal --}}
+                                            <div class="modal fade" id="deleteModal{{ $d->meet_id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $d->meet_id }}" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="deleteModalLabel{{ $d->meet_id }}">Delete
+                                                                Data</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Apakah anda yakin?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <form onsubmit="return deleteData('{{ $d->meet_name }}')" method="POST" action="{{ route('meet.destroy', $d->meet_id) }}">
+                                                                @csrf
+                                                                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                                                                {{-- Delete Modal --}}
+                                                                <div class="modal fade" id="deleteModal{{ $d->meet_id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $d->meet_id }}" aria-hidden="true">
+                                                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title" id="deleteModalLabel{{ $d->meet_id }}">Delete
+                                                                                    Data</h5>
+                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                                                    <span aria-hidden="true">&times;</span>
+                                                                                </button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                Apakah anda yakin?
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <form onsubmit="return deleteData('{{ $d->meet_name }}')" method="POST" action="{{ route('meet.destroy', $d->meet_id) }}">
+                                                                                    @csrf
+                                                                                    <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
 
                                                                                     @method('delete')
                                                                                     <button type="submit" class="btn bg-gradient-danger" data-bs-dismiss="modal">Delete</button>
@@ -143,14 +143,10 @@ $delete = $pages[16]['access'] == 1;
                         </div>
                     </div>
                     @endforeach
-                    </tbody>
-                    </table>
                 </div>
-                {{-- @endforeach --}}
             </div>
         </div>
     </div>
-</div>
 </div>
 
 </div>
