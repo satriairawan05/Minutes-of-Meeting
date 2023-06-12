@@ -50,9 +50,9 @@
                                     <td>{!! $user->group_name !!}</td>
                                     <td clas="d-inline">
                                         {{-- Show Modal Trigger --}}
-                                        <button type="button" onclick="window.location='{{ route('user.show', $user->id) }}'" class="btn bg-gradient-warning" title="Show Data">
+                                        {{-- <button type="button" onclick="window.location='{{ route('user.show', $user->id) }}'" class="btn bg-gradient-warning" title="Show Data">
                                             <i class="fas fa-binoculars"></i>
-                                        </button>
+                                        </button> --}}
                                         {{-- End of Show Modal Trigger --}}
 
                                         {{-- Edit Modal Trigger --}}
