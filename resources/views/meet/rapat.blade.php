@@ -18,11 +18,9 @@
                 <!--Row-->
                 <div class="card ">
                     <div class="card">
-                        <div class="card-header d-flex justify-content-end">
-                            <a href="{{ route('meet.create') }}" class="btn-data btn text-decoration-none text-black">
-                                <i class="fas fa-plus-circle"></i> Add New Data
-                            </a>
-                        </div>
+                        <a type="button" class="btn ripple btn-success btn-icon" href="{{ route('meet.create') }}" data-toggle="tooltip" title="Add new data"> 
+                            <i class="fe fe-plus"></i>
+                        </a>
                         <div class="card-body">
                             {{--  @if (session('success'))
                         <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
@@ -79,7 +77,7 @@
                                                     @if (App\Models\GroupPage::where('page_id', '=', 3)->orWhere('access', '=', 1)->get())
                                                         <button type="button"
                                                             onclick="window.location='{{ route('meet.edit', $d->meet_id) }}'"
-                                                            class="btn bg-gradient-info" title="Edit Data">
+                                                            class="btn ripple btn-primary btn-sm" title="Edit Data">
                                                             <i class="fas fa-edit"></i>
                                                         </button>
                                                     @endif
@@ -87,7 +85,7 @@
 
                                                     {{-- Delete Modal Trigger --}}
                                                     @if (App\Models\GroupPage::where('page_id', '=', 4)->orWhere('access', '=', 1)->get())
-                                                        <button type="button" class="btn bg-gradient-primary"
+                                                        <button type="button" class="btn ripple btn-danger btn-sm"
                                                             data-bs-toggle="modal"
                                                             data-bs-target="#deleteModal{{ $d->meet_id }}">
                                                             <i class="far fa-trash-alt"></i>

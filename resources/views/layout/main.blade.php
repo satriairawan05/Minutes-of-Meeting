@@ -62,7 +62,7 @@
 </head>
 
 
-<body class="main-body leftmenu dark-theme">
+<body class="main-body leftmenu">
 
     <!-- Switcher -->
     <div class="switcher-wrapper">

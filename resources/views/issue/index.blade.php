@@ -17,8 +17,8 @@
             <!-- End Page Header -->
             <div class="card">
                 <div class="card-header d-flex justify-content-end align-items-end">
-                    <a href="{{ route('issue.create') }}" class="btn-data btn text-decoration-none text-black">
-                        <i class="fas fa-plus-circle"></i> Add New Data
+                    <a type="button" class="btn ripple btn-success btn-icon" href="{{ route('issue.create') }}" data-toggle="tooltip" title="Add new data">
+                        <i class="fe fe-plus"></i>
                     </a>
                 </div>
                 <div class="card-body">
@@ -63,13 +63,13 @@
                                         {{-- End of Show Modal Trigger --}}
 
                                         {{-- Edit Modal Trigger --}}
-                                        <button type="button" onclick="window.location='{{ route('issue.edit', $i->issue_id) }}'" class="btn bg-gradient-info" title="Edit Data">
+                                        <button type="button" onclick="window.location='{{ route('issue.edit', $i->issue_id) }}'" class="btn ripple btn-primary btn-sm" title="Edit Data">
                                             <i class="fas fa-edit"></i>
                                         </button>
                                         {{-- End of Edit Modal Trigger --}}
 
                                         {{-- Delete Modal Trigger --}}
-                                        <button type="button" class="btn bg-gradient-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $i->issue_id }}" onclick="{{ route('issue.destroy', $i->issue_id) }}">
+                                        <button type="button" class="btn ripple btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $i->issue_id }}" onclick="{{ route('issue.destroy', $i->issue_id) }}">
                                             <i class="far fa-trash-alt"></i>
                                         </button>
                                         {{-- End of Delete Modal Trigger --}}
