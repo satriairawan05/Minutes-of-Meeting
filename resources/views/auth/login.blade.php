@@ -13,20 +13,33 @@
         <div class="column">
             <h1 class="bi-text-center">Login</h1>
             <p>After logging in, you can access Minutes of Meeting.</p>
-            <form>
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
                 <div class="form-item">
-                    <input type="text" class="form-element" placeholder="Username or Email">
+                    <input type="email" class="form-element @error('email') is-invalid @enderror" placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                    @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
                 <div class="form-item">
-                    <input type="password" class="form-element" placeholder="Password">
+                    <input type="password" class="form-element @error('password') is-invalid @enderror" placeholder="Password" name="password" required autocomplete="current-password">
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
                 <div class="form-checkbox-item">
-                    <input type="checkbox" id="rememberMe" checked>
+                    <input type="checkbox" id="rememberMe" name="remember" {{ old('remember') ? 'checked' : '' }}>
                     <label for="rememberMe">Remember Me</label>
                 </div>
                 <div class="flex">
-                    <a href="#">Reset your password now</a>
-                    <button type="button">Sign in</button>
+                    @if (Route::has('password.request'))
+                    <a href="{{ route('password.request') }}">Reset your password now</a>
+                    @endif
+                    <button type="submit">Sign in</button>
                 </div>
                 <p style="margin-top: 3rem; margin-bottom: 1.5rem;"></p>
             </form>
@@ -37,6 +50,6 @@
             <a href="#">Sign Up</a>
         </div>
     </div>
-    
+
 </body>
 </html>
