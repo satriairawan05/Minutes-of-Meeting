@@ -17,7 +17,7 @@
             <!-- End Page Header -->
             <div class="card">
                 <div class="card-header d-flex justify-content-end">
-                    <a type="button" class="btn ripple btn-success btn-icon" href="{{ route('daily.create') }}" data-toggle="tooltip" title="Add new data"> 
+                    <a type="button" class="btn ripple btn-success btn-icon" href="{{ route('daily.create') }}" data-toggle="tooltip" title="Add new data">
                         <i class="fe fe-plus"></i>
                     </a>
                 </div>
@@ -54,8 +54,9 @@
                                     <td>{!! $i->assignee !!}</td>
                                     {{-- start modal  --}}
                                     <td>
+
                                         {{-- Edit Modal Trigger --}}
-                                        <button type="button" onclick="window.location='{{ route('daily.edit', $i->daily_id) }}'" class="btn ripple btn-primary btn-sm" title="Edit Data">
+                                        <button type="button" onclick="window.location='{{ route('daily.edit', $i->daily_id) }}'" class="btn ripple btn-primary btn-sm" data-toggle="tooltip" title="Edit Data">
                                             <i class="fas fa-edit"></i>
                                         </button>
                                         {{-- End of Edit Modal Trigger --}}
@@ -64,7 +65,7 @@
                                         <form action="{{ route('daily.destroy', $i->daily_id) }}" method="post">
                                             @csrf
                                             @method('delete')
-                                            <button type="submit" class="btn ripple btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
+                                            <button type="submit" class="btn ripple btn-danger btn-sm" data-toggle="tooltip" title="Delete Data"><i class="fas fa-trash-alt"></i></button>
                                         </form>
                                         {{-- <button type="button" class="btn bg-gradient-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $i->daily_id }}" onclick="{{ route('daily.destroy', $i->daily_id) }}">
                                         <i class="far fa-trash-alt"></i>

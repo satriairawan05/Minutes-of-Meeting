@@ -51,18 +51,18 @@
                                     <td clas="d-inline">
                                         {{-- Show Modal Trigger --}}
                                         {{-- <button type="button" onclick="window.location='{{ route('user.show', $user->id) }}'" class="btn bg-gradient-warning" title="Show Data">
-                                            <i class="fas fa-binoculars"></i>
+                                        <i class="fas fa-binoculars"></i>
                                         </button> --}}
                                         {{-- End of Show Modal Trigger --}}
 
                                         {{-- Edit Modal Trigger --}}
-                                        <button type="button" onclick="window.location='{{ route('user.edit', $user->id) }}'" class="btn ripple btn-primary btn-sm" title="Edit Data">
+                                        <button type="button" onclick="window.location='{{ route('user.edit', $user->id) }}'" class="btn ripple btn-primary btn-sm" data-toggle="tooltip" title="Edit Data">
                                             <i class="fas fa-edit"></i>
                                         </button>
                                         {{-- End of Edit Modal Trigger --}}
 
                                         {{-- Delete Modal Trigger --}}
-                                        <button type="button" class="btn ripple btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $user->id }}" onclick="{{ route('user.destroy', $user->id) }}">
+                                        <button type="button" data-toggle="tooltip" title="Delete Data" class="btn ripple btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $user->id }}" onclick="{{ route('user.destroy', $user->id) }}">
                                             <i class="far fa-trash-alt"></i>
                                         </button>
                                         {{-- End of Delete Modal Trigger --}}

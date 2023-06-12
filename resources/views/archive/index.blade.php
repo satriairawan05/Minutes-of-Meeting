@@ -18,13 +18,13 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-end align-items-end">
                     {{-- <form action="{{ route('archive.issue.store',$issues->issue_id) }}" method="post">
-                        @csrf
-                        @foreach ($issues as $isu)
-                            <input type="hidden" name="issue_id" id="issue_id" value="{{ $isu->issue_id }}">
-                        @endforeach
-                        <button type="submit" id="submit" class="btn-data btn text-decoration-none text-black">
-                            <i class="fas fa-folder-plus"></i> Add Archive Issue
-                        </button>
+                    @csrf
+                    @foreach ($issues as $isu)
+                    <input type="hidden" name="issue_id" id="issue_id" value="{{ $isu->issue_id }}">
+                    @endforeach
+                    <button type="submit" id="submit" class="btn-data btn text-decoration-none text-black">
+                        <i class="fas fa-folder-plus"></i> Add Archive Issue
+                    </button>
                     </form> --}}
 
                 </div>
@@ -46,12 +46,12 @@
                                     {{-- start modal  --}}
                                     <td>
                                         {{-- Edit Modal Trigger --}}
-                                        <button type="button" onclick="window.location='{{ route('issue.edit', $a->archive_id) }}'" class="btn ripple btn-primary btn-sm" title="Edit Data">
+                                        <button type="button" onclick="window.location='{{ route('issue.edit', $a->archive_id) }}'" data-toggle="tooltip" class="btn ripple btn-primary btn-sm" title="Edit Data">
                                             <i class="fas fa-edit"></i>
                                         </button>
                                         {{-- End of Edit Modal Trigger --}}
                                         {{-- Delete Modal Trigger --}}
-                                        <button type="button" class="btn ripple btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $a->archive_id }}" onclick="{{ route('issue.destroy', $a->archive_id) }}">
+                                        <button type="button" class="btn ripple btn-danger btn-sm" data-toggle="tooltip" title="Delete Data" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $a->archive_id }}" onclick="{{ route('issue.destroy', $a->archive_id) }}">
                                             <i class="far fa-trash-alt"></i>
                                         </button>
                                         {{-- End of Delete Modal Trigger --}}
@@ -103,6 +103,7 @@
                         $(this).siblings('.expand-content').toggle();
                     });
                 });
+
             </script>
             <script>
                 $(document).ready(function() {
@@ -123,6 +124,7 @@
                         successAlert.style.display = 'none';
                     }, 5000);
                 });
+
             </script>
             @endif
         </div>
