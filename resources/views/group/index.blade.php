@@ -17,7 +17,7 @@
             </div>
             <!-- End Page Header -->
             <div class="card">
-                <div class="card-header d-flex justify-content-center">
+                <div class="card-header d-flex justify-content-end">
                     <a type="button" class="btn ripple btn-success btn-icon" href="{{ route('group.create') }}" data-toggle="tooltip" title="Add new data">
                         <i class="fe fe-plus"></i>
                     </a>
