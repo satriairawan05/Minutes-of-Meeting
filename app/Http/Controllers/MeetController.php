@@ -44,19 +44,21 @@ class MeetController extends Controller
     public function store(Request $request)
     {
         try {
-            $meet = new Meet;
-            $meet->meet_xid = $request->meet_xid;
-            $meet->meet_name = $request->meet_name;
-            $meet->meet_project = $request->meet_project;
-            $meet->meet_preparedby = $request->meet_preparedby;
-            $meet->meet_date = $request->meet_date;
-            $meet->meet_time = $request->meet_time;
-            $meet->meet_attend = implode(" ", $request->meet_attend);
-            $meet->meet_locate = $request->meet_locate;
-            $meet->save();
+            $validate = $request->validate([
+                'meet_xid' => ['required'],
+                'meet_name' => ['required'],
+                'meet_project' => ['required'],
+                'meet_date' => ['required'],
+                'meet_time' => ['required'],
+                'meet_attend' => ['required'],
+                'meet_preparedby' => ['required'],
+                'meet_locate' => ['required'],
+            ]);
 
-            return redirect('/meet')->with('success', 'Added Meet Successfully!');
-        } catch (QueryException $e) {
+            Meet::create($validate);
+
+            return redirect('/meet')->with('success','Added Meet Successfully!');
+        } catch (QueryException $e){
             return $e->getMessage();
         }
     }
@@ -89,18 +91,22 @@ class MeetController extends Controller
     public function update(Request $request, Meet $meet)
     {
         try {
-            $validate['meet_xid'] = $request->input('meet_xid');
-            $validate['meet_name'] = $request->input('meet_name');
-            $validate['meet_project'] = $request->input('meet_project');
-            $validate['meet_date'] = $request->input('meet_date');
-            $validate['meet_time'] = $request->input('meet_time');
-            $validate['meet_preparedby'] = $request->input('meet_preparedby');
-            $validate['meet_locate'] = $request->input('meet_locate');
-            $validate['meet_attend'] = implode(" ", $request->meet_attend);
+            $rules = [
+                'meet_xid' => ['required'],
+                'meet_name' => ['required'],
+                'meet_project' => ['required'],
+                'meet_date' => ['required'],
+                'meet_time' => ['required'],
+                'meet_attend' => ['required'],
+                'meet_preparedby' => ['required'],
+                'meet_locate' => ['required'],
+            ];
 
-            Meet::where('meet_id', $meet->meet_id)->update($validate);
+            $validate = $request->validate($rules);
 
-            return redirect('/meet')->with('success', 'Updated Meet Successfully!');
+            Meet::where('meet_id',$meet->meet_id)->update($validate);
+
+            return redirect('/meet')->with('success','Updated Meet Successfully!');
         } catch (QueryException $e) {
             return $e->getMessage();
         }

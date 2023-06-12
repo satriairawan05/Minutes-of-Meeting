@@ -64,9 +64,9 @@
                                         {{-- End of Show Modal Trigger --}}
 
                                         {{-- Edit Modal Trigger --}}
-                                        <button type="button" onclick="window.location='{{ route('issue.edit', $i->issue_id) }}'" class="btn ripple btn-primary btn-sm" title="Edit Data">
+                                        <a href="{{ route('issue.edit', $i->issue_id) }}" class="btn bg-gradient-info" title="Edit Data">
                                             <i class="fas fa-edit"></i>
-                                        </button>
+                                        </a>
                                         {{-- End of Edit Modal Trigger --}}
 
                                         {{-- Delete Modal Trigger --}}

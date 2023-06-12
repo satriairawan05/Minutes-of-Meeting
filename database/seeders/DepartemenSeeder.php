@@ -14,11 +14,7 @@ class DepartemenSeeder extends Seeder
     public function run(): void
     {
         Departemen::create([
-<<<<<<< Updated upstream
-            'name' => 'ENGINERING'
-=======
             'name' => 'ENGINEERING'
->>>>>>> Stashed changes
         ]);
 
         Departemen::create([
@@ -60,7 +56,5 @@ class DepartemenSeeder extends Seeder
         Departemen::create([
             'name' => 'OPERATION'
         ]);
-
     }
-
 }

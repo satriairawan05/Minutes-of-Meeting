@@ -62,6 +62,10 @@ class IssueController extends Controller
                 'end_date' => ['required'],
                 'assignee' => ['required']
             ]);
+            
+            if($request->input('c_action')) {
+                $validate['c_action'] == $request->c_action;
+            }
 
             if($request->input('c_action')){
                 $validate['c_action'] = $request->c_action;
@@ -135,6 +139,10 @@ class IssueController extends Controller
                 'end_date' => ['required'],
                 'assignee' => ['required']
             ]);
+            
+             if($request->input('c_action')) {
+                $validate['c_action'] == $request->c_action;
+            }
 
             if($request->input('c_action')){
                 $validate['c_action'] = $request->c_action;

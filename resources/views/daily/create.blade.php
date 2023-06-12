@@ -83,7 +83,7 @@
                         </div>
                         <div class="mb-3 col-13">
                             <label id="description_label" for="description_daily">Problem Identification</label>
-                            <textarea type="text" name="description_daily" id="description_daily" required value="{{ old('description_daily') }}" class="form-control @error('description') is-invalid @enderror" placeholder="Masukan Description"></textarea>
+                            <textarea type="text" name="description_daily" id="description_daily" value="{{ old('description_daily') }}" class="form-control @error('description') is-invalid @enderror" placeholder="Masukan Description"></textarea>
                             @error('description_daily')
                             <div class="invalid-feedback">
                                 {{ $message }}

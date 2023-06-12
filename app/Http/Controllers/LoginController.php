@@ -23,6 +23,7 @@ class LoginController extends Controller
             $request->session()->regenerate();
 
             return redirect()->intended();
+            return redirect()->route('dashboard');
         }
 
         return redirect()->route('login')->with('error', 'Email atau Password Anda salah');

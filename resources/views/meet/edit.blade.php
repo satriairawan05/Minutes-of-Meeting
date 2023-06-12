@@ -52,6 +52,9 @@
                                     <option name="meet_project" value="MEETING HO">MEETING HO</option>
                                     <option name="meet_project" value="MEETING TEAM 9">MEETING TEAM 9</option>
                                     <option name="meet_project" value="MEETING SITE">MEETING SITE</option>
+                                    <option name="meet_project" value="MEETING HO">MEETING HO</option>
+                                    <option name="meet_project" value="MEETING TEAM 9">MEETING TEAM 9</option>
+                                    <option name="meet_project" value="MEETING SITE">MEETING SITE</option>
                                 </select>
                                 @error('meet_project')
                                 <div class="invalid-feedback">
@@ -85,18 +88,12 @@
                         <div class="row mb-3">
                             <label for="meet_preparedby" class="col-sm-2 col-form-label">Notulen</label>
                             <div class="col-sm-10">
-                                <select id="meet_preparedby" class="form-select form-control form-control-sm " name="meet_preparedby">
-                                    @foreach ($users as $user)
-                                    @if (old('meet_preparedby',$meets->meet_preparedby) == $user->name)
-                                    <option name="meet_preparedby" value="{{ $user->name }}" selected>
-                                        {{ $user->name }}
-                                    </option>
-                                    @else
-                                    <option name="meet_preparedby" value="{{ $user->name }}">
-                                        {{ $user->name }}</option>
-                                    @endif
-                                    @endforeach
-                                </select>
+                                <input type="text" class="form-control form-control-sm @error('meet_preparedby') is-invalid @enderror" id="meet_preparedby" name="meet_preparedby" value="{{ old('meet_preparedby', $meet->meet_preparedby) }}" placeholder="Masukan Minutes Prepared By">
+                                @error('meet_preparedby')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -113,9 +110,9 @@
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="meet_attend">Attendees</label>
                             <div class="col-sm-10">
-                                <select id="meet_attend" name="meet_attend[]" class="form-select form-control form-control-sm select2-no-search multiple-selected" multiple>
+                                <select id="meet_attend" class="form-select form-control form-control-sm" name="meet_attend">
                                     @foreach ($users as $user)
-                                    @if (old('meet_attend',$meets->meet_attend) == $user->name)
+                                    @if (old('meet_attend') == $user->id)
                                     <option name="meet_attend" value="{{ $user->name }}" selected>
                                         {{ $user->name }}
                                     </option>
@@ -126,8 +123,10 @@
                                     @endforeach
                                 </select>
 
+
                             </div>
                         </div>
+
 
                         <div class="row mb-3">
                             <div class="col-12 d-flex justify-content-center align-items-center">
