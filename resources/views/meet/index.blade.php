@@ -19,11 +19,9 @@
             <div class="card ">
                 <div class="card">
                     <div class="card-header d-flex justify-content-end">
-                    @can('meet-create')
                         <a href="{{ route('meet.create') }}" class="btn-data btn text-decoration-none text-black">
                             <i class="fas fa-plus-circle"></i> Add New Data
                         </a>
-                    @endcan
                     </div>
                     <div class="card-body">
                         {{-- @if (session('success'))
@@ -35,7 +33,6 @@
                         <table id="exportexample" class="table table-bordered border-t0 key-buttons text-nowrap w-100">
                             <thead class="table-header">
                                 <tr>
-
                                     <th style="text-align: center;">No</th>
                                     <th style="text-align: center;" class="d-none d-sm-table-cell">ID</th>
                                     <th style="text-align: center;">Meeting Name</th>
@@ -47,16 +44,7 @@
                                     <th style="text-align: center;" class="d-none d-sm-table-cell">Attendees</th>
                                     <th style="text-align: center;">Actions</th>
                                 </tr>
-                                {{-- <th colspan="9">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="toggleColumns">
-                                            <label class="form-check-label" for="toggleColumns">
-                                                Toggle Columns
-                                            </label>
-                                        </div>
-                                    </th> --}}
                             </thead>
-
                             <tbody>
                                 @foreach ($meets as $d)
                                 <tr>
@@ -80,11 +68,9 @@
                                         {{-- End of Edit Modal Trigger --}}
 
                                         {{-- Delete Modal Trigger --}}
-                                        @if (App\Models\GroupPage::where('page_id', '=', 4)->orWhere('access', '=', 1)->get())
                                         <button type="button" class="btn ripple btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $d->meet_id }}">
                                             <i class="far fa-trash-alt"></i>
                                         </button>
-                                        @endif
                                         {{-- End of Delete Modal Trigger --}}
 
                                         {{-- Delete Modal --}}
@@ -160,4 +146,7 @@
             <!-- Row end -->
         </div>
         <!-- End Main Content-->
-        @endsection
+    </div>
+</div>
+</div>
+@endsection

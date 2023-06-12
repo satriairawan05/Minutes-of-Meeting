@@ -115,7 +115,6 @@ class DailyController extends Controller
                 'daily_xid' => 'required',
                 'departemen' => 'required',
                 'subject' => 'required',
-                'c_action' => 'required',
                 'description' => 'required',
                 'status' => 'required',
                 'assignee' => 'required',
@@ -125,6 +124,7 @@ class DailyController extends Controller
 
             $validate['file'] = $request->file('file') ? $request->file('file')->store('dailies') : null;
             $validate['is_private'] = $request->input('is_private') ? $request->is_private : 0;
+            $validate['c_action'] = $request->input('c_action');
 
             Daily::where('daily_id',$daily->daily_id)->update($validate);
             ArchiveDaily::where('arc_daily_id',$archiveDaily->arc_daily_id)->update($validate);
