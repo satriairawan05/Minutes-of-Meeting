@@ -123,13 +123,13 @@
                                     </td>
                                     <td>{!! $i->is_private == 1 ? "Yes" : "No" !!}</td>
                                     <td>
-                                        <a href="{{ route('resume.issue.edit',$i->issue_id) }}" class="btn ripple btn-primary btn-sm" title="Edit Data">
+                                        <a href="{{ route('resume.issue.edit',$i->issue_id) }}" class="btn ripple btn-primary btn-sm" data-toggle="tooltip" title="Edit Data">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         <form action="{{ route('resume.issue.delete',$i->issue_id) }}" method="post">
                                             @csrf
                                             @method('delete')
-                                            <button type="submit" class="btn ripple btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
+                                            <button type="submit" data-toggle="tooltip" title="Delete Data" class="btn ripple btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
                                         </form>
                                     </td>
                                 </tr>

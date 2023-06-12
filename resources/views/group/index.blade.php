@@ -18,7 +18,7 @@
             <!-- End Page Header -->
             <div class="card">
                 <div class="card-header d-flex justify-content-center">
-                    <a type="button" class="btn ripple btn-success btn-icon" href="{{ route('group.create') }}" data-toggle="tooltip" title="Add new data"> 
+                    <a type="button" class="btn ripple btn-success btn-icon" href="{{ route('group.create') }}" data-toggle="tooltip" title="Add new data">
                         <i class="fe fe-plus"></i>
                     </a>
                 </div>
@@ -28,7 +28,7 @@
                         {{ session('success') }}
                     </div>
                     @endif
-                     @if (session('failed'))
+                    @if (session('failed'))
                     <div id="failed-alert" class="alert alert-danger alert-dismissible fade show" role="alert">
                         {{ session('failed') }}
                     </div>
@@ -53,13 +53,13 @@
                                     <td>
 
                                         {{-- Edit Modal Trigger --}}
-                                        <button type="button" onclick="window.location='{{ route('group.edit', $group->group_id) }}'" class="btn ripple btn-primary btn-sm" title="Edit Data">
+                                        <button type="button" onclick="window.location='{{ route('group.edit', $group->group_id) }}'" data-toggle="tooltip" class="btn ripple btn-primary btn-sm" title="Edit Data">
                                             <i class="fas fa-edit"></i>
                                         </button>
                                         {{-- End of Edit Modal Trigger --}}
 
                                         {{-- Delete Modal Trigger --}}
-                                        <button type="button" class="btn ripple btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $group->group_id }}" onclick="{{ route('group.destroy',$group->group_id) }}">
+                                        <button type="button" class="btn ripple btn-danger btn-sm" data-toggle="tooltip" title="Delete Data" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $group->group_id }}" onclick="{{ route('group.destroy',$group->group_id) }}">
                                             <i class="far fa-trash-alt"></i>
                                         </button>
                                         {{-- End of Delete Modal Trigger --}}

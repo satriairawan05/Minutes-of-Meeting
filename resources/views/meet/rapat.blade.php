@@ -77,7 +77,7 @@
                                                     @if (App\Models\GroupPage::where('page_id', '=', 3)->orWhere('access', '=', 1)->get())
                                                         <button type="button"
                                                             onclick="window.location='{{ route('meet.edit', $d->meet_id) }}'"
-                                                            class="btn ripple btn-primary btn-sm" title="Edit Data">
+                                                            class="btn ripple btn-primary btn-sm"data-toggle="tooltip" title="Edit Data">
                                                             <i class="fas fa-edit"></i>
                                                         </button>
                                                     @endif
@@ -87,6 +87,8 @@
                                                     @if (App\Models\GroupPage::where('page_id', '=', 4)->orWhere('access', '=', 1)->get())
                                                         <button type="button" class="btn ripple btn-danger btn-sm"
                                                             data-bs-toggle="modal"
+                                                            data-toggle="tooltip"
+                                                            title="Delete Data"
                                                             data-bs-target="#deleteModal{{ $d->meet_id }}">
                                                             <i class="far fa-trash-alt"></i>
                                                         </button>

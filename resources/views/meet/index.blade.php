@@ -37,7 +37,7 @@
                             <thead class="table-header">
                                 <tr>
                     </div>
-                    @endif --}}
+                    {{-- @endif  --}}
                     <div class="table-responsive">
                         <table id="exportexample" class="table table-bordered border-t0 key-buttons text-nowrap w-100">
                             <thead class="table-header">
@@ -174,7 +174,7 @@
                                         {{-- End of Delete Modal --}}
                                     </td>
                                 </tr>
-                                @endforeach
+                                {{-- @endforeach --}}
                             </tbody>
                         </table>
                     </div>
