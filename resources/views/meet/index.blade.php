@@ -120,6 +120,30 @@
                         </table>
                     </div>
 
+<<<<<<< Updated upstream
+=======
+                            // Expandable Columns
+                            $('.expandable-column').on('click', function() {
+                                $(this).toggleClass('expanded');
+                                $(this).siblings('.expand-content').toggle();
+                            });
+                        });
+                    </script>
+                    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+                    @if ($message = Session::get('success'))
+                        <script>
+                            Toastify({
+                                text: "{{ $message }}",
+                                duration: 2000,
+                                style: {
+                                    background: "linear-gradient(to right, #00b09b, #96c93d)",
+                                }
+                            }).showToast();
+                        </script>
+                    @endif
+                    <!-- Row end -->
+>>>>>>> Stashed changes
                 </div>
             </div>
             <script>

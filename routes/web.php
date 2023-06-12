@@ -55,9 +55,16 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('daily',DailyController::class);
 
     Route::resource('group', GroupController::class);
-    Route::get('user/setting/create',[SettingController::class,'create'])->name('setting.create');
 
     Route::get('preference', function(){
         return view('pref.index');
     })->name('preference');
+});
+
+Route::middleware(['isSuperAdmin'])->group(function () {
+    Route::get('preference', function(){
+        return view('pref.index');
+    })->name('preference');
+
+    Route::resource('user',UserManagementController::class);
 });
