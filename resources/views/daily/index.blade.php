@@ -2,6 +2,9 @@
 
 @php
 $create = $pages[11]['access'] == 1;
+$read = $pages[10]['access'] == 1;
+$update = $pages[9]['access'] == 1;
+$delete = $pages[8]['access'] == 1;
 @endphp
 
 @section('content')
@@ -21,9 +24,11 @@ $create = $pages[11]['access'] == 1;
             <!-- End Page Header -->
             <div class="card">
                 <div class="card-header d-flex justify-content-end">
+                @if($create)
                     <a type="button" class="btn ripple btn-success btn-icon" href="{{ route('daily.create') }}" data-toggle="tooltip" title="Add new data">
                         <i class="fe fe-plus"></i>
                     </a>
+                @endif
                 </div>
                 <div class="card-body">
                     <div class="table table-filter">
