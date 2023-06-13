@@ -96,7 +96,7 @@
                                     <th>Priority</th>
                                     <th>Start Date</th>
                                     <th>End Date</th>
-                                    <th>Asiggnee</th>
+                                    <th>PIC</th>
                                     <th>File</th>
                                     <th>Private</th>
                                     <th>Action</th>
@@ -112,8 +112,24 @@
                                     <td>{!! $i->subject !!}</td>
                                     <td>{!! $i->c_action !!}</td>
                                     <td>{!! $i->description !!}</td>
-                                    <td>{!! $i->status !!}</td>
-                                    <td>{!! $i->priority !!}</td>
+                                    @if($i->status == "New")
+                                    <td><span class="badge badge-primary-light">{!! $i->status !!}</span></td>
+                                    @elseif ($i->status == "Continue")
+                                    <td><span class="badge badge-info-light">{!! $i->status !!}</span></td>
+                                    @elseif($i->status == "Over Due")
+                                    <td><span class="badge badge-danger-light">{!! $i->status !!}</span></td>
+                                    @elseif ($i->status == "Complete")
+                                    <td><span class="badge badge-success">{!! $i->status !!}</span></td>
+                                    @else
+                                    <td><span class="badge badge-primary">{!! $i->status !!}</span></td>
+                                    @endif
+                                    @if ($i->priority == "Low")
+                                    <td><span class="badge badge-success">{!! $i->priority !!}</span></td>
+                                    @elseif ($i->priority == "Medium")
+                                    <td><span class="badge badge-warning">{!! $i->priority !!}</span></td>
+                                    @else
+                                    <td><span class="badge badge-danger">{!! $i->priority !!}</span></td>
+                                    @endif
                                     <td>{!! \Carbon\Carbon::parse($i->start_date)->format('l, d M Y') !!}</td>
                                     <td>{!! \Carbon\Carbon::parse($i->end_date)->format('l, d M Y') !!}</td>
                                     <td>{!! $i->assignee !!}</td>

@@ -1,5 +1,5 @@
 @extends('layout.main')
-{{-- @dd($archives) --}}
+
 @section('content')
 <div class="main-content side-content pt-0">
     <div class="container-fluid">
@@ -50,7 +50,7 @@
                                     <td>{!! $a->meet_xid !!}</td>
                                     <td>{!! $a->meet_name !!}</td>
                                     <td>
-                                        {{ \Carbon\Carbon::parse($a->meet_date)->format('l, d M Y') }}</td>
+                                        {{ \Carbon\Carbon::parse($a->meet_date)->format('d-m-Y') }}</td>
                                     <td>
                                         {{ \Carbon\Carbon::parse($a->meet_time)->format('H:i') }}</td>
                                     <td>{{ $a->meet_preparedby }}</td>
@@ -97,6 +97,7 @@
                     {{-- End of Delete Modal --}}
                     {{-- </td> --}}
                     </tr>
+                    {{-- penutup div nya sesuai kh? --}}
                     @endforeach
                     </tbody>
                     </table>
