@@ -87,21 +87,21 @@ class GroupController extends Controller
     {
         // return dd($request->all());
         try {
-            $update = $this->validate($request, [
+            $validatedData = $request->validate( [
                 'group_name' => 'required'
             ]);
-            Group::where('group_id', $group->group_id)->update($update);
+
+            // Update group name
+            Group::where('group_id', $group->group_id)->update($validatedData);
+            
+            // Update group page access
             $pages = Page::all();
             foreach ($pages as $page) {
-                $access = $request->input($page->page_name . $page->action) == "on" ? 1 : 0;
-                $groupPage = GroupPage::where([
-                    'group_id' => $group->group_id,
-                    'page_id' => $page->page_id
-                ]);
-                $groupPage->update([
-                    'access' => $access
-                ]);
+                $groupPage->where('group_id', $group->group_id)
+                    ->where('page_id', $page->page_id)
+                    ->update(['access' => $request->input($page->page_name . $page->action) == "on" ? 1 : 0]);
             }
+
             return redirect('group')->with('success', 'Updated Roles Successfully!');
         } catch (QueryException $e) {
             return $e->getMessage();

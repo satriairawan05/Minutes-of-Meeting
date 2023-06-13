@@ -80,9 +80,11 @@ $delete = $pages[0]['access'] == 1;
 
                                         {{-- Delete Modal Trigger --}}
                                         @if($delete)
-                                        <button type="button" data-toggle="tooltip" title="Delete Data" class="btn ripple btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $user->id }}" onclick="{{ route('user.destroy', $user->id) }}">
-                                            <i class="far fa-trash-alt"></i>
-                                        </button>
+                                        <form action="{{ route('user.destroy', $user->id) }}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn ripple btn-danger btn-sm d-inline-block" data-toggle="tooltip" title="Delete Data"><i class="fas fa-trash-alt"></i></button>
+                                        </form>
                                         @endif
                                         {{-- End of Delete Modal Trigger --}}
 

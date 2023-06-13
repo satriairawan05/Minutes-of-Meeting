@@ -53,15 +53,19 @@
                                     <td>
 
                                         {{-- Edit Modal Trigger --}}
-                                        <button type="button" onclick="window.location='{{ route('group.edit', $group->group_id) }}'" data-toggle="tooltip" class="btn ripple btn-primary btn-sm" title="Edit Data">
+                                        <a href="{{ route('group.edit', $group->group_id) }}" data-toggle="tooltip" class="btn ripple btn-primary btn-sm" title="Edit Data">
                                             <i class="fas fa-edit"></i>
-                                        </button>
+                                        </a>
                                         {{-- End of Edit Modal Trigger --}}
 
                                         {{-- Delete Modal Trigger --}}
-                                        <button type="button" class="btn ripple btn-danger btn-sm" data-toggle="tooltip" title="Delete Data" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $group->group_id }}" onclick="{{ route('group.destroy',$group->group_id) }}">
+                                        <form action="{{ route('group.destroy',$group->group_id) }}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn ripple btn-danger btn-sm" data-toggle="tooltip" title="Delete Data" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $group->group_id }}" onclick="{{ route('group.destroy',$group->group_id) }}">
                                             <i class="far fa-trash-alt"></i>
                                         </button>
+                                        </form>
                                         {{-- End of Delete Modal Trigger --}}
 
                                         {{-- Delete Modal --}}

@@ -14,6 +14,12 @@ $readIssue = $pages[14]['access'] == 1;
 $readDaily = $pages[10]['access'] == 1;
 $readArchive = $pages[6]['access'] == 1;
 $readUser = $pages[2]['access'] == 1;
+
+$Meet = $pages[18]['page_name'];
+$Issue = $pages[14]['page_name'];
+$Daily = $pages[10]['page_name'];
+$Archive = $pages[6]['page_name'];
+$User = $pages[2]['page_name'];
 @endphp
 
 <div class="main-sidebar main-sidebar-sticky side-menu bg-primary-transparent">
@@ -42,7 +48,7 @@ $readUser = $pages[2]['access'] == 1;
                     <span class="shape1"></span>
                     <span class="shape2"></span>
                     <i class="fa fa-calendar-minus-o sidemenu-icon"></i>
-                    <span class="sidemenu-label">Meeting</span>
+                    <span class="sidemenu-label">{{ $Meet }}</span>
                 </a>
             </li>
             @endif
@@ -52,7 +58,7 @@ $readUser = $pages[2]['access'] == 1;
                     <span class="shape1"></span>
                     <span class="shape2"></span>
                     <i class="fas fa-newspaper sidemenu-icon"></i>
-                    <span class="sidemenu-label">Issue</span>
+                    <span class="sidemenu-label">{{ $Issue }}</span>
                 </a>
             </li>
             @endif
@@ -62,7 +68,7 @@ $readUser = $pages[2]['access'] == 1;
                     <span class="shape1"></span>
                     <span class="shape2"></span>
                     <i class="fas fa-exclamation-circle sidemenu-icon"></i>
-                    <span class="sidemenu-label">DWM Report</span>
+                    <span class="sidemenu-label">{{ str_replace('_',' ', $Daily) }}</span>
                 </a>
             </li>
             @endif
@@ -72,7 +78,7 @@ $readUser = $pages[2]['access'] == 1;
                     <span class="shape1"></span>
                     <span class="shape2"></span>
                     <i class="ti-archive sidemenu-icon"></i>
-                    <span class="sidemenu-label">Archieve</span>
+                    <span class="sidemenu-label">{{ $Archive }}</span>
                 </a>
             </li>
             @endif
@@ -82,7 +88,7 @@ $readUser = $pages[2]['access'] == 1;
                     <span class="shape1"></span>
                     <span class="shape2"></span>
                     <i class="fe fe-users sidemenu-icon"></i>
-                    <span class="sidemenu-label">User</span>
+                    <span class="sidemenu-label">{{ $User }}</span>
                 </a>
             </li>
             @endif
