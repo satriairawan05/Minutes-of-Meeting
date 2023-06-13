@@ -61,7 +61,7 @@ $delete = $pages[16]['access'] == 1;
                                     <td style="text-align: center;">{{ $d->meet_name }}</td>
                                     <td style="text-align: center;">{{ $d->meet_project }}</td>
                                     <td style="text-align: center;">
-                                        {{ \Carbon\Carbon::parse($d->meet_date)->format('l, d M Y') }}</td>
+                                        {{ \Carbon\Carbon::parse($d->meet_date)->format('d-m-Y') }}</td>
                                     <td style="text-align: center;">
                                         {{ \Carbon\Carbon::parse($d->meet_time)->format('H:i') }}</td>
                                     <td style="text-align: center;">{{ $d->meet_preparedby }}</td>
