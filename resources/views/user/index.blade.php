@@ -114,7 +114,7 @@ $delete = $pages[0]['access'] == 1;
                                             </div>
                                         </div>
                                         {{-- End of Delete Modal --}}
-                                    @if($update || $delete)
+                                        @if($update || $delete)
                                     </td>
                                     @endif
                                 </tr>
@@ -146,15 +146,20 @@ $delete = $pages[0]['access'] == 1;
             });
 
         </script>
-        @if (session('success'))
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+        @if ($message = Session::get('success'))
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                var successAlert = document.getElementById('success-alert');
-                successAlert.style.display = 'block';
-                setTimeout(function() {
-                    successAlert.style.display = 'none';
-                }, 5000); // Adjust the timeout value (in milliseconds) as needed
-            });
+            Toastify({
+                text: "{{ $message }}"
+                , duration: 3000
+                , close: true, // Include close button
+                gravity: "bottom", // Set gravity to "bottom"
+                position: "right", // Set position to "right"
+                style: {
+                    background: "linear-gradient(to right, #11998E, #38ef7d)"
+                }
+            }).showToast();
 
         </script>
         @endif
