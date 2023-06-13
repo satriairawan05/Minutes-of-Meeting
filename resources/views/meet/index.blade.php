@@ -124,7 +124,7 @@ $delete = $pages[16]['access'] == 1;
         gravity: "bottom", // Set gravity to "bottom"
         position: "right", // Set position to "right"
         style: {
-            background: "linear-gradient(to right, #38ef7d, #38ef7d)"
+            background: "linear-gradient(to right, #11998E, #38ef7d)"
         }
     }).showToast();
 

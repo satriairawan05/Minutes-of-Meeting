@@ -142,6 +142,23 @@
                 });
 
             </script>
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+            @if ($message = Session::get('success'))
+            <script>
+                Toastify({
+                    text: "{{ $message }}"
+                    , duration: 3000
+                    , close: true, // Include close button
+                    gravity: "bottom", // Set gravity to "bottom"
+                    position: "right", // Set position to "right"
+                    style: {
+                        background: "linear-gradient(to right, #11998E, #38ef7d)"
+                    }
+                }).showToast();
+
+            </script>
+            @endif
             <!-- Row end -->
         </div>
     </div>

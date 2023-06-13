@@ -9,7 +9,7 @@ $delete = $pages[8]['access'] == 1;
 $departemens = App\Models\Departemen::get();
 
 if(isset($_GET['departemen'])){
-    $daily = App\Models\Daily::select('*')->distinct('departemen')->where('departemen','=',$_GET['departemen'])->get();
+$daily = App\Models\Daily::select('*')->distinct('departemen')->where('departemen','=',$_GET['departemen'])->get();
 }
 @endphp
 
@@ -29,23 +29,23 @@ if(isset($_GET['departemen'])){
             </div>
             <!-- End Page Header -->
             <div class="card">
-                <div class="card-header d-flex justify-content-end">
-                @if($create)
+                {{-- <div class="card-header d-flex justify-content-end">
+                    @if($create)
                     <a type="button" class="btn ripple btn-success btn-icon" href="{{ route('daily.create') }}" data-toggle="tooltip" title="Add new data">
                         <i class="fe fe-plus"></i>
                     </a>
-                @endif
-                </div>
+                    @endif
+                </div> --}}
                 <div class="card-body">
                     <div class="table table-filter">
-                    @foreach ($departemens as $i)
-                    @if (isset($_GET['departemen']))
+                        @foreach ($departemens as $i)
+                        @if (isset($_GET['departemen']))
                         <a href="?departemen={{ strtolower($i->name) }}" style="display: none;" class="list-group list-group-item list-group-item-action">DEPARTEMEN {{ $i->name }}</a>
-                    @else
+                        @else
                         <a href="?departemen={{ strtolower($i->name) }}" class="list-group list-group-item list-group-item-action">DEPARTEMEN {{ $i->name }}</a>
-                    @endif
-                    @endforeach
-                    @if(isset($_GET['departemen']))
+                        @endif
+                        @endforeach
+                        @if(isset($_GET['departemen']))
                         <table id="exportexample" class="table table-bordered border-t0 key-buttons text-nowrap w-100">
                             <thead class="table-header text-center">
                                 <tr>
@@ -132,10 +132,10 @@ if(isset($_GET['departemen'])){
                                 @endforeach
                             </tbody>
                         </table>
-                    @endif
+                        @endif
                         {{-- <table id="exportexample" class="table table-bordered border-t0 key-buttons text-nowrap w-100"> --}}
-                            {{-- <thead class="table-header text-center"> --}}
-                                {{-- <tr>
+                        {{-- <thead class="table-header text-center"> --}}
+                        {{-- <tr>
                                     <th>No</th>
                                     <th>Daily ID</th>
                                     <th>Departemen</th>
@@ -148,90 +148,95 @@ if(isset($_GET['departemen'])){
                                     <th>Asiggnee</th>
                                     <th width="100px">Action</th>
                                 </tr> --}}
-                            {{-- </thead> --}}
-                            {{-- <tbody class="text-center"> --}}
-                                {{-- @foreach ($dailies as $i) --}}
-                                {{-- <tr> --}}
-                                    {{-- <td>{{ $loop->iteration }}</td>
-                                    <td><a href="{{ route('daily.show',$i->daily_id) }}" class="text-decoration-none">{!! $i->daily_xid !!}</a></td>
-                                    <td>{!! $i->departemen !!}</td>
-                                    <td>{!! $i->subject !!}</td>
-                                    <td>{!! $i->c_action !!}</td>
-                                    <td>{!! $i->description_daily !!}</td>
-                                    <td>{!! $i->status !!}</td>
-                                    <td>{!! \Carbon\Carbon::parse($i->start_date)->format('l, d M Y') !!}</td>
-                                    <td>{!! \Carbon\Carbon::parse($i->end_date)->format('l, d M Y') !!}</td>
-                                    <td>{!! $i->assignee !!}</td> --}}
-                                    {{-- start modal  --}}
-                                    {{-- <td> --}}
+                        {{-- </thead> --}}
+                        {{-- <tbody class="text-center"> --}}
+                        {{-- @foreach ($dailies as $i) --}}
+                        {{-- <tr> --}}
+                        {{-- <td>{{ $loop->iteration }}</td>
+                        <td><a href="{{ route('daily.show',$i->daily_id) }}" class="text-decoration-none">{!! $i->daily_xid !!}</a></td>
+                        <td>{!! $i->departemen !!}</td>
+                        <td>{!! $i->subject !!}</td>
+                        <td>{!! $i->c_action !!}</td>
+                        <td>{!! $i->description_daily !!}</td>
+                        <td>{!! $i->status !!}</td>
+                        <td>{!! \Carbon\Carbon::parse($i->start_date)->format('l, d M Y') !!}</td>
+                        <td>{!! \Carbon\Carbon::parse($i->end_date)->format('l, d M Y') !!}</td>
+                        <td>{!! $i->assignee !!}</td> --}}
+                        {{-- start modal  --}}
+                        {{-- <td> --}}
 
-                                        {{-- Edit Modal Trigger --}}
-                                        {{-- <button type="button" onclick="window.location='{{ route('daily.edit', $i->daily_id) }}'" class="btn ripple btn-primary btn-sm" data-toggle="tooltip" title="Edit Data">
-                                            <i class="fas fa-edit"></i>
-                                        </button> --}}
-                                        {{-- End of Edit Modal Trigger --}}
+                        {{-- Edit Modal Trigger --}}
+                        {{-- <button type="button" onclick="window.location='{{ route('daily.edit', $i->daily_id) }}'" class="btn ripple btn-primary btn-sm" data-toggle="tooltip" title="Edit Data">
+                        <i class="fas fa-edit"></i>
+                        </button> --}}
+                        {{-- End of Edit Modal Trigger --}}
 
-                                        {{-- Delete Modal Trigger --}}
-                                        {{-- <form action="{{ route('daily.destroy', $i->daily_id) }}" method="post">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="btn ripple btn-danger btn-sm" data-toggle="tooltip" title="Delete Data"><i class="fas fa-trash-alt"></i></button>
-                                        </form> --}}
-                                        {{-- <button type="button" class="btn bg-gradient-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $i->daily_id }}" onclick="{{ route('daily.destroy', $i->daily_id) }}">
-                                        <i class="far fa-trash-alt"></i>
-                                        </button> --}}
-                                        {{-- End of Delete Modal Trigger --}}
+                        {{-- Delete Modal Trigger --}}
+                        {{-- <form action="{{ route('daily.destroy', $i->daily_id) }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn ripple btn-danger btn-sm" data-toggle="tooltip" title="Delete Data"><i class="fas fa-trash-alt"></i></button>
+                        </form> --}}
+                        {{-- <button type="button" class="btn bg-gradient-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $i->daily_id }}" onclick="{{ route('daily.destroy', $i->daily_id) }}">
+                        <i class="far fa-trash-alt"></i>
+                        </button> --}}
+                        {{-- End of Delete Modal Trigger --}}
 
-                                        {{-- Delete Modal --}}
-                                        {{-- <div class="modal fade" id="deleteModal{{ $i->daily_id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $i->daily_id }}" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="deleteModalLabel{{ $i->daily_id }}">Delete
-                                                            Data</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        Apakah anda yakin?
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <form method="POST" action="{{ route('daily.destroy', $i->daily_id) }}">
-                                                            @csrf
-                                                            <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                        {{-- Delete Modal --}}
+                        {{-- <div class="modal fade" id="deleteModal{{ $i->daily_id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $i->daily_id }}" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteModalLabel{{ $i->daily_id }}">Delete
+                                        Data</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Apakah anda yakin?
+                                </div>
+                                <div class="modal-footer">
+                                    <form method="POST" action="{{ route('daily.destroy', $i->daily_id) }}">
+                                        @csrf
+                                        <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
 
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn bg-gradient-danger" data-bs-dismiss="modal">Delete</button>
-                                                            </button>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> --}}
-                                        {{-- End of Delete Modal --}}
-                                    {{-- </td> --}}
-                                {{-- </tr> --}}
-                                {{-- @endforeach --}}
-                            {{-- </tbody> --}}
-                        {{-- </table> --}}
-                    </div>
+                                        @method('DELETE')
+                                        <button type="submit" class="btn bg-gradient-danger" data-bs-dismiss="modal">Delete</button>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div> --}}
+                    {{-- End of Delete Modal --}}
+                    {{-- </td> --}}
+                    {{-- </tr> --}}
+                    {{-- @endforeach --}}
+                    {{-- </tbody> --}}
+                    {{-- </table> --}}
                 </div>
             </div>
-            @if (session('success'))
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    var successAlert = document.getElementById('success-alert');
-                    successAlert.style.display = 'block';
-                    setTimeout(function() {
-                        successAlert.style.display = 'none';
-                    }, 5000); // Adjust the timeout value (in milliseconds) as needed
-                });
-
-            </script>
-            @endif
         </div>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+        @if ($message = Session::get('success'))
+        <script>
+            Toastify({
+                text: "{{ $message }}"
+                , duration: 3000
+                , close: true, // Include close button
+                gravity: "bottom", // Set gravity to "bottom"
+                position: "right", // Set position to "right"
+                style: {
+                    background: "linear-gradient(to right, #11998E, #38ef7d)"
+                }
+            }).showToast();
+
+        </script>
+        @endif
     </div>
+</div>
 </div>
 <!-- End Main Content-->
 @endsection
