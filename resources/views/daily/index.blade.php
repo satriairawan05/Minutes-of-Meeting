@@ -29,13 +29,13 @@ $daily = App\Models\Daily::select('*')->distinct('departemen')->where('departeme
             </div>
             <!-- End Page Header -->
             <div class="card">
-                {{-- <div class="card-header d-flex justify-content-end">
+                <div class="card-header d-flex justify-content-end">
                     @if($create)
                     <a type="button" class="btn ripple btn-success btn-icon" href="{{ route('daily.create') }}" data-toggle="tooltip" title="Add new data">
                         <i class="fe fe-plus"></i>
                     </a>
                     @endif
-                </div> --}}
+                </div>
                 <div class="card-body">
                     <div class="table table-filter">
                         @foreach ($departemens as $i)
@@ -58,7 +58,7 @@ $daily = App\Models\Daily::select('*')->distinct('departemen')->where('departeme
                                     <th>Status</th>
                                     <th>Start Date</th>
                                     <th>End Date</th>
-                                    <th>Due Date</th>
+                                    <th>Days (+/-)</th>
                                     <th>PIC</th>
                                     <th>Action</th>
                                 </tr>
@@ -83,17 +83,21 @@ $daily = App\Models\Daily::select('*')->distinct('departemen')->where('departeme
                                     <td>{!! $i->assignee !!}</td>
                                     <td class="d-inline-block">
                                         {{-- Edit Modal Trigger --}}
+                                        @if($edit)
                                         <a href="{{ route('daily.edit',$i->daily_id) }}" class="btn ripple btn-primary btn-sm d-inline-clock" title="Edit Data">
                                             <i class="fas fa-edit"></i>
                                         </a>
+                                        @endif
                                         {{-- End of Edit Modal Trigger --}}
 
                                         {{-- Delete Modal Trigger --}}
+                                        @if($delete)
                                         <form action="{{ route('daily.destroy', $i->daily_id) }}" method="post">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn ripple btn-danger btn-sm d-inline-block" data-toggle="tooltip" title="Delete Data"><i class="fas fa-trash-alt"></i></button>
                                         </form>
+                                        @endif
                                         {{-- <button type="button" class="btn bg-gradient-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $i->daily_id }}" onclick="{{ route('daily.destroy', $i->daily_id) }}">
                                         <i class="far fa-trash-alt"></i>
                                         </button> --}}
