@@ -155,7 +155,7 @@
 
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <label id="assignee_label" for="assignee">Assignee</label>
+                                <label id="assignee_label" for="assignee">PIC</label>
                                 <select class="form-select form-control form-control-sm" id="assignee" name="assignee">
                                     @foreach ($users as $user)
                                     @if (old('assignee') == $user->name)
@@ -233,7 +233,7 @@
     const newFile = document.getElementById('file');
 
     newFile.addEventListener('change', function(e) {
-        oldFile.style.display = 'none';
+        oldFile.classList.add("d-none");
     });
 
     const showPreview = (objFileInput) => {

@@ -1,5 +1,12 @@
 @extends('layout.main')
 
+@php
+$create = $pages[3]['access'] == 1;
+$read = $pages[2]['access'] == 1;
+$update = $pages[1]['access'] == 1;
+$delete = $pages[0]['access'] == 1;
+@endphp
+
 @section('content')
 <div class="main-content side-content pt-0">
     <div class="container-fluid">
@@ -18,9 +25,11 @@
 
             <div class="card">
                 <div class="card-header d-flex justify-content-end align-items-end">
+                    @if($create)
                     <a type="button" class="btn ripple btn-success btn-icon" href="{{ route('user.create') }}" data-toggle="tooltip" title="Add new data">
                         <i class="fe fe-plus"></i>
                     </a>
+                    @endif
                 </div>
                 <div class="card-body">
                     @if (session('success'))
@@ -38,17 +47,23 @@
                                     <th scope="col">Name</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Roles</th>
+                                    @if($update || $delete)
                                     <th scope="col">Action</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody class="text-center">
                                 @foreach ($users as $user)
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
+                                    @if($read)
                                     <td>{!! $user->name !!}</td>
                                     <td>{!! $user->email !!}</td>
                                     <td>{!! $user->group_name !!}</td>
+                                    @endif
+                                    @if($update || $delete)
                                     <td clas="d-inline">
+                                        @endif
                                         {{-- Show Modal Trigger --}}
                                         {{-- <button type="button" onclick="window.location='{{ route('user.show', $user->id) }}'" class="btn bg-gradient-warning" title="Show Data">
                                         <i class="fas fa-binoculars"></i>
@@ -56,15 +71,19 @@
                                         {{-- End of Show Modal Trigger --}}
 
                                         {{-- Edit Modal Trigger --}}
+                                        @if($update)
                                         <button type="button" onclick="window.location='{{ route('user.edit', $user->id) }}'" class="btn ripple btn-primary btn-sm" data-toggle="tooltip" title="Edit Data">
                                             <i class="fas fa-edit"></i>
                                         </button>
+                                        @endif
                                         {{-- End of Edit Modal Trigger --}}
 
                                         {{-- Delete Modal Trigger --}}
+                                        @if($delete)
                                         <button type="button" data-toggle="tooltip" title="Delete Data" class="btn ripple btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $user->id }}" onclick="{{ route('user.destroy', $user->id) }}">
                                             <i class="far fa-trash-alt"></i>
                                         </button>
+                                        @endif
                                         {{-- End of Delete Modal Trigger --}}
 
                                         {{-- Delete Modal --}}
@@ -95,7 +114,9 @@
                                             </div>
                                         </div>
                                         {{-- End of Delete Modal --}}
+                                    @if($update || $delete)
                                     </td>
+                                    @endif
                                 </tr>
                                 @endforeach
                             </tbody>

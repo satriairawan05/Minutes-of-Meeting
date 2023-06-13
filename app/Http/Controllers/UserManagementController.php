@@ -15,15 +15,24 @@ class UserManagementController extends Controller
      */
     public function index()
     {
+        $pages = User::leftJoin('group_pages', 'users.group_id', '=', 'group_pages.group_id')
+        ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
+        ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
+        ->whereBetween('pages.page_id',[17,20])
+        ->orWhere('pages.page_name', 'User')
+        ->orWhere('group_pages.access', 1)
+        ->get();
 
         if(auth()->user()->name == 'Super Admin')
         {
             return view('user.index', [
-                'users' => User::leftJoin('groups','groups.group_id','=','users.group_id')->paginate(15)
+                'users' => User::leftJoin('groups','groups.group_id','=','users.group_id')->paginate(15),
+                'pages' => $pages
             ]);
         } else {
             return view('user.index',[
-                'users' => User::where('name','=',auth()->user()->name)->leftJoin('groups','groups.group_id','=','users.group_id')->get()
+                'users' => User::where('name','=',auth()->user()->name)->leftJoin('groups','groups.group_id','=','users.group_id')->get(),
+                'pages' => $pages
             ]);
         }
     }

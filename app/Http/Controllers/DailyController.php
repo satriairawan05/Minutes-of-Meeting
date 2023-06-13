@@ -25,10 +25,8 @@ class DailyController extends Controller
         ->orWhere('group_pages.access', 1)
         ->get();
 
-        $departemen = Departemen::select('name')->get();
-
         return view('daily.index', [
-            'dailies' => Daily::distinct('departemen')->get(),
+            'dailies' => Daily::distinct('departemen')->get('departemen'),
             'pages' => $pages
         ]);
     }
@@ -98,6 +96,13 @@ class DailyController extends Controller
      */
     public function show(Daily $daily)
     {
+        return view('daily.show',[
+            'daily' => Daily::where('departemen',$daily->departemen)->get()
+        ]);
+    }
+
+    public function document(Daily $daily)
+    {
         return view('daily.document',[
             'daily' => $daily
         ]);
@@ -156,7 +161,7 @@ class DailyController extends Controller
 
             $daily->file ? Storage::delete([$daily->file]) : Daily::destroy($daily->daily_id);
 
-            return redirect('/daily')->with('success', 'Deleted Daily Successfully!');
+            return redirect()->route('/daily',)->with('success', 'Deleted Daily Successfully!');
         } catch (QueryException $e) {
             return $e->getMessage();
         }

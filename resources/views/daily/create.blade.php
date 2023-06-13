@@ -102,7 +102,7 @@
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label id="start_date_label" for="start_date">Start Date</label>
-                                <input id="start_date" name="start_date" type="date" class="form-control @error('start_date') is_invalid @enderror" required value="{{ old('start_date') }}" />
+                                <input id="start_date" name="start_date" type="date" class="form-control @error('start_date') is_invalid @enderror" required value="{{ old('start_date') }}" placeholder="dd/mm/yyyy" />
                                 @error('start_date')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -111,7 +111,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label id="end_date_label" for="end_date">End Date</label>
-                                <input id="end_date" name="end_date" type="date" class="form-control @error('end_date') is_invalid @enderror" required value="{{ old('end_date') }}" />
+                                <input id="end_date" name="end_date" type="date" class="form-control @error('end_date') is_invalid @enderror" required value="{{ old('end_date') }}" placeholder="dd/mm/yyyy" />
                                 @error('end_date')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -120,7 +120,7 @@
                             </div>
                             <div class="row mb-3">
                                 <div class="col-md-6">
-                                    <label id="assignee_label" for="assignee">Assignee</label>
+                                    <label id="assignee_label" for="assignee">PIC</label>
                                     <select class="form-select form-control form-control-sm" id="assignee" name="assignee">
                                         @foreach ($users as $user)
                                         @if (old('assignee') == $user->name)

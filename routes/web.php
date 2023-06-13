@@ -8,9 +8,7 @@ use App\Http\Controllers\IssueController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\ArchiveController;
-use App\Http\Controllers\SettingController;
 use App\Http\Controllers\DepartemenController;
-use App\Http\Controllers\ArchiveIssueController;
 use App\Http\Controllers\UserManagementController;
 
 /*
@@ -53,6 +51,7 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('resume/{issue}',[ResumeController::class, 'destroy'])->name('resume.issue.delete');
 
     Route::resource('daily',DailyController::class);
+    Route::get('daily/{daily}/document',[DailyController::class, 'document'])->name('daily.document');
 
     Route::resource('group', GroupController::class);
 
