@@ -22,7 +22,7 @@
                         <i class="fe fe-plus"></i>
                     </a>
                 </div>
-                <div class="card-body">
+                <div class="card-body bg-transparent">
                     @if (session('success'))
                     <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
                         {{ session('success') }}

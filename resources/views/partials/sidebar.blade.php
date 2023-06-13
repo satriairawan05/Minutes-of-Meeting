@@ -16,7 +16,7 @@ $readArchive = $pages[6]['access'] == 1;
 $readUser = $pages[2]['access'] == 1;
 @endphp
 
-<div class="main-sidebar main-sidebar-sticky side-menu">
+<div class="main-sidebar main-sidebar-sticky side-menu bg-primary-transparent">
     <div class="sidemenu-logo">
         <a class="main-logo" href="/">
             <img src="{{ asset('assets/img/brand/logo.ico') }}" class="header-brand-img desktop-logo" alt="logo">
@@ -26,7 +26,7 @@ $readUser = $pages[2]['access'] == 1;
         </a>
     </div>
     <br><br>
-    <div class="main-sidebar-body">
+    <div class="main-sidebar-body bg-transparent">
         <ul class="nav">
             <li class="nav-item">
                 <a class="nav-link {{ request()->is('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">

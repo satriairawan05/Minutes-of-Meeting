@@ -36,7 +36,7 @@ $daily = App\Models\Daily::select('*')->distinct('departemen')->where('departeme
                     </a>
                     @endif
                 </div>
-                <div class="card-body">
+                <div class="card-body bg-transparent">
                     <div class="table table-filter">
                         @foreach ($departemens as $i)
                         @if (isset($_GET['departemen']))

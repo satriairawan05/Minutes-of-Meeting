@@ -16,7 +16,7 @@
             </div>
             <!-- End Page Header -->
             <div class="card">
-                <div class="card-body">
+                <div class="card-body bg-transparent">
                     <form action="{{ route('group.store') }}" method="post">
                         @csrf
                         <div class="col-12 mb-3">

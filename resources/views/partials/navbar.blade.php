@@ -1,5 +1,5 @@
         <!-- Main Header-->
-        <div class="main-header side-header sticky">
+        <div class="main-header side-header sticky bg-transparent">
             <div class="container-fluid">
                 <div class="main-header-left">
                     <a class="main-header-menu-icon" href="#" id="mainSidebarToggle"><span></span></a>

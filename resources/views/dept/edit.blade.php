@@ -18,7 +18,7 @@
 
             <!--Row-->
             <div class="card">
-                <div class="card-body">
+                <div class="card-body bg-transparent">
                     <form action="/departemen/{{ $dept->id }}" method="post">
                         @csrf
                         @method('put')

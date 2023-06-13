@@ -39,7 +39,7 @@
                         <a href="{{ route('meet.index') }}" class="btn btn-md btn-primary ml-3">Back</a>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body bg-transparent">
                     <div class="ms-lg-auto">
                         <table class="table table-sm table-bordered table-hover">
                             <thead class="table-header text-center">

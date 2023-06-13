@@ -19,7 +19,7 @@
                 <div class="card-header d-flex justify-content-end align-items-end">
 
                 </div>
-                <div class="card-body">
+                <div class="card-body bg-transparent">
 
                 </div>
             </div>
