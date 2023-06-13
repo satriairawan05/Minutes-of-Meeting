@@ -60,8 +60,8 @@
                                     <td>{!! $i->description !!}</td>
                                     <td>{!! $i->status !!}</td>
                                     <td>{!! $i->priority !!}</td>
-                                    <td>{!! \Carbon\Carbon::parse($i->start_date)->format('l, d M Y') !!}</td>
-                                    <td>{!! \Carbon\Carbon::parse($i->end_date)->format('l, d M Y') !!}</td>
+                                    <td>{!! \Carbon\Carbon::parse($i->start_date)->format('d-m-Y') !!}</td>
+                                    <td>{!! \Carbon\Carbon::parse($i->end_date)->format('d-m-Y') !!}</td>
                                     <td>{!! $i->assignee !!}</td>
                                     {{-- start modal  --}}
                                     <td>

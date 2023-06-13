@@ -19,12 +19,12 @@ class IssueController extends Controller
     public function index()
     {
         $pages = User::leftJoin('group_pages', 'users.group_id', '=', 'group_pages.group_id')
-        ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
-        ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
-        ->whereBetween('pages.page_id',[5,8])
-        ->orWhere('pages.page_name', 'Issue')
-        ->orWhere('group_pages.access', 1)
-        ->get();
+            ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
+            ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
+            ->whereBetween('pages.page_id', [5, 8])
+            ->orWhere('pages.page_name', 'Issue')
+            ->orWhere('group_pages.access', 1)
+            ->get();
 
         return view('issue.index', [
             'issues' => Issue::distinct('tracker')->orderBy('tracker')->paginate(15),
@@ -72,7 +72,7 @@ class IssueController extends Controller
                 'assignee' => ['required']
             ]);
 
-            if($request->input('c_action')){
+            if ($request->input('c_action')) {
                 $validate['c_action'] = $request->input('c_action');
             }
 
@@ -100,13 +100,13 @@ class IssueController extends Controller
     public function show(Issue $issue)
     {
         return view('issue.show', [
-            'issue' => Issue::where('tracker',$issue->tracker)->get()
+            'issue' => Issue::where('tracker', $issue->tracker)->get()
         ]);
     }
 
     public function documentIssue(Issue $issue)
     {
-        return view('issue.document',[
+        return view('issue.document', [
             'issue' => $issue
         ]);
     }
@@ -144,7 +144,7 @@ class IssueController extends Controller
                 'assignee' => ['required']
             ]);
 
-            if($request->input('c_action')){
+            if ($request->input('c_action')) {
                 $validate['c_action'] = $request->input('c_action');
             }
 
@@ -157,14 +157,14 @@ class IssueController extends Controller
 
             $request->input('is_private') ? $request->is_private : 0;
 
-            if($request->input('status') == "Closed") {
+            if ($request->input('status') == "Closed") {
                 Issue::where('issue_id', $issue->issue_id)->update($validate);
                 ArchiveIssue::create($validate);
             } else {
                 Issue::where('issue_id', $issue->issue_id)->update($validate);
             }
 
-            return redirect('issue')->with('success','Update Issue Successfully!');
+            return redirect('issue')->with('success', 'Update Issue Successfully!');
         } catch (QueryException $e) {
             return $e->getMessage();
         }

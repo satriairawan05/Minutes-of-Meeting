@@ -44,7 +44,7 @@ $delete = $pages[16]['access'] == 1;
                                         <th style="text-align: center;">Date Of Meeting</th>
                                         <th style="text-align: center;">Time Of Meeting</th>
                                         <th style="text-align: center;">Minutes Prepared by</th>
-                                        <th style="text-align: center;">Meeting Locate</th>
+                                        <th style="text-align: center;">Meeting Location</th>
                                         <th style="text-align: center;" class="d-none d-sm-table-cell">Attendees</th>
                                         @if($update || $delete)
                                         <th style="text-align: center;">Actions</th>
@@ -62,7 +62,7 @@ $delete = $pages[16]['access'] == 1;
                                         <td style="text-align: center;">{{ $d->meet_name }}</td>
                                         <td style="text-align: center;">{{ $d->meet_project }}</td>
                                         <td style="text-align: center;">
-                                            {{ \Carbon\Carbon::parse($d->meet_date)->format('l, d M Y') }}</td>
+                                            {{ \Carbon\Carbon::parse($d->meet_date)->format('d-m-Y') }}</td>
                                         <td style="text-align: center;">
                                             {{ \Carbon\Carbon::parse($d->meet_time)->format('H:i') }}</td>
                                         <td style="text-align: center;">{{ $d->meet_preparedby }}</td>

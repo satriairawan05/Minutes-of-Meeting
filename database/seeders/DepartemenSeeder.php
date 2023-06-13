@@ -54,6 +54,10 @@ class DepartemenSeeder extends Seeder
         ]);
 
         Departemen::create([
+            'name' => 'MANAGEMENT'
+        ]);
+
+        Departemen::create([
             'name' => 'OPERATION'
         ]);
     }

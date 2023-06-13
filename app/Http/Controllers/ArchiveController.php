@@ -16,7 +16,7 @@ class ArchiveController extends Controller
     public function index()
     {
         return view('archive.index', [
-            'archives' => Archive::get()->dd()
+            'archives' => Archive::distinct(['meet_xid','meet_name','meet_project','meet_date','meet_time','meet_preparedby','meet_locate','meet_attend'])->get()
         ]);
     }
 

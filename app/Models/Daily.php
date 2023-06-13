@@ -14,6 +14,4 @@ class Daily extends Model
 
     public $incrementing = true;
     public $timestamps = true;
-
-
 }
