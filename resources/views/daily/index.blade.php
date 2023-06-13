@@ -11,7 +11,6 @@ $departemens = App\Models\Departemen::get();
 if(isset($_GET['departemen'])){
     $daily = App\Models\Daily::select('*')->distinct('departemen')->where('departemen','=',$_GET['departemen'])->get();
 }
-
 @endphp
 
 @section('content')
@@ -59,12 +58,17 @@ if(isset($_GET['departemen'])){
                                     <th>Status</th>
                                     <th>Start Date</th>
                                     <th>End Date</th>
+                                    <th>Due Date</th>
                                     <th>PIC</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
                                 @foreach ($daily as $i)
+                                @php
+                                    $startDate = \Carbon\Carbon::parse($i->start_date);
+                                    $endDate = \Carbon\Carbon::parse($i->end_date);
+                                @endphp
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td><a href="{{ route('daily.document',$i->daily_id) }}" class="text-decoration-none">{!! $i->daily_xid !!}</a></td>
@@ -75,6 +79,7 @@ if(isset($_GET['departemen'])){
                                     <td>{!! $i->status !!}</td>
                                     <td>{!! \Carbon\Carbon::parse($i->start_date)->format('d-m-Y') !!}</td>
                                     <td>{!! \Carbon\Carbon::parse($i->end_date)->format('d-m-Y') !!}</td>
+                                    <td><?php echo $hasil = $endDate->diff($startDate)->format('%d') ?> Day</td>
                                     <td>{!! $i->assignee !!}</td>
                                     <td class="d-inline-block">
                                         {{-- Edit Modal Trigger --}}
