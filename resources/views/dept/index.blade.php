@@ -23,10 +23,12 @@
             <div class="card ">
 
                 <div class="card-header d-flex justify-content-end">
-                    <div class="card-header d-flex justify-content-end align-items-end">
-                        <a href="{{ route('departemen.create') }}" class="btn-data btn text-decoration-none text-black">
-                            <i class="fas fa-plus-circle"></i> Add New Data
+                    <div class="card-header d-flex justify-content-end">
+                        {{-- @if($create) --}}
+                        <a type="button" class="btn ripple btn-success btn-icon" href="{{ route('departemen.create') }}" data-toggle="tooltip" title="Add new data">
+                            <i class="fe fe-plus"></i>
                         </a>
+                        {{-- @endif --}}
                     </div>
                 </div>
 
