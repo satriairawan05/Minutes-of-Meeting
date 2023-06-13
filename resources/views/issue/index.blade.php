@@ -60,8 +60,24 @@
                                     <td>{!! $i->subject !!}</td>
                                     <td><a href="{{ route('issue.document',$i->issue_id) }}" class="text-decoration-none text-capitalize">{!! $i->tracker !!}</a></td>
                                     <td>{!! $i->description !!}</td>
-                                    <td>{!! $i->status !!}</td>
-                                    <td>{!! $i->priority !!}</td>
+                                    @if($i->status == "New")
+                                    <td><span class="badge badge-primary-light">{!! $i->status !!}</span></td>
+                                    @elseif ($i->status == "Continue")
+                                    <td><span class="badge badge-info-light">{!! $i->status !!}</span></td>
+                                    @elseif($i->status == "Over Due")
+                                    <td><span class="badge badge-danger-light">{!! $i->status !!}</span></td>
+                                    @elseif ($i->status == "Complete")
+                                    <td><span class="badge badge-success">{!! $i->status !!}</span></td>
+                                    @else
+                                    <td><span class="badge badge-primary">{!! $i->status !!}</span></td>
+                                    @endif
+                                    @if ($i->priority == "Low")
+                                    <td><span class="badge badge-success">{!! $i->priority !!}</span></td>
+                                    @elseif ($i->priority == "Medium")
+                                    <td><span class="badge badge-warning">{!! $i->priority !!}</span></td>
+                                    @else
+                                    <td><span class="badge badge-danger">{!! $i->priority !!}</span></td>
+                                    @endif
                                     <td>{!! \Carbon\Carbon::parse($i->start_date)->format('d-m-Y') !!}</td>
                                     <td>{!! \Carbon\Carbon::parse($i->end_date)->format('d-m-Y') !!}</td>
                                     <td>{!! $i->assignee !!}</td>

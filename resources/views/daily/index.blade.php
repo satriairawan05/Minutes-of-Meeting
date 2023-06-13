@@ -76,7 +76,7 @@ if(isset($_GET['departemen'])){
                                     <td>{!! $i->subject !!}</td>
                                     <td>{!! $i->c_action !!}</td>
                                     <td>{!! $i->description_daily !!}</td>
-                                    <td>{!! $i->status !!}</td>
+                                    <td><span class="badge badge-danger">{!! $i->status !!}</span></td>
                                     <td>{!! \Carbon\Carbon::parse($i->start_date)->format('d-m-Y') !!}</td>
                                     <td>{!! \Carbon\Carbon::parse($i->end_date)->format('d-m-Y') !!}</td>
                                     <td><?php echo $hasil = $endDate->diff($startDate)->format('%d') ?> Day</td>
