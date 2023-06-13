@@ -72,12 +72,8 @@ class IssueController extends Controller
                 'assignee' => ['required']
             ]);
 
-            if($request->input('c_action')) {
-                $validate['c_action'] == $request->c_action;
-            }
-
             if($request->input('c_action')){
-                $validate['c_action'] = $request->c_action;
+                $validate['c_action'] = $request->input('c_action');
             }
 
             if ($request->file('file')) {
@@ -113,7 +109,6 @@ class IssueController extends Controller
         return view('issue.document',[
             'issue' => $issue
         ]);
-
     }
 
     /**
@@ -149,12 +144,8 @@ class IssueController extends Controller
                 'assignee' => ['required']
             ]);
 
-             if($request->input('c_action')) {
-                $validate['c_action'] == $request->c_action;
-            }
-
             if($request->input('c_action')){
-                $validate['c_action'] = $request->c_action;
+                $validate['c_action'] = $request->input('c_action');
             }
 
             if ($request->file('file')) {
