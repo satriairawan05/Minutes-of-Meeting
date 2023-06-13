@@ -24,11 +24,13 @@
             <!-- End Page Header -->
             <div class="card">
                 <div class="card-header d-flex justify-content-end align-items-end">
-                @if($create)
-                    <a type="button" href="{{ route('issue.create') }}" class="btn-data btn text-decoration-none text-black">
-                        <i class="fe fe-plus"></i> Add New Data
-                    </a>
-                @endif
+                    <div class="card-header d-flex justify-content-end">
+                        @if($create)
+                        <a type="button" class="btn ripple btn-success btn-icon" href="{{ route('issue.create') }}" data-toggle="tooltip" title="Add new data">
+                            <i class="fe fe-plus"></i>
+                        </a>
+                        @endif
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">

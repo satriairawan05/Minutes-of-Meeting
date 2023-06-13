@@ -2,8 +2,8 @@ body {
   background: #eaedf7;
 }
 .custom-card {
-    box-shadow: 0 10px 30px 0 rgba(24, 28, 33, 0.05);
-    transition: box-shadow 0.3s ease-in-out;
+  box-shadow: 0 10px 30px 0 rgba(24, 28, 33, 0.05);
+  transition: box-shadow 0.3s ease-in-out;
 }
 .main-header-center .form-control {
   border: 1px solid #eceef5;
