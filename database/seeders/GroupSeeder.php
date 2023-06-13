@@ -20,7 +20,7 @@ class GroupSeeder extends Seeder
 
         Group::create([
             'group_id' => 2,
-            'group_name' => 'PIC'
+            'group_name' => 'Direksi'
         ]);
 
         Group::create([

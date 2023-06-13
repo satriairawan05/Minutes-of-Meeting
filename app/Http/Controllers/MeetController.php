@@ -88,7 +88,7 @@ class MeetController extends Controller
     public function edit(Meet $meet)
     {
         return view('meet.edit', [
-            'meets' => $meet,
+            'meet' => $meet,
             'users' => User::get()
         ]);
     }
