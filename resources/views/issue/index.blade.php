@@ -34,7 +34,6 @@ $delete = $pages[12]['access'] == 1;
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-
                         <table id="exportexample" class="table table-bordered border-t0 key-buttons text-nowrap w-100">
                             <thead class="table-header text-center">
                                 <tr>
@@ -47,12 +46,17 @@ $delete = $pages[12]['access'] == 1;
                                     <th>Priority</th>
                                     <th>Start Date</th>
                                     <th>End Date</th>
+                                    <th>Days (+/-)</th>
                                     <th>Asiggnee</th>
                                     <th width="100px">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
                                 @foreach ($issues as $i)
+                                @php
+                                    $startDate = \Carbon\Carbon::parse($i->start_date);
+                                    $endDate = \Carbon\Carbon::parse($i->end_date);
+                                @endphp
                                 @if($read)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
@@ -80,6 +84,7 @@ $delete = $pages[12]['access'] == 1;
                                     @endif
                                     <td>{!! \Carbon\Carbon::parse($i->start_date)->format('d-m-Y') !!}</td>
                                     <td>{!! \Carbon\Carbon::parse($i->end_date)->format('d-m-Y') !!}</td>
+                                    <td><?php echo $hasil = $endDate->diff($startDate)->format('%d') ?> Day</td>
                                     <td>{!! $i->assignee !!}</td>
                                     {{-- start modal  --}}
                                     <td>
@@ -90,7 +95,6 @@ $delete = $pages[12]['access'] == 1;
                                         </a>
                                         @endif
                                         {{-- End of Edit Modal Trigger --}}
-
                                         {{-- Delete Modal Trigger --}}
                                         @if($delete)
                                         <button type="button" class="btn ripple btn-danger btn-sm" data-toggle="tooltip" title="Delete Data" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $i->issue_id }}" onclick="{{ route('issue.destroy', $i->issue_id) }}">
@@ -98,7 +102,6 @@ $delete = $pages[12]['access'] == 1;
                                         </button>
                                         @endif
                                         {{-- End of Delete Modal Trigger --}}
-
                                         {{-- Delete Modal --}}
                                         <div class="modal fade" id="deleteModal{{ $i->issue_id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $i->issue_id }}" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -117,7 +120,6 @@ $delete = $pages[12]['access'] == 1;
                                                         <form onsubmit="return deleteData('{{ $i->subject }}')" method="POST" action="{{ route('issue.destroy', $i->issue_id) }}">
                                                             @csrf
                                                             <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-
                                                             @method('DELETE')
                                                             <button type="submit" class="btn bg-gradient-danger" data-bs-dismiss="modal">Delete</button>
                                                             </button>
@@ -152,9 +154,6 @@ $delete = $pages[12]['access'] == 1;
                     });
                 });
 
-            </script>
-
-            <script>
                 $(document).ready(function() {
                     // Hide and Show Columns
                     $('#toggleColumns').on('change', function() {

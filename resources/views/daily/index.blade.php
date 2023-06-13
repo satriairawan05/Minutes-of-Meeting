@@ -83,7 +83,7 @@ $daily = App\Models\Daily::select('*')->distinct('departemen')->where('departeme
                                     <td>{!! $i->assignee !!}</td>
                                     <td class="d-inline-block">
                                         {{-- Edit Modal Trigger --}}
-                                        @if($edit)
+                                        @if($update)
                                         <a href="{{ route('daily.edit',$i->daily_id) }}" class="btn ripple btn-primary btn-sm d-inline-clock" title="Edit Data">
                                             <i class="fas fa-edit"></i>
                                         </a>
