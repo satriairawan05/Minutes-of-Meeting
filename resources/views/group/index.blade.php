@@ -23,16 +23,16 @@
                     </a>
                 </div>
                 <div class="card-body bg-transparent">
-                    @if (session('success'))
+                    {{-- @if (session('success'))
                     <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
                         {{ session('success') }}
                     </div>
-                    @endif
-                    @if (session('failed'))
+                    @endif --}}
+                    {{-- @if (session('failed'))
                     <div id="failed-alert" class="alert alert-danger alert-dismissible fade show" role="alert">
                         {{ session('failed') }}
                     </div>
-                    @endif
+                    @endif --}}
 
                     <div class="table-responsive">
                         <table class="table table-bordered border-t0 key-buttons text-nowrap w-100">
@@ -136,13 +136,29 @@
             @if ($message = Session::get('success'))
             <script>
                 Toastify({
-                    text: "{{ $message }}"
-                    , duration: 3000
-                    , close: true, // Include close button
+                    text: "{{ $message }}",
+                    duration: 3000,
+                    close: true, // Include close button
                     gravity: "bottom", // Set gravity to "bottom"
                     position: "right", // Set position to "right"
                     style: {
                         background: "linear-gradient(to right, #11998E, #38ef7d)"
+                    }
+                }).showToast();
+
+            </script>
+            @endif
+
+            @if ($message = Session::get('failed'))
+            <script>
+                Toastify({
+                    text: "{{ $message }}",
+                    duration: 3000,
+                    close: true, // Include close button
+                    gravity: "bottom", // Set gravity to "bottom"
+                    position: "right", // Set position to "right"
+                    style: {
+                        background: "linear-gradient(to right, #011627, #F71735)"
                     }
                 }).showToast();
 

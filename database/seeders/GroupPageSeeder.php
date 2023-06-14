@@ -353,7 +353,7 @@ class GroupPageSeeder extends Seeder
             'id' => 49,
             'group_id' => 3,
             'page_id' => 5,
-            'access' => 1
+            'access' => 0
         ]);
 
         GroupPage::create([
@@ -388,7 +388,7 @@ class GroupPageSeeder extends Seeder
             'id' => 54,
             'group_id' => 3,
             'page_id' => 10,
-            'access' => 1
+            'access' => 0
         ]);
 
         GroupPage::create([
