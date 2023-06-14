@@ -21,7 +21,7 @@
                         <a type="button" class="btn ripple btn-success btn-icon" href="{{ route('meet.create') }}" data-toggle="tooltip" title="Add new data"> 
                             <i class="fe fe-plus"></i>
                         </a>
-                        <div class="card-body">
+                        <div class="card-body bg-transparent">
                             {{--  @if (session('success'))
                         <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
                             {{ session('success') }}

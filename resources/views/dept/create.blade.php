@@ -20,7 +20,7 @@
 
             <!--Row-->
             <div class="card">
-                <div class="card-body">
+                <div class="card-body bg-transparent">
                     <form action="{{ route('departemen.store') }}" method="post">
                         @csrf
                         <div class="mb-3 col-12">

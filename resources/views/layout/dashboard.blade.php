@@ -25,14 +25,14 @@
                     <!--Row-->
                     <div class="row row-sm  mt-lg-4">
                         <div class="col-sm-12 col-lg-12 col-xl-12">
-                            <div class="card bg-primary custom-card card-box">
-                                <div class="card-body p-4">
+                            <div class="card bg-transparent custom-card card-box">
+                                <div class="card-body bg-transparent p-4">
                                     <div class="row align-items-center">
                                         <div class="offset-xl-3 offset-sm-6 col-xl-8 col-sm-6 col-12 img-bg ">
                                             <h4 class="d-flex  mb-3">
-                                                <span class="font-weight-bold text-white ">Assalamualaikum Wr.Wb., {{ auth()->user()->name }}</span>
+                                                <span class="font-weight-bold text-black ">Assalamualaikum Wr.Wb., {{ auth()->user()->name }}</span>
                                             </h4>
-                                            <p class="tx-white-7 mb-1">You have two projects to finish, you had completed <b class="text-warning">57%</b> from your montly level,
+                                            <p class="tx-black-7 mb-1">You have two projects to finish, you had completed <b class="text-warning">57%</b> from your montly level,
                                                 Keep going to your level
                                         </div class="col-xl-3 col-sm-6 col-12">
                                         <img src="{{ asset('assets/img/ic_mom.png') }}" alt="user-img" class="wd-200">
@@ -53,8 +53,8 @@
                     @endphp
                     <div class="row row-sm mt-lg-4">
                         <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
-                            <div class="card custom-card">
-                                <div class="card-body">
+                            <div class="card custom-card bg-transparent">
+                                <div class="card-body bg-transparent">
                                     <div class="card-widget">
                                         <label class="main-content-label mb-3 pt-1">MEETING HELD</label>
                                         <h2 class="text-right card-item-icon card-icon">
@@ -66,8 +66,8 @@
                         </div>
                         <!-- COL END -->
                         <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
-                            <div class="card custom-card">
-                                <div class="card-body">
+                            <div class="card custom-card bg-transparent">
+                                <div class="card-body bg-transparent">
                                     <div class="card-widget">
                                         <label class="main-content-label mb-3 pt-1">ISSUES HANDLED</label>
                                         <h2 class="text-right card-item-icon card-icon">
@@ -79,8 +79,8 @@
                         </div>
                         <!-- COL END -->
                         <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
-                            <div class="card custom-card">
-                                <div class="card-body">
+                            <div class="card custom-card bg-transparent">
+                                <div class="card-body bg-transparent bg-transparent">
                                     <div class="card-widget">
                                         <label class="main-content-label mb-3 pt-1">REPORT CREATED</label>
                                         <h2 class="text-right card-item-icon card-icon">
@@ -93,7 +93,7 @@
                         <!-- COL END -->
                         <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
                             <div class="card custom-card">
-                                <div class="card-body">
+                                <div class="card-body bg-transparent">
                                     <div class="card-widget">
                                         <label class="main-content-label mb-3 pt-1">ARCHIVED ISSUES</label>
                                         <h2 class="text-right card-item-icon card-icon">

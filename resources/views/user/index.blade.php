@@ -31,7 +31,7 @@ $delete = $pages[0]['access'] == 1;
                     </a>
                     @endif
                 </div>
-                <div class="card-body">
+                <div class="card-body bg-transparent">
                     @if (session('success'))
                     <div class="alert alert-success container container-fluid" role="alert">
                         {{ session('success') }}

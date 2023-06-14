@@ -17,7 +17,7 @@
             </div>
             <!-- End Page Header -->
             <div class="card">
-                <div class="card-body">
+                <div class="card-body bg-transparent">
                     <form action="/resume/{{ $meet->meet_id }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-check">

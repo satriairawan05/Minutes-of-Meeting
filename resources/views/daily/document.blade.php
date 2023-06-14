@@ -21,7 +21,7 @@
                     <p class="text-decoration-none">Added by : {{ auth()->user()->name }}. Updated at
                         {{ \Carbon\Carbon::parse($daily->updated_at)->diffForHumans() }}</p>
                 </div>
-                <div class="card-body">
+                <div class="card-body bg-transparent">
                     <div class="row">
                         <div class="col-12">
                             <p class="text-bold">Private : {{ $daily->is_private == 1 ? 'Yes' : 'No' }}</p>

@@ -19,7 +19,7 @@
 
             <!--Row-->
             <div class="card col-12">
-                <div class="card-body">
+                <div class="card-body bg-transparent">
                     <form action="{{ route('meet.store') }}" method="POST">
                         @csrf
                         <div class="row mb-3">

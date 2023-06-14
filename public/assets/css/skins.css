@@ -1279,7 +1279,7 @@ body.theme-style.dark-theme .owl-theme:after {
 .icon-style.theme-style.header-dark.light-theme .main-sidebar-sticky,
 .icon-style.theme-style.light-theme.color-leftmenu.color-header
   .main-sidebar-sticky {
-  border-right: 0 solid rgba(240, 240, 255, 0.1) !important;
+  border-right: 0 solid rgba(240, 240, 255, 0.244) !important;
 }
 
 .icon-style.theme-style.header-dark.light-theme .sidemenu-logo {

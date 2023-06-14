@@ -18,7 +18,7 @@
 
                 <!--Row-->
                 <div class="card ">
-                    <div class="card-body">
+                    <div class="card-body bg-transparent">
                         <a href="{{ route('departemen.index') }}" class="btn btn-sm btn-success">Departemen</a>
                         <a href="{{ route('user.index') }}" class="btn btn-sm btn-info">User Management</a>
                         <a href="{{ route('group.index') }}" class="btn btn-sm btn-primary">Roles</a>

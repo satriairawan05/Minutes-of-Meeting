@@ -22,7 +22,7 @@
                         <i class="fe fe-plus"></i>
                     </a>
                 </div>
-                <div class="card-body">
+                <div class="card-body bg-transparent">
                     @if (session('success'))
                     <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
                         {{ session('success') }}
@@ -60,11 +60,11 @@
 
                                         {{-- Delete Modal Trigger --}}
                                         <form action="{{ route('group.destroy',$group->group_id) }}" method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit" class="btn ripple btn-danger btn-sm" data-toggle="tooltip" title="Delete Data" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $group->group_id }}" onclick="{{ route('group.destroy',$group->group_id) }}">
-                                            <i class="far fa-trash-alt"></i>
-                                        </button>
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn ripple btn-danger btn-sm" data-toggle="tooltip" title="Delete Data" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $group->group_id }}" onclick="{{ route('group.destroy',$group->group_id) }}">
+                                                <i class="far fa-trash-alt"></i>
+                                            </button>
                                         </form>
                                         {{-- End of Delete Modal Trigger --}}
 

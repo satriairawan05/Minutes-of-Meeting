@@ -17,7 +17,7 @@
             </div>
             <!-- End Page Header -->
             <div class="card">
-                <div class="card-body">
+                <div class="card-body bg-transparent">
                     <form action="/resume/{{ $data->issue_id }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('put')

@@ -24,16 +24,16 @@ $delete = $pages[16]['access'] == 1;
             <!-- End Page Header -->
             <!--Row-->
             <div class="card">
-                <div class="card-header d-flex justify-content-end">
+                <div class="card-header d-flex justify-content-end ">
                     @if($create)
                     <a type="button" class="btn ripple btn-success btn-icon" href="{{ route('meet.create') }}" data-toggle="tooltip" title="Add new data">
                         <i class="fe fe-plus"></i>
                     </a>
                     @endif
                 </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table id="exportexample" class="table table-bordered border-t0 key-buttons text-nowrap w-100">
+                <div class="card-body bg-transparent">
+                    <div class="table-responsive ">
+                        <table id="exportexample" class="table table-bordered border-t0 key-buttons text-nowrap w-100 ">
                             <thead class="table-header">
                                 <tr>
                                     <th style="text-align: center;">No</th>
@@ -61,7 +61,7 @@ $delete = $pages[16]['access'] == 1;
                                     <td style="text-align: center;">{{ $d->meet_name }}</td>
                                     <td style="text-align: center;">{{ $d->meet_project }}</td>
                                     <td style="text-align: center;">
-                                        {{ \Carbon\Carbon::parse($d->meet_date)->format('l, d M Y') }}</td>
+                                        {{ \Carbon\Carbon::parse($d->meet_date)->format('d-m-Y') }}</td>
                                     <td style="text-align: center;">
                                         {{ \Carbon\Carbon::parse($d->meet_time)->format('H:i') }}</td>
                                     <td style="text-align: center;">{{ $d->meet_preparedby }}</td>

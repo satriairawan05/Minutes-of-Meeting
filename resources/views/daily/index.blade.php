@@ -36,7 +36,7 @@ $daily = App\Models\Daily::select('*')->distinct('departemen')->where('departeme
                     </a>
                     @endif
                 </div>
-                <div class="card-body">
+                <div class="card-body bg-transparent">
                     <div class="table table-filter">
                         @foreach ($departemens as $i)
                         @if (isset($_GET['departemen']))
@@ -66,8 +66,8 @@ $daily = App\Models\Daily::select('*')->distinct('departemen')->where('departeme
                             <tbody class="text-center">
                                 @foreach ($daily as $i)
                                 @php
-                                    $startDate = \Carbon\Carbon::parse($i->start_date);
-                                    $endDate = \Carbon\Carbon::parse($i->end_date);
+                                $startDate = \Carbon\Carbon::parse($i->start_date);
+                                $endDate = \Carbon\Carbon::parse($i->end_date);
                                 @endphp
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
