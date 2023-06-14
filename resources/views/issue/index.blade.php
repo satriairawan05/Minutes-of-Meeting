@@ -92,9 +92,9 @@ $delete = $pages[13]['access'] == 1;
                                         <td>{!! \Carbon\Carbon::parse($issue->start_date)->format('d-m-Y') !!}</td>
                                         <td>{!! \Carbon\Carbon::parse($issue->end_date)->format('d-m-Y') !!}</td>
                                         @if ($hasil)
-                                        <td>+ {!! $day !!} Day{{ $hasil > 1 ? 's' : '' }}</td>
-                                        @else
                                         <td>- {!! $day !!} Day{{ $hasil > 1 ? 's' : '' }}</td>
+                                        @else
+                                        <td>+ {!! $day !!} Day{{ $hasil > 1 ? 's' : '' }}</td>
                                         @endif
                                         <td>{!! $issue->assignee !!}</td>
                                         {{-- start modal  --}}

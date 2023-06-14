@@ -140,9 +140,9 @@
                                     <td>{!! \Carbon\Carbon::parse($i->start_date)->format('d-m-Y') !!}</td>
                                     <td>{!! \Carbon\Carbon::parse($i->end_date)->format('d-m-Y') !!}</td>
                                     @if ($hasil)
-                                    <td>+ {!! $day !!} Day{{ $hasil > 1 ? 's' : '' }}</td>
-                                    @else
                                     <td>- {!! $day !!} Day{{ $hasil > 1 ? 's' : '' }}</td>
+                                    @else
+                                    <td>+ {!! $day !!} Day{{ $hasil > 1 ? 's' : '' }}</td>
                                     @endif
                                     <td>{!! $i->assignee !!}</td>
                                     <td>@if ($i->file)
