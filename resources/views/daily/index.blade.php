@@ -68,6 +68,8 @@ $daily = App\Models\Daily::select('*')->distinct('departemen')->where('departeme
                                 @php
                                 $startDate = \Carbon\Carbon::parse($i->start_date);
                                 $endDate = \Carbon\Carbon::parse($i->end_date);
+                                $hasil = $endDate->diff($startDate)->format('%d');
+                                $day = now()->diff($endDate)->format('%d');
                                 @endphp
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
@@ -79,7 +81,11 @@ $daily = App\Models\Daily::select('*')->distinct('departemen')->where('departeme
                                     <td><span class="badge badge-danger">{!! $i->status !!}</span></td>
                                     <td>{!! \Carbon\Carbon::parse($i->start_date)->format('d-m-Y') !!}</td>
                                     <td>{!! \Carbon\Carbon::parse($i->end_date)->format('d-m-Y') !!}</td>
-                                    <td><?php echo $hasil = $endDate->diff($startDate)->format('%d') ?> Day</td>
+                                    @if ($hasil)
+                                    <td>+ {!! $day !!} Day{{ $hasil > 1 ? 's' : '' }}</td>
+                                    @else
+                                    <td>- {!! $day !!} Day{{ $hasil > 1 ? 's' : '' }}</td>
+                                    @endif
                                     <td>{!! $i->assignee !!}</td>
                                     <td class="d-inline-block">
                                         {{-- Edit Modal Trigger --}}

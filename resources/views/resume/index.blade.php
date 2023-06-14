@@ -96,6 +96,7 @@
                                     <th>Priority</th>
                                     <th>Start Date</th>
                                     <th>End Date</th>
+                                    <th>Days (+/-)</th>
                                     <th>PIC</th>
                                     <th>File</th>
                                     <th>Private</th>
@@ -104,6 +105,12 @@
                             </thead>
                             <tbody>
                                 @foreach ($issue as $i)
+                                @php
+                                    $startDate = \Carbon\Carbon::parse($i->start_date);
+                                    $endDate = \Carbon\Carbon::parse($i->end_date);
+                                    $hasil = $endDate->diff($startDate)->format('%d');
+                                    $day = now()->diff($endDate)->format('%d');
+                                @endphp
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{!! $i->issue_xid !!}</td>
@@ -130,8 +137,13 @@
                                     @else
                                     <td><span class="badge badge-danger">{!! $i->priority !!}</span></td>
                                     @endif
-                                    <td>{!! \Carbon\Carbon::parse($i->start_date)->format('l, d M Y') !!}</td>
-                                    <td>{!! \Carbon\Carbon::parse($i->end_date)->format('l, d M Y') !!}</td>
+                                    <td>{!! \Carbon\Carbon::parse($i->start_date)->format('d-m-Y') !!}</td>
+                                    <td>{!! \Carbon\Carbon::parse($i->end_date)->format('d-m-Y') !!}</td>
+                                    @if ($hasil)
+                                    <td>+ {!! $day !!} Day{{ $hasil > 1 ? 's' : '' }}</td>
+                                    @else
+                                    <td>- {!! $day !!} Day{{ $hasil > 1 ? 's' : '' }}</td>
+                                    @endif
                                     <td>{!! $i->assignee !!}</td>
                                     <td>@if ($i->file)
                                         <img src="{{ asset('storage/' . $i->file) }}" alt="{{ $i->c_action }}" class="img-responsive h-75 w-75" />
