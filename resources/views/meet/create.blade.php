@@ -93,9 +93,9 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="meet_locate" class="col-sm-2 col-form-label">Meeting Locate</label>
+                            <label for="meet_locate" class="col-sm-2 col-form-label">Meeting Location</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control form-control-sm @error('meet_locate') is-invalid @enderror" id="meet_locate" name="meet_locate" value="{{ old('meet_locate') }}" placeholder="Masukan Meeting Locate">
+                                <input type="text" class="form-control form-control-sm @error('meet_locate') is-invalid @enderror" id="meet_locate" name="meet_locate" value="{{ old('meet_locate') }}" placeholder="Masukan Meeting Location">
                                 @error('meet_locate')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -106,9 +106,9 @@
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="meet_attend">Attendees</label>
                             <div class="col-sm-10">
-                                <select id="meet_attend" class="form-select form-control form-control-sm" name="meet_attend">
+                                <select id="meet_attend" class="form-select form-control form-control-sm select2-no-search" name="meet_attend[]" multiple>
                                     @foreach ($users as $user)
-                                    @if (old('meet_attend') == $user->id)
+                                    @if (old('meet_attend') == $user->name)
                                     <option name="meet_attend" value="{{ $user->name }}" selected>
                                         {{ $user->name }}
                                     </option>
@@ -139,6 +139,8 @@
             var column = $(this).attr('id');
             $('.' + column).toggle();
         });
+
+        $('#meet_attend').select2();
 
         // Expandable Columns
         $('.expandable-column').on('click', function() {

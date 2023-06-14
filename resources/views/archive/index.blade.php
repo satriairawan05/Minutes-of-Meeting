@@ -1,5 +1,5 @@
 @extends('layout.main')
-
+@dd($dailies)
 @section('content')
 <div class="main-content side-content pt-0">
     <div class="container-fluid">
@@ -44,7 +44,7 @@
                                 </tr>
                             </thead>
                             <tbody class="text-center">
-                                @foreach ($archives as $a)
+                                @foreach ($meets as $a)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{!! $a->meet_xid !!}</td>

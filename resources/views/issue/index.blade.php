@@ -54,8 +54,9 @@ $delete = $pages[12]['access'] == 1;
                             <tbody class="text-center">
                                 @foreach ($issues as $i)
                                 @php
-                                    $startDate = \Carbon\Carbon::parse($i->start_date);
-                                    $endDate = \Carbon\Carbon::parse($i->end_date);
+                                $startDate = \Carbon\Carbon::parse($i->start_date);
+                                $endDate = \Carbon\Carbon::parse($i->end_date);
+                                $hasil = $endDate->diff($startDate)->format('%d');
                                 @endphp
                                 @if($read)
                                 <tr>
@@ -84,7 +85,7 @@ $delete = $pages[12]['access'] == 1;
                                     @endif
                                     <td>{!! \Carbon\Carbon::parse($i->start_date)->format('d-m-Y') !!}</td>
                                     <td>{!! \Carbon\Carbon::parse($i->end_date)->format('d-m-Y') !!}</td>
-                                    <td><?php echo $hasil = $endDate->diff($startDate)->format('%d') ?> Day</td>
+                                    <td>{!! $hasil !!} Day</td>
                                     <td>{!! $i->assignee !!}</td>
                                     {{-- start modal  --}}
                                     <td>

@@ -67,8 +67,8 @@ class UserManagementController extends Controller
             User::create($validate);
 
             return redirect('user')->with('Success','Added User Successfully!');
-        } catch (\Throwable $th) {
-            return redirect('user')->with('failed',$th->getMessage());
+        } catch (QueryException $e) {
+            return $e->getMessage();
         }
     }
 
@@ -115,8 +115,8 @@ class UserManagementController extends Controller
             User::where('id',$user->id)->update($validate);
 
             return redirect('user')->with('Success','Updated User Successfully!');
-        } catch (\Throwable $th) {
-            return redirect('user')->with('failed',$th->getMessage());
+        } catch (QueryException $e) {
+            return $e->getMessage();
         }
     }
 

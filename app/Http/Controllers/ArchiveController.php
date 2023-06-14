@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Archive;
-use App\Models\Issue;
 use App\Models\Meet;
-use Illuminate\Database\QueryException;
+use App\Models\Issue;
+use App\Models\Archive;
+use App\Models\ArchiveDaily;
+use App\Models\ArchiveIssue;
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
 
 class ArchiveController extends Controller
 {
@@ -16,7 +18,9 @@ class ArchiveController extends Controller
     public function index()
     {
         return view('archive.index', [
-            'archives' => Archive::distinct(['meet_xid','meet_name','meet_project','meet_date','meet_time','meet_preparedby','meet_locate','meet_attend'])->get()
+            'meets' => Archive::paginate(15),
+            'issues' => ArchiveIssue::paginate(15),
+            'dailies' => ArchiveDaily::paginate(15)
         ]);
     }
 

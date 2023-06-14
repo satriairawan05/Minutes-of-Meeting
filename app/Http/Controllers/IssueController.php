@@ -26,8 +26,10 @@ class IssueController extends Controller
             ->orWhere('group_pages.access', 1)
             ->get();
 
+        $issue = Issue::distinct('tracker')->orderBy('tracker')->paginate(15);
+
         return view('issue.index', [
-            'issues' => Issue::distinct('tracker')->orderBy('tracker')->paginate(15),
+            'issues' => $issue,
             'pages' => $pages
         ]);
     }
