@@ -90,7 +90,7 @@ class IssueController extends Controller
 
             Issue::create($validate);
 
-            return redirect('issue')->with('success', 'Added Successfully!');
+            return redirect('issue')->with('success', 'Added Issue Successfully!');
         } catch (QueryException $e) {
             return $e->getMessage();
         }
@@ -182,7 +182,7 @@ class IssueController extends Controller
 
             $issue->file ? Storage::delete([$issue->file]) : Issue::destroy($issue->issue_id);
 
-            return redirect('issue')->with('success', 'Deleted Successfully!');
+            return redirect('issue')->with('success', 'Deleted Issue Successfully!');
         } catch (QueryException $e) {
             return $e->getMessage();
         }
