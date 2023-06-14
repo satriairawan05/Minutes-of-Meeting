@@ -257,10 +257,10 @@
 <!-- Main Footer -->
 <div class="main-footer right bg-primary-transparent">
     <div class="container text-right">
-            <span>
-                Copyright © 2023 <a href="https://bss.id/">PT BANGUN SEMERU SEJAHTERA</a></a>
-                All rights reserved.
-            </span>
+        <span>
+            Copyright © 2023 <a href="https://bss.id/">PT BANGUN SEMERU SEJAHTERA</a></a>
+            All rights reserved.
+        </span>
     </div>
 </div>
 

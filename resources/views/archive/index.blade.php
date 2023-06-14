@@ -58,41 +58,41 @@
                                     <td>{{ $a->meet_attend }}</td>
                                     {{-- start modal  --}}
                                     {{-- <td> --}}
-                                        {{-- Edit Modal Trigger --}}
-                                        {{-- <button type="button" onclick="window.location='{{ route('archive.edit', $a->archive_id) }}'" data-toggle="tooltip" class="btn ripple btn-primary btn-sm" title="Edit Data">
-                                        <i class="fas fa-edit"></i>
-                                        </button> --}}
-                                        {{-- End of Edit Modal Trigger --}}
-                                        {{-- Delete Modal Trigger --}}
-                                        {{-- <button type="button" class="btn ripple btn-danger btn-sm" data-toggle="tooltip" title="Delete Data" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $a->archive_id }}" onclick="{{ route('archive.destroy', $a->archive_id) }}">
-                                        <i class="far fa-trash-alt"></i>
-                                        </button> --}}
-                                        {{-- End of Delete Modal Trigger --}}
-                                        {{-- Delete Modal --}}
-                                        {{-- <div class="modal fade" id="deleteModal{{ $a->archive_id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $a->archive_id }}" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="deleteModalLabel{{ $a->archive_id }}">Delete
-                                                        Data</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
+                                    {{-- Edit Modal Trigger --}}
+                                    {{-- <button type="button" onclick="window.location='{{ route('archive.edit', $a->archive_id) }}'" data-toggle="tooltip" class="btn ripple btn-primary btn-sm" title="Edit Data">
+                                    <i class="fas fa-edit"></i>
+                                    </button> --}}
+                                    {{-- End of Edit Modal Trigger --}}
+                                    {{-- Delete Modal Trigger --}}
+                                    {{-- <button type="button" class="btn ripple btn-danger btn-sm" data-toggle="tooltip" title="Delete Data" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $a->archive_id }}" onclick="{{ route('archive.destroy', $a->archive_id) }}">
+                                    <i class="far fa-trash-alt"></i>
+                                    </button> --}}
+                                    {{-- End of Delete Modal Trigger --}}
+                                    {{-- Delete Modal --}}
+                                    {{-- <div class="modal fade" id="deleteModal{{ $a->archive_id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $a->archive_id }}" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="deleteModalLabel{{ $a->archive_id }}">Delete
+                                                    Data</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Apakah anda yakin?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <form onsubmit="return deleteData('{{ $a->archive_id }}')" method="POST" action="{{ route('issue.destroy', $a->archive_id) }}">
+                                                    @csrf
+                                                    <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn bg-gradient-danger" data-bs-dismiss="modal">Delete</button>
                                                     </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Apakah anda yakin?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <form onsubmit="return deleteData('{{ $a->archive_id }}')" method="POST" action="{{ route('issue.destroy', $a->archive_id) }}">
-                                                        @csrf
-                                                        <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn bg-gradient-danger" data-bs-dismiss="modal">Delete</button>
-                                                        </button>
-                                                    </form>
-                                                </div>
+                                                </form>
                                             </div>
                                         </div>
+                                    </div>
                     </div> --}}
                     {{-- End of Delete Modal --}}
                     {{-- </td> --}}

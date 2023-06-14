@@ -40,9 +40,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label id="project_label" for="project">Meeting</label>
-                                <input id="project" name="project" type="text" class="form-control @error('project')
-            is_invalid
-        @enderror" required value="{{ $meet->meet_xid }}" placeholder="Masukan Meeting" readonly />
+                                <input id="project" name="project" type="text" class="form-control @error('project') is_invalid @enderror" required value="{{ $meet->meet_xid }}" placeholder="Masukan Meeting" readonly />
                                 @error('project')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -73,9 +71,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label id="subject_label" for="subject">Subject</label>
-                                <input id="subject" name="subject" type="text" class="form-control @error('subject')
-            is_invalid
-        @enderror" required value="{{ old('subject', $data->subject) }}" placeholder="Masukan Subject" />
+                                <input id="subject" name="subject" type="text" class="form-control @error('subject') is_invalid @enderror" required value="{{ old('subject', $data->subject) }}" placeholder="Masukan Subject" />
                                 @error('subject')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -141,9 +137,7 @@
 
                             <div class="col-md-6">
                                 <label id="start_date_label" for="start_date">Start Date</label>
-                                <input id="start_date" name="start_date" type="date" class="form-control @error('start_date')
-            is_invalid
-        @enderror" required value="{{ old('start_date', $data->start_date) }}" />
+                                <input id="start_date" name="start_date" type="date" class="form-control @error('start_date') is_invalid @enderror" required value="{{ old('start_date', $data->start_date) }}" />
                                 @error('start_date')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -152,9 +146,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label id="end_date_label" for="end_date">End Date</label>
-                                <input id="end_date" name="end_date" type="date" class="form-control @error('end_date')
-            is_invalid
-        @enderror" required value="{{ old('end_date', $data->end_date) }}" />
+                                <input id="end_date" name="end_date" type="date" class="form-control @error('end_date') is_invalid @enderror" required value="{{ old('end_date', $data->end_date) }}" />
                                 @error('end_date')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -187,9 +179,7 @@
                                 <div id="targetLayer"></div>
                                 <div class="icon-choose-image"></div>
                                 <img src="{{ asset('storage/' . $data->file) }}" alt="{{ $data->project }}" name="oldFile" id="oldFile" class="img-responsive w-25 h-25 opacity-7 img-fluid m-md-2">
-                                <input id="file" name="file" type="file" class="form-control form-control-file @error('file')
-            is_invalid
-        @enderror" value="{{ old('file') }}" onchange="return showPreview(this)" />
+                                <input id="file" name="file" type="file" class="form-control form-control-file @error('file') is_invalid @enderror" value="{{ old('file') }}" onchange="return showPreview(this)" />
                                 @error('file')
                                 <div class="invalid-feedback">
                                     {{ $message }}

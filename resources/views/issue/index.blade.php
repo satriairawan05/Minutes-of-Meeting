@@ -54,8 +54,8 @@ $delete = $pages[12]['access'] == 1;
                             <tbody class="text-center">
                                 @foreach ($issues as $i)
                                 @php
-                                    $startDate = \Carbon\Carbon::parse($i->start_date);
-                                    $endDate = \Carbon\Carbon::parse($i->end_date);
+                                $startDate = \Carbon\Carbon::parse($i->start_date);
+                                $endDate = \Carbon\Carbon::parse($i->end_date);
                                 @endphp
                                 @if($read)
                                 <tr>

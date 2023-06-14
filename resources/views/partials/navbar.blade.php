@@ -7,10 +7,9 @@
                 <div class="main-header-center">
                     <div class="responsive-logo">
                         <a href="index.html"><img src="assets/img/brand/logo-m.png" class="mobile-logo" alt="logo"></a>
-                        <a href="index.html"><img src="assets/img/brand/logo-m.png" class="mobile-logo-dark"
-                                alt="logo"></a>
+                        <a href="index.html"><img src="assets/img/brand/logo-m.png" class="mobile-logo-dark" alt="logo"></a>
                     </div>
-                    {{--  <div class="input-group">
+                    {{-- <div class="input-group">
                         <div class="input-group-btn search-panel">
                             <select class="form-control select2-no-search">
                                 <option label="All categories">
@@ -66,10 +65,7 @@
                                         </select>
                                     </div>
                                     <input type="search" class="form-control" placeholder="Search for anything...">
-                                    <button class="btn search-btn"><svg xmlns="http://www.w3.org/2000/svg"
-                                            width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" class="feather feather-search">
+                                    <button class="btn search-btn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
                                             <circle cx="11" cy="11" r="8"></circle>
                                             <line x1="21" y1="21" x2="16.65" y2="16.65">
                                             </line>
@@ -92,8 +88,7 @@
                         </a>
                         <div class="dropdown-menu">
                             <div class="header-navheading">
-                                <p class="main-notification-text">You have 1 unread notification<span
-                                        class="badge badge-pill badge-primary ml-3">View all</span></p>
+                                <p class="main-notification-text">You have 1 unread notification<span class="badge badge-pill badge-primary ml-3">View all</span></p>
                             </div>
                             <div class="main-notification-list">
                                 <div class="media new">
