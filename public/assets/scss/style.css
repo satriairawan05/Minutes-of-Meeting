@@ -20,7 +20,7 @@ body:after {
   background-color: #0e1c13;
   height: 100vh;
   -webkit-clip-path: polygon(0 100%, 0 0, 100% 0, 70% 100%);
-          clip-path: polygon(0 100%, 0 0, 100% 0, 70% 100%);
+  clip-path: polygon(0 100%, 0 0, 100% 0, 70% 100%);
   z-index: -1;
 }
 
@@ -54,7 +54,11 @@ body:after {
 .login-card .column:last-child:after {
   content: "";
   position: absolute;
-  background: linear-gradient(90deg, rgb(255, 255, 255), rgba(255, 255, 255, 0.5098039216));
+  background: linear-gradient(
+    90deg,
+    rgb(255, 255, 255),
+    rgba(255, 255, 255, 0.5098039216)
+  );
   inset: 0;
 }
 .login-card .column:last-child * {
@@ -91,7 +95,7 @@ body:after {
   outline: none;
   box-shadow: 0 0 0 2px #0e1c13;
 }
-.login-card input[type=checkbox] {
+.login-card input[type="checkbox"] {
   accent-color: #0e1c13;
   width: 16px;
   height: 16px;
@@ -174,4 +178,4 @@ body:after {
   .social-buttons {
     justify-content: center;
   }
-}/*# sourceMappingURL=style.css.map */
+} /*# sourceMappingURL=style.css.map */

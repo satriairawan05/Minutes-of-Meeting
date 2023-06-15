@@ -10,15 +10,15 @@ $pages = App\Models\User::leftJoin('group_pages', 'users.group_id', '=', 'group_
     ->get();
 
 $readMeet = $pages[18]['access'] == 1;
-$readIssue = $pages[14]['access'] == 1;
+$readIssue = $pages[6]['access'] == 1;
 $readDaily = $pages[10]['access'] == 1;
-$readArchive = $pages[6]['access'] == 1;
+$readArchive = $pages[14]['access'] == 1;
 $readUser = $pages[2]['access'] == 1;
 
 $Meet = $pages[2]['page_name'];
-$Issue = $pages[14]['page_name'];
+$Issue = $pages[6]['page_name'];
 $Daily = $pages[10]['page_name'];
-$Archive = $pages[6]['page_name'];
+$Archive = $pages[14]['page_name'];
 $User = $pages[18]['page_name'];
 @endphp
 

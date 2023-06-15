@@ -33,7 +33,7 @@ $delete = $pages[16]['access'] == 1;
                 </div>
                 <div class="card-body bg-transparent">
                     <div class="table-responsive ">
-                        <table id="exportexample" class="table table-bordered border-t0 key-buttons text-nowrap w-100 ">
+                        <table id="exportexample" class="table table-bordered border-t0 key-buttons text-nowrap w-100">
                             <thead class="table-header">
                                 <tr>
                                     <th style="text-align: center;">No</th>
@@ -60,19 +60,16 @@ $delete = $pages[16]['access'] == 1;
                                     </td>
                                     <td style="text-align: center;">{{ $d->meet_name }}</td>
                                     <td style="text-align: center;">{{ $d->meet_project }}</td>
-                                    <td style="text-align: center;">
-                                        {{ \Carbon\Carbon::parse($d->meet_date)->format('d-m-Y') }}</td>
-                                    <td style="text-align: center;">
-                                        {{ \Carbon\Carbon::parse($d->meet_time)->format('H:i') }}</td>
+                                    <td style="text-align: center;">{{ \Carbon\Carbon::parse($d->meet_date)->format('d-m-Y') }}</td>
+                                    <td style="text-align: center;">{{ \Carbon\Carbon::parse($d->meet_time)->format('H:i') }}</td>
                                     <td style="text-align: center;">{{ $d->meet_preparedby }}</td>
                                     <td style="text-align: center;">{{ $d->meet_locate }}</td>
-                                    <td style="text-align: center;" class="d-none d-sm-table-cell">
-                                        {{ $d->meet_attend }}</td>
+                                    <td style="text-align: center;" class="d-none d-sm-table-cell">{{ $d->meet_attend }}</td>
                                     <td style="text-align: center;">
                                         {{-- Edit Modal Trigger --}}
                                         @if($update)
                                         <button type="button" onclick="window.location='{{ route('meet.edit', $d->meet_id) }}'" class="btn ripple btn-primary btn-sm" data-toggle="tooltip" title="Edit Data">
-                                            <i class="fas fa-edit"></i>
+                                            <i class="fas fa-edit fa-sm"></i>
                                         </button>
                                         @endif
                                         {{-- End of Edit Modal Trigger --}}
@@ -82,7 +79,9 @@ $delete = $pages[16]['access'] == 1;
                                         <form action="{{ route('meet.destroy', $d->meet_id) }}" method="post">
                                             @csrf
                                             @method('delete')
-                                            <button type="submit" class="btn ripple btn-danger btn-sm d-inline-block" data-toggle="tooltip" title="Delete Data"><i class="fas fa-trash-alt"></i></button>
+                                            <button type="submit" class="btn ripple btn-danger btn-sm d-inline-block" data-toggle="tooltip" title="Delete Data">
+                                                <i class="fas fa-trash fa-sm"></i>
+                                            </button>
                                         </form>
                                         @endif
                                         {{-- End of Delete Modal Trigger --}}
@@ -92,6 +91,7 @@ $delete = $pages[16]['access'] == 1;
                                 @endforeach
                             </tbody>
                         </table>
+
                     </div>
                 </div>
             </div>
