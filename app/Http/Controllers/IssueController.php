@@ -44,6 +44,7 @@ class IssueController extends Controller
         $lastCount = Issue::select('issue_id')->latest('issue_id')->pluck('issue_id')->first();
         $count = $lastCount + 1;
         $id = $prefix . str_pad($count, 3, '0', STR_PAD_LEFT) . "/" . $formattedDate;
+
         if (Issue::whereNotNull('project')->latest()->get()) {
             return view('issue.create', [
                 'issue' => $id,
@@ -52,6 +53,7 @@ class IssueController extends Controller
                 'depts' => Departemen::get()
             ]);
         }
+
         return redirect('meet/create');
     }
 
@@ -71,7 +73,8 @@ class IssueController extends Controller
                 'description' => ['required'],
                 'start_date' => ['required'],
                 'end_date' => ['required'],
-                'assignee' => ['required']
+                'assignee' => ['required'],
+                'pic' => ['required'],
             ]);
 
             if ($request->input('c_action')) {
@@ -143,7 +146,8 @@ class IssueController extends Controller
                 'description' => ['required'],
                 'start_date' => ['required'],
                 'end_date' => ['required'],
-                'assignee' => ['required']
+                'assignee' => ['required'],
+                'pic' => ['required'],
             ]);
 
             if ($request->input('c_action')) {

@@ -60,5 +60,9 @@ class DepartemenSeeder extends Seeder
         Departemen::create([
             'name' => 'OPERATION'
         ]);
+
+        Departemen::create([
+            'name' => 'BOD'
+        ]);
     }
 }
