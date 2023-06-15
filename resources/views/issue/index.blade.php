@@ -49,6 +49,7 @@ $delete = $pages[13]['access'] == 1;
                                     <th>End Date</th>
                                     <th>Days (+/-)</th>
                                     <th>Asiggnee</th>
+                                    <th>PIC</th>
                                     <th width="100px">Action</th>
                                 </tr>
                             </thead>
@@ -98,6 +99,7 @@ $delete = $pages[13]['access'] == 1;
                                         <td>+ {!! $day !!} Day{{ $hasil > 1 ? 's' : '' }}</td>
                                         @endif
                                         <td>{!! $issue->assignee !!}</td>
+                                        <td>{!! $issue->pic !!}</td>
                                         {{-- start modal  --}}
                                         <td>
                                             {{-- Edit Modal Trigger --}}
