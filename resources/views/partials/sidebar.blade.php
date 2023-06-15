@@ -15,11 +15,11 @@ $readDaily = $pages[10]['access'] == 1;
 $readArchive = $pages[6]['access'] == 1;
 $readUser = $pages[2]['access'] == 1;
 
-$Meet = $pages[18]['page_name'];
+$Meet = $pages[2]['page_name'];
 $Issue = $pages[14]['page_name'];
 $Daily = $pages[10]['page_name'];
 $Archive = $pages[6]['page_name'];
-$User = $pages[2]['page_name'];
+$User = $pages[18]['page_name'];
 @endphp
 
 <div class="main-sidebar main-sidebar-sticky side-menu bg-primary-transparent">
