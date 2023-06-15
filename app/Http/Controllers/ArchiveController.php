@@ -65,6 +65,7 @@ class ArchiveController extends Controller
                 $arc->assignee = $isu->assignee;
                 $arc->file = $isu->file;
                 $arc->is_private = $isu->is_pirvate;
+                $arc->archive_status = $request->archive_status;
                 $arc->save();
             }
 

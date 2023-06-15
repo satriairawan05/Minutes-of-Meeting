@@ -66,15 +66,18 @@
                                     <td style="text-align: center;">DEPARTEMEN {{ $dept->name }}</td>
                                     <td style="text-align: center;">
                                         {{-- Edit Modal Trigger --}}
-                                        <button type="button" onclick="window.location='{{ route('departemen.edit', $dept->id) }}'" data-toggle="tooltip" class="btn ripple btn-primary btn-sm" title="Edit Data">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
+                                        <a href="{!! route('departemen.edit', $dept->id) !!}" class="btn ripple btn-primary btn-sm" title="Edit Data">
+                                        <i class="fas fa-edit"></i>
+                                        </a>
+
                                         {{-- End of Edit Modal Trigger --}}
 
                                         {{-- Delete Modal Trigger --}}
-                                        <button type="button" class="btn ripple btn-danger btn-sm" data-bs-toggle="modal" data-toggle="tooltip" title="Delete Data" data-bs-target="#deleteModal{{ $dept->id }}">
-                                            <i class="far fa-trash-alt"></i>
-                                        </button>
+                                        <form action="{!! route('departemen.destroy',$dept->id) !!}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn ripple btn-danger btn-sm" title="Delete Data"><i class="far fa-trash-alt"></i></button>
+                                        </form>
                                         {{-- End of Delete Modal Trigger --}}
 
                                         {{-- Delete Modal --}}

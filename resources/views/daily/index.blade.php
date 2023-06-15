@@ -1,6 +1,7 @@
 @extends('layout.main')
 
 @php
+$approval = $pages[12]['access'] == 1;
 $create = $pages[11]['access'] == 1;
 $read = $pages[10]['access'] == 1;
 $update = $pages[9]['access'] == 1;

@@ -23,11 +23,12 @@
                             <form action="{{ route('archive.meet.store',$meet->meet_id) }}" method="post">
                                 @csrf
                                 <input type="hidden" name="meet_id" id="meet_id" value="{{ $meet->meet_id }}">
+                                <input type="hidden" name="archive_status" id="archive_status" value="1">
                                 @foreach ($issue as $isu)
                                 <input type="hidden" name="issue_id" id="issue_id" value="{{ $isu->issue_id }}">
                                 @endforeach
                                 <button type="submit" id="submit" class="btn-data btn text-decoration-none text-black">
-                                    <i class="fas fa-folder-plus"></i> Add Archive Meet
+                                    <i class="fas fa-save"></i> Save
                                 </button>
                             </form>
                             <a type="button" class="btn ripple btn-success btn-icon" href="{{ route('issue.create') }}" data-toggle="tooltip" title="Add new data">

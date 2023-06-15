@@ -39,8 +39,11 @@
                                     <th>Date Of Meeting</th>
                                     <th>Time Of Meeting</th>
                                     <th>Minutes Prepared by</th>
-                                    <th>Meeting Locate</th>
+                                    <th>Meeting Departemen</th>
+                                    <th>Meeting Location</th>
                                     <th>Meeting Attendees</th>
+                                    <th>Meeting Status</th>
+                                    <th>Issue ID</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
@@ -54,8 +57,11 @@
                                     <td>
                                         {{ \Carbon\Carbon::parse($a->meet_time)->format('H:i') }}</td>
                                     <td>{{ $a->meet_preparedby }}</td>
+                                    <td>{{ $a->tracker }}</td>
                                     <td>{{ $a->meet_locate }}</td>
                                     <td>{{ $a->meet_attend }}</td>
+                                    <td>{{ $a->archive_status == 1 ? 'Telah dilaksanakan' : 'Belum dilaksanakan' }}</td>
+                                    <td>{{ $a->issue_xid }}</td>
                                     {{-- start modal  --}}
                                     {{-- <td> --}}
                                     {{-- Edit Modal Trigger --}}

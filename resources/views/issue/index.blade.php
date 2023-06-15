@@ -1,6 +1,7 @@
 @extends('layout.main')
 
 @php
+$approval = $pages[17]['access'] == 1;
 $create = $pages[16]['access'] == 1;
 $read = $pages[15]['access'] == 1;
 $update = $pages[14]['access'] == 1;
@@ -77,7 +78,7 @@ $delete = $pages[13]['access'] == 1;
                                         <td><span class="badge badge-info-light">{!! $issue->status !!}</span></td>
                                         @elseif($issue->status == "Over Due")
                                         <td><span class="badge badge-danger-light">{!! $issue->status !!}</span></td>
-                                        @elseif ($issue->status == "Complete")
+                                        @elseif ($issue->status == "Closed")
                                         <td><span class="badge badge-success">{!! $issue->status !!}</span></td>
                                         @else
                                         <td><span class="badge badge-primary">{!! $issue->status !!}</span></td>

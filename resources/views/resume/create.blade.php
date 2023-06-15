@@ -98,34 +98,38 @@
                             @enderror
                         </div>
                         <div class="mb-3 col-12">
-                            <label id="status_label" for="status">Status</label>
-                            <select class="form-select form-control form-control-sm" name="status">
-                                <option name="status" value="New">New</option>
-                                <option name="status" value="Continue">Continue</option>
-                                <option name="status" value="In Progress">In Progress</option>
-                                <option name="status" value="Over Due">Over Due</option>
-                                <option name="status" value="Complete">Complete</option>
-                                <option name="status" value="Closed">Closed</option>
-                            </select>
-                            @error('status')
-                            <div class="invalid-feedback">
-                                {{ $message }}
+                            @php
+                            $statuses = array("New","Continue","Over Due","Complete","Closed")
+                            @endphp
+                            <div class="col-md-6">
+                                <label id="status_label" for="status">Status</label>
+                                <select class="form-select form-control form-control-sm" name="status">
+                                    @foreach ($statuses as $status)
+                                    @if (old('status') == $status)
+                                    <option name="status" value="{{ $status }}" selected>{{ $status }}</option>
+                                    @else
+                                    <option name="status" value="{{ $status }}">{{ $status }}</option>
+                                    @endif
+                                    @endforeach
+                                </select>
                             </div>
-                            @enderror
-                        </div>
-                        <div class="mb-3 col-12">
-                            <label id="priority_label" for="priority">Priority</label>
-                            <select class="form-select form-control form-control-sm" name="priority">
-                                <option name="priority" value="Low">Low</option>
-                                <option name="priority" value="Medium">Medium</option>
-                                <option name="priority" value="High">High</option>
-                            </select>
-                            @error('priority')
-                            <div class="invalid-feedback">
-                                {{ $message }}
+                            @php
+                            $priorities = array("Low","Medium","High");
+                            @endphp
+                            <div class="col-md-6">
+                                <label id="priority_label" for="priority">Priority</label>
+                                <select class="form-select form-control form-control-sm" name="priority">
+                                    @foreach ($priorities as $priority)
+                                    @if (old('priority') == $priority)
+                                    <option name="priority" value="{{ $priority }}" selected>{{ $priority }}</option>
+                                    @else
+                                    <option name="priority" value="{{ $priority }}">{{ $priority }}</option>
+                                    @endif
+                                    @endforeach
+                                </select>
                             </div>
-                            @enderror
                         </div>
+                        <div class="col-12">
                         <div class="mb-3 col-12">
                             <label id="start_date_label" for="start_date">Start Date</label>
                             <input id="start_date" name="start_date" type="date" class="form-control @error('start_date')
@@ -180,6 +184,7 @@
                             </div>
                             @enderror
                         </div>
+                        </div>
                         <div class="col-12 d-flex justify-content-center align-items-center">
                             <a href="{{ route('resume.meet',$meet->meet_id) }}" class="btn btn-md btn-primary mr-3">Back</a>
                             <button type="submit" class="btn btn-md btn-success">Submit</button>
@@ -225,6 +230,7 @@
                     successAlert.style.display = 'none';
                 }, 5000); // Adjust the timeout value (in milliseconds) as needed
             });
+
         </script>
         @endif
 
