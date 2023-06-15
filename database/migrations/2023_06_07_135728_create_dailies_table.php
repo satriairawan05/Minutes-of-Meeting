@@ -23,6 +23,7 @@ return new class extends Migration
             $table->date('end_date');
             $table->string('file')->nullable();
             $table->string('assignee',100);
+            $table->string('pic',100);
             $table->tinyInteger('is_private')->nullable();
             $table->timestamps();
         });

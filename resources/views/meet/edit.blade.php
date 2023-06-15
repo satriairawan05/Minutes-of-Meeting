@@ -20,7 +20,7 @@
             <!--Row-->
             <div class="card col-12">
                 <div class="card-body bg-transparent">
-                    <form action="/meet/{{ $meets->meet_id }}" method="POST">
+                    <form action="/meet/{{ $meet->meet_id }}" method="POST">
                         @csrf
                         @method('put')
                         <div class="row mb-3">

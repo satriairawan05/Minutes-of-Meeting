@@ -18,7 +18,7 @@ $delete = $pages[13]['access'] == 1;
                     <h2 class="main-content-title tx-24 mg-b-5">Issue Data</h2>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Issue Details</li>
+                        <li class="breadcrumb-item active" aria-current="page">Issue Detailed</li>
                     </ol>
                 </div>
             </div>
@@ -27,9 +27,14 @@ $delete = $pages[13]['access'] == 1;
                 <div class="card-header d-flex justify-content-end align-items-end">
                     <div class="card-header d-flex justify-content-end">
                         @if($create)
-                        <a type="button" class="btn ripple btn-success btn-icon" href="{{ route('issue.create') }}" data-toggle="tooltip" title="Add new data">
-                            <i class="fe fe-plus"></i>
+                        <a class="btn ripple btn-success btn-icon mr-3" href="{{ route('issue.create') }}" data-toggle="tooltip" title="Add new data">
+                            <i class="fa fa-plus-circle"></i>
                         </a>
+                        @endif
+                        @if($approval)
+                        <a class="btn ripple btn-info btn-icon mr-3" href="{{ route('issue.form_approved') }}" data-toggle="tooltip" title="Approved data">
+                            <i class="fa fa-file-text"></i>
+                        </a>    
                         @endif
                     </div>
                 </div>
@@ -63,10 +68,10 @@ $delete = $pages[13]['access'] == 1;
 
                                 // $status = App\Models\Issue::where('end_date','<',now())->update(['status' => 'Over Due']);
 
-                                // $days = $status->end_date->diffInDays(now()); // menghitung selisih hari antara end_date dan waktu saat ini
+                                    // $days = $status->end_date->diffInDays(now()); // menghitung selisih hari antara end_date dan waktu saat ini
 
-                                @endphp
-                                @if($read)
+                                    @endphp
+                                    @if($read)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{!! $issue->issue_xid !!}</td>
@@ -104,7 +109,7 @@ $delete = $pages[13]['access'] == 1;
                                         <td>
                                             {{-- Edit Modal Trigger --}}
                                             @if($update)
-                                            <a href="{{ route('issue.edit', $issue->issue_id) }}" class="btn ripple btn-primary btn-sm" data-toggle="tooltip" title="Edit Data">
+                                            <a href="{{ route('issue.edit', $issue->issue_id) }}" class="btn ripple btn-primary btn-sm d-inline-block" data-toggle="tooltip" title="Edit Data">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                             @endif

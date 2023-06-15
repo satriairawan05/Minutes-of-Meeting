@@ -119,37 +119,58 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label id="assignee_label" for="assignee">PIC</label>
-                                    <select class="form-select form-control form-control-sm" id="assignee" name="assignee">
-                                        @foreach ($users as $user)
-                                        @if (old('assignee') == $user->name)
-                                        <option name="assignee" value="{{ $user->name }}" selected>
-                                            {{ $user->name }}</option>
-                                        @else
-                                        <option name="assignee" value="{{ $user->name }}">{{ $user->name }}
-                                        </option>
-                                        @endif
-                                        @endforeach
-                                    </select>
-                                    @error('assignee')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
+                            <div class="col-md-6">
+                                <label id="assignee_label" for="assignee">Assignee</label>
+                                <select class="form-select form-control form-control-sm" id="assignee" name="assignee">
+                                    @foreach ($users as $user)
+                                    @if (old('assignee') == $user->name)
+                                    <option name="assignee" value="{{ $user->name }}" selected>
+                                        {{ $user->name }}</option>
+                                    @else
+                                    <option name="assignee" value="{{ $user->name }}">{{ $user->name }}
+                                    </option>
+                                    @endif
+                                    @endforeach
+                                </select>
+                                @error('assignee')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
                                 </div>
-                                <div class="col-md-6">
-                                    <label id="file_label" for="file">File</label>
-                                    <div id="targetLayer"></div>
-                                    <div class="icon-choose-image"></div>
-                                    <input id="file" name="file" type="file" class="form-control form-control-file @error('file') is_invalid @enderror" value="{{ old('file') }}" onchange="return showPreview(this)" />
-                                    @error('file')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
-                                </div>
+                                @enderror
                             </div>
+                            <div class="col-md-6">
+                                <label id="pic_label" for="pic">PIC</label>
+                                <select class="form-select form-control form-control-sm" id="pic" name="pic">
+                                    @foreach ($users as $user)
+                                    @if (old('pic') == $user->name)
+                                    <option name="pic" value="{{ $user->name }}" selected>
+                                        {{ $user->name }}</option>
+                                    @else
+                                    <option name="pic" value="{{ $user->name }}">{{ $user->name }}
+                                    </option>
+                                    @endif
+                                    @endforeach
+                                </select>
+                                @error('assignee')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <label id="file_label" for="file">File</label>
+                                <div id="targetLayer"></div>
+                                <div class="icon-choose-image"></div>
+                                <input id="file" name="file" type="file" class="form-control form-control-file @error('file') is_invalid @enderror" value="{{ old('file') }}" onchange="return showPreview(this)" />
+                                @error('file')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
                             <div class="col-12 d-flex justify-content-center align-items-center">
                                 <a href="{{ route('daily.index') }}" class="btn btn-md btn-primary mr-3">Back</a>
                                 <button type="submit" class="btn btn-md btn-success">Submit</button>

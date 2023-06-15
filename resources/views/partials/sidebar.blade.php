@@ -9,17 +9,17 @@ $pages = App\Models\User::leftJoin('group_pages', 'users.group_id', '=', 'group_
     ->orWhere('group_pages.access', 1)
     ->get();
 
-$readMeet = $pages[18]['access'] == 1;
-$readIssue = $pages[14]['access'] == 1;
-$readDaily = $pages[10]['access'] == 1;
-$readArchive = $pages[6]['access'] == 1;
-$readUser = $pages[2]['access'] == 1;
+$readMeet = $pages[1]['access'] == 1;
+$readIssue = $pages[6]['access'] == 1;
+$readDaily = $pages[11]['access'] == 1;
+$readArchive = $pages[15]['access'] == 1;
+$readUser = $pages[19]['access'] == 1;
 
-$Meet = $pages[18]['page_name'];
-$Issue = $pages[14]['page_name'];
-$Daily = $pages[10]['page_name'];
-$Archive = $pages[6]['page_name'];
-$User = $pages[2]['page_name'];
+$Meet = $pages[1]['page_name'];
+$Issue = $pages[6]['page_name'];
+$Daily = $pages[11]['page_name'];
+$Archive = $pages[15]['page_name'];
+$User = $pages[19]['page_name'];
 @endphp
 
 <div class="main-sidebar main-sidebar-sticky side-menu bg-primary-transparent">

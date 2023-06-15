@@ -104,9 +104,7 @@ class IssueController extends Controller
      */
     public function show(Issue $issue)
     {
-        return view('issue.show', [
-            'issue' => Issue::where('tracker', $issue->tracker)->get()
-        ]);
+        return view('issue.approval');
     }
 
     public function documentIssue(Issue $issue)
@@ -127,6 +125,19 @@ class IssueController extends Controller
             'depts' => Departemen::get(),
             'users' => User::get()
         ]);
+    }
+    
+    public function approvedForm()
+    {
+        return view('issue.approved',[
+            'approved' => Issue::get()
+        ]);
+    }
+
+
+    public function approved(Request $request, Issue $issue)
+    {
+        return dd($request->all());
     }
 
     /**
