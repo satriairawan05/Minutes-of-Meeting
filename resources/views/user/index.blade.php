@@ -40,7 +40,7 @@ $delete = $pages[0]['access'] == 1;
 
                     @if ($users)
                     <div class="table-responsive">
-                        <table class="table table-sm table-bordered table-hover" id="exportexample">
+                        <table class="table table-sm table-bordered table-hover" id="example2_wrapper">
                             <thead class="table-header text-center">
                                 <tr>
                                     <th scope="col">No</th>

@@ -33,7 +33,7 @@ $delete = $pages[16]['access'] == 1;
                 </div>
                 <div class="card-body bg-transparent">
                     <div class="table-responsive ">
-                        <table id="exportexample" class="table table-bordered border-t0 key-buttons text-nowrap w-100">
+                        <table id="example2_wrapper" class="table table-bordered border-t0 key-buttons text-nowrap w-100">
                             <thead class="table-header">
                                 <tr>
                                     <th style="text-align: center;">No</th>

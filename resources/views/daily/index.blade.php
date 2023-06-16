@@ -48,7 +48,7 @@ $daily = App\Models\Daily::select('*')->distinct('departemen')->where('departeme
                         @endforeach
                         <div class="table-responsive ">
                             @if(isset($_GET['departemen']))
-                            <table id="exportexample" class="table table-bordered border-t0 key-buttons text-nowrap w-100">
+                            <table id="example2_wrapper" class="table table-bordered border-t0 key-buttons text-nowrap w-100">
                                 <thead class="table-header text-center">
                                     <tr>
                                         <th>No</th>
@@ -146,7 +146,7 @@ $daily = App\Models\Daily::select('*')->distinct('departemen')->where('departeme
                             </table>
                             @endif
                         </div>
-                        {{-- <table id="exportexample" class="table table-bordered border-t0 key-buttons text-nowrap w-100"> --}}
+                        {{-- <table id="example2_wrapper" class="table table-bordered border-t0 key-buttons text-nowrap w-100"> --}}
                         {{-- <thead class="table-header text-center"> --}}
                         {{-- <tr>
                                     <th>No</th>

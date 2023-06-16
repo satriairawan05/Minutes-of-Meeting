@@ -3445,8 +3445,8 @@ body.dark-theme {
 }
 
 @media (max-width: 991.98px) {
-  .dark-theme .main-sidebar {
-    background-color: #fff;
+  .main-sidebar {
+    background-color: rgba(173, 216, 230, 0.7); /* Light blue background */
   }
 }
 
