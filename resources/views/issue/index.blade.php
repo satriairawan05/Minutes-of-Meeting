@@ -40,7 +40,7 @@ $delete = $pages[13]['access'] == 1;
                 </div>
                 <div class="card-body bg-transparent">
                     <div class="table-responsive">
-                        <table id="exportexample" class="table table-bordered border-t0 key-buttons text-nowrap w-100">
+                        <table id="example2_wrapper" class="table table-bordered border-t0 key-buttons text-nowrap w-100">
                             <thead class="table-header text-center">
                                 <tr>
                                     <th>#</th>
@@ -90,11 +90,11 @@ $delete = $pages[13]['access'] == 1;
                                         <td><span class="badge badge-primary">{!! $issue->status !!}</span></td>
                                         @endif
                                         @if ($issue->priority == "Low")
-                                        <td><span class="badge badge-success">{!! $issue->priority !!}</span></td>
+                                        <td><span class="badge badge-success-light">{!! $issue->priority !!}</span></td>
                                         @elseif ($issue->priority == "Medium")
-                                        <td><span class="badge badge-warning">{!! $issue->priority !!}</span></td>
+                                        <td><span class="badge badge-warning-light">{!! $issue->priority !!}</span></td>
                                         @else
-                                        <td><span class="badge badge-danger">{!! $issue->priority !!}</span></td>
+                                        <td><span class="badge badge-danger-light">{!! $issue->priority !!}</span></td>
                                         @endif
                                         <td>{!! \Carbon\Carbon::parse($issue->start_date)->format('d-m-Y') !!}</td>
                                         <td>{!! \Carbon\Carbon::parse($issue->end_date)->format('d-m-Y') !!}</td>

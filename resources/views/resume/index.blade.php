@@ -83,7 +83,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <table class="table table-bordered data-table table-responsive table-sm table-striped table-hover" id="exportexample">
+                        <table class="table table-bordered data-table table-responsive table-sm table-striped table-hover" id="example2_wrapper">
                             <thead>
                                 <tr>
                                     <th>No</th>

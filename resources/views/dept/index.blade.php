@@ -67,16 +67,16 @@
                                     <td style="text-align: center;">
                                         {{-- Edit Modal Trigger --}}
                                         <a href="{!! route('departemen.edit', $dept->id) !!}" class="btn ripple btn-primary btn-sm" title="Edit Data">
-                                        <i class="fas fa-edit"></i>
+                                            <i class="fas fa-edit"></i>
                                         </a>
 
                                         {{-- End of Edit Modal Trigger --}}
 
                                         {{-- Delete Modal Trigger --}}
                                         <form action="{!! route('departemen.destroy',$dept->id) !!}" method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit" class="btn ripple btn-danger btn-sm" title="Delete Data"><i class="far fa-trash-alt"></i></button>
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn ripple btn-danger btn-sm" title="Delete Data"><i class="far fa-trash-alt"></i></button>
                                         </form>
                                         {{-- End of Delete Modal Trigger --}}
 

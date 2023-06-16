@@ -28,7 +28,7 @@
                         </div>
                         @endif  --}}
                             <div class="table-responsive">
-                                <table id="exportexample"
+                                <table id="example2_wrapper"
                                     class="table table-bordered border-t0 key-buttons text-nowrap w-100">
                                     <thead class="table-header">
                                         <tr>
