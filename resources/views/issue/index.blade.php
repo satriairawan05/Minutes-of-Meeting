@@ -34,130 +34,138 @@ $delete = $pages[13]['access'] == 1;
                         @if($approval)
                         <a class="btn ripple btn-info btn-icon mr-3" href="{{ route('issue.form_approved') }}" data-toggle="tooltip" title="Approved data">
                             <i class="fa fa-file-text"></i>
-                        </a>    
+                        </a>
                         @endif
                     </div>
                 </div>
-                <div class="card-body bg-transparent">
-                    <div class="table-responsive">
-                        <table id="example2_wrapper" class="table table-bordered border-t0 key-buttons text-nowrap w-100">
-                            <thead class="table-header text-center">
-                                <tr>
-                                    <th>#</th>
-                                    <th>ID</th>
-                                    <th>Subject</th>
-                                    <th>Departemen</th>
-                                    <th>Description</th>
-                                    <th>Status</th>
-                                    <th>Priority</th>
-                                    <th>Start Date</th>
-                                    <th>End Date</th>
-                                    <th>Days (+/-)</th>
-                                    <th>Asiggnee</th>
-                                    <th>PIC</th>
-                                    <th width="100px">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-center">
-                                @foreach ($issues as $issue)
-                                @php
-                                $startDate = \Carbon\Carbon::parse($issue->start_date);
-                                $endDate = \Carbon\Carbon::parse($issue->end_date);
-                                $hasil = $endDate->diff($startDate)->format('%d');
-                                $day = now()->diff($endDate)->format('%d');
+                <!-- Row -->
+                <div class="row row-sm">
+                    <div class="col-lg-12">
+                        <div class="card custom-card">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table" id="example2">
+                                        <thead class="table-header text-center">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>ID</th>
+                                                <th>Subject</th>
+                                                <th>Departemen</th>
+                                                <th>Description</th>
+                                                <th>Status</th>
+                                                <th>Priority</th>
+                                                <th>Start Date</th>
+                                                <th>End Date</th>
+                                                <th>Days (+/-)</th>
+                                                <th>Asiggnee</th>
+                                                <th>PIC</th>
+                                                <th width="100px">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-center">
+                                            @foreach ($issues as $issue)
+                                            @php
+                                            $startDate = \Carbon\Carbon::parse($issue->start_date);
+                                            $endDate = \Carbon\Carbon::parse($issue->end_date);
+                                            $hasil = $endDate->diff($startDate)->format('%d');
+                                            $day = now()->diff($endDate)->format('%d');
 
-                                // $status = App\Models\Issue::where('end_date','<',now())->update(['status' => 'Over Due']);
+                                            // $status = App\Models\Issue::where('end_date','<',now())->update(['status' => 'Over Due']);
 
-                                    // $days = $status->end_date->diffInDays(now()); // menghitung selisih hari antara end_date dan waktu saat ini
+                                                // $days = $status->end_date->diffInDays(now()); // menghitung selisih hari antara end_date dan waktu saat ini
 
-                                    @endphp
-                                    @if($read)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{!! $issue->issue_xid !!}</td>
-                                        <td>{!! $issue->subject !!}</td>
-                                        <td><a href="{{ route('issue.document',$issue->issue_id) }}" class="text-decoration-none text-capitalize">{!! $issue->tracker !!}</a></td>
-                                        <td>{!! $issue->description !!}</td>
-                                        @if($issue->status == "New")
-                                        <td><span class="badge badge-primary-light">{!! $issue->status !!}</span></td>
-                                        @elseif ($issue->status == "Continue")
-                                        <td><span class="badge badge-info-light">{!! $issue->status !!}</span></td>
-                                        @elseif($issue->status == "Over Due")
-                                        <td><span class="badge badge-danger-light">{!! $issue->status !!}</span></td>
-                                        @elseif ($issue->status == "Closed")
-                                        <td><span class="badge badge-success">{!! $issue->status !!}</span></td>
-                                        @else
-                                        <td><span class="badge badge-primary">{!! $issue->status !!}</span></td>
-                                        @endif
-                                        @if ($issue->priority == "Low")
-                                        <td><span class="badge badge-success-light">{!! $issue->priority !!}</span></td>
-                                        @elseif ($issue->priority == "Medium")
-                                        <td><span class="badge badge-warning-light">{!! $issue->priority !!}</span></td>
-                                        @else
-                                        <td><span class="badge badge-danger-light">{!! $issue->priority !!}</span></td>
-                                        @endif
-                                        <td>{!! \Carbon\Carbon::parse($issue->start_date)->format('d-m-Y') !!}</td>
-                                        <td>{!! \Carbon\Carbon::parse($issue->end_date)->format('d-m-Y') !!}</td>
-                                        @if ($hasil)
-                                        <td>- {!! $day !!} Day{{ $hasil > 1 ? 's' : '' }}</td>
-                                        @else
-                                        <td>+ {!! $day !!} Day{{ $hasil > 1 ? 's' : '' }}</td>
-                                        @endif
-                                        <td>{!! $issue->assignee !!}</td>
-                                        <td>{!! $issue->pic !!}</td>
-                                        {{-- start modal  --}}
-                                        <td>
-                                            {{-- Edit Modal Trigger --}}
-                                            @if($update)
-                                            <a href="{{ route('issue.edit', $issue->issue_id) }}" class="btn ripple btn-primary btn-sm d-inline-block" data-toggle="tooltip" title="Edit Data">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            @endif
-                                            {{-- End of Edit Modal Trigger --}}
-                                            {{-- Delete Modal Trigger --}}
-                                            @if($delete)
-                                            <form action="{{ route('issue.destroy', $issue->issue_id) }}" method="post">
-                                                @csrf
-                                                @method('delete')
-                                                <button type="submit" class="btn ripple btn-danger btn-sm d-inline-block" data-toggle="tooltip" title="Delete Data"><i class="fas fa-trash-alt"></i></button>
-                                            </form>
-                                            @endif
-                                            {{-- End of Delete Modal Trigger --}}
-                                            {{-- Delete Modal --}}
-                                            <div class="modal fade" id="deleteModal{{ $issue->issue_id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $issue->issue_id }}" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="deleteModalLabel{{ $issue->issue_id }}">Delete
-                                                                Data</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
+                                                @endphp
+                                                @if($read)
+                                                <tr>
+                                                    <td>{{ $loop->iteration }}</td>
+                                                    <td>{!! $issue->issue_xid !!}</td>
+                                                    <td>{!! $issue->subject !!}</td>
+                                                    <td><a href="{{ route('issue.document',$issue->issue_id) }}" class="text-decoration-none text-capitalize">{!! $issue->tracker !!}</a></td>
+                                                    <td>{!! $issue->description !!}</td>
+                                                    @if($issue->status == "New")
+                                                    <td><span class="badge badge-primary-light">{!! $issue->status !!}</span></td>
+                                                    @elseif ($issue->status == "Continue")
+                                                    <td><span class="badge badge-info-light">{!! $issue->status !!}</span></td>
+                                                    @elseif($issue->status == "Over Due")
+                                                    <td><span class="badge badge-danger-light">{!! $issue->status !!}</span></td>
+                                                    @elseif ($issue->status == "Closed")
+                                                    <td><span class="badge badge-success">{!! $issue->status !!}</span></td>
+                                                    @else
+                                                    <td><span class="badge badge-primary">{!! $issue->status !!}</span></td>
+                                                    @endif
+                                                    @if ($issue->priority == "Low")
+                                                    <td><span class="badge badge-success-light">{!! $issue->priority !!}</span></td>
+                                                    @elseif ($issue->priority == "Medium")
+                                                    <td><span class="badge badge-warning-light">{!! $issue->priority !!}</span></td>
+                                                    @else
+                                                    <td><span class="badge badge-danger-light">{!! $issue->priority !!}</span></td>
+                                                    @endif
+                                                    <td>{!! \Carbon\Carbon::parse($issue->start_date)->format('d-m-Y') !!}</td>
+                                                    <td>{!! \Carbon\Carbon::parse($issue->end_date)->format('d-m-Y') !!}</td>
+                                                    @if ($hasil)
+                                                    <td>- {!! $day !!} Day{{ $hasil > 1 ? 's' : '' }}</td>
+                                                    @else
+                                                    <td>+ {!! $day !!} Day{{ $hasil > 1 ? 's' : '' }}</td>
+                                                    @endif
+                                                    <td>{!! $issue->assignee !!}</td>
+                                                    <td>{!! $issue->pic !!}</td>
+                                                    {{-- start modal  --}}
+                                                    <td>
+                                                        {{-- Edit Modal Trigger --}}
+                                                        @if($update)
+                                                        <a href="{{ route('issue.edit', $issue->issue_id) }}" class="btn ripple btn-primary btn-sm d-inline-block" data-toggle="tooltip" title="Edit Data">
+                                                            <i class="fas fa-edit"></i>
+                                                        </a>
+                                                        @endif
+                                                        {{-- End of Edit Modal Trigger --}}
+                                                        {{-- Delete Modal Trigger --}}
+                                                        @if($delete)
+                                                        <form action="{{ route('issue.destroy', $issue->issue_id) }}" method="post">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button type="submit" class="btn ripple btn-danger btn-sm d-inline-block" data-toggle="tooltip" title="Delete Data"><i class="fas fa-trash-alt"></i></button>
+                                                        </form>
+                                                        @endif
+                                                        {{-- End of Delete Modal Trigger --}}
+                                                        {{-- Delete Modal --}}
+                                                        <div class="modal fade" id="deleteModal{{ $issue->issue_id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $issue->issue_id }}" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="deleteModalLabel{{ $issue->issue_id }}">Delete
+                                                                            Data</h5>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        Apakah anda yakin?
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <form onsubmit="return deleteData('{{ $issue->subject }}')" method="POST" action="{{ route('issue.destroy', $issue->issue_id) }}">
+                                                                            @csrf
+                                                                            <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                                                                            @method('DELETE')
+                                                                            <button type="submit" class="btn bg-gradient-danger" data-bs-dismiss="modal">Delete</button>
+                                                                            </button>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div class="modal-body">
-                                                            Apakah anda yakin?
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <form onsubmit="return deleteData('{{ $issue->subject }}')" method="POST" action="{{ route('issue.destroy', $issue->issue_id) }}">
-                                                                @csrf
-                                                                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                                                                @method('DELETE')
-                                                                <button type="submit" class="btn bg-gradient-danger" data-bs-dismiss="modal">Delete</button>
-                                                                </button>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            {{-- End of Delete Modal --}}
-                                        </td>
-                                    </tr>
-                                    @endif
-                                    @endforeach
-                            </tbody>
-                        </table>
+                                                        {{-- End of Delete Modal --}}
+                                                    </td>
+                                                </tr>
+                                                @endif
+                                                @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <!-- End Row -->
             </div>
 
             <script>
@@ -182,23 +190,21 @@ $delete = $pages[13]['access'] == 1;
                         $('.' + column).toggle();
                     });
                 });
-
             </script>
             <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
             @if ($message = Session::get('success'))
             <script>
                 Toastify({
-                    text: "{{ $message }}"
-                    , duration: 3000
-                    , close: true, // Include close button
+                    text: "{{ $message }}",
+                    duration: 3000,
+                    close: true, // Include close button
                     gravity: "bottom", // Set gravity to "bottom"
                     position: "right", // Set position to "right"
                     style: {
                         background: "linear-gradient(to right, #11998E, #38ef7d)"
                     }
                 }).showToast();
-
             </script>
             @endif
 

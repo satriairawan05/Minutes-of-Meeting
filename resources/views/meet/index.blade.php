@@ -31,140 +31,76 @@ $delete = $pages[16]['access'] == 1;
                     </a>
                     @endif
                 </div>
-                					<!-- Row -->
-					<div class="row row-sm">
-						<div class="col-lg-12">
-							<div class="card custom-card">
-								<div class="card-body">
-
-									<div class="table-responsive">
-										<table class="table" id="example2">
+                <!-- Row -->
+                <div class="row row-sm">
+                    <div class="col-lg-12">
+                        <div class="card custom-card">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table" id="example2">
                                         <thead class="table-header">
-                                <tr>
-                                    <th style="text-align: center;">No</th>
-                                    <th style="text-align: center;" class="d-none d-sm-table-cell">ID</th>
-                                    <th style="text-align: center;">Meeting Name</th>
-                                    <th style="text-align: center;">Project Name</th>
-                                    <th style="text-align: center;">Date Of Meeting</th>
-                                    <th style="text-align: center;">Time Of Meeting</th>
-                                    <th style="text-align: center;">Minutes Prepared by</th>
-                                    <th style="text-align: center;">Meeting Locate</th>
-                                    <th style="text-align: center;" class="d-none d-sm-table-cell">Attendees</th>
-                                    @if($update || $delete)
-                                    <th style="text-align: center;">Actions</th>
-                                    @endif
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($meets as $d)
-                                @if($read)
-                                <tr>
-                                    <td style="text-align: center;">{{ $loop->iteration }}</td>
-                                    <td style="text-align: center;" class="d-none d-sm-table-cell">
-                                        <a href="{{ route('resume.meet', $d->meet_id) }}" class="text-decoration-none text-monospace">{{ $d->meet_xid }}</a>
-                                    </td>
-                                    <td style="text-align: center;">{{ $d->meet_name }}</td>
-                                    <td style="text-align: center;">{{ $d->meet_project }}</td>
-                                    <td style="text-align: center;">{{ \Carbon\Carbon::parse($d->meet_date)->format('d-m-Y') }}</td>
-                                    <td style="text-align: center;">{{ \Carbon\Carbon::parse($d->meet_time)->format('H:i') }}</td>
-                                    <td style="text-align: center;">{{ $d->meet_preparedby }}</td>
-                                    <td style="text-align: center;">{{ $d->meet_locate }}</td>
-                                    <td style="text-align: center;" class="d-none d-sm-table-cell">{{ $d->meet_attend }}</td>
-                                    <td style="text-align: center;">
-                                        {{-- Edit Modal Trigger --}}
-                                        @if($update)
-                                        <button type="button" onclick="window.location='{{ route('meet.edit', $d->meet_id) }}'" class="btn ripple btn-primary btn-sm" data-toggle="tooltip" title="Edit Data">
-                                            <i class="fas fa-edit fa-sm"></i>
-                                        </button>
-                                        @endif
-                                        {{-- End of Edit Modal Trigger --}}
+                                            <tr>
+                                                <th style="text-align: center;">No</th>
+                                                <th style="text-align: center;" class="d-none d-sm-table-cell">ID</th>
+                                                <th style="text-align: center;">Meeting Name</th>
+                                                <th style="text-align: center;">Project Name</th>
+                                                <th style="text-align: center;">Date Of Meeting</th>
+                                                <th style="text-align: center;">Time Of Meeting</th>
+                                                <th style="text-align: center;">Minutes Prepared by</th>
+                                                <th style="text-align: center;">Meeting Locate</th>
+                                                <th style="text-align: center;" class="d-none d-sm-table-cell">Attendees</th>
+                                                @if($update || $delete)
+                                                <th style="text-align: center;">Actions</th>
+                                                @endif
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($meets as $d)
+                                            @if($read)
+                                            <tr>
+                                                <td style="text-align: center;">{{ $loop->iteration }}</td>
+                                                <td style="text-align: center;" class="d-none d-sm-table-cell">
+                                                    <a href="{{ route('resume.meet', $d->meet_id) }}" class="text-decoration-none text-monospace">{{ $d->meet_xid }}</a>
+                                                </td>
+                                                <td style="text-align: center;">{{ $d->meet_name }}</td>
+                                                <td style="text-align: center;">{{ $d->meet_project }}</td>
+                                                <td style="text-align: center;">{{ \Carbon\Carbon::parse($d->meet_date)->format('d-m-Y') }}</td>
+                                                <td style="text-align: center;">{{ \Carbon\Carbon::parse($d->meet_time)->format('H:i') }}</td>
+                                                <td style="text-align: center;">{{ $d->meet_preparedby }}</td>
+                                                <td style="text-align: center;">{{ $d->meet_locate }}</td>
+                                                <td style="text-align: center;" class="d-none d-sm-table-cell">{{ $d->meet_attend }}</td>
+                                                <td>
+                                                    {{-- Edit Modal Trigger --}}
+                                                    @if($update)
+                                                    <button type="button" onclick="window.location='{{ route('meet.edit', $d->meet_id) }}'" class="btn ripple btn-primary btn-sm" data-toggle="tooltip" title="Edit Data">
+                                                        <i class="fas fa-edit fa-sm"></i>
+                                                    </button>
+                                                    @endif
+                                                    {{-- End of Edit Modal Trigger --}}
 
-                                        {{-- Delete Modal Trigger --}}
-                                        @if($delete)
-                                        <form action="{{ route('meet.destroy', $d->meet_id) }}" method="post">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="btn ripple btn-danger btn-sm d-inline-block" data-toggle="tooltip" title="Delete Data">
-                                                <i class="fas fa-trash fa-sm"></i>
-                                            </button>
-                                        </form>
-                                        @endif
-                                        {{-- End of Delete Modal Trigger --}}
-                                    </td>
-                                </tr>
-                                @endif
-                                @endforeach
-                            </tbody>
-										</table>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- End Row -->
-                <div class="card-body bg-transparent">
-                    <div class="table-responsive ">
-                        <table id="example2_wrapper" class="table table-bordered border-t0 key-buttons text-nowrap w-100">
-                            <thead class="table-header">
-                                <tr>
-                                    <th style="text-align: center;">No</th>
-                                    <th style="text-align: center;" class="d-none d-sm-table-cell">ID</th>
-                                    <th style="text-align: center;">Meeting Name</th>
-                                    <th style="text-align: center;">Project Name</th>
-                                    <th style="text-align: center;">Date Of Meeting</th>
-                                    <th style="text-align: center;">Time Of Meeting</th>
-                                    <th style="text-align: center;">Minutes Prepared by</th>
-                                    <th style="text-align: center;">Meeting Locate</th>
-                                    <th style="text-align: center;" class="d-none d-sm-table-cell">Attendees</th>
-                                    @if($update || $delete)
-                                    <th style="text-align: center;">Actions</th>
-                                    @endif
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($meets as $d)
-                                @if($read)
-                                <tr>
-                                    <td style="text-align: center;">{{ $loop->iteration }}</td>
-                                    <td style="text-align: center;" class="d-none d-sm-table-cell">
-                                        <a href="{{ route('resume.meet', $d->meet_id) }}" class="text-decoration-none text-monospace">{{ $d->meet_xid }}</a>
-                                    </td>
-                                    <td style="text-align: center;">{{ $d->meet_name }}</td>
-                                    <td style="text-align: center;">{{ $d->meet_project }}</td>
-                                    <td style="text-align: center;">{{ \Carbon\Carbon::parse($d->meet_date)->format('d-m-Y') }}</td>
-                                    <td style="text-align: center;">{{ \Carbon\Carbon::parse($d->meet_time)->format('H:i') }}</td>
-                                    <td style="text-align: center;">{{ $d->meet_preparedby }}</td>
-                                    <td style="text-align: center;">{{ $d->meet_locate }}</td>
-                                    <td style="text-align: center;" class="d-none d-sm-table-cell">{{ $d->meet_attend }}</td>
-                                    <td style="text-align: center;">
-                                        {{-- Edit Modal Trigger --}}
-                                        @if($update)
-                                        <button type="button" onclick="window.location='{{ route('meet.edit', $d->meet_id) }}'" class="btn ripple btn-primary btn-sm" data-toggle="tooltip" title="Edit Data">
-                                            <i class="fas fa-edit fa-sm"></i>
-                                        </button>
-                                        @endif
-                                        {{-- End of Edit Modal Trigger --}}
-
-                                        {{-- Delete Modal Trigger --}}
-                                        @if($delete)
-                                        <form action="{{ route('meet.destroy', $d->meet_id) }}" method="post">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="btn ripple btn-danger btn-sm d-inline-block" data-toggle="tooltip" title="Delete Data">
-                                                <i class="fas fa-trash fa-sm"></i>
-                                            </button>
-                                        </form>
-                                        @endif
-                                        {{-- End of Delete Modal Trigger --}}
-                                    </td>
-                                </tr>
-                                @endif
-                                @endforeach
-                            </tbody>
-                        </table>
-
+                                                    {{-- Delete Modal Trigger --}}
+                                                    @if($delete)
+                                                    <form action="{{ route('meet.destroy', $d->meet_id) }}" method="post">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="btn ripple btn-danger btn-sm d-inline-block" data-toggle="tooltip" title="Delete Data">
+                                                            <i class="fas fa-trash fa-sm"></i>
+                                                        </button>
+                                                    </form>
+                                                    @endif
+                                                    {{-- End of Delete Modal Trigger --}}
+                                                </td>
+                                            </tr>
+                                            @endif
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <!-- End Row -->
             </div>
         </div>
     </div>
@@ -184,23 +120,21 @@ $delete = $pages[16]['access'] == 1;
             $(this).siblings('.expand-content').toggle();
         });
     });
-
 </script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
 @if ($message = Session::get('success'))
 <script>
     Toastify({
-        text: "{{ $message }}"
-        , duration: 3000
-        , close: true, // Include close button
+        text: "{{ $message }}",
+        duration: 3000,
+        close: true, // Include close button
         gravity: "bottom", // Set gravity to "bottom"
         position: "right", // Set position to "right"
         style: {
             background: "linear-gradient(to right, #11998E, #38ef7d)"
         }
     }).showToast();
-
 </script>
 @endif
 

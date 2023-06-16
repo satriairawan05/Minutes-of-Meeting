@@ -236,16 +236,15 @@ $daily = App\Models\Daily::select('*')->distinct('departemen')->where('departeme
         @if ($message = Session::get('success'))
         <script>
             Toastify({
-                text: "{{ $message }}"
-                , duration: 3000
-                , close: true, // Include close button
+                text: "{{ $message }}",
+                duration: 3000,
+                close: true, // Include close button
                 gravity: "bottom", // Set gravity to "bottom"
                 position: "right", // Set position to "right"
                 style: {
                     background: "linear-gradient(to right, #11998E, #38ef7d)"
                 }
             }).showToast();
-
         </script>
         @endif
     </div>
