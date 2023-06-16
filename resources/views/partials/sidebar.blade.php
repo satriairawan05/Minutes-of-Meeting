@@ -108,6 +108,9 @@ $User = $pages[19]['page_name'];
                     <li class="nav-sub-item">
                         <a class="nav-sub-link" href="{{ route('group.index') }}">Roles</a>
                     </li>
+                    <li class="nav-sub-item">
+                        <a class="nav-sub-link" href="{{ route('tracker.index') }}">DWM Tracker</a>
+                    </li>
                 </ul>
             </li>
             @endif

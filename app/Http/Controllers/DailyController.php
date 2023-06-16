@@ -63,6 +63,7 @@ class DailyController extends Controller
             $daily->c_action = $request->c_action;
             $daily->description_daily = $request->description_daily;
             $daily->status = $request->status;
+            $daily->priority = $request->priority;
             $daily->assignee = $request->assignee;
             $daily->pic = $request->pic;
             $daily->start_date = $request->start_date;
@@ -79,6 +80,7 @@ class DailyController extends Controller
             $archiveDaily->c_action = $request->c_action;
             $archiveDaily->description = $request->description_daily;
             $archiveDaily->status = $request->status;
+            $archiveDaily->priority = $request->priority;
             $archiveDaily->assignee = $request->assignee;
             $archiveDaily->pic = $request->pic;
             $archiveDaily->start_date = $request->start_date;
@@ -99,7 +101,7 @@ class DailyController extends Controller
     public function show(Daily $daily)
     {
         return view('daily.show',[
-            'daily' => Daily::where('departemen',$daily->departemen)->get()
+            'daily' => Daily::where('subject',$daily->subject)->get()
         ]);
     }
 
@@ -135,6 +137,7 @@ class DailyController extends Controller
                 'subject' => 'required',
                 'description' => 'required',
                 'status' => 'required',
+                'priority' => 'required',
                 'assignee' => 'required',
                 'pic' => 'required',
                 'start_date' => 'required',

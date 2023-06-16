@@ -81,23 +81,38 @@
                             </div>
                             @enderror
                         </div>
+                        @php
+                        $statuses = array("New","Continue","Over Due","Complete","Closed")
+                        @endphp
+                        <div class="col-md-6">
+                            <label id="status_label" for="status">Status</label>
+                            <select class="form-select form-control form-control-sm" name="status">
+                                @foreach ($statuses as $status)
+                                @if (old('status') == $status)
+                                <option name="status" value="{{ $status }}" selected>{{ $status }}</option>
+                                @else
+                                <option name="status" value="{{ $status }}">{{ $status }}</option>
+                                @endif
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="mb-3 col-12">
-                            <label id="c_action_label" for="c_action">Corrective Action</label>
-                            <input id="c_action" name="c_action" type="text" class="form-control @error('c_action')
-            is_invalid
-        @enderror" value="{{ old('c_action', $daily->c_action) }}" placeholder="Masukan Corrective Action" />
-                            @error('c_action')
+                            <label id="priority_label" for="priority">Priority</label>
+                            <select class="form-select form-control form-control-sm" name="priority">
+                                <option name="priority" value="High" selected>High</option>
+                            </select>
+                            @error('priority')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                             @enderror
                         </div>
-                        <div class="mb-3 col-12">
-                            <label id="status_label" for="status">Priority</label>
-                            <select class="form-select form-control form-control-sm" name="status">
-                                <option name="status" value="High" selected>High</option>
-                            </select>
-                            @error('status')
+                        <div class="mb-3 col-13">
+                            <label id="c_action_label" for="c_action">Corrective Action</label>
+                            <input id="c_action" name="c_action" type="text" class="form-control @error('c_action')
+            is_invalid
+        @enderror" value="{{ old('c_action', $daily->c_action) }}" placeholder="Masukan Corrective Action" />
+                            @error('c_action')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>

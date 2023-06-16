@@ -30,7 +30,7 @@
                                     <div class="row align-items-center">
                                         <div class="offset-xl-3 offset-sm-6 col-xl-8 col-sm-6 col-12 img-bg ">
                                             <h4 class="d-flex  mb-3">
-                                                <span class="font-weight-bold text-black ">Assalamualaikum Wr.Wb., {{ auth()->user()->name }}</span>
+                                                <span class="font-weight-bold text-black ">Assalamualaikum Warahmatullahi Wabarakatuh, {{ auth()->user()->name }}</span>
                                             </h4>
                                             <p class="tx-black-7 mb-1">You have two projects to finish, you had completed <b class="text-warning">57%</b> from your montly level,
                                                 Keep going to your level
