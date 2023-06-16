@@ -134,6 +134,15 @@ class UserSeeder extends Seeder
             'departemen' => 'PURCASHING',
             'remember_token' => Str::random(10),
         ]);
-        //'Engginering','HSE',' & Berging','FAT','HRGA','IT','LOGISTIC','PLANT','PRODUCTION','PURCASHING'
+
+        User::create([
+            'name' => 'BOD',
+            'email' => 'bod@bss.id',
+            'password' => bcrypt('bss'),
+            'email_verified_at' => now(),
+            'group_id' => 3,
+            'departemen' => 'BOD',
+            'remember_token' => Str::random(10),
+        ]);
     }
 }

@@ -64,6 +64,7 @@ class DailyController extends Controller
             $daily->description_daily = $request->description_daily;
             $daily->status = $request->status;
             $daily->assignee = $request->assignee;
+            $daily->pic = $request->pic;
             $daily->start_date = $request->start_date;
             $daily->end_date = $request->end_date;
             $daily->file = $request->file('file') ? $request->file('file')->store('dailies') : null;
@@ -79,6 +80,7 @@ class DailyController extends Controller
             $archiveDaily->description = $request->description_daily;
             $archiveDaily->status = $request->status;
             $archiveDaily->assignee = $request->assignee;
+            $archiveDaily->pic = $request->pic;
             $archiveDaily->start_date = $request->start_date;
             $archiveDaily->end_date = $request->end_date;
             $archiveDaily->file = $request->file('file') ? $request->file('file')->store('dailies') : null;
@@ -134,6 +136,7 @@ class DailyController extends Controller
                 'description' => 'required',
                 'status' => 'required',
                 'assignee' => 'required',
+                'pic' => 'required',
                 'start_date' => 'required',
                 'end_date' => 'required',
             ]);
