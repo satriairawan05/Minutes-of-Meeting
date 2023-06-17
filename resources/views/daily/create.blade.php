@@ -75,7 +75,8 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="mb-3 col-13">
+                        <div class="row mb-3">
+                            <div class="col-6">
                                 <label id="departemen_label" for="departemen">Departemen</label>
                                 <select class="form-select form-control form-control-sm" id="departemen" name="departemen">
                                     @if(old('departemen') == null)
@@ -95,6 +96,28 @@
                                     {{ $message }}
                                 </div>
                                 @enderror
+                            </div>
+                            <div class="col-6">
+                                <label id="tracker_label" for="tracker_id">Tracker</label>
+                                <select class="form-select form-control form-control-sm" id="tracker_id" name="tracker_id">
+                                    @if(old('tracker_id') == null)
+                                    <option name="tracker_id">Masukan Tracker</option>
+                                    @endif
+                                    @foreach ($trackers as $tracker)
+                                    @if (old('tracker_id') == $tracker->tracker_id)
+                                    <option name="tracker_id" value="{{ $tracker->tracker_id }}" selected>{{ $tracker->tracker_name }}
+                                    </option>
+                                    @else
+                                    <option name="tracker_id" value="{{ $tracker->tracker_id }}">{{ $tracker->tracker_name }}</option>
+                                    @endif
+                                    @endforeach
+                                </select>
+                                @error('tracker')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
                         </div>
                         <div class="mb-3 col-13">
                             <label id="description_label" for="description_daily">Problem Identification</label>

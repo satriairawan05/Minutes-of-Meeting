@@ -38,11 +38,7 @@
                             @foreach ($trackers as $tr)
                             <tr>
                                 <td>{!! $loop->iteration !!}</td>
-                                @if($tr->tracker_header == 0)
-                                    <td>{!! $tr->tracker_name !!}</td>
-                                @elseif($tr->tracker_header >= 0)
-                                    <td></td>
-                                @endif
+                                <td>{!! $tr->tracker_header !!}</td>
                                 <td>{!! $tr->tracker_name !!}</td>
                                 <td></td>
                             </tr>

@@ -45,6 +45,7 @@ $delete = $pages[8]['access'] == 1;
                                     <th>No</th>
                                     <th>Daily ID</th>
                                     <th>Departemen</th>
+                                    <th>Tracker</th>
                                     <th>Issue</th>
                                     <th>Corrective Action</th>
                                     <th>Status</th>
@@ -62,6 +63,7 @@ $delete = $pages[8]['access'] == 1;
                                     <td>{{ $loop->iteration }}</td>
                                     <td><a href="{{ route('daily.document',$i->daily_id) }}" class="text-decoration-none">{!! $i->daily_xid !!}</a></td>
                                     <td>{!! $i->departemen !!}</td>
+                                    <td>{!! $i->tracker_name !!}</td>
                                     <td>{!! $i->subject !!}</td>
                                     <td>{!! $i->c_action !!}</td>
                                     @if($i->status == "New")

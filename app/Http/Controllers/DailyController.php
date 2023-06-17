@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Daily;
+use App\Models\Tracker;
 use App\Models\Departemen;
 use App\Models\ArchiveDaily;
 use Illuminate\Http\Request;
@@ -45,7 +46,8 @@ class DailyController extends Controller
         return view('daily.create', [
             'daily' => $id,
             'users' => User::get(),
-            'depts' => Departemen::get()
+            'depts' => Departemen::get(),
+            'trackers' => Tracker::where('tracker_header','>',0)->get()
         ]);
 
     }
@@ -101,14 +103,14 @@ class DailyController extends Controller
     public function show(Daily $daily)
     {
         return view('daily.show',[
-            'daily' => Daily::where('subject',$daily->subject)->get()
+            'daily' => Daily::where('subject',$daily->subject)->leftJoin('daily_trackers','dailies.tracker_id','=','daily_trackers.tracker_id')->get()
         ]);
     }
 
     public function document(Daily $daily)
     {
         return view('daily.document',[
-            'daily' => $daily
+            'daily' => $daily,
         ]);
     }
 
@@ -120,7 +122,8 @@ class DailyController extends Controller
         return view('daily.edit', [
             'daily' => $daily,
             'users' => User::get(),
-            'depts' => Departemen::get()
+            'depts' => Departemen::get(),
+            'trackers' => Tracker::where('tracker_id','>=',$daily->tracker_id)->get()
         ]);
     }
 
