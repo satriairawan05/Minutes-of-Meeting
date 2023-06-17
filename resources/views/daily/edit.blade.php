@@ -7,11 +7,11 @@
             <!-- Page Header -->
             <div class="page-header">
                 <div>
-                    <h2 class="main-content-title tx-24 mg-b-5">Edit Daily</h2>
+                    <h2 class="main-content-title tx-24 mg-b-5">Edit DWM Report</h2>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item"><a href="/daily">Daily</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Edit Daily</li>
+                        <li class="breadcrumb-item"><a href="/daily">DWM Report</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Edit DWM Report</li>
                     </ol>
                 </div>
             </div>
@@ -105,33 +105,35 @@
                             </div>
                             @enderror
                         </div>
-                        @php
-                        $statuses = array("New","Continue","Over Due","Complete","Closed")
-                        @endphp
-                        <div class="col-md-6">
-                            <label id="status_label" for="status">Status</label>
-                            <select class="form-select form-control form-control-sm" name="status">
-                                @foreach ($statuses as $status)
-                                @if (old('status') == $status)
-                                <option name="status" value="{{ $status }}" selected>{{ $status }}</option>
-                                @else
-                                <option name="status" value="{{ $status }}">{{ $status }}</option>
-                                @endif
-                                @endforeach
-                            </select>
+                        <div class="mb-3 row col-12">
+                            @php
+                            $statuses = array("New","Continue","Over Due","Complete","Closed")
+                            @endphp
+                            <div class="col-6">
+                                <label id="status_label" for="status">Status</label>
+                                <select class="form-select form-control form-control-sm" name="status">
+                                    @foreach ($statuses as $status)
+                                    @if (old('status') == $status)
+                                    <option name="status" value="{{ $status }}" selected>{{ $status }}</option>
+                                    @else
+                                    <option name="status" value="{{ $status }}">{{ $status }}</option>
+                                    @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <label id="priority_label" for="priority">Priority</label>
+                                <select class="form-select form-control form-control-sm" name="priority">
+                                    <option name="priority" value="High" selected>High</option>
+                                </select>
+                                @error('priority')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
                         </div>
                         <div class="mb-3 col-12">
-                            <label id="priority_label" for="priority">Priority</label>
-                            <select class="form-select form-control form-control-sm" name="priority">
-                                <option name="priority" value="High" selected>High</option>
-                            </select>
-                            @error('priority')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                        <div class="mb-3 col-13">
                             <label id="c_action_label" for="c_action">Corrective Action</label>
                             <input id="c_action" name="c_action" type="text" class="form-control @error('c_action')
             is_invalid
@@ -142,30 +144,32 @@
                             </div>
                             @enderror
                         </div>
-                        <div class="mb-3 col-12">
-                            <label id="start_date_label" for="start_date">Start Date</label>
-                            <input id="start_date" name="start_date" type="date" class="form-control @error('start_date')
+                        <div class="row col-12">
+                            <div class="col-6">
+                                <label id="start_date_label" for="start_date">Start Date</label>
+                                <input id="start_date" name="start_date" type="date" class="form-control @error('start_date')
             is_invalid
         @enderror" required value="{{ old('start_date', $daily->start_date) }}" />
-                            @error('start_date')
-                            <div class="invalid-feedback">
-                                {{ $message }}
+                                @error('start_date')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
-                            @enderror
-                        </div>
-                        <div class="mb-3 col-12">
-                            <label id="end_date_label" for="end_date">End Date</label>
-                            <input id="end_date" name="end_date" type="date" class="form-control @error('end_date')
+                            <div class="col-6">
+                                <label id="end_date_label" for="end_date">End Date</label>
+                                <input id="end_date" name="end_date" type="date" class="form-control @error('end_date')
             is_invalid
         @enderror" required value="{{ old('end_date', $daily->end_date) }}" />
-                            @error('end_date')
-                            <div class="invalid-feedback">
-                                {{ $message }}
+                                @error('end_date')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
-                            @enderror
                         </div>
-                        <div class="row mb-3">
-                            <div class="col-md-6">
+                        <div class="row mb-3 col-12">
+                            <div class="col-6">
                                 <label id="assignee_label" for="assignee">Assignee</label>
                                 <select class="form-select form-control form-control-sm" id="assignee" name="assignee">
                                     @foreach ($users as $user)
@@ -184,7 +188,7 @@
                                 </div>
                                 @enderror
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-6">
                                 <label id="pic_label" for="pic">PIC</label>
                                 <select class="form-select form-control form-control-sm" id="pic" name="pic">
                                     @foreach ($users as $user)
@@ -204,18 +208,16 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <div class="col-12">
-                                <label id="file_label" for="file">File</label>
-                                <div id="targetLayer"></div>
-                                <div class="icon-choose-image"></div>
-                                <input id="file" name="file" type="file" class="form-control form-control-file @error('file') is_invalid @enderror" value="{{ old('file') }}" onchange="return showPreview(this)" />
-                                @error('file')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
+                        <div class="row mb-3 col-12">
+                            <label id="file_label" for="file">File</label>
+                            <div id="targetLayer"></div>
+                            <div class="icon-choose-image"></div>
+                            <input id="file" name="file" type="file" class="form-control form-control-file @error('file') is_invalid @enderror" value="{{ old('file') }}" onchange="return showPreview(this)" />
+                            @error('file')
+                            <div class="invalid-feedback">
+                                {{ $message }}
                             </div>
+                            @enderror
                         </div>
                         <div class="col-12 d-flex justify-content-center align-items-center">
                             <a href="{{ route('daily.index') }}" class="btn btn-md btn-primary mr-3">Back</a>

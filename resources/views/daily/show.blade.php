@@ -44,16 +44,9 @@ $delete = $pages[8]['access'] == 1;
                                 <tr>
                                     <th>No</th>
                                     <th>Daily ID</th>
-                                    <th>Departemen</th>
                                     <th>Tracker</th>
-                                    <th>Issue</th>
-                                    <th>Corrective Action</th>
                                     <th>Status</th>
                                     <th>Priority</th>
-                                    <th>Start Date</th>
-                                    <th>End Date</th>
-                                    <th>Asiggnee</th>
-                                    <th>PIC</th>
                                     <th width="100px">Action</th>
                                 </tr>
                             </thead>
@@ -62,10 +55,7 @@ $delete = $pages[8]['access'] == 1;
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td><a href="{{ route('daily.document',$i->daily_id) }}" class="text-decoration-none">{!! $i->daily_xid !!}</a></td>
-                                    <td>{!! $i->departemen !!}</td>
                                     <td>{!! $i->tracker_name !!}</td>
-                                    <td>{!! $i->subject !!}</td>
-                                    <td>{!! $i->c_action !!}</td>
                                     @if($i->status == "New")
                                     <td><span class="badge badge-primary-light">{!! $i->status !!}</span></td>
                                     @elseif ($i->status == "Continue")
@@ -78,10 +68,6 @@ $delete = $pages[8]['access'] == 1;
                                     <td><span class="badge badge-primary">{!! $i->status !!}</span></td>
                                     @endif
                                     <td><span class="badge badge-danger">{!! $i->priority !!}</span></td>
-                                    <td>{!! \Carbon\Carbon::parse($i->start_date)->format('d-m-Y') !!}</td>
-                                    <td>{!! \Carbon\Carbon::parse($i->end_date)->format('d-m-Y') !!}</td>
-                                    <td>{!! $i->assignee !!}</td>
-                                    <td>{!! $i->pic !!}</td>
                                     {{-- start modal  --}}
                                     <td>
 

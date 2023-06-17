@@ -27,7 +27,6 @@ class DailyController extends Controller
         ->get();
 
         return view('daily.index', [
-            'dailies' => Daily::distinct('departemen')->get('departemen'),
             'pages' => $pages
         ]);
     }
@@ -47,7 +46,7 @@ class DailyController extends Controller
             'daily' => $id,
             'users' => User::get(),
             'depts' => Departemen::get(),
-            'trackers' => Tracker::where('tracker_header','>',0)->get()
+            'trackers' => Tracker::where('tracker_header','>',0)->orWhere('tracker_header','=','tracker_id')->distinct('tracker_name')->get()
         ]);
 
     }
@@ -68,28 +67,12 @@ class DailyController extends Controller
             $daily->priority = $request->priority;
             $daily->assignee = $request->assignee;
             $daily->pic = $request->pic;
+            $daily->tracker_id = $request->tracker_id;
             $daily->start_date = $request->start_date;
             $daily->end_date = $request->end_date;
             $daily->file = $request->file('file') ? $request->file('file')->store('dailies') : null;
             $daily->is_private = $request->input('is_private',0);
             $daily->save();
-
-            $archiveDaily = new ArchiveDaily;
-            $archiveDaily->daily_id = +1;
-            $archiveDaily->daily_xid = $request->daily_xid;
-            $archiveDaily->departemen = $request->departemen;
-            $archiveDaily->subject = $request->subject;
-            $archiveDaily->c_action = $request->c_action;
-            $archiveDaily->description = $request->description_daily;
-            $archiveDaily->status = $request->status;
-            $archiveDaily->priority = $request->priority;
-            $archiveDaily->assignee = $request->assignee;
-            $archiveDaily->pic = $request->pic;
-            $archiveDaily->start_date = $request->start_date;
-            $archiveDaily->end_date = $request->end_date;
-            $archiveDaily->file = $request->file('file') ? $request->file('file')->store('dailies') : null;
-            $archiveDaily->is_private = $request->input('is_private',0);
-            $archiveDaily->save();
 
             return redirect('/daily')->with('sucess','Added Daily Successfully!');
         } catch (QueryException $e) {
@@ -123,14 +106,14 @@ class DailyController extends Controller
             'daily' => $daily,
             'users' => User::get(),
             'depts' => Departemen::get(),
-            'trackers' => Tracker::where('tracker_id','>=',$daily->tracker_id)->get()
+            'trackers' => Tracker::where('tracker_header','>',0)->get()
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Daily $daily, ArchiveDaily $archiveDaily)
+    public function update(Request $request, Daily $daily)
     {
         try {
             $validate = $this->validate($request,[
@@ -143,6 +126,7 @@ class DailyController extends Controller
                 'priority' => 'required',
                 'assignee' => 'required',
                 'pic' => 'required',
+                'tracker_id' => 'required',
                 'start_date' => 'required',
                 'end_date' => 'required',
             ]);
@@ -152,7 +136,6 @@ class DailyController extends Controller
             $validate['c_action'] = $request->input('c_action');
 
             Daily::where('daily_id',$daily->daily_id)->update($validate);
-            ArchiveDaily::where('arc_daily_id',$archiveDaily->arc_daily_id)->update($validate);
 
             return redirect('/daily')->with('sucess','Updated Daily Successfully!');
         } catch (QueryException $e) {

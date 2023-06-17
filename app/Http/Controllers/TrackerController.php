@@ -13,7 +13,7 @@ class TrackerController extends Controller
     public function index()
     {
         return view('tracker.index',[
-            'trackers' => Tracker::get()
+            'trackers' => Tracker::paginate(15)
         ]);
     }
 
@@ -43,7 +43,7 @@ class TrackerController extends Controller
 
         Tracker::create($validate);
 
-        return redirect()->back();
+        return redirect('tracker')->with('success','Added Tracker Successfully!');
     }
 
     /**
@@ -59,7 +59,9 @@ class TrackerController extends Controller
      */
     public function edit(Tracker $tracker)
     {
-        //
+        return view('tracker.edit',[
+            'tracker' => $tracker
+        ]);
     }
 
     /**
@@ -67,7 +69,21 @@ class TrackerController extends Controller
      */
     public function update(Request $request, Tracker $tracker)
     {
-        //
+        $rules = [
+            'tracker_name' => 'required',
+        ];
+
+        $validate = $request->validate($rules);
+
+        if($request->tracker_header){
+            $validate['tracker_header'] = implode(" ", $request->tracker_header);
+        } else {
+            $validate['tracker_header'] = 0;
+        }
+
+        Tracker::where('tracker_id',$tracker->tracker_id)->update($validate);
+
+        return redirect('tracker')->with('success','Updated Tracker Successfully!');
     }
 
     /**
@@ -75,6 +91,8 @@ class TrackerController extends Controller
      */
     public function destroy(Tracker $tracker)
     {
-        //
+        Tracker::destroy($tracker->tracker_id);
+
+        return redirect('tracker')->with('success','Deleted Tracker Successfully!');
     }
 }

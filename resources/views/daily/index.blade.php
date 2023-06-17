@@ -8,16 +8,17 @@ $update = $pages[9]['access'] == 1;
 $delete = $pages[8]['access'] == 1;
 
 $departemens = App\Models\Departemen::get();
-foreach($departemens as $departemen){
-$tracker = App\Models\Tracker::where('tracker_header','>', 0)->pluck('tracker_name')->first();
-}
 
 if(isset($_GET['departemen'])){
-$daily = App\Models\Daily::select('*')->distinct('departemen')->where('departemen','=',$_GET['departemen'])->orWhere('departemen','=',$departemen->name)->get();
+$daily = App\Models\Daily::select('*')
+->distinct('departemen')
+->where('departemen','=',$_GET['departemen'])
+->leftJoin('daily_trackers','dailies.tracker_id','=','daily_trackers.tracker_id')
+->get();
 }
 
+$tracker = App\Models\Tracker::get();
 @endphp
-
 
 @section('content')
 <div class="main-content side-content pt-0">
@@ -37,11 +38,11 @@ $daily = App\Models\Daily::select('*')->distinct('departemen')->where('departeme
             <div class="card">
                 <div class="card-body bg-transparent">
                     <div class="table table-filter">
-                        @foreach ($departemens as $i)
+                        @foreach ($departemens as $dept)
                         @if (isset($_GET['departemen']))
-                        <a href="?departemen={!! strtolower($i->name) !!}" style="display: none;" class="list-group list-group-item list-group-item-action">DEPARTEMEN {{ $i->name }}</a>
+                        <a href="?departemen={!! strtolower($dept->name) !!}" style="display: none;" class="list-group list-group-item list-group-item-action">DEPARTEMEN {{ $dept->name }}</a>
                         @else
-                        <a href="?departemen={!! strtolower($i->name) !!}" class="list-group list-group-item list-group-item-action">DEPARTEMEN {{ $i->name }}</a>
+                        <a href="?departemen={!! strtolower($dept->name) !!}" class="list-group list-group-item list-group-item-action">DEPARTEMEN {{ $dept->name }}</a>
                         @endif
                         @endforeach
                         <div class="table-responsive ">
@@ -58,11 +59,25 @@ $daily = App\Models\Daily::select('*')->distinct('departemen')->where('departeme
                                 <tbody class="text-center">
                                     @foreach ($daily as $i)
                                     @php
-                                    $open = App\Models\Daily::where('subject','=',$i->subject)->orWhere('status','=','New')->orWhere('status','=','Continue')->count();
-                                    $closed = App\Models\Daily::where('subject','=',$i->subject)->orWhere('status','=','Complete')->orWhere('status','=','Close')->count();
+                                    foreach($tracker as $tr){
+                                        $open = App\Models\Daily::select('*')
+                                        ->leftJoin('daily_trackers','dailies.tracker_id','=','daily_trackers.tracker_id')
+                                        ->count();
+
+                                        $close = App\Models\Daily::select('*')
+                                        ->leftJoin('daily_trackers','dailies.tracker_id','=','daily_trackers.tracker_id')
+                                        ->count();
+
+                                        $total = App\Models\Daily::where('tracker_id','=',$tr->tracker_id)
+                                        ->where('status','=','New')
+                                        ->orWhere('status','=','Continue')
+                                        ->orWhere('status','=','Complete')
+                                        ->orWhere('status','=','Closed')
+                                        ->count();
+                                    }
                                     @endphp
                                     <tr>
-                                        <td><a href="{{ route('daily.show',$i->daily_id) }}" class="text-decoration-none text-dark">{!! $tracker !!}</a></td>
+                                        <td><a href="{!! route('daily.show',$i->daily_id) !!}" class="text-decoration-none text-dark">{!! $i->tracker_name !!}</a></td>
                                         <td>
                                             @if($i->status == "New" || $i->status == "Continue")
                                             {!! $open !!}
@@ -78,7 +93,7 @@ $daily = App\Models\Daily::select('*')->distinct('departemen')->where('departeme
                                             @endif
                                         </td>
                                         <td>
-                                            {!! $open || $closed !!}
+                                            {!! $total !!}
                                         </td>
                                     </tr>
                                     @endforeach
@@ -176,19 +191,19 @@ $daily = App\Models\Daily::select('*')->distinct('departemen')->where('departeme
         @if ($message = Session::get('success'))
         <script>
             Toastify({
-                text: "{{ $message }}",
-                duration: 3000,
-                close: true, // Include close button
+                text: "{{ $message }}"
+                , duration: 3000
+                , close: true, // Include close button
                 gravity: "bottom", // Set gravity to "bottom"
                 position: "right", // Set position to "right"
                 style: {
                     background: "linear-gradient(to right, #11998E, #38ef7d)"
                 }
             }).showToast();
+
         </script>
         @endif
     </div>
 </div>
 </div>
-<!-- End Main Content-->
 @endsection

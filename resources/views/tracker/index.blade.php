@@ -40,7 +40,18 @@
                                 <td>{!! $loop->iteration !!}</td>
                                 <td>{!! $tr->tracker_header !!}</td>
                                 <td>{!! $tr->tracker_name !!}</td>
-                                <td></td>
+                                <td>
+                                {{-- Edit --}}
+                                <a href="{{ route('tracker.edit',$tr->tracker_id) }}" class="btn btn-sm btn-info text-decoration-none"><i class="fa fa-edit"></i></a>
+                                {{-- Edit --}}
+                                {{-- Delete --}}
+                                <form action="{{ route('tracker.destroy',$tr->tracker_id) }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i></button>
+                                </form>
+                                {{-- Delete --}}
+                                </td>
                             </tr>
                             @endforeach
                             </tbody>
@@ -49,6 +60,7 @@
                 </div>
             </div>
 
+            {!! $trackers->links() !!}
             <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
             @if ($message = Session::get('success'))
