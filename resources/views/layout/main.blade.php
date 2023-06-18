@@ -24,7 +24,7 @@
     <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet">
 
-    <title>Dashtreme - Multipurpose Bootstrap5 Admin Template</title>
+    <title>PT BSS MoM</title>
 </head>
 
 <body class="bg-theme bg-theme1">
@@ -58,11 +58,11 @@
             <p class="mb-0">Gaussian Texture</p>
             <hr>
             <ul class="switcher">
-                <li id="theme1"></li>
+                <li id="theme5"></li>
                 <li id="theme2"></li>
                 <li id="theme3"></li>
                 <li id="theme4"></li>
-                <li id="theme5"></li>
+                <li id="theme1"></li>
                 <li id="theme6"></li>
             </ul>
             <hr>
