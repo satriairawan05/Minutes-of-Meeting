@@ -3976,6 +3976,17 @@ input::placeholder {
 
 }
 
+#theme2 {
+
+	background-image: url(../images/bg-themes/2.png);
+
+	background-size: 100% 100%;
+
+	background-position: center;
+
+	transition: background .3s;
+
+}
 
 #theme3 {
 

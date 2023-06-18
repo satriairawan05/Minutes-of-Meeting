@@ -14,13 +14,11 @@ return new class extends Migration
         Schema::create('dailies', function (Blueprint $table) {
             $table->increments('daily_id');
             $table->string('daily_xid',50);
-            $table->foreignId('tracker_id');
             $table->string('departemen',50);
             $table->string('subject',100);
             $table->longText('c_action');
             $table->longText('description_daily');
             $table->string('status',100);
-            $table->string('priority',100);
             $table->date('start_date');
             $table->date('end_date');
             $table->string('file')->nullable();

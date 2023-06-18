@@ -1,8 +1,12 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
 
+<!-- Mirrored from codervent.com/dashtreme/demo/vertical/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 13 Jun 2023 03:10:05 GMT -->
+
+<head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--favicon-->
@@ -21,60 +25,13 @@
     <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet">
 
-    <!-- Favicon -->
-    <link rel="icon" href="{{ asset('assets/img/brand/favicon.ico') }}" type="image/x-icon" />
-
-    <!-- Title -->
-    <title>Minutes of Meeting</title>
-
-    <!-- Bootstrap css-->
-    <link href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
-
-    <!-- Icons css-->
-    <link href="{{ asset('assets/plugins/web-fonts/icons.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/plugins/web-fonts/font-awesome/font-awesome.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/plugins/web-fonts/plugin.css') }}" rel="stylesheet" />
-
-    <!-- Style css-->
-    <link href="{{ asset('assets/css/style/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/skins.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/dark-style.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/colors/default.css') }}" rel="stylesheet">
-
-    <!-- Color css-->
-    <link id="theme" rel="stylesheet" type="text/css" media="all" href="{{ asset('assets/css/colors/color.css') }}">
-
-    <!-- Select2 css-->
-    <link href="{{ asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
-
-    <!-- Mutipleselect css-->
-    <link rel="stylesheet" href="{{ asset('assets/plugins/multipleselect/multiple-select.css') }}">
-
-    <!-- Sidemenu css-->
-    <link href="{{ asset('assets/css/sidemenu/sidemenu.css') }}" rel="stylesheet">
-    <!-- Internal Summernote css-->
-    <link href="{{ asset('assets/plugins/summernote/summernote-bs4.css') }}" rel="stylesheet">
-    <!-- Switcher css-->
-    <link href="{{ asset('assets/switcher/css/switcher.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/switcher/demo.css') }}" rel="stylesheet">
-    <!-- Internal DataTables css-->
-    <link href="{{ asset('assets/plugins/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/plugins/datatable/responsivebootstrap4.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/plugins/datatable/fileexport/buttons.bootstrap4.min.css') }}" rel="stylesheet">
-    <!-- Select2 css-->
-    <link href="{{ asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
-    <!-- Internal DataTables css-->
-    <link href="{{ asset('assets/plugins/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/plugins/datatable/responsivebootstrap4.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/plugins/datatable/fileexport/buttons.bootstrap4.min.css') }}" rel="stylesheet">
-
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <title>Dashtreme - Multipurpose Bootstrap5 Admin Template</title>
 </head>
 
 <body class="bg-theme bg-theme1">
     <!--wrapper-->
     <div class="wrapper">
-	@include('partials.sidebar')
+        @include('partials.sidebar')
 
         <!--start page wrapper -->
         @yield('content')
@@ -735,11 +692,7 @@
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="recent-product-img">
-<<<<<<< Updated upstream
                                                     <img src="{{ asset('aassets/images/icons/user-interface.png') }}" alt="">
-=======
-                                                    <img src="{{ asset('assets/images/icons/user-interface.png') }}" alt="">
->>>>>>> Stashed changes
                                                 </div>
                                                 <div class="ms-2">
                                                     <h6 class="mb-1 font-14">Purple Mobile Phone</h6>
@@ -823,11 +776,42 @@
             <p class="mb-0">Copyright © 2023. All right reserved.</p>
         </footer>
     </div>
-    <!-- End Switcher -->
-
-    <!-- Loader -->
-    <div id="global-loader">
-        <img src="assets/img/loader.svg" class="loader-img" alt="Loader">
+    <!--end wrapper-->
+    <!--start switcher-->
+    <div class="switcher-wrapper">
+        <div class="switcher-btn"> <i class='bx bx-cog bx-spin'></i>
+        </div>
+        <div class="switcher-body">
+            <div class="d-flex align-items-center">
+                <h5 class="mb-0 text-uppercase">Theme Customizer</h5>
+                <button type="button" class="btn-close ms-auto close-switcher" aria-label="Close"></button>
+            </div>
+            <hr />
+            <p class="mb-0">Gaussian Texture</p>
+            <hr>
+            <ul class="switcher">
+                <li id="theme1"></li>
+                <li id="theme2"></li>
+                <li id="theme3"></li>
+                <li id="theme4"></li>
+                <li id="theme5"></li>
+                <li id="theme6"></li>
+            </ul>
+            <hr>
+            <p class="mb-0">Gradient Background</p>
+            <hr>
+            <ul class="switcher">
+                <li id="theme7"></li>
+                <li id="theme8"></li>
+                <li id="theme9"></li>
+                <li id="theme10"></li>
+                <li id="theme11"></li>
+                <li id="theme12"></li>
+                <li id="theme13"></li>
+                <li id="theme14"></li>
+                <li id="theme15"></li>
+            </ul>
+        </div>
     </div>
     <!--end switcher-->
     <!-- Bootstrap JS -->
@@ -852,20 +836,17 @@
     </script>
     <script src="{{ asset('assets/js/index.js') }}"></script>
     <!--app JS-->
+ 
+
+    <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js') }}"></script>
     <script src="{{ asset('assets/js/app.js') }}"></script>
+    <script src="{{ asset('https://cdn.jsdelivr.net/npm/chart.js')}}"></script>
+    <script src="{{ asset('https://cdn.jsdelivr.net/npm/lottie-web@5.7.9/build/player/lottie.min.js')}}"></script>
+    <link rel="stylesheet" href="{{ asset('https://cdn.jsdelivr.net/npm/lottie-web@5.7.9/build/player/lottie.min.css')}}">
+
 </body>
 
-<!-- Main Footer -->
-<div class="main-footer right bg-primary-transparent">
-    <div class="container text-right">
-        <span>
-            Copyright © 2023 <a href="https://bss.id/">PT BANGUN SEMERU SEJAHTERA</a></a>
-            All rights reserved.
-        </span>
-    </div>
-</div>
 
-
-<!-- Mirrored from laravel.spruko.com/spruha/ltr/index by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 01 Jun 2023 01:44:48 GMT -->
+<!-- Mirrored from codervent.com/dashtreme/demo/vertical/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 13 Jun 2023 03:10:42 GMT -->
 
 </html>

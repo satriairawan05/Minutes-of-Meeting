@@ -41,7 +41,7 @@
                     <div class="row">
                         <div class="col-12">
                             <p class="text-bold">Description</p>
-                            <p>{!! $daily->description_daily !!}</p>
+                            <p>{!! $daily->description !!}</p>
                         </div>
                     </div>
                     <div class="row">

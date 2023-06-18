@@ -10,14 +10,8 @@ $delete = $pages[8]['access'] == 1;
 $departemens = App\Models\Departemen::get();
 
 if(isset($_GET['departemen'])){
-$daily = App\Models\Daily::select('*')
-->distinct('departemen')
-->where('departemen','=',$_GET['departemen'])
-->leftJoin('daily_trackers','dailies.tracker_id','=','daily_trackers.tracker_id')
-->get();
+$daily = App\Models\Daily::select('*')->distinct('departemen')->where('departemen','=',$_GET['departemen'])->get();
 }
-
-$tracker = App\Models\Tracker::get();
 @endphp
 
 @section('content')
@@ -36,13 +30,20 @@ $tracker = App\Models\Tracker::get();
             </div>
             <!-- End Page Header -->
             <div class="card">
+                <div class="card-header d-flex justify-content-end">
+                    @if($create)
+                    <a type="button" class="btn ripple btn-success btn-icon" href="{{ route('daily.create') }}" data-toggle="tooltip" title="Add new data">
+                        <i class="fe fe-plus"></i>
+                    </a>
+                    @endif
+                </div>
                 <div class="card-body bg-transparent">
                     <div class="table table-filter">
-                        @foreach ($departemens as $dept)
+                        @foreach ($departemens as $i)
                         @if (isset($_GET['departemen']))
-                        <a href="?departemen={!! strtolower($dept->name) !!}" style="display: none;" class="list-group list-group-item list-group-item-action">DEPARTEMEN {{ $dept->name }}</a>
+                        <a href="?departemen={{ strtolower($i->name) }}" style="display: none;" class="list-group list-group-item list-group-item-action">DEPARTEMEN {{ $i->name }}</a>
                         @else
-                        <a href="?departemen={!! strtolower($dept->name) !!}" class="list-group list-group-item list-group-item-action">DEPARTEMEN {{ $dept->name }}</a>
+                        <a href="?departemen={{ strtolower($i->name) }}" class="list-group list-group-item list-group-item-action">DEPARTEMEN {{ $i->name }}</a>
                         @endif
                         @endforeach
                         <div class="table-responsive ">
@@ -50,50 +51,94 @@ $tracker = App\Models\Tracker::get();
                             <table id="example2_wrapper" class="table table-bordered border-t0 key-buttons text-nowrap w-100">
                                 <thead class="table-header text-center">
                                     <tr>
-                                        <th></th>
-                                        <th>Open</th>
-                                        <th>Close</th>
-                                        <th>Total</th>
+                                        <th>No</th>
+                                        <th>Daily ID</th>
+                                        <th>Departemen</th>
+                                        <th>Issue</th>
+                                        <th>Corrective Action</th>
+                                        <th>Description</th>
+                                        <th>Status</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
+                                        <th>Days (+/-)</th>
+                                        <th>PIC</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-center">
                                     @foreach ($daily as $i)
                                     @php
-                                    foreach($tracker as $tr){
-                                        $open = App\Models\Daily::select('*')
-                                        ->leftJoin('daily_trackers','dailies.tracker_id','=','daily_trackers.tracker_id')
-                                        ->count();
-
-                                        $close = App\Models\Daily::select('*')
-                                        ->leftJoin('daily_trackers','dailies.tracker_id','=','daily_trackers.tracker_id')
-                                        ->count();
-
-                                        $total = App\Models\Daily::where('tracker_id','=',$tr->tracker_id)
-                                        ->where('status','=','New')
-                                        ->orWhere('status','=','Continue')
-                                        ->orWhere('status','=','Complete')
-                                        ->orWhere('status','=','Closed')
-                                        ->count();
-                                    }
+                                    $startDate = \Carbon\Carbon::parse($i->start_date);
+                                    $endDate = \Carbon\Carbon::parse($i->end_date);
+                                    $hasil = $endDate->diff($startDate)->format('%d');
+                                    $day = now()->diff($endDate)->format('%d');
                                     @endphp
                                     <tr>
-                                        <td><a href="{!! route('daily.show',$i->daily_id) !!}" class="text-decoration-none text-dark">{!! $i->tracker_name !!}</a></td>
-                                        <td>
-                                            @if($i->status == "New" || $i->status == "Continue")
-                                            {!! $open !!}
-                                            @else
-                                            0
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td><a href="{{ route('daily.document',$i->daily_id) }}" class="text-decoration-none">{!! $i->daily_xid !!}</a></td>
+                                        <td>{!! $i->departemen !!}</td>
+                                        <td>{!! $i->subject !!}</td>
+                                        <td>{!! $i->c_action !!}</td>
+                                        <td>{!! $i->description_daily !!}</td>
+                                        <td><span class="badge badge-danger">{!! $i->status !!}</span></td>
+                                        <td>{!! \Carbon\Carbon::parse($i->start_date)->format('d-m-Y') !!}</td>
+                                        <td>{!! \Carbon\Carbon::parse($i->end_date)->format('d-m-Y') !!}</td>
+                                        @if ($hasil)
+                                        <td>- {!! $day !!} Day{{ $hasil > 1 ? 's' : '' }}</td>
+                                        @else
+                                        <td>+ {!! $day !!} Day{{ $hasil > 1 ? 's' : '' }}</td>
+                                        @endif
+                                        <td>{!! $i->assignee !!}</td>
+                                        <td class="d-inline-block">
+                                            {{-- Edit Modal Trigger --}}
+                                            @if($update)
+                                            <a href="{{ route('daily.edit',$i->daily_id) }}" class="btn ripple btn-primary btn-sm d-inline-clock" title="Edit Data">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
                                             @endif
-                                        </td>
-                                        <td>
-                                            @if($i->status == "Complete" || $i->status == "Closed")
-                                            {!! $close !!}
-                                            @else
-                                            0
+                                            {{-- End of Edit Modal Trigger --}}
+
+                                            {{-- Delete Modal Trigger --}}
+                                            @if($delete)
+                                            <form action="{{ route('daily.destroy', $i->daily_id) }}" method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn ripple btn-danger btn-sm d-inline-block" data-toggle="tooltip" title="Delete Data"><i class="fas fa-trash-alt"></i></button>
+                                            </form>
                                             @endif
-                                        </td>
-                                        <td>
-                                            {!! $total !!}
+                                            {{-- <button type="button" class="btn bg-gradient-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $i->daily_id }}" onclick="{{ route('daily.destroy', $i->daily_id) }}">
+                                            <i class="far fa-trash-alt"></i>
+                                            </button> --}}
+                                            {{-- End of Delete Modal Trigger --}}
+
+                                            {{-- Delete Modal --}}
+                                            <div class="modal fade" id="deleteModal{{ $i->daily_id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $i->daily_id }}" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="deleteModalLabel{{ $i->daily_id }}">Delete
+                                                                Data</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Apakah anda yakin?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <form method="POST" action="{{ route('daily.destroy', $i->daily_id) }}">
+                                                                @csrf
+                                                                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn bg-gradient-danger" data-bs-dismiss="modal">Delete</button>
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{-- End of Delete Modal --}}
                                         </td>
                                     </tr>
                                     @endforeach
@@ -191,19 +236,19 @@ $tracker = App\Models\Tracker::get();
         @if ($message = Session::get('success'))
         <script>
             Toastify({
-                text: "{{ $message }}"
-                , duration: 3000
-                , close: true, // Include close button
+                text: "{{ $message }}",
+                duration: 3000,
+                close: true, // Include close button
                 gravity: "bottom", // Set gravity to "bottom"
                 position: "right", // Set position to "right"
                 style: {
                     background: "linear-gradient(to right, #11998E, #38ef7d)"
                 }
             }).showToast();
-
         </script>
         @endif
     </div>
 </div>
 </div>
+<!-- End Main Content-->
 @endsection

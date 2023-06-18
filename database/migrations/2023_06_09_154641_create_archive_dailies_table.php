@@ -20,7 +20,6 @@ return new class extends Migration
             $table->longText('c_action');
             $table->longText('description');
             $table->string('status',100);
-            $table->string('priority',100);
             $table->date('start_date');
             $table->date('end_date');
             $table->string('file')->nullable();
