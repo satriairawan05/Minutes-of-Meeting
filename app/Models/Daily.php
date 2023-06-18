@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Tracker;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Daily extends Model
 {
@@ -14,4 +15,9 @@ class Daily extends Model
 
     public $incrementing = true;
     public $timestamps = true;
+
+    public function tracker()
+    {
+        return $this->belongsTo(Tracker::class);
+    }
 }

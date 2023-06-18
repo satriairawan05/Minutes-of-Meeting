@@ -9,6 +9,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\ArchiveController;
 use App\Http\Controllers\DepartemenController;
+use App\Http\Controllers\TrackerController;
 use App\Http\Controllers\UserManagementController;
 
 /*
@@ -56,6 +57,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('daily/{daily}/document',[DailyController::class, 'document'])->name('daily.document');
 
     Route::resource('group', GroupController::class);
+    Route::resource('tracker', TrackerController::class);
 
     Route::get('preference', function(){
         return view('pref.index');
