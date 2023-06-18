@@ -11,7 +11,7 @@
 <body>
     <div class="login-card">
         <div class="column">
-            <h1 class="text-center">Login</h1>
+            <h1 class="bi-text-center">Login</h1>
             <p>After logging in, you can access Minutes of Meeting.</p>
             <form method="POST" action="{{ route('login') }}">
                 @csrf
