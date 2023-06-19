@@ -39,7 +39,8 @@ class DailyController extends Controller
         leftJoin('daily_trackers','daily_trackers.tracker_id','=','dailies.tracker_id')
         ->leftJoin('departemens','dailies.departemen','=','departemens.name')
         ->where('departemen',request()->query('departemen'))
-        ->where('tracker_name',request()->query('tracker'))
+        ->orWhere('status','New')
+        ->orWhere('status','Continue')
         ->where('is_open',1)
         ->count();
 
@@ -47,8 +48,9 @@ class DailyController extends Controller
         leftJoin('daily_trackers','daily_trackers.tracker_id','=','dailies.tracker_id')
         ->leftJoin('departemens','dailies.departemen','=','departemens.name')
         ->where('departemen',request()->query('departemen'))
-        ->where('tracker_name',request()->query('tracker'))
-        ->where('is_open',0)
+        ->orWhere('status','Complete')
+        ->orWhere('status','Closed')
+        ->where('is_open',2)
         ->count();
 
         $dailies = Daily::leftJoin('daily_trackers','dailies.tracker_id','=','daily_trackers.tracker_id')
