@@ -1,426 +1,353 @@
-$(function() {
-    "use strict";
-
-		  // chart1
-		  var ctx = document.getElementById('chart1').getContext('2d');
-		  var myChart = new Chart(ctx, {
-			  type: 'line',
-			  data: {
-				  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
-				  datasets: [{
-					  label: 'New Visitor',
-					  data: [3, 3, 8, 5, 7, 4, 6, 4, 6, 3],
-					  backgroundColor: [
-						  '#fff'
-					  ],
-					 fill: {
-						  target: 'origin',
-						  above: 'rgb(255 255 255 / 100%)',   // Area will be red above the origin
-						  below: 'rgb(255 255 255 / 100%)'   // And blue below the origin
-						}, 
-					  tension: 0.4,
-					  borderColor: [
-						  '#fff'
-					  ],
-					  pointRadius :"0",
-					  borderWidth: 3
-				  },
-				  {
-					  label: 'Old Visitor',
-					  data: [7, 5, 14, 7, 12, 6, 10, 6, 11, 5],
-					  backgroundColor: [
-						  'transparent'
-					  ],
-					  fill: {
-						  target: 'origin',
-						  above: 'rgb(255 255 255 / 25%)',   // Area will be red above the origin
-						  below: 'rgb(255 255 255 / 25%)'    // And blue below the origin
-						},
-					  tension: 0.4,
-					  borderColor: [
-						  'transparent'
-					  ],
-					  pointRadius :"0",
-					  borderWidth: 1
-				  }]
-			  },
-			  options: {
-				  maintainAspectRatio: false,
-				  plugins: {
-					  legend: {
-						  display: false,
-					  }
-				  },
-				  scales: {
-              x: {
-                stacked: false,
-                beginAtZero: true,
-				ticks: {
-                  color: "rgb(255 255 255 / 75%)", // this here
-                },
-				grid: {
-					  display: true ,
-					  color: "rgba(221, 221, 221, 0.08)"
-					}
-              },
-              y: {
-                stacked: false,
-                beginAtZero: true,
-				ticks: {
-                  color: "rgb(255 255 255 / 75%)", // this here
-                },
-				grid: {
-					  display: true ,
-					  color: "rgba(221, 221, 221, 0.08)"
-					}
-              },
-			  
-            }
-			  }
-		  });
-		
-	
-
-// chart2
-var ctx = document.getElementById('chart2').getContext('2d');
-
-var myChart = new Chart(ctx, {
-  type: 'pie',
-  data: {
-      labels: ['Desktop', 'Mobile', 'Tablet'],
-      datasets: [{
-          data: [856, 2602, 1802, 1105],
-          backgroundColor: [
-		      "#ffffff",
-			  "rgba(255, 255, 255, 0.50)",
-			  "rgba(255, 255, 255, 0.20)"
-          ],
-          borderWidth: [0, 0, 0, 0]
-      }]
-  },
-  options: {
-      maintainAspectRatio: false,
-      cutout: 100,
-      plugins: {
-      legend: {
-          display: false,
-      }
-  }
-      
-  }
-});
-
-
-
-		
-	// easy pie chart 
-	
-	 $('.easy-dash-chart1').easyPieChart({
-		easing: 'easeOutBounce',
-		barColor : '#fff',
-		lineWidth: 10,
-		trackColor : 'rgba(0, 0, 0, 0.08)',
-		scaleColor: false,
-		onStep: function(from, to, percent) {
-			$(this.el).find('.w_percent').text(Math.round(percent));
-		}
-	 });	
-
-
-	 $('.easy-dash-chart2').easyPieChart({
-		easing: 'easeOutBounce',
-		barColor : '#fff',
-		lineWidth: 10,
-		trackColor : 'rgba(0, 0, 0, 0.08)',
-		scaleColor: false,
-		onStep: function(from, to, percent) {
-			$(this.el).find('.w_percent').text(Math.round(percent));
-		}
-	 });
-
-
-	 $('.easy-dash-chart3').easyPieChart({
-		easing: 'easeOutBounce',
-		barColor : '#fff',
-		lineWidth: 10,
-		trackColor : 'rgba(0, 0, 0, 0.08)',
-		scaleColor: false,
-		onStep: function(from, to, percent) {
-			$(this.el).find('.w_percent').text(Math.round(percent));
-		}
-	 });
-		
-		
-	 
-// world map
-jQuery('#dashboard-map').vectorMap(
-{
-    map: 'world_mill_en',
-    backgroundColor: 'transparent',
-    borderColor: '#818181',
-    borderOpacity: 0.25,
-    borderWidth: 1,
-    zoomOnScroll: false,
-    color: '#009efb',
-    regionStyle : {
-        initial : {
-          fill : '#fff'
+!(function (e) {
+    var t = {};
+    function r(o) {
+        if (t[o]) return t[o].exports;
+        var a = (t[o] = { i: o, l: !1, exports: {} });
+        return e[o].call(a.exports, a, a.exports, r), (a.l = !0), a.exports;
+    }
+    (r.m = e),
+        (r.c = t),
+        (r.d = function (e, t, o) {
+            r.o(e, t) ||
+                Object.defineProperty(e, t, { enumerable: !0, get: o });
+        }),
+        (r.r = function (e) {
+            "undefined" != typeof Symbol &&
+                Symbol.toStringTag &&
+                Object.defineProperty(e, Symbol.toStringTag, {
+                    value: "Module",
+                }),
+                Object.defineProperty(e, "__esModule", { value: !0 });
+        }),
+        (r.t = function (e, t) {
+            if ((1 & t && (e = r(e)), 8 & t)) return e;
+            if (4 & t && "object" == typeof e && e && e.__esModule) return e;
+            var o = Object.create(null);
+            if (
+                (r.r(o),
+                Object.defineProperty(o, "default", {
+                    enumerable: !0,
+                    value: e,
+                }),
+                2 & t && "string" != typeof e)
+            )
+                for (var a in e)
+                    r.d(
+                        o,
+                        a,
+                        function (t) {
+                            return e[t];
+                        }.bind(null, a)
+                    );
+            return o;
+        }),
+        (r.n = function (e) {
+            var t =
+                e && e.__esModule
+                    ? function () {
+                          return e.default;
+                      }
+                    : function () {
+                          return e;
+                      };
+            return r.d(t, "a", t), t;
+        }),
+        (r.o = function (e, t) {
+            return Object.prototype.hasOwnProperty.call(e, t);
+        }),
+        (r.p = "/"),
+        r((r.s = 67));
+})({
+    67: function (e, t, r) {
+        e.exports = r(68);
+    },
+    68: function (e, t) {
+        function r(e, t, r) {
+            return (
+                t in e
+                    ? Object.defineProperty(e, t, {
+                          value: r,
+                          enumerable: !0,
+                          configurable: !0,
+                          writable: !0,
+                      })
+                    : (e[t] = r),
+                e
+            );
         }
-      },
-    markerStyle: {
-      initial: {
-        r: 9,
-        'fill': '#fff',
-        'fill-opacity':1,
-        'stroke': '#000',
-        'stroke-width' : 5,
-        'stroke-opacity': 0.4
+        $(function () {
+            var e,
+                t,
+                o,
+                a = document.getElementById("chartLine").getContext("2d");
+            new Chart(a, {
+                data: {
+                    labels: [
+                        "Jan",
+                        "Feb",
+                        "Mar",
+                        "Apr",
+                        "May",
+                        "Jun",
+                        "Jul",
+                        "Aug",
+                        "Sep",
+                        "Oct",
+                        "Aug",
+                        "Sep",
+                        "Oct",
+                    ],
+                    datasets: [
+                        {
+                            label: "MEETING",
+                            data: [
+                                100, 210, 180, 454, 454, 230, 230, 656, 656,
+                                350, 350, 210, 410,
+                            ],
+                            borderWidth: 3,
+                            backgroundColor: "transparent",
+                            borderColor: "#6259ca",
+                            pointBackgroundColor: "#ffffff",
+                            pointRadius: 0,
+                            type: "line",
+                        },
+                        {
+                            label: "ISSUES",
+                            data: [
+                                200, 530, 110, 110, 480, 520, 780, 435, 475,
+                                738, 454, 454, 230,
+                            ],
+                            borderWidth: 3,
+                            backgroundColor: "transparent",
+                            borderColor: "rgb(183, 179, 220,0.5)",
+                            pointBackgroundColor: "#ffffff",
+                            pointRadius: 0,
+                            type: "line",
+                            borderDash: [7, 3],
+                        },
+                    ],
                 },
+                options:
+                    ((t = {
+                        responsive: !0,
+                        maintainAspectRatio: !1,
+                        tooltips: { enabled: !0 },
+                    }),
+                    r(t, "tooltips", { mode: "index", intersect: !1 }),
+                    r(t, "hover", { mode: "nearest", intersect: !0 }),
+                    r(t, "scales", {
+                        xAxes: [
+                            {
+                                ticks: { fontColor: "#c8ccdb" },
+                                barPercentage: 0.7,
+                                display: !0,
+                                gridLines: {
+                                    color: "rgba(119, 119, 142, 0.2)",
+                                    zeroLineColor: "rgba(119, 119, 142, 0.2)",
+                                },
+                            },
+                        ],
+                        yAxes: [
+                            ((e = {
+                                ticks: { fontColor: "#77778e" },
+                                display: !0,
+                                gridLines: {
+                                    color: "rgba(119, 119, 142, 0.2)",
+                                    zeroLineColor: "rgba(119, 119, 142, 0.2)",
+                                },
+                            }),
+                            r(e, "ticks", { min: 0, max: 1050, stepSize: 150 }),
+                            r(e, "scaleLabel", {
+                                display: !0,
+                                labelString: "Thousands",
+                                fontColor: "transparent",
+                            }),
+                            e),
+                        ],
+                    }),
+                    r(t, "legend", {
+                        display: !0,
+                        width: 30,
+                        height: 30,
+                        borderRadius: 50,
+                        labels: { fontColor: "#77778e" },
+                    }),
+                    t),
+            });
+            $(".peity-donut").peity("donut");
+            r(
+                (o = {
+                    chart: {
+                        id: "spark1",
+                        group: "sparks",
+                        type: "line",
+                        height: 38,
+                        sparkline: { enabled: !0 },
+                        dropShadow: {
+                            enabled: !0,
+                            top: 1,
+                            left: 1,
+                            blur: 1,
+                            opacity: 0.1,
+                        },
+                    },
+                    series: [{ data: [25, 66, 41, 59, 25, 44, 12, 36, 9, 21] }],
+                    stroke: { curve: "smooth" },
+                    markers: { size: 0 },
+                    grid: { padding: { top: 10, bottom: 10, left: 50 } },
+                    colors: ["#0a9ae1"],
+                }),
+                "stroke",
+                { width: 2 }
+            ),
+                r(o, "tooltip", {
+                    x: { show: !1, width: 1 },
+                    y: {
+                        title: {
+                            formatter: function (e) {
+                                return "";
+                            },
+                        },
+                    },
+                });
+        }),
+            (Chart.elements.Rectangle.prototype.draw = function () {
+                var e,
+                    t,
+                    r,
+                    o,
+                    a,
+                    n = this._chart.ctx,
+                    i = this._view,
+                    l = i.borderWidth;
+                i.horizontal
+                    ? ((e = i.base),
+                      (t = i.x),
+                      (r = i.y - i.height / 1),
+                      (o = i.y + i.height / 1),
+                      t > e ? 1 : -1,
+                      1,
+                      (a = i.borderSkipped || "left"))
+                    : ((e = i.x - i.width / 1),
+                      (t = i.x + i.width / 1),
+                      (r = i.y),
+                      1,
+                      (o = i.base) > r ? 1 : -1,
+                      (a = i.borderSkipped || "bottom")),
+                    n.beginPath(),
+                    (n.fillStyle = i.backgroundColor),
+                    (n.strokeStyle = i.borderColor),
+                    (n.lineWidth = l);
+                var d = [
+                        [e, o],
+                        [e, r],
+                        [t, r],
+                        [t, o],
+                    ],
+                    s = ["bottom", "left", "top", "right"].indexOf(a, 0);
+                function c(e) {
+                    return d[(s + e) % 2];
+                }
+                -1 === s && (s = 0);
+                var u = c(0);
+                n.moveTo(u[0], u[1]);
+                for (var p = 1; p < 2; p++) {
+                    var b;
+                    (u = c(p)),
+                        (nextCornerId = p + 1),
+                        2 == nextCornerId && (nextCornerId = 0),
+                        (nextCorner = c(nextCornerId)),
+                        (width = d[2][0] - d[1][0]),
+                        (height = d[0][1] - d[1][1]),
+                        (x = d[1][0]),
+                        (y = d[1][1]),
+                        (b = 4) > height / 2 && (b = height / 2),
+                        b > width / 2 && (b = width / 2),
+                        n.moveTo(x + b, y),
+                        n.lineTo(x + width - b, y),
+                        n.quadraticCurveTo(x + width, y, x + width, y + b),
+                        n.lineTo(x + width, y + height - b),
+                        n.quadraticCurveTo(
+                            x + width,
+                            y + height,
+                            x + width - b,
+                            y + height
+                        ),
+                        n.lineTo(x + b, y + height),
+                        n.quadraticCurveTo(x, y + height, x, y + height - b),
+                        n.lineTo(x, y + b),
+                        n.quadraticCurveTo(x, y, x + b, y);
+                }
+                n.fill(), l && n.stroke();
+            });
+        var o = document.getElementById("bar-chart").getContext("2d");
+        new Chart(o, {
+            type: "bar",
+            data: {
+                labels: [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "Jun",
+                    "Jul",
+                    "Aug",
+                    "Sep",
+                    "Oct",
+                ],
+                datasets: [
+                    {
+                        label: "Total Project",
+                        backgroundColor: "#6259ca",
+                        borderColor: "#6259ca ",
+                        data: [
+                            89, 59, 76, 56, 58, 73, 59, 87, 45, 54, 59, 76, 56,
+                        ],
+                    },
+                    {
+                        label: "On Going",
+                        backgroundColor: "rgba(204, 204, 204,0.2)",
+                        borderColor: "rgba(204, 204, 204,0.2)",
+                        data: [
+                            66, 59, 76, 56, 58, 65, 59, 85, 23, 32, 59, 76, 56,
+                        ],
+                    },
+                ],
+            },
+            options: {
+                tooltips: { displayColors: !0 },
+                barValueSpacing: 3,
+                barDatasetSpacing: 3,
+                scales: {
+                    xAxes: [
+                        {
+                            barThickness: 3,
+                            categoryPercentage: 4,
+                            barPercentage: 4,
+                            stacked: !0,
+                            display: !1,
+                            gridLines: { display: !1 },
+                        },
+                    ],
+                    yAxes: [
+                        r(
+                            {
+                                stacked: !0,
+                                ticks: { beginAtZero: !1 },
+                                display: !1,
+                                gridLines: { display: !1 },
+                                type: "linear",
+                            },
+                            "display",
+                            !1
+                        ),
+                    ],
                 },
-    enableZoom: true,
-    hoverColor: '#009efb',
-    markers : [{
-        latLng : [21.00, 78.00],
-        name : 'Lorem Ipsum Dollar'
-      
-      }],
-    hoverOpacity: null,
-    normalizeFunction: 'linear',
-    scaleColors: ['#b6d6ff', '#005ace'],
-    selectedColor: '#c9dfaf',
-    selectedRegions: [],
-    showTooltip: true,
+                responsive: !0,
+                maintainAspectRatio: !1,
+                legend: { position: "bottom", display: !1 },
+            },
+        });
+    },
 });
-		
-		
-   $("#trendchart1").sparkline([5,8,7,10,9,10,8,6,4,6,8,7,6,8,9,10,8], {
-      type: 'bar',
-      height: '20',
-      barWidth: '2',
-      resize: true,
-      barSpacing: '3',
-      barColor: '#fff'
-    });
-		
-
-	$("#trendchart2").sparkline([5,8,7,10,9,10,8,6,4,6,8,7,6,8,9,10,8], {
-      type: 'bar',
-      height: '20',
-      barWidth: '2',
-      resize: true,
-      barSpacing: '3',
-      barColor: '#fff'
-    });
-
-
-    $("#trendchart3").sparkline([5,8,7,10,9,10,8,6,4,6,8,7,6,8,9,10,8], {
-      type: 'bar',
-      height: '20',
-      barWidth: '2',
-      resize: true,
-      barSpacing: '3',
-      barColor: '#fff'
-    });
-
-
-    $("#trendchart4").sparkline([5,8,7,10,9,10,8,6,4,6,8,7,6,8,9,10,8], {
-      type: 'bar',
-      height: '20',
-      barWidth: '2',
-      resize: true,
-      barSpacing: '3',
-      barColor: '#fff'
-    });	
-
-
-     $("#trendchart5").sparkline([5,8,7,10,9,10,8,6,4,6,8,7,6,8,9,10,8], {
-      type: 'bar',
-      height: '20',
-      barWidth: '2',
-      resize: true,
-      barSpacing: '3',
-      barColor: '#fff'
-    });	
-
-
-
-	// chart 3
-     var ctx = document.getElementById('chart3').getContext('2d');
-              
-       var myChart = new Chart(ctx, {
-        type: 'line',
-		data: {
-			labels: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
-			datasets: [{
-				label: 'Visitors',
-				data: [12, 25, 13, 25, 14, 35, 10],
-				backgroundColor: [
-					'#fff'
-				],
-				 fill: {
-					target: 'origin',
-					above: 'rgb(255 255 255 / 12%)',   // Area will be red above the origin
-					below: 'rgb(255 255 255 / 12%)'    // And blue below the origin
-				  },
-				tension: 0.4,
-				borderColor: [
-					'#fff'
-				],
-				borderWidth: 3,
-				pointRadius :"0",
-			}]
-		},
-		options: {
-			maintainAspectRatio: false,
-			barPercentage: 0.7,
-			categoryPercentage: 0.45,
-			plugins: {
-				legend: {
-					maxWidth: 20,
-					boxHeight: 20,
-					position:'bottom',
-					display: false,
-				}
-			},
-			scales: {
-				x: {
-				  stacked: false,
-				  beginAtZero: true,
-				  display: false,
-				},
-				y: {
-				  stacked: false,
-				  beginAtZero: true,
-				  display: false,
-				}
-			  }
-		}
-
-    
-      });
-
-
-
-
-      // chart 4
-     var ctx = document.getElementById('chart4').getContext('2d');
-              
-	 var myChart = new Chart(ctx, {
-	  type: 'line',
-	  data: {
-		  labels: ['1', '2', '3', '4', '5', '6', '7'],
-		  datasets: [{
-			  label: 'Clicks',
-			  data: [12, 17, 8, 25, 14, 27, 15],
-			  backgroundColor: [
-				  '#fff'
-			  ],
-			    /*  fill: {
-			  target: 'origin',
-			 	  above: 'rgb(255 255 255 / 12%)',   
-			 	  below: 'rgb(255 255 255 / 12%)'   
-			 	}, */
-			  tension: 0.4,
-			  borderColor: [
-				  '#fff'
-			  ],
-			  borderWidth: 3,
-			  pointRadius :"0",
-		  }]
-	  },
-	  options: {
-		  maintainAspectRatio: false,
-		  barPercentage: 0.7,
-		  categoryPercentage: 0.45,
-		  plugins: {
-			  legend: {
-				  maxWidth: 20,
-				  boxHeight: 20,
-				  position:'bottom',
-				  display: false,
-			  }
-		  },
-		  scales: {
-			  x: {
-				stacked: false,
-				beginAtZero: true,
-				display: false,
-			  },
-			  y: {
-				stacked: false,
-				beginAtZero: true,
-				display: false,
-			  }
-			}
-	  }
-
-  
-	});
-
-
-	  
-    // chart 5
-	var ctx = document.getElementById("chart5").getContext('2d');
-	var myChart = new Chart(ctx, {
-		type: 'bar',
-		data: {
-			labels: ['1', '2', '3', '4', '5', '6', '7', '7', '7', '7', '7', '7'],
-			datasets: [{
-				label: 'Total Earning',
-				data: [39, 19, 25, 16, 31, 39, 23, 20, 23, 18, 15, 20],
-				backgroundColor: [
-					'#fff'
-				],
-				borderColor: [
-					'#fff'
-				],
-				borderWidth: 0,
-				borderRadius: 20
-			},
-			{
-				label: 'Total Sales',
-				data: [27, 12, 26, 15, 21, 27, 13, 19, 32, 22, 18, 30],
-				backgroundColor: [
-					'rgb(255 255 255 / 25%)'
-				],
-				borderColor: [
-					'rgb(255 255 255 / 25%)'
-				],
-				borderWidth: 0,
-				borderRadius: 20
-			}]
-		},
-		options: {
-			maintainAspectRatio: false,
-			barPercentage: 0.7,
-			categoryPercentage: 0.45,
-			plugins: {
-				legend: {
-					maxWidth: 20,
-					boxHeight: 20,
-					position: 'bottom',
-					display: false,
-				}
-			},
-			scales: {
-				x: {
-					stacked: true,
-					beginAtZero: true,
-					display: false,
-				},
-				y: {
-					stacked: true,
-					beginAtZero: true,
-					display: false,
-				}
-			}
-		}
-
-
-	});
-	
-	
-		
-		
-   });	 
-   
