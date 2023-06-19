@@ -63,13 +63,6 @@ $pages = App\Models\User::leftJoin('group_pages', 'users.group_id', '=', 'group_
                     <div class="menu-title">{{ str_replace('_', ' ', $Daily) }}</div>
                 </a>
             </li>
-            </li>
-            <a class="nav-link" href="">
-                <div class="parent-icon"><i class='bx bx-file-find'></i>
-                </div>
-                <div class="menu-title">DWM Tracker</div>
-            </a>
-            </li>
             <li>
                 <a class="nav-link {{ request()->is('archive.index') ? 'active' : '' }}" href="{{ route('archive.index') }}">
                     <div class="parent-icon"><i class='bx bx-folder-open'></i>
@@ -97,7 +90,13 @@ $pages = App\Models\User::leftJoin('group_pages', 'users.group_id', '=', 'group_
                 <div class="menu-title">Role</div>
             </a>
             </li>
-
+            </li>
+            <a class="nav-link" href="">
+                <div class="parent-icon"><i class='bx bx-file-find'></i>
+                </div>
+                <div class="menu-title">DWM Tracker</div>
+            </a>
+            </li>
         </ul>
         <!--end navigation-->
     </div>
