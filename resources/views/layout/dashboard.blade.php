@@ -62,7 +62,7 @@
                         <div class="d-flex align-items-center">
                             <h5 class="mb-0">{{$countIssues}}</h5>
                             <div class="ms-auto">
-                                <i class='bx bx-message-alt-dots fs-3 text-white'></i>
+                                <i class='bx bx-comment-error fs-3 text-white'></i>
                             </div>
                         </div>
                         <div class="progress my-3" style="height:4px;">
