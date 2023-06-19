@@ -116,9 +116,9 @@
     <script>
         $(document).ready(function() {
             $('#example2').DataTable({
-                dom: 'Bfrtip', // Add the buttons to the default DataTable DOM structure
+                dom: 'Bfrtip',
                 buttons: [
-                    'copy', 'excel', 'pdf', 'print'
+                    'copy', 'csv', 'excel', 'pdf', 'print'
                 ]
             });
         });
