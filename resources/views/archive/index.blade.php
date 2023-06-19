@@ -1,86 +1,90 @@
 @extends('layout.main')
 
 @section('content')
-<div class="main-content side-content pt-0">
-    <div class="container-fluid">
-        <div class="inner-body">
-            <!-- Page Header -->
-            <div class="page-header">
-                <div>
-                    <h2 class="main-content-title tx-24 mg-b-5">Archive Data</h2>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Archives Detail</li>
+<!--start page wrapper -->
+<link href="{{ asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
+<div class="page-wrapper">
+    <div class="page-content">
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">Archive</div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Datatable of Archive</li>
                     </ol>
-                </div>
+                </nav>
             </div>
-            <!-- End Page Header -->
-            <div class="card">
-                <div class="card-header d-flex justify-content-end align-items-end">
-                    {{-- <form action="{{ route('archive.issue.store',$issues->issue_id) }}" method="post">
+            <div class="ms-auto">
+                <!-- Add New Archive Button -->
+                {{-- <form action="{{ route('archive.issue.store',$issues->issue_id) }}" method="post">
                     @csrf
                     @foreach ($issues as $isu)
-                    <input type="hidden" name="issue_id" id="issue_id" value="{{ $isu->issue_id }}">
+                        <input type="hidden" name="issue_id" id="issue_id" value="{{ $isu->issue_id }}">
                     @endforeach
-                    <button type="submit" id="submit" class="btn-data btn text-decoration-none text-black">
-                        <i class="fas fa-folder-plus"></i> Add Archive Issue
-                    </button>
-                    </form> --}}
-
-                </div>
-                <div class="card-body bg-transparent">
-                    <div class="table-responsive">
-                        <table id="example2_wrapper" class="table table-bordered border-t0 key-buttons text-nowrap w-100">
-                            <thead class="table-header text-center">
-                                <tr>
-                                    <th>#</th>
-                                    <th>Meeting ID</th>
-                                    <th>Meeting</th>
-                                    <th>Date Of Meeting</th>
-                                    <th>Time Of Meeting</th>
-                                    <th>Minutes Prepared by</th>
-                                    <th>Meeting Departemen</th>
-                                    <th>Meeting Location</th>
-                                    <th>Meeting Attendees</th>
-                                    <th>Meeting Status</th>
-                                    <th>Issue ID</th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-center">
-                                @foreach ($meets as $a)
+                    <a type="submit" id="submit" data-toggle="tooltip" title="Add new data" type="button" class="btn btn-light px-4"><i class="bx bx-plus-circle"></i>Add Archive</a>
+                </form> --}}
+            </div>
+        </div>
+        <!--end breadcrumb-->
+        <h6 class="mb-0 text-uppercase">Datatable of Archive</h6>
+        <hr />
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="example2" class="table table-striped table-bordered">
+                        <thead class="table-header text-center">
+                            <tr>
+                                <th>#</th>
+                                <th>Meeting ID</th>
+                                <th>Meeting</th>
+                                <th>Date Of Meeting</th>
+                                <th>Time Of Meeting</th>
+                                <th>Minutes Prepared by</th>
+                                <th>Meeting Departemen</th>
+                                <th>Meeting Location</th>
+                                <th>Meeting Attendees</th>
+                                <th>Meeting Status</th>
+                                <th>Issue ID</th>
+                                {{-- <th>Edit</th> --}}
+                                {{-- <th>Delete</th> --}}
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            @foreach ($meets as $a)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{!! $a->meet_xid !!}</td>
                                     <td>{!! $a->meet_name !!}</td>
                                     <td>
-                                        {{ \Carbon\Carbon::parse($a->meet_date)->format('d-m-Y') }}</td>
+                                        {{ \Carbon\Carbon::parse($a->meet_date)->format('d-m-Y') }}
+                                    </td>
                                     <td>
-                                        {{ \Carbon\Carbon::parse($a->meet_time)->format('H:i') }}</td>
+                                        {{ \Carbon\Carbon::parse($a->meet_time)->format('H:i') }}
+                                    </td>
                                     <td>{{ $a->meet_preparedby }}</td>
                                     <td>{{ $a->tracker }}</td>
                                     <td>{{ $a->meet_locate }}</td>
                                     <td>{{ $a->meet_attend }}</td>
                                     <td>{{ $a->archive_status == 1 ? 'Telah dilaksanakan' : 'Belum dilaksanakan' }}</td>
                                     <td>{{ $a->issue_xid }}</td>
-                                    {{-- start modal  --}}
-                                    {{-- <td> --}}
-                                    {{-- Edit Modal Trigger --}}
-                                    {{-- <button type="button" onclick="window.location='{{ route('archive.edit', $a->archive_id) }}'" data-toggle="tooltip" class="btn ripple btn-primary btn-sm" title="Edit Data">
-                                    <i class="fas fa-edit"></i>
-                                    </button> --}}
-                                    {{-- End of Edit Modal Trigger --}}
-                                    {{-- Delete Modal Trigger --}}
-                                    {{-- <button type="button" class="btn ripple btn-danger btn-sm" data-toggle="tooltip" title="Delete Data" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $a->archive_id }}" onclick="{{ route('archive.destroy', $a->archive_id) }}">
-                                    <i class="far fa-trash-alt"></i>
-                                    </button> --}}
-                                    {{-- End of Delete Modal Trigger --}}
-                                    {{-- Delete Modal --}}
-                                    {{-- <div class="modal fade" id="deleteModal{{ $a->archive_id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $a->archive_id }}" aria-hidden="true">
+                                    {{-- <td>
+                                        <button type="button" onclick="window.location='{{ route('archive.edit', $a->archive_id) }}'" data-toggle="tooltip" class="btn ripple btn-primary btn-sm" title="Edit Data">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </td> --}}
+                                    {{-- <td>
+                                        <button type="button" class="btn ripple btn-danger btn-sm" data-toggle="tooltip" title="Delete Data" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $a->archive_id }}" onclick="{{ route('archive.destroy', $a->archive_id) }}">
+                                            <i class="far fa-trash-alt"></i>
+                                        </button>
+                                    </td> --}}
+                                </tr>
+                                {{-- <div class="modal fade" id="deleteModal{{ $a->archive_id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $a->archive_id }}" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="deleteModalLabel{{ $a->archive_id }}">Delete
-                                                    Data</h5>
+                                                <h5 class="modal-title" id="deleteModalLabel{{ $a->archive_id }}">Delete Data</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -94,60 +98,29 @@
                                                     <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
                                                     @method('DELETE')
                                                     <button type="submit" class="btn bg-gradient-danger" data-bs-dismiss="modal">Delete</button>
-                                                    </button>
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
-                    </div> --}}
-                    {{-- End of Delete Modal --}}
-                    {{-- </td> --}}
-                    </tr>
-                    {{-- penutup div nya sesuai kh? --}}
-                    @endforeach
-                    </tbody>
+                                </div> --}}
+                            @endforeach
+                        </tbody>
                     </table>
                 </div>
             </div>
         </div>
-        <script>
-            $(document).ready(function() {
-                // Hide and Show Columns
-                $('#toggleColumns').on('change', function() {
-                    var column = $(this).attr('id');
-                    $('.' + column).toggle();
-                });
-                // Expandable Columns
-                $('.expandable-column').on('click', function() {
-                    $(this).toggleClass('expanded');
-                    $(this).siblings('.expand-content').toggle();
-                });
-            });
-
-        </script>
-        <script>
-            $(document).ready(function() {
-                // Hide and Show Columns
-                $('#toggleColumns').on('change', function() {
-                    var column = $(this).val();
-                    $('.' + column).toggle();
-                });
-            });
-
-        </script>
-        @if (session('success'))
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                var successAlert = document.getElementById('success-alert');
-                successAlert.style.display = 'block';
-                setTimeout(function() {
-                    successAlert.style.display = 'none';
-                }, 5000);
-            });
-
-        </script>
-        @endif
     </div>
 </div>
-</div>
+<!--end page wrapper -->
+@endsection
+
+@section('scripts')
+<!-- DataTables -->
+<script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
+<!-- Buttons -->
+<script src="{{ asset('assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
 @endsection

@@ -1,127 +1,149 @@
 @extends('layout.main')
 
 @section('content')
-<div class="main-content side-content pt-0">
-    <div class="container-fluid">
-        <div class="inner-body">
+<div class="page-wrapper">
+    <div class="page-content">
+        <div class="row">
+            <div class="card radius-10">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
 
-
-            <!-- Page Header -->
-            <div class="page-header">
-                <div>
-                    <h2 class="main-content-title tx-24 mg-b-5">Welcome To Dashboard</h2>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-                    </ol>
-                </div>
-            </div>
-            <!-- End Page Header -->
-
-            <!--Row-->
-            <div class="row row-sm">
-                <div class="col-sm-12 col-lg-12">
-
-                    <!--Row-->
-                    <div class="row row-sm  mt-lg-4">
-                        <div class="col-sm-12 col-lg-12 col-xl-12">
-                            <div class="card bg-transparent custom-card card-box">
-                                <div class="card-body bg-white p-4">
-                                    <div class="row align-items-center">
-                                        <div class="offset-xl-3 offset-sm-6 col-xl-8 col-sm-6 col-12">
-                                            <h4 class="d-flex  mb-3">
-                                                <span class="font-weight-bold text-black ">Assalamualaikum Warahmatullahi Wabarakatuh, {{ auth()->user()->name }}</span>
-                                            </h4>
-                                            <p class="tx-black-7 mb-1">You have two projects to finish, you have completed <b class="text-warning">57%</b> of your monthly goal. Keep going to reach your target.</p>
-                                        </div>
-                                        <div class="col-xl-3 col-sm-6 col-12 d-flex align-items-center justify-content-center">
-                                            <div class="justify-content-center align-items-center" style="height: 100%">
-                                                <img src="{{ asset('assets/img/meet.gif') }}" alt="user-img" class="wd-100">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                <div class="card">
+                    <div class="card-body d-flex align-items-center justify-content-between" style="height: 210px;">
+                        <div class="mr-3" style="width: 40%; height: 100%;">
+                            <div id="animationContainer" style="width: 100%; height: 100%;"></div>
+                            <script>
+                                var animation = bodymovin.loadAnimation({
+                                    container: document.getElementById('animationContainer'),
+                                    renderer: 'svg',
+                                    loop: true,
+                                    autoplay: true,
+                                    path: '/assets/img/meet.json' // Replace with the correct relative path to your JSON animation file
+                                });
+                            </script>
+                        </div>
+                        <div class="flex-grow-1 ml-3">
+                            <h4 class="mb-3">
+                                <span class="font-weight-bold text-white">Assalamualaikum warahmatullāhi wabarakātuh <br> {{ auth()->user()->name }}</span>
+                            </h4>
+                            <p class="tx-black-7 mb-1">“If we have a clear agenda in advance and fully contributing, the <b class="text-warning">meetings</b> will be meaningful.” </p>
                         </div>
                     </div>
-                    <!--Row -->
+                </div>
 
-                    <!--Row 2-->
+            </div>
+        </div>
+        <div class="card radius-10">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 row-group g-0">
+                <div class="col">
                     @php
                     $countMeet = App\Models\Meet::count();
                     $countIssues = App\Models\Issue::count();
                     $countDaily = App\Models\Daily::count();
-                    // $countArchieve = App\Models\Archive::count();
+                    $countArchieve = App\Models\Archive::count();
                     @endphp
-                    <div class="row row-sm mt-lg-4">
-                        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
-                            <div class="card custom-card bg-transparent">
-                                <div class="card-body bg-transparent">
-                                    <div class="card-widget">
-                                        <label class="main-content-label mb-3 pt-1">MEETING HELD</label>
-                                        <h2 class="text-right card-item-icon card-icon">
-                                            <i class="zmdi zmdi-collection-text icon-size float-left text-primary"></i><span class="font-weight-bold">{{ $countMeet }}</span>
-                                        </h2>
-                                        <p class="mb-0 text-muted">Total of Meetings Handled<span class="float-right"></span></p>
-                                    </div>
-                                </div>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <h5 class="mb-0">{{ $countMeet }}</h5>
+                            <div class="ms-auto">
+                                <i class='bx bx-calendar-check fs-3 text-white'></i>
                             </div>
                         </div>
-                        <!-- COL END -->
-                        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
-                            <div class="card custom-card bg-transparent">
-                                <div class="card-body bg-transparent">
-                                    <div class="card-widget">
-                                        <label class="main-content-label mb-3 pt-1">ISSUES HANDLED</label>
-                                        <h2 class="text-right card-item-icon card-icon">
-                                            <i class="zmdi zmdi-collection-bookmark icon-size float-left text-primary"></i><span class="font-weight-bold">{{ $countIssues }}</span>
-                                        </h2>
-                                        <p class="mb-0 text-muted">Total of Issues Handled<span class="float-right"></span></p>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="progress my-3" style="height:4px;">
+                            <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <!-- COL END -->
-                        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
-                            <div class="card custom-card bg-transparent">
-                                <div class="card-body bg-transparent bg-transparent">
-                                    <div class="card-widget">
-                                        <label class="main-content-label mb-3 pt-1">REPORT CREATED</label>
-                                        <h2 class="text-right card-item-icon card-icon">
-                                            <i class="zmdi zmdi-assignment icon-size float-left text-primary"></i><span class="font-weight-bold">{{ $countDaily }}</span>
-                                        </h2>
-                                        <p class="mb-0 text-muted">Total of Reports<span class="float-right"></span></p>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="d-flex align-items-center text-white">
+                            <p class="mb-0">Total Meet</p>
+                            <p class="mb-0 ms-auto">+4.2%<span><i class='bx bx-up-arrow-alt'></i></span></p>
                         </div>
-                        <!-- COL END -->
-                        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
-                            <div class="card custom-card">
-                                <div class="card-body bg-transparent">
-                                    <div class="card-widget">
-                                        <label class="main-content-label mb-3 pt-1">ARCHIVED ISSUES</label>
-                                        <h2 class="text-right card-item-icon card-icon">
-                                            <i class="zmdi zmdi-archive icon-size float-left text-primary"></i><span class="font-weight-bold">1
-                                                {{-- {{ $countArchive }} --}}
-                                            </span>
-                                        </h2>
-                                        <p class="mb-0 text-muted">Total of Archieved Issues<span class="float-right"></span></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- COL END -->
                     </div>
-                    <!--/Row 2-->
+                </div>
+                <div class="col">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <h5 class="mb-0">{{$countIssues}}</h5>
+                            <div class="ms-auto">
+                                <i class='bx bx-comment-error fs-3 text-white'></i>
+                            </div>
+                        </div>
+                        <div class="progress my-3" style="height:4px;">
+                            <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="d-flex align-items-center text-white">
+                            <p class="mb-0">Total Issues</p>
+                            <p class="mb-0 ms-auto">+1.2%<span><i class='bx bx-up-arrow-alt'></i></span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <h5 class="mb-0">{{$countDaily}}</h5>
+                            <div class="ms-auto">
+                                <i class='bx bx-file fs-3 text-white'></i>
+                            </div>
+                        </div>
+                        <div class="progress my-3" style="height:4px;">
+                            <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="d-flex align-items-center text-white">
+                            <p class="mb-0">DWM Reports</p>
+                            <p class="mb-0 ms-auto">+5.2%<span><i class='bx bx-up-arrow-alt'></i></span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <h5 class="mb-0">{{$countArchieve}}</h5>
+                            <div class="ms-auto">
+                                <i class='bx bx-folder-open fs-3 text-white'></i>
+                            </div>
+                        </div>
+                        <div class="progress my-3" style="height:4px;">
+                            <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="d-flex align-items-center text-white">
+                            <p class="mb-0">Archieves</p>
+                            <p class="mb-0 ms-auto">+2.2%<span><i class='bx bx-up-arrow-alt'></i></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div><!--end row-->
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-8 col-xl-8">
+                <div class="card radius-10 overflow-hidden">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <h6 class="mb-0">Meet Recapitulation</h6>
+                            </div>
+                            <div class="font-22 ms-auto"><i class='bx bx-dots-horizontal-rounded'></i>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <div id="recruitment-cost"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+            <div class="col-12 col-lg-4 col-xl-4">
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <h6 class="mb-0">Issues By Source</h6>
+                            </div>
+                            <div class="font-22 ms-auto"><i class='bx bx-dots-horizontal-rounded'></i>
+                            </div>
+                        </div>
+                        <div class="chart-container d-flex align-items-center justify-content-center mt-3">
+                            <div id="application-by-source"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--end row-->
     </div>
-    <!-- End Main Content-->
-
-
-
 </div>
 @endsection

@@ -30,13 +30,6 @@ $delete = $pages[8]['access'] == 1;
                 </div>
             </div>
             <div class="card">
-                <div class="card-header d-flex justify-content-end">
-                    @if($create)
-                    <a type="button" class="btn ripple btn-success btn-icon" href="{{ route('daily.create') }}" data-toggle="tooltip" title="Add new data">
-                        <i class="fe fe-plus"></i>
-                    </a>
-                    @endif
-                </div>
                 <div class="card-body bg-transparent">
                     <div class="table-responsive">
                         <table id="example2_wrapper" class="table table-bordered border-t0 key-buttons text-nowrap w-100">
@@ -44,9 +37,14 @@ $delete = $pages[8]['access'] == 1;
                                 <tr>
                                     <th>No</th>
                                     <th>Daily ID</th>
-                                    <th>Tracker</th>
+                                    <th>Departemen</th>
+                                    <th>Issue</th>
+                                    <th>Corrective Action</th>
+                                    <th>Description</th>
                                     <th>Status</th>
-                                    <th>Priority</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Asiggnee</th>
                                     <th width="100px">Action</th>
                                 </tr>
                             </thead>
@@ -54,20 +52,15 @@ $delete = $pages[8]['access'] == 1;
                                 @foreach ($daily as $i)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td><a href="{{ route('daily.document',$i->daily_id) }}" class="text-decoration-none">{!! $i->daily_xid !!}</a></td>
-                                    <td>{!! $i->tracker_name !!}</td>
-                                    @if($i->status == "New")
-                                    <td><span class="badge badge-primary-light">{!! $i->status !!}</span></td>
-                                    @elseif ($i->status == "Continue")
-                                    <td><span class="badge badge-info-light">{!! $i->status !!}</span></td>
-                                    @elseif($i->status == "Over Due")
-                                    <td><span class="badge badge-danger-light">{!! $i->status !!}</span></td>
-                                    @elseif ($i->status == "Closed")
-                                    <td><span class="badge badge-success">{!! $i->status !!}</span></td>
-                                    @else
-                                    <td><span class="badge badge-primary">{!! $i->status !!}</span></td>
-                                    @endif
-                                    <td><span class="badge badge-danger">{!! $i->priority !!}</span></td>
+                                    <td><a href="?departemen=" class="text-decoration-none">{!! $i->daily_xid !!}</a></td>
+                                    <td>{!! $i->departemen !!}</td>
+                                    <td>{!! $i->subject !!}</td>
+                                    <td>{!! $i->c_action !!}</td>
+                                    <td>{!! $i->description_daily !!}</td>
+                                    <td>{!! $i->status !!}</td>
+                                    <td>{!! \Carbon\Carbon::parse($i->start_date)->format('d-m-Y') !!}</td>
+                                    <td>{!! \Carbon\Carbon::parse($i->end_date)->format('d-m-Y') !!}</td>
+                                    <td>{!! $i->assignee !!}</td>
                                     {{-- start modal  --}}
                                     <td>
 
@@ -83,6 +76,9 @@ $delete = $pages[8]['access'] == 1;
                                             @method('delete')
                                             <button type="submit" class="btn ripple btn-danger btn-sm" data-toggle="tooltip" title="Delete Data"><i class="fas fa-trash-alt"></i></button>
                                         </form>
+                                        <button type="button" class="btn bg-gradient-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $i->daily_id }}" onclick="{{ route('daily.destroy', $i->daily_id) }}">
+                                            <i class="far fa-trash-alt"></i>
+                                        </button>
                                         {{-- End of Delete Modal Trigger --}}
 
                                         {{-- Delete Modal --}}

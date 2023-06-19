@@ -126,7 +126,7 @@ class IssueController extends Controller
             'users' => User::get()
         ]);
     }
-
+    
     public function approvedForm()
     {
         return view('issue.approved',[
