@@ -36,45 +36,45 @@ $pages = App\Models\User::leftJoin('group_pages', 'users.group_id', '=', 'group_
         <!--navigation-->
         <ul class="metismenu" id="menu">
             <li>
-            <a class="nav-link {{ request()->is('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
+                <a class="nav-link {{ request()->is('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
                     <div class="parent-icon"><i class='bx bx-home'></i>
                     </div>
                     <div class="menu-title">Dashboard</div>
                 </a>
             </li>
             <li>
-            <a class="nav-link {{ request()->is('meet.index', 'meet.create') ? 'active' : '' }}" href="{{ route('meet.index') }}">
+                <a class="nav-link {{ request()->is('meet.index', 'meet.create') ? 'active' : '' }}" href="{{ route('meet.index') }}">
                     <div class="parent-icon"><i class='bx bx-calendar'></i>
                     </div>
                     <div class="menu-title">{{ $Meet }}</div>
                 </a>
             </li>
             <li>
-            <a class="nav-link {{ request()->is('issue.index') ? 'active' : '' }}" href="{{ route('issue.index') }}">
+                <a class="nav-link {{ request()->is('issue.index') ? 'active' : '' }}" href="{{ route('issue.index') }}">
                     <div class="parent-icon"><i class='bx bx-home'></i>
                     </div>
                     <div class="menu-title">{{ $Issue }}</div>
                 </a>
             </li>
             <li>
-            <a class="nav-link {{ request()->is('issue.index') ? 'active' : '' }}" href="{{ route('daily.index') }}">
+                <a class="nav-link {{ request()->is('issue.index') ? 'active' : '' }}" href="{{ route('daily.index') }}">
                     <div class="parent-icon"><i class='bx bx-home'></i>
                     </div>
                     <div class="menu-title">{{ str_replace('_', ' ', $Daily) }}</div>
                 </a>
             </li>
             <li>
-            <a class="nav-link {{ request()->is('archive.index') ? 'active' : '' }}" href="{{ route('archive.index') }}">
+                <a class="nav-link {{ request()->is('archive.index') ? 'active' : '' }}" href="{{ route('archive.index') }}">
                     <div class="parent-icon"><i class='bx bx-home'></i>
                     </div>
                     <div class="menu-title">{{ $Archive }}</div>
                 </a>
             </li>
             <a class="nav-link {{ request()->is('user.index') ? 'active' : '' }}" href="{{ route('user.index') }}">
-                    <div class="parent-icon"><i class='bx bx-home'></i>
-                    </div>
-                    <div class="menu-title">{{ $User }}</div>
-                </a>
+                <div class="parent-icon"><i class='bx bx-home'></i>
+                </div>
+                <div class="menu-title">{{ $User }}</div>
+            </a>
             </li>
 
 
@@ -83,7 +83,7 @@ $pages = App\Models\User::leftJoin('group_pages', 'users.group_id', '=', 'group_
                 <a class="has-arrow" href="javascript:;">
                     <div class="parent-icon"><i class='bx bx-message-square-edit'></i>
                     </div>
-                    <div class="menu-title">Access</div>
+                    <div class="menu-title">Settings</div>
                 </a>
                 <ul>
                     <li> <a href="{{ route('departemen.index') }}"><i class='bx bx-radio-circle'></i>Department</a>
@@ -405,26 +405,24 @@ $pages = App\Models\User::leftJoin('group_pages', 'users.group_id', '=', 'group_
                     <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="{{ asset('assets/images/avatars/avatar-1.png') }}" class="user-img" alt="user avatar">
                         <div class="user-info">
-                            <p class="user-name mb-0">key</p>
+                            <p class="user-name mb-0">Ali</p>
                             <p class="designattion mb-0">Super Admin</p>
                         </div>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-user fs-5"></i><span>Profile</span></a>
+                        <li><a class="dropdown-item d-flex align-items-center" href="{{ route('user.index') }}"><i class="bx bx-user fs-5"></i><span>User</span></a>
                         </li>
-                        <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-cog fs-5"></i><span>Settings</span></a>
-                        </li>
-                        <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-home-circle fs-5"></i><span>Dashboard</span></a>
-                        </li>
-                        <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-dollar-circle fs-5"></i><span>Earnings</span></a>
-                        </li>
-                        <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-download fs-5"></i><span>Downloads</span></a>
+                        <li><a class="dropdown-item d-flex align-items-center" href="{{ route('group.index') }}"><i class="bx bx-cog fs-5"></i><span>Setting Role</span></a>
                         </li>
                         <li>
-                            <div class="dropdown-divider mb-0"></div>
+                            <form action="{{ route('logout') }}" method="post">
+                                @csrf
+                                <button type="submit" class="dropdown-item border-top">
+                                    <i class="bx bx-log-out-circle"></i> Logout
+                                </button>
+                            </form>
                         </li>
-                        <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-log-out-circle"></i><span>Logout</span></a>
-                        </li>
+                        <li>
                     </ul>
                 </div>
             </nav>
