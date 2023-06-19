@@ -29,10 +29,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
             </div>
         </div>
         <div class="card radius-10">
