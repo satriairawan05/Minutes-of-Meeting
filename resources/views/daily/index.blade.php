@@ -15,27 +15,34 @@ $daily = App\Models\Daily::select('*')->distinct('departemen')->where('departeme
 @endphp
 
 @section('content')
-<div class="main-content side-content pt-0">
-    <div class="container-fluid">
-        <div class="inner-body">
-            <!-- Page Header -->
-            <div class="page-header">
-                <div>
-                    <h2 class="main-content-title tx-24 mg-b-5">DWM Report</h2>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">DWM Report</li>
+<!--start page wrapper -->
+<link href="{{ asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
+<div class="page-wrapper">
+    <div class="page-content">
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">DWM Report</div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Datatable of DWM Report</li>
                     </ol>
-                </div>
+                </nav>
             </div>
-            <!-- End Page Header -->
-            <div class="card">
+
+            <div class="ms-auto">
+                @if($create)
+                <a type="button" href="{{ route('daily.create') }}" data-toggle="tooltip" title="Add new data" type="button" class="btn btn-light px-4"><i class="bx bx-plus-circle"></i>Add DWM Report</a>
+                @endif
+
+            </div>
+        </div>
+        <!--end breadcrumb-->
+        <h6 class="mb-0 text-uppercase">Datatable of DWM Report</h6>
+        <hr />
+        <div class="card">
                 <div class="card-header d-flex justify-content-end">
-                    @if($create)
-                    <a type="button" class="btn ripple btn-success btn-icon" href="{{ route('daily.create') }}" data-toggle="tooltip" title="Add new data">
-                        <i class="fe fe-plus"></i>
-                    </a>
-                    @endif
                 </div>
                 <div class="card-body bg-transparent">
                     <div class="table table-filter">
@@ -230,25 +237,19 @@ $daily = App\Models\Daily::select('*')->distinct('departemen')->where('departeme
                     {{-- </table> --}}
                 </div>
             </div>
-        </div>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-
-        @if ($message = Session::get('success'))
-        <script>
-            Toastify({
-                text: "{{ $message }}",
-                duration: 3000,
-                close: true, // Include close button
-                gravity: "bottom", // Set gravity to "bottom"
-                position: "right", // Set position to "right"
-                style: {
-                    background: "linear-gradient(to right, #11998E, #38ef7d)"
-                }
-            }).showToast();
-        </script>
-        @endif
     </div>
 </div>
-</div>
-<!-- End Main Content-->
+<!--end page wrapper -->
+
+@endsection
+
+@section('scripts')
+<!-- DataTables -->
+<script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
+<!-- Buttons -->
+<script src="{{ asset('assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
 @endsection
