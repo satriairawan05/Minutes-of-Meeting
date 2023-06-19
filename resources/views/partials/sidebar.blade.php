@@ -83,7 +83,7 @@ $pages = App\Models\User::leftJoin('group_pages', 'users.group_id', '=', 'group_
                 <a class="has-arrow" href="javascript:;">
                     <div class="parent-icon"><i class='bx bx-message-square-edit'></i>
                     </div>
-                    <div class="menu-title">Access</div>
+                    <div class="menu-title">Setting</div>
                 </a>
                 <ul>
                     <li> <a href="{{ route('departemen.index') }}"><i class='bx bx-radio-circle'></i>Department</a>
@@ -410,21 +410,18 @@ $pages = App\Models\User::leftJoin('group_pages', 'users.group_id', '=', 'group_
                         </div>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-user fs-5"></i><span>Profile</span></a>
+                        <li><a class="dropdown-item d-flex align-items-center" href="{{ route('user.index') }}"><i class="bx bx-user fs-5"></i><span>User</span></a>
                         </li>
-                        <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-cog fs-5"></i><span>Settings</span></a>
+                        <li><a class="dropdown-item d-flex align-items-center" href="{{ route('group.index') }}"><i class="bx bx-cog fs-5"></i><span>Settings</span></a>
                         </li>
-                        <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-home-circle fs-5"></i><span>Dashboard</span></a>
-                        </li>
-                        <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-dollar-circle fs-5"></i><span>Earnings</span></a>
-                        </li>
-                        <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-download fs-5"></i><span>Downloads</span></a>
-                        </li>
-                        <li>
                             <div class="dropdown-divider mb-0"></div>
                         </li>
-                        <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-log-out-circle"></i><span>Logout</span></a>
-                        </li>
+                        <form action="{{ route('logout') }}" method="post">
+                                @csrf
+                                <button type="submit" class="dropdown-item border-top">
+                                <i class="bx bx-log-out-circle"></i> Logout
+                                </button>
+                            </form>
                     </ul>
                 </div>
             </nav>

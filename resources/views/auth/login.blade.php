@@ -1,18 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>MoM Suemeru Grup</title>
+    <!--favicon-->
+    <link rel="icon" href="{{ asset('assets/img/brand/icon.png') }}" type="image/png" />
+    <title>PT BSS MoM</title>
     <link rel="stylesheet" href="{{asset('assets/scss/style.css')  }}">
     <link rel="stylesheet" href="{{asset('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css') }}">
+    <style>
+        .flex {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .flex button {
+            margin-top: 1rem;
+        }
+    </style>
 </head>
+
 <body>
     <div class="login-card">
         <div class="column">
-            <h1 class="bi-text-center">Login</h1>
-            <p>After logging in, you can access Minutes of Meeting.</p>
+            <h1 class="flex text-center">Login</h1>
+            <p class="flex text-center">After logging in, you can access Minutes of Meeting.</p>
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="form-item">
@@ -35,7 +51,7 @@
                     <input type="checkbox" id="rememberMe" name="remember" {{ old('remember') ? 'checked' : '' }}>
                     <label for="rememberMe">Remember Me</label>
                 </div>
-                <div class="flex">
+                <div class="flex text-center">
                     @if (Route::has('password.request'))
                     <a href="{{ route('password.request') }}">Reset your password now</a>
                     @endif
@@ -52,4 +68,5 @@
     </div>
 
 </body>
+
 </html>
