@@ -63,6 +63,13 @@ $pages = App\Models\User::leftJoin('group_pages', 'users.group_id', '=', 'group_
                     <div class="menu-title">{{ str_replace('_', ' ', $Daily) }}</div>
                 </a>
             </li>
+            </li>
+            <a class="nav-link" href="">
+                <div class="parent-icon"><i class='bx bx-file-find'></i>
+                </div>
+                <div class="menu-title">DWM Tracker</div>
+            </a>
+            </li>
             <li>
                 <a class="nav-link {{ request()->is('archive.index') ? 'active' : '' }}" href="{{ route('archive.index') }}">
                     <div class="parent-icon"><i class='bx bx-folder-open'></i>
@@ -76,25 +83,21 @@ $pages = App\Models\User::leftJoin('group_pages', 'users.group_id', '=', 'group_
                 <div class="menu-title">{{ $User }}</div>
             </a>
             </li>
-
-
-            <li class="menu-label">Manage</li>
-            <li>
-                <a class="has-arrow" href="javascript:;">
-                    <div class="parent-icon"><i class='bx bx-cog'></i>
-                    </div>
-                    <div class="menu-title">Settings</div>
-                </a>
-                <ul>
-                    <li> <a href="{{ route('departemen.index') }}"><i class='bx bx-radio-circle'></i>Department</a>
-                    </li>
-                    <li> <a href="{{ route('group.index') }}"><i class='bx bx-radio-circle'></i>Roles</a>
-                    </li>
-
-                    <li> <a href="#"><i class='bx bx-radio-circle'></i>DWM Tracker</a>
-                    </li>
-                </ul>
             </li>
+            <a class="nav-link {{ request()->is('departemen.index') ? 'active' : '' }}" href="{{ route('departemen.index') }}">
+                <div class="parent-icon"><i class='bx bx-group'></i>
+                </div>
+                <div class="menu-title">Departement</div>
+            </a>
+            </li>
+            </li>
+            <a class="nav-link {{ request()->is('group.index') ? 'active' : '' }}" href="{{ route('group.index') }}">
+                <div class="parent-icon"><i class='bx bx-wrench'></i>
+                </div>
+                <div class="menu-title">Role</div>
+            </a>
+            </li>
+
         </ul>
         <!--end navigation-->
     </div>
