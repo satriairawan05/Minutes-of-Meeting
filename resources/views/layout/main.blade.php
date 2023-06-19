@@ -2,13 +2,14 @@
 <html lang="en">
 
 
+<!-- Mirrored from codervent.com/dashtreme/demo/vertical/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 13 Jun 2023 03:10:05 GMT -->
 
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--favicon-->
-    <link rel="icon" href="{{ asset('assets/img/brand/icon.png') }}" type="image/png" />
+    <link rel="icon" href="{{ asset('assets/images/favicon-32x32.png') }}" type="image/png" />
     <!--plugins-->
     <link href="{{ asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet" />
@@ -41,7 +42,7 @@
         <!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
         <!--End Back To Top Button-->
         <footer class="page-footer">
-            <p class="mb-0">Copyright PT Bangun Semeru Sejahtera© 2023. All right reserved.</p>
+            <p class="mb-0">Copyright © 2023. All right reserved.</p>
         </footer>
     </div>
     <!--end wrapper-->
@@ -102,16 +103,16 @@
     </script>
     <script src="{{ asset('assets/js/index.js') }}"></script>
     <!--app JS-->
-
+ 
     <script src="{{ asset('https://cdn.jsdelivr.net/npm/chart.js')}}"></script>
     <script src="{{ asset('https://cdn.jsdelivr.net/npm/lottie-web@5.7.9/build/player/lottie.min.js')}}"></script>
     <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/apexcharts-bundle/js/apexcharts.min.js')}}"></script>
-    <script src="{{ asset('assets/js/dashboard-human-resources.js')}}"></script>
     <script src="{{ asset('assets/js/app.js') }}"></script>
-
+  
 
 </body>
 
+
+<!-- Mirrored from codervent.com/dashtreme/demo/vertical/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 13 Jun 2023 03:10:42 GMT -->
 
 </html>

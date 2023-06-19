@@ -25,10 +25,10 @@ $pages = App\Models\User::leftJoin('group_pages', 'users.group_id', '=', 'group_
     <div class="sidebar-wrapper" data-simplebar="true">
         <div class="sidebar-header">
             <div>
-                <img src="{{ asset('assets/img/brand/icon.png') }}" class="logo-icon" alt="logo icon">
+                <img src="{{ asset('assets/images/logo-icon.png') }}" class="logo-icon" alt="logo icon">
             </div>
             <div>
-                <h4 class="logo-text">PT BSS MoM</h4>
+                <h4 class="logo-text">MoM</h4>
             </div>
             <div class="toggle-icon ms-auto"><i class='bx bx-arrow-back'></i>
             </div>
@@ -391,8 +391,7 @@ $pages = App\Models\User::leftJoin('group_pages', 'users.group_id', '=', 'group_
 
 
                         <li class="nav-item dropdown dropdown-large">
-                            <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#" data-bs-toggle="dropdown">
-                                <!-- <span class="alert-count">7</span> -->
+                            <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#" data-bs-toggle="dropdown"><span class="alert-count">7</span>
                                 <i class='bx bx-bell'></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
@@ -522,7 +521,7 @@ $pages = App\Models\User::leftJoin('group_pages', 'users.group_id', '=', 'group_
                         <img src="{{ asset('assets/images/avatars/avatar-1.png') }}" class="user-img" alt="user avatar">
                         <div class="user-info">
                             <p class="user-name mb-0">key</p>
-                            <p class="designattion mb-0">Super Admin</p>
+                            <p class="designattion mb-0">Web Designer</p>
                         </div>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
