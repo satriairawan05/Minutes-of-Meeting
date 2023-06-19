@@ -1,18 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
-
-
 <head>
-    <!-- Required meta tags -->
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--favicon-->
-    <link rel="icon" href="{{ asset('assets/img/brand/icon.png') }}" type="image/png" />
+    <link rel="icon" href="{{ asset('assets/images/favicon-32x32.png') }}" type="image/png" />
     <!--plugins-->
-    <link href="{{ asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet" />
     <!-- loader-->
     <link href="{{ asset('assets/css/pace.min.css') }}" rel="stylesheet" />
@@ -24,62 +22,105 @@
     <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet">
 
-    <title>PT BSS MoM</title>
+    <title>Dashtreme - Multipurpose Bootstrap5 Admin Template</title>
 </head>
 
 <body class="bg-theme bg-theme1">
     <!--wrapper-->
     <div class="wrapper">
-        @include('partials.sidebar')
+	@include('partials.sidebar')
 
-        <!--start page wrapper -->
-        @yield('content')
-        <!--end page wrapper -->
-        <!--start overlay-->
-        <div class="overlay toggle-icon"></div>
-        <!--end overlay-->
-        <!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
-        <!--End Back To Top Button-->
-        <footer class="page-footer">
-            <p class="mb-0">Copyright PT Bangun Semeru Sejahtera© 2023. All right reserved.</p>
-        </footer>
-    </div>
-    <!--end wrapper-->
-    <!--start switcher-->
+<body class="main-body leftmenu">
+
+    <!-- Switcher -->
     <div class="switcher-wrapper">
-        <div class="switcher-btn"> <i class='bx bx-cog bx-spin'></i>
-        </div>
-        <div class="switcher-body">
-            <div class="d-flex align-items-center">
-                <h5 class="mb-0 text-uppercase">Theme Customizer</h5>
-                <button type="button" class="btn-close ms-auto close-switcher" aria-label="Close"></button>
+        <div class="demo_changer">
+            <div class="demo-icon bg_dark">
+                <i class="fa fa-cog fa-spin  text_primary"></i>
             </div>
-            <hr />
-            <p class="mb-0">Gaussian Texture</p>
-            <hr>
-            <ul class="switcher">
-                <li id="theme5"></li>
-                <li id="theme2"></li>
-                <li id="theme3"></li>
-                <li id="theme4"></li>
-                <li id="theme1"></li>
-                <li id="theme6"></li>
-            </ul>
-            <hr>
-            <p class="mb-0">Gradient Background</p>
-            <hr>
-            <ul class="switcher">
-                <li id="theme7"></li>
-                <li id="theme8"></li>
-                <li id="theme9"></li>
-                <li id="theme10"></li>
-                <li id="theme11"></li>
-                <li id="theme12"></li>
-                <li id="theme13"></li>
-                <li id="theme14"></li>
-                <li id="theme15"></li>
-            </ul>
+            <div class="form_holder sidebar-right1">
+                <div class="row">
+                    <div class="predefined_styles">
+                        <div class="swichermainleft">
+                            <h4 class="font-bold text-sm mr-3">Default Theme Switcher</h4>
+                            <div class="swichermainleft my-4">
+                                <a class="wscolorcode red-btn color blackborder color1" href="#" data-theme="assets/css/colors/color1.css"></a>
+                                <a class="wscolorcode purple-btn color blackborder color2" href="#" data-theme="assets/css/colors/color2.css"></a>
+                                <a class="wscolorcode green-btn color blackborder color3" href="#" data-theme="assets/css/colors/color3.css"></a>
+                                <a class="wscolorcode pink-btn color blackborder color4" href="#" data-theme="assets/css/colors/color4.css"></a>
+                                <a class="wscolorcode orange-btn color blackborder color5" href="#" data-theme="assets/css/colors/color5.css"></a>
+                            </div>
+                        </div>
+                        <div class="swichermainleft">
+                            <h4>Ions Styles</h4>
+                            <div class="switch_section my-2">
+                                <div class="switch-toggle d-flex">
+                                    <span class="mr-auto">Icon Style</span>
+                                    <div class="onoffswitch2">
+                                        <input type="checkbox" name="onoffswitch2" id="myonoffswitch51" class="onoffswitch2-checkbox">
+                                        <label for="myonoffswitch51" class="onoffswitch2-label"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="switch_section my-2">
+                                <div class="switch-toggle d-flex">
+                                    <span class="mr-auto">Theme Style</span>
+                                    <div class="onoffswitch2">
+                                        <input type="checkbox" name="onoffswitch2" id="myonoffswitch52" class="onoffswitch2-checkbox">
+                                        <label for="myonoffswitch52" class="onoffswitch2-label"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swichermainleft">
+                            <h4>Theme Layout</h4>
+                            <div class="switch_section d-flex my-4">
+                                <div class="d-block text-center mx-auto">
+                                    <button type="button" id="background5" class="bg5 mb-3 wscolorcode1 blackborder"></button>
+                                    <span class="badge badge-light tx-12">Dark layout</span>
+                                </div>
+                                <div class="d-block text-center mx-auto">
+                                    <button type="button" id="background6" class="bg6 mb-3 wscolorcode1 blackborder"></button>
+                                    <span class="badge badge-light tx-12">Light layout</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swichermainleft">
+                            <h4>Header Styles Mode</h4>
+                            <div class="switch_section d-flex my-4">
+                                <div class="d-block text-center mx-auto">
+                                    <button type="button" id="background3" class="bg3 mb-3 wscolorcode1 blackborder"></button>
+                                    <span class="badge badge-light tx-12">Dark Header</span>
+                                </div>
+                                <div class="d-block text-center mx-auto">
+                                    <button type="button" id="background4" class="bg4 mb-3 wscolorcode1 blackborder"></button>
+                                    <span class="badge badge-light tx-12">Color Header</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swichermainleft">
+                            <h4>Leftmenu Styles Mode</h4>
+                            <div class="switch_section d-flex my-4">
+                                <div class="d-block text-center mx-auto">
+                                    <button type="button" id="background1" class="bg1 wscolorcode1 blackborder"></button>
+                                    <span class="badge badge-light tx-12">Color Menu</span>
+                                </div>
+                                <div class="d-block text-center mx-auto">
+                                    <button type="button" id="background2" class="bg2 wscolorcode1 blackborder"></button>
+                                    <span class="badge badge-light tx-12">Light Menu</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+    <!-- End Switcher -->
+
+    <!-- Loader -->
+    <div id="global-loader">
+        <img src="assets/img/loader.svg" class="loader-img" alt="Loader">
     </div>
     <!--end switcher-->
     <!-- Bootstrap JS -->
@@ -88,6 +129,7 @@
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
     <script src="{{ asset('assets/plugins/chartjs/chart.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
@@ -102,16 +144,20 @@
     </script>
     <script src="{{ asset('assets/js/index.js') }}"></script>
     <!--app JS-->
-
-    <script src="{{ asset('https://cdn.jsdelivr.net/npm/chart.js')}}"></script>
-    <script src="{{ asset('https://cdn.jsdelivr.net/npm/lottie-web@5.7.9/build/player/lottie.min.js')}}"></script>
-    <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/apexcharts-bundle/js/apexcharts.min.js')}}"></script>
-    <script src="{{ asset('assets/js/dashboard-human-resources.js')}}"></script>
     <script src="{{ asset('assets/js/app.js') }}"></script>
-
-
 </body>
 
+<!-- Main Footer -->
+<div class="main-footer right bg-primary-transparent">
+    <div class="container text-right">
+        <span>
+            Copyright © 2023 <a href="https://bss.id/">PT BANGUN SEMERU SEJAHTERA</a></a>
+            All rights reserved.
+        </span>
+    </div>
+</div>
+
+
+<!-- Mirrored from laravel.spruko.com/spruha/ltr/index by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 01 Jun 2023 01:44:48 GMT -->
 
 </html>
