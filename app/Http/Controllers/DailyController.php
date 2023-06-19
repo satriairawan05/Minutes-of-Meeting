@@ -7,6 +7,7 @@ use App\Models\Daily;
 use App\Models\Tracker;
 use App\Models\Departemen;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Storage;
 
@@ -35,22 +36,20 @@ class DailyController extends Controller
         ->distinct('departemen')
         ->get();
 
-        $opened = Daily::
-        leftJoin('daily_trackers','daily_trackers.tracker_id','=','dailies.tracker_id')
+        $opened = Daily::leftJoin('daily_trackers','daily_trackers.tracker_id','=','dailies.tracker_id')
         ->leftJoin('departemens','dailies.departemen','=','departemens.name')
-        ->where('departemen',request()->query('departemen'))
-        ->orWhere('status','New')
-        ->orWhere('status','Continue')
-        ->where('is_open',1)
+        ->where('departemens.name', request()->query('departemen'))
+        ->whereColumn('dailies.tracker_id', '=', 'daily_trackers.tracker_id')
+        ->whereIn('status', ['New', 'Continue'])
+        ->where('is_open','=',1)
         ->count();
 
-        $closed = Daily::
-        leftJoin('daily_trackers','daily_trackers.tracker_id','=','dailies.tracker_id')
+        $closed = Daily::leftJoin('daily_trackers','daily_trackers.tracker_id','=','dailies.tracker_id')
         ->leftJoin('departemens','dailies.departemen','=','departemens.name')
-        ->where('departemen',request()->query('departemen'))
-        ->orWhere('status','Complete')
-        ->orWhere('status','Closed')
-        ->where('is_open',2)
+        ->where('departemens.name', request()->query('departemen'))
+        ->whereColumn('dailies.tracker_id', '=', 'daily_trackers.tracker_id')
+        ->whereIn('status', ['Complete','Closed'])
+        ->where('is_open','=',0)
         ->count();
 
         $dailies = Daily::leftJoin('daily_trackers','dailies.tracker_id','=','daily_trackers.tracker_id')
