@@ -26,31 +26,29 @@ $delete = $pages[13]['access'] == 1;
             <div class="card">
                 <div class="card-body bg-transparent">
                     <div class="table table-filter">
-                        @foreach ($departemen as $dept)
-                        <ul class="list-group text-center">
-                            <li class="list-group-item list-group-item-action text-uppercase"><a href="{!! url('/daily?departemen=' . $dept->name) !!}" class="text-decoration-none"> Departemen {!! $dept->name !!}</a></li>
-                        </ul>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">OPENED</th>
+                                    <th scope="col">CLOSED</th>
+                                    <th scope="col">TOTAL</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                        @foreach ($tracker as $tr)
+                                <tr>
+                                    <td><a href="{!! url('/daily?departemen=' . $tr->departemen . '&tracker=' . $tr->tracker_name) !!}" class="text-decoration-none text-bold text-center">{!! $tr->tracker_name !!}</a></td>
+                                    <td>{!! $open !!}</td>
+                                    <td>{!! $close !!}</td>
+                                    <td>@mdo</td>
+                                </tr>
                         @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-
-            @if ($message = Session::get('success'))
-            <script>
-                Toastify({
-                    text: "{{ $message }}",
-                    duration: 3000,
-                    close: true, // Include close button
-                    gravity: "bottom", // Set gravity to "bottom"
-                    position: "right", // Set position to "right"
-                    style: {
-                        background: "linear-gradient(to right, #11998E, #38ef7d)"
-                    }
-                }).showToast();
-
-            </script>
-            @endif
         </div>
     </div>
 </div>

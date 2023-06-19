@@ -1,11 +1,11 @@
 @extends('layout.main')
 
 @php
-$approval = $pages[17]['access'] == 1;
-$create = $pages[16]['access'] == 1;
-$read = $pages[15]['access'] == 1;
-$update = $pages[14]['access'] == 1;
-$delete = $pages[13]['access'] == 1;
+$approval = $pages[4]['access'] == 1;
+$create = $pages[5]['access'] == 1;
+$read = $pages[6]['access'] == 1;
+$update = $pages[7]['access'] == 1;
+$delete = $pages[8]['access'] == 1;
 @endphp
 
 @section('content')

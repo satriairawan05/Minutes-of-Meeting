@@ -21,7 +21,7 @@ class IssueController extends Controller
         $pages = User::leftJoin('group_pages', 'users.group_id', '=', 'group_pages.group_id')
             ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
             ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
-            ->whereBetween('pages.page_id', [5, 8])
+            ->whereBetween('pages.page_id', [4, 8])
             ->orWhere('pages.page_name', 'Issue')
             ->orWhere('group_pages.access', 1)
             ->get();

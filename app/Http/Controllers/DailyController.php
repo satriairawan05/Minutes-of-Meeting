@@ -6,7 +6,6 @@ use App\Models\User;
 use App\Models\Daily;
 use App\Models\Tracker;
 use App\Models\Departemen;
-use App\Models\ArchiveDaily;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Storage;
@@ -22,12 +21,61 @@ class DailyController extends Controller
         ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
         ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
         ->whereBetween('pages.page_id',[9,12])
-        ->orWhere('pages.page_name', 'DWM Report')
+        ->orWhere('pages.page_name', 'DWM_Report')
         ->orWhere('group_pages.access', 1)
         ->get();
 
-        return view('daily.index', [
-            'pages' => $pages
+        $departemen = Departemen::select('name')->get();
+        $tracker = Tracker::select(['tracker_name','departemen'])
+        ->leftJoin('dailies','dailies.tracker_id','=','daily_trackers.tracker_id')
+        ->leftJoin('departemens','departemens.name','=','daily_trackers.tracker_name')
+        ->where('tracker_header','>',0)
+        ->where('departemen','=',request()->query('departemen'))
+        ->distinct('tracker_name')
+        ->distinct('departemen')
+        ->get();
+
+        $opened = Daily::
+        leftJoin('daily_trackers','daily_trackers.tracker_id','=','dailies.tracker_id')
+        ->leftJoin('departemens','dailies.departemen','=','departemens.name')
+        ->where('departemen',request()->query('departemen'))
+        ->where('tracker_name',request()->query('tracker'))
+        ->where('is_open',1)
+        ->count();
+
+        $closed = Daily::
+        leftJoin('daily_trackers','daily_trackers.tracker_id','=','dailies.tracker_id')
+        ->leftJoin('departemens','dailies.departemen','=','departemens.name')
+        ->where('departemen',request()->query('departemen'))
+        ->where('tracker_name',request()->query('tracker'))
+        ->where('is_open',0)
+        ->count();
+
+        $dailies = Daily::leftJoin('daily_trackers','dailies.tracker_id','=','daily_trackers.tracker_id')
+        ->leftJoin('departemens','dailies.departemen','=','departemens.name')
+        ->where('departemen',request()->query('departemen'))
+        ->where('tracker_name',request()->query('tracker'))
+        ->get();
+
+        if(isset($_GET['departemen']) && isset($_GET['tracker'])){
+            return view('daily.index_3',[
+                'pages' => $pages,
+                'dailies' => $dailies
+            ]);
+        }
+
+        if(isset($_GET['departemen'])){
+            return view('daily.index_2',[
+                'pages' => $pages,
+                'tracker' => $tracker,
+                'open' => $opened,
+                'close' => $closed
+            ]);
+        }
+
+        return view('daily.index',[
+            'pages' => $pages,
+            'departemen' => $departemen
         ]);
     }
 
@@ -71,6 +119,7 @@ class DailyController extends Controller
             $daily->start_date = $request->start_date;
             $daily->end_date = $request->end_date;
             $daily->file = $request->file('file') ? $request->file('file')->store('dailies') : null;
+            $daily->is_open = 1;
             $daily->is_private = $request->input('is_private',0);
             $daily->save();
 
