@@ -34,69 +34,81 @@ $delete = $pages[3]['access'] == 1;
         <hr />
         <div class="card">
             <div class="card-body">
-                <div class="table-responsive">
-                    <table id="example2" class="table table-hover table-bordered" style="border-collapse: collapse;">
-                        <thead class="table-header">
-                            <tr>
-                                <th class="text-center">No</th>
-                                <th class="d-none d-sm-table-cell text-center">ID</th>
-                                <th class="text-center">Meeting Name</th>
-                                <th class="text-center">Project Name</th>
-                                <th class="text-center">Date Of Meeting</th>
-                                <th class="text-center">Time Of Meeting</th>
-                                <th class="text-center">Minutes Prepared by</th>
-                                <th class="text-center">Meeting Location</th>
-                                <th class="d-none d-sm-table-cell text-center">Attendees</th>
-                                @if($update || $delete)
-                                <th class="text-center">Actions</th>
-                                @endif
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($meets as $d)
-                            @if($read)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td class="d-none d-sm-table-cell">
-                                    <a href="{{ route('resume.meet', $d->meet_id) }}" class="text-decoration-none text-monospace">{{ $d->meet_xid }}</a>
-                                </td>
-                                <td>{{ $d->meet_name }}</td>
-                                <td>{{ $d->meet_project }}</td>
-                                <td>{{ \Carbon\Carbon::parse($d->meet_date)->format('d-m-Y') }}</td>
-                                <td>{{ \Carbon\Carbon::parse($d->meet_time)->format('H:i') }}</td>
-                                <td>{{ $d->meet_preparedby }}</td>
-                                <td>{{ $d->meet_locate }}</td>
-                                <td class="d-none d-sm-table-cell">{{ $d->meet_attend }}</td>
-                                @if($update || $delete)
-                                <td>
-                                    {{-- Edit Button --}}
-                                    @if($update)
-                                    <a href="{{ route('meet.edit', $d->meet_id) }}" class="btn btn-light" data-toggle="tooltip" title="Edit Data">
-                                        <i class="bx bx-search-alt me-0"></i>
-                                    </a>
-                                    @endif
-
-                                    {{-- Delete Button --}}
-                                    @if($delete)
-                                    <form action="{{ route('meet.destroy', $d->meet_id) }}" method="POST" class="d-inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-light" data-toggle="tooltip" title="Delete Data">
-                                            <i class="bx bx-trash-alt me-0"></i>
-                                        </button>
-                                    </form>
-                                    @endif
-                                </td>
-                                @endif
-                            </tr>
+                <table id="example2" class="table table-striped table-bordered">
+                    <thead class="table-header">
+                        <tr>
+                            <th class="text-center">No</th>
+                            <th class="d-none d-sm-table-cell text-center">ID</th>
+                            <th class="text-center">Meeting Name</th>
+                            <th class="text-center">Project Name</th>
+                            <th class="text-center">Date Of Meeting</th>
+                            <th class="text-center">Time Of Meeting</th>
+                            <th class="text-center">Minutes Prepared by</th>
+                            <th class="text-center">Meeting Location</th>
+                            <th class="d-none d-sm-table-cell text-center">Attendees</th>
+                            @if($update || $delete)
+                            <th class="text-center">Actions</th>
                             @endif
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($meets as $d)
+                        @if($read)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td class="d-none d-sm-table-cell">
+                                <a href="{{ route('resume.meet', $d->meet_id) }}" class="text-decoration-none text-monospace">{{ $d->meet_xid }}</a>
+                            </td>
+                            <td>{{ $d->meet_name }}</td>
+                            <td>{{ $d->meet_project }}</td>
+                            <td>{{ \Carbon\Carbon::parse($d->meet_date)->format('d-m-Y') }}</td>
+                            <td>{{ \Carbon\Carbon::parse($d->meet_time)->format('H:i') }}</td>
+                            <td>{{ $d->meet_preparedby }}</td>
+                            <td>{{ $d->meet_locate }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $d->meet_attend }}</td>
+                            @if($update || $delete)
+                            <td>
+                                {{-- Edit Button --}}
+                                @if($update)
+                                <a href="{{ route('meet.edit', $d->meet_id) }}" class="btn btn-light" data-toggle="tooltip" title="Edit Data">
+                                    <i class="bx bx-search-alt me-0"></i>
+                                </a>
+                                @endif
+
+                                {{-- Delete Button --}}
+                                @if($delete)
+                                <form action="{{ route('meet.destroy', $d->meet_id) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-light" data-toggle="tooltip" title="Delete Data">
+                                        <i class="bx bx-trash-alt me-0"></i>
+                                    </button>
+                                </form>
+                                @endif
+                            </td>
+                            @endif
+                        </tr>
+                        @endif
+                        @endforeach
+                    </tbody>
+                    <tfoot class="table-header text-center">
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                    </tfoot>
+                </table>
             </div>
         </div>
     </div>
+</div>
 </div>
 <!-- End page wrapper -->
 @endsection

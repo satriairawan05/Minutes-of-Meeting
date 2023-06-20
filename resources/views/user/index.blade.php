@@ -36,80 +36,88 @@ $delete = $pages[16]['access'] == 1;
         <hr />
         <div class="card">
             <div class="card-body">
-                <div class="table-responsive">
-                    <table id="example2" class="table table-striped table-bordered">
-                        <thead class="table-header text-center">
-                            <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Roles</th>
-                                @if($update || $delete)
-                                <th scope="col">Action</th>
+                <table id="example2" class="table table-striped table-bordered">
+                    <thead class="table-header text-center">
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Roles</th>
+                            @if($update || $delete)
+                            <th scope="col">Action</th>
+                            @endif
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        @foreach ($users as $user)
+                        <tr>
+                            <th scope="row">{{ $loop->iteration }}</th>
+                            @if($read)
+                            <td>{!! $user->name !!}</td>
+                            <td>{!! $user->email !!}</td>
+                            <td>{!! $user->group_name !!}</td>
+                            @endif
+                            @if($update || $delete)
+                            <td clas="d-inline">
                                 @endif
-                            </tr>
-                        </thead>
-                        <tbody class="text-center">
-                            @foreach ($users as $user)
-                            <tr>
-                                <th scope="row">{{ $loop->iteration }}</th>
-                                @if($read)
-                                <td>{!! $user->name !!}</td>
-                                <td>{!! $user->email !!}</td>
-                                <td>{!! $user->group_name !!}</td>
+                                <button type="button" onclick="window.location='{{ route('user.edit', $user->id) }}'" class="btn btn-light"><i class="bx bx-search-alt me-0"></i>
+                                </button>
+                                @if($delete)
+                                <form action="{{ route('user.destroy', $user->id) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-light"><i class="bx bx-trash-alt me-0"></i>
+                                    </button>
+                                </form>
                                 @endif
-                                @if($update || $delete)
-                                <td clas="d-inline">
-                                    @endif
-                                        <button type="button" onclick="window.location='{{ route('user.edit', $user->id) }}'" class="btn btn-light"><i class="bx bx-search-alt me-0"></i>
-                                        </button>
-                                        @if($delete)
-                                        <form action="{{ route('user.destroy', $user->id) }}" method="post">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="btn btn-light"><i class="bx bx-trash-alt me-0"></i>
-                                            </button>
-                                        </form>
-                                        @endif
-                                    {{-- Delete Modal --}}
-                                    <div class="modal fade" id="deleteModal{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $user->id }}" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="deleteModalLabel{{ $user->id }}">
-                                                        Delete
-                                                        Data</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
+                                {{-- Delete Modal --}}
+                                <div class="modal fade" id="deleteModal{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $user->id }}" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="deleteModalLabel{{ $user->id }}">
+                                                    Delete
+                                                    Data</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Apakah anda yakin?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <form method="post" action="{{ route('user.destroy', $user->id) }}">
+                                                    <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" class="btn bg-gradient-danger" data-bs-dismiss="modal">Delete</button>
                                                     </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Apakah anda yakin?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <form method="post" action="{{ route('user.destroy', $user->id) }}">
-                                                        <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button type="submit" class="btn bg-gradient-danger" data-bs-dismiss="modal">Delete</button>
-                                                        </button>
-                                                    </form>
-                                                </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
-                                    {{-- End of Delete Modal --}}
-                                    @if($update || $delete)
-                                </td>
-                                @endif
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                                </div>
+                                {{-- End of Delete Modal --}}
+                                @if($update || $delete)
+                            </td>
+                            @endif
+                        </tr>
+                        @endforeach
+                    </tbody>
+                    <tfoot class="table-header text-center">
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </tfoot>
+                </table>
             </div>
         </div>
     </div>
+</div>
 </div>
 <!--end page wrapper -->
 

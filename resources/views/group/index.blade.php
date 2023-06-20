@@ -83,6 +83,13 @@
                             </tr>
                             @endforeach
                         </tbody>
+                        <tfoot class="table-header text-center">
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                                
+                        </tfoot>
                     </table>
                 </div>
             </div>
