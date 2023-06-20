@@ -61,20 +61,16 @@ $delete = $pages[16]['access'] == 1;
                                 @if($update || $delete)
                                 <td clas="d-inline">
                                     @endif
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                        <button type="button" onclick="window.location='{{ route('user.show', $user->id) }}'" class="btn btn-light"><i class="bx bx-search-alt me-0"></i>
-                                        </button>
-                                        <button type="button" onclick="window.location='{{ route('user.edit', $user->id) }}'" class="btn btn-light"><i class="bx bxs-pencil"></i>
+                                        <button type="button" onclick="window.location='{{ route('user.edit', $user->id) }}'" class="btn btn-light"><i class="bx bx-search-alt me-0"></i>
                                         </button>
                                         @if($delete)
                                         <form action="{{ route('user.destroy', $user->id) }}" method="post">
                                             @csrf
                                             @method('delete')
-                                            <button type="submit" class="btn btn-light"><i class="bx bxs-trash"></i>
+                                            <button type="submit" class="btn btn-light"><i class="bx bx-trash-alt me-0"></i>
                                             </button>
                                         </form>
                                         @endif
-                                    </div>
                                     {{-- Delete Modal --}}
                                     <div class="modal fade" id="deleteModal{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $user->id }}" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">

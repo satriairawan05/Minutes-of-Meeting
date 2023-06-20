@@ -41,7 +41,7 @@
                                 <td style="text-align: center;">DEPARTEMEN {{ $dept->name }}</td>
                                 <td style="text-align: center;">
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <button type="button" href="{!! route('departemen.edit', $dept->id) !!}" class="btn btn-light"><i class="bx bxs-pencil"></i></button>
+                                        <a type="button" href="{!! route('departemen.edit', $dept->id) !!}" class="btn btn-light"><i class="bx bx-search-alt me-0"></i></a>
                                         <form action="{!! route('departemen.destroy',$dept->id) !!}" method="post">
                                             @csrf
                                             @method('delete')
