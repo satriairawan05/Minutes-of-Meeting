@@ -38,7 +38,7 @@ class DailyController extends Controller
 
         $opened = Daily::leftJoin('daily_trackers','daily_trackers.tracker_id','=','dailies.tracker_id')
         ->leftJoin('departemens','dailies.departemen','=','departemens.name')
-        ->where('departemens.name', request()->query('departemen'))
+        ->where('departemens.name','=',request()->query('departemen'))
         ->whereColumn('dailies.tracker_id', '=', 'daily_trackers.tracker_id')
         ->whereIn('status', ['New', 'Continue'])
         ->where('is_open','=',1)
