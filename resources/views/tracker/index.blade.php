@@ -1,8 +1,8 @@
 @extends('layout.main')
 
 @section('content')
-<div class="main-content side-content pt-0">
-    <div class="container-fluid">
+<div class="page-wrapper">
+    <div class="page-header">
         <div class="inner-body">
             <!-- Page Header -->
             <div class="page-header">
@@ -25,7 +25,7 @@
                 </div>
                 <div class="card-body bg-transparent">
                     <div class="table-responsive">
-                        <table id="exportexample" class="table table-bordered border-t-0 key-buttons text-nowrap w-100">
+                        <table id="example2" class="table table-bordered border-t-0 key-buttons text-nowrap w-100">
                             <thead>
                             <tr>
                                 <th>ID</th>

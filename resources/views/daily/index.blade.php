@@ -38,13 +38,15 @@ $delete = $pages[8]['access'] == 1;
                 </div>
                 <div class="card-body bg-transparent">
                     <div class="table table-filter">
+                    <div class="list-group">
                         @foreach ($departemen as $i)
                         @if (isset($_GET['departemen']))
-                        <a href="?departemen={!! $i->name !!}" style="display: none;" class="list-group list-group-item list-group-item-action">DEPARTEMEN {{ $i->name }}</a>
+                        <a href="?departemen={!! $i->name !!}" style="display: none;" class="list-group-item list-group-item-action mt-1 text-center text-uppercase">DEPARTEMEN {{ $i->name }}</a>
                         @else
-                        <a href="?departemen={!! $i->name !!}" class="list-group list-group-item list-group-item-action">DEPARTEMEN {{ $i->name }}</a>
+                        <a href="?departemen={!! $i->name !!}" class="list-group-item list-group-item-action mt-1 text-center text-uppercase">DEPARTEMEN {{ $i->name }}</a>
                         @endif
                         @endforeach
+                    </div>
                 </div>
             </div>
         </div>
