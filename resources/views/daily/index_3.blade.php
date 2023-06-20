@@ -9,8 +9,9 @@ $delete = $pages[13]['access'] == 1;
 @endphp
 
 @section('content')
-<div class="main-content side-content pt-0">
-    <div class="container-fluid">
+<link href="{{ asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
+<div class="page-wrapper">
+    <div class="page-content">
         <div class="inner-body">
             <!-- Page Header -->
             <div class="page-header">

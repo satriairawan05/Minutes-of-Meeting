@@ -48,9 +48,9 @@ $daily = App\Models\Daily::select('*')->distinct('departemen')->where('departeme
                     <div class="table table-filter">
                         @foreach ($departemens as $i)
                         @if (isset($_GET['departemen']))
-                        <a href="?departemen={{ strtolower($i->name) }}" style="display: none;" class="list-group list-group-item list-group-item-action">DEPARTEMEN {{ $i->name }}</a>
+                        <a href="?departemen={!! $i->name !!}" style="display: none;" class="list-group list-group-item list-group-item-action">DEPARTEMEN {{ $i->name }}</a>
                         @else
-                        <a href="?departemen={{ strtolower($i->name) }}" class="list-group list-group-item list-group-item-action">DEPARTEMEN {{ $i->name }}</a>
+                        <a href="?departemen={!! $i->name !!}" class="list-group list-group-item list-group-item-action">DEPARTEMEN {{ $i->name }}</a>
                         @endif
                         @endforeach
                         <div class="table-responsive ">

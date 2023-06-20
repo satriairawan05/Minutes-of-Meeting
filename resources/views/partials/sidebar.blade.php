@@ -252,8 +252,8 @@ $pages = App\Models\User::leftJoin('group_pages', 'users.group_id', '=', 'group_
                     <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="{{ asset('assets/images/avatars/avatar-1.png') }}" class="user-img" alt="user avatar">
                         <div class="user-info">
-                            <p class="user-name mb-0">Bang Satria</p>
-                            <p class="designattion mb-0">Super Admin</p>
+                            <p class="user-name mb-0">{!! auth()->user()->name !!}</p>
+                            <p class="designattion mb-0">{!! auth()->user()->email !!}</p>
                         </div>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">

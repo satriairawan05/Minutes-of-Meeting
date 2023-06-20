@@ -9,8 +9,9 @@ $delete = $pages[13]['access'] == 1;
 @endphp
 
 @section('content')
-<div class="main-content side-content pt-0">
-    <div class="container-fluid">
+<link href="{{ asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
+<div class="page-wrapper">
+    <div class="page-content">
         <div class="inner-body">
             <!-- Page Header -->
             <div class="page-header">
@@ -26,24 +27,24 @@ $delete = $pages[13]['access'] == 1;
             <div class="card">
                 <div class="card-body bg-transparent">
                     <div class="table table-filter">
-                        <table class="table">
+                        <table id="example2_wrapper" class="table table-responsive">
                             <thead>
                                 <tr>
-                                    <th scope="col"></th>
-                                    <th scope="col">OPENED</th>
-                                    <th scope="col">CLOSED</th>
-                                    <th scope="col">TOTAL</th>
+                                    <th style="text-align: center;" scope="col"></th>
+                                    <th style="text-align: center;" scope="col">OPENED</th>
+                                    <th style="text-align: center;" scope="col">CLOSED</th>
+                                    <th style="text-align: center;" scope="col">TOTAL</th>
                                 </tr>
                             </thead>
                             <tbody>
-                        @foreach ($tracker as $tr)
+                                @foreach ($tracker as $tr)
                                 <tr>
-                                    <td><a href="{!! url('/daily?departemen=' . $tr->departemen . '&tracker=' . $tr->tracker_name) !!}" class="text-decoration-none text-bold text-center">{!! $tr->tracker_name !!}</a></td>
-                                    <td>{!! $open !!}</td>
-                                    <td>{!! $close !!}</td>
-                                    <td>@mdo</td>
+                                    <td style="text-align: center;"><a href="{!! url('/daily?departemen=' . $tr->departemen . '&tracker=' . $tr->tracker_name) !!}" class="text-decoration-none text-bold text-center">{!! $tr->tracker_name !!}</a></td>
+                                    <td style="text-align: center;">{!! $open !!}</td>
+                                    <td style="text-align: center;">{!! $close !!}</td>
+                                    <td style="text-align: center;">@mdo</td>
                                 </tr>
-                        @endforeach
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
