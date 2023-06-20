@@ -28,27 +28,27 @@
         <!--Row-->
         <div class="card">
             <div class="card-body bg-transparent">
-			<form action="/departemen/{{ $dept->id }}" method="post">
-                        @csrf
-                        @method('put')
-                        <div class="mb-3 col-12">
-                            <label for="name" class="form-label">Departemen</label>
-                            <input type="text" name="name" id="name" value="{{ old('name', $dept->name) }}" placeholder="Masukan Name" class="form-control form-control-sm @error('name')
+                <form action="/departemen/{{ $dept->id }}" method="post">
+                    @csrf
+                    @method('put')
+                    <div class="mb-3 col-12">
+                        <label for="name" class="form-label">Departemen</label>
+                        <input type="text" name="name" id="name" value="{{ old('name', $dept->name) }}" placeholder="Masukan Name" class="form-control form-control-sm @error('name')
                             is-invalid
                         @enderror">
-                            @error('name')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
+                        @error('name')
+                        <div class="invalid-feedback">
+                            {{ $message }}
                         </div>
-						<div class="row mb-3">
+                        @enderror
+                    </div>
+                    <div class="row mb-3">
                         <div class="col-12 d-flex justify-content-between align-items-center">
                             <a href="{{ route('departemen.index') }}" class="btn btn-light px-2"><i class='bx bx-left-arrow-alt mr-1'></i>Departemen Datatable</button></a>
                             <button type="submit" class="btn btn-light px-2"><i class='bx bx-save'></i>Save Changes</button>
                         </div>
                     </div>
-                    </form>
+                </form>
             </div>
         </div>
         <script>

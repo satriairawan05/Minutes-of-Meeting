@@ -73,7 +73,7 @@ $pages = App\Models\User::leftJoin('group_pages', 'users.group_id', '=', 'group_
             <a class="nav-link {{ request()->is('user.index') ? 'active' : '' }}" href="{{ route('user.index') }}">
                 <div class="parent-icon"><i class='bx bx-user'></i>
                 </div>
-                <div class="menu-title">{{ $User }}</div>
+                <div class="menu-title">User</div>
             </a>
             </li>
             </li>
@@ -91,7 +91,7 @@ $pages = App\Models\User::leftJoin('group_pages', 'users.group_id', '=', 'group_
             </a>
             </li>
             </li>
-            <a class="nav-link" href="">
+            <a class="nav-link" href="{{ route('tracker.index') }}">
                 <div class="parent-icon"><i class='bx bx-file-find'></i>
                 </div>
                 <div class="menu-title">DWM Tracker</div>
