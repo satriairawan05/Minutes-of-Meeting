@@ -1,35 +1,35 @@
 @extends('layout.main')
 
 @section('content')
+<!--start page wrapper -->
+<link href="{{ asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
 <div class="page-wrapper">
-    <div class="page-header">
-        <div class="inner-body">
-            <!-- Page Header -->
-            <div class="page-header">
-                <div>
-                    <h2 class="main-content-title tx-24 mg-b-5">DWM Tracker Data</h2>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">DWM Tracker Detailed</li>
+    <div class="page-content">
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">DWM Tracker</div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Datatable of DWM Tracker</li>
                     </ol>
                 </nav>
             </div>
             <div class="ms-auto">
                 <a type="button" href="{{ route('tracker.create') }}" data-toggle="tooltip" title="Add new data" type="button" class="btn btn-light px-4"><i class="bx bx-plus-circle"></i>Add DWM Tracker</a>
             </div>
-            <!-- End Page Header -->
-            <div class="card">
-                <div class="card-header d-flex justify-content-end align-items-end">
-                    <div class="card-header d-flex justify-content-end">
-                        <a class="btn ripple btn-success btn-icon mr-3" href="{{ route('tracker.create') }}" data-toggle="tooltip" title="Add new data">
-                            <i class="fa fa-plus-circle"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="card-body bg-transparent">
-                    <div class="table-responsive">
-                        <table id="example2" class="table table-bordered border-t-0 key-buttons text-nowrap w-100">
-                            <thead>
+        </div>
+        <!--end breadcrumb-->
+        <h6 class="mb-0 text-uppercase">Datatable of DWM Tracker</h6>
+        <hr />
+        <div class="card">
+            <div class="card-header d-flex justify-content-end align-items-end">
+            </div>
+            <div class="card-body bg-transparent">
+                <div class="table-responsive">
+                    <table id="exportexample" class="table table-bordered border-t-0 key-buttons text-nowrap w-100">
+                        <thead>
                             <tr>
                                 <th class="text-center">ID</th>
                                 <th class="text-center">Header</th>
