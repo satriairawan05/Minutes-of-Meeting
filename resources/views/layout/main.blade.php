@@ -101,6 +101,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
     <script src="{{ asset('assets/plugins/apexcharts-bundle/js/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/js/dashboard-human-resources.js') }}"></script>
+    <!-- DataTables -->
+    <script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
+    <!-- Buttons -->
+    <script src="{{ asset('assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
     <script src="{{ asset('assets/js/app.js') }}"></script>
 
     <!--app JS-->
@@ -116,13 +124,25 @@
     <script>
         $(document).ready(function() {
             $('#example2').DataTable({
+                responsive: true,
+                rowReorder: {
+                    selector: 'td:nth-child(2)'
+                },
+                columnDefs: [{
+                        orderable: false,
+                        targets: -1
+                    } // Disable sorting for the last column (Actions)
+                ],
                 dom: 'Bfrtip',
                 buttons: [
                     'copy', 'csv', 'excel', 'pdf', 'print'
-                ]
+                ],
+                autoWidth: false,
             });
         });
     </script>
+
+
 </body>
 
 </html>

@@ -8,11 +8,11 @@ $delete = $pages[3]['access'] == 1;
 @endphp
 
 @section('content')
-<!--start page wrapper -->
+<!-- Start page wrapper -->
 <link href="{{ asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
 <div class="page-wrapper">
     <div class="page-content">
-        <!--breadcrumb-->
+        <!-- Breadcrumb -->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
             <div class="breadcrumb-title pe-3">Meetings</div>
             <div class="ps-3">
@@ -23,34 +23,32 @@ $delete = $pages[3]['access'] == 1;
                     </ol>
                 </nav>
             </div>
-
             <div class="ms-auto">
                 @if($create)
-                <a type="button" href="{{ route('meet.create') }}" data-toggle="tooltip" title="Add new data" type="button" class="btn btn-light px-4"><i class="bx bx-plus-circle"></i>Add Meet</a>
+                <a href="{{ route('meet.create') }}" data-toggle="tooltip" title="Add new data" class="btn btn-light px-4"><i class="bx bx-plus-circle"></i>Add Meet</a>
                 @endif
-
             </div>
         </div>
-        <!--end breadcrumb-->
+        <!-- End breadcrumb -->
         <h6 class="mb-0 text-uppercase">Datatable of Meeting</h6>
         <hr />
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="example2" class="table table-striped table-bordered">
+                    <table id="example2" class="table table-hover table-bordered" style="border-collapse: collapse;">
                         <thead class="table-header">
                             <tr>
-                                <th>No</th>
-                                <th>ID</th>
-                                <th>Meeting Name</th>
-                                <th>Project Name</th>
-                                <th>Date Of Meeting</th>
-                                <th>Time Of Meeting</th>
-                                <th>Minutes Prepared by</th>
-                                <th>Meeting Location</th>
+                                <th class="text-center">No</th>
+                                <th class="d-none d-sm-table-cell text-center">ID</th>
+                                <th class="text-center">Meeting Name</th>
+                                <th class="text-center">Project Name</th>
+                                <th class="text-center">Date Of Meeting</th>
+                                <th class="text-center">Time Of Meeting</th>
+                                <th class="text-center">Minutes Prepared by</th>
+                                <th class="text-center">Meeting Location</th>
                                 <th class="d-none d-sm-table-cell text-center">Attendees</th>
                                 @if($update || $delete)
-                                <th>Actions</th>
+                                <th class="text-center">Actions</th>
                                 @endif
                             </tr>
                         </thead>
@@ -95,14 +93,12 @@ $delete = $pages[3]['access'] == 1;
                             @endforeach
                         </tbody>
                     </table>
-
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!--end page wrapper -->
-
+<!-- End page wrapper -->
 @endsection
 
 @section('scripts')
