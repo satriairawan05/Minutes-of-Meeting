@@ -8,6 +8,7 @@ use App\Models\Tracker;
 use App\Models\Departemen;
 use App\Models\ArchiveDaily;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Storage;
 
@@ -27,30 +28,23 @@ class DailyController extends Controller
         ->get();
 
         $departemen = Departemen::select('name')->get();
-        $tracker = Tracker::select(['tracker_name','departemen'])
-        ->leftJoin('dailies','dailies.tracker_id','=','daily_trackers.tracker_id')
-        ->leftJoin('departemens','departemens.name','=','daily_trackers.tracker_name')
-        ->where('tracker_header','>',0)
-        ->where('departemen','=',request()->query('departemen'))
-        ->distinct('tracker_name')
-        ->distinct('departemen')
+        $tracker = DB::table('daily_trackers as d1')
+        ->select(
+            'd2.tracker_name as tracker_header',
+            'd1.tracker_name',
+            DB::raw('COALESCE(SUM(IFNULL(open.total, 0)), 0) as total_open'),
+            DB::raw('COALESCE(SUM(IFNULL(close.total, 0)), 0) as total_close'),
+            DB::raw('COALESCE(SUM(IFNULL(open.total, 0)), 0) + COALESCE(SUM(IFNULL(close.total, 0)), 0) as total')
+        )
+        ->leftJoin('daily_trackers as d2', 'd1.tracker_header', '=', 'd2.tracker_id')
+        ->leftJoin(DB::raw('(SELECT tracker_id, SUM(CASE WHEN status IN ("New", "Continue") THEN 1 ELSE 0 END) as total FROM dailies GROUP BY tracker_id) as open'), 'd1.tracker_id', '=', 'open.tracker_id')
+        ->leftJoin(DB::raw('(SELECT tracker_id, SUM(CASE WHEN status IN ("Complete", "Closed") THEN 1 ELSE 0 END) as total FROM dailies GROUP BY tracker_id) as close'), 'd1.tracker_id', '=', 'close.tracker_id')
+        ->groupBy('d2.tracker_name', 'd1.tracker_name')
+        ->where('d2.tracker_name','=',request()->query('departemen'))
+        // ->leftJoin('daily_trackers','daily_trackers.tracker_id','=','dailies.tracker_id')
+        // ->leftJoin('departemens','dailies.departemen','=','departemens.name')
+        // ->where('departemens.name','=',request()->query('departemen'))
         ->get();
-
-        $opened = Daily::leftJoin('daily_trackers','daily_trackers.tracker_id','=','dailies.tracker_id')
-        ->leftJoin('departemens','dailies.departemen','=','departemens.name')
-        ->where('departemens.name','=',request()->query('departemen'))
-        ->whereColumn('dailies.tracker_id', '=','daily_trackers.tracker_id')
-        ->whereIn('status',['New','Continue'])
-        ->where('is_open', true)
-        ->count('is_open');
-
-        $closed = Daily::leftJoin('daily_trackers','daily_trackers.tracker_id','=','dailies.tracker_id')
-        ->leftJoin('departemens','dailies.departemen','=','departemens.name')
-        ->where('departemens.name', request()->query('departemen'))
-        ->whereColumn('dailies.tracker_id', '=','daily_trackers.tracker_id')
-        ->whereIn('status',['Complete','Closed'])
-        ->where('is_open', false)
-        ->count('is_open');
 
         $dailies = Daily::leftJoin('daily_trackers','dailies.tracker_id','=','daily_trackers.tracker_id')
         ->leftJoin('departemens','dailies.departemen','=','departemens.name')
@@ -68,9 +62,7 @@ class DailyController extends Controller
         if(isset($_GET['departemen'])){
             return view('daily.index_2',[
                 'pages' => $pages,
-                'tracker' => $tracker,
-                'open' => $opened,
-                'close' => $closed
+                'tracker' => $tracker
             ]);
         }
 

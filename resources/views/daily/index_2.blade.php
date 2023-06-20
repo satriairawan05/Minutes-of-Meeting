@@ -39,10 +39,10 @@ $delete = $pages[13]['access'] == 1;
                             <tbody>
                                 @foreach ($tracker as $tr)
                                 <tr>
-                                    <td style="text-align: center;"><a href="{!! url('/daily?departemen=' . $tr->departemen . '&tracker=' . $tr->tracker_name) !!}" class="text-decoration-none text-bold text-center">{!! $tr->tracker_name !!}</a></td>
-                                    <td style="text-align: center;">{!! $open !!}</td>
-                                    <td style="text-align: center;">{!! $close !!}</td>
-                                    <td style="text-align: center;">@taka</td>
+                                    <td style="text-align: center;"><a href="{!! url('/daily?departemen=' . $tr->tracker_header . '&tracker=' . $tr->tracker_name) !!}" class="text-decoration-none text-bold text-center">{!! $tr->tracker_name !!}</a></td>
+                                    <td style="text-align: center;">{!! $tr->total_open !!}</td>
+                                    <td style="text-align: center;">{!! $tr->total_close !!}</td>
+                                    <td style="text-align: center;">{!! $tr->total !!}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
