@@ -39,18 +39,18 @@ class DailyController extends Controller
         $opened = Daily::leftJoin('daily_trackers','daily_trackers.tracker_id','=','dailies.tracker_id')
         ->leftJoin('departemens','dailies.departemen','=','departemens.name')
         ->where('departemens.name','=',request()->query('departemen'))
-        ->whereColumn('dailies.tracker_id', '=', 'daily_trackers.tracker_id')
-        ->whereIn('status', ['New', 'Continue'])
-        ->where('is_open','=',1)
-        ->count();
+        ->whereColumn('dailies.tracker_id', '=','daily_trackers.tracker_id')
+        ->whereIn('status',['New','Continue'])
+        ->where('is_open', true)
+        ->count('is_open');
 
         $closed = Daily::leftJoin('daily_trackers','daily_trackers.tracker_id','=','dailies.tracker_id')
         ->leftJoin('departemens','dailies.departemen','=','departemens.name')
         ->where('departemens.name', request()->query('departemen'))
-        ->whereColumn('dailies.tracker_id', '=', 'daily_trackers.tracker_id')
-        ->whereIn('status', ['Complete','Closed'])
-        ->where('is_open','=',0)
-        ->count();
+        ->whereColumn('dailies.tracker_id', '=','daily_trackers.tracker_id')
+        ->whereIn('status',['Complete','Closed'])
+        ->where('is_open', false)
+        ->count('is_open');
 
         $dailies = Daily::leftJoin('daily_trackers','dailies.tracker_id','=','daily_trackers.tracker_id')
         ->leftJoin('departemens','dailies.departemen','=','departemens.name')
@@ -96,7 +96,6 @@ class DailyController extends Controller
             'users' => User::get(),
             'depts' => Departemen::get()
         ]);
-
     }
 
     /**
@@ -120,22 +119,6 @@ class DailyController extends Controller
             $daily->is_open = 1;
             $daily->is_private = $request->input('is_private',0);
             $daily->save();
-
-            $archiveDaily = new ArchiveDaily;
-            $archiveDaily->daily_id = +1;
-            $archiveDaily->daily_xid = $request->daily_xid;
-            $archiveDaily->departemen = $request->departemen;
-            $archiveDaily->subject = $request->subject;
-            $archiveDaily->c_action = $request->c_action;
-            $archiveDaily->description = $request->description_daily;
-            $archiveDaily->status = $request->status;
-            $archiveDaily->assignee = $request->assignee;
-            $archiveDaily->pic = $request->pic;
-            $archiveDaily->start_date = $request->start_date;
-            $archiveDaily->end_date = $request->end_date;
-            $archiveDaily->file = $request->file('file') ? $request->file('file')->store('dailies') : null;
-            $archiveDaily->is_private = $request->input('is_private',0);
-            $archiveDaily->save();
 
             return redirect('/daily')->with('sucess','Added Daily Successfully!');
         } catch (QueryException $e) {
@@ -175,7 +158,7 @@ class DailyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Daily $daily, ArchiveDaily $archiveDaily)
+    public function update(Request $request, Daily $daily)
     {
         try {
             $validate = $this->validate($request,[
@@ -195,8 +178,11 @@ class DailyController extends Controller
             $validate['is_private'] = $request->input('is_private') ? $request->is_private : 0;
             $validate['c_action'] = $request->input('c_action');
 
+            if($daily->is_open == 1){
+                $validate['is_open'] ? $daily->is_open == 1 : $daily->is_open == 0;
+            }
+
             Daily::where('daily_id',$daily->daily_id)->update($validate);
-            ArchiveDaily::where('arc_daily_id',$archiveDaily->arc_daily_id)->update($validate);
 
             return redirect('/daily')->with('sucess','Updated Daily Successfully!');
         } catch (QueryException $e) {

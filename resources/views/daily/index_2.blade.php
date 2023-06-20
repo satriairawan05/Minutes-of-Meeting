@@ -42,7 +42,7 @@ $delete = $pages[13]['access'] == 1;
                                     <td style="text-align: center;"><a href="{!! url('/daily?departemen=' . $tr->departemen . '&tracker=' . $tr->tracker_name) !!}" class="text-decoration-none text-bold text-center">{!! $tr->tracker_name !!}</a></td>
                                     <td style="text-align: center;">{!! $open !!}</td>
                                     <td style="text-align: center;">{!! $close !!}</td>
-                                    <td style="text-align: center;">@mdo</td>
+                                    <td style="text-align: center;">@taka</td>
                                 </tr>
                                 @endforeach
                             </tbody>
