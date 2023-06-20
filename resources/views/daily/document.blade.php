@@ -10,7 +10,7 @@
                     <h2 class="main-content-title tx-24 mg-b-5">Data DWM Report {{ $daily->departemen }}</h2>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">DWM Report Detail</li>
+                        <li class="breadcrumb-item" aria-current="page">DWM Report Detail</li>
                     </ol>
                 </div>
             </div>

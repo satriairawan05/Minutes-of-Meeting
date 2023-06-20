@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('dailies', function (Blueprint $table) {
             $table->increments('daily_id');
             $table->string('daily_xid',50);
+            $table->string('tracker_id');
             $table->string('departemen',50);
             $table->string('subject',100);
             $table->longText('c_action');
