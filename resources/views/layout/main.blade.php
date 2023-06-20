@@ -6,21 +6,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--favicon-->
-    <link rel="icon" href="assets/img/brand/icon.png" type="image/png" />
+    <link rel="icon" href="{{ asset('assets/img/brand/icon.png') }}" type="image/png" />
     <!--plugins-->
     <link href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.bootstrap5.min.css" rel="stylesheet" />
-    <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
-    <link href="assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
-    <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
-    <link href="assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
-    <script src="assets/js/pace.min.js"></script>
+    <link href="{{ asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet" />
+    <script src="{{ asset('assets/js/pace.min.js') }}"></script>
     <!-- Bootstrap CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/bootstrap-extended.css" rel="stylesheet">
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/bootstrap-extended.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
-    <link href="assets/css/app.css" rel="stylesheet">
-    <link href="assets/css/icons.css" rel="stylesheet">
+    <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet">
 
     <title>PT BSS MoM</title>
 </head>
@@ -85,23 +85,23 @@
     <!-- Bootstrap JS -->
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <!--plugins-->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
-    <script src="assets/plugins/metismenu/js/metisMenu.min.js"></script>
-    <script src="assets/plugins/chartjs/chart.min.js"></script>
-    <script src="assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
-    <script src="assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="assets/plugins/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
-    <script src="assets/plugins/sparkline-charts/jquery.sparkline.min.js"></script>
-    <script src="assets/plugins/jquery-knob/excanvas.js"></script>
-    <script src="assets/plugins/jquery-knob/jquery.knob.js"></script>
-    <script src="assets/js/index.js"></script>
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/chartjs/chart.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+    <script src="{{ asset('assets/plugins/jquery.easy-pie-chart/jquery.easypiechart.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/sparkline-charts/jquery.sparkline.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/jquery-knob/excanvas.js') }}"></script>
+    <script src="{{ asset('assets/plugins/jquery-knob/jquery.knob.js') }}"></script>
+    <script src="{{ asset('assets/js/index.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lottie-web@5.7.9/build/player/lottie.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
-    <script src="assets/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
-    <script src="assets/js/dashboard-human-resources.js"></script>
-    <script src="assets/js/app.js"></script>
+    <script src="{{ asset('assets/plugins/apexcharts-bundle/js/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('assets/js/dashboard-human-resources.js') }}"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
 
     <!--app JS-->
     <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>

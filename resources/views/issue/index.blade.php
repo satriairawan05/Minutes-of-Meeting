@@ -106,8 +106,8 @@ $delete = $pages[16]['access'] == 1;
                                     <td>
                                         {{-- Edit Modal Trigger --}}
                                         @if($update)
-                                        <a href="{{ route('issue.edit', $issue->issue_id) }}" class="btn ripple btn-primary btn-sm d-inline-block" data-toggle="tooltip" title="Edit Data">
-                                            <i class="fas fa-edit"></i>
+                                        <a href="{{ route('issue.edit', $issue->issue_id) }}" class="btn btn-light" data-toggle="tooltip" title="Edit Data">
+                                            <i class="bx bx-search-alt me-0"></i>
                                         </a>
                                         @endif
                                         {{-- End of Edit Modal Trigger --}}
@@ -116,7 +116,7 @@ $delete = $pages[16]['access'] == 1;
                                         <form action="{{ route('issue.destroy', $issue->issue_id) }}" method="post">
                                             @csrf
                                             @method('delete')
-                                            <button type="submit" class="btn ripple btn-danger btn-sm d-inline-block" data-toggle="tooltip" title="Delete Data"><i class="fas fa-trash-alt"></i></button>
+                                            <button type="submit" class="btn btn-light" data-toggle="tooltip" title="Delete Data"><i class="bx bx-trash-alt me-0"></i></button>
                                         </form>
                                         @endif
                                         {{-- End of Delete Modal Trigger --}}

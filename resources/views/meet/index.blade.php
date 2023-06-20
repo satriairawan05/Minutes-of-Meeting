@@ -40,17 +40,17 @@ $delete = $pages[3]['access'] == 1;
                     <table id="example2" class="table table-striped table-bordered">
                         <thead class="table-header">
                             <tr>
-                                <th style="text-align: center;">No</th>
-                                <th style="text-align: center;" class="d-none d-sm-table-cell">ID</th>
-                                <th style="text-align: center;">Meeting Name</th>
-                                <th style="text-align: center;">Project Name</th>
-                                <th style="text-align: center;">Date Of Meeting</th>
-                                <th style="text-align: center;">Time Of Meeting</th>
-                                <th style="text-align: center;">Minutes Prepared by</th>
-                                <th style="text-align: center;">Meeting Locate</th>
-                                <th style="text-align: center;" class="d-none d-sm-table-cell">Attendees</th>
+                                <th>No</th>
+                                <th>ID</th>
+                                <th>Meeting Name</th>
+                                <th>Project Name</th>
+                                <th>Date Of Meeting</th>
+                                <th>Time Of Meeting</th>
+                                <th>Minutes Prepared by</th>
+                                <th>Meeting Location</th>
+                                <th class="d-none d-sm-table-cell text-center">Attendees</th>
                                 @if($update || $delete)
-                                <th style="text-align: center;">Actions</th>
+                                <th>Actions</th>
                                 @endif
                             </tr>
                         </thead>
@@ -58,38 +58,36 @@ $delete = $pages[3]['access'] == 1;
                             @foreach ($meets as $d)
                             @if($read)
                             <tr>
-                                <td style="text-align: center;">{{ $loop->iteration }}</td>
-                                <td style="text-align: center;" class="d-none d-sm-table-cell">
+                                <td>{{ $loop->iteration }}</td>
+                                <td class="d-none d-sm-table-cell">
                                     <a href="{{ route('resume.meet', $d->meet_id) }}" class="text-decoration-none text-monospace">{{ $d->meet_xid }}</a>
                                 </td>
-                                <td style="text-align: center;">{{ $d->meet_name }}</td>
-                                <td style="text-align: center;">{{ $d->meet_project }}</td>
-                                <td style="text-align: center;">{{ \Carbon\Carbon::parse($d->meet_date)->format('d-m-Y') }}</td>
-                                <td style="text-align: center;">{{ \Carbon\Carbon::parse($d->meet_time)->format('H:i') }}</td>
-                                <td style="text-align: center;">{{ $d->meet_preparedby }}</td>
-                                <td style="text-align: center;">{{ $d->meet_locate }}</td>
-                                <td style="text-align: center;" class="d-none d-sm-table-cell">{{ $d->meet_attend }}</td>
+                                <td>{{ $d->meet_name }}</td>
+                                <td>{{ $d->meet_project }}</td>
+                                <td>{{ \Carbon\Carbon::parse($d->meet_date)->format('d-m-Y') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($d->meet_time)->format('H:i') }}</td>
+                                <td>{{ $d->meet_preparedby }}</td>
+                                <td>{{ $d->meet_locate }}</td>
+                                <td class="d-none d-sm-table-cell">{{ $d->meet_attend }}</td>
                                 @if($update || $delete)
                                 <td>
-                                    {{-- Edit Modal Trigger --}}
+                                    {{-- Edit Button --}}
                                     @if($update)
-                                    <button type="button" onclick="window.location='{{ route('meet.edit', $d->meet_id) }}'" class="btn ripple btn-primary btn-sm" data-toggle="tooltip" title="Edit Data">
-                                        <i class="fas fa-edit fa-sm"></i>
-                                    </button>
+                                    <a href="{{ route('meet.edit', $d->meet_id) }}" class="btn btn-light" data-toggle="tooltip" title="Edit Data">
+                                        <i class="bx bx-search-alt me-0"></i>
+                                    </a>
                                     @endif
-                                    {{-- End of Edit Modal Trigger --}}
 
-                                    {{-- Delete Modal Trigger --}}
+                                    {{-- Delete Button --}}
                                     @if($delete)
-                                    <form action="{{ route('meet.destroy', $d->meet_id) }}" method="POST">
+                                    <form action="{{ route('meet.destroy', $d->meet_id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn ripple btn-danger btn-sm d-inline-block" data-toggle="tooltip" title="Delete Data">
-                                            <i class="fas fa-trash fa-sm"></i>
+                                        <button type="submit" class="btn btn-light" data-toggle="tooltip" title="Delete Data">
+                                            <i class="bx bx-trash-alt me-0"></i>
                                         </button>
                                     </form>
                                     @endif
-                                    {{-- End of Delete Modal Trigger --}}
                                 </td>
                                 @endif
                             </tr>
@@ -97,6 +95,7 @@ $delete = $pages[3]['access'] == 1;
                             @endforeach
                         </tbody>
                     </table>
+
                 </div>
             </div>
         </div>
