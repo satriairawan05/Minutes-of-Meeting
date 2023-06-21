@@ -238,6 +238,10 @@ class DailyController extends Controller
 
     public function requestApproved(Request $request, Daily $daily, DailyApproval $dailyApproval)
     {
+        try {
 
+        } catch(QueryException $e) {
+            return $e->getMessage();
+        }
     }
 }

@@ -77,9 +77,9 @@ Route::middleware(['auth'])->group(function () {
         ->where('pages.action', '=', $access)
         ->groupBy('pages.page_name', 'groups.group_name')
         ->orderBy('groups.group_name')
-        // ->selectRaw(['group_name', 'page_name', 'action', 'access'])
+        ->selectRaw(['group_name', 'page_name', 'action', 'access'])
         // ->pluck(['group_name', 'page_name', 'action', 'access'])
-        ->select(['group_name', 'page_name', 'action', 'access'])
+        // ->select(['group_name', 'page_name', 'action', 'access'])
         ->get();
 
         return response()->json([
