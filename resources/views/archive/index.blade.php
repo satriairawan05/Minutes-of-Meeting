@@ -1,5 +1,38 @@
 @extends('layout.main')
 
+@php
+    $create = 0;
+    $read = 0;
+    $update = 0;
+    $delete = 0;
+@endphp
+
+@foreach ($pages as $page)
+    @if($page->action == "Create")
+    @php
+        $create = $page->access;
+    @endphp
+    @endif
+
+    @if($page->action == "Read")
+       @php
+        $read = $page->access;
+    @endphp
+    @endif
+
+    @if($page->action == "Update")
+       @php
+        $update = $page->access;
+    @endphp
+    @endif
+
+    @if($page->action == "Delete")
+        @php
+        $delete = $page->access;
+    @endphp
+    @endif
+@endforeach
+
 @section('content')
 <!--start page wrapper -->
 <link href="{{ asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
@@ -17,6 +50,9 @@
                 </nav>
             </div>
             <div class="ms-auto">
+            @if($create)
+                
+            @endif
                 <!-- Add New Archive Button -->
                 {{-- <form action="{{ route('archive.issue.store',$issues->issue_id) }}" method="post">
                     @csrf
@@ -52,6 +88,7 @@
                             </tr>
                         </thead>
                         <tbody class="text-center">
+                        @if($read)
                             @foreach ($meets as $a)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
@@ -69,6 +106,14 @@
                                     <td>{{ $a->meet_attend }}</td>
                                     <td>{{ $a->archive_status == 1 ? 'Telah dilaksanakan' : 'Belum dilaksanakan' }}</td>
                                     <td>{{ $a->issue_xid }}</td>
+                                    <td>
+                                    @if($update)
+                                        
+                                    @endif
+                                    @if($delete)
+                                        
+                                    @endif
+                                    </td>
                                     {{-- <td>
                                         <button type="button" onclick="window.location='{{ route('archive.edit', $a->archive_id) }}'" data-toggle="tooltip" class="btn ripple btn-primary btn-sm" title="Edit Data">
                                             <i class="fas fa-edit"></i>
@@ -104,6 +149,7 @@
                                     </div>
                                 </div> --}}
                             @endforeach
+                        @endif
                         </tbody>
                     </table>
                 </div>

@@ -1,11 +1,37 @@
 @extends('layout.main')
 
 @php
-$create = $pages[19]['access'] == 1;
-$read = $pages[18]['access'] == 1;
-$update = $pages[17]['access'] == 1;
-$delete = $pages[16]['access'] == 1;
+    $create = 0;
+    $read = 0;
+    $update = 0;
+    $delete = 0;
 @endphp
+
+@foreach ($pages as $page)
+    @if($page->action == "Create")
+    @php
+        $create = $page->access;
+    @endphp
+    @endif
+
+    @if($page->action == "Read")
+       @php
+        $read = $page->access;
+    @endphp
+    @endif
+
+    @if($page->action == "Update")
+       @php
+        $update = $page->access;
+    @endphp
+    @endif
+
+    @if($page->action == "Delete")
+        @php
+        $delete = $page->access;
+    @endphp
+    @endif
+@endforeach
 
 @section('content')
 <!--start page wrapper -->
@@ -28,7 +54,6 @@ $delete = $pages[16]['access'] == 1;
                 @if($create)
                 <a type="button" href="{{ route('user.create') }}" data-toggle="tooltip" title="Add new data" type="button" class="btn btn-light px-4"><i class="bx bx-plus-circle"></i>Add User</a>
                 @endif
-
             </div>
         </div>
         <!--end breadcrumb-->
@@ -50,14 +75,13 @@ $delete = $pages[16]['access'] == 1;
                             </tr>
                         </thead>
                         <tbody class="text-center">
+                                @if($read)
                             @foreach ($users as $user)
                             <tr>
                                 <th scope="row">{{ $loop->iteration }}</th>
-                                @if($read)
                                 <td>{!! $user->name !!}</td>
                                 <td>{!! $user->email !!}</td>
                                 <td>{!! $user->group_name !!}</td>
-                                @endif
                                 @if($update || $delete)
                                 <td clas="d-inline">
                                     @endif
@@ -112,6 +136,7 @@ $delete = $pages[16]['access'] == 1;
                                 @endif
                             </tr>
                             @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div>

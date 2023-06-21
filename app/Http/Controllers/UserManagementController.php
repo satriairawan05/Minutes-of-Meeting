@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Departemen;
-use App\Models\Group;
 use App\Models\User;
-use Illuminate\Database\QueryException;
+use App\Models\Group;
+use App\Models\Departemen;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\QueryException;
 
 class UserManagementController extends Controller
 {
@@ -15,12 +16,18 @@ class UserManagementController extends Controller
      */
     public function index()
     {
-        $pages = User::leftJoin('group_pages', 'users.group_id', '=', 'group_pages.group_id')
+        $page_name = "User";
+        $user_group = auth()->user()->group_id;
+        $pages = DB::table('users')->leftJoin('group_pages', 'users.group_id', '=', 'group_pages.group_id')
         ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
         ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
-        ->whereBetween('pages.page_id',[17,20])
-        ->orWhere('pages.page_name', 'User')
-        ->orWhere('group_pages.access', 1)
+        ->whereColumn('users.group_id', '=', 'groups.group_id')
+        ->where('pages.page_name', '=', $page_name)
+        ->where('group_pages.access', '=', 1)
+        ->whereBetween('pages.page_id', [19, 22])
+        ->where('group_pages.group_id','=', $user_group)
+        ->select(['group_name', 'page_name', 'action', 'access'])
+        ->limit(4)
         ->get();
 
         if(auth()->user()->name == 'Super Admin')
