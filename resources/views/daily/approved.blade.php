@@ -20,7 +20,10 @@
     <hr>
         <div class="card">
             <div class="card-body">
-            <form action="" method="post"></form>
+            <form action="" method="post">
+            @csrf
+
+            </form>
             </div>
         </div>
     </div>
