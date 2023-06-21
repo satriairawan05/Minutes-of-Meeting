@@ -180,7 +180,6 @@ $delete = $page->access;
             </div>
         </div>
     </div>
-</div>
 <!--end page wrapper -->
 
 @endsection
