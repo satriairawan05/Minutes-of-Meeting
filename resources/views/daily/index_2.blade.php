@@ -9,35 +9,35 @@ $delete = 0;
 @endphp
 
 @foreach ($pages as $page)
-    @if($page->action == "Approval")
-        @php
-        $approval = $page->access;
-        @endphp
-    @endif
+@if($page->action == "Approval")
+@php
+$approval = $page->access;
+@endphp
+@endif
 
-    @if($page->action == "Create")
-        @php
-        $create = $page->access;
-        @endphp
-    @endif
+@if($page->action == "Create")
+@php
+$create = $page->access;
+@endphp
+@endif
 
-    @if($page->action == "Read")
-        @php
-        $read = $page->access;
-        @endphp
-    @endif
+@if($page->action == "Read")
+@php
+$read = $page->access;
+@endphp
+@endif
 
-    @if($page->action == "Update")
-        @php
-        $update = $page->access;
-        @endphp
-    @endif
+@if($page->action == "Update")
+@php
+$update = $page->access;
+@endphp
+@endif
 
-    @if($page->action == "Delete")
-        @php
-        $delete = $page->access;
-        @endphp
-    @endif
+@if($page->action == "Delete")
+@php
+$delete = $page->access;
+@endphp
+@endif
 @endforeach
 
 @section('content')
@@ -52,6 +52,8 @@ $delete = 0;
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a></li>
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-file"></i></a></li>
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-file-find"></i></a></li>
+
                         <li class="breadcrumb-item" aria-current="page">Data Tracker</li>
                     </ol>
                 </nav>
@@ -87,8 +89,12 @@ $delete = 0;
                         </tbody>
                     </table>
                 </div>
+                <div class="row mb-3">
+                    <div class="col-12 d-flex justify-content-between align-items-center">
+                        <a href="{{ route('daily.index') }}" class="btn btn-light px-2"><i class='bx bx-left-arrow-alt mr-1'></i>DWM Report</button></a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-@endsection
+    @endsection

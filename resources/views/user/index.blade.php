@@ -54,7 +54,6 @@ $delete = $page->access;
                 @if($create)
                 <a type="button" href="{{ route('user.create') }}" data-toggle="tooltip" title="Add new data" type="button" class="btn btn-light px-4"><i class="bx bx-plus-circle"></i>Add User</a>
                 @endif
-
             </div>
         </div>
         <!--end breadcrumb-->
