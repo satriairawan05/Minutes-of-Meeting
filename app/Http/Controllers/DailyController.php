@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Daily;
+use App\Models\DailyApproval;
 use App\Models\Tracker;
 use App\Models\Departemen;
 use Illuminate\Http\Request;
@@ -232,5 +233,10 @@ class DailyController extends Controller
         return view('daily.approved',[
             'daily' => $daily
         ]);
+    }
+
+    public function requestApproved(Request $request, Daily $daily, DailyApproval $dailyApproval)
+    {
+
     }
 }

@@ -55,6 +55,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('daily',DailyController::class);
     Route::get('daily/{daily}/approval',[DailyController::class, 'approved'])->name('daily.approval');
+    Route::post('daily/{daily}/approved',[DailyController::class, 'requestApproved'])->name('daily.approval.post');
     Route::get('daily/{daily}/document',[DailyController::class, 'document'])->name('daily.document');
 
     Route::resource('group', GroupController::class);
