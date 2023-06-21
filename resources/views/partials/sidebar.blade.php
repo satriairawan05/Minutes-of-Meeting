@@ -1,18 +1,5 @@
 @php
 $admin = auth()->user()->name == "Super Admin";
-
-$access = "Read";
-// $pages = Illuminate\Support\Facades\DB::table('users')
-    // ->leftJoin('group_pages', 'users.group_id', '=', 'group_pages.group_id')
-    // ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
-    // ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
-    // ->whereColumn('users.group_id', '=', 'groups.group_id')
-    // ->where('group_pages.access', '=', 1)
-    // ->where('pages.action', '=', 'Read')
-    // ->groupBy('groups.group_name', 'pages.page_name', 'pages.action')
-    // ->orderBy('groups.group_name')
-    // ->select('groups.group_name', 'pages.page_name', 'pages.action', 'group_pages.access')
-    // ->get();
 @endphp
     <!--sidebar wrapper -->
     <div class="sidebar-wrapper toggled" data-simplebar="true">

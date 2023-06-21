@@ -1,43 +1,43 @@
 @extends('layout.main')
 
 @php
-    $approval = 0;
-    $create = 0;
-    $read = 0;
-    $update = 0;
-    $delete = 0;
+$approval = 0;
+$create = 0;
+$read = 0;
+$update = 0;
+$delete = 0;
 @endphp
 
 @foreach ($pages as $page)
-    @if($page->action == "Approval")
-    @php
-        $approval = $page->access;
-    @endphp
-    @endif
+@if($page->action == "Approval")
+@php
+$approval = $page->access;
+@endphp
+@endif
 
-    @if($page->action == "Create")
-    @php
-        $create = $page->access;
-    @endphp
-    @endif
+@if($page->action == "Create")
+@php
+$create = $page->access;
+@endphp
+@endif
 
-    @if($page->action == "Read")
-       @php
-        $read = $page->access;
-    @endphp
-    @endif
+@if($page->action == "Read")
+@php
+$read = $page->access;
+@endphp
+@endif
 
-    @if($page->action == "Update")
-       @php
-        $update = $page->access;
-    @endphp
-    @endif
+@if($page->action == "Update")
+@php
+$update = $page->access;
+@endphp
+@endif
 
-    @if($page->action == "Delete")
-        @php
-        $delete = $page->access;
-    @endphp
-    @endif
+@if($page->action == "Delete")
+@php
+$delete = $page->access;
+@endphp
+@endif
 @endforeach
 
 @section('content')
@@ -93,7 +93,7 @@
                                     <td class="d-inline-block">
                                         {{-- Approval --}}
                                         @if($approval)
-                                            <a href="" class="btn btn-sm btn-info text-decoration-none"><i class="bx bx-paperclip"></i></a>
+                                        <a href="" class="btn btn-sm btn-info text-decoration-none"><i class="bx bx-paperclip"></i></a>
                                         @endif
                                         {{-- Approval --}}
                                         {{-- Edit --}}
@@ -104,10 +104,10 @@
                                         {{-- Delete --}}
                                         @if(isset($delete))
                                         <form action="{!! route('daily.destroy',$daily->daily_id) !!}" method="post">
-                                        @csrf
-                                        <button type="submit" class="btn btn-danger btn-sm">
-                                            <i class="bx bx-trash-alt me-0"></i>
-                                        </button>
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                <i class="bx bx-trash-alt me-0"></i>
+                                            </button>
                                         </form>
                                         @endif
                                         {{-- Delete --}}

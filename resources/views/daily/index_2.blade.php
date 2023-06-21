@@ -6,6 +6,11 @@ $create = 0;
 $read = 0;
 $update = 0;
 $delete = 0;
+$approval = 0;
+$create = 0;
+$read = 0;
+$update = 0;
+$delete = 0;
 @endphp
 
 @foreach ($pages as $page)
