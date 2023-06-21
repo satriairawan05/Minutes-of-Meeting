@@ -94,8 +94,6 @@ $delete = 0;
         </script>
         @endif
     </div>
-</div>
-</div>
 @endsection
 
 @section('scripts')

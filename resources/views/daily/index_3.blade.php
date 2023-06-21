@@ -130,6 +130,4 @@ $delete = $page->access;
             </div>
         </div>
     </div>
-</div>
-</div>
 @endsection
