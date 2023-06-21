@@ -63,12 +63,25 @@ $access = "Read";
                     <div class="menu-title">Archive</div>
                 </a>
             </li>
-            <a class="nav-link {{ request()->is('user.index') ? 'active' : '' }}" href="{{ route('user.index') }}">
-                <div class="parent-icon"><i class='bx bx-user'></i>
-                </div>
-                <div class="menu-title">{{ $User }}</div>
-            </a>
-            </li>
+            <li>
+                <a href="javascript:;" class="has-arrow">
+                    <div class="parent-icon"><i class="bx bx-cog"></i></div>
+                    <div class="menu-title">Settings</div>
+                </a>
+                <ul>
+                    <li>
+                        <a class="nav-link {{ request()->is('user.index') ? 'active' : '' }}" href="{{ route('user.index') }}"><i class='bx bx-user'></i>User</a>
+                    </li>
+                    <li>
+                        <a class="nav-link {{ request()->is('departemen.index') ? 'active' : '' }}" href="{{ route('departemen.index') }}"><i class='bx bx-group'></i>Departement</a>
+                    </li>
+                    <li>
+                        <a class="nav-link {{ request()->is('group.index') ? 'active' : '' }}" href="{{ route('group.index') }}"><i class='bx bx-wrench'></i>Role</a>
+                    </li>
+                    <li>
+                        <a class="nav-link {{ request()->is('tracker.index') ? 'active' : '' }}" href="{{ route('tracker.index') }}"><i class='bx bx-file-find'></i>DWM Tracker</a>
+                    </li>
+                </ul>
             </li>
 
             </li>
