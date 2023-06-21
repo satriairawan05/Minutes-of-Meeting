@@ -22,7 +22,7 @@ $pages = App\Models\User::leftJoin('group_pages', 'users.group_id', '=', 'group_
     @endphp
 
     <!--sidebar wrapper -->
-    <div class="sidebar-wrapper" data-simplebar="true">
+    <div class="sidebar-wrapper toggled" data-simplebar="true">
         <div class="sidebar-header">
             <div>
                 <img src="{{ asset('assets/img/brand/icon.png') }}" class="logo-icon" alt="logo icon">
@@ -274,4 +274,11 @@ $pages = App\Models\User::leftJoin('group_pages', 'users.group_id', '=', 'group_
             </nav>
         </div>
     </header>
+    <script>
+        // JavaScript to toggle the sidebar initially
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const sidebarWrapper = document.querySelector('.sidebar-wrapper');
+            sidebarWrapper.classList.toggle('toggled');
+        });
+    </script>
     <!--end header -->
