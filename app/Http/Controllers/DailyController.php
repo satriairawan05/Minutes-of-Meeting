@@ -226,4 +226,11 @@ class DailyController extends Controller
             return $e->getMessage();
         }
     }
+
+    public function approved(Daily $daily)
+    {
+        return view('daily.approved',[
+            'daily' => $daily
+        ]);
+    }
 }
