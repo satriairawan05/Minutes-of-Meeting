@@ -97,19 +97,19 @@ $delete = $page->access;
                                 <td class="d-inline-block">
                                     {{-- Approval --}}
                                     @if($approval)
-                                    <a href="{!! route('daily.approval',$daily->daily_id) !!}" class="btn btn-sm btn-info text-decoration-none"><i class="bx bx-paperclip"></i></a>
+                                    <a href="{!! route('daily.approval',$daily->daily_id) !!}" class="btn btn-light"><i class="bx bx-paperclip"></i></a>
                                     @endif
                                     {{-- Approval --}}
                                     {{-- Edit --}}
                                     @if($update)
-                                    <a href="{!! route('daily.edit',$daily->daily_id) !!}" class="text-decoration-none btn btn-sm btn-warning"><i class="bx bx-edit"></i></a>
+                                    <a href="{!! route('daily.edit',$daily->daily_id) !!}" class="btn btn-light"><i class="bx bx-search-alt me-0"></i></a>
                                     @endif
                                     {{-- Edit --}}
                                     {{-- Delete --}}
                                     @if(isset($delete))
                                     <form action="{!! route('daily.destroy',$daily->daily_id) !!}" method="post">
                                         @csrf
-                                        <button type="submit" class="btn btn-danger btn-sm">
+                                        <button type="submit" class="btn btn-light">
                                             <i class="bx bx-trash-alt me-0"></i>
                                         </button>
                                     </form>

@@ -9,35 +9,35 @@ $delete = 0;
 @endphp
 
 @foreach ($pages as $page)
-    @if($page->action == "Approval")
-        @php
-        $approval = $page->access;
-        @endphp
-    @endif
+@if($page->action == "Approval")
+@php
+$approval = $page->access;
+@endphp
+@endif
 
-    @if($page->action == "Create")
-        @php
-        $create = $page->access;
-        @endphp
-    @endif
+@if($page->action == "Create")
+@php
+$create = $page->access;
+@endphp
+@endif
 
-    @if($page->action == "Read")
-        @php
-        $read = $page->access;
-        @endphp
-    @endif
+@if($page->action == "Read")
+@php
+$read = $page->access;
+@endphp
+@endif
 
-    @if($page->action == "Update")
-        @php
-        $update = $page->access;
-        @endphp
-    @endif
+@if($page->action == "Update")
+@php
+$update = $page->access;
+@endphp
+@endif
 
-    @if($page->action == "Delete")
-        @php
-        $delete = $page->access;
-        @endphp
-    @endif
+@if($page->action == "Delete")
+@php
+$delete = $page->access;
+@endphp
+@endif
 @endforeach
 
 @section('content')
@@ -81,28 +81,27 @@ $delete = 0;
         @if ($message = Session::get('success'))
         <script>
             Toastify({
-                text: "{{ $message }}"
-                , duration: 3000
-                , close: true, // Include close button
+                text: "{{ $message }}",
+                duration: 3000,
+                close: true, // Include close button
                 gravity: "bottom", // Set gravity to "bottom"
                 position: "right", // Set position to "right"
                 style: {
                     background: "linear-gradient(to right, #11998E, #38ef7d)"
                 }
             }).showToast();
-
         </script>
         @endif
     </div>
-@endsection
+    @endsection
 
-@section('scripts')
-<!-- DataTables -->
-<script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
-<!-- Buttons -->
-<script src="{{ asset('assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
-@endsection
+    @section('scripts')
+    <!-- DataTables -->
+    <script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
+    <!-- Buttons -->
+    <script src="{{ asset('assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
+    @endsection
