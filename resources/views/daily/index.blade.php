@@ -9,35 +9,35 @@ $delete = 0;
 @endphp
 
 @foreach ($pages as $page)
-@if($page->action == "Approval")
-@php
-$approval = $page->access;
-@endphp
-@endif
+    @if($page->action == "Approval")
+        @php
+        $approval = $page->access;
+        @endphp
+    @endif
 
-@if($page->action == "Create")
-@php
-$create = $page->access;
-@endphp
-@endif
+    @if($page->action == "Create")
+        @php
+        $create = $page->access;
+        @endphp
+    @endif
 
-@if($page->action == "Read")
-@php
-$read = $page->access;
-@endphp
-@endif
+    @if($page->action == "Read")
+        @php
+        $read = $page->access;
+        @endphp
+    @endif
 
-@if($page->action == "Update")
-@php
-$update = $page->access;
-@endphp
-@endif
+    @if($page->action == "Update")
+        @php
+        $update = $page->access;
+        @endphp
+    @endif
 
-@if($page->action == "Delete")
-@php
-$delete = $page->access;
-@endphp
-@endif
+    @if($page->action == "Delete")
+        @php
+        $delete = $page->access;
+        @endphp
+    @endif
 @endforeach
 
 @section('content')

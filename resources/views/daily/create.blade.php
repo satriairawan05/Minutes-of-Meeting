@@ -17,7 +17,6 @@
                     </ol>
                 </nav>
             </div>
-
             <div class="ms-auto">
             </div>
         </div>
@@ -44,96 +43,95 @@
                             @enderror
                         </div>
 
-                        <div class="col-md-6">
-                            <label id="subject_label" for="subject">Subject</label>
-                            <input id="subject" name="subject" type="text" class="form-control @error('subject') is_invalid @enderror" required placeholder="Masukan Subject" value="{{ old('subject') }}" />
-                            @error('subject')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label id="departemen_label" for="departemen">Departemen</label>
-                            <select class="form-select form-control form-control-sm" id="departemen" name="departemen">
-                                @if(old('departemen') == null)
-                                <option name="departemen">Masukan Departemen</option>
-                                @endif
-                                @foreach ($depts as $dept)
-                                @if (old('departemen') == $dept->name)
-                                <option name="departemen" value="{{ $dept->name }}" selected>{{ $dept->name }}
-                                </option>
-                                @else
-                                <option name="departemen" value="{{ $dept->name }}">{{ $dept->name }}</option>
-                                @endif
-                                @endforeach
-                            </select>
-                            @error('departemen')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                        <div class="col-md-6">
-                            <label id="status_label" for="status">Priority</label>
-                            <select class="form-select form-control form-control-sm" name="status">
-                                <option name="status" value="High" selected>High</option>
-                            </select>
-                            @error('status')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="mb-3 col-13">
-                        <label id="description_label" for="description_daily">Problem Identification</label>
-                        <textarea type="text" name="description_daily" id="description_daily" value="{{ old('description_daily') }}" class="form-control @error('description') is-invalid @enderror" placeholder="Masukan Description"></textarea>
-                        @error('description_daily')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                        @enderror
-                    </div>
-                    <div class="mb-3 col-13">
-                        <label id="c_action_label" for="c_action">Corrective Action</label>
-                        <textarea id="c_action" name="c_action" rows="14" type="text" class="form-control @error('c_action') is-invalid @enderror" value="{{ old('c_action') }}" placeholder="Masukan Corrective Action"></textarea>
-                        @error('c_action')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                        @enderror
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label id="start_date_label" for="start_date">Start Date</label>
-                            <input id="start_date" name="start_date" type="date" class="form-control @error('start_date') is_invalid @enderror" required value="{{ old('start_date') }}" placeholder="dd/mm/yyyy" />
-                            @error('start_date')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                        <div class="col-md-6">
-                            <label id="end_date_label" for="end_date">End Date</label>
-                            <input id="end_date" name="end_date" type="date" class="form-control @error('end_date') is_invalid @enderror" required value="{{ old('end_date') }}" placeholder="dd/mm/yyyy" />
-                            @error('end_date')
-                            <div class="invalid-feedback">
-                                {{ $message }}
+                            <div class="col-md-6">
+                                <label id="subject_label" for="subject">Subject</label>
+                                <input id="subject" name="subject" type="text" class="form-control @error('subject') is_invalid @enderror" required placeholder="Masukan Subject" value="{{ old('subject') }}" />
+                                @error('subject')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
                                 @enderror
                             </div>
                         </div>
                         <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label id="departemen_label" for="departemen">Departemen</label>
+                                <select class="form-select form-control form-control-sm" id="departemen" name="departemen">
+                                    @if(old('departemen') == null)
+                                    <option name="departemen">Masukan Departemen</option>
+                                    @endif
+                                    @foreach ($depts as $dept)
+                                    @if (old('departemen') == $dept->name)
+                                    <option name="departemen" value="{{ $dept->name }}" selected>{{ $dept->name }}
+                                    </option>
+                                    @else
+                                    <option name="departemen" value="{{ $dept->name }}">{{ $dept->name }}</option>
+                                    @endif
+                                    @endforeach
+                                </select>
+                                @error('departemen')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label id="status_label" for="status">Priority</label>
+                                <select class="form-select form-control form-control-sm" name="status">
+                                    <option name="status" value="High" selected>High</option>
+                                </select>
+                                @error('status')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="mb-3 col-13">
+                            <label id="description_label" for="description_daily">Problem Identification</label>
+                            <textarea type="text" name="description_daily" id="description_daily" value="{{ old('description_daily') }}" class="form-control @error('description') is-invalid @enderror" placeholder="Masukan Description"></textarea>
+                            @error('description_daily')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3 col-13">
+                            <label id="c_action_label" for="c_action">Corrective Action</label>
+                            <textarea id="c_action" name="c_action" rows="14" type="text" class="form-control @error('c_action') is-invalid @enderror" value="{{ old('c_action') }}" placeholder="Masukan Corrective Action"></textarea>
+                            @error('c_action')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label id="start_date_label" for="start_date">Start Date</label>
+                                <input id="start_date" name="start_date" type="date" class="form-control @error('start_date') is_invalid @enderror" required value="{{ old('start_date') }}" placeholder="dd/mm/yyyy" />
+                                @error('start_date')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label id="end_date_label" for="end_date">End Date</label>
+                                <input id="end_date" name="end_date" type="date" class="form-control @error('end_date') is_invalid @enderror" required value="{{ old('end_date') }}" placeholder="dd/mm/yyyy" />
+                                @error('end_date')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row mb-3">
                             <div class="col-md-6">
                                 <label id="assignee_label" for="assignee">Assignee</label>
                                 <select class="form-select form-control form-control-sm" id="assignee" name="assignee">
                                     @foreach ($users as $user)
                                     @if (old('assignee') == $user->name)
                                     <option name="assignee" value="{{ $user->name }}" selected>
-                                        {{ $user->name }}
-                                    </option>
+                                        {{ $user->name }}</option>
                                     @else
                                     <option name="assignee" value="{{ $user->name }}">{{ $user->name }}
                                     </option>
@@ -152,8 +150,7 @@
                                     @foreach ($users as $user)
                                     @if (old('pic') == $user->name)
                                     <option name="pic" value="{{ $user->name }}" selected>
-                                        {{ $user->name }}
-                                    </option>
+                                        {{ $user->name }}</option>
                                     @else
                                     <option name="pic" value="{{ $user->name }}">{{ $user->name }}
                                     </option>

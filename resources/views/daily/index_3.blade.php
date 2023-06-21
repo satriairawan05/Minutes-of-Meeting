@@ -10,10 +10,10 @@ $delete = 0;
 
 @foreach ($pages as $page)
 @if($page->action == "Approval")
-@php
-$approval = $page->access;
-@endphp
-@endif
+        @php
+        $approval = $page->access;
+        @endphp
+    @endif
 
 @if($page->action == "Create")
 @php
@@ -52,19 +52,24 @@ $delete = $page->access;
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a></li>
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-file"></i></a></li>
-                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-file-find"></i></a></li>
-                        <li class="breadcrumb-item" aria-current="page">Tracker Departement</li>
+                        <li class="breadcrumb-item" aria-current="page">Data Tracker</li>
                     </ol>
                 </nav>
-            </div>
-            <div class="ms-auto">
-                <a type="button" href="{!! url('/daily/create?departemen='.$data['departemen'].'&tracker='.$data['tracker']) !!}" data-toggle="tooltip" title="Add new data" type="button" class="btn btn-light px-4"><i class="bx bx-plus-circle"></i>Add Data</a>
             </div>
         </div>
         <!-- End breadcrumb -->
         <hr />
+        <!-- End Page Header -->
         <div class="card">
-
+            <div class="card-header">
+                <div class="d-flex justify-content-start">
+                    {{-- Create --}}
+                    @if($create)
+                    <a class="btn btn-primary btn-sm" href="{!! url('/daily/create?departemen='.$data['departemen'].'&tracker='.$data['tracker']) !!}"><i class="bx bx-plus"></i></a>
+                    @endif
+                    {{-- Create --}}
+                </div>
+            </div>
             <div class="card-body bg-transparent">
                 <div class="table table-filter">
                     <table id="example2" class="table">
@@ -92,7 +97,7 @@ $delete = $page->access;
                                 <td class="d-inline-block">
                                     {{-- Approval --}}
                                     @if($approval)
-                                    <a href="" class="btn btn-sm btn-info text-decoration-none"><i class="bx bx-paperclip"></i></a>
+                                    <a href="{!! route('daily.approval',$daily->daily_id) !!}" class="btn btn-sm btn-info text-decoration-none"><i class="bx bx-paperclip"></i></a>
                                     @endif
                                     {{-- Approval --}}
                                     {{-- Edit --}}
@@ -120,5 +125,6 @@ $delete = $page->access;
             </div>
         </div>
     </div>
-
-    @endsection
+</div>
+</div>
+@endsection
