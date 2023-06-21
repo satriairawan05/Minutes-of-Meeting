@@ -15,12 +15,15 @@ class MeetController extends Controller
      */
     public function index()
     {
+        $page_name = "Meeting";
         $pages = User::leftJoin('group_pages', 'users.group_id', '=', 'group_pages.group_id')
         ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
         ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
-        ->where('pages.page_id', '<=', 4)
-        ->orWhere('pages.page_name', 'Meeting')
-        ->orWhere('group_pages.access', 1)
+        ->where('users.group_id', '=', 'groups.group_id')
+        ->orWhere('pages.page_name', '=', $page_name)
+        ->orWhere('group_pages.access', '=', 1)
+        ->select(['group_name','page_name','action','access'])
+        ->limit(4)
         ->get();
 
         return view('meet.index', [

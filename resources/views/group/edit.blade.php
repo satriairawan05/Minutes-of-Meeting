@@ -1,8 +1,8 @@
 @extends('layout.main')
 
 @section('content')
-<div class="main-content side-content pt-0">
-    <div class="container-fluid">
+<div class="page-wrapper">
+    <div class="page-header">
         <div class="inner-body">
             <!-- Page Header -->
             <div class="page-header">
@@ -41,10 +41,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($page_distincts as $d)
+                                    @foreach ($page_distinct as $d)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ str_replace("_"," ", $d->page_name) }}</td>
+                                        <td>{{ str_replace("_","", $d->page_name) }}</td>
                                         <td style="text-align:center">
                                             @foreach ($pages as $p)
                                             @if($p->page_name == $d->page_name)

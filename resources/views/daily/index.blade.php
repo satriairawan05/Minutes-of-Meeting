@@ -1,12 +1,43 @@
 @extends('layout.main')
-
 @php
-$approval = $pages[12]['access'] == 1;
-$create = $pages[11]['access'] == 1;
-$read = $pages[10]['access'] == 1;
-$update = $pages[9]['access'] == 1;
-$delete = $pages[8]['access'] == 1;
+    $approval = 0;
+    $create = 0;
+    $read = 0;
+    $update = 0;
+    $delete = 0;
 @endphp
+
+@foreach ($pages as $page)
+    @if($page->action == "Approval")
+    @php
+        $approval = $page->access;
+    @endphp
+    @endif
+
+    @if($page->action == "Create")
+    @php
+        $create = $page->access;
+    @endphp
+    @endif
+
+    @if($page->action == "Read")
+       @php
+        $read = $page->access;
+    @endphp
+    @endif
+
+    @if($page->action == "Update")
+       @php
+        $update = $page->access;
+    @endphp
+    @endif
+
+    @if($page->action == "Delete")
+        @php
+        $delete = $page->access;
+    @endphp
+    @endif
+@endforeach
 
 @section('content')
 <!--start page wrapper -->
@@ -23,11 +54,6 @@ $delete = $pages[8]['access'] == 1;
                         <li class="breadcrumb-item" aria-current="page">Datatable of DWM Report</li>
                     </ol>
                 </nav>
-            </div>
-            <div class="ms-auto">
-                @if($create)
-                <a type="button" href="{{ route('daily.create') }}" data-toggle="tooltip" title="Add new data" type="button" class="btn btn-light px-4"><i class="bx bx-plus-circle"></i>Add DWM Report</a>
-                @endif
             </div>
         </div>
         <!--end breadcrumb-->

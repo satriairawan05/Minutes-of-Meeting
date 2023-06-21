@@ -43,8 +43,8 @@
                                 <td>
 
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <button type="button" href="{{ route('group.edit', $group->group_id) }}" class="btn btn-light"><i class="bx bxs-pencil"></i>
-                                        </button>
+                                        <a href="{{ route('group.edit', $group->group_id) }}" class="btn btn-light"><i class="bx bxs-pencil"></i>
+                                        </a>
                                         <form action="{{ route('group.destroy',$group->group_id) }}" method="post">
                                             @csrf
                                             @method('delete')

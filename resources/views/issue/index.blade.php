@@ -1,11 +1,44 @@
 @extends('layout.main')
 
 @php
-$create = $pages[19]['access'] == 1;
-$read = $pages[18]['access'] == 1;
-$update = $pages[17]['access'] == 1;
-$delete = $pages[16]['access'] == 1;
+    $approval = 0;
+    $create = 0;
+    $read = 0;
+    $update = 0;
+    $delete = 0;
 @endphp
+
+@foreach ($pages as $page)
+    @if($page->action == "Approval")
+    @php
+        $approval = $page->access;
+    @endphp
+    @endif
+
+    @if($page->action == "Create")
+    @php
+        $create = $page->access;
+    @endphp
+    @endif
+
+    @if($page->action == "Read")
+       @php
+        $read = $page->access;
+    @endphp
+    @endif
+
+    @if($page->action == "Update")
+       @php
+        $update = $page->access;
+    @endphp
+    @endif
+
+    @if($page->action == "Delete")
+        @php
+        $delete = $page->access;
+    @endphp
+    @endif
+@endforeach
 
 @section('content')
 <!--start page wrapper -->
@@ -25,10 +58,9 @@ $delete = $pages[16]['access'] == 1;
             </div>
 
             <div class="ms-auto">
-                @if($create)
+                @if(isset($create))
                 <a type="button" href="{{ route('issue.create') }}" data-toggle="tooltip" title="Add new data" type="button" class="btn btn-light px-4"><i class="bx bx-plus-circle"></i>Add Issue</a>
                 @endif
-
             </div>
         </div>
         <!--end breadcrumb-->
@@ -68,7 +100,7 @@ $delete = $pages[16]['access'] == 1;
                                 // $days = $status->end_date->diffInDays(now()); // menghitung selisih hari antara end_date dan waktu saat ini
 
                                 @endphp
-                                @if($read)
+                                @if(isset($read))
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{!! $issue->issue_xid !!}</td>
@@ -105,14 +137,14 @@ $delete = $pages[16]['access'] == 1;
                                     {{-- start modal  --}}
                                     <td>
                                         {{-- Edit Modal Trigger --}}
-                                        @if($update)
+                                        @if(isset($update))
                                         <a href="{{ route('issue.edit', $issue->issue_id) }}" class="btn btn-light" data-toggle="tooltip" title="Edit Data">
                                             <i class="bx bx-search-alt me-0"></i>
                                         </a>
                                         @endif
                                         {{-- End of Edit Modal Trigger --}}
                                         {{-- Delete Modal Trigger --}}
-                                        @if($delete)
+                                        @if(isset($delete))
                                         <form action="{{ route('issue.destroy', $issue->issue_id) }}" method="post">
                                             @csrf
                                             @method('delete')

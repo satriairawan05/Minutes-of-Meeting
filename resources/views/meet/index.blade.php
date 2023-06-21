@@ -28,7 +28,6 @@ $delete = $pages[3]['access'] == 1;
                 @if($create)
                 <a type="button" href="{{ route('meet.create') }}" data-toggle="tooltip" title="Add new data" type="button" class="btn btn-light px-4"><i class="bx bx-plus-circle"></i>Add Meet</a>
                 @endif
-
             </div>
         </div>
         <!--end breadcrumb-->
@@ -55,8 +54,8 @@ $delete = $pages[3]['access'] == 1;
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($meets as $d)
                             @if($read)
+                            @foreach ($meets as $d)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td class="d-none d-sm-table-cell">
@@ -91,18 +90,16 @@ $delete = $pages[3]['access'] == 1;
                                 </td>
                                 @endif
                             </tr>
-                            @endif
                             @endforeach
+                            @endif
                         </tbody>
                     </table>
-
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!--end page wrapper -->
-
 @endsection
 
 @section('scripts')

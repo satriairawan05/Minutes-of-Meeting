@@ -62,10 +62,13 @@ $delete = $pages[16]['access'] == 1;
                                 <td clas="d-inline">
                                     @endif
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <button type="button" onclick="window.location='{{ route('user.show', $user->id) }}'" class="btn btn-light"><i class="bx bx-search-alt me-0"></i>
-                                        </button>
-                                        <button type="button" onclick="window.location='{{ route('user.edit', $user->id) }}'" class="btn btn-light"><i class="bx bxs-pencil"></i>
-                                        </button>
+                                        {{-- Edit --}}
+                                        @if($update)
+                                        <a href="{{ route('user.edit', $user->id) }}" class="btn btn-light"><i class="bx bxs-pencil"></i>
+                                        </a>
+                                        @endif
+                                        {{-- Edit --}}
+                                        {{-- Delete --}}
                                         @if($delete)
                                         <form action="{{ route('user.destroy', $user->id) }}" method="post">
                                             @csrf
@@ -74,6 +77,7 @@ $delete = $pages[16]['access'] == 1;
                                             </button>
                                         </form>
                                         @endif
+                                        {{-- Delete --}}
                                     </div>
                                     {{-- Delete Modal --}}
                                     <div class="modal fade" id="deleteModal{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $user->id }}" aria-hidden="true">
