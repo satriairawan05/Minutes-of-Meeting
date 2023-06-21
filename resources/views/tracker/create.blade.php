@@ -6,7 +6,6 @@ $trackers = App\Models\Tracker::all();
 
 @section('content')
 <!--start page wrapper -->
-<link href="{{ asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
 <div class="page-wrapper">
     <div class="page-content">
         <!--breadcrumb-->

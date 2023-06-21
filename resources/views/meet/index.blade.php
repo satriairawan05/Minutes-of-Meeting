@@ -1,12 +1,10 @@
 @extends('layout.main')
-
 @php
 $create = $pages[0]['access'] == 1;
 $read = $pages[1]['access'] == 1;
 $update = $pages[2]['access'] == 1;
 $delete = $pages[3]['access'] == 1;
 @endphp
-
 @section('content')
 <!-- Start page wrapper -->
 <link href="{{ asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
@@ -33,20 +31,20 @@ $delete = $pages[3]['access'] == 1;
         <hr />
         <div class="card">
             <div class="card-body">
-                <table id="example2" class="table table-striped table-bordered">
+                <table id="example2" class="table table-hover table-mc-light">
                     <thead class="table-header">
                         <tr>
-                            <th class="text-center">No</th>
-                            <th class="d-none d-sm-table-cell text-center">ID</th>
-                            <th class="text-center">Meeting Name</th>
-                            <th class="text-center">Project Name</th>
-                            <th class="text-center">Date Of Meeting</th>
-                            <th class="text-center">Time Of Meeting</th>
-                            <th class="text-center">Minutes Prepared by</th>
-                            <th class="text-center">Meeting Location</th>
-                            <th class="d-none d-sm-table-cell text-center">Attendees</th>
+                            <th>No</th>
+                            <th>ID</th>
+                            <th>Meeting Name</th>
+                            <th>Project Name</th>
+                            <th>Date Of Meeting</th>
+                            <th>Time Of Meeting</th>
+                            <th>Minutes Prepare</th>
+                            <th>Meeting Location</th>
+                            <th>Attendees</th>
                             @if($update || $delete)
-                            <th class="text-center">Actions</th>
+                            <th>Actions</th>
                             @endif
                         </tr>
                     </thead>
@@ -55,7 +53,7 @@ $delete = $pages[3]['access'] == 1;
                         @if($read)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td class="d-none d-sm-table-cell">
+                            <td>
                                 <a href="{{ route('resume.meet', $d->meet_id) }}" class="text-decoration-none text-monospace">{{ $d->meet_xid }}</a>
                             </td>
                             <td>{{ $d->meet_name }}</td>
@@ -64,17 +62,14 @@ $delete = $pages[3]['access'] == 1;
                             <td>{{ \Carbon\Carbon::parse($d->meet_time)->format('H:i') }}</td>
                             <td>{{ $d->meet_preparedby }}</td>
                             <td>{{ $d->meet_locate }}</td>
-                            <td class="d-none d-sm-table-cell">{{ $d->meet_attend }}</td>
+                            <td>{{ $d->meet_attend }}</td>
                             @if($update || $delete)
                             <td>
-                                {{-- Edit Button --}}
                                 @if($update)
                                 <a href="{{ route('meet.edit', $d->meet_id) }}" class="btn btn-light" data-toggle="tooltip" title="Edit Data">
                                     <i class="bx bx-search-alt me-0"></i>
                                 </a>
                                 @endif
-
-                                {{-- Delete Button --}}
                                 @if($delete)
                                 <form action="{{ route('meet.destroy', $d->meet_id) }}" method="POST" class="d-inline">
                                     @csrf
@@ -90,24 +85,10 @@ $delete = $pages[3]['access'] == 1;
                         @endif
                         @endforeach
                     </tbody>
-                    <tfoot class="table-header text-center">
-                        <tr>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                    </tfoot>
                 </table>
             </div>
         </div>
     </div>
-</div>
 </div>
 <!-- End page wrapper -->
 @endsection

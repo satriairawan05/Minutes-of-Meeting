@@ -1,7 +1,6 @@
 @extends('layout.main')
-
 @section('content')
-<!--start page wrapper -->
+<!-- Start page wrapper -->
 <link href="{{ asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
 <div class="page-wrapper">
     <div class="page-content">
@@ -24,75 +23,65 @@
         <hr />
         <div class="card">
             <div class="card-body">
-                <div class="table-responsive">
-                    <table id="example2" class="table table-striped table-bordered">
-                        <thead class="table-header">
-                            <tr>
-                                <th style="text-align: center;">No</th>
-                                <th style="text-align: center;">Name</th>
-                                <th style="text-align: center;">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($depts as $dept)
-                            <tr>
-                                <td style="text-align: center;">{{ $loop->iteration }}</td>
-                                <td style="text-align: center;">DEPARTEMEN {{ $dept->name }}</td>
-                                <td style="text-align: center;">
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                        <a type="button" href="{!! route('departemen.edit', $dept->id) !!}" class="btn btn-light"><i class="bx bx-search-alt me-0"></i></a>
-                                        <form action="{!! route('departemen.destroy',$dept->id) !!}" method="post">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="btn btn-light"><i class="bx bxs-trash"></i></button>
-                                        </form>
-                                    </div>
+                <table id="example2" class="table table-hover table-mc-light">
+                    <thead class="table-header">
+                        <tr>
+                            <th style="text-align: center;">No</th>
+                            <th style="text-align: center;">Name</th>
+                            <th style="text-align: center;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($depts as $dept)
+                        <tr>
+                            <td style="text-align: center;">{{ $loop->iteration }}</td>
+                            <td style="text-align: center;">DEPARTEMEN {{ $dept->name }}</td>
+                            <td style="text-align: center;">
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <a type="button" href="{!! route('departemen.edit', $dept->id) !!}" class="btn btn-light"><i class="bx bx-search-alt me-0"></i></a>
+                                    <form action="{!! route('departemen.destroy',$dept->id) !!}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-light"><i class="bx bxs-trash"></i></button>
+                                    </form>
+                                </div>
 
-                                    {{-- Delete Modal --}}
-                                    <div class="modal fade" id="deleteModal{{ $dept->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $dept->id }}" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="deleteModalLabel{{ $dept->id }}">Delete Data</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Apakah anda yakin?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <form onsubmit="return deleteData('{{ $dept->id }}')" method="POST" action="{{ route('meet.destroy', $dept->id) }}">
-                                                        @csrf
-                                                        <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                                                        @method('delete')
-                                                        <button type="submit" class="btn bg-gradient-danger" data-bs-dismiss="modal">Delete</button>
-                                                    </form>
-                                                </div>
+                                {{-- Delete Modal --}}
+                                <div class="modal fade" id="deleteModal{{ $dept->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $dept->id }}" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="deleteModalLabel{{ $dept->id }}">Delete Data</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Apakah anda yakin?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <form onsubmit="return deleteData('{{ $dept->id }}')" method="POST" action="{{ route('meet.destroy', $dept->id) }}">
+                                                    @csrf
+                                                    <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                                                    @method('delete')
+                                                    <button type="submit" class="btn bg-gradient-danger" data-bs-dismiss="modal">Delete</button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
-                                    {{-- End of Delete Modal --}}
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                        <tfoot class="table-header text-center">
-                            <tr>
-                                <th scope="col"></th>
-                                <th scope="col"></th>
-                                <th scope="col"></th>
-                        </tfoot>
-                    </table>
-                </div>
+                                </div>
+                                {{-- End of Delete Modal --}}
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 </div>
-<!--end page wrapper -->
-@endsection
-
-@section('scripts')
+<!-- End page wrapper -->
+@endsection @section('scripts')
 <!-- DataTables -->
 <script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>

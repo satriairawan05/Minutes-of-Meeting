@@ -30,37 +30,43 @@ $pages = App\Models\User::leftJoin('group_pages', 'users.group_id', '=', 'group_
             <div>
                 <h4 class="logo-text">PT BSS MoM</h4>
             </div>
-            <div class="toggle-icon ms-auto"><i class='bx bx-menu-alt-left'></i></div>
+            <div class="toggle-icon ms-auto"><i class='bx bx-menu-alt-left'></i>
+            </div>
         </div>
         <!--navigation-->
         <ul class="metismenu" id="menu">
             <li>
                 <a class="nav-link {{ request()->is('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
-                    <div class="parent-icon"><i class='bx bx-home'></i></div>
+                    <div class="parent-icon"><i class='bx bx-home'></i>
+                    </div>
                     <div class="menu-title">Dashboard</div>
                 </a>
             </li>
             <li>
                 <a class="nav-link {{ request()->is('meet.index', 'meet.create') ? 'active' : '' }}" href="{{ route('meet.index') }}">
-                    <div class="parent-icon"><i class='bx bx-calendar-check'></i></div>
+                    <div class="parent-icon"><i class='bx bx-calendar-check'></i>
+                    </div>
                     <div class="menu-title">{{ $Meet }}</div>
                 </a>
             </li>
             <li>
                 <a class="nav-link {{ request()->is('issue.index') ? 'active' : '' }}" href="{{ route('issue.index') }}">
-                    <div class="parent-icon"><i class='bx bx-comment-error'></i></div>
+                    <div class="parent-icon"><i class='bx bx-comment-error'></i>
+                    </div>
                     <div class="menu-title">{{ $Issue }}</div>
                 </a>
             </li>
             <li>
                 <a class="nav-link {{ request()->is('issue.index') ? 'active' : '' }}" href="{{ route('daily.index') }}">
-                    <div class="parent-icon"><i class='bx bx-file'></i></div>
+                    <div class="parent-icon"><i class='bx bx-file'></i>
+                    </div>
                     <div class="menu-title">{{ str_replace('_', ' ', $Daily) }}</div>
                 </a>
             </li>
             <li>
                 <a class="nav-link {{ request()->is('archive.index') ? 'active' : '' }}" href="{{ route('archive.index') }}">
-                    <div class="parent-icon"><i class='bx bx-folder-open'></i></div>
+                    <div class="parent-icon"><i class='bx bx-folder-open'></i>
+                    </div>
                     <div class="menu-title">{{ $Archive }}</div>
                 </a>
             </li>
