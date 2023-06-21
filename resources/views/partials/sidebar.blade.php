@@ -13,7 +13,21 @@ $access = "Read";
     // ->orderBy('groups.group_name')
     // ->select('groups.group_name', 'pages.page_name', 'pages.action', 'group_pages.access')
     // ->get();
+
+$pages = Illuminate\Support\Facades\DB::table('users')
+        ->leftJoin('group_pages', 'users.group_id', '=', 'group_pages.group_id')
+        ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
+        ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
+        ->whereColumn('users.group_id', '=', 'groups.group_id')
+        ->where('group_pages.access', '=', 1)
+        ->where('pages.action', '=', 'Read')
+        ->groupBy('pages.page_name', 'groups.group_name')
+        ->orderBy('groups.group_name')
+        ->select('groups.group_name', 'pages.page_name', 'pages.action', 'group_pages.access')
+        ->get();
 @endphp
+
+@dd($pages)
     <!--sidebar wrapper -->
     <div class="sidebar-wrapper" data-simplebar="true">
         <div class="sidebar-header">

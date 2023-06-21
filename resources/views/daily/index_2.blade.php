@@ -1,43 +1,43 @@
 @extends('layout.main')
 
 @php
-    $approval = 0;
-    $create = 0;
-    $read = 0;
-    $update = 0;
-    $delete = 0;
+$approval = 0;
+$create = 0;
+$read = 0;
+$update = 0;
+$delete = 0;
 @endphp
 
 @foreach ($pages as $page)
-    @if($page->action == "Approval")
-    @php
-        $approval = $page->access;
-    @endphp
-    @endif
+@if($page->action == "Approval")
+@php
+$approval = $page->access;
+@endphp
+@endif
 
-    @if($page->action == "Create")
-    @php
-        $create = $page->access;
-    @endphp
-    @endif
+@if($page->action == "Create")
+@php
+$create = $page->access;
+@endphp
+@endif
 
-    @if($page->action == "Read")
-       @php
-        $read = $page->access;
-    @endphp
-    @endif
+@if($page->action == "Read")
+@php
+$read = $page->access;
+@endphp
+@endif
 
-    @if($page->action == "Update")
-       @php
-        $update = $page->access;
-    @endphp
-    @endif
+@if($page->action == "Update")
+@php
+$update = $page->access;
+@endphp
+@endif
 
-    @if($page->action == "Delete")
-        @php
-        $delete = $page->access;
-    @endphp
-    @endif
+@if($page->action == "Delete")
+@php
+$delete = $page->access;
+@endphp
+@endif
 @endforeach
 @section('content')
 <link href="{{ asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />

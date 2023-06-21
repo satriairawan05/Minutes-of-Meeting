@@ -1,36 +1,36 @@
 @extends('layout.main')
 
 @php
-    $create = 0;
-    $read = 0;
-    $update = 0;
-    $delete = 0;
+$create = 0;
+$read = 0;
+$update = 0;
+$delete = 0;
 @endphp
 
 @foreach ($pages as $page)
-    @if($page->action == "Create")
-    @php
-        $create = $page->access;
-    @endphp
-    @endif
+@if($page->action == "Create")
+@php
+$create = $page->access;
+@endphp
+@endif
 
-    @if($page->action == "Read")
-       @php
-        $read = $page->access;
-    @endphp
-    @endif
+@if($page->action == "Read")
+@php
+$read = $page->access;
+@endphp
+@endif
 
-    @if($page->action == "Update")
-       @php
-        $update = $page->access;
-    @endphp
-    @endif
+@if($page->action == "Update")
+@php
+$update = $page->access;
+@endphp
+@endif
 
-    @if($page->action == "Delete")
-        @php
-        $delete = $page->access;
-    @endphp
-    @endif
+@if($page->action == "Delete")
+@php
+$delete = $page->access;
+@endphp
+@endif
 @endforeach
 
 @section('content')
@@ -75,7 +75,7 @@
                             </tr>
                         </thead>
                         <tbody class="text-center">
-                                @if($read)
+                            @if($read)
                             @foreach ($users as $user)
                             <tr>
                                 <th scope="row">{{ $loop->iteration }}</th>

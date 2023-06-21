@@ -1,36 +1,36 @@
 @extends('layout.main')
 
 @php
-    $create = 0;
-    $read = 0;
-    $update = 0;
-    $delete = 0;
+$create = 0;
+$read = 0;
+$update = 0;
+$delete = 0;
 @endphp
 
 @foreach ($pages as $page)
-    @if($page->action == "Create")
-    @php
-        $create = $page->access;
-    @endphp
-    @endif
+@if($page->action == "Create")
+@php
+$create = $page->access;
+@endphp
+@endif
 
-    @if($page->action == "Read")
-       @php
-        $read = $page->access;
-    @endphp
-    @endif
+@if($page->action == "Read")
+@php
+$read = $page->access;
+@endphp
+@endif
 
-    @if($page->action == "Update")
-       @php
-        $update = $page->access;
-    @endphp
-    @endif
+@if($page->action == "Update")
+@php
+$update = $page->access;
+@endphp
+@endif
 
-    @if($page->action == "Delete")
-        @php
-        $delete = $page->access;
-    @endphp
-    @endif
+@if($page->action == "Delete")
+@php
+$delete = $page->access;
+@endphp
+@endif
 @endforeach
 
 @section('content')
@@ -50,16 +50,16 @@
                 </nav>
             </div>
             <div class="ms-auto">
-            @if($create)
-                
-            @endif
+                @if($create)
+
+                @endif
                 <!-- Add New Archive Button -->
                 {{-- <form action="{{ route('archive.issue.store',$issues->issue_id) }}" method="post">
-                    @csrf
-                    @foreach ($issues as $isu)
-                        <input type="hidden" name="issue_id" id="issue_id" value="{{ $isu->issue_id }}">
-                    @endforeach
-                    <a type="submit" id="submit" data-toggle="tooltip" title="Add new data" type="button" class="btn btn-light px-4"><i class="bx bx-plus-circle"></i>Add Archive</a>
+                @csrf
+                @foreach ($issues as $isu)
+                <input type="hidden" name="issue_id" id="issue_id" value="{{ $isu->issue_id }}">
+                @endforeach
+                <a type="submit" id="submit" data-toggle="tooltip" title="Add new data" type="button" class="btn btn-light px-4"><i class="bx bx-plus-circle"></i>Add Archive</a>
                 </form> --}}
             </div>
         </div>
@@ -88,74 +88,74 @@
                             </tr>
                         </thead>
                         <tbody class="text-center">
-                        @if($read)
+                            @if($read)
                             @foreach ($meets as $a)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{!! $a->meet_xid !!}</td>
-                                    <td>{!! $a->meet_name !!}</td>
-                                    <td>
-                                        {{ \Carbon\Carbon::parse($a->meet_date)->format('d-m-Y') }}
-                                    </td>
-                                    <td>
-                                        {{ \Carbon\Carbon::parse($a->meet_time)->format('H:i') }}
-                                    </td>
-                                    <td>{{ $a->meet_preparedby }}</td>
-                                    <td>{{ $a->tracker }}</td>
-                                    <td>{{ $a->meet_locate }}</td>
-                                    <td>{{ $a->meet_attend }}</td>
-                                    <td>{{ $a->archive_status == 1 ? 'Telah dilaksanakan' : 'Belum dilaksanakan' }}</td>
-                                    <td>{{ $a->issue_xid }}</td>
-                                    <td>
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{!! $a->meet_xid !!}</td>
+                                <td>{!! $a->meet_name !!}</td>
+                                <td>
+                                    {{ \Carbon\Carbon::parse($a->meet_date)->format('d-m-Y') }}
+                                </td>
+                                <td>
+                                    {{ \Carbon\Carbon::parse($a->meet_time)->format('H:i') }}
+                                </td>
+                                <td>{{ $a->meet_preparedby }}</td>
+                                <td>{{ $a->tracker }}</td>
+                                <td>{{ $a->meet_locate }}</td>
+                                <td>{{ $a->meet_attend }}</td>
+                                <td>{{ $a->archive_status == 1 ? 'Telah dilaksanakan' : 'Belum dilaksanakan' }}</td>
+                                <td>{{ $a->issue_xid }}</td>
+                                <td>
                                     @if($update)
-                                        
+
                                     @endif
                                     @if($delete)
-                                        
+
                                     @endif
-                                    </td>
-                                    {{-- <td>
+                                </td>
+                                {{-- <td>
                                         <button type="button" onclick="window.location='{{ route('archive.edit', $a->archive_id) }}'" data-toggle="tooltip" class="btn ripple btn-primary btn-sm" title="Edit Data">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                    </td> --}}
-                                    {{-- <td>
+                                <i class="fas fa-edit"></i>
+                                </button>
+                                </td> --}}
+                                {{-- <td>
                                         <button type="button" class="btn ripple btn-danger btn-sm" data-toggle="tooltip" title="Delete Data" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $a->archive_id }}" onclick="{{ route('archive.destroy', $a->archive_id) }}">
-                                            <i class="far fa-trash-alt"></i>
+                                <i class="far fa-trash-alt"></i>
+                                </button>
+                                </td> --}}
+                            </tr>
+                            {{-- <div class="modal fade" id="deleteModal{{ $a->archive_id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $a->archive_id }}" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModalLabel{{ $a->archive_id }}">Delete Data</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
                                         </button>
-                                    </td> --}}
-                                </tr>
-                                {{-- <div class="modal fade" id="deleteModal{{ $a->archive_id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $a->archive_id }}" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="deleteModalLabel{{ $a->archive_id }}">Delete Data</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Apakah anda yakin?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <form onsubmit="return deleteData('{{ $a->archive_id }}')" method="POST" action="{{ route('issue.destroy', $a->archive_id) }}">
-                                                    @csrf
-                                                    <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn bg-gradient-danger" data-bs-dismiss="modal">Delete</button>
-                                                </form>
-                                            </div>
-                                        </div>
                                     </div>
-                                </div> --}}
-                            @endforeach
-                        @endif
-                        </tbody>
-                    </table>
-                </div>
+                                    <div class="modal-body">
+                                        Apakah anda yakin?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <form onsubmit="return deleteData('{{ $a->archive_id }}')" method="POST" action="{{ route('issue.destroy', $a->archive_id) }}">
+                                            @csrf
+                                            <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                                            @method('DELETE')
+                                            <button type="submit" class="btn bg-gradient-danger" data-bs-dismiss="modal">Delete</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                </div> --}}
+                @endforeach
+                @endif
+                </tbody>
+                </table>
             </div>
         </div>
     </div>
+</div>
 </div>
 <!--end page wrapper -->
 @endsection

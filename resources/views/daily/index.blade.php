@@ -1,43 +1,43 @@
 @extends('layout.main')
 
 @php
-    $approval = 0;
-    $create = 0;
-    $read = 0;
-    $update = 0;
-    $delete = 0;
+$approval = 0;
+$create = 0;
+$read = 0;
+$update = 0;
+$delete = 0;
 @endphp
 
 @foreach ($pages as $page)
-    @if($page->action == "Approval")
-    @php
-        $approval = $page->access;
-    @endphp
-    @endif
+@if($page->action == "Approval")
+@php
+$approval = $page->access;
+@endphp
+@endif
 
-    @if($page->action == "Create")
-    @php
-        $create = $page->access;
-    @endphp
-    @endif
+@if($page->action == "Create")
+@php
+$create = $page->access;
+@endphp
+@endif
 
-    @if($page->action == "Read")
-       @php
-        $read = $page->access;
-    @endphp
-    @endif
+@if($page->action == "Read")
+@php
+$read = $page->access;
+@endphp
+@endif
 
-    @if($page->action == "Update")
-       @php
-        $update = $page->access;
-    @endphp
-    @endif
+@if($page->action == "Update")
+@php
+$update = $page->access;
+@endphp
+@endif
 
-    @if($page->action == "Delete")
-        @php
-        $delete = $page->access;
-    @endphp
-    @endif
+@if($page->action == "Delete")
+@php
+$delete = $page->access;
+@endphp
+@endif
 @endforeach
 
 @section('content')
@@ -61,10 +61,10 @@
         <h6 class="mb-0 text-uppercase">Datatable of DWM Report</h6>
         <hr />
         <div class="card">
-                <div class="card-header d-flex justify-content-end">
-                </div>
-                <div class="card-body bg-transparent">
-                    <div class="table table-filter">
+            <div class="card-header d-flex justify-content-end">
+            </div>
+            <div class="card-body bg-transparent">
+                <div class="table table-filter">
                     <div class="list-group">
                         @foreach ($departemen as $i)
                         @if (isset($_GET['departemen']))
