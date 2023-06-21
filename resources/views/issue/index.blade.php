@@ -1,10 +1,37 @@
 @extends('layout.main')
+
 @php
-$create = $pages[19]['access'] == 1;
-$read = $pages[18]['access'] == 1;
-$update = $pages[17]['access'] == 1;
-$delete = $pages[16]['access'] == 1;
+$create = 0;
+$read = 0;
+$update = 0;
+$delete = 0;
 @endphp
+
+@foreach ($pages as $page)
+@if($page->action == "Create")
+@php
+$create = $page->access;
+@endphp
+@endif
+
+@if($page->action == "Read")
+@php
+$read = $page->access;
+@endphp
+@endif
+
+@if($page->action == "Update")
+@php
+$update = $page->access;
+@endphp
+@endif
+
+@if($page->action == "Delete")
+@php
+$delete = $page->access;
+@endphp
+@endif
+@endforeach
 
 @section('content')
 <!-- Start page wrapper -->
