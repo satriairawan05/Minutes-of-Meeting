@@ -30,72 +30,65 @@ $pages = App\Models\User::leftJoin('group_pages', 'users.group_id', '=', 'group_
             <div>
                 <h4 class="logo-text">PT BSS MoM</h4>
             </div>
-            <div class="toggle-icon ms-auto"><i class='bx bx-arrow-back'></i>
-            </div>
+            <div class="toggle-icon ms-auto"><i class='bx bx-menu-alt-left'></i></div>
         </div>
         <!--navigation-->
         <ul class="metismenu" id="menu">
             <li>
                 <a class="nav-link {{ request()->is('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
-                    <div class="parent-icon"><i class='bx bx-home'></i>
-                    </div>
+                    <div class="parent-icon"><i class='bx bx-home'></i></div>
                     <div class="menu-title">Dashboard</div>
                 </a>
             </li>
             <li>
                 <a class="nav-link {{ request()->is('meet.index', 'meet.create') ? 'active' : '' }}" href="{{ route('meet.index') }}">
-                    <div class="parent-icon"><i class='bx bx-calendar-check'></i>
-                    </div>
+                    <div class="parent-icon"><i class='bx bx-calendar-check'></i></div>
                     <div class="menu-title">{{ $Meet }}</div>
                 </a>
             </li>
             <li>
                 <a class="nav-link {{ request()->is('issue.index') ? 'active' : '' }}" href="{{ route('issue.index') }}">
-                    <div class="parent-icon"><i class='bx bx-comment-error'></i>
-                    </div>
+                    <div class="parent-icon"><i class='bx bx-comment-error'></i></div>
                     <div class="menu-title">{{ $Issue }}</div>
                 </a>
             </li>
             <li>
                 <a class="nav-link {{ request()->is('issue.index') ? 'active' : '' }}" href="{{ route('daily.index') }}">
-                    <div class="parent-icon"><i class='bx bx-file'></i>
-                    </div>
+                    <div class="parent-icon"><i class='bx bx-file'></i></div>
                     <div class="menu-title">{{ str_replace('_', ' ', $Daily) }}</div>
                 </a>
             </li>
             <li>
                 <a class="nav-link {{ request()->is('archive.index') ? 'active' : '' }}" href="{{ route('archive.index') }}">
-                    <div class="parent-icon"><i class='bx bx-folder-open'></i>
-                    </div>
+                    <div class="parent-icon"><i class='bx bx-folder-open'></i></div>
                     <div class="menu-title">{{ $Archive }}</div>
                 </a>
             </li>
-            <a class="nav-link {{ request()->is('user.index') ? 'active' : '' }}" href="{{ route('user.index') }}">
-                <div class="parent-icon"><i class='bx bx-user'></i>
-                </div>
-                <div class="menu-title">User</div>
-            </a>
+            <li>
+                <a href="javascript:;" class="has-arrow">
+                    <div class="parent-icon"><i class="bx bx-cog"></i></div>
+                    <div class="menu-title">Settings</div>
+                </a>
+                <ul>
+                    <li>
+                        <a class="nav-link {{ request()->is('user.index') ? 'active' : '' }}" href="{{ route('user.index') }}"><i class='bx bx-user'></i>User</a>
+                    </li>
+                    <li>
+                        <a class="nav-link {{ request()->is('departemen.index') ? 'active' : '' }}" href="{{ route('departemen.index') }}"><i class='bx bx-group'></i>Departement</a>
+                    </li>
+                    <li>
+                        <a class="nav-link {{ request()->is('group.index') ? 'active' : '' }}" href="{{ route('group.index') }}"><i class='bx bx-wrench'></i>Role</a>
+                    </li>
+                    <li>
+                        <a class="nav-link {{ request()->is('tracker.index') ? 'active' : '' }}" href="{{ route('tracker.index') }}"><i class='bx bx-file-find'></i>DWM Tracker</a>
+                    </li>
+                </ul>
+            </li>
+
             </li>
             </li>
-            <a class="nav-link {{ request()->is('departemen.index') ? 'active' : '' }}" href="{{ route('departemen.index') }}">
-                <div class="parent-icon"><i class='bx bx-group'></i>
-                </div>
-                <div class="menu-title">Departement</div>
-            </a>
             </li>
             </li>
-            <a class="nav-link {{ request()->is('group.index') ? 'active' : '' }}" href="{{ route('group.index') }}">
-                <div class="parent-icon"><i class='bx bx-wrench'></i>
-                </div>
-                <div class="menu-title">Role</div>
-            </a>
-            </li>
-            </li>
-            <a class="nav-link" href="{{ route('tracker.index') }}">
-                <div class="parent-icon"><i class='bx bx-file-find'></i>
-                </div>
-                <div class="menu-title">DWM Tracker</div>
-            </a>
             </li>
         </ul>
         <!--end navigation-->

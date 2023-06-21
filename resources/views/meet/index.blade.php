@@ -30,7 +30,6 @@ $delete = $pages[3]['access'] == 1;
             </div>
         </div>
         <!-- End breadcrumb -->
-        <h6 class="mb-0 text-uppercase">Datatable of Meeting</h6>
         <hr />
         <div class="card">
             <div class="card-body">

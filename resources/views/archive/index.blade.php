@@ -28,7 +28,6 @@
             </div>
         </div>
         <!--end breadcrumb-->
-        <h6 class="mb-0 text-uppercase">Datatable of Archive</h6>
         <hr />
         <div class="card">
             <div class="card-body">

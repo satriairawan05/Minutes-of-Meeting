@@ -46,6 +46,7 @@ $delete = $pages[13]['access'] == 1;
                                 </tr>
                                 @endforeach
                             </tbody>
+                            
                         </table>
                     </div>
                 </div>
