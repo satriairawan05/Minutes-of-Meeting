@@ -50,6 +50,7 @@ $admin = auth()->user()->name == "Super Admin";
                     <div class="menu-title">Archive</div>
                 </a>
             </li>
+            @if($admin)
             <li>
                 <a href="javascript:;" class="has-arrow">
                     <div class="parent-icon"><i class="bx bx-cog"></i></div>
@@ -70,6 +71,7 @@ $admin = auth()->user()->name == "Super Admin";
                     </li>
                 </ul>
             </li>
+            @endif
 
             </li>
             </li>

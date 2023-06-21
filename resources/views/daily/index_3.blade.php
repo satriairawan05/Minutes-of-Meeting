@@ -86,7 +86,7 @@ $delete = $page->access;
                         </thead>
                         <tbody>
                             @foreach ($dailies as $daily)
-                            @if(isset($read))
+                            @if($read)
                             <tr>
                                 <th scope="row">{!! $loop->iteration !!}</th>
                                 <td><a href="{!! route('daily.document',$daily->daily_id) !!}" class="text-decoration-none">{!! $daily->daily_xid !!}</a></td>
@@ -106,7 +106,7 @@ $delete = $page->access;
                                     @endif
                                     {{-- Edit --}}
                                     {{-- Delete --}}
-                                    @if(isset($delete))
+                                    @if($delete)
                                     <form action="{!! route('daily.destroy',$daily->daily_id) !!}" method="post">
                                         @csrf
                                         <button type="submit" class="btn btn-danger btn-sm">
