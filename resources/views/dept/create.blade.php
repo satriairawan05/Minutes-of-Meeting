@@ -48,7 +48,6 @@
                     </div>
                 </form>
             </div>
-        </div>
         <script>
             $(document).ready(function() {
                 // Hide and Show Columns

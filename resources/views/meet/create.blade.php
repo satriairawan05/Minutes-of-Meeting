@@ -1,7 +1,5 @@
 @extends('layout.main')
 
-
-
 @section('content')
 <!--start page wrapper -->
 <div class="page-wrapper">
@@ -18,7 +16,6 @@
                     </ol>
                 </nav>
             </div>
-
             <div class="ms-auto">
             </div>
         </div>
@@ -45,7 +42,7 @@
                             <div class="row mb-3">
                                 <label for="meet_name" class="col-sm-2 col-form-label">Meeting Name</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control form-control-sm @error('project') is-invalid @enderror" id="meet_name" name="meet_name" value="{{ old('meet_name') }}" placeholder="Masukan Meeting Name">
+                                    <input type="text" class="form-control form-control-sm @error('project') is-invalid @enderror" id="meet_name" name="meet_name" value="{{ old('meet_name') }}" placeholder="Enter Meeting Name">
                                     @error('meet_name')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -57,9 +54,9 @@
                                 <label for="meet_project" class="col-sm-2 col-form-label">Project</label>
                                 <div class="col-sm-10">
                                     <select class="form-select form-control form-control-sm" name="meet_project">
-                                        <option name="meet_project" value="MEETING HO">MEETING HO</option>
-                                        <option name="meet_project" value="MEETING TEAM 9">MEETING TEAM 9</option>
-                                        <option name="meet_project" value="MEETING SITE">MEETING SITE</option>
+                                        <option value="MEETING HO">MEETING HO</option>
+                                        <option value="MEETING TEAM 9">MEETING TEAM 9</option>
+                                        <option value="MEETING SITE">MEETING SITE</option>
                                     </select>
                                     @error('meet_project')
                                     <div class="invalid-feedback">
@@ -93,7 +90,7 @@
                             <div class="row mb-3">
                                 <label for="meet_preparedby" class="col-sm-2 col-form-label">Minutes Prepared by</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control form-control-sm @error('meet_preparedby') is-invalid @enderror" id="meet_preparedby" name="meet_preparedby" value="{{ old('meet_preparedby') }}" placeholder="Masukan Minutes Prepared By">
+                                    <input type="text" class="form-control form-control-sm @error('meet_preparedby') is-invalid @enderror" id="meet_preparedby" name="meet_preparedby" value="{{ old('meet_preparedby') }}" placeholder="Enter Minutes Prepared By">
                                     @error('meet_preparedby')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -104,7 +101,7 @@
                             <div class="row mb-3">
                                 <label for="meet_locate" class="col-sm-2 col-form-label">Meeting Location</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control form-control-sm @error('meet_locate') is-invalid @enderror" id="meet_locate" name="meet_locate" value="{{ old('meet_locate') }}" placeholder="Masukan Meeting Location">
+                                    <input type="text" class="form-control form-control-sm @error('meet_locate') is-invalid @enderror" id="meet_locate" name="meet_locate" value="{{ old('meet_locate') }}" placeholder="Enter Meeting Location">
                                     @error('meet_locate')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -117,22 +114,16 @@
                                 <div class="col-sm-10">
                                     <select id="meet_attend" class="form-select form-control form-control-sm select2-no-search" name="meet_attend[]" multiple>
                                         @foreach ($users as $user)
-                                        @if (old('meet_attend') == $user->name)
-                                        <option name="meet_attend" value="{{ $user->name }}" selected>
-                                            {{ $user->name }}
-                                        </option>
-                                        @else
-                                        <option name="meet_attend" value="{{ $user->name }}">
-                                            {{ $user->name }}
-                                        </option>
-                                        @endif
+                                            <option value="{{ $user->name }}" @if(old('meet_attend') == $user->name) selected @endif>
+                                                {{ $user->name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-12 d-flex justify-content-between align-items-center">
-                                    <a href="{{ route('meet.index') }}" class="btn btn-light px-2"><i class='bx bx-left-arrow-alt mr-1'></i>Meet Datatable</button></a>
+                                    <a href="{{ route('meet.index') }}" class="btn btn-light px-2"><i class='bx bx-left-arrow-alt mr-1'></i>Meet Datatable</a>
                                     <button type="submit" class="btn btn-light px-2"><i class='bx bx-save'></i>Save Changes</button>
                                 </div>
                             </div>
@@ -142,38 +133,8 @@
             </div>
         </div>
     </div>
-    <script>
-        $(document).ready(function() {
-            // Hide and Show Columns
-            $('#toggleColumns').on('change', function() {
-                var column = $(this).attr('id');
-                $('.' + column).toggle();
-            });
-
-            $('#meet_attend').select2();
-
-            // Expandable Columns
-            $('.expandable-column').on('click', function() {
-                $(this).toggleClass('expanded');
-                $(this).siblings('.expand-content').toggle();
-            });
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
-            // Hide and Show Columns
-            $('#toggleColumns').on('change', function() {
-                var column = $(this).val();
-                $('.' + column).toggle();
-            });
-        });
-    </script>
-</div>
-</div>
-</div>
 </div>
 <!--end page wrapper -->
-
 @endsection
 
 @section('scripts')
