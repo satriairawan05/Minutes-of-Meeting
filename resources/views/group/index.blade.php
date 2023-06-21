@@ -39,14 +39,14 @@
                             {{-- start modal  --}}
                             <td>
 
-                                    <a type="button" href="{{ route('group.edit', $group->group_id) }}" class="btn btn-light"><i class="bx bx-search-alt me-0"></i>
-</a>
-                                    <form action="{{ route('group.destroy',$group->group_id) }}" method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit" class="btn btn-light"><i class="bx bxs-trash-alt me-0"></i>
-                                        </button>
-                                    </form>
+                                <a type="button" href="{{ route('group.edit', $group->group_id) }}" class="btn btn-light"><i class="bx bx-search-alt me-0"></i>
+                                </a>
+                                <form action="{{ route('group.destroy',$group->group_id) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-light"><i class="bx bxs-trash-alt me-0"></i>
+                                    </button>
+                                </form>
 
                                 {{-- Delete Modal --}}
                                 <div class="modal fade" id="deleteModal{{ $group->group_id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $group->group_id }}" aria-hidden="true">

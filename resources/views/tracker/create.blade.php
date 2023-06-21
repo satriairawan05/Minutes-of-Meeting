@@ -72,7 +72,7 @@ $trackers = App\Models\Tracker::all();
                 </form>
             </div>
         </div>
-</div>
+    </div>
 </div>
 
 <script>

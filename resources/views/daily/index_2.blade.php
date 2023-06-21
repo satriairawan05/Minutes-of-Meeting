@@ -92,6 +92,11 @@ $delete = 0;
                             </tbody>
                         </table>
                     </div>
+                    <div class="row mb-3">
+                        <div class="col-12 d-flex justify-content-between align-items-center">
+                            <a href="{{ route('daily.index') }}" class="btn btn-light px-2"><i class='bx bx-left-arrow-alt mr-1'></i>DWM Report</button></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
