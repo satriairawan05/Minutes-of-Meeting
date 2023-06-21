@@ -1,26 +1,19 @@
 @php
 $admin = auth()->user()->name == "Super Admin";
 
-$pages = App\Models\User::leftJoin('group_pages', 'users.group_id', '=', 'group_pages.group_id')
-->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
-->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
-->where('pages.page_id', '<=', 4) ->orWhere('pages.page_name', 'Meeting')
-    ->orWhere('group_pages.access', 1)
-    ->get();
-
-    $readMeet = $pages[18]['access'] == 1;
-    $readIssue = $pages[6]['access'] == 1;
-    $readDaily = $pages[10]['access'] == 1;
-    $readArchive = $pages[14]['access'] == 1;
-    $readUser = $pages[2]['access'] == 1;
-
-    $Meet = $pages[2]['page_name'];
-    $Issue = $pages[6]['page_name'];
-    $Daily = $pages[10]['page_name'];
-    $Archive = $pages[14]['page_name'];
-    $User = $pages[18]['page_name'];
-    @endphp
-
+$access = "Read";
+// $pages = Illuminate\Support\Facades\DB::table('users')
+    // ->leftJoin('group_pages', 'users.group_id', '=', 'group_pages.group_id')
+    // ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
+    // ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
+    // ->whereColumn('users.group_id', '=', 'groups.group_id')
+    // ->where('group_pages.access', '=', 1)
+    // ->where('pages.action', '=', 'Read')
+    // ->groupBy('groups.group_name', 'pages.page_name', 'pages.action')
+    // ->orderBy('groups.group_name')
+    // ->select('groups.group_name', 'pages.page_name', 'pages.action', 'group_pages.access')
+    // ->get();
+@endphp
     <!--sidebar wrapper -->
     <div class="sidebar-wrapper toggled" data-simplebar="true">
         <div class="sidebar-header">
@@ -46,49 +39,36 @@ $pages = App\Models\User::leftJoin('group_pages', 'users.group_id', '=', 'group_
                 <a class="nav-link {{ request()->is('meet.index', 'meet.create') ? 'active' : '' }}" href="{{ route('meet.index') }}">
                     <div class="parent-icon"><i class='bx bx-calendar-check'></i>
                     </div>
-                    <div class="menu-title">{{ $Meet }}</div>
+                    <div class="menu-title">Meeting</div>
                 </a>
             </li>
             <li>
                 <a class="nav-link {{ request()->is('issue.index') ? 'active' : '' }}" href="{{ route('issue.index') }}">
                     <div class="parent-icon"><i class='bx bx-comment-error'></i>
                     </div>
-                    <div class="menu-title">{{ $Issue }}</div>
+                    <div class="menu-title">Issue</div>
                 </a>
             </li>
             <li>
                 <a class="nav-link {{ request()->is('issue.index') ? 'active' : '' }}" href="{{ route('daily.index') }}">
                     <div class="parent-icon"><i class='bx bx-file'></i>
                     </div>
-                    <div class="menu-title">{{ str_replace('_', ' ', $Daily) }}</div>
+                    <div class="menu-title">DWM Report</div>
                 </a>
             </li>
             <li>
                 <a class="nav-link {{ request()->is('archive.index') ? 'active' : '' }}" href="{{ route('archive.index') }}">
                     <div class="parent-icon"><i class='bx bx-folder-open'></i>
                     </div>
-                    <div class="menu-title">{{ $Archive }}</div>
+                    <div class="menu-title">Archive</div>
                 </a>
             </li>
-            <li>
-                <a href="javascript:;" class="has-arrow">
-                    <div class="parent-icon"><i class="bx bx-cog"></i></div>
-                    <div class="menu-title">Settings</div>
-                </a>
-                <ul>
-                    <li>
-                        <a class="nav-link {{ request()->is('user.index') ? 'active' : '' }}" href="{{ route('user.index') }}"><i class='bx bx-user'></i>User</a>
-                    </li>
-                    <li>
-                        <a class="nav-link {{ request()->is('departemen.index') ? 'active' : '' }}" href="{{ route('departemen.index') }}"><i class='bx bx-group'></i>Departement</a>
-                    </li>
-                    <li>
-                        <a class="nav-link {{ request()->is('group.index') ? 'active' : '' }}" href="{{ route('group.index') }}"><i class='bx bx-wrench'></i>Role</a>
-                    </li>
-                    <li>
-                        <a class="nav-link {{ request()->is('tracker.index') ? 'active' : '' }}" href="{{ route('tracker.index') }}"><i class='bx bx-file-find'></i>DWM Tracker</a>
-                    </li>
-                </ul>
+            <a class="nav-link {{ request()->is('user.index') ? 'active' : '' }}" href="{{ route('user.index') }}">
+                <div class="parent-icon"><i class='bx bx-user'></i>
+                </div>
+                <div class="menu-title">{{ $User }}</div>
+            </a>
+            </li>
             </li>
 
             </li>

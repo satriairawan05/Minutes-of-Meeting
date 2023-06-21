@@ -18,13 +18,19 @@ class DailyController extends Controller
      */
     public function index()
     {
-        $pages = User::leftJoin('group_pages', 'users.group_id', '=', 'group_pages.group_id')
-            ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
-            ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
-            ->whereBetween('pages.page_id', [9, 12])
-            ->orWhere('pages.page_name', 'DWM_Report')
-            ->orWhere('group_pages.access', 1)
-            ->get();
+        $page_name = "DWM_Report";
+        $user_group = auth()->user()->group_id;
+        $pages = DB::table('users')->leftJoin('group_pages', 'users.group_id', '=', 'group_pages.group_id')
+        ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
+        ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
+        ->whereColumn('users.group_id', '=', 'groups.group_id')
+        ->where('pages.page_name', '=', $page_name)
+        ->where('group_pages.access', '=', 1)
+        ->whereBetween('pages.page_id', [10, 14])
+        ->where('group_pages.group_id','=', $user_group)
+        ->select(['group_name', 'page_name', 'action', 'access'])
+        ->limit(5)
+        ->get();
 
         $departemen = Departemen::select('name')->get();
         $tracker = DB::table('daily_trackers as d1')
@@ -94,7 +100,7 @@ class DailyController extends Controller
         ->where('departemen','=',$data['departemen'])
         ->distinct('tracker_name')
         ->get();
-        
+
         return view('daily.create', [
             'daily' => $id,
             'users' => User::get(),

@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Issue;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class IssueController extends Controller
@@ -18,13 +19,19 @@ class IssueController extends Controller
      */
     public function index()
     {
-        $pages = User::leftJoin('group_pages', 'users.group_id', '=', 'group_pages.group_id')
-            ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
-            ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
-            ->whereBetween('pages.page_id', [4, 8])
-            ->orWhere('pages.page_name', 'Issue')
-            ->orWhere('group_pages.access', 1)
-            ->get();
+        $page_name = "Issue";
+        $user_group = auth()->user()->group_id;
+        $pages = DB::table('users')->leftJoin('group_pages', 'users.group_id', '=', 'group_pages.group_id')
+        ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
+        ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
+        ->whereColumn('users.group_id', '=', 'groups.group_id')
+        ->where('pages.page_name', '=', $page_name)
+        ->where('group_pages.access', '=', 1)
+        ->whereBetween('pages.page_id', [5, 9])
+        ->where('group_pages.group_id','=', $user_group)
+        ->select(['group_name', 'page_name', 'action', 'access'])
+        ->limit(5)
+        ->get();
 
         $issue = Issue::distinct('tracker')->orderBy('tracker')->paginate(15);
 
@@ -126,7 +133,7 @@ class IssueController extends Controller
             'users' => User::get()
         ]);
     }
-    
+
     public function approvedForm()
     {
         return view('issue.approved',[

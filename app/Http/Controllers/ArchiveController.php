@@ -8,6 +8,7 @@ use App\Models\Archive;
 use App\Models\ArchiveDaily;
 use App\Models\ArchiveIssue;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\QueryException;
 
 class ArchiveController extends Controller
@@ -17,10 +18,25 @@ class ArchiveController extends Controller
      */
     public function index()
     {
+        $page_name = "Archives";
+        $user_group = auth()->user()->group_id;
+        $pages = DB::table('users')->leftJoin('group_pages', 'users.group_id', '=', 'group_pages.group_id')
+        ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
+        ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
+        ->whereColumn('users.group_id', '=', 'groups.group_id')
+        ->where('pages.page_name', '=', $page_name)
+        ->where('group_pages.access', '=', 1)
+        ->whereBetween('pages.page_id', [15, 18])
+        ->where('group_pages.group_id','=', $user_group)
+        ->select(['group_name', 'page_name', 'action', 'access'])
+        ->limit(4)
+        ->get();
+        
         return view('archive.index', [
             'meets' => Archive::paginate(15),
             'issues' => ArchiveIssue::paginate(15),
-            'dailies' => ArchiveDaily::paginate(15)
+            'dailies' => ArchiveDaily::paginate(15),
+            'pages' => $pages
         ]);
     }
 

@@ -115,3 +115,4 @@ $pages[16]['access'] == 1; @endphp@section('content')
 <script src="{{ asset('assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
 @endsection
+

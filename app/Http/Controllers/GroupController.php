@@ -75,7 +75,7 @@ class GroupController extends Controller
     {
         return view('group.edit', [
             'group' => $group,
-            'page_distincts' => Page::distinct('page_name')->get('page_name'),
+            'page_distinct' => Page::distinct('page_name')->get('page_name'),
             'pages' => GroupPage::leftJoin('pages', 'pages.page_id', '=', 'group_pages.page_id')->where('group_id', '=', $group->group_id)->get()
         ]);
     }
@@ -93,7 +93,7 @@ class GroupController extends Controller
 
             // Update group name
             Group::where('group_id', $group->group_id)->update($validatedData);
-            
+
             // Update group page access
             $pages = Page::all();
             foreach ($pages as $page) {

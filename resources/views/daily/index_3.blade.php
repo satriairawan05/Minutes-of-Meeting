@@ -1,12 +1,44 @@
 @extends('layout.main')
 
 @php
-$approval = $pages[9]['access'] == 1;
-$create = $pages[10]['access'] == 1;
-$read = $pages[11]['access'] == 1;
-$update = $pages[12]['access'] == 1;
-$delete = $pages[13]['access'] == 1;
+    $approval = 0;
+    $create = 0;
+    $read = 0;
+    $update = 0;
+    $delete = 0;
 @endphp
+
+@foreach ($pages as $page)
+    @if($page->action == "Approval")
+    @php
+        $approval = $page->access;
+    @endphp
+    @endif
+
+    @if($page->action == "Create")
+    @php
+        $create = $page->access;
+    @endphp
+    @endif
+
+    @if($page->action == "Read")
+       @php
+        $read = $page->access;
+    @endphp
+    @endif
+
+    @if($page->action == "Update")
+       @php
+        $update = $page->access;
+    @endphp
+    @endif
+
+    @if($page->action == "Delete")
+        @php
+        $delete = $page->access;
+    @endphp
+    @endif
+@endforeach
 
 @section('content')
 <link href="{{ asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
@@ -28,7 +60,9 @@ $delete = $pages[13]['access'] == 1;
                 <div class="card-header">
                     <div class="d-flex justify-content-start">
                         {{-- Create --}}
+                        @if($create)
                         <a class="btn btn-primary btn-sm" href="{!! url('/daily/create?departemen='.$data['departemen'].'&tracker='.$data['tracker']) !!}"><i class="bx bx-plus"></i></a>
+                        @endif
                         {{-- Create --}}
                     </div>
                 </div>
@@ -48,6 +82,7 @@ $delete = $pages[13]['access'] == 1;
                             </thead>
                             <tbody>
                                 @foreach ($dailies as $daily)
+                                @if(isset($read))
                                 <tr>
                                     <th scope="row">{!! $loop->iteration !!}</th>
                                     <td><a href="{!! route('daily.document',$daily->daily_id) !!}" class="text-decoration-none">{!! $daily->daily_xid !!}</a></td>
@@ -56,19 +91,29 @@ $delete = $pages[13]['access'] == 1;
                                     <td>{!! $daily->status !!}</td>
                                     <td>{!! $daily->priority !!}</td>
                                     <td class="d-inline-block">
+                                        {{-- Approval --}}
+                                        @if($approval)
+                                            <a href="" class="btn btn-sm btn-info text-decoration-none"><i class="bx bx-paperclip"></i></a>
+                                        @endif
+                                        {{-- Approval --}}
                                         {{-- Edit --}}
+                                        @if($update)
                                         <a href="{!! route('daily.edit',$daily->daily_id) !!}" class="text-decoration-none btn btn-sm btn-warning"><i class="bx bx-edit"></i></a>
+                                        @endif
                                         {{-- Edit --}}
                                         {{-- Delete --}}
+                                        @if(isset($delete))
                                         <form action="{!! route('daily.destroy',$daily->daily_id) !!}" method="post">
                                         @csrf
                                         <button type="submit" class="btn btn-danger btn-sm">
                                             <i class="bx bx-trash-alt me-0"></i>
                                         </button>
                                         </form>
+                                        @endif
                                         {{-- Delete --}}
                                     </td>
                                 </tr>
+                                @endif
                                 @endforeach
                             </tbody>
                         </table>
