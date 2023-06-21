@@ -46,7 +46,7 @@ $delete = $page->access;
     <div class="page-content">
         <!-- Breadcrumb -->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-            <div class="breadcrumb-title pe-3">Tracker Department</div>
+            <div class="breadcrumb-title pe-3">DWM Report</div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
