@@ -1,47 +1,13 @@
 @extends('layout.main')
-
 @php
-$approval = 0;
-$create = 0;
-$read = 0;
-$update = 0;
-$delete = 0;
+$create = $pages[19]['access'] == 1;
+$read = $pages[18]['access'] == 1;
+$update = $pages[17]['access'] == 1;
+$delete = $pages[16]['access'] == 1;
 @endphp
-
-@foreach ($pages as $page)
-@if($page->action == "Approval")
-@php
-$approval = $page->access;
-@endphp
-@endif
-
-@if($page->action == "Create")
-@php
-$create = $page->access;
-@endphp
-@endif
-
-@if($page->action == "Read")
-@php
-$read = $page->access;
-@endphp
-@endif
-
-@if($page->action == "Update")
-@php
-$update = $page->access;
-@endphp
-@endif
-
-@if($page->action == "Delete")
-@php
-$delete = $page->access;
-@endphp
-@endif
-@endforeach
 
 @section('content')
-<!--start page wrapper -->
+<!-- Start page wrapper -->
 <link href="{{ asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
 <div class="page-wrapper">
     <div class="page-content">
@@ -64,43 +30,41 @@ $delete = $page->access;
             </div>
         </div>
         <!--end breadcrumb-->
-        <h6 class="mb-0 text-uppercase">Datatable of Issue</h6>
         <hr />
         <div class="card">
             <div class="card-body">
-                <div class="table-responsive">
-                    <table id="example2" class="table table-striped table-bordered">
-                        <thead class="table-header text-center">
-                            <tr>
-                                <th>#</th>
-                                <th>ID</th>
-                                <th>Subject</th>
-                                <th>Departemen</th>
-                                <th>Description</th>
-                                <th>Status</th>
-                                <th>Priority</th>
-                                <th>Start Date</th>
-                                <th>End Date</th>
-                                <th>Days (+/-)</th>
-                                <th>Asiggnee</th>
-                                <th>PIC</th>
-                                <th width="100px">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-center">
-                            @foreach ($issues as $issue)
-                            @php
-                            $startDate = \Carbon\Carbon::parse($issue->start_date);
-                            $endDate = \Carbon\Carbon::parse($issue->end_date);
-                            $hasil = $endDate->diff($startDate)->format('%d');
-                            $day = now()->diff($endDate)->format('%d');
+                <table id="example2" class="table table-hover table-mc-light">
+                    <thead class="table-header">
+                        <tr>
+                            <th>#</th>
+                            <th>ID</th>
+                            <th>Subject</th>
+                            <th>Departemen</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                            <th>Priority</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Days (+/-)</th>
+                            <th>Asiggnee</th>
+                            <th>PIC</th>
+                            <th width="100px">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($issues as $issue)
+                        @php
+                        $startDate = \Carbon\Carbon::parse($issue->start_date);
+                        $endDate = \Carbon\Carbon::parse($issue->end_date);
+                        $hasil = $endDate->diff($startDate)->format('%d');
+                        $day = now()->diff($endDate)->format('%d');
 
-                            // $status = App\Models\Issue::where('end_date','<',now())->update(['status' => 'Over Due']);
+                        // $status = App\Models\Issue::where('end_date','<',now())->update(['status' => 'Over Due']);
 
-                                // $days = $status->end_date->diffInDays(now()); // menghitung selisih hari antara end_date dan waktu saat ini
+                            // $days = $status->end_date->diffInDays(now()); // menghitung selisih hari antara end_date dan waktu saat ini
 
                                 @endphp
-                                @if(isset($read))
+                                @if($read)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{!! $issue->issue_xid !!}</td>
@@ -137,14 +101,14 @@ $delete = $page->access;
                                     {{-- start modal  --}}
                                     <td>
                                         {{-- Edit Modal Trigger --}}
-                                        @if(isset($update))
+                                        @if($update)
                                         <a href="{{ route('issue.edit', $issue->issue_id) }}" class="btn btn-light" data-toggle="tooltip" title="Edit Data">
                                             <i class="bx bx-search-alt me-0"></i>
                                         </a>
                                         @endif
                                         {{-- End of Edit Modal Trigger --}}
                                         {{-- Delete Modal Trigger --}}
-                                        @if(isset($delete))
+                                        @if($delete)
                                         <form action="{{ route('issue.destroy', $issue->issue_id) }}" method="post">
                                             @csrf
                                             @method('delete')

@@ -1,46 +1,41 @@
 @extends('layout.main')
 
 @section('content')
-<div class="main-content side-content pt-0">
-    <div class="container-fluid">
-        <div class="inner-body">
-            <!-- Page Header -->
-            <div class="page-header">
-                <div>
-                    <h2 class="main-content-title tx-24 mg-b-5">Meeting Data</h2>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Meeting</li>
+<!--start page wrapper -->
+<link href="{{ asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
+<div class="page-wrapper">
+    <div class="page-content">
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">Meeting</div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a></li>
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-calendar-check"></i></a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Meet Resume</li>
                     </ol>
-                </div>
+                </nav>
             </div>
-            <!-- End Page Header -->
-            <!--Row-->
-            <div class="card">
-                <div class="card-header d-flex justify-content-end">
-                    <div class="d-flex justify-content-end align-items-end mb-3">
-                        <div class="card-header d-flex justify-content-end align-items-end">
-                            <form action="{{ route('archive.meet.store',$meet->meet_id) }}" method="post">
-                                @csrf
-                                <input type="hidden" name="meet_id" id="meet_id" value="{{ $meet->meet_id }}">
-                                <input type="hidden" name="archive_status" id="archive_status" value="1">
-                                @foreach ($issue as $isu)
-                                <input type="hidden" name="issue_id" id="issue_id" value="{{ $isu->issue_id }}">
-                                @endforeach
-                                <button type="submit" id="submit" class="btn-data btn text-decoration-none text-black">
-                                    <i class="fas fa-save"></i> Save
-                                </button>
-                            </form>
-                            <a type="button" class="btn ripple btn-success btn-icon" href="{{ route('issue.create') }}" data-toggle="tooltip" title="Add new data">
-                                <i class="fe fe-plus"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-end align-items-end mb-3">
-                        <a href="{{ route('meet.index') }}" class="btn btn-md btn-primary ml-3">Back</a>
-                    </div>
-                </div>
-                <div class="card-body bg-transparent">
+        </div>
+        <div class="col-12 d-flex justify-content-between align-items-center">
+            <a href="{{ route('meet.index') }}" class="btn btn-light px-2"><i class='bx bx-left-arrow-alt mr-1'></i>Meet Datatable</button></a>
+            <form action="{{ route('archive.meet.store',$meet->meet_id) }}" method="post">
+                @csrf
+                <input type="hidden" name="meet_id" id="meet_id" value="{{ $meet->meet_id }}">
+                <input type="hidden" name="archive_status" id="archive_status" value="1">
+                @foreach ($issue as $isu)
+                <input type="hidden" name="issue_id" id="issue_id" value="{{ $isu->issue_id }}">
+                @endforeach
+                <button type="submit" class="btn btn-light px-2"><i class='bx bx-save'></i>Save Changes</button>
+            </form>
+        </div>
+        <!--end breadcrumb-->
+        <hr />
+        <!--Row-->
+        <div class="card">
+            <div class="card-body bg-transparent">
+                <div class="row mb-3">
                     <div class="ms-lg-auto">
                         <table class="table table-sm table-bordered table-hover">
                             <thead class="table-header text-center">
@@ -107,10 +102,10 @@
                             <tbody>
                                 @foreach ($issue as $i)
                                 @php
-                                    $startDate = \Carbon\Carbon::parse($i->start_date);
-                                    $endDate = \Carbon\Carbon::parse($i->end_date);
-                                    $hasil = $endDate->diff($startDate)->format('%d');
-                                    $day = now()->diff($endDate)->format('%d');
+                                $startDate = \Carbon\Carbon::parse($i->start_date);
+                                $endDate = \Carbon\Carbon::parse($i->end_date);
+                                $hasil = $endDate->diff($startDate)->format('%d');
+                                $day = now()->diff($endDate)->format('%d');
                                 @endphp
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
@@ -165,6 +160,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+
                     </div>
                 </div>
                 <!-- Row end -->
@@ -177,7 +173,6 @@
                 setTimeout(function() {
                     successAlert.style.display = 'none';
                 }, 5000);
-
             </script>
             @endif
         </div>

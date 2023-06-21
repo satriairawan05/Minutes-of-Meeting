@@ -29,7 +29,7 @@ $pages = Illuminate\Support\Facades\DB::table('users')
 
 @dd($pages)
     <!--sidebar wrapper -->
-    <div class="sidebar-wrapper" data-simplebar="true">
+    <div class="sidebar-wrapper toggled" data-simplebar="true">
         <div class="sidebar-header">
             <div>
                 <img src="{{ asset('assets/img/brand/icon.png') }}" class="logo-icon" alt="logo icon">
@@ -37,7 +37,7 @@ $pages = Illuminate\Support\Facades\DB::table('users')
             <div>
                 <h4 class="logo-text">PT BSS MoM</h4>
             </div>
-            <div class="toggle-icon ms-auto"><i class='bx bx-arrow-back'></i>
+            <div class="toggle-icon ms-auto"><i class='bx bx-menu-alt-left'></i>
             </div>
         </div>
         <!--navigation-->
@@ -77,32 +77,31 @@ $pages = Illuminate\Support\Facades\DB::table('users')
                     <div class="menu-title">Archive</div>
                 </a>
             </li>
-            <a class="nav-link {{ request()->is('user.index') ? 'active' : '' }}" href="{{ route('user.index') }}">
-                <div class="parent-icon"><i class='bx bx-user'></i>
-                </div>
-                <div class="menu-title">Users</div>
-            </a>
+            <li>
+                <a href="javascript:;" class="has-arrow">
+                    <div class="parent-icon"><i class="bx bx-cog"></i></div>
+                    <div class="menu-title">Settings</div>
+                </a>
+                <ul>
+                    <li>
+                        <a class="nav-link {{ request()->is('user.index') ? 'active' : '' }}" href="{{ route('user.index') }}"><i class='bx bx-user'></i>User</a>
+                    </li>
+                    <li>
+                        <a class="nav-link {{ request()->is('departemen.index') ? 'active' : '' }}" href="{{ route('departemen.index') }}"><i class='bx bx-group'></i>Departement</a>
+                    </li>
+                    <li>
+                        <a class="nav-link {{ request()->is('group.index') ? 'active' : '' }}" href="{{ route('group.index') }}"><i class='bx bx-wrench'></i>Role</a>
+                    </li>
+                    <li>
+                        <a class="nav-link {{ request()->is('tracker.index') ? 'active' : '' }}" href="{{ route('tracker.index') }}"><i class='bx bx-file-find'></i>DWM Tracker</a>
+                    </li>
+                </ul>
+            </li>
+
             </li>
             </li>
-            <a class="nav-link {{ request()->is('departemen.index') ? 'active' : '' }}" href="{{ route('departemen.index') }}">
-                <div class="parent-icon"><i class='bx bx-group'></i>
-                </div>
-                <div class="menu-title">Departement</div>
-            </a>
             </li>
             </li>
-            <a class="nav-link {{ request()->is('group.index') ? 'active' : '' }}" href="{{ route('group.index') }}">
-                <div class="parent-icon"><i class='bx bx-wrench'></i>
-                </div>
-                <div class="menu-title">Role</div>
-            </a>
-            </li>
-            </li>
-            <a class="nav-link" href="{{ route('tracker.index') }}">
-                <div class="parent-icon"><i class='bx bx-file-find'></i>
-                </div>
-                <div class="menu-title">DWM Tracker</div>
-            </a>
             </li>
         </ul>
         <!--end navigation-->
@@ -282,4 +281,11 @@ $pages = Illuminate\Support\Facades\DB::table('users')
             </nav>
         </div>
     </header>
+    <script>
+        // JavaScript to toggle the sidebar initially
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const sidebarWrapper = document.querySelector('.sidebar-wrapper');
+            sidebarWrapper.classList.toggle('toggled');
+        });
+    </script>
     <!--end header -->

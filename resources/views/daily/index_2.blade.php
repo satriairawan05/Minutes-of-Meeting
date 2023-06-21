@@ -77,6 +77,7 @@ $delete = $page->access;
                                 </tr>
                                 @endforeach
                             </tbody>
+                            
                         </table>
                     </div>
                 </div>

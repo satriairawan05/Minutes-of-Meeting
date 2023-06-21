@@ -1,40 +1,7 @@
-@extends('layout.main')
-
-@php
-$create = 0;
-$read = 0;
-$update = 0;
-$delete = 0;
-@endphp
-
-@foreach ($pages as $page)
-@if($page->action == "Create")
-@php
-$create = $page->access;
-@endphp
-@endif
-
-@if($page->action == "Read")
-@php
-$read = $page->access;
-@endphp
-@endif
-
-@if($page->action == "Update")
-@php
-$update = $page->access;
-@endphp
-@endif
-
-@if($page->action == "Delete")
-@php
-$delete = $page->access;
-@endphp
-@endif
-@endforeach
-
-@section('content')
-<!--start page wrapper -->
+@extends('layout.main') @php $create = $pages[19]['access'] == 1; $read =
+$pages[18]['access'] == 1; $update = $pages[17]['access'] == 1; $delete =
+$pages[16]['access'] == 1; @endphp@section('content')
+<!-- Start page wrapper -->
 <link href="{{ asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
 <div class="page-wrapper">
     <div class="page-content">
@@ -57,7 +24,6 @@ $delete = $page->access;
             </div>
         </div>
         <!--end breadcrumb-->
-        <h6 class="mb-0 text-uppercase">Datatable of User</h6>
         <hr />
         <div class="card">
             <div class="card-body">
@@ -75,7 +41,7 @@ $delete = $page->access;
                             </tr>
                         </thead>
                         <tbody class="text-center">
-                            @if($read)
+                                @if($read)
                             @foreach ($users as $user)
                             <tr>
                                 <th scope="row">{{ $loop->iteration }}</th>
