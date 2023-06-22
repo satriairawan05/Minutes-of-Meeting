@@ -73,7 +73,7 @@ $delete = $pages[3]['access'] == 1;
                                 </a>
                                 @endif
                                 @if($delete)
-                                <form action="{{ route('meet.destroy', $d->meet_id) }}" method="POST" class="d-inline">
+                                <form onclick="pos5_success_noti()" action="{{ route('meet.destroy', $d->meet_id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-light" data-toggle="tooltip" title="Delete Data">
@@ -96,6 +96,23 @@ $delete = $pages[3]['access'] == 1;
 @endsection
 
 @section('scripts')
+@if(session('success'))
+<script>
+    function pos5_success_noti() {
+        Lobibox.notify("error", {
+            pauseDelayOnHover: true,
+            size: "mini",
+            icon: "bx bx-check-circle",
+            continueDelayOnInactiveTab: false,
+            position: "bottom right",
+            msg: "Deleted Successfully",
+        });
+    }
+    $(document).ready(function() {
+        pos5_success_noti();
+    });
+</script>
+@endif
 <!-- DataTables -->
 <script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>

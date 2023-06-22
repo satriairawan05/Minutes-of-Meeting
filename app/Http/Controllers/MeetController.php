@@ -17,14 +17,14 @@ class MeetController extends Controller
     {
         $page_name = "Meeting";
         $pages = User::leftJoin('group_pages', 'users.group_id', '=', 'group_pages.group_id')
-        ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
-        ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
-        ->where('users.group_id', '=', 'groups.group_id')
-        ->orWhere('pages.page_name', '=', $page_name)
-        ->orWhere('group_pages.access', '=', 1)
-        ->select(['group_name','page_name','action','access'])
-        ->limit(4)
-        ->get();
+            ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
+            ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
+            ->where('users.group_id', '=', 'groups.group_id')
+            ->orWhere('pages.page_name', '=', $page_name)
+            ->orWhere('group_pages.access', '=', 1)
+            ->select(['group_name', 'page_name', 'action', 'access'])
+            ->limit(4)
+            ->get();
 
         return view('meet.index', [
             'meets' => Meet::get(),
@@ -66,8 +66,8 @@ class MeetController extends Controller
             $meet->meet_attend = implode(" ", $request->input('meet_attend'));
             $meet->save();
 
-            return redirect('/meet')->with('success','Added Meet Successfully!');
-        } catch (QueryException $e){
+            return redirect('/meet')->with('success', 'Added Meet Successfully!');
+        } catch (QueryException $e) {
             return $e->getMessage();
         }
     }
@@ -113,9 +113,9 @@ class MeetController extends Controller
             $validate = $request->validate($rules);
             $validate['meet_attend'] = implode(" ", $request->input('meet_attend'));
 
-            Meet::where('meet_id',$meet->meet_id)->update($validate);
+            Meet::where('meet_id', $meet->meet_id)->update($validate);
 
-            return redirect('/meet')->with('success','Updated Meet Successfully!');
+            return redirect('/meet')->with('success', 'Updated Meet Successfully!');
         } catch (QueryException $e) {
             return $e->getMessage();
         }
