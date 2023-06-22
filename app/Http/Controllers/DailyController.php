@@ -228,11 +228,16 @@ class DailyController extends Controller
         }
     }
 
-    public function approved(Daily $daily)
+    public function approved()
     {
+        $data = [
+            'departemen' => request('departemen'),
+            'tracker' => request('tracker')
+        ];
+
         return view('daily.approved',[
-            'daily' => $daily,
-            'user' => User::get()
+            'daily' => Daily::leftJoin('daily_trackers', 'dailies.tracker_id', '=', 'daily_trackers.tracker_id')->get(),
+            'data' => $data
         ]);
     }
 

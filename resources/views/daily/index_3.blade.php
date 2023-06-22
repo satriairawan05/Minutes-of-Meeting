@@ -53,8 +53,7 @@ $delete = $page->access;
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a></li>
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-file"></i></a></li>
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-file-find"></i></a></li>
-
-                        <li class="breadcrumb-item" aria-current="page">Tracker Department</li>
+                        <li class="breadcrumb-item" aria-current="page">DWM Report</li>
                     </ol>
                 </nav>
             </div>
@@ -85,8 +84,8 @@ $delete = $page->access;
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($dailies as $daily)
                             @if($read)
+                            @foreach ($dailies as $daily)
                             <tr>
                                 <th scope="row">{!! $loop->iteration !!}</th>
                                 <td><a href="{!! route('daily.document',$daily->daily_id) !!}" class="text-decoration-none">{!! $daily->daily_xid !!}</a></td>
@@ -95,11 +94,6 @@ $delete = $page->access;
                                 <td>{!! $daily->status !!}</td>
                                 <td>{!! $daily->priority !!}</td>
                                 <td class="d-inline-block">
-                                    {{-- Approval --}}
-                                    @if($approval)
-                                    <a href="{!! route('daily.approval',$daily->daily_id) !!}" class="btn btn-light"><i class="bx bx-paperclip"></i></a>
-                                    @endif
-                                    {{-- Approval --}}
                                     {{-- Edit --}}
                                     @if($update)
                                     <a href="{!! route('daily.edit',$daily->daily_id) !!}" class="btn btn-light"><i class="bx bx-search-alt me-0"></i></a>
@@ -117,8 +111,8 @@ $delete = $page->access;
                                     {{-- Delete --}}
                                 </td>
                             </tr>
-                            @endif
                             @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div>
