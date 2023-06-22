@@ -39,7 +39,7 @@
                             {{-- start modal  --}}
                             <td>
 
-                                <a type="button" href="{{ route('group.edit', $group->group_id) }}" class="btn btn-light"><i class="bx bx-search-alt me-0"></i>
+                                <a type="button" href="{{ route('group.edit', $group->group_id) }}" class="btn btn-light"><i class="bx bx-edit me-0"></i>
                                 </a>
                                 <form onclick="pos5_success_noti()" action="{{ route('group.destroy',$group->group_id) }}" method="post">
                                     @csrf

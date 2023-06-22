@@ -15,50 +15,50 @@ $users = "";
 
 $access = "Read";
 $pages = Illuminate\Support\Facades\DB::table('users')
-    ->leftJoin('group_pages', 'users.group_id', '=', 'group_pages.group_id')
-    ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
-    ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
-    ->whereColumn('users.group_id', '=', 'groups.group_id')
-    ->where('group_pages.access', '=', 1)
-    ->where('pages.action', '=', $access)
-    ->groupBy('pages.page_id', 'groups.group_id')
-    ->orderBy('groups.group_name', 'ASC')
-    ->select('groups.group_id', 'pages.page_name', 'pages.action', 'group_pages.access')
-    ->get();
+->leftJoin('group_pages', 'users.group_id', '=', 'group_pages.group_id')
+->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
+->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
+->whereColumn('users.group_id', '=', 'groups.group_id')
+->where('group_pages.access', '=', 1)
+->where('pages.action', '=', $access)
+->groupBy('pages.page_id', 'groups.group_id')
+->orderBy('groups.group_name', 'ASC')
+->select('groups.group_id', 'pages.page_name', 'pages.action', 'group_pages.access')
+->get();
 @endphp
 
 @foreach ($pages as $page)
 @if(auth()->user()->group_id == $page->group_id)
-    @if($page->page_name == "Meeting")
-        @php
-            $readMeetings = $page->access;
-            $meetings = $page->page_name;
-        @endphp
-    @endif
-    @if($page->page_name == "Issue")
-        @php
-            $readIssues = $page->access;
-            $issues = $page->page_name;
-        @endphp
-    @endif
-    @if($page->page_name == "DWM_Report")
-        @php
-            $readDWMs = $page->access;
-            $dwms = $page->page_name;
-        @endphp
-    @endif
-    @if($page->page_name == "Archives")
-        @php
-            $readArchives = $page->access;
-            $archives = $page->page_name;
-        @endphp
-    @endif
-    @if($page->page_name == "User")
-        @php
-            $readUsers = $page->access;
-            $users = $page->page_name;
-        @endphp
-    @endif
+@if($page->page_name == "Meeting")
+@php
+$readMeetings = $page->access;
+$meetings = $page->page_name;
+@endphp
+@endif
+@if($page->page_name == "Issue")
+@php
+$readIssues = $page->access;
+$issues = $page->page_name;
+@endphp
+@endif
+@if($page->page_name == "DWM_Report")
+@php
+$readDWMs = $page->access;
+$dwms = $page->page_name;
+@endphp
+@endif
+@if($page->page_name == "Archives")
+@php
+$readArchives = $page->access;
+$archives = $page->page_name;
+@endphp
+@endif
+@if($page->page_name == "User")
+@php
+$readUsers = $page->access;
+$users = $page->page_name;
+@endphp
+@endif
 @endif
 @endforeach
 <!--sidebar wrapper -->
@@ -144,6 +144,14 @@ $pages = Illuminate\Support\Facades\DB::table('users')
                 <li>
                     <a class="nav-link {{ request()->is('tracker.index') ? 'active' : '' }}" href="{{ route('tracker.index') }}"><i class='bx bx-file-find'></i>DWM Tracker</a>
                 </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-calender-event"></i></div>
+                <div class="menu-title">Approval</div>
+            </a>
+            <ul>
                 <li>
                     <a class="nav-link {{ request()->is('tracker.index') ? 'active' : '' }}" href="{{ route('approval.index') }}"><i class='bx bx-file'></i>Approval</a>
                 </li>
