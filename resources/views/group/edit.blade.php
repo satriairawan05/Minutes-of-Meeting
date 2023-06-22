@@ -15,7 +15,7 @@
 					<ol class="breadcrumb mb-0 p-0">
 						<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a></li>
 						<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-wrench"></i></a></li>
-						<li class="breadcrumb-item active" aria-current="page">Edit User</li>
+						<li class="breadcrumb-item active" aria-current="page">Edit Role</li>
 					</ol>
 				</nav>
 			</div>
@@ -54,7 +54,7 @@
                                     @foreach ($page_distinct as $d)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ str_replace("_","", $d->page_name) }}</td>
+                                        <td>{{ str_replace("_"," ", $d->page_name) }}</td>
                                         <td style="text-align:center">
                                             @foreach ($pages as $p)
                                             @if($p->page_name == $d->page_name)

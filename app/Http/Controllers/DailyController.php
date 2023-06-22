@@ -43,8 +43,8 @@ class DailyController extends Controller
                 DB::raw('COALESCE(SUM(IFNULL(open.total, 0)), 0) + COALESCE(SUM(IFNULL(close.total, 0)), 0) as total')
             )
             ->leftJoin('daily_trackers as d2', 'd1.tracker_header', '=', 'd2.tracker_id')
-            ->leftJoin(DB::raw('(SELECT tracker_id, SUM(CASE WHEN status IN ("New", "Continue") THEN 1 ELSE 0 END) as total FROM dailies GROUP BY tracker_id) as open'), 'd1.tracker_id', '=', 'open.tracker_id')
-            ->leftJoin(DB::raw('(SELECT tracker_id, SUM(CASE WHEN status IN ("Complete", "Closed") THEN 1 ELSE 0 END) as total FROM dailies GROUP BY tracker_id) as close'), 'd1.tracker_id', '=', 'close.tracker_id')
+            ->leftJoin(DB::raw('(SELECT tracker_id, SUM(CASE WHEN status IN ("New","Continue") THEN 1 ELSE 0 END) as total FROM dailies GROUP BY tracker_id) as open'), 'd1.tracker_id', '=', 'open.tracker_id')
+            ->leftJoin(DB::raw('(SELECT tracker_id, SUM(CASE WHEN status IN ("Complete","Closed") THEN 1 ELSE 0 END) as total FROM dailies GROUP BY tracker_id) as close'), 'd1.tracker_id', '=', 'close.tracker_id')
             ->groupBy('d2.tracker_name', 'd1.tracker_name')
             ->where('d2.tracker_name', '=', request()->query('departemen'))
             ->get();
