@@ -24,7 +24,7 @@
     <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet">
 
-    <title>MOM PT BANGUN SEMERU SEJAHTERA</title>
+    <title>MOM | PT BANGUN SEMERU SEJAHTERA</title>
 </head>
 
 <body class="bg-theme bg-theme1">
