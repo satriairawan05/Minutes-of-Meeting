@@ -26,7 +26,7 @@
                         <table class="table table-striped" id="table">
                             <thead>
                                 <tr>
-                                    <th><input type="checkbox" id="checkboxmaster"></th>
+                                    <th></th>
                                     <th scope="col">ID</th>
                                     <th scope="col">Departemen</th>
                                     <th scope="col">Tracker</th>
@@ -34,17 +34,17 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @if($daily->count())
+                                @if($daily->count())
                                 @foreach ($daily as $d)
-                                <tr id="day_{{ $d->daily_id }}">
-                                    <td><input type="checkbox" id="checkbox"></td>
+                                <tr id="day_{!! $d->daily_id.strtolower($d->departemen).strtolower($data['tracker']) !!}">
+                                    <td><input type="checkbox" name="daily_id" value="{{ $d->daily_id }}" id="checkbox_{{ $d->daily_id }}" /></td>
                                     <td>{!! $d->daily_xid !!}</td>
                                     <td>{!! $d->departemen !!}</td>
                                     <td>{!! $d->tracker_name !!}</td>
                                     <td>{!! $d->status !!}</td>
                                 </tr>
                                 @endforeach
-                            @endif
+                                @endif
                             </tbody>
                         </table>
                     </div>
@@ -57,6 +57,23 @@
                 </form>
             </div>
         </div>
+        <script type="text/javascript">
+            const checkboxes = document.querySelectorAll('input[name="daily_ids[]"]');
+            const checkedCheckboxes = [];
+
+            checkboxes.forEach((checkbox) => {
+                checkbox.addEventListener('change', (e) => {
+                    if (e.target.checked) {
+                        checkedCheckboxes.push(e.target.value);
+                    } else {
+                        const index = checkedCheckboxes.indexOf(e.target.value);
+                        if (index > -1) {
+                            checkedCheckboxes.splice(index, 1);
+                        }
+                    }
+                });
+            });
+        </script>
     </div>
 </div>
 @endsection
