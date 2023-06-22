@@ -17,7 +17,7 @@ body:after {
   content: "";
   position: fixed;
   inset: 0;
-  background-color: #0e1c13;
+  background-color: #145332;
   height: 100vh;
   -webkit-clip-path: polygon(0 100%, 0 0, 100% 0, 70% 100%);
   clip-path: polygon(0 100%, 0 0, 100% 0, 70% 100%);
@@ -25,8 +25,8 @@ body:after {
 }
 
 .login-card {
-  background-color: white;
-  border: 1px solid #ddd;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #ffffff;
   box-shadow: 0 10px 50px -30px black;
   width: 1200px;
   border-radius: 30px;

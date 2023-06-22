@@ -24,7 +24,7 @@
     </style>
 </head>
 
-<body>
+<body class="bg-theme bg-theme1">
     <div class="login-card">
         <div class="column">
             <h1 class="flex text-center">Login</h1>
