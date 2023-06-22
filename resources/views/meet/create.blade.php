@@ -114,9 +114,9 @@
                                 <div class="col-sm-10">
                                     <select id="meet_attend" class="form-select form-control form-control-sm select2-no-search" name="meet_attend[]" multiple>
                                         @foreach ($users as $user)
-                                            <option value="{{ $user->name }}" @if(old('meet_attend') == $user->name) selected @endif>
-                                                {{ $user->name }}
-                                            </option>
+                                        <option value="{{ $user->name }}" @if(old('meet_attend')==$user->name) selected @endif>
+                                            {{ $user->name }}
+                                        </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -138,6 +138,18 @@
 @endsection
 
 @section('scripts')
+<script>
+    function pos5_success_noti() {
+        Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: 'Data deleted successfully.',
+            showConfirmButton: false,
+            timer: 3000
+        });
+    }
+</script>
+
 <!-- DataTables -->
 <script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>

@@ -97,22 +97,20 @@ $delete = $pages[3]['access'] == 1;
 
 @section('scripts')
 @if(session('success'))
-<script>
-    function pos5_success_noti() {
-        Lobibox.notify("error", {
-            pauseDelayOnHover: true,
-            size: "mini",
-            icon: "bx bx-check-circle",
-            continueDelayOnInactiveTab: false,
-            position: "bottom right",
-            msg: "Deleted Successfully",
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: '{{ session("success") }}',
+                showConfirmButton: false,
+                timer: 3000
+            });
         });
-    }
-    $(document).ready(function() {
-        pos5_success_noti();
-    });
-</script>
+    </script>
 @endif
+
+
 <!-- DataTables -->
 <script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
