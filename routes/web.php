@@ -55,7 +55,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('daily',DailyController::class);
     Route::get('daily/{daily}/approval',[DailyController::class, 'approved'])->name('daily.approval');
-    Route::post('daily/{daily}/approved',[DailyController::class, 'requestApproved'])->name('daily.approval.post');
+    Route::post('daily/approved',[DailyController::class, 'requestApproved'])->name('daily.approved');
     Route::get('daily/{daily}/document',[DailyController::class, 'document'])->name('daily.document');
 
     Route::resource('group', GroupController::class);
@@ -77,9 +77,10 @@ Route::middleware(['auth'])->group(function () {
         ->where('pages.action', '=', $access)
         ->groupBy('pages.page_name', 'groups.group_name')
         ->orderBy('groups.group_name')
-        ->selectRaw(['group_name', 'page_name', 'action', 'access']);
-
-        $pages->toSql();
+        ->selectRaw(['group_name', 'page_name', 'action', 'access'])
+        // ->pluck(['group_name', 'page_name', 'action', 'access'])
+        // ->select(['group_name', 'page_name', 'action', 'access'])
+        ->get();
 
         return response()->json([
             'title' => 'Pages data',

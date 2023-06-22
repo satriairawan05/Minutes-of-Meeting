@@ -231,12 +231,17 @@ class DailyController extends Controller
     public function approved(Daily $daily)
     {
         return view('daily.approved',[
-            'daily' => $daily
+            'daily' => $daily,
+            'user' => User::get()
         ]);
     }
 
     public function requestApproved(Request $request, Daily $daily, DailyApproval $dailyApproval)
     {
+        try {
 
+        } catch(QueryException $e) {
+            return $e->getMessage();
+        }
     }
 }
