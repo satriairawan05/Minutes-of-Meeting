@@ -10,6 +10,7 @@ use App\Models\Issue;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
 class IssueController extends Controller
@@ -22,16 +23,16 @@ class IssueController extends Controller
         $page_name = "Issue";
         $user_group = auth()->user()->group_id;
         $pages = DB::table('users')->leftJoin('group_pages', 'users.group_id', '=', 'group_pages.group_id')
-        ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
-        ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
-        ->whereColumn('users.group_id', '=', 'groups.group_id')
-        ->where('pages.page_name', '=', $page_name)
-        ->where('group_pages.access', '=', 1)
-        ->whereBetween('pages.page_id', [5, 9])
-        ->where('group_pages.group_id','=', $user_group)
-        ->select(['group_name', 'page_name', 'action', 'access'])
-        ->limit(5)
-        ->get();
+            ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
+            ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
+            ->whereColumn('users.group_id', '=', 'groups.group_id')
+            ->where('pages.page_name', '=', $page_name)
+            ->where('group_pages.access', '=', 1)
+            ->whereBetween('pages.page_id', [5, 9])
+            ->where('group_pages.group_id', '=', $user_group)
+            ->select(['group_name', 'page_name', 'action', 'access'])
+            ->limit(5)
+            ->get();
 
         $issue = Issue::distinct('tracker')->orderBy('tracker')->paginate(15);
 
@@ -136,7 +137,7 @@ class IssueController extends Controller
 
     public function approvedForm()
     {
-        return view('issue.approved',[
+        return view('issue.approved', [
             'approved' => Issue::get()
         ]);
     }
@@ -197,14 +198,21 @@ class IssueController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+
     public function destroy(Issue $issue)
     {
         try {
+            $file = $issue->file; // Get the file path before deleting the issue
+
             Issue::destroy($issue->issue_id);
 
-            $issue->file ? Storage::delete([$issue->file]) : Issue::destroy($issue->issue_id);
+            if ($file) {
+                Storage::delete([$file]); // Delete the file if it exists
+            }
 
-            return redirect('issue')->with('success', 'Deleted Issue Successfully!');
+            Session::flash('success', 'Deleted Issue Successfully!'); // Add the delete success notification
+
+            return redirect('issue');
         } catch (QueryException $e) {
             return $e->getMessage();
         }

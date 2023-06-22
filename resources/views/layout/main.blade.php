@@ -10,6 +10,7 @@
     <!--plugins-->
     <link href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.bootstrap5.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('assets/plugins/notifications/css/lobibox.min.css')}}" />
     <link href="{{ asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
@@ -109,6 +110,11 @@
     <script src="{{ asset('assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
+    
+    <!--notification js -->
+	<script src="{{asset('assets/plugins/notifications/js/lobibox.min.js')}}"></script>
+	<script src="{{asset('assets/plugins/notifications/js/notifications.min.js')}}"></script>
+	<script src="{{asset('assets/plugins/notifications/js/notification-custom-script.js')}}"></script>
 
     <!--app JS-->
     <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>

@@ -43,7 +43,7 @@
                                     <form action="{{ route('tracker.destroy',$tr->tracker_id) }}" method="post">
                                         @csrf
                                         @method('delete')
-                                        <button type="submit" class="btn btn-light"><i class="bx bxs-trash"></i></button>
+                                        <button onclick="pos5_success_noti()" type="submit" class="btn btn-light"><i class="bx bxs-trash"></i></button>
                                     </form>
                                 </div>
                             </td>
@@ -57,6 +57,11 @@
 </div>
 <!-- End page wrapper -->
 @endsection @section('scripts')
+@if(session('success'))
+<script>
+    pos5_success_noti();
+</script>
+@endif
 <!-- DataTables -->
 <script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>

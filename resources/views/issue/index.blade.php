@@ -90,101 +90,109 @@ $delete = $page->access;
 
                             // $days = $status->end_date->diffInDays(now()); // menghitung selisih hari antara end_date dan waktu saat ini
 
-                                @endphp
-                                @if($read)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{!! $issue->issue_xid !!}</td>
-                                    <td>{!! $issue->subject !!}</td>
-                                    <td><a href="{{ route('issue.document',$issue->issue_id) }}" class="text-decoration-none text-capitalize">{!! $issue->tracker !!}</a></td>
-                                    <td>{!! $issue->description !!}</td>
-                                    @if($issue->status == "New")
-                                    <td><span class="badge badge-primary-light">{!! $issue->status !!}</span></td>
-                                    @elseif ($issue->status == "Continue")
-                                    <td><span class="badge badge-info-light">{!! $issue->status !!}</span></td>
-                                    @elseif($issue->status == "Over Due")
-                                    <td><span class="badge badge-danger-light">{!! $issue->status !!}</span></td>
-                                    @elseif ($issue->status == "Closed")
-                                    <td><span class="badge badge-success">{!! $issue->status !!}</span></td>
-                                    @else
-                                    <td><span class="badge badge-primary">{!! $issue->status !!}</span></td>
+                            @endphp
+                            @if($read)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{!! $issue->issue_xid !!}</td>
+                                <td>{!! $issue->subject !!}</td>
+                                <td><a href="{{ route('issue.document',$issue->issue_id) }}" class="text-decoration-none text-capitalize">{!! $issue->tracker !!}</a></td>
+                                <td>{!! $issue->description !!}</td>
+                                @if($issue->status == "New")
+                                <td><span class="badge badge-primary-light">{!! $issue->status !!}</span></td>
+                                @elseif ($issue->status == "Continue")
+                                <td><span class="badge badge-info-light">{!! $issue->status !!}</span></td>
+                                @elseif($issue->status == "Over Due")
+                                <td><span class="badge badge-danger-light">{!! $issue->status !!}</span></td>
+                                @elseif ($issue->status == "Closed")
+                                <td><span class="badge badge-success">{!! $issue->status !!}</span></td>
+                                @else
+                                <td><span class="badge badge-primary">{!! $issue->status !!}</span></td>
+                                @endif
+                                @if ($issue->priority == "Low")
+                                <td><span class="badge badge-success-light">{!! $issue->priority !!}</span></td>
+                                @elseif ($issue->priority == "Medium")
+                                <td><span class="badge badge-warning-light">{!! $issue->priority !!}</span></td>
+                                @else
+                                <td><span class="badge badge-danger-light">{!! $issue->priority !!}</span></td>
+                                @endif
+                                <td>{!! \Carbon\Carbon::parse($issue->start_date)->format('d-m-Y') !!}</td>
+                                <td>{!! \Carbon\Carbon::parse($issue->end_date)->format('d-m-Y') !!}</td>
+                                @if ($hasil)
+                                <td>- {!! $day !!} Day{{ $hasil > 1 ? 's' : '' }}</td>
+                                @else
+                                <td>+ {!! $day !!} Day{{ $hasil > 1 ? 's' : '' }}</td>
+                                @endif
+                                <td>{!! $issue->assignee !!}</td>
+                                <td>{!! $issue->pic !!}</td>
+                                {{-- start modal  --}}
+                                <td>
+                                    {{-- Edit Modal Trigger --}}
+                                    @if($update)
+                                    <a href="{{ route('issue.edit', $issue->issue_id) }}" class="btn btn-light" data-toggle="tooltip" title="Edit Data">
+                                        <i class="bx bx-search-alt me-0"></i>
+                                    </a>
                                     @endif
-                                    @if ($issue->priority == "Low")
-                                    <td><span class="badge badge-success-light">{!! $issue->priority !!}</span></td>
-                                    @elseif ($issue->priority == "Medium")
-                                    <td><span class="badge badge-warning-light">{!! $issue->priority !!}</span></td>
-                                    @else
-                                    <td><span class="badge badge-danger-light">{!! $issue->priority !!}</span></td>
+                                    {{-- End of Edit Modal Trigger --}}
+                                    {{-- Delete Modal Trigger --}}
+                                    @if($delete)
+                                    <form onclick="pos5_success_noti()" action="{{ route('issue.destroy', $issue->issue_id) }}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-light" data-toggle="tooltip" title="Delete Data"><i class="bx bx-trash-alt me-0"></i></button>
+                                    </form>
                                     @endif
-                                    <td>{!! \Carbon\Carbon::parse($issue->start_date)->format('d-m-Y') !!}</td>
-                                    <td>{!! \Carbon\Carbon::parse($issue->end_date)->format('d-m-Y') !!}</td>
-                                    @if ($hasil)
-                                    <td>- {!! $day !!} Day{{ $hasil > 1 ? 's' : '' }}</td>
-                                    @else
-                                    <td>+ {!! $day !!} Day{{ $hasil > 1 ? 's' : '' }}</td>
-                                    @endif
-                                    <td>{!! $issue->assignee !!}</td>
-                                    <td>{!! $issue->pic !!}</td>
-                                    {{-- start modal  --}}
-                                    <td>
-                                        {{-- Edit Modal Trigger --}}
-                                        @if($update)
-                                        <a href="{{ route('issue.edit', $issue->issue_id) }}" class="btn btn-light" data-toggle="tooltip" title="Edit Data">
-                                            <i class="bx bx-search-alt me-0"></i>
-                                        </a>
-                                        @endif
-                                        {{-- End of Edit Modal Trigger --}}
-                                        {{-- Delete Modal Trigger --}}
-                                        @if($delete)
-                                        <form action="{{ route('issue.destroy', $issue->issue_id) }}" method="post">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="btn btn-light" data-toggle="tooltip" title="Delete Data"><i class="bx bx-trash-alt me-0"></i></button>
-                                        </form>
-                                        @endif
-                                        {{-- End of Delete Modal Trigger --}}
-                                        {{-- Delete Modal --}}
-                                        <div class="modal fade" id="deleteModal{{ $issue->issue_id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $issue->issue_id }}" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="deleteModalLabel{{ $issue->issue_id }}">Delete
-                                                            Data</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
+                                    {{-- End of Delete Modal Trigger --}}
+                                    {{-- Delete Modal --}}
+                                    <div class="modal fade" id="deleteModal{{ $issue->issue_id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $issue->issue_id }}" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="deleteModalLabel{{ $issue->issue_id }}">Delete
+                                                        Data</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Apakah anda yakin?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <form  onsubmit="return deleteData('{{ $issue->subject }}')" method="POST" action="{{ route('issue.destroy', $issue->issue_id) }}">
+                                                        @csrf
+                                                        <button  type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn bg-gradient-danger" data-bs-dismiss="modal">Delete</button>
                                                         </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        Apakah anda yakin?
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <form onsubmit="return deleteData('{{ $issue->subject }}')" method="POST" action="{{ route('issue.destroy', $issue->issue_id) }}">
-                                                            @csrf
-                                                            <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn bg-gradient-danger" data-bs-dismiss="modal">Delete</button>
-                                                            </button>
-                                                        </form>
-                                                    </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
-                                        {{-- End of Delete Modal --}}
-                                    </td>
-                                </tr>
-                                @endif
-                                @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                                    </div>
+                                    {{-- End of Delete Modal --}}
+                                </td>
+                            </tr>
+                            @endif
+                            @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+</div>
 <!--end page wrapper -->
 
 @endsection
 
 @section('scripts')
+@parent
+    @if(session('success'))
+        <script>
+            setTimeout(function() {
+                pos5_success_noti();
+            }, 1000);
+        </script>
+    @endif
 <!-- DataTables -->
 <script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>

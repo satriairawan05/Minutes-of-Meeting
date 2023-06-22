@@ -93,7 +93,7 @@ $delete = $page->access;
                                         {{-- Edit --}}
                                         {{-- Delete --}}
                                         @if($delete)
-                                        <form action="{{ route('user.destroy', $user->id) }}" method="post">
+                                        <form onclick="pos5_success_noti()" action="{{ route('user.destroy', $user->id) }}" method="post">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-light"><i class="bx bxs-trash"></i>
@@ -148,6 +148,11 @@ $delete = $page->access;
 @endsection
 
 @section('scripts')
+@if(session('success'))
+<script>
+    pos5_success_noti();
+</script>
+@endif
 <!-- DataTables -->
 <script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>

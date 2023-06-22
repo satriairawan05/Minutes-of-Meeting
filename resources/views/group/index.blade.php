@@ -41,7 +41,7 @@
 
                                 <a type="button" href="{{ route('group.edit', $group->group_id) }}" class="btn btn-light"><i class="bx bx-search-alt me-0"></i>
                                 </a>
-                                <form action="{{ route('group.destroy',$group->group_id) }}" method="post">
+                                <form onclick="pos5_success_noti()" action="{{ route('group.destroy',$group->group_id) }}" method="post">
                                     @csrf
                                     @method('delete')
                                     <button type="submit" class="btn btn-light"><i class="bx bxs-trash-alt me-0"></i>
@@ -87,6 +87,11 @@
 </div>
 <!-- End page wrapper -->
 @endsection @section('scripts')
+@if(session('success'))
+<script>
+    pos5_success_noti();
+</script>
+@endif
 <!-- DataTables -->
 <script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
