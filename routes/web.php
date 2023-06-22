@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApprovalController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MeetController;
 use App\Http\Controllers\DailyController;
@@ -59,6 +60,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('group', GroupController::class);
     Route::resource('tracker', TrackerController::class);
+
+    Route::resource('approval',ApprovalController::class);
 
     Route::get('preference', function () {
         return view('pref.index');

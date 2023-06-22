@@ -144,6 +144,9 @@ $pages = Illuminate\Support\Facades\DB::table('users')
                 <li>
                     <a class="nav-link {{ request()->is('tracker.index') ? 'active' : '' }}" href="{{ route('tracker.index') }}"><i class='bx bx-file-find'></i>DWM Tracker</a>
                 </li>
+                <li>
+                    <a class="nav-link {{ request()->is('tracker.index') ? 'active' : '' }}" href="{{ route('approval.index') }}"><i class='bx bx-file'></i>Approval</a>
+                </li>
             </ul>
         </li>
         @endif
