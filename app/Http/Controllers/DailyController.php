@@ -91,14 +91,15 @@ class DailyController extends Controller
         $id = $prefix . str_pad($count, 3, '0', STR_PAD_LEFT) . "/" . $formattedDate;
 
         $data = [
-            'departemen' => request()->query('departemen'),
-            'tracker' => request()->query('tracker')
+            'departemen' => request('departemen'),
+            'tracker' => request('tracker')
         ];
 
-        $tracker = Tracker::leftJoin('dailies', 'daily_trackers.tracker_id', '=', 'dailies.tracker_id')
+        $tracker = DB::table('daily_trackers')->leftJoin('dailies', 'daily_trackers.tracker_id', '=', 'dailies.tracker_id')
         ->where('tracker_header','>',0)
         ->where('departemen','=',$data['departemen'])
-        ->distinct('tracker_name')
+        ->where('tracker_name','=',$data['tracker'])
+        ->select('*')
         ->get();
 
         return view('daily.create', [

@@ -48,7 +48,7 @@
                                 <td>{!! $app->app_ordinal !!}</td>
                                 <td>{!! $app->app_pic !!}</td>
                                 <td>{!! $app->app_closing !!}</td>
-                                <td>
+                                <td class="d-inline-block">
                                 <!-- Edit -->
                                 <a href="{!! route('approval.edit',$app->app_list_id) !!}" data-toggle="tooltip" title="Edit data" class="btn btn-light px-4"><i class="bx bx-edit"></i></a>
                                 <!-- Edit -->
