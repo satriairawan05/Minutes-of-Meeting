@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=, initial-scale=1.0">
     <!--favicon-->
     <link rel="icon" href="{{ asset('assets/img/brand/icon.png') }}" type="image/png" />
-    <title>MOM | PT BANGUN SEMERU SEJAHTERA</title>
+    <title>Minutes of Meeting | PT BUMI SEMERU SEJAHTERA</title>
     <link rel="stylesheet" href="{{asset('assets/scss/style.css')  }}">
     <link rel="stylesheet" href="{{asset('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css') }}">
     <style>

@@ -22,7 +22,7 @@
     <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet">
 
-    <title>PT BSS MoM</title>
+    <title>Minutes of Meeting | PT BUMI SEMERU SEJAHTERA</title>
 </head>
 
 <body class="bg-theme bg-theme1">
