@@ -61,9 +61,6 @@ $delete = $page->access;
                 @if($create)
                 <a type="button" href="{!! url('/daily/create?departemen='.$data['departemen'].'&tracker='.$data['tracker']) !!}" data-toggle="tooltip" title="Add new data" type="button" class="btn btn-light px-4"><i class="bx bx-plus-circle"></i>Add Tracker Department</a>
                 @endif
-                @if($approval)
-                <a href="{!! url('daily/'.$data['departemen'].'/approval/'.$data['tracker']) !!}" data-toggle="tooltip" title="Approval" class="btn btn-light px-4"><i class="bx bx-file"></i>Approval</a>
-                @endif
             </div>
         </div>
         <!-- End breadcrumb -->
@@ -97,6 +94,52 @@ $delete = $page->access;
                                 <td>{!! $daily->status !!}</td>
                                 <td>{!! $daily->priority !!}</td>
                                 <td class="d-inline-block">
+                                    {{-- Approval --}}
+                                    @if($approval)
+                                    <button type="button" data-toggle="tooltip" data-bs-toggle="modal" data-bs-target="#exampleModal{!! $daily->daily_id !!}" title="Approval" class="btn btn-light px-4"><i class="bx bx-file"></i></button>
+                                    <form action="{!! route('daily.approved') !!}" method="post">
+                                        @csrf
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal{!! $daily->daily_id !!}" tabindex="-1" aria-labelledby="exampleModalLabel{!! $daily->daily_id !!}" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel{!! $daily->daily_id !!}">{!! $daily->daily_xid !!}</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <input type="hidden" name="approvedby" value="{!! auth()->user()->name !!}">
+                                                            <div class="col-6">
+                                                                <label id="status_label" for="status" class="form-label">Status</label>
+                                                                <input type="text" name="status" id="status" value="{!! old('status') !!}" placeholder="Masukan Status" class="form-control form-control-sm" autofocus required>
+                                                                @error('status')
+                                                                <div class="invalid-feedback">
+                                                                    {{ $message }}
+                                                                </div>
+                                                                @enderror
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <label id="keterangan_label" for="keterangan" class="form-label">Keterangan</label>
+                                                                <input type="text" name="keterangan" id="keterangan" value="{!! old('keterangan') !!}" placeholder="Masukan Keterangan" class="form-control form-control-sm" autofocus required>
+                                                                @error('keterangan')
+                                                                <div class="invalid-feedback">
+                                                                    {{ $message }}
+                                                                </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal"><i class='bx bx-x'></i> Close</button>
+                                                        <button type="submit" class="btn btn-light px-2"><i class='bx bx-save'></i>Save Changes</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    @endif
+                                    {{-- Approval --}}
                                     {{-- Edit --}}
                                     @if($update)
                                     <a href="{!! route('daily.edit',$daily->daily_id) !!}" class="btn btn-light"><i class="bx bx-search-alt me-0"></i></a>
@@ -127,4 +170,4 @@ $delete = $page->access;
             </div>
         </div>
     </div>
-@endsection
+    @endsection

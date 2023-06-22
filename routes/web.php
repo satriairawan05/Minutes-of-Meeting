@@ -54,8 +54,7 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('resume/{issue}', [ResumeController::class, 'destroy'])->name('resume.issue.delete');
 
     Route::resource('daily', DailyController::class);
-    Route::get('daily/{departemen}/approval/{tracker}', [DailyController::class, 'approved'])->name('daily.approval');
-    Route::post('daily/{departemen}/approved/{tracker}', [DailyController::class, 'requestApproved'])->name('daily.approved');
+    Route::post('daily/approved',[DailyController::class, 'requestApproved'])->name('daily.approved');
     Route::get('daily/{daily}/document', [DailyController::class, 'document'])->name('daily.document');
 
     Route::resource('group', GroupController::class);
@@ -64,26 +63,4 @@ Route::middleware(['auth'])->group(function () {
     Route::get('preference', function () {
         return view('pref.index');
     })->name('preference');
-
-    // experiment
-    Route::get('/sidebar', function () {
-        $access = "Read";
-
-        $pages = Illuminate\Support\Facades\DB::table('users')
-            ->leftJoin('group_pages', 'users.group_id', '=', 'group_pages.group_id')
-            ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
-            ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
-            ->whereColumn('users.group_id', '=', 'groups.group_id')
-            ->where('group_pages.access', '=', 1)
-            ->where('pages.action', '=', $access)
-            ->groupBy('pages.page_id', 'groups.group_id')
-            ->orderBy('groups.group_name', 'ASC')
-            ->select('groups.group_id', 'pages.page_name', 'pages.action', 'group_pages.access')
-            ->get();
-
-        return response()->json([
-            'title' => 'Sidebar data',
-            'data' => $pages
-        ]);
-    });
 });

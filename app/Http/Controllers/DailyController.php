@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Daily;
-use App\Models\DailyApproval;
 use App\Models\Tracker;
 use App\Models\Departemen;
 use Illuminate\Http\Request;
@@ -43,8 +42,8 @@ class DailyController extends Controller
                 DB::raw('COALESCE(SUM(IFNULL(open.total, 0)), 0) + COALESCE(SUM(IFNULL(close.total, 0)), 0) as total')
             )
             ->leftJoin('daily_trackers as d2', 'd1.tracker_header', '=', 'd2.tracker_id')
-            ->leftJoin(DB::raw('(SELECT tracker_id, SUM(CASE WHEN status IN ("New","Continue") THEN 1 ELSE 0 END) as total FROM dailies GROUP BY tracker_id) as open'), 'd1.tracker_id', '=', 'open.tracker_id')
-            ->leftJoin(DB::raw('(SELECT tracker_id, SUM(CASE WHEN status IN ("Complete","Closed") THEN 1 ELSE 0 END) as total FROM dailies GROUP BY tracker_id) as close'), 'd1.tracker_id', '=', 'close.tracker_id')
+            ->leftJoin(DB::raw('(SELECT tracker_id, SUM(CASE WHEN status IN ("New","Continue","Complete") THEN 1 ELSE 0 END) as total FROM dailies GROUP BY tracker_id) as open'), 'd1.tracker_id', '=', 'open.tracker_id')
+            ->leftJoin(DB::raw('(SELECT tracker_id, SUM(CASE WHEN status IN ("Closed") THEN 1 ELSE 0 END) as total FROM dailies GROUP BY tracker_id) as close'), 'd1.tracker_id', '=', 'close.tracker_id')
             ->groupBy('d2.tracker_name', 'd1.tracker_name')
             ->where('d2.tracker_name', '=', request()->query('departemen'))
             ->get();
@@ -228,23 +227,10 @@ class DailyController extends Controller
         }
     }
 
-    public function approved()
-    {
-        $data = [
-            'departemen' => request('departemen'),
-            'tracker' => request('tracker')
-        ];
-
-        return view('daily.approved',[
-            'daily' => Daily::leftJoin('daily_trackers', 'dailies.tracker_id', '=', 'daily_trackers.tracker_id')->get(),
-            'data' => $data
-        ]);
-    }
-
-    public function requestApproved(Request $request, Daily $daily, DailyApproval $dailyApproval)
+    public function requestApproved(Request $request, Daily $daily)
     {
         try {
-
+            return dd($request->all());
         } catch(QueryException $e) {
             return $e->getMessage();
         }
