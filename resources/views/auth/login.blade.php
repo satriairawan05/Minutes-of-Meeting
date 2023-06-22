@@ -114,7 +114,7 @@
                                             </div>
                                             <div class="col-12">
                                                 <div class="d-grid">
-                                                    <button type="submit" class="btn btn-primary">Log in</button>
+                                                    <button type="submit" class="btn btn-light">Log in</button>
                                                 </div>
                                             </div>
                                             <div class="col-12">
