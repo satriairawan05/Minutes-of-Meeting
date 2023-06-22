@@ -23,7 +23,7 @@
     <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet">
 
-    <title>PT BSS MoM</title>
+    <title>MOM PT BANGUN SEMERU SEJAHTERA</title>
 </head>
 
 <body class="bg-theme bg-theme1">
@@ -47,7 +47,7 @@
     </div>
     <!--end wrapper-->
     <!--start switcher-->
-    <div class="switcher-wrapper">
+    <!-- <div class="switcher-wrapper">
         <div class="switcher-btn"> <i class='bx bx-cog bx-spin'></i>
         </div>
         <div class="switcher-body">
@@ -81,7 +81,7 @@
                 <li id="theme15"></li>
             </ul>
         </div>
-    </div>
+    </div> -->
     <!--end switcher-->
     <!-- Bootstrap JS -->
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>

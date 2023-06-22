@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>MoM Suemeru Grup</title>
+    <!--favicon-->
+    <link rel="icon" href="{{ asset('assets/img/brand/icon.png') }}" type="image/png" />
+    <title>MOM PT BANGUN SEMERU SEJAHTERA</title>
     <link rel="stylesheet" href="{{asset('assets/scss/style.css')  }}">
     <link rel="stylesheet" href="{{asset('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css') }}">
     <style>
         .flex {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-direction: column;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
         }
+
         .flex button {
-          margin-top: 1rem;
+            margin-top: 1rem;
         }
     </style>
 </head>
+
 <body>
     <div class="login-card">
         <div class="column">
@@ -63,4 +68,5 @@
     </div>
 
 </body>
+
 </html>
