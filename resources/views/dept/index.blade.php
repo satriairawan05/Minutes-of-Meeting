@@ -26,25 +26,23 @@
                 <table id="example2" class="table table-hover table-mc-light">
                     <thead class="table-header">
                         <tr>
-                            <th style="text-align: center;">No</th>
-                            <th style="text-align: center;">Name</th>
-                            <th style="text-align: center;">Actions</th>
+                            <th style="text-align: center; width:25px">No</th>
+                            <th>Name</th>
+                            <th style="text-align: center; width: 100px">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($depts as $dept)
                         <tr>
                             <td style="text-align: center;">{{ $loop->iteration }}</td>
-                            <td style="text-align: center;">DEPARTEMEN {{ $dept->name }}</td>
+                            <td>DEPARTEMEN {{ $dept->name }}</td>
                             <td style="text-align: center;">
-                                <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a type="button" href="{!! route('departemen.edit', $dept->id) !!}" class="btn btn-light"><i class="bx bx-search-alt me-0"></i></a>
-                                    <form onclick="pos5_success_noti()" action="{!! route('departemen.destroy',$dept->id) !!}" method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit" class="btn btn-light"><i class="bx bxs-trash"></i></button>
-                                    </form>
-                                </div>
+                               <a type="button" href="{!! route('departemen.edit', $dept->id) !!}" class="btn btn-light"><i class="bx bx-search-alt me-0"></i></a>
+                                <form onclick="pos5_success_noti()" action="{!! route('departemen.destroy',$dept->id) !!}" method="post" class="d-inline">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-light"><i class="bx bxs-trash-alt me-0"></i></button>
+                                </form>
 
                                 {{-- Delete Modal --}}
                                 <div class="modal fade" id="deleteModal{{ $dept->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $dept->id }}" aria-hidden="true">

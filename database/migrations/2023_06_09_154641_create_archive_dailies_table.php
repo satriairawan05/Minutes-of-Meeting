@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('assignee',100);
             $table->string('pic',100);
             $table->tinyInteger('is_private')->nullable();
+            $table->string('priority',100);
             $table->timestamps();
         });
     }

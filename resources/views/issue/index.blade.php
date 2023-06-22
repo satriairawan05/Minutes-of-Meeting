@@ -75,7 +75,7 @@ $delete = $page->access;
                             <th>Days (+/-)</th>
                             <th>Asiggnee</th>
                             <th>PIC</th>
-                            <th width="100px">Action</th>
+                            <th style="width:100px">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -98,7 +98,8 @@ $delete = $page->access;
                                 <td>{!! $issue->subject !!}</td>
                                 <td><a href="{{ route('issue.document',$issue->issue_id) }}" class="text-decoration-none text-capitalize">{!! $issue->tracker !!}</a></td>
                                 <td>{!! $issue->description !!}</td>
-                                @if($issue->status == "New")
+                                <td>{!! $issue->status !!}</td>
+                                {{-- @if($issue->status == "New")
                                 <td><span class="badge badge-primary-light">{!! $issue->status !!}</span></td>
                                 @elseif ($issue->status == "Continue")
                                 <td><span class="badge badge-info-light">{!! $issue->status !!}</span></td>
@@ -115,14 +116,19 @@ $delete = $page->access;
                                 <td><span class="badge badge-warning-light">{!! $issue->priority !!}</span></td>
                                 @else
                                 <td><span class="badge badge-danger-light">{!! $issue->priority !!}</span></td>
-                                @endif
+                                @endif --}}
+                                <td>{!! $issue->priority !!}</td>
                                 <td>{!! \Carbon\Carbon::parse($issue->start_date)->format('d-m-Y') !!}</td>
                                 <td>{!! \Carbon\Carbon::parse($issue->end_date)->format('d-m-Y') !!}</td>
-                                @if ($hasil)
-                                <td>- {!! $day !!} Day{{ $hasil > 1 ? 's' : '' }}</td>
+                        
+                                @if (now() == $endDate)
+                                <td>{!! $day !!}</td>
+                                @elseif(now() < $endDate)
+                                <td>- {!! $day !!} Day{{ $day > 1 ? 's' : '' }}</td>
                                 @else
-                                <td>+ {!! $day !!} Day{{ $hasil > 1 ? 's' : '' }}</td>
+                                <td>+ {!! $day !!} Day{{ $day > 1 ? 's' : '' }}</td>
                                 @endif
+
                                 <td>{!! $issue->assignee !!}</td>
                                 <td>{!! $issue->pic !!}</td>
                                 {{-- start modal  --}}
@@ -136,7 +142,7 @@ $delete = $page->access;
                                     {{-- End of Edit Modal Trigger --}}
                                     {{-- Delete Modal Trigger --}}
                                     @if($delete)
-                                    <form onclick="pos5_success_noti()" action="{{ route('issue.destroy', $issue->issue_id) }}" method="post">
+                                    <form onclick="pos5_success_noti()" action="{{ route('issue.destroy', $issue->issue_id) }}" method="post" class="d-inline">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-light" data-toggle="tooltip" title="Delete Data"><i class="bx bx-trash-alt me-0"></i></button>

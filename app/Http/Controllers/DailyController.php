@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Storage;
+use PHPUnit\Event\Tracer\Tracer;
 
 class DailyController extends Controller
 {
@@ -96,10 +97,12 @@ class DailyController extends Controller
             'tracker' => request()->query('tracker')
         ];
 
-        $tracker = Tracker::leftJoin('dailies', 'daily_trackers.tracker_id', '=', 'dailies.tracker_id')
-        ->where('tracker_header','>',0)
-        ->where('departemen','=',$data['departemen'])
-        ->distinct('tracker_name')
+        $d_tracker = Tracker::where('tracker_name','=',$data['departemen'])->first();
+       
+        $tracker_header = $d_tracker->tracker_id;
+
+        $tracker = Tracker::where('tracker_header','>',0)
+        ->where('tracker_header','=', $tracker_header)
         ->get();
 
         return view('daily.create', [
@@ -135,7 +138,10 @@ class DailyController extends Controller
             $daily->is_private = $request->input('is_private', 0);
             $daily->save();
 
-            return redirect('/daily')->with('sucess', 'Added Daily Successfully!');
+            $tracker = Tracker::where('tracker_id','=',$request->tracker)->first();
+            $tracker_name = $tracker->tracker_name;
+
+            return redirect('/daily?departemen='.$request->departemen.'&tracker='.$tracker_name)->with('sucess', 'Added Daily Successfully!');
         } catch (QueryException $e) {
             return $e->getMessage();
         }

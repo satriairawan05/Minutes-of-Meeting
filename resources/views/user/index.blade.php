@@ -61,31 +61,30 @@ $delete = $page->access;
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="example2" class="table table-striped table-bordered">
-                        <thead class="table-header text-center">
+                    <table id="example2" class="table">
+                        <thead class="table-header">
                             <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Roles</th>
+                                <th style="text-align:center; width:25px">No</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Roles</th>
                                 @if($update || $delete)
-                                <th scope="col">Action</th>
+                                <th style="text-align:center; width:100px">Action</th>
                                 @endif
                             </tr>
                         </thead>
-                        <tbody class="text-center">
+                        <tbody>
                             @if($read)
                             @foreach ($users as $user)
                             <tr>
-                                <th scope="row">{{ $loop->iteration }}</th>
+                                <th style="text-align:center">{{ $loop->iteration }}</th>
                                 <td>{!! $user->name !!}</td>
                                 <td>{!! $user->email !!}</td>
                                 <td>{!! $user->group_name !!}</td>
                                 @if($update || $delete)
-                                <td clas="d-inline">
+                                <td style="text-align:center">
                                     @endif
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                        {{-- Edit --}}
+                                    {{-- Edit --}}
                                         @if($update)
                                         <a href="{{ route('user.edit', $user->id) }}" class="btn btn-light"><i class="bx bx-search-alt me-0"></i>
                                         </a>
@@ -93,15 +92,14 @@ $delete = $page->access;
                                         {{-- Edit --}}
                                         {{-- Delete --}}
                                         @if($delete)
-                                        <form onclick="pos5_success_noti()" action="{{ route('user.destroy', $user->id) }}" method="post">
+                                        <form onclick="pos5_success_noti()" action="{{ route('user.destroy', $user->id) }}" method="post" class="d-inline">
                                             @csrf
                                             @method('delete')
-                                            <button type="submit" class="btn btn-light"><i class="bx bxs-trash"></i>
+                                            <button type="submit" class="btn btn-light"><i class="bx bxs-trash-alt me-0"></i>
                                             </button>
                                         </form>
                                         @endif
                                         {{-- Delete --}}
-                                    </div>
                                     {{-- Delete Modal --}}
                                     <div class="modal fade" id="deleteModal{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $user->id }}" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">

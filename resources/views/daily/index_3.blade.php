@@ -74,26 +74,26 @@ $delete = $page->access;
                     <table id="example2" class="table">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">ID</th>
-                                <th scope="col">Departemen</th>
-                                <th scope="col">Tracker</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Priority</th>
-                                <th scope="col">Handle</th>
+                                <th style="text-align:center; width:25px">#</th>
+                                <th>ID</th>
+                                <th>Departemen</th>
+                                <th>Tracker</th>
+                                <th>Status</th>
+                                <th>Priority</th>
+                                <th style="text-align:center; width:100px">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @if($read)
                             @foreach ($dailies as $daily)
                             <tr>
-                                <th scope="row">{!! $loop->iteration !!}</th>
+                                <th style="text-align:center">{!! $loop->iteration !!}</th>
                                 <td><a href="{!! route('daily.document',$daily->daily_id) !!}" class="text-decoration-none">{!! $daily->daily_xid !!}</a></td>
                                 <td>{!! $daily->departemen !!}</td>
                                 <td>{!! $daily->tracker_name !!}</td>
                                 <td>{!! $daily->status !!}</td>
                                 <td>{!! $daily->priority !!}</td>
-                                <td class="d-inline-block">
+                                <td style="text-align:center">
                                     {{-- Edit --}}
                                     @if($update)
                                     <a href="{!! route('daily.edit',$daily->daily_id) !!}" class="btn btn-light"><i class="bx bx-search-alt me-0"></i></a>
@@ -101,7 +101,7 @@ $delete = $page->access;
                                     {{-- Edit --}}
                                     {{-- Delete --}}
                                     @if($delete)
-                                    <form action="{!! route('daily.destroy',$daily->daily_id) !!}" method="post">
+                                    <form action="{!! route('daily.destroy',$daily->daily_id) !!}" method="post" class="d-inline">
                                         @csrf
                                         <button type="submit" class="btn btn-light">
                                             <i class="bx bx-trash-alt me-0"></i>
@@ -118,7 +118,7 @@ $delete = $page->access;
                 </div>
                 <div class="row mb-3">
                     <div class="col-12 d-flex justify-content-between align-items-center">
-                        <a href="{{ route('daily.index') }}" class="btn btn-light px-2"><i class='bx bx-left-arrow-alt mr-1'></i>DWM Report</button></a>
+                        <a <a href="{{ route('daily.index') }}?departemen={{ $data['departemen'] }}" class="btn btn-light px-2"><i class='bx bx-left-arrow-alt mr-1'></i>DWM Report</button></a>
                     </div>
                 </div>
             </div>

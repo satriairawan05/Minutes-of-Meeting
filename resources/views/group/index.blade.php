@@ -26,22 +26,22 @@
                 <table id="example2" class="table table-hover table-mc-light">
                     <thead class="table-header text-center">
                         <tr>
-                            <th>No</th>
+                            <th style="text-align:center; width:25px">No</th>
                             <th>Name</th>
-                            <th width="100px">Action</th>
+                            <th style="text-align:center; width:100px">Action</th>
                         </tr>
                     </thead>
-                    <tbody class="text-center">
+                    <tbody>
                         @foreach ($groups as $group)
                         <tr>
                             <td scope="row">{!! $loop->iteration !!}</td>
                             <td>{!! $group->group_name !!}</td>
                             {{-- start modal  --}}
-                            <td>
+                            <td style="text-align:center;">
 
                                 <a type="button" href="{{ route('group.edit', $group->group_id) }}" class="btn btn-light"><i class="bx bx-search-alt me-0"></i>
                                 </a>
-                                <form onclick="pos5_success_noti()" action="{{ route('group.destroy',$group->group_id) }}" method="post">
+                                <form onclick="pos5_success_noti()" action="{{ route('group.destroy',$group->group_id) }}" method="post" class="d-inline">
                                     @csrf
                                     @method('delete')
                                     <button type="submit" class="btn btn-light"><i class="bx bxs-trash-alt me-0"></i>

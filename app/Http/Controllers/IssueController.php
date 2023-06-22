@@ -47,22 +47,26 @@ class IssueController extends Controller
      */
     public function create()
     {
-        $formattedDate = date('mY');
-        $prefix = "ISSUE-";
-        $lastCount = Issue::select('issue_id')->latest('issue_id')->pluck('issue_id')->first();
-        $count = $lastCount + 1;
-        $id = $prefix . str_pad($count, 3, '0', STR_PAD_LEFT) . "/" . $formattedDate;
+        try {
+            $formattedDate = date('mY');
+            $prefix = "ISSUE-";
+            $lastCount = Issue::select('issue_id')->latest('issue_id')->pluck('issue_id')->first();
+            $count = $lastCount + 1;
+            $id = $prefix . str_pad($count, 6, '0', STR_PAD_LEFT) . "/" . $formattedDate;
+            if (count(Meet::whereNotNull('meet_project')->latest()->get()) > 0) {
+                return view('issue.create', [
+                    'issue' => $id,
+                    'users' => User::get(),
+                    'meet' => Meet::latest()->first(),
+                    'depts' => Departemen::get()
+                ]);
+            }
 
-        if (Issue::whereNotNull('project')->latest()->get()) {
-            return view('issue.create', [
-                'issue' => $id,
-                'users' => User::get(),
-                'meet' => Meet::latest()->first(),
-                'depts' => Departemen::get()
-            ]);
+            return redirect('meet/create');
+        } catch (QueryException $e) {
+            return $e->getMessage();
         }
-
-        return redirect('meet/create');
+       
     }
 
     /**

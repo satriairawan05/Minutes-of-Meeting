@@ -41,7 +41,7 @@ class MeetController extends Controller
         $prefix = "MOM-";
         $lastCount = Meet::select('meet_id')->latest('meet_id')->pluck('meet_id')->first();
         $count = $lastCount + 1;
-        $id_u = $prefix . str_pad($count, 3, '0', STR_PAD_LEFT) . "/" . $formattedDate;
+        $id_u = $prefix . str_pad($count, 6, '0', STR_PAD_LEFT) . "/" . $formattedDate;
 
         return view('meet.create', [
             'meet_id' => $id_u,
@@ -63,7 +63,7 @@ class MeetController extends Controller
             $meet->meet_time = $request->input('meet_time');
             $meet->meet_preparedby = $request->input('meet_preparedby');
             $meet->meet_locate = $request->input('meet_locate');
-            $meet->meet_attend = implode(" ", $request->input('meet_attend'));
+            $meet->meet_attend = implode("/", $request->input('meet_attend'));
             $meet->save();
 
             return redirect('/meet')->with('success', 'Added Meet Successfully!');
@@ -111,7 +111,7 @@ class MeetController extends Controller
             ];
 
             $validate = $request->validate($rules);
-            $validate['meet_attend'] = implode(" ", $request->input('meet_attend'));
+            $validate['meet_attend'] = implode("/", $request->input('meet_attend'));
 
             Meet::where('meet_id', $meet->meet_id)->update($validate);
 

@@ -13,7 +13,7 @@ class TrackerController extends Controller
     public function index()
     {
         return view('tracker.index',[
-            'trackers' => Tracker::paginate(15)
+            'trackers' => Tracker::all()
         ]);
     }
 

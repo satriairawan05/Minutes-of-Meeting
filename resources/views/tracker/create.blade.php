@@ -45,6 +45,9 @@ $trackers = App\Models\Tracker::all();
                     <div class="mb-3 col-12">
                         <label id="tracker_name_label2" for="tracker_name" class="form-label">Header</label>
                         <select id="tracker_header" class="form-select form-control form-control-sm" name="tracker_header[]">
+                            <option name="tracker_header" value="0">
+                                Is Header
+                            </option>
                             @foreach ($trackers as $tracker)
                             @if (old('tracker_header') == $tracker->tracker_header)
                             <option name="tracker_header" value="{{ $tracker->tracker_id }}" selected>

@@ -25,27 +25,30 @@
                 <table id="example2" class="table table-hover table-mc-light">
                     <thead>
                         <tr>
-                            <th class="text-center">ID</th>
-                            <th class="text-center">Header</th>
-                            <th class="text-center">Name</th>
-                            <th class="text-center">Action</th>
+                            <th style="text-align:center; width:25px">#</th>
+                            <th>Header</th>
+                            <th>Name</th>
+                            <th style="text-align:center; width:100px">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($trackers as $tr)
                         <tr>
-                            <td class="text-center">{!! $loop->iteration !!}</td>
-                            <td class="text-center">{!! $tr->tracker_header !!}</td>
-                            <td class="text-center">{!! $tr->tracker_name !!}</td>
-                            <td class="text-center">
-                                <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a type="button" href="{{ route('tracker.edit',$tr->tracker_id) }}" class="btn btn-light"><i class="bx bx-search-alt me-0"></i></a>
-                                    <form action="{{ route('tracker.destroy',$tr->tracker_id) }}" method="post">
+                            <td style="text-align:center; width:25px">{!! $loop->iteration !!}</td>
+                            <td>{!! $tr->tracker_header !!}</td>
+                            <td>{!! $tr->tracker_name !!}</td>
+                            <td style="text-align:center; width:100px">
+                                {{-- <div class="btn-group" role="group" aria-label="Basic example"> --}}
+                                    {{-- <a type="button" href="{{ route('tracker.edit',$tr->tracker_id) }}" class="btn btn-light"><i class="bx bx-search-alt me-0"></i></a> --}}
+                                    <a href="{{ route('tracker.edit',$tr->tracker_id) }}" class="btn btn-light" data-toggle="tooltip" title="Edit Data">
+                                        <i class="bx bx-search-alt me-0"></i>
+                                    </a>
+                                    <form action="{{ route('tracker.destroy',$tr->tracker_id) }}" method="post" class="d-inline">
                                         @csrf
                                         @method('delete')
-                                        <button onclick="pos5_success_noti()" type="submit" class="btn btn-light"><i class="bx bxs-trash"></i></button>
+                                        <button onclick="pos5_success_noti()" type="submit" class="btn btn-light"><i class="bx bx-trash-alt me-0"></i></button>
                                     </form>
-                                </div>
+                                {{-- </div> --}}
                             </td>
                         </tr>
                         @endforeach

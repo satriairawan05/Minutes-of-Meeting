@@ -53,7 +53,8 @@
                         </div>
                         <div class="row mb-3">
                             @php
-                            $statuses = array("New","Continue","Over Due","Complete","Closed")
+                            $statuses = array("New","Continue","Over Due","Complete","Closed");
+                            $statuses = array("New","Continue","Over Due","Complete");
                             @endphp
                             <div class="col-md-6">
                                 <label id="status_label" for="status">Status</label>
@@ -70,6 +71,8 @@
                         <div class="col-6">
                             <label id="priority_label" for="priority">Priority</label>
                             <select class="form-select form-control form-control-sm" name="priority">
+                                <option name="priority" value="Low" selected>Low</option>
+                                <option name="priority" value="Medium" selected>Medium</option>
                                 <option name="priority" value="High" selected>High</option>
                             </select>
                             @error('priority')
@@ -98,6 +101,7 @@
                             </div>
                             @enderror
                         </div>
+
                         <div class="col-md-6">
                             <label id="tracker_label" for="tracker">Tracker</label>
                             <select class="form-select form-control form-control-sm" id="tracker" name="tracker">
@@ -117,7 +121,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="mb-3 col-13">
+                    <div class="mb-3 col-12">
                         <label id="description_label" for="description_daily">Problem Identification</label>
                         <textarea type="text" name="description_daily" id="description_daily" value="{{ old('description_daily') }}" class="form-control @error('description') is-invalid @enderror" placeholder="Masukan Description"></textarea>
                         @error('description_daily')
@@ -126,7 +130,7 @@
                         </div>
                         @enderror
                     </div>
-                    <div class="mb-3 col-13">
+                    <div class="mb-3 col-12">
                         <label id="c_action_label" for="c_action">Corrective Action</label>
                         <textarea id="c_action" name="c_action" rows="14" type="text" class="form-control @error('c_action') is-invalid @enderror" value="{{ old('c_action') }}" placeholder="Masukan Corrective Action"></textarea>
                         @error('c_action')
@@ -138,7 +142,7 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label id="start_date_label" for="start_date">Start Date</label>
-                            <input id="start_date" name="start_date" type="date" class="form-control @error('start_date') is_invalid @enderror" required value="{{ old('start_date') }}" placeholder="dd/mm/yyyy" />
+                            <input id="start_date" name="start_date" type="date" class="form-control @error('start_date') is_invalid @enderror" required value="{{ old('start_date', date('Y-m-d')) }}" placeholder="dd/mm/yyyy" />
                             @error('start_date')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -147,14 +151,18 @@
                         </div>
                         <div class="col-md-6">
                             <label id="end_date_label" for="end_date">End Date</label>
-                            <input id="end_date" name="end_date" type="date" class="form-control @error('end_date') is_invalid @enderror" required value="{{ old('end_date') }}" placeholder="dd/mm/yyyy" />
+                            <input id="end_date" name="end_date" type="date" class="form-control @error('end_date') is_invalid @enderror" required value="{{ old('end_date', date('Y-m-d')) }}" placeholder="dd/mm/yyyy" />
                             @error('end_date')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                             @enderror
                         </div>
-                        <div class="row mb-3">
+                        
+                        
+                       
+                    </div>
+                    <div class="row mb-3">
                             <div class="col-md-6">
                                 <label id="assignee_label" for="assignee">Assignee</label>
                                 <select class="form-select form-control form-control-sm" id="assignee" name="assignee">
@@ -194,7 +202,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="row mb-3">
+                    <div class="row mb-3">
                             <div class="col-12">
                                 <label id="file_label" for="file">File</label>
                                 <div id="targetLayer"></div>
@@ -207,10 +215,12 @@
                                 @enderror
                             </div>
                         </div>
-                            <div class="col-12 d-flex justify-content-center align-items-center">
-                                <a href="{{ route('daily.index') }}" class="btn btn-md btn-primary mr-3">Back</a>
-                                <button type="submit" class="btn btn-md btn-success">Submit</button>
-                            </div>
+                        <div>
+                         <div class="col-12 d-flex justify-content-between align-items-center">
+                            <a href="{{ route('daily.index') }}?departemen={{ $data['departemen'] }}&tracker={{ $data['tracker'] }}" class="btn btn-light px-2"><i class='bx bx-left-arrow-alt mr-1'></i>Daily Datatable</button></a>
+                            <button type="submit" class="btn btn-light px-2"><i class='bx bx-save'></i>Save Changes</button>
+                        </div>
+                        </div>
                     </form>
                 </div>
             </div>

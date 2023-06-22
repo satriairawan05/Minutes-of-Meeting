@@ -46,7 +46,7 @@ $delete = $pages[3]['access'] == 1;
                             <th>Meeting Location</th>
                             <th>Attendees</th>
                             @if($update || $delete)
-                            <th>Actions</th>
+                            <th style="width:100px">Actions</th>
                             @endif
                         </tr>
                     </thead>
@@ -64,7 +64,14 @@ $delete = $pages[3]['access'] == 1;
                             <td>{{ \Carbon\Carbon::parse($d->meet_time)->format('H:i') }}</td>
                             <td>{{ $d->meet_preparedby }}</td>
                             <td>{{ $d->meet_locate }}</td>
-                            <td>{{ $d->meet_attend }}</td>
+                            <td>
+                            @php
+                                $att = explode("/", $d->meet_attend);
+                                foreach($att as $a => $val){
+                                    echo $val." <br>";
+                                }
+                            @endphp
+                            </td>
                             @if($update || $delete)
                             <td>
                                 @if($update)

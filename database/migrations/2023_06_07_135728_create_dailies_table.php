@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('pic',100);
             $table->tinyInteger('is_private')->nullable();
             $table->boolean('is_open')->default(true);
+            $table->string('priority',100);
             $table->timestamps();
         });
     }
