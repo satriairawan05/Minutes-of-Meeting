@@ -54,8 +54,8 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('resume/{issue}',[ResumeController::class, 'destroy'])->name('resume.issue.delete');
 
     Route::resource('daily',DailyController::class);
-    Route::get('daily/{daily}/approval',[DailyController::class, 'approved'])->name('daily.approval');
-    Route::post('daily/approved',[DailyController::class, 'requestApproved'])->name('daily.approved');
+    Route::get('daily/{departemen}/approval/{tracker}',[DailyController::class, 'approved'])->name('daily.approval');
+    Route::post('daily/{departemen}/approved/{tracker}',[DailyController::class, 'requestApproved'])->name('daily.approved');
     Route::get('daily/{daily}/document',[DailyController::class, 'document'])->name('daily.document');
 
     Route::resource('group', GroupController::class);

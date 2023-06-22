@@ -46,7 +46,7 @@ $trackers = App\Models\Tracker::all();
                     @if($tracker->tracker_header > 0)
                     <div class="mb-3 col-12">
                         <label id="tracker_name_label2" for="tracker_name" class="form-label">Header</label>
-                        <select id="tracker_header" class="form-select form-control form-control-sm select2-no-search" name="tracker_header[]" multiple>
+                        <select id="tracker_header" class="form-select form-control form-control-sm" name="tracker_header[]">
                             @foreach ($trackers as $tr)
                             @if (old('tracker_header',$tracker->tracker_id) == $tr->tracker_header)
                             <option name="tracker_header" value="{{ $tr->tracker_id }}" selected>
@@ -77,10 +77,4 @@ $trackers = App\Models\Tracker::all();
         </div>
 </div>
 </div>
-
-<script>
-    $(document).ready(function() {
-        $('#tracker_header').select2();
-    });
-</script>
 @endsection

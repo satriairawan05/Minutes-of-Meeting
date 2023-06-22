@@ -53,14 +53,16 @@ $delete = $page->access;
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a></li>
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-file"></i></a></li>
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-file-find"></i></a></li>
-
-                        <li class="breadcrumb-item" aria-current="page">Tracker Department</li>
+                        <li class="breadcrumb-item" aria-current="page">DWM Report</li>
                     </ol>
                 </nav>
             </div>
             <div class="ms-auto">
                 @if($create)
-                <a type="button" href="{!! url('/daily/create?departemen='.$data['departemen'].'&tracker='.$data['tracker']) !!}" data-toggle="tooltip" title="Add new data" type="button" class="btn btn-light px-4"><i class="bx bx-plus-circle"></i>Add Tracker Department</a>
+                <a href="{!! url('/daily/create?departemen='.$data['departemen'].'&tracker='.$data['tracker']) !!}" data-toggle="tooltip" title="Add new data" class="btn btn-light px-4"><i class="bx bx-plus-circle"></i>Add Tracker Department</a>
+                @endif
+                @if($approval)
+                <a href="{!! url('daily/'.$data['departemen'].'/approval/'.$data['tracker']) !!}" data-toggle="tooltip" title="Approval" class="btn btn-light px-4"><i class="bx bx-file"></i>Approval</a>
                 @endif
             </div>
         </div>
@@ -85,8 +87,8 @@ $delete = $page->access;
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($dailies as $daily)
                             @if($read)
+                            @foreach ($dailies as $daily)
                             <tr>
                                 <th scope="row">{!! $loop->iteration !!}</th>
                                 <td><a href="{!! route('daily.document',$daily->daily_id) !!}" class="text-decoration-none">{!! $daily->daily_xid !!}</a></td>
@@ -95,11 +97,6 @@ $delete = $page->access;
                                 <td>{!! $daily->status !!}</td>
                                 <td>{!! $daily->priority !!}</td>
                                 <td class="d-inline-block">
-                                    {{-- Approval --}}
-                                    @if($approval)
-                                    <a href="{!! route('daily.approval',$daily->daily_id) !!}" class="btn btn-sm btn-info text-decoration-none"><i class="bx bx-paperclip"></i></a>
-                                    @endif
-                                    {{-- Approval --}}
                                     {{-- Edit --}}
                                     @if($update)
                                     <a href="{!! route('daily.edit',$daily->daily_id) !!}" class="text-decoration-none btn btn-sm btn-warning"><i class="bx bx-edit"></i></a>
@@ -117,8 +114,8 @@ $delete = $page->access;
                                     {{-- Delete --}}
                                 </td>
                             </tr>
-                            @endif
                             @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div>

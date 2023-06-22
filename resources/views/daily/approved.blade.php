@@ -20,20 +20,54 @@
         <hr>
         <div class="card">
             <div class="card-body">
-                <form action="{!! route('daily.approved') !!}" method="post">
+                <form action="daily/{{ $data['departemen'] }}/approved/{{ $data['tracker'] }}" method="post">
                     @csrf
                     <div class="row mb-3">
-                        <div class="coc">
-                            <label id="approvedby_label" for="approvedby">Approved By</label>
-                            <input id="approvedby" name="approvedby" type="text" class="form-control @error('approvedby') is_invalid @enderror" required placeholder="Masukan Nama" value="{{ old('approvedby',auth()->user()->name) }}" readonly />
-                            @error('approvedby')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
+                        <table class="table table-striped" id="table">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox" id="checkboxmaster"></th>
+                                    <th scope="col">#</th>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Departemen</th>
+                                    <th scope="col">Tracker</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @if($daily->count())
+                                @foreach ($daily as $d)
+                                <tr id="day_{{ $d->daily_id }}">
+                                    <td><input type="checkbox" id="checkbox"></td>
+                                    <td scope="row">{!! $loop->iteration !!}</td>
+                                    <td>{!! $d->daily_xid !!}</td>
+                                    <td>{!! $d->departemen !!}</td>
+                                    <td>{!! $d->tracker_name !!}</td>
+                                    <td>{!! $d->status !!}</td>
+                                </tr>
+                                @endforeach
+                            @endif
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="d-flex justify-content-around align-items-baseline">
+                            <a href="{{ route('daily.index') }}" class="btn btn-light px-2"><i class='bx bx-left-arrow-alt mr-1'></i>DWM Report</a>
+                            <button type="submit" class="btn btn-light px-2"><i class='bx bx-save'></i>Save Changes</button>
                         </div>
                     </div>
                 </form>
+                <script type="text/javascript">
+                    $(document).ready(function() {
+                        $('#checkboxmaster').on('click', function(){
+                            if($(this).is(':checked',true)){
+                                $('#checkbox').prop(':checked',true);
+                            } else {
+                                $('#checkbox').prop(':checked',false);
+                            }
+                        });
+                    });
+                </script>
             </div>
         </div>
     </div>
