@@ -162,7 +162,8 @@
                                 @foreach ($users as $user)
                                 @if (old('assignee') == $user->name)
                                 <option name="assignee" value="{{ $user->name }}" selected>
-                                    {{ $user->name }}</option>
+                                    {{ $user->name }}
+                                </option>
                                 @else
                                 <option name="assignee" value="{{ $user->name }}">{{ $user->name }}
                                 </option>
@@ -181,7 +182,8 @@
                                 @foreach ($users as $user)
                                 @if (old('pic') == $user->name)
                                 <option name="pic" value="{{ $user->name }}" selected>
-                                    {{ $user->name }}</option>
+                                    {{ $user->name }}
+                                </option>
                                 @else
                                 <option name="pic" value="{{ $user->name }}">{{ $user->name }}
                                 </option>
@@ -210,13 +212,14 @@
                     </div>
             </div>
         </div>
-        <div class="col-12 d-flex justify-content-center align-items-center">
-            <a href="{{ route('daily.index') }}" class="btn btn-md btn-primary mr-3">Back</a>
-            <button type="submit" class="btn btn-md btn-success">Submit</button>
+        <div class="row mb-3">
+            <div class="col-12 d-flex justify-content-between align-items-center">
+                <a href="{{ route('daily.index') }}" class="btn btn-light px-2"><i class='bx bx-left-arrow-alt mr-1'></i>DWM Report Datatable</button></a>
+                <button type="submit" class="btn btn-light px-2"><i class='bx bx-save'></i>Save Changes</button>
+            </div>
         </div>
         </form>
     </div>
-</div>
 </div>
 
 <script>
@@ -233,7 +236,6 @@
             $(this).siblings('.expand-content').toggle();
         });
     });
-
 </script>
 
 <script>
@@ -244,13 +246,10 @@
             $('.' + column).toggle();
         });
     });
-
 </script>
 
 
-</div>
-</div>
-</div>
+
 
 <script>
     const olfFile = document.getElementById('oldFile');
@@ -273,6 +272,5 @@
             fileReader.readAsDataURL(objFileInput.files[0]);
         }
     }
-
 </script>
 @endsection

@@ -58,9 +58,7 @@ $delete = $page->access;
                 </nav>
             </div>
             <div class="ms-auto">
-                @if($create)
                 <a href="{!! url('/daily/create?departemen='.$data['departemen'].'&tracker='.$data['tracker']) !!}" data-toggle="tooltip" title="Add new data" class="btn btn-light px-4"><i class="bx bx-plus-circle"></i>Add Tracker Department</a>
-                @endif
             </div>
         </div>
         <!-- End breadcrumb -->
