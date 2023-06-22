@@ -27,7 +27,6 @@
                             <thead>
                                 <tr>
                                     <th><input type="checkbox" id="checkboxmaster"></th>
-                                    <th scope="col">#</th>
                                     <th scope="col">ID</th>
                                     <th scope="col">Departemen</th>
                                     <th scope="col">Tracker</th>
@@ -39,7 +38,6 @@
                                 @foreach ($daily as $d)
                                 <tr id="day_{{ $d->daily_id }}">
                                     <td><input type="checkbox" id="checkbox"></td>
-                                    <td scope="row">{!! $loop->iteration !!}</td>
                                     <td>{!! $d->daily_xid !!}</td>
                                     <td>{!! $d->departemen !!}</td>
                                     <td>{!! $d->tracker_name !!}</td>
@@ -57,17 +55,6 @@
                         </div>
                     </div>
                 </form>
-                <script type="text/javascript">
-                    $(document).ready(function() {
-                        $('#checkboxmaster').on('click', function(){
-                            if($(this).is(':checked',true)){
-                                $('#checkbox').prop(':checked',true);
-                            } else {
-                                $('#checkbox').prop(':checked',false);
-                            }
-                        });
-                    });
-                </script>
             </div>
         </div>
     </div>
