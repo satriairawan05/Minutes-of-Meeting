@@ -61,6 +61,9 @@ $delete = $page->access;
                 @if($create)
                 <a type="button" href="{!! url('/daily/create?departemen='.$data['departemen'].'&tracker='.$data['tracker']) !!}" data-toggle="tooltip" title="Add new data" type="button" class="btn btn-light px-4"><i class="bx bx-plus-circle"></i>Add Tracker Department</a>
                 @endif
+                @if($approval)
+                <a href="{!! url('daily/'.$data['departemen'].'/approval/'.$data['tracker']) !!}" data-toggle="tooltip" title="Approval" class="btn btn-light px-4"><i class="bx bx-file"></i>Approval</a>
+                @endif
             </div>
         </div>
         <!-- End breadcrumb -->

@@ -1,6 +1,66 @@
 @php
 $admin = auth()->user()->name == "Super Admin";
+
+$readMeetings = 0;
+$readIssues = 0;
+$readArchives = 0;
+$readDWMs = 0;
+$readUsers = 0;
+
+$meetings = "";
+$issues = "";
+$archives = "";
+$dwms = "";
+$users = "";
+
+$access = "Read";
+$pages = Illuminate\Support\Facades\DB::table('users')
+    ->leftJoin('group_pages', 'users.group_id', '=', 'group_pages.group_id')
+    ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
+    ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
+    ->whereColumn('users.group_id', '=', 'groups.group_id')
+    ->where('group_pages.access', '=', 1)
+    ->where('pages.action', '=', $access)
+    ->groupBy('pages.page_id', 'groups.group_id')
+    ->orderBy('groups.group_name', 'ASC')
+    ->select('groups.group_id', 'pages.page_name', 'pages.action', 'group_pages.access')
+    ->get();
 @endphp
+
+@foreach ($pages as $page)
+@if(auth()->user()->group_id == $page->group_id)
+    @if($page->page_name == "Meeting")
+        @php
+            $readMeetings = $page->access;
+            $meetings = $page->page_name;
+        @endphp
+    @endif
+    @if($page->page_name == "Issue")
+        @php
+            $readIssues = $page->access;
+            $issues = $page->page_name;
+        @endphp
+    @endif
+    @if($page->page_name == "DWM_Report")
+        @php
+            $readDWMs = $page->access;
+            $dwms = $page->page_name;
+        @endphp
+    @endif
+    @if($page->page_name == "Archives")
+        @php
+            $readArchives = $page->access;
+            $archives = $page->page_name;
+        @endphp
+    @endif
+    @if($page->page_name == "User")
+        @php
+            $readUsers = $page->access;
+            $users = $page->page_name;
+        @endphp
+    @endif
+@endif
+@endforeach
 <!--sidebar wrapper -->
 <div class="sidebar-wrapper toggled" data-simplebar="true">
     <div class="sidebar-header">
@@ -22,42 +82,52 @@ $admin = auth()->user()->name == "Super Admin";
                 <div class="menu-title">Dashboard</div>
             </a>
         </li>
+        @if($readMeetings)
         <li>
             <a class="nav-link {{ request()->is('meet.index', 'meet.create') ? 'active' : '' }}" href="{{ route('meet.index') }}">
                 <div class="parent-icon"><i class='bx bx-calendar-check'></i>
                 </div>
-                <div class="menu-title">Meeting</div>
+                <div class="menu-title">{!!$meetings !!}</div>
             </a>
         </li>
+        @endif
+        @if($readIssues)
         <li>
             <a class="nav-link {{ request()->is('issue.index') ? 'active' : '' }}" href="{{ route('issue.index') }}">
                 <div class="parent-icon"><i class='bx bx-comment-error'></i>
                 </div>
-                <div class="menu-title">Issue</div>
+                <div class="menu-title">{!! $issues !!}</div>
             </a>
         </li>
+        @endif
+        @if($readDWMs)
         <li>
             <a class="nav-link {{ request()->is('issue.index') ? 'active' : '' }}" href="{{ route('daily.index') }}">
                 <div class="parent-icon"><i class='bx bx-file'></i>
                 </div>
-                <div class="menu-title">DWM Report</div>
+                <div class="menu-title">{!! str_replace("_"," ",$dwms) !!}</div>
             </a>
         </li>
+        @endif
+        @if($readArchives)
         <li>
             <a class="nav-link {{ request()->is('archive.index') ? 'active' : '' }}" href="{{ route('archive.index') }}">
                 <div class="parent-icon"><i class='bx bx-folder-open'></i>
                 </div>
-                <div class="menu-title">Archive</div>
+                <div class="menu-title">{!! $archives !!}</div>
             </a>
         </li>
+        @endif
+        @if($readUsers)
         <li>
             <a class="nav-link {{ request()->is('user.index') ? 'active' : '' }}" href="{{ route('user.index') }}">
                 <div class="parent-icon">
                     <i class='bx bx-user'></i>
                 </div>
-                <div class="menu-title">User</div>
+                <div class="menu-title">{!! $users !!}</div>
             </a>
         </li>
+        @endif
         @if($admin)
         <li>
             <a href="javascript:;" class="has-arrow">
