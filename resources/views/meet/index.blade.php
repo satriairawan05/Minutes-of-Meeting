@@ -18,7 +18,7 @@ $delete = $pages[3]['access'] == 1;
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
-                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="bx bx-home-alt"></i></a></li>
                         <li class="breadcrumb-item active" aria-current="page">Datatable of Meeting</li>
                     </ol>
                 </nav>
@@ -39,14 +39,10 @@ $delete = $pages[3]['access'] == 1;
                             <th>No</th>
                             <th>ID</th>
                             <th>Meeting Name</th>
-                            <th>Project Name</th>
-                            <th>Date Of Meeting</th>
-                            <th>Time Of Meeting</th>
-                            <th>Minutes Prepare</th>
                             <th>Meeting Location</th>
                             <th>Attendees</th>
                             @if($update || $delete)
-                            <th style="width:100px">Actions</th>
+                            <th>Actions</th>
                             @endif
                         </tr>
                     </thead>
@@ -56,27 +52,16 @@ $delete = $pages[3]['access'] == 1;
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>
-                                <a href="{{ route('resume.meet', $d->meet_id) }}" class="text-decoration-none text-monospace">{{ $d->meet_xid }}</a>
+                                <a href="{{ route('resume.meet', $d->meet_id) }}" class="text-decoration-underline text-primary">{{ $d->meet_xid }}</a>
                             </td>
                             <td>{{ $d->meet_name }}</td>
-                            <td>{{ $d->meet_project }}</td>
-                            <td>{{ \Carbon\Carbon::parse($d->meet_date)->format('d-m-Y') }}</td>
-                            <td>{{ \Carbon\Carbon::parse($d->meet_time)->format('H:i') }}</td>
-                            <td>{{ $d->meet_preparedby }}</td>
                             <td>{{ $d->meet_locate }}</td>
-                            <td>
-                            @php
-                                $att = explode("/", $d->meet_attend);
-                                foreach($att as $a => $val){
-                                    echo $val." <br>";
-                                }
-                            @endphp
-                            </td>
+                            <td>{{ $d->meet_attend }}</td>
                             @if($update || $delete)
                             <td>
                                 @if($update)
                                 <a href="{{ route('meet.edit', $d->meet_id) }}" class="btn btn-light" data-toggle="tooltip" title="Edit Data">
-                                    <i class="bx bx-search-alt me-0"></i>
+                                    <i class="bx bx-edit me-0"></i>
                                 </a>
                                 @endif
                                 @if($delete)
@@ -104,22 +89,20 @@ $delete = $pages[3]['access'] == 1;
 
 @section('scripts')
 @if(session('success'))
-<script>
-    function pos5_success_noti() {
-        Lobibox.notify("error", {
-            pauseDelayOnHover: true,
-            size: "mini",
-            icon: "bx bx-check-circle",
-            continueDelayOnInactiveTab: false,
-            position: "bottom right",
-            msg: "Deleted Successfully",
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: '{{ session("success") }}',
+                showConfirmButton: false,
+                timer: 3000
+            });
         });
-    }
-    $(document).ready(function() {
-        pos5_success_noti();
-    });
-</script>
+    </script>
 @endif
+
+
 <!-- DataTables -->
 <script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>

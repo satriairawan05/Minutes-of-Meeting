@@ -10,8 +10,8 @@
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
-                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a></li>
-                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-calendar-check"></i></a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="bx bx-home-alt"></i></a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('meet.index') }}"><i class="bx bx-calendar-check"></i></a></li>
                         <li class="breadcrumb-item active" aria-current="page">Add Meet</li>
                     </ol>
                 </nav>
@@ -68,7 +68,7 @@
                             <div class="row mb-3">
                                 <label for="meet_date" class="col-sm-2 col-form-label">Date Of Meeting</label>
                                 <div class="col-sm-10">
-                                    <input type="date" class="form-control form-control-sm @error('meet_date') is-invalid @enderror" id="meet_date" name="meet_date" value="{{ old('meet_date', date('Y-m-d')) }}">
+                                    <input type="date" class="form-control form-control-sm @error('meet_date') is-invalid @enderror" id="meet_date" name="meet_date" value="{{ old('meet_date') }}">
                                     @error('meet_date')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -79,7 +79,7 @@
                             <div class="row mb-3">
                                 <label for="meet_time" class="col-sm-2 col-form-label">Time Of Meeting</label>
                                 <div class="col-sm-10">
-                                    <input type="time" class="form-control form-control-sm @error('meet_time') is-invalid @enderror" id="meet_time" name="meet_time" value="{{ old('meet_time', date('H:i')) }}">
+                                    <input type="time" class="form-control form-control-sm @error('meet_time') is-invalid @enderror" id="meet_time" name="meet_time" value="{{ old('meet_time') }}">
                                     @error('meet_time')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -114,9 +114,9 @@
                                 <div class="col-sm-10">
                                     <select id="meet_attend" class="form-select form-control form-control-sm select2-no-search" name="meet_attend[]" multiple>
                                         @foreach ($users as $user)
-                                            <option value="{{ $user->name }}" @if(old('meet_attend') == $user->name) selected @endif>
-                                                {{ $user->name }}
-                                            </option>
+                                        <option value="{{ $user->name }}" @if(old('meet_attend')==$user->name) selected @endif>
+                                            {{ $user->name }}
+                                        </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -138,6 +138,18 @@
 @endsection
 
 @section('scripts')
+<script>
+    function pos5_success_noti() {
+        Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: 'Data deleted successfully.',
+            showConfirmButton: false,
+            timer: 3000
+        });
+    }
+</script>
+
 <!-- DataTables -->
 <script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
