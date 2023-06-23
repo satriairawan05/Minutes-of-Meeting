@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApprovalListController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MeetController;
 use App\Http\Controllers\DailyController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\ArchiveController;
 use App\Http\Controllers\DepartemenController;
 use App\Http\Controllers\TrackerController;
 use App\Http\Controllers\UserManagementController;
+use App\Models\ApprovalList;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,4 +89,6 @@ Route::middleware(['auth'])->group(function () {
             'data' => $pages
         ]);
     });
+
+    Route::resource('approvallist', ApprovalListController::class);
 });

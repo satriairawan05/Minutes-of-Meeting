@@ -11,5 +11,5 @@ class DailyApproval extends Model
 
     protected $table = 'daily_approvals';
 
-    protected $primaryKey = 'daily_approved_id';
+    protected $primaryKey = 'dai_app_id';
 }

@@ -12,11 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('daily_approvals', function (Blueprint $table) {
-            $table->increments('daily_approved_id');
-            $table->string('daily_id');
-            $table->string('approvedby');
-            $table->string('status');
-            $table->string('keterangan');
+            $table->increments('dai_app_id');
+            $table->string('daily_id')->nullable();
+            $table->string('app_list_id')->nullable();
+            $table->string('dai_app_user')->nullable();
+            $table->date('dai_app_date')->nullable();
+            $table->string('dai_app_status')->nullable();
             $table->timestamps();
         });
     }
