@@ -114,7 +114,7 @@ class IssueController extends Controller
                 $issue_approvals->app_list_id = $app->app_list_id;
                 $issue_approvals->issue_id = $issue_id;
                 $issue_approvals->iss_app_user = $app->app_user;
-                $issue_approvals->iss_app_status = "open";
+                $issue_approvals->iss_app_status = "Open";
                 $issue_approvals->save();
             }
             
