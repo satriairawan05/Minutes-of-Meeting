@@ -10,11 +10,11 @@
     <!--plugins-->
     <link href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.bootstrap5.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('assets/plugins/notifications/css/lobibox.min.css')}}" />
     <link href="{{ asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet" />
+    <link src="{{ asset('assets/css/pace.min.css') }}" rel="stylesheet"/>
     <script src="{{ asset('assets/js/pace.min.js') }}"></script>
     <!-- Bootstrap CSS -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -23,7 +23,7 @@
     <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet">
 
-    <title>PT BSS MoM</title>
+    <title>Minutes of Meeting | PT BUMI SEMERU SEJAHTERA</title>
 </head>
 
 <body class="bg-theme bg-theme14">
@@ -46,8 +46,8 @@
         </footer>
     </div>
     <!--end wrapper-->
-    <!--start switcher-->
-    <div class="switcher-wrapper">
+<!--start switcher-->
+<div class="switcher-wrapper">
         <div class="switcher-btn"> <i class='bx bx-cog bx-spin'></i>
         </div>
         <div class="switcher-body">
@@ -83,7 +83,7 @@
     </div>
     <!--end switcher-->
     <!-- Bootstrap JS -->
-    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
     <!--plugins-->
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
@@ -109,14 +109,8 @@
     <script src="{{ asset('assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
-    
-    <!--notification js -->
-	<script src="{{asset('assets/plugins/notifications/js/lobibox.min.js')}}"></script>
-	<script src="{{asset('assets/plugins/notifications/js/notifications.min.js')}}"></script>
-	<script src="{{asset('assets/plugins/notifications/js/notification-custom-script.js')}}"></script>
 
     <!--app JS-->
-    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
