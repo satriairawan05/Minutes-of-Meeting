@@ -58,9 +58,8 @@ $delete = $page->access;
             </div>
         </div>
         <!--end breadcrumb-->
-        <hr />
         <div class="card">
-            <div class="card-header d-flex justify-content-end">
+            <div class="card d-flex justify-content-end">
             </div>
             <div class="card-body bg-transparent">
                 <div class="table table-filter">

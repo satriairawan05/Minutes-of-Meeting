@@ -7,29 +7,26 @@
             <div class="card radius-10">
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
 
-                <div class="card">
-                    <div class="card-body d-flex align-items-center justify-content-between" style="height: 210px;">
-                        <div class="mr-3" style="width: 40%; height: 100%;">
-                            <div id="animationContainer" style="width: 100%; height: 100%;"></div>
-                            <script>
-                                var animation = bodymovin.loadAnimation({
-                                    container: document.getElementById('animationContainer'),
-                                    renderer: 'svg',
-                                    loop: true,
-                                    autoplay: true,
-                                    path: '/assets/img/meet.json' // Replace with the correct relative path to your JSON animation file
-                                });
-                            </script>
-                        </div>
-                        <div class="flex-grow-1 ml-3">
-                            <h4 class="mb-3">
-                                <span class="font-weight-bold text-white">Assalamualaikum warahmatullāhi wabarakātuh <br> {{ auth()->user()->name }}</span>
-                            </h4>
-                            <p class="tx-black-7 mb-1">“If we have a clear agenda in advance and fully contributing, the <b class="text-warning">meetings</b> will be meaningful.” </p>
-                        </div>
+                <div class="card-body d-flex align-items-center justify-content-between" style="height: 210px;">
+                    <div class="mr-3" style="width: 40%; height: 100%;">
+                        <div id="animationContainer" style="width: 100%; height: 100%;"></div>
+                        <script>
+                            var animation = bodymovin.loadAnimation({
+                                container: document.getElementById('animationContainer'),
+                                renderer: 'svg',
+                                loop: true,
+                                autoplay: true,
+                                path: '/assets/img/meet.json' // Replace with the correct relative path to your JSON animation file
+                            });
+                        </script>
+                    </div>
+                    <div class="flex-grow-1 ml-3">
+                        <h4 class="mb-3">
+                            <span class="font-weight-bold text-white">Assalamualaikum warahmatullāhi wabarakātuh <br> {{ auth()->user()->name }}</span>
+                        </h4>
+                        <p class="tx-black-7 mb-1">“If we have a clear agenda in advance and fully contributing, the <b class="text-warning">meetings</b> will be meaningful.” </p>
                     </div>
                 </div>
-
             </div>
         </div>
         <div class="card radius-10">

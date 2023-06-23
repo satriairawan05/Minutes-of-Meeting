@@ -88,7 +88,7 @@ $delete = $page->access;
                             @foreach ($dailies as $daily)
                             <tr>
                                 <th style="text-align:center">{!! $loop->iteration !!}</th>
-                                <td><a href="{!! route('daily.document',$daily->daily_id) !!}" class="text-decoration-none">{!! $daily->daily_xid !!}</a></td>
+                                <td><a href="{!! route('daily.document',$daily->daily_id) !!}" class="text-decoration-underline text-primary">{!! $daily->daily_xid !!}</a></td>
                                 <td>{!! $daily->departemen !!}</td>
                                 <td>{!! $daily->tracker_name !!}</td>
                                 <td>{!! $daily->status !!}</td>

@@ -21,7 +21,6 @@
         </div>
         <!--end breadcrumb-->
         <hr />
-        <div class="card">
             <div class="card-body">
                 <!--Row-->
                 <div class="card col-12">
@@ -54,7 +53,7 @@
                                 <label for="meet_project" class="col-sm-2 col-form-label">Project</label>
                                 <div class="col-sm-10">
                                     <select class="form-select form-control form-control-sm" name="meet_project">
-                                        <option value="MEETING HO">MEETING HO</option>
+                                        <option value="MEETING HO">MEETING WEEKLY HO</option>
                                         <option value="MEETING TEAM 9">MEETING TEAM 9</option>
                                         <option value="MEETING SITE">MEETING SITE</option>
                                     </select>
@@ -131,7 +130,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 </div>
 <!--end page wrapper -->
