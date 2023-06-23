@@ -106,34 +106,34 @@
 					</div>
 				</form>
 			</div>
-		<script>
-			$(document).ready(function() {
-				// Hide and Show Columns
-				$('#toggleColumns').on('change', function() {
-					var column = $(this).attr('id');
-					$('.' + column).toggle();
-				});
+			<script>
+				$(document).ready(function() {
+					// Hide and Show Columns
+					$('#toggleColumns').on('change', function() {
+						var column = $(this).attr('id');
+						$('.' + column).toggle();
+					});
 
-				// Expandable Columns
-				$('.expandable-column').on('click', function() {
-					$(this).toggleClass('expanded');
-					$(this).siblings('.expand-content').toggle();
+					// Expandable Columns
+					$('.expandable-column').on('click', function() {
+						$(this).toggleClass('expanded');
+						$(this).siblings('.expand-content').toggle();
+					});
 				});
-			});
-		</script>
+			</script>
 
-		<script>
-			$(document).ready(function() {
-				// Hide and Show Columns
-				$('#toggleColumns').on('change', function() {
-					var column = $(this).val();
-					$('.' + column).toggle();
+			<script>
+				$(document).ready(function() {
+					// Hide and Show Columns
+					$('#toggleColumns').on('change', function() {
+						var column = $(this).val();
+						$('.' + column).toggle();
+					});
 				});
-			});
-		</script>
+			</script>
+		</div>
 	</div>
-</div>
-<!-- End Main Content-->
+	<!-- End Main Content-->
 
 </div>
 @endsection

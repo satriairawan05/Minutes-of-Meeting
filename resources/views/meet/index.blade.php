@@ -7,7 +7,7 @@ $update = $pages[2]['access'] == 1;
 $delete = $pages[3]['access'] == 1;
 @endphp
 
-@section('content')
+@section('content')F
 <!-- Start page wrapper -->
 <link href="{{ asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
 <div class="page-wrapper">
@@ -39,10 +39,6 @@ $delete = $pages[3]['access'] == 1;
                             <th>No</th>
                             <th>ID</th>
                             <th>Meeting Name</th>
-                            <th>Project Name</th>
-                            <th>Date Of Meeting</th>
-                            <th>Time Of Meeting</th>
-                            <th>Minutes Prepare</th>
                             <th>Meeting Location</th>
                             <th>Attendees</th>
                             @if($update || $delete)
@@ -59,10 +55,6 @@ $delete = $pages[3]['access'] == 1;
                                 <a href="{{ route('resume.meet', $d->meet_id) }}" class="text-decoration-none text-monospace">{{ $d->meet_xid }}</a>
                             </td>
                             <td>{{ $d->meet_name }}</td>
-                            <td>{{ $d->meet_project }}</td>
-                            <td>{{ \Carbon\Carbon::parse($d->meet_date)->format('d-m-Y') }}</td>
-                            <td>{{ \Carbon\Carbon::parse($d->meet_time)->format('H:i') }}</td>
-                            <td>{{ $d->meet_preparedby }}</td>
                             <td>{{ $d->meet_locate }}</td>
                             <td>{{ $d->meet_attend }}</td>
                             @if($update || $delete)
