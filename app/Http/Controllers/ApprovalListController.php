@@ -54,7 +54,7 @@ class ApprovalListController extends Controller
 
             ApprovalList::create($validate);
 
-            return redirect('/approvallist?module='.$request->app_module)->with('success','Add Departemen Successfully!');
+            return redirect('/approvallist?module='.$request->app_module)->with('success','Approver updated!');
         } catch(QueryException $e){
             return $e->getMessage();
         }
@@ -91,7 +91,7 @@ class ApprovalListController extends Controller
 
             ApprovalList::where('app_list_id', '=', $app_list_id)->update($validate);
 
-            return redirect('/approvallist?module='.$request->app_module)->with('success','Approver saved!');
+            return redirect('/approvallist?module='.$request->app_module)->with('success','Approver updated!');
         } catch(QueryException $e){
             return $e->getMessage();
         }
@@ -100,8 +100,11 @@ class ApprovalListController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ApprovalList $approvalList)
+    public function destroy(ApprovalList $approvalList, String $app_list_id)
     {
-        //
+        $app = ApprovalList::where('app_list_id','=',$app_list_id)->first();
+        $module = $app->app_module;
+        ApprovalList::destroy($app_list_id);
+        return redirect('/approvallist?module='.$module)->with('success','Data deleted!');
     }
 }

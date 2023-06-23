@@ -81,7 +81,7 @@
                                   <td style="text-align:center">
                                     <div class="btn-icon-list justify-content-center">
                                       <button type="submit" class="btn btn-light btn-sm"><i class='bx bx-save'></i>Update</button>
-                                      <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#modalDelete"><i class='bx bx-edit'></i>Delete</button>
+                                      <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#modalDelete" onclick="changeAction('{!! route('approvallist.destroy', $app->app_list_id) !!}')"><i class='bx bx-edit'></i>Delete</button>
                                     </div>
                                   </td>
                                 </tr>
@@ -132,7 +132,10 @@
                   </div>
                   <div class="modal-body">Are you sure?</div>
                   <div class="modal-footer">
-                    <form id="form_delete">
+                    <form id="formDelete" method="POST">
+                      @csrf
+                      @method('DELETE')
+                      
                       <button type="button" class="btn btn-light" data-bs-dismiss="modal"><i class='bx bx-x mr-1'></i>Cancel</button>
                       <button type="submit" class="btn btn-light"><i class='bx bx-check mr-1'></i>Yes, Delete it!</button>
                     </form>
@@ -150,6 +153,11 @@
               }, 6000);
             </script>
             @endif
+            <script>
+               function changeAction(page){
+                $('#formDelete').attr('action', page);
+              }
+            </script>
         </div>
     @endsection
 
