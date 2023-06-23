@@ -7,28 +7,26 @@
     <div class="page-content">
         <!--breadcrumb-->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-            <div class="breadcrumb-title pe-3">Meeting</div>
+            <div class="breadcrumb-title pe-3">Meetings</div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="bx bx-home-alt"></i></a></li>
-                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-calendar-check"></i></a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Meet Resume</li>
+                        <li class="breadcrumb-item active" aria-current="page">Datatable of Meeting</li>
                     </ol>
                 </nav>
             </div>
-        </div>
-        <div class="col-12 d-flex justify-content-between align-items-center">
-            <a href="{{ route('meet.index') }}" class="btn btn-light px-2"><i class='bx bx-left-arrow-alt mr-1'></i>Meet Datatable</button></a>
-            <form action="{{ route('archive.meet.store',$meet->meet_id) }}" method="post">
-                @csrf
-                <input type="hidden" name="meet_id" id="meet_id" value="{{ $meet->meet_id }}">
-                <input type="hidden" name="archive_status" id="archive_status" value="1">
-                @foreach ($issue as $isu)
-                <input type="hidden" name="issue_id" id="issue_id" value="{{ $isu->issue_id }}">
-                @endforeach
-                <button type="submit" class="btn btn-light px-2"><i class='bx bx-save'></i>Save Changes</button>
-            </form>
+            <div class="ms-auto">
+                <form action="{{ route('archive.meet.store',$meet->meet_id) }}" method="post">
+                    @csrf
+                    <input type="hidden" name="meet_id" id="meet_id" value="{{ $meet->meet_id }}">
+                    <input type="hidden" name="archive_status" id="archive_status" value="1">
+                    @foreach ($issue as $isu)
+                    <input type="hidden" name="issue_id" id="issue_id" value="{{ $isu->issue_id }}">
+                    @endforeach
+                    <button type="submit" class="btn btn-light px-2"><i class='bx bx-save'></i>Save Changes</button>
+                </form>
+            </div>
         </div>
         <!--end breadcrumb-->
         <hr />
@@ -78,7 +76,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <table class="table table-bordered data-table table-responsive table-sm table-striped table-hover" id="example2_wrapper">
+                        <table id="example2" class="table table-hover table-mc-light">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -147,20 +145,24 @@
                                     </td>
                                     <td>{!! $i->is_private == 1 ? "Yes" : "No" !!}</td>
                                     <td>
-                                        <a href="{{ route('resume.issue.edit',$i->issue_id) }}" class="btn ripple btn-primary btn-sm" data-toggle="tooltip" title="Edit Data">
-                                            <i class="fas fa-edit"></i>
+                                        <a href="{{ route('resume.issue.edit',$i->issue_id) }}" class="btn btn-light" data-toggle="tooltip" title="Edit Data">
+                                            <i class="bx bx-search-alt me-0"></i>
                                         </a>
                                         <form action="{{ route('resume.issue.delete',$i->issue_id) }}" method="post">
                                             @csrf
-                                            @method('delete')
-                                            <button type="submit" data-toggle="tooltip" title="Delete Data" class="btn ripple btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-light" data-toggle="tooltip" title="Delete Data">
+                                                <i class="bx bx-trash-alt me-0"></i>
+                                            </button>
                                         </form>
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
-
+                        <div class="col-12 d-flex justify-content-between align-items-center">
+                            <a href="{{ route('meet.index') }}" class="btn btn-light px-2"><i class='bx bx-left-arrow-alt mr-1'></i>Meet Datatable</button></a>
+                        </div>
                     </div>
                 </div>
                 <!-- Row end -->
