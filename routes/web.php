@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApprovalController;
 use App\Http\Controllers\ApprovalListController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MeetController;
@@ -91,4 +92,5 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::resource('approvallist', ApprovalListController::class);
+    Route::resource('approval', ApprovalController::class);
 });

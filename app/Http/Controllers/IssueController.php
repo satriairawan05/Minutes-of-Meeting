@@ -7,6 +7,8 @@ use App\Models\Departemen;
 use App\Models\Meet;
 use App\Models\User;
 use App\Models\Issue;
+use App\Models\ApprovalList;
+use App\Models\IssueApproval;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -103,8 +105,19 @@ class IssueController extends Controller
                 $validate['is_private'] = 0;
             }
 
-            Issue::create($validate);
+            $issues = Issue::create($validate);
+            $issue_id = $issues->issue_id;
 
+            $approvallist = ApprovalList::where('app_module','=','issues')->get();
+            foreach($approvallist as $app){
+                $issue_approvals = new IssueApproval;
+                $issue_approvals->app_list_id = $app->app_list_id;
+                $issue_approvals->issue_id = $issue_id;
+                $issue_approvals->iss_app_user = $app->app_user;
+                $issue_approvals->iss_app_status = "open";
+                $issue_approvals->save();
+            }
+            
             return redirect('issue')->with('success', 'Added Issue Successfully!');
         } catch (QueryException $e) {
             return $e->getMessage();
