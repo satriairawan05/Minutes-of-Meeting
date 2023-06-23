@@ -87,7 +87,7 @@ $delete = $page->access;
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                         {{-- Edit --}}
                                         @if($update)
-                                        <a href="{{ route('user.edit', $user->id) }}" class="btn btn-light"><i class="bx bx-search-alt me-0"></i>
+                                        <a href="{{ route('user.edit', $user->id) }}" class="btn btn-light"><i class="bx bx-edit me-0"></i>
                                         </a>
                                         @endif
                                         {{-- Edit --}}

@@ -130,7 +130,7 @@ $delete = $page->access;
                                     {{-- Edit Modal Trigger --}}
                                     @if($update)
                                     <a href="{{ route('issue.edit', $issue->issue_id) }}" class="btn btn-light" data-toggle="tooltip" title="Edit Data">
-                                        <i class="bx bx-search-alt me-0"></i>
+                                        <i class="bx bx-edit me-0"></i>
                                     </a>
                                     @endif
                                     {{-- End of Edit Modal Trigger --}}

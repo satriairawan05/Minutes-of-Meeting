@@ -61,7 +61,7 @@ $delete = $pages[3]['access'] == 1;
                             <td>
                                 @if($update)
                                 <a href="{{ route('meet.edit', $d->meet_id) }}" class="btn btn-light" data-toggle="tooltip" title="Edit Data">
-                                    <i class="bx bx-search-alt me-0"></i>
+                                    <i class="bx bx-edit me-0"></i>
                                 </a>
                                 @endif
                                 @if($delete)

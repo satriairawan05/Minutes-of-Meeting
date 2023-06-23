@@ -142,7 +142,7 @@ $delete = $page->access;
                                     {{-- Approval --}}
                                     {{-- Edit --}}
                                     @if($update)
-                                    <a href="{!! route('daily.edit',$daily->daily_id) !!}" class="btn btn-light"><i class="bx bx-search-alt me-0"></i></a>
+                                    <a href="{!! route('daily.edit',$daily->daily_id) !!}" class="btn btn-light"><i class="bx bx-edit me-0"></i></a>
                                     @endif
                                     {{-- Edit --}}
                                     {{-- Delete --}}

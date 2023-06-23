@@ -39,7 +39,7 @@
                             <td class="text-center">{!! $tr->tracker_name !!}</td>
                             <td class="text-center">
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a type="button" href="{{ route('tracker.edit',$tr->tracker_id) }}" class="btn btn-light"><i class="bx bx-search-alt me-0"></i></a>
+                                    <a type="button" href="{{ route('tracker.edit',$tr->tracker_id) }}" class="btn btn-light"><i class="bx bx-edit me-0"></i></a>
                                     <form action="{{ route('tracker.destroy',$tr->tracker_id) }}" method="post">
                                         @csrf
                                         @method('delete')

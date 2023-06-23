@@ -146,7 +146,7 @@
                                     <td>{!! $i->is_private == 1 ? "Yes" : "No" !!}</td>
                                     <td>
                                         <a href="{{ route('resume.issue.edit',$i->issue_id) }}" class="btn btn-light" data-toggle="tooltip" title="Edit Data">
-                                            <i class="bx bx-search-alt me-0"></i>
+                                            <i class="bx bx-edit me-0"></i>
                                         </a>
                                         <form action="{{ route('resume.issue.delete',$i->issue_id) }}" method="post">
                                             @csrf
