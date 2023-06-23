@@ -35,7 +35,7 @@
     </style>
 </head>
 
-<body class="bg-theme bg-theme1">
+<body class="bg-theme bg-theme14">
     <!--wrapper-->
     <div class="wrapper">
         <div class="section-authentication-cover">

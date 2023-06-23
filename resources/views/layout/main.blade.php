@@ -14,8 +14,10 @@
     <link href="{{ asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet" />
-    <link src="{{ asset('assets/css/pace.min.css') }}" rel="stylesheet"/>
-    <script src="{{ asset('assets/js/pace.min.js') }}"></script>
+    <link src="{{ asset('assets/css/pace.min.css') }}" rel="stylesheet" />
+    <!-- loader-->
+    <link href="assets/css/pace.min.css" rel="stylesheet" />
+    <script src="assets/js/pace.min.js"></script>
     <!-- Bootstrap CSS -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/bootstrap-extended.css') }}" rel="stylesheet">
@@ -46,8 +48,8 @@
         </footer>
     </div>
     <!--end wrapper-->
-<!--start switcher-->
-<div class="switcher-wrapper">
+    <!--start switcher-->
+    <div class="switcher-wrapper">
         <div class="switcher-btn"> <i class='bx bx-cog bx-spin'></i>
         </div>
         <div class="switcher-body">
@@ -122,75 +124,75 @@
     <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
     <script src="{{ asset('assets/js/app.js') }}"></script>
 
-<script>
-    $(document).ready(function() {
-        var table = $('#example2');
+    <script>
+        $(document).ready(function() {
+            var table = $('#example2');
 
-        // Table bordered
-        $('#table-bordered').change(function() {
-            var value = $(this).val();
-            table.removeClass('table-bordered').addClass(value);
+            // Table bordered
+            $('#table-bordered').change(function() {
+                var value = $(this).val();
+                table.removeClass('table-bordered').addClass(value);
+            });
+
+            // Table striped
+            $('#table-striped').change(function() {
+                var value = $(this).val();
+                table.removeClass('table-striped').addClass(value);
+            });
+
+            // Table hover
+            $('#table-hover').change(function() {
+                var value = $(this).val();
+                table.removeClass('table-hover').addClass(value);
+            });
+
+            // Table color
+            $('#table-color').change(function() {
+                var value = $(this).val();
+                table.removeClass(function(index, className) {
+                    return (className.match(/(^|\s)table-mc-\S+/g) || []).join(' ');
+                }).addClass(value);
+            });
+
+            $('#example2').DataTable({
+                responsive: true,
+                rowReorder: {
+                    selector: 'td:nth-child(2)'
+                },
+                columnDefs: [{
+                    orderable: false,
+                    targets: -1
+                }], // Disable sorting for the last column (Actions)
+                dom: 'Bfrtip',
+                buttons: [
+                    'csv', 'excel', 'pdf', 'print'
+                ],
+                autoWidth: false,
+            });
         });
 
-        // Table striped
-        $('#table-striped').change(function() {
-            var value = $(this).val();
-            table.removeClass('table-striped').addClass(value);
-        });
-
-        // Table hover
-        $('#table-hover').change(function() {
-            var value = $(this).val();
-            table.removeClass('table-hover').addClass(value);
-        });
-
-        // Table color
-        $('#table-color').change(function() {
-            var value = $(this).val();
-            table.removeClass(function(index, className) {
-                return (className.match(/(^|\s)table-mc-\S+/g) || []).join(' ');
-            }).addClass(value);
-        });
-
-        $('#example2').DataTable({
-            responsive: true,
-            rowReorder: {
-                selector: 'td:nth-child(2)'
-            },
-            columnDefs: [{
-                orderable: false,
-                targets: -1
-            }], // Disable sorting for the last column (Actions)
-            dom: 'Bfrtip',
-            buttons: [
-                'csv', 'excel', 'pdf', 'print'
-            ],
-            autoWidth: false,
-        });
-    });
-
-    (function(removeClass) {
-        jQuery.fn.removeClass = function(value) {
-            if (value && typeof value.test === "function") {
-                for (var i = 0, l = this.length; i < l; i++) {
-                    var elem = this[i];
-                    if (elem.nodeType === 1 && elem.className) {
-                        var classNames = elem.className.split(/\s+/);
-                        for (var n = classNames.length; n--;) {
-                            if (value.test(classNames[n])) {
-                                classNames.splice(n, 1);
+        (function(removeClass) {
+            jQuery.fn.removeClass = function(value) {
+                if (value && typeof value.test === "function") {
+                    for (var i = 0, l = this.length; i < l; i++) {
+                        var elem = this[i];
+                        if (elem.nodeType === 1 && elem.className) {
+                            var classNames = elem.className.split(/\s+/);
+                            for (var n = classNames.length; n--;) {
+                                if (value.test(classNames[n])) {
+                                    classNames.splice(n, 1);
+                                }
                             }
+                            elem.className = jQuery.trim(classNames.join(" "));
                         }
-                        elem.className = jQuery.trim(classNames.join(" "));
                     }
+                } else {
+                    removeClass.call(this, value);
                 }
-            } else {
-                removeClass.call(this, value);
+                return this;
             }
-            return this;
-        }
-    })(jQuery.fn.removeClass);
-</script>
+        })(jQuery.fn.removeClass);
+    </script>
 
 
 
