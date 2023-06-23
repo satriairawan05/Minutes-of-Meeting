@@ -108,7 +108,7 @@
                                   </select>
                                 </td>
                                 <td style="text-align:center">
-                                  <button type="submit" class="btn btn-light btn-sm"><i class='bx bx-save'></i>Save New</button>
+                                  <button type="submit" class="btn btn-light btn-sm"><i class='bx bx-plus'></i>Save New</button>
                                 </td>
                               </tr>
                             </form>

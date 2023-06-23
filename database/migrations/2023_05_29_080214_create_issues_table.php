@@ -30,6 +30,7 @@ return new class extends Migration
             $table->string('approvedby')->nullable();
             $table->string('status_approved')->nullable();
             $table->longText('keterangan_approved')->nullable();
+            $table->date('closed_date')->nullable();
             $table->timestamps();
         });
     }

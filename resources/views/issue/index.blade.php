@@ -81,10 +81,12 @@ $delete = $page->access;
                     <tbody>
                         @foreach ($issues as $issue)
                         @php
-                        $startDate = \Carbon\Carbon::parse($issue->start_date);
-                        $endDate = \Carbon\Carbon::parse($issue->end_date);
+                        // $startDate = \Carbon\Carbon::parse($issue->start_date);
+                        // $endDate = \Carbon\Carbon::parse($issue->end_date);
+                        $startDate = date_create($issue->start_date);
+                        $endDate = date_create($issue->end_date);
                         $hasil = $endDate->diff($startDate)->format('%d');
-                        $day = now()->diff($endDate)->format('%d');
+                        $day = $endDate->diff(date_create(date('Y-m-d')))->format('%d');
 
                         // $status = App\Models\Issue::where('end_date','<',now())->update(['status' => 'Over Due']);
 
@@ -121,7 +123,7 @@ $delete = $page->access;
                                 <td>{!! \Carbon\Carbon::parse($issue->start_date)->format('d-m-Y') !!}</td>
                                 <td>{!! \Carbon\Carbon::parse($issue->end_date)->format('d-m-Y') !!}</td>
                         
-                                @if (now() == $endDate)
+                                @if (date('d-m-Y') == $endDate)
                                 <td>{!! $day !!}</td>
                                 @elseif(now() < $endDate)
                                 <td>- {!! $day !!} Day{{ $day > 1 ? 's' : '' }}</td>
@@ -141,7 +143,7 @@ $delete = $page->access;
                                     @endif
                                     {{-- End of Edit Modal Trigger --}}
                                     {{-- Delete Modal Trigger --}}
-                                    @if($delete)
+                                    @if($delete && $issue->status != 'Closed' && $issue->status != 'Complete')
                                     <form onclick="pos5_success_noti()" action="{{ route('issue.destroy', $issue->issue_id) }}" method="post" class="d-inline">
                                         @csrf
                                         @method('delete')

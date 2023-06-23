@@ -11,6 +11,7 @@ use App\Models\ApprovalHistory;
 use App\Models\ApprovalList;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\DB;
 
 class ApprovalController extends Controller
 {
@@ -32,6 +33,7 @@ class ApprovalController extends Controller
             ->where('issue_approvals.iss_app_user','=',auth()->user()->id)
             ->where(function ($query) {
                 $query->where('issue_approvals.iss_app_status','=','Open')
+                ->orWhere('issue_approvals.iss_app_status','=','Rejected')
                 ->orWhere('issue_approvals.iss_app_status','=','Need Revision');
             })
             ->groupBy('issues.issue_id')
@@ -44,6 +46,9 @@ class ApprovalController extends Controller
             ->where('daily_approvals.dai_app_user','=',auth()->user()->id)
             ->groupBy('dailies.daily_id')
             ->get();
+
+        $app_before = IssueApproval::leftJoin('approval_lists','issue_approvals.app_list_id','=','approval_lists.app_list_id')
+        ->get();
 
         $data = [
             'module' => $module,
@@ -89,6 +94,7 @@ class ApprovalController extends Controller
             ->leftJoin('approval_lists', 'approval_lists.app_list_id', '=', 'issue_approvals.app_list_id')
             ->leftJoin('meets','meets.meet_xid','=','issues.project')
             ->where('issues.issue_id','=',$idnya)
+            ->where('approval_lists.app_user','=',auth()->user()->id)
             ->groupBy('issues.issue_id')
             ->first();
 
@@ -115,11 +121,11 @@ class ApprovalController extends Controller
      */
     public function update(Request $request, String $issue_id)
     {
-        try {
-            
+        try {   
             $data = [
                 'iss_app_status' => $request->iss_app_status,
                 'iss_app_date' => now(),
+                'iss_app_notes' => $request->app_his_note
             ];
             
             $issue_approval = IssueApproval::where('iss_app_id','=',$request->iss_app_id)->update($data);
@@ -134,11 +140,30 @@ class ApprovalController extends Controller
 
             $issues_status = "Complete";
 
-            if($request->iss_app_status == 'Approved'){
-                $issues_status = "Closed";
-            }
             if($request->iss_app_status == 'Need Revision' || $request->iss_app_status == 'Rejected'){
                 $issues_status = "Continue";
+            }
+
+            $status_closed = 0;
+            $closer = 0;
+
+            $issue_app = IssueApproval::where('issue_id','=',$issue_id)->get();
+
+            foreach($issue_app as $d){
+                $status_closed = $d->iss_app_status == 'Approved' ? 1 : 0;
+            }
+
+            $approval_list = ApprovalList::where('app_user','=',auth()->user()->id)
+            ->where('app_module','=','issues')->first();
+
+            $closer = $approval_list->app_closer;
+           
+            if($status_closed == 1){
+                $issues_status = "Closed";
+            }
+
+            if($closer == 1){
+                $issues_status = "Closed";
             }
 
             $data = [
@@ -146,8 +171,7 @@ class ApprovalController extends Controller
             ];
 
             Issue::where('issue_id','=',$issue_id)->update($data);
-
-
+            
             return redirect('/approval?module='.$request->module)->with('success','Data saved');
         } catch (QueryException $e) {
             return $e->getMessage();

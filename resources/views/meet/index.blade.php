@@ -56,7 +56,14 @@ $delete = $pages[3]['access'] == 1;
                             </td>
                             <td>{{ $d->meet_name }}</td>
                             <td>{{ $d->meet_locate }}</td>
-                            <td>{{ $d->meet_attend }}</td>
+                            <td>
+                                @php
+                                    $att = explode("/", $d->meet_attend);
+                                    foreach($att as $a => $val){
+                                        echo $val." <br>";
+                                    }
+                                @endphp
+                            </td>
                             @if($update || $delete)
                             <td>
                                 @if($update)

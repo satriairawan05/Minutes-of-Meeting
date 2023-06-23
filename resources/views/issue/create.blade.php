@@ -46,7 +46,11 @@
                         </div>
                         <div class="col-md-6">
                             <label id="project_label" for="project">Meeting</label>
-                            <input id="project" name="project" type="text" class="form-control @error('project') is_invalid @enderror" required value="{{ $meet->meet_xid }}" placeholder="Masukan Meeting" readonly />
+                            <select class="form-select form-control" id="project" name="project">
+                                @foreach ($meets as $m)
+                                    <option value="{!! $m->meet_xid !!}" {!! $m->meet_xid == old('project') ? 'selected' : '' !!}>{{ $m->meet_xid }}</option>
+                                @endforeach
+                            </select>
                             @error('project')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -111,7 +115,7 @@
                     <div class="row mb-3">
                         @php
                         $statuses = array("New","Continue","Over Due","Complete","Closed");
-                        $statuses = array("New","Continue","Over Due","Complete");
+                        $statuses = array("New","Continue","Complete");
                         @endphp
                         <div class="col-md-6">
                             <label id="status_label" for="status">Status</label>

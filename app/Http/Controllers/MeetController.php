@@ -42,7 +42,6 @@ class MeetController extends Controller
         $lastCount = Meet::select('meet_id')->latest('meet_id')->pluck('meet_id')->first();
         $count = $lastCount + 1;
         $id_u = $prefix . str_pad($count, 6, '0', STR_PAD_LEFT) . "/" . $formattedDate;
-
         return view('meet.create', [
             'meet_id' => $id_u,
             'users' => User::get()

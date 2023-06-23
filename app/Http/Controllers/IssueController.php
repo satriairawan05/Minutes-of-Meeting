@@ -9,6 +9,9 @@ use App\Models\User;
 use App\Models\Issue;
 use App\Models\ApprovalList;
 use App\Models\IssueApproval;
+use App\Models\GroupPage;
+use App\Models\Group;
+use App\Models\Page;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -24,17 +27,21 @@ class IssueController extends Controller
     {
         $page_name = "Issue";
         $user_group = auth()->user()->group_id;
-        $pages = DB::table('users')->leftJoin('group_pages', 'users.group_id', '=', 'group_pages.group_id')
-            ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
-            ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
-            ->whereColumn('users.group_id', '=', 'groups.group_id')
-            ->where('pages.page_name', '=', $page_name)
-            ->where('group_pages.access', '=', 1)
-            ->whereBetween('pages.page_id', [5, 9])
-            ->where('group_pages.group_id', '=', $user_group)
-            ->select(['group_name', 'page_name', 'action', 'access'])
-            ->limit(5)
-            ->get();
+        // $pages = DB::table('users')->leftJoin('group_pages', 'users.group_id', '=', 'group_pages.group_id')
+        //     ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
+        //     ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
+        //     ->whereColumn('users.group_id', '=', 'groups.group_id')
+        //     ->where('pages.page_name', '=', $page_name)
+        //     ->where('group_pages.access', '=', 1)
+        //     ->whereBetween('pages.page_id', [5, 9])
+        //     ->where('group_pages.group_id', '=', $user_group)
+        //     ->select(['group_name', 'page_name', 'action', 'access'])
+        //     ->limit(5)
+        //     ->get();
+        $pages = GroupPage::leftJoin('pages','pages.page_id','=','group_pages.page_id')
+        ->where('pages.page_name','=','issue')
+        ->where('group_pages.group_id','=',auth()->user()->group_id)
+        ->get();
 
         $issue = Issue::distinct('tracker')->orderBy('tracker')->paginate(15);
 
@@ -59,8 +66,9 @@ class IssueController extends Controller
                 return view('issue.create', [
                     'issue' => $id,
                     'users' => User::get(),
-                    'meet' => Meet::latest()->first(),
-                    'depts' => Departemen::get()
+                    // 'meet' => Meet::latest()->first(),
+                    'depts' => Departemen::get(),
+                    'meets' => Meet::orderBy('meet_id', 'desc')->get()
                 ]);
             }
 
@@ -115,6 +123,7 @@ class IssueController extends Controller
                 $issue_approvals->issue_id = $issue_id;
                 $issue_approvals->iss_app_user = $app->app_user;
                 $issue_approvals->iss_app_status = "Open";
+                $issue_approvals->iss_app_ordinal = $app->app_ordinal;
                 $issue_approvals->save();
             }
             
@@ -148,7 +157,11 @@ class IssueController extends Controller
             'data' => $issue,
             'meet' => Meet::latest()->first(),
             'depts' => Departemen::get(),
-            'users' => User::get()
+            'users' => User::get(),
+            'issue_approval' => IssueApproval::leftJoin('users','users.id','=','iss_app_user')
+            ->leftJoin('approval_lists','approval_lists.app_list_id','=','issue_approvals.app_list_id')
+            ->where('issue_approvals.issue_id','=',$issue->issue_id)
+            ->orderBy('approval_lists.app_ordinal')->get()
         ]);
     }
 

@@ -84,22 +84,22 @@ $delete = 0;
                       <tr>
                         <td style="vertical-align:top">Start Date</td>
                         <td width="5px">:</td>
-                        <td style="vertical-align:top">{!! \Carbon\Carbon::parse($app_issues->start_date)->format('d-m-Y') !!}</td>
+                        <td style="vertical-align:top">{!! \Carbon\Carbon::parse($app_issues->start_date)->format('d M Y') !!}</td>
                       </tr>
                       <tr>
                         <td style="vertical-align:top">End Date</td>
                         <td width="5px">:</td>
-                        <td style="vertical-align:top">{!! \Carbon\Carbon::parse($app_issues->end_date)->format('d-m-Y') !!}</td>
+                        <td style="vertical-align:top">{!! \Carbon\Carbon::parse($app_issues->end_date)->format('d M Y') !!}</td>
                       </tr>
                       <tr>
                         <td style="vertical-align:top">Aging</td>
                         <td width="5px">:</td>
                         <td style="vertical-align:top">
                           @php
-                            $startDate = \Carbon\Carbon::parse($app_issues->start_date);
-                            $endDate = \Carbon\Carbon::parse($app_issues->end_date);
+                            $startDate = date_create($app_issues->start_date);
+                            $endDate = date_create($app_issues->end_date);
                             $hasil = $endDate->diff($startDate)->format('%d');
-                            $day = now()->diff($endDate)->format('%d');
+                            $day = $endDate->diff(date_create(date('Y-m-d')))->format('%d');
                           @endphp
                           @if (now() == $endDate)
                             {!! $day !!}

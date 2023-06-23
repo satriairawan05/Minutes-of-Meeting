@@ -44,17 +44,42 @@ $delete = 0;
                     </thead>
                     <tbody>
                       @foreach($app_issues as $app)
-                        <tr>
-                          <td style="text-align: center; width:25px">{!! $loop->iteration !!}</td>
-                          <td><a href="{!! route('approval.edit', $app->issue_id).'?module=issues' !!}">{!! $app->issue_xid !!}</a></td>
-                          <td>{!! $app->tracker !!}</td>
-                          <td>{!! $app->subject !!}</td>
-                          <td>{!! $app->pic !!}</td>
-                          <td style="text-align: center; width: 100px">
-                            <a type="button" href="{!! route('approval.edit', $app->issue_id).'?module=issues' !!}" class="btn btn-light btn-sm btn-block"><i class="bx bx-search-alt me-0"></i></a>
-                          </td>
-                        </tr>
-                      @endforeach 
+                          @php
+                          $app_before = App\Models\IssueApproval::where('issue_id','=',$app->issue_id)
+                              ->where('iss_app_ordinal','=',$app->app_ordinal - 1)
+                              ->first();
+                              if($app_before){
+                                  if($app_before->iss_app_status == 'Approved'){
+                          @endphp
+                          <tr>
+                            <td style="text-align: center; width:25px">{!! $loop->iteration !!}</td>
+                            <td><a href="{!! route('approval.edit', $app->issue_id).'?module=issues' !!}">{!! $app->issue_xid !!}</a></td>
+                            <td>{!! $app->tracker !!}</td>
+                            <td>{!! $app->subject !!}</td>
+                            <td>{!! $app->pic !!}</td>
+                            <td style="text-align: center; width: 100px">
+                              <a type="button" href="{!! route('approval.edit', $app->issue_id).'?module=issues' !!}" class="btn btn-light btn-sm btn-block"><i class="bx bx-search-alt me-0"></i></a>
+                            </td>
+                          </tr>
+                          @php          
+                                  }
+                              }else{
+                          @endphp
+                          <tr>
+                            <td style="text-align: center; width:25px">{!! $loop->iteration !!}</td>
+                            <td><a href="{!! route('approval.edit', $app->issue_id).'?module=issues' !!}">{!! $app->issue_xid !!}</a></td>
+                            <td>{!! $app->tracker !!}</td>
+                            <td>{!! $app->subject !!}</td>
+                            <td>{!! $app->pic !!}</td>
+                            <td style="text-align: center; width: 100px">
+                              <a type="button" href="{!! route('approval.edit', $app->issue_id).'?module=issues' !!}" class="btn btn-light btn-sm btn-block"><i class="bx bx-search-alt me-0"></i></a>
+                            </td>
+                          </tr>
+                          @php     
+                              }
+                          @endphp
+                        
+                      @endforeach
                     </tbody>
                   </table>
                 </div>
