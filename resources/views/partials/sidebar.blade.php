@@ -237,7 +237,7 @@ $admin = auth()->user()->name == "Super Admin";
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li><a class="dropdown-item d-flex align-items-center" href="{{ route('user.index') }}"><i class="bx bx-user fs-5"></i><span>User</span></a>
                     </li>
-                    <li><a class="dropdown-item d-flex align-items-center" href="{{ route('group.index') }}"><i class="bx bx-cog fs-5"></i><span>Setting Role</span></a>
+                    <li><a class="dropdown-item d-flex align-items-center" href="{{ route('group.index') }}"><i class="bx bx-cog fs-5"></i><span>Setting</span></a>
                     </li>
                     <li>
                         <form action="{{ route('logout') }}" method="post">
