@@ -67,7 +67,7 @@
                             <div class="row mb-3">
                                 <label for="meet_date" class="col-sm-2 col-form-label">Date Of Meeting</label>
                                 <div class="col-sm-10">
-                                    <input type="date" class="form-control form-control-sm @error('meet_date') is-invalid @enderror" id="meet_date" name="meet_date" value="{{ old('meet_date') }}">
+                                    <input type="date" class="form-control form-control-sm @error('meet_date') is-invalid @enderror" id="meet_date" name="meet_date" value="{{ old('meet_date', date('Y-m-d')) }}">
                                     @error('meet_date')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -78,7 +78,7 @@
                             <div class="row mb-3">
                                 <label for="meet_time" class="col-sm-2 col-form-label">Time Of Meeting</label>
                                 <div class="col-sm-10">
-                                    <input type="time" class="form-control form-control-sm @error('meet_time') is-invalid @enderror" id="meet_time" name="meet_time" value="{{ old('meet_time') }}">
+                                    <input type="time" class="form-control form-control-sm @error('meet_time') is-invalid @enderror" id="meet_time" name="meet_time" value="{{ old('meet_time', date('H:i')) }}">
                                     @error('meet_time')
                                     <div class="invalid-feedback">
                                         {{ $message }}

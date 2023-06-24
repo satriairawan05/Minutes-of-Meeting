@@ -33,29 +33,35 @@ $delete = 0;
                 <div class="table table-filter">
                     <div class="list-group">
                         <div class="list-group">
-                          <a href="?module=issues" class="list-group-item list-group-item-action mt-1 text-center text-uppercase">Issues</a>
-                          <a href="?module=dwm" class="list-group-item list-group-item-action mt-1 text-center text-uppercase">DWM Report</a>
+                            @if(count($app_issues) > 0)
+                                @php
+                                    $total_issues = 0;
+                                    foreach($app_issues as $app){
+                                        $app_before = App\Models\IssueApproval::where('issue_id','=',$app->issue_id)
+                                        ->where('iss_app_ordinal','=',$app->app_ordinal - 1)
+                                        ->first();
+                                        if($app_before){
+                                            if($app_before->iss_app_status == 'Approved'){
+                                                $total_issues ++;
+                                            }
+                                        }else{
+                                            $total_issues ++;
+                                        }
+                                    }
+                                @endphp
+                                @if($total_issues > 0 )
+                                    <a href="?module=issues" class="list-group-item list-group-item-action mt-1 text-center text-uppercase">Issues ( {!! $total_issues !!} )</a>
+                                @endif
+                            @endif
+                            @if(count($app_dwm) > 0)
+                            <a href="?module=dwm" class="list-group-item list-group-item-action mt-1 text-center text-uppercase">DWM Report ( {!! count($app_dwm) !!} )</a>
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
-        @if ($message = Session::get('success'))
-        <script>
-            Toastify({
-                text: "{{ $message }}",
-                duration: 3000,
-                close: true, // Include close button
-                gravity: "bottom", // Set gravity to "bottom"
-                position: "right", // Set position to "right"
-                style: {
-                    background: "linear-gradient(to right, #11998E, #38ef7d)"
-                }
-            }).showToast();
-        </script>
-        @endif
     </div>
     @endsection
 

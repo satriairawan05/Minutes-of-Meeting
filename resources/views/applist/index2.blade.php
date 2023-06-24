@@ -60,8 +60,9 @@
                           <tbody>
                             @foreach($applist as $app)
                               <form action="{{ route('approvallist.update', $app->app_list_id) }}" method="post">
-                                @method('PUT')
                                 @csrf
+                                @method('PUT')
+                                
                                 <input type="hidden" name="app_module" value="{!! $module !!}">
                                 <tr>
                                   <td><input class="form-control" name="app_ordinal" id="app_ordinal" style="text-align: center" value="{!! $app->app_ordinal !!}"></td>
@@ -107,7 +108,7 @@
                                   </select>
                                 </td>
                                 <td style="text-align:center">
-                                  <button type="submit" class="btn btn-light btn-sm"><i class='bx bx-save'></i>Save New</button>
+                                  <button type="submit" class="btn btn-light btn-sm"><i class='bx bx-plus'></i>Save New</button>
                                 </td>
                               </tr>
                             </form>

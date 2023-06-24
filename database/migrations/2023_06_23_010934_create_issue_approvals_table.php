@@ -15,9 +15,11 @@ return new class extends Migration
             $table->increments('iss_app_id');
             $table->string('issue_id')->nullable();
             $table->string('app_list_id')->nullable();
+            $table->string('iss_app_ordinal')->nullable();
             $table->string('iss_app_user')->nullable();
             $table->date('iss_app_date')->nullable();
             $table->string('iss_app_status')->nullable();
+            $table->longText('iss_app_notes')->nullable();
             $table->timestamps();
         });
     }

@@ -30,7 +30,7 @@
                     @csrf
                     @method('put')
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="1" id="is_private" name="is_private">
+                        <input class="form-check-input" type="checkbox" value="1" id="is_private" name="is_private" {!! $data->status == 'Closed' || $data->status == 'Complete' ? 'readonly' : '' !!}>
                         <label class="form-check-label" for="is_private">
                             Private
                         </label>
@@ -59,7 +59,7 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label id="tracker_label" for="tracker">Departemen</label>
-                            <select class="form-select form-control form-control-sm" id="tracker" name="tracker">
+                            <select class="form-select form-control form-control-sm" id="tracker" name="tracker" {!! $data->status == 'Closed' || $data->status == 'Complete' ? 'disabled' : '' !!}>
                                 @foreach ($depts as $dept)
                                 @if (old('tracker', $data->tracker) == $dept->name)
                                 <option name="tracker" value="{{ $dept->name }}" selected>
@@ -79,7 +79,7 @@
                         </div>
                         <div class="col-md-6">
                             <label id="subject_label" for="subject">Subject</label>
-                            <input id="subject" name="subject" type="text" class="form-control @error('subject') is_invalid @enderror" required value="{{ old('subject', $data->subject) }}" placeholder="Masukan Subject" />
+                            <input id="subject" name="subject" type="text" class="form-control @error('subject') is_invalid @enderror" required value="{{ old('subject', $data->subject) }}" placeholder="Masukan Subject" {!! $data->status == 'Closed' || $data->status == 'Complete' ? 'readonly' : '' !!}/>
                             @error('subject')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -91,7 +91,7 @@
 
                         <div class="col-md-6 form-group">
                             <label id="description_label" for="description">Remarks</label>
-                            <textarea name="description" id="description" rows="4" required class="form-control @error('description') is-invalid @enderror" placeholder="Masukan Remarks">{{ old('description', $data->description) }}</textarea>
+                            <textarea name="description" id="description" rows="4" required class="form-control @error('description') is-invalid @enderror" placeholder="Masukan Remarks" {!! $data->status == 'Closed' || $data->status == 'Complete' ? 'readonly' : '' !!}>{{ old('description', $data->description) }}</textarea>
                             @error('description')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -101,7 +101,7 @@
 
                         <div class="col-md-6 form-group">
                             <label id="c_action_label" for="c_action">Corrective Action</label>
-                            <textarea id="c_action" name="c_action" rows="4" class="form-control @error('c_action') is-invalid @enderror" placeholder="Masukan Corrective Action">{{ old('c_action', $data->c_action) }}</textarea>
+                            <textarea id="c_action" name="c_action" rows="4" class="form-control @error('c_action') is-invalid @enderror" placeholder="Masukan Corrective Action" {!! $data->status == 'Closed' || $data->status == 'Complete' ? 'readonly' : '' !!}>{{ old('c_action', $data->c_action) }}</textarea>
                             @error('c_action')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -112,11 +112,11 @@
                     <div class="row mb-3">
                         @php
                         $statuses = array("New","Continue","Over Due","Complete","Closed");
-                        $statuses = array("New","Continue","Over Due","Complete");
+                        $statuses = array("New","Continue","Complete");
                         @endphp
                         <div class="col-md-6">
                             <label id="status_label" for="status">Status</label>
-                            <select class="form-select form-control form-control-sm" name="status">
+                            <select class="form-select form-control form-control-sm" name="status" {!! $data->status == 'Closed' || $data->status == 'Complete' ? 'disabled' : '' !!}>
                                 @foreach ($statuses as $status)
                                 @if (old('status',$data->status) == $status)
                                 <option name="status" value="{{ $status }}" selected>{{ $status }}</option>
@@ -131,7 +131,7 @@
                         @endphp
                         <div class="col-md-6">
                             <label id="priority_label" for="priority">Priority</label>
-                            <select class="form-select form-control form-control-sm" name="priority">
+                            <select class="form-select form-control form-control-sm" name="priority" {!! $data->status == 'Closed' || $data->status == 'Complete' ? 'disabled' : '' !!}>
                                 @foreach ($priorities as $priority)
                                 @if (old('priority',$data->priority) == $priority)
                                 <option name="priority" value="{{ $priority }}" selected>{{ $priority }}</option>
@@ -146,7 +146,7 @@
 
                         <div class="col-md-6">
                             <label id="start_date_label" for="start_date">Start Date</label>
-                            <input id="start_date" name="start_date" type="date" class="form-control @error('start_date') is_invalid @enderror" required value="{{ old('start_date', $data->start_date) }}" />
+                            <input id="start_date" name="start_date" type="date" class="form-control @error('start_date') is_invalid @enderror" required value="{{ old('start_date', $data->start_date) }}" {!! $data->status == 'Closed' || $data->status == 'Complete' ? 'readonly' : '' !!}/>
                             @error('start_date')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -155,7 +155,7 @@
                         </div>
                         <div class="col-md-6">
                             <label id="end_date_label" for="end_date">End Date</label>
-                            <input id="end_date" name="end_date" type="date" class="form-control @error('end_date') is_invalid @enderror" required value="{{ old('end_date', $data->end_date) }}" />
+                            <input id="end_date" name="end_date" type="date" class="form-control @error('end_date') is_invalid @enderror" required value="{{ old('end_date', $data->end_date) }}" {!! $data->status == 'Closed' || $data->status == 'Complete' ? 'readonly' : '' !!}/>
                             @error('end_date')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -166,7 +166,7 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label id="assignee_label" for="assignee">Assignee</label>
-                            <select class="form-select form-control form-control-sm" id="assignee" name="assignee">
+                            <select class="form-select form-control form-control-sm" id="assignee" name="assignee" {!! $data->status == 'Closed' || $data->status == 'Complete' ? 'disabled' : '' !!}>
                                 @foreach ($users as $user)
                                 @if (old('assignee', $data->assigne) == $user->name)
                                 <option name="assignee" value="{{ $user->name }}" selected>
@@ -186,7 +186,7 @@
                         </div>
                         <div class="col-md-6">
                             <label id="pic_label" for="pic">PIC</label>
-                            <select class="form-select form-control form-control-sm" id="pic" name="pic">
+                            <select class="form-select form-control form-control-sm" id="pic" name="pic" {!! $data->status == 'Closed' || $data->status == 'Complete' ? 'disabled' : '' !!}>
                                 @foreach ($users as $user)
                                 @if (old('pic',$data->pic) == $user->name)
                                 <option name="pic" value="{{ $user->name }}" selected>
@@ -210,20 +210,55 @@
                             <label id="file_label" for="file">File</label>
                             <div id="targetLayer"></div>
                             <div class="icon-choose-image"></div>
+                            @if($data->status != 'Closed' && $data != 'Complete')
                             <img src="{{ asset('storage/' . $data->file) }}" alt="{{ $data->project }}" name="oldFile" id="oldFile" class="img-responsive w-25 h-25 opacity-7 img-fluid m-md-2">
-                            <input id="file" name="file" type="file" class="form-control form-control-file @error('file') is_invalid @enderror" value="{{ old('file') }}" onchange="return showPreview(this)" />
+                            <input id="file" name="file" type="file" class="form-control form-control-file @error('file') is_invalid @enderror" value="{{ old('file') }}" onchange="return showPreview(this)" {!! $data->status == 'Closed' || $data->status == 'Complete' ? 'readonly' : '' !!}/>
                             @error('file')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                             @enderror
+                            @endif
                         </div>
                     </div>
-                    <br/>
+                    @if($data->status=='Complete' || $data->status=='Closed')
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <table class="table">
+                               <thead>
+                                    <tr>
+                                        <th style="text-align:center" colspan="5">Approval Status</th>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:5%;text-align:center">#</th>
+                                        <th style="width:15%">Approver</th>
+                                        <th style="width:15%">Statement</th>
+                                        <th style="width:15%">Time</th>
+                                        <th>Notes</th>
+                                    </tr>
+                               </thead>
+                               <tbody>
+                                    @foreach($issue_approval as $d)
+                                        <tr>
+                                            <td style="text-align:center">{!! $d->app_ordinal !!}</td>
+                                            <td>{!! $d->name !!}</td>
+                                            <td>{!! $d->iss_app_status == 'Open' ? '-' : $d->iss_app_status !!}</td>
+                                            <td>{!! $d->iss_app_date ? date('d M Y H:i:s', strtotime($d->updated_at)) : '-'  !!}</td>
+                                            <td>{!! $d->iss_app_notes !!}</td>
+                                        </tr>
+                                    @endforeach
+                               </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    @endif
+
                     <div class="row mb-3">
                         <div class="col-12 d-flex justify-content-between align-items-center">
                             <a href="{{ route('issue.index') }}" class="btn btn-light px-2"><i class='bx bx-left-arrow-alt mr-1'></i>Issue Datatable</button></a>
+                            @if($data->status != 'Closed' && $data != 'Complete')
                             <button type="submit" class="btn btn-light px-2"><i class='bx bx-save'></i>Save Changes</button>
+                            @endif
                         </div>
                     </div>
                 </form>

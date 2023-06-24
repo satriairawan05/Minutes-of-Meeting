@@ -37,7 +37,7 @@
                             <td style="text-align: center;">{{ $loop->iteration }}</td>
                             <td>DEPARTEMEN {{ $dept->name }}</td>
                             <td style="text-align: center;">
-                               <a type="button" href="{!! route('departemen.edit', $dept->id) !!}" class="btn btn-light"><i class="bx bx-search-alt me-0"></i></a>
+                                <a type="button" href="{!! route('departemen.edit', $dept->id) !!}" class="btn btn-light"><i class="bx bx-search-alt me-0"></i></a>
                                 <form onclick="pos5_success_noti()" action="{!! route('departemen.destroy',$dept->id) !!}" method="post" class="d-inline">
                                     @csrf
                                     @method('delete')
