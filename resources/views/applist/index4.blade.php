@@ -22,7 +22,7 @@
                         <ol class="breadcrumb mb-0 p-0">
                             <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a></li>
                             <li class="breadcrumb-item"><a href="{{ route('approvallist.index') }}">Approval List</a></li>
-                            <li class="breadcrumb-item" aria-current="page">Issues</li>
+                            <li class="breadcrumb-item" aria-current="page">DWM Report</li>
                         </ol>
                     </nav>
                 </div>
@@ -107,6 +107,7 @@
                                     <option value="1">Yes</option>
                                   </select>
                                 </td> --}}
+                                <input type="hidden" id="departemen" name="departemen" value="{!! $depart !!}">
                                 <td style="text-align:center">
                                   <button type="submit" class="btn btn-light"><i class='bx bx-plus'></i>Save New</button>
                                 </td>
@@ -118,9 +119,9 @@
 
                     <div class="row mb-3">
                       <div class="col-12 d-flex justify-content-between align-items-center">
-                          <a href="{{ route('approvallist.index') }}" class="btn btn-light px-2"><i class='bx bx-left-arrow-alt mr-1'></i>Approval List</button></a>
+                          <a href="{{ route('approvallist.index') }}?module={!! $module !!}" class="btn btn-light px-2"><i class='bx bx-left-arrow-alt mr-1'></i>Approval List</button></a>
                       </div>
-                  </div>
+                    </div>
                 </div>
             </div>
             <!-- Modal -->

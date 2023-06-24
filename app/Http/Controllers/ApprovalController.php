@@ -9,6 +9,8 @@ use App\Models\Daily;
 use App\Models\DailyApproval;
 use App\Models\ApprovalHistory;
 use App\Models\ApprovalList;
+use App\Models\ArchiveIssue;
+use App\Models\GroupPage;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
@@ -20,6 +22,12 @@ class ApprovalController extends Controller
      */
     public function index(Request $request)
     {
+        $page_name = "Approval";
+        $pages = GroupPage::leftJoin('pages','pages.page_id','=','group_pages.page_id')
+            ->where('pages.page_name','=',$page_name)
+            ->where('group_pages.group_id','=',auth()->user()->group_id)
+            ->get();
+
         $index = 'approve.index';
         $index2 = 'approve.index2';
         $index3 = 'approve.index3';
@@ -51,6 +59,7 @@ class ApprovalController extends Controller
         ->get();
 
         $data = [
+            'pages' => $pages,
             'module' => $module,
             'app_issues' => $app_issues,
             'app_dwm' => $app_dwm
@@ -171,6 +180,26 @@ class ApprovalController extends Controller
             ];
 
             Issue::where('issue_id','=',$issue_id)->update($data);
+
+            if($issues_status == 'Closed'){
+                $iss = Issue::where('issue_id','=',$issue_id)->first();
+                $arc_iss = new ArchiveIssue;
+                $arc_iss->issue_id = $iss->issue_id;
+                $arc_iss->issue_xid = $iss->issue_xid;
+                $arc_iss->project = $iss->project;
+                $arc_iss->tracker = $iss->tracker;
+                $arc_iss->subject = $iss->subject;
+                $arc_iss->c_action = $iss->c_action;
+                $arc_iss->description = $iss->description;
+                $arc_iss->status = $iss->status;
+                $arc_iss->priority = $iss->priority;
+                $arc_iss->start_date = $iss->start_date;
+                $arc_iss->end_date = $iss->end_date;
+                $arc_iss->file = $iss->file;
+                $arc_iss->assignee = $iss->assignee;
+                $arc_iss->is_private = $iss->private;
+                $arc_iss->save();
+            }
             
             return redirect('/approval?module='.$request->module)->with('success','Data saved');
         } catch (QueryException $e) {

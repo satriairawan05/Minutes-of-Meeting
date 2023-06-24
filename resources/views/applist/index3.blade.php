@@ -21,8 +21,7 @@ $delete = 0;
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('approvallist.index') }}">Approval List</a></li>
-                        <li class="breadcrumb-item" aria-current="page">DWM Report</li>
+                        <li class="breadcrumb-item" aria-current="page">Approval List</li>
                     </ol>
                 </nav>
             </div>
@@ -31,7 +30,20 @@ $delete = 0;
         <hr />
         <div class="card">
             <div class="card-body bg-transparent">
-                
+                <div class="table table-filter">
+                    <div class="list-group">
+                        <div class="list-group">
+                            @foreach($departemen as $d)
+                                <a href="?module=dwm&departemen={!! $d->name !!}" class="list-group-item list-group-item-action mt-1 text-center text-uppercase">{!! $d->name !!}</a>
+                            @endforeach
+                            </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-12 d-flex justify-content-between align-items-center">
+                        <a href="{{ route('approvallist.index') }}" class="btn btn-light px-2"><i class='bx bx-left-arrow-alt mr-1'></i>Approval List</button></a>
+                    </div>
+                  </div>
             </div>
         </div>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>

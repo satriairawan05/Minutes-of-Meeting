@@ -15,6 +15,7 @@ return new class extends Migration
             $table->increments('dai_app_id');
             $table->string('daily_id')->nullable();
             $table->string('app_list_id')->nullable();
+            $table->string('dai_departemen')->nullable();
             $table->string('dai_app_user')->nullable();
             $table->date('dai_app_date')->nullable();
             $table->string('dai_app_status')->nullable();
