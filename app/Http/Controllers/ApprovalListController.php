@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\ApprovalList;
+use App\Models\Departemen;
+use App\Models\GroupPage;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
@@ -14,19 +16,39 @@ class ApprovalListController extends Controller
      */
     public function index(Request $request)
     {
+        $page_name = "Approval List";
+        $pages = GroupPage::leftJoin('pages','pages.page_id','=','group_pages.page_id')
+            ->where('pages.page_name','=',$page_name)
+            ->where('group_pages.group_id','=',auth()->user()->group_id)
+            ->get();
+
         $index = 'applist.index';
         $index2 = 'applist.index2';
         $index3 = 'applist.index3';
+        $index4 = 'applist.index4';
         $module = $request->module;
+        $departemen = $request->departemen;
         $views = $index;
         $users = User::all();
         $data = [
+            'pages' => $pages,
             'module' => $module,
             'users' => $users,
-            'applist' => ApprovalList::all()
+            'applist' => ApprovalList::all(),
+            'departemen' => Departemen::all(),
+            'depart' => $request->departemen
         ];
         if($module){
-            $views = $module == 'issues' ? $index2 : $index3;
+            if($module=='issues'){
+                $views = $index2;
+            }else{
+                if($departemen){
+                    $views = $index4;
+                }else{
+                    $views = $index3;
+                }
+            }
+            
         }
         return view($views)->with($data);
     }

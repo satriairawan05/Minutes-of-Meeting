@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('approval_lists', function (Blueprint $table) {
             $table->increments('app_list_id');
             $table->string('app_module')->nullable();
+            $table->string('app_departemen')->nullable();
             $table->string('app_ordinal')->nullable();
             $table->string('app_user')->nullable();
             $table->string('app_closer')->nullable();

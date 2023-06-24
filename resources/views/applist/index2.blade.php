@@ -42,47 +42,77 @@ $delete = 0;
     </div>
 
     @endif
-
-    <!--end breadcrumb-->
-    <hr />
-    <div class="card">
-      <div class="card-body bg-transparent">
-        <div class="row mb-3">
-          <table class="table table-hover table-mc-light">
-            <thead class="table-header">
-              <tr>
-                <th style="text-align: center; width: 200px">Step</th>
-                <th>Approval Name</th>
-                <th style="text-align: center; width: 250px">Approval Closer</th>
-                <th style="text-align: center; width: 200px">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach($applist as $app)
-              <form action="{{ route('approvallist.update', $app->app_list_id) }}" method="post">
-                @csrf
-                @method('PUT')
-
-                <input type="hidden" name="app_module" value="{!! $module !!}">
-                <tr>
-                  <td><input class="form-control" name="app_ordinal" id="app_ordinal" style="text-align: center" value="{!! $app->app_ordinal !!}"></td>
-                  <td>
-                    <select class="form-select" name="app_user" id="app_user">
-                      @foreach($users as $usr)
-                      <option value="{!! $usr->id !!}" {!! $usr->id == $app->app_user ? 'selected' : '' !!}>{!! $usr->name !!}</option>
-                      @endforeach
-                    </select>
-                  </td>
-                  <td>
-                    <select class="form-select" name="app_closer" id="app_closer">
-                      <option value="0" {!! $app->app_closer == 0 ? 'selected' : '' !!}>No</option>
-                      <option value="1" {!! $app->app_closer == 1 ? 'selected' : '' !!}>Yes</option>
-                    </select>
-                  </td>
-                  <td style="text-align:center">
-                    <div class="btn-icon-list justify-content-center">
-                      <button type="submit" class="btn btn-light btn-sm"><i class='bx bx-save'></i>Update</button>
-                      <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#modalDelete" onclick="changeAction('{!! route('approvallist.destroy', $app->app_list_id) !!}')"><i class='bx bx-edit'></i>Delete</button>
+            <!--end breadcrumb-->
+            <hr />
+            <div class="card">
+                <div class="card-body bg-transparent">
+                    <div class="row mb-3">
+                      <table class="table table-hover table-mc-light">
+                          <thead class="table-header">
+                              <tr>
+                                  <th style="text-align: center; width: 200px">Step</th>
+                                  <th>Approval Name</th>
+                                  {{-- <th style="text-align: center; width: 250px">Approval Closer</th> --}}
+                                  <th style="text-align: center; width: 200px">Actions</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                            @foreach($applist as $app)
+                              <form action="{{ route('approvallist.update', $app->app_list_id) }}" method="post">
+                                @csrf
+                                @method('PUT')
+                                
+                                <input type="hidden" name="app_module" value="{!! $module !!}">
+                                <tr>
+                                  <td><input class="form-control" name="app_ordinal" id="app_ordinal" style="text-align: center" value="{!! $app->app_ordinal !!}"></td>
+                                  <td>
+                                    <select class="form-select" name="app_user" id="app_user">
+                                      @foreach($users as $usr)
+                                        <option value="{!! $usr->id !!}" {!! $usr->id == $app->app_user ? 'selected' : '' !!}>{!! $usr->name !!}</option>
+                                      @endforeach
+                                    </select>
+                                  </td>
+                                  {{-- <td>
+                                    <select class="form-select" name="app_closer" id="app_closer">
+                                      <option value="0" {!! $app->app_closer == 0 ? 'selected' : '' !!}>No</option>
+                                      <option value="1" {!! $app->app_closer == 1 ? 'selected' : '' !!}>Yes</option>
+                                    </select>
+                                  </td> --}}
+                                  <td style="text-align:center">
+                                    <div class="btn-icon-list justify-content-center">
+                                      <button type="submit" class="btn btn-light"><i class='bx bx-save'></i>Update</button>
+                                      <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modalDelete" onclick="changeAction('{!! route('approvallist.destroy', $app->app_list_id) !!}')"><i class='bx bx-edit'></i>Delete</button>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </form>
+                            @endforeach
+                            <form action="{{ route('approvallist.store') }}" method="post">
+                              @method('POST')
+                              @csrf
+                              <input type="hidden" name="app_module" value="{!! $module !!}">
+                              <tr>
+                                <td><input class="form-control" name="app_ordinal" id="app_ordinal" style="text-align: center"></td>
+                                <td>
+                                  <select class="form-select" name="app_user" id="app_user">
+                                    @foreach($users as $usr)
+                                      <option value="{!! $usr->id !!}">{!! $usr->name !!}</option>
+                                    @endforeach
+                                  </select>
+                                </td>
+                                {{-- <td>
+                                  <select class="form-select" name="app_closer" id="app_closer">
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                  </select>
+                                </td> --}}
+                                <td style="text-align:center">
+                                  <button type="submit" class="btn btn-light"><i class='bx bx-plus'></i>Save New</button>
+                                </td>
+                              </tr>
+                            </form>
+                          </tbody>
+                      </table>
                     </div>
                   </td>
                 </tr>

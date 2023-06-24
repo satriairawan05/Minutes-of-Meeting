@@ -7,6 +7,7 @@ use App\Models\Daily;
 use App\Models\DailyApproval;
 use App\Models\Tracker;
 use App\Models\Departemen;
+use App\Models\GroupPage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\QueryException;
@@ -22,17 +23,22 @@ class DailyController extends Controller
     {
         $page_name = "DWM_Report";
         $user_group = auth()->user()->group_id;
-        $pages = DB::table('users')->leftJoin('group_pages', 'users.group_id', '=', 'group_pages.group_id')
-        ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
-        ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
-        ->whereColumn('users.group_id', '=', 'groups.group_id')
-        ->where('pages.page_name', '=', $page_name)
-        ->where('group_pages.access', '=', 1)
-        ->whereBetween('pages.page_id', [10, 14])
-        ->where('group_pages.group_id','=', $user_group)
-        ->select(['group_name', 'page_name', 'action', 'access'])
-        ->limit(5)
-        ->get();
+        // $pages = DB::table('users')->leftJoin('group_pages', 'users.group_id', '=', 'group_pages.group_id')
+        //     ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
+        //     ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
+        //     ->whereColumn('users.group_id', '=', 'groups.group_id')
+        //     ->where('pages.page_name', '=', $page_name)
+        //     ->where('group_pages.access', '=', 1)
+        //     ->whereBetween('pages.page_id', [10, 14])
+        //     ->where('group_pages.group_id','=', $user_group)
+        //     ->select(['group_name', 'page_name', 'action', 'access'])
+        //     ->limit(5)
+        //     ->get();
+
+        $pages = GroupPage::leftJoin('pages','pages.page_id','=','group_pages.page_id')
+            ->where('pages.page_name','=',$page_name)
+            ->where('group_pages.group_id','=',auth()->user()->group_id)
+            ->get();
 
         $departemen = Departemen::select('name')->get();
         $tracker = DB::table('daily_trackers as d1')
