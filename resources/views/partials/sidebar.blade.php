@@ -44,6 +44,13 @@ $admin = auth()->user()->name == "Super Admin";
             </a>
         </li>
         <li>
+            <a class="nav-link {{ request()->is('approval.index') ? 'active' : '' }}" href="{{ route('approval.index') }}">
+                <div class="parent-icon"><i class='bx bx-check-double'></i>
+                </div>
+                <div class="menu-title">Approval</div>
+            </a>
+        </li>
+        <li>
             <a class="nav-link {{ request()->is('archive.index') ? 'active' : '' }}" href="{{ route('archive.index') }}">
                 <div class="parent-icon"><i class='bx bx-folder-open'></i>
                 </div>

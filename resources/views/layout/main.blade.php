@@ -15,9 +15,6 @@
     <link href="{{ asset('assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet" />
     <link src="{{ asset('assets/css/pace.min.css') }}" rel="stylesheet" />
-    <!-- loader-->
-    <link href="assets/css/pace.min.css" rel="stylesheet" />
-    <script src="assets/js/pace.min.js"></script>
     <!-- Bootstrap CSS -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/bootstrap-extended.css') }}" rel="stylesheet">
@@ -71,9 +68,6 @@
             <p class="mb-0">Gradient Background</p>
             <hr>
             <ul class="switcher">
-                <li id="theme7"></li>
-                <li id="theme8"></li>
-                <li id="theme9"></li>
                 <li id="theme10"></li>
                 <li id="theme11"></li>
                 <li id="theme12"></li>

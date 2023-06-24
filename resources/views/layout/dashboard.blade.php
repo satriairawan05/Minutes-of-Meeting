@@ -50,7 +50,7 @@
                         </div>
                         <div class="d-flex align-items-center text-white">
                             <p class="mb-0">Total Meet</p>
-                            <p class="mb-0 ms-auto">+4.2%<span><i class='bx bx-up-arrow-alt'></i></span></p>
+                            <p class="mb-0 ms-auto"><span><i class='bx bx-up-arrow-alt'></i></span></p>
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                         </div>
                         <div class="d-flex align-items-center text-white">
                             <p class="mb-0">Total Issues</p>
-                            <p class="mb-0 ms-auto">+1.2%<span><i class='bx bx-up-arrow-alt'></i></span></p>
+                            <p class="mb-0 ms-auto"><span><i class='bx bx-up-arrow-alt'></i></span></p>
                         </div>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                         </div>
                         <div class="d-flex align-items-center text-white">
                             <p class="mb-0">DWM Reports</p>
-                            <p class="mb-0 ms-auto">+5.2%<span><i class='bx bx-up-arrow-alt'></i></span></p>
+                            <p class="mb-0 ms-auto"><span><i class='bx bx-up-arrow-alt'></i></span></p>
                         </div>
                     </div>
                 </div>
@@ -101,7 +101,7 @@
                         </div>
                         <div class="d-flex align-items-center text-white">
                             <p class="mb-0">Archieves</p>
-                            <p class="mb-0 ms-auto">+2.2%<span><i class='bx bx-up-arrow-alt'></i></span></p>
+                            <p class="mb-0 ms-auto"><span><i class='bx bx-up-arrow-alt'></i></span></p>
                         </div>
                     </div>
                 </div>
