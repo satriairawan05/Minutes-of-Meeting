@@ -50,8 +50,8 @@ $delete = $page->access;
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
-                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a></li>
-                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-file"></i></a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="bx bx-home-alt"></i></a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('daily.index') }}"><i class="bx bx-file"></i></a></li>
                         <li class="breadcrumb-item" aria-current="page">Data of DWM Report by Tracker</li>
                     </ol>
                 </nav>
@@ -75,7 +75,7 @@ $delete = $page->access;
                             @foreach ($tracker as $tr)
                             <tr>
                                 <td style="text-align: center;">
-                                    <a href="{!! url('/daily?departemen=' . $tr->tracker_header . '&tracker=' . $tr->tracker_name) !!}" class="text-decoration-none text-bold text-center">
+                                    <a href="{!! url('/daily?departemen=' . $tr->tracker_header . '&tracker=' . $tr->tracker_name) !!}" class="text-decoration-underline">
                                         {!! $tr->tracker_name !!}
                                     </a>
                                 </td>

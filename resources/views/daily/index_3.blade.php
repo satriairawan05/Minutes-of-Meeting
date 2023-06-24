@@ -50,9 +50,9 @@ $delete = $page->access;
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
-                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a></li>
-                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-file"></i></a></li>
-                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-file-find"></i></a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="bx bx-home-alt"></i></a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('daily.index') }}"><i class="bx bx-file"></i></a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('daily.index') }}"><i class="bx bx-file-find"></i></a></li>
                         <li class="breadcrumb-item" aria-current="page">DWM Report</li>
                     </ol>
                 </nav>
@@ -88,7 +88,7 @@ $delete = $page->access;
                             @foreach ($dailies as $daily)
                             <tr>
                                 <th style="text-align:center">{!! $loop->iteration !!}</th>
-                                <td><a href="{!! route('daily.document',$daily->daily_id) !!}" class="text-decoration-none">{!! $daily->daily_xid !!}</a></td>
+                                <td><a href="{!! route('daily.document',$daily->daily_id) !!}" class="text-decoration-underline">{!! $daily->daily_xid !!}</a></td>
                                 <td>{!! $daily->departemen !!}</td>
                                 <td>{!! $daily->tracker_name !!}</td>
                                 <td>{!! $daily->status !!}</td>

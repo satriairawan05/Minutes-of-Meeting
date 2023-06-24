@@ -44,7 +44,7 @@ $delete = $page->access;
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
-                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="bx bx-home-alt"></i></a></li>
                         <li class="breadcrumb-item active" aria-current="page">Datatable of Issues</li>
                     </ol>
                 </nav>
@@ -98,7 +98,7 @@ $delete = $page->access;
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{!! $issue->issue_xid !!}</td>
                                 <td>{!! $issue->subject !!}</td>
-                                <td><a href="{{ route('issue.document',$issue->issue_id) }}" class="text-decoration-none text-capitalize">{!! $issue->tracker !!}</a></td>
+                                <td><a href="{{ route('issue.document',$issue->issue_id) }}" class="text-decoration-underline">{!! $issue->tracker !!}</a></td>
                                 <td>{!! $issue->description !!}</td>
                                 <td>{!! $issue->status !!}</td>
                                 {{-- @if($issue->status == "New")

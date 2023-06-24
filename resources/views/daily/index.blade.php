@@ -51,16 +51,15 @@ $delete = $page->access;
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
-                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="bx bx-home-alt"></i></a></li>
                         <li class="breadcrumb-item" aria-current="page">Data of DWM Report by Department</li>
                     </ol>
                 </nav>
             </div>
         </div>
         <!--end breadcrumb-->
-        <hr />
         <div class="card">
-            <div class="card-header d-flex justify-content-end">
+            <div class="card d-flex justify-content-end">
             </div>
             <div class="card-body bg-transparent">
                 <div class="table table-filter">
