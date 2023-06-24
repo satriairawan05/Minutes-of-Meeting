@@ -75,7 +75,7 @@ $delete = $page->access;
                             @foreach ($tracker as $tr)
                             <tr>
                                 <td style="text-align: center;">
-                                    <a href="{!! url('/daily?departemen=' . $tr->tracker_header . '&tracker=' . $tr->tracker_name) !!}" class="text-decoration-underline text-primary">
+                                    <a href="{!! url('/daily?departemen=' . $tr->tracker_header . '&tracker=' . $tr->tracker_name) !!}" class="text-decoration-underline">
                                         {!! $tr->tracker_name !!}
                                     </a>
                                 </td>

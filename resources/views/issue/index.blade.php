@@ -98,7 +98,7 @@ $delete = $page->access;
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{!! $issue->issue_xid !!}</td>
                                 <td>{!! $issue->subject !!}</td>
-                                <td><a href="{{ route('issue.document',$issue->issue_id) }}" class="text-decoration-underline text-primary">{!! $issue->tracker !!}</a></td>
+                                <td><a href="{{ route('issue.document',$issue->issue_id) }}" class="text-decoration-underline">{!! $issue->tracker !!}</a></td>
                                 <td>{!! $issue->description !!}</td>
                                 <td>{!! $issue->status !!}</td>
                                 {{-- @if($issue->status == "New")

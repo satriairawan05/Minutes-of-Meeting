@@ -52,7 +52,7 @@ $delete = $pages[3]['access'] == 1;
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>
-                                <a href="{{ route('resume.meet', $d->meet_id) }}" class="text-decoration-underline text-primary">{{ $d->meet_xid }}</a>
+                                <a href="{{ route('resume.meet', $d->meet_id) }}" class="text-decoration-underline">{{ $d->meet_xid }}</a>
                             </td>
                             <td>{{ $d->meet_name }}</td>
                             <td>{{ $d->meet_locate }}</td>
