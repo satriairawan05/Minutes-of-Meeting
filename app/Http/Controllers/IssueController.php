@@ -39,11 +39,11 @@ class IssueController extends Controller
         //     ->limit(5)
         //     ->get();
         $pages = GroupPage::leftJoin('pages','pages.page_id','=','group_pages.page_id')
-        ->where('pages.page_name','=','issue')
-        ->where('group_pages.group_id','=',auth()->user()->group_id)
-        ->get();
+            ->where('pages.page_name','=',$page_name)
+            ->where('group_pages.group_id','=',auth()->user()->group_id)
+            ->get();
 
-        $issue = Issue::distinct('tracker')->orderBy('tracker')->paginate(15);
+        $issue = Issue::distinct('tracker')->where('status','!=','Closed')->orderBy('tracker')->get();
 
         return view('issue.index', [
             'issues' => $issue,

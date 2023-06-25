@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Meet;
 use App\Models\User;
 use App\Models\Issue;
+use App\Models\GroupPage;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 
@@ -16,14 +17,18 @@ class MeetController extends Controller
     public function index()
     {
         $page_name = "Meeting";
-        $pages = User::leftJoin('group_pages', 'users.group_id', '=', 'group_pages.group_id')
-            ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
-            ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
-            ->where('users.group_id', '=', 'groups.group_id')
-            ->orWhere('pages.page_name', '=', $page_name)
-            ->orWhere('group_pages.access', '=', 1)
-            ->select(['group_name', 'page_name', 'action', 'access'])
-            ->limit(4)
+        // $pages = User::leftJoin('group_pages', 'users.group_id', '=', 'group_pages.group_id')
+        //     ->leftJoin('groups', 'users.group_id', '=', 'groups.group_id')
+        //     ->leftJoin('pages', 'group_pages.page_id', '=', 'pages.page_id')
+        //     ->where('users.group_id', '=', 'groups.group_id')
+        //     ->orWhere('pages.page_name', '=', $page_name)
+        //     ->orWhere('group_pages.access', '=', 1)
+        //     ->select(['group_name', 'page_name', 'action', 'access'])
+        //     ->limit(4)
+        //     ->get();
+        $pages = GroupPage::leftJoin('pages','pages.page_id','=','group_pages.page_id')
+            ->where('pages.page_name','=',$page_name)
+            ->where('group_pages.group_id','=',auth()->user()->group_id)
             ->get();
 
         return view('meet.index', [
