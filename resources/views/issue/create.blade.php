@@ -48,7 +48,7 @@
                             <label id="project_label" for="project">Meeting</label>
                             <select class="form-select form-control" id="project" name="project">
                                 @foreach ($meets as $m)
-                                    <option value="{!! $m->meet_xid !!}" {!! $m->meet_xid == old('project') ? 'selected' : '' !!}>{{ $m->meet_xid }}</option>
+                                    <option value="{!! $m->meet_xid !!}" {!! $m->meet_xid == old('project') ? 'selected' : '' !!}>{{ $m->meet_name }}</option>
                                 @endforeach
                             </select>
                             @error('project')

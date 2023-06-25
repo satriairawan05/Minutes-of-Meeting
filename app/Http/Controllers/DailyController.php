@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ApprovalList;
 use App\Models\User;
 use App\Models\Daily;
 use App\Models\DailyApproval;
 use App\Models\Tracker;
 use App\Models\Departemen;
 use App\Models\GroupPage;
+use App\Models\IssueApproval;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\QueryException;
@@ -96,7 +98,7 @@ class DailyController extends Controller
         $prefix = "DAY-";
         $lastCount = Daily::select('daily_id')->latest('daily_id')->pluck('daily_id')->first();
         $count = $lastCount + 1;
-        $id = $prefix . str_pad($count, 3, '0', STR_PAD_LEFT) . "/" . $formattedDate;
+        $id = $prefix . str_pad($count, 7, '0', STR_PAD_LEFT) . "/" . $formattedDate;
 
         $data = [
             'departemen' => request()->query('departemen'),
@@ -144,8 +146,25 @@ class DailyController extends Controller
             $daily->is_private = $request->input('is_private', 0);
             $daily->save();
 
+            $daily_id = $daily->daily_id;
+
             $tracker = Tracker::where('tracker_id','=',$request->tracker)->first();
             $tracker_name = $tracker->tracker_name;
+
+            $approvallist = ApprovalList::where('app_module','=','dwm')
+            ->where('app_departemen','=',$request->departemen)
+            ->get();
+
+            foreach($approvallist as $app){
+                $daily_approvals = new DailyApproval;
+                $daily_approvals->daily_id = $daily_id;
+                $daily_approvals->app_list_id = $app->app_list_id;
+                $daily_approvals->dai_departemen = $app->app_departemen;
+                $daily_approvals->dai_app_user = $app->app_user;
+                $daily_approvals->dai_app_status = "Open";
+                $daily_approvals->dai_app_ordinal = $app->app_ordinal;
+                $daily_approvals->save();
+            }
 
             return redirect('/daily?departemen='.$request->departemen.'&tracker='.$tracker_name)->with('sucess', 'Added Daily Successfully!');
         } catch (QueryException $e) {

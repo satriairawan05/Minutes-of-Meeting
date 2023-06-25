@@ -32,10 +32,8 @@ $delete = 0;
             <div class="card-body bg-transparent">
                 <div class="table table-filter">
                     <div class="list-group">
-                        <div class="list-group">
-                          <a href="?module=issues" class="list-group-item list-group-item-action mt-1 text-center text-uppercase">Issues</a>
-                          <a href="?module=dwm" class="list-group-item list-group-item-action mt-1 text-center text-uppercase">DWM Report</a>
-                        </div>
+                        <a href="?module=issues" class="list-group-item list-group-item-action mt-1 text-center text-uppercase">Issues</a>
+                        <a href="?module=dwm" class="list-group-item list-group-item-action mt-1 text-center text-uppercase">DWM Report</a>
                     </div>
                 </div>
             </div>

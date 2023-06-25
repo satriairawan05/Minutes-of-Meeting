@@ -54,7 +54,7 @@
                         <div class="row mb-3">
                             @php
                             $statuses = array("New","Continue","Over Due","Complete","Closed");
-                            $statuses = array("New","Continue","Over Due","Complete");
+                            $statuses = array("New","Continue","Complete");
                             @endphp
                             <div class="col-md-6">
                                 <label id="status_label" for="status">Status</label>

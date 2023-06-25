@@ -32,11 +32,9 @@ $delete = 0;
             <div class="card-body bg-transparent">
                 <div class="table table-filter">
                     <div class="list-group">
-                        <div class="list-group">
-                            @foreach($departemen as $d)
-                                <a href="?module=dwm&departemen={!! $d->name !!}" class="list-group-item list-group-item-action mt-1 text-center text-uppercase">{!! $d->name !!}</a>
-                            @endforeach
-                            </div>
+                        @foreach($departemen as $d)
+                            <a href="?module=dwm&departemen={!! $d->name !!}" class="list-group-item list-group-item-action mt-1 text-center text-uppercase">{!! $d->name !!}</a>
+                        @endforeach
                     </div>
                 </div>
                 <div class="row mb-3">
