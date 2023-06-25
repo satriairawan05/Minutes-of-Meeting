@@ -134,6 +134,22 @@
         </div>
 
         <!--end wrapper-->
+        <style>
+        body {
+            overflow: hidden; /* Prevent scrolling */
+        }
+
+        .flex {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .flex button {
+            margin-top: 1rem;
+        }
+    </style>
     </div>
     <!--end wrapper-->
     <!-- Bootstrap JS -->
