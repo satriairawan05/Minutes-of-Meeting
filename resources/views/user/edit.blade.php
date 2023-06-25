@@ -133,7 +133,6 @@
 			});
 		</script>
 	</div>
-</div>
 <!-- End Main Content-->
 
 </div>

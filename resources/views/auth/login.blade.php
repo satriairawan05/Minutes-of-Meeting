@@ -120,9 +120,6 @@
                                             <div class="col-12">
                                                 <hr>
                                             </div>
-                                            <div class="col-12 text-center">
-                                                <p class="mb-0 mt-3">Don't have an account? Contact us</p>
-                                            </div>
                                         </form>
                                     </div>
                                 </div>
