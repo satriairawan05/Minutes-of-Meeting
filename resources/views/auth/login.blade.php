@@ -70,7 +70,7 @@
                             <div class="card-body p-sm-5">
                                 <div class="">
                                     <div class="mb-3 text-center">
-                                        <img src="assets/img/brand/icon.png" width="150" alt="">
+                                        <img src="assets/img/brand/icon.png" width="120" alt="">
                                     </div>
                                     <div class="text-center mb-4">
                                         <h5 class="russo">PT BUMI SEMERU SEJAHTERA</h5>
@@ -90,16 +90,16 @@
                                                 @enderror
                                             </div>
                                             <div class="col-12">
-                                                <label for="inputPassword" class="form-label">Password</label>
-                                                <div class="input-group auth-pass-inputgroup">
-                                                    <input type="password" class="form-control @error('password') is-invalid @enderror" id="inputPassword" placeholder="Password" name="password" required autocomplete="current-password">
-                                                    <span class="input-group-text bg-transparent"><i class='bx bx-show'></i></span>
+                                                <label for="your_pass" class="form-label rale">Password</label>
+                                                <div class="input-group" id="show_hide_password">
+                                                    <input type="password" class=" rale form-control form-control-lg @error('password') is-invalid @enderror" placeholder="Password"  name="password" >
+                                                    @error('password')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                    <a href="javascript:;" class="input-group-text bg-transparent"><i class="bx bx-hide"></i></a>
                                                 </div>
-                                                @error('password')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                                @enderror
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-check form-switch">
@@ -149,11 +149,31 @@
     </style>
     </div>
     <!--end wrapper-->
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <!-- Bootstrap JS -->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom Script -->
+    <script>
+        $(document).ready(function () {
+            $("#show_hide_password a").on('click', function (event) {
+                event.preventDefault();
+                if ($('#show_hide_password input').attr("type") == "text") {
+                    $('#show_hide_password input').attr('type', 'password');
+                    $('#show_hide_password i').addClass("bx-hide");
+                    $('#show_hide_password i').removeClass("bx-show");
+                } else if ($('#show_hide_password input').attr("type") == "password") {
+                    $('#show_hide_password input').attr('type', 'text');
+                    $('#show_hide_password i').removeClass("bx-hide");
+                    $('#show_hide_password i').addClass("bx-show");
+                }
+            });
+        });
+    </script>
     <!--plugins-->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
+    <script src="assets/js/simplebar.min.js"></script>
     <script src="assets/plugins/metismenu/js/metisMenu.min.js"></script>
     <script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
     <!--app JS-->
