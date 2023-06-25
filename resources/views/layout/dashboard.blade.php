@@ -7,7 +7,7 @@
             <div class="card radius-10">
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
 
-                <div class="card-body d-flex align-items-center justify-content-between" style="height: 210px;">
+                <div class="card-body d-flex align-items-center justify-content-between" style="height: 250px;">
                     <div class="mr-3" style="width: 40%; height: 100%;">
                         <div id="animationContainer" style="width: 100%; height: 100%;"></div>
                         <script>

@@ -8,7 +8,7 @@ $admin = auth()->user()->name == "Super Admin";
             <img src="{{ asset('assets/img/brand/icon.png') }}" class="logo-icon" alt="logo icon">
         </div>
         <div>
-            <h4 class="logo-text">PT BSS MoM</h4>
+            <h4 class="logo-text">PT BSS</h4>
         </div>
         <div class="toggle-icon ms-auto"><i class='bx bx-menu-alt-left'></i>
         </div>
@@ -100,10 +100,6 @@ $admin = auth()->user()->name == "Super Admin";
             </div>
             <div class="top-menu ms-auto">
                 <ul class="navbar-nav align-items-center gap-1">
-                    <li class="nav-item mobile-search-icon d-flex d-lg-none" data-bs-toggle="modal" data-bs-target="#SearchModal">
-                        <a class="nav-link" href="avascript:;"><i class='bx bx-search'></i>
-                        </a>
-                    </li>
 
 
                     <li class="nav-item dropdown dropdown-large">
