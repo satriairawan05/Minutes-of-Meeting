@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('dai_app_user')->nullable();
             $table->date('dai_app_date')->nullable();
             $table->string('dai_app_status')->nullable();
+            $table->string('dai_app_ordinal')->nullable();
+            $table->longText('dai_app_notes')->nullable();
             $table->timestamps();
         });
     }

@@ -100,7 +100,7 @@ $delete = $page->access;
                                     @endif
                                     {{-- Edit --}}
                                     {{-- Delete --}}
-                                    @if($delete)
+                                    @if($delete && $daily->status != 'Closed')
                                     <form action="{!! route('daily.destroy',$daily->daily_id) !!}" method="post" class="d-inline">
                                         @csrf
                                         <button type="submit" class="btn btn-light">

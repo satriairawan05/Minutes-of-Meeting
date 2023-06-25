@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Approval;
 use App\Models\ApprovalList;
 use App\Models\Departemen;
 use App\Models\GroupPage;
@@ -34,7 +35,8 @@ class ApprovalListController extends Controller
             'pages' => $pages,
             'module' => $module,
             'users' => $users,
-            'applist' => ApprovalList::all(),
+            'applist' => ApprovalList::where('app_module','=','issues')->get(),
+            'applist_dwm' => ApprovalList::where('app_module','=','dwm')->get(),
             'departemen' => Departemen::all(),
             'depart' => $request->departemen
         ];
@@ -66,17 +68,24 @@ class ApprovalListController extends Controller
      */
     public function store(Request $request)
     {
+        
         try {
             $validate = $request->validate([
                 'app_ordinal' => ['required'],
                 'app_user' => ['required'],
                 'app_module' => ['required'],
-                'app_closer' => ['required']
+                'app_departemen' => ['required']
             ]);
 
             ApprovalList::create($validate);
 
-            return redirect('/approvallist?module='.$request->app_module)->with('success','Approver updated!');
+            $url = '/approvallist?module='.$request->app_module;
+
+            if($request->app_departemen){
+                $url = '/approvallist?module='.$request->app_module.'&departemen='.$request->app_departemen;
+            }
+
+            return redirect($url)->with('success','Approver updated!');
         } catch(QueryException $e){
             return $e->getMessage();
         }
@@ -108,12 +117,18 @@ class ApprovalListController extends Controller
                 'app_ordinal' => ['required'],
                 'app_user' => ['required'],
                 'app_module' => ['required'],
-                'app_closer' => ['required']
+                'app_departemen' => ['required']
             ]);
 
             ApprovalList::where('app_list_id', '=', $app_list_id)->update($validate);
 
-            return redirect('/approvallist?module='.$request->app_module)->with('success','Approver updated!');
+            $url = '/approvallist?module='.$request->app_module;
+
+            if($request->app_departemen){
+                $url = '/approvallist?module='.$request->app_module.'&departemen='.$request->app_departemen;
+            }
+
+            return redirect($url)->with('success','Approver updated!');
         } catch(QueryException $e){
             return $e->getMessage();
         }

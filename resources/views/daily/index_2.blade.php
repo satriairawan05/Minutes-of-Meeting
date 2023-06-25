@@ -65,7 +65,7 @@ $delete = $page->access;
                     <table id="example2_wrapper" class="table table-responsive">
                         <thead>
                             <tr>
-                                <th style="text-align: center;" scope="col"></th>
+                                <th style="text-align: left;" scope="col"></th>
                                 <th style="text-align: center;" scope="col">OPENED</th>
                                 <th style="text-align: center;" scope="col">CLOSED</th>
                                 <th style="text-align: center;" scope="col">TOTAL</th>
@@ -74,7 +74,7 @@ $delete = $page->access;
                         <tbody>
                             @foreach ($tracker as $tr)
                             <tr>
-                                <td style="text-align: center;">
+                                <td style="text-align: left;">
                                     <a href="{!! url('/daily?departemen=' . $tr->tracker_header . '&tracker=' . $tr->tracker_name) !!}" class="text-decoration-underline">
                                         {!! $tr->tracker_name !!}
                                     </a>

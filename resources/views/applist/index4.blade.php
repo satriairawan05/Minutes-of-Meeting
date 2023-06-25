@@ -22,7 +22,7 @@
                         <ol class="breadcrumb mb-0 p-0">
                             <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a></li>
                             <li class="breadcrumb-item"><a href="{{ route('approvallist.index') }}">Approval List</a></li>
-                            <li class="breadcrumb-item" aria-current="page">DWM Report</li>
+                            <li class="breadcrumb-item" aria-current="page">DWM Report of {!! $depart !!}</li>
                         </ol>
                     </nav>
                 </div>
@@ -54,16 +54,18 @@
                                   <th style="text-align: center; width: 200px">Step</th>
                                   <th>Approval Name</th>
                                   {{-- <th style="text-align: center; width: 250px">Approval Closer</th> --}}
-                                  <th style="text-align: center; width: 200px">Actions</th>
+                                  <th style="text-align: center; width: 250px">Actions</th>
                               </tr>
                           </thead>
                           <tbody>
-                            @foreach($applist as $app)
+                            @foreach($applist_dwm as $app)
+                              @if($app->app_departemen == $depart)
                               <form action="{{ route('approvallist.update', $app->app_list_id) }}" method="post">
                                 @csrf
                                 @method('PUT')
                                 
                                 <input type="hidden" name="app_module" value="{!! $module !!}">
+                                <input type="hidden" id="app_departemen" name="app_departemen" value="{!! $depart !!}">
                                 <tr>
                                   <td><input class="form-control" name="app_ordinal" id="app_ordinal" style="text-align: center" value="{!! $app->app_ordinal !!}"></td>
                                   <td>
@@ -87,6 +89,7 @@
                                   </td>
                                 </tr>
                               </form>
+                              @endif
                             @endforeach
                             <form action="{{ route('approvallist.store') }}" method="post">
                               @method('POST')
@@ -107,7 +110,7 @@
                                     <option value="1">Yes</option>
                                   </select>
                                 </td> --}}
-                                <input type="hidden" id="departemen" name="departemen" value="{!! $depart !!}">
+                                <input type="hidden" id="app_departemen" name="app_departemen" value="{!! $depart !!}">
                                 <td style="text-align:center">
                                   <button type="submit" class="btn btn-light"><i class='bx bx-plus'></i>Save New</button>
                                 </td>
@@ -119,7 +122,7 @@
 
                     <div class="row mb-3">
                       <div class="col-12 d-flex justify-content-between align-items-center">
-                          <a href="{{ route('approvallist.index') }}?module={!! $module !!}" class="btn btn-light px-2"><i class='bx bx-left-arrow-alt mr-1'></i>Approval List</button></a>
+                          <a href="{{ route('approvallist.index') }}?module=dwm" class="btn btn-light px-2"><i class='bx bx-left-arrow-alt mr-1'></i>Approval List</button></a>
                       </div>
                     </div>
                 </div>
