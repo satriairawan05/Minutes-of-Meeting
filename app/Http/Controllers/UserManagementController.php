@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Group;
 use App\Models\Departemen;
+use App\Models\GroupPage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\QueryException;
@@ -29,11 +30,16 @@ class UserManagementController extends Controller
         ->select(['group_name', 'page_name', 'action', 'access'])
         ->limit(4)
         ->get();
+        
+         $pages = GroupPage::leftJoin('pages','pages.page_id','=','group_pages.page_id')
+            ->where('pages.page_name','=',$page_name)
+            ->where('group_pages.group_id','=',auth()->user()->group_id)
+            ->get();
 
         if(auth()->user()->name == 'Super Admin')
         {
             return view('user.index', [
-                'users' => User::leftJoin('groups','groups.group_id','=','users.group_id')->paginate(15),
+                'users' => User::leftJoin('groups','groups.group_id','=','users.group_id')->get(),
                 'pages' => $pages
             ]);
         } else {

@@ -107,57 +107,58 @@ $admin = auth()->user()->name == "Super Admin";
                             <i class='bx bx-bell'></i>
                             <!-- <span class="alert-count">7</span> -->
                         </a>
-                        <div class="dropdown-menu dropdown-menu-end">
-                            <a href="javascript:;">
-                                <div class="msg-header">
-                                    <p class="msg-header-title">Notifications</p>
-                                    <p class="msg-header-badge">8 New</p>
-                                </div>
-                            </a>
-                            <div class="header-notifications-list">
-                                <a class="dropdown-item" href="javascript:;">
-                                    <div class="d-flex align-items-center">
-                                        <div></div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="msg-name">Meet<span class="msg-time float-end">5 sec ago</span></h6>
-                                            <p class="msg-info">New Meet</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    <div class="d-flex align-items-center">
-                                        <div></div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="msg-name">Issue<span class="msg-time float-end">2 min ago</span></h6>
-                                            <p class="msg-info">New Meet</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    <div class="d-flex align-items-center">
-                                        <div></div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="msg-name">DWM Report<span class="msg-time float-end">14 sec ago</span></h6>
-                                            <p class="msg-info">New DWM Report</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    <div class="d-flex align-items-center">
-                                        <div></div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="msg-name">Archive<span class="msg-time float-end">28 min ago</span></h6>
-                                            <p class="msg-info">New Archive</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <a href="javascript:;">
-                                <div class="text-center msg-footer">
-                                    <button class="btn btn-light w-100">View All Notifications</button>
-                                </div>
-                            </a>
-                        </div>
+                       <div class="dropdown-menu dropdown-menu-end">
+    <a href="javascript:;">
+        <div class="msg-header">
+            <p class="msg-header-title">Notifications</p>
+            <p class="msg-header-badge">New</p>
+        </div>
+    </a>
+    <div class="header-notifications-list">
+        <a class="dropdown-item" href="javascript:;">
+            <div class="d-flex align-items-center">
+                <div></div>
+                <div class="flex-grow-1">
+                    <h6 class="msg-name">Meet<span class="msg-time float-end">5 sec ago</span></h6>
+                    <p class="msg-info">New Meet</p>
+                </div>
+            </div>
+        </a>
+        <a class="dropdown-item" href="javascript:;">
+            <div class="d-flex align-items-center">
+                <div></div>
+                <div class="flex-grow-1">
+                    <h6 class="msg-name">Issue<span class="msg-time float-end">2 min ago</span></h6>
+                    <p class="msg-info">New Meet</p>
+                </div>
+            </div>
+        </a>
+        <a class="dropdown-item" href="javascript:;">
+            <div class="d-flex align-items-center">
+                <div></div>
+                <div class="flex-grow-1">
+                    <h6 class="msg-name">DWM Report<span class="msg-time float-end">14 sec ago</span></h6>
+                    <p class="msg-info">New DWM Report</p>
+                </div>
+            </div>
+        </a>
+        <a class="dropdown-item" href="javascript:;">
+            <div class="d-flex align-items-center">
+                <div></div>
+                <div class="flex-grow-1">
+                    <h6 class="msg-name">Archive<span class="msg-time float-end">28 min ago</span></h6>
+                    <p class="msg-info">New Archive</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <a href="javascript:;" class="clear-notifications-link">
+        <div class="text-center msg-footer">
+            <button class="btn btn-light w-100">Clear</button>
+        </div>
+    </a>
+</div>
+
                     </li>
                 </ul>
             </div>

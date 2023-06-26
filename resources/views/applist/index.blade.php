@@ -8,13 +8,12 @@ $update = 0;
 $delete = 0;
 @endphp
 
-
 @section('content')
-<!--start page wrapper -->
+<!-- start page wrapper -->
 <link href="{{ asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
 <div class="page-wrapper">
     <div class="page-content">
-        <!--breadcrumb-->
+        <!-- breadcrumb -->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
             <div class="breadcrumb-title pe-3">Approval List</div>
             <div class="ps-3">
@@ -26,7 +25,7 @@ $delete = 0;
                 </nav>
             </div>
         </div>
-        <!--end breadcrumb-->
+        <!-- end breadcrumb -->
         <hr />
         <div class="card">
             <div class="card-body bg-transparent">
@@ -55,15 +54,16 @@ $delete = 0;
         </script>
         @endif
     </div>
-    @endsection
+</div>
+@endsection
 
-    @section('scripts')
-    <!-- DataTables -->
-    <script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
-    <!-- Buttons -->
-    <script src="{{ asset('assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
-    @endsection
+@section('scripts')
+<!-- DataTables -->
+<script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
+<!-- Buttons -->
+<script src="{{ asset('assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
+@endsection

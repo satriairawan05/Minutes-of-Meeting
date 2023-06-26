@@ -1,10 +1,10 @@
 @extends('layout.main')
 
 @php
-$create = $pages[0]['access'] == 1;
-$read = $pages[1]['access'] == 1;
-$update = $pages[2]['access'] == 1;
-$delete = $pages[3]['access'] == 1;
+$create = 1; //$pages[0]['access'] == 1;
+$read = 1; //$pages[1]['access'] == 1;
+$update = 1; //$pages[2]['access'] == 1;
+$delete = 1 //$pages[3]['access'] == 1;
 @endphp
 
 @section('content')

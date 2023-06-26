@@ -61,16 +61,14 @@ $delete = $page->access;
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="example2" class="table">
+                    <table id="example2" class="table table-hover table-mc-light">
                         <thead class="table-header">
                             <tr>
                                 <th style="text-align:center; width:25px">No</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Roles</th>
-                                @if($update || $delete)
                                 <th style="text-align:center; width:100px">Action</th>
-                                @endif
                             </tr>
                         </thead>
                         <tbody>

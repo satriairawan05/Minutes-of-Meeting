@@ -225,16 +225,15 @@
                     <br />
                     <div class="row mb-3">
                         <div class="col-12 d-flex justify-content-between align-items-center">
-                            <a href="{{ route('issue.index') }}" class="btn btn-light px-2"><i class='bx bx-left-arrow-alt mr-1'></i>Issue Datatable</button></a>
-                            <button type="submit" class="btn btn-light px-2"><i class='bx bx-save'></i>Save Changes</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-    </div>
-
+                            <a href="{{ route('issue.index') }}" class="btn btn-danger">Cancel</a>
+<button type="submit" class="btn btn-primary">Submit</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
     <script>
         $(document).ready(function() {
             // Hide and Show Columns

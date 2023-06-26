@@ -74,7 +74,7 @@ class ApprovalListController extends Controller
                 'app_ordinal' => ['required'],
                 'app_user' => ['required'],
                 'app_module' => ['required'],
-                'app_departemen' => ['required']
+                'app_departemen' => []
             ]);
 
             ApprovalList::create($validate);
@@ -117,7 +117,7 @@ class ApprovalListController extends Controller
                 'app_ordinal' => ['required'],
                 'app_user' => ['required'],
                 'app_module' => ['required'],
-                'app_departemen' => ['required']
+                'app_departemen' => []
             ]);
 
             ApprovalList::where('app_list_id', '=', $app_list_id)->update($validate);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Departemen;
+use App\Models\GroupPage;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
@@ -13,8 +14,14 @@ class DepartemenController extends Controller
      */
     public function index()
     {
+        /* $page_name = "Departemen";
+        $pages = GroupPage::leftJoin('pages','pages.page_id','=','group_pages.page_id')
+            ->where('pages.page_name','=',$page_name)
+            ->where('group_pages.group_id','=',auth()->user()->group_id)
+            ->get(); */
         return view('dept.index',[
-            'depts' => Departemen::paginate(10)
+            'depts' => Departemen::all(),
+            /* 'pages' => $pages */
         ]);
     }
 
@@ -65,7 +72,7 @@ class DepartemenController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Departemen $departemen)
+    public function update(Request $request, Departemen $departemen, String $departemen_id)
     {
         try {
             $rules = [
@@ -74,7 +81,7 @@ class DepartemenController extends Controller
 
             $validate = $request->validate($rules);
 
-            Departemen::where('id',$departemen->id)->update($validate);
+            Departemen::where('id',$departemen_id)->update($validate);
 
             return redirect('/departemen')->with('success','Updated Departemen Successfully');
         } catch (QueryException $e) {
@@ -85,9 +92,9 @@ class DepartemenController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Departemen $departemen)
+    public function destroy(Departemen $departemen, String $departemen_id)
     {
-        Departemen::destroy($departemen->id);
+        Departemen::destroy($departemen_id);
 
         return redirect('/departemen')->with('success','Deleted Departemen Successfully');
     }

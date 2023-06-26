@@ -1,10 +1,11 @@
 @extends('layout.main')
 
 @section('content')
-<!--start page wrapper -->
+
+<!-- start page wrapper -->
 <div class="page-wrapper">
     <div class="page-content">
-        <!--breadcrumb-->
+        <!-- breadcrumb -->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
             <div class="breadcrumb-title pe-3">DWM Report</div>
             <div class="ps-3">
@@ -16,10 +17,9 @@
                     </ol>
                 </nav>
             </div>
-            <div class="ms-auto">
-            </div>
+            <div class="ms-auto"></div>
         </div>
-        <!--end breadcrumb-->
+        <!-- end breadcrumb -->
         <hr />
         <div class="card">
             <div class="card-body bg-transparent">
@@ -41,38 +41,38 @@
                             </div>
                             @enderror
                         </div>
-                            <div class="col-md-6">
-                                <label id="subject_label" for="subject">Subject</label>
-                                <input id="subject" name="subject" type="text" class="form-control @error('subject') is_invalid @enderror" required placeholder="Masukan Subject" value="{{ old('subject') }}" />
-                                @error('subject')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
+                        <div class="col-md-6">
+                            <label id="subject_label" for="subject">Subject</label>
+                            <input id="subject" name="subject" type="text" class="form-control @error('subject') is_invalid @enderror" required placeholder="Masukan Subject" value="{{ old('subject') }}" />
+                            @error('subject')
+                            <div class="invalid-feedback">
+                                {{ $message }}
                             </div>
+                            @enderror
                         </div>
-                        <div class="row mb-3">
-                            @php
-                            $statuses = array("New","Continue","Over Due","Complete","Closed");
-                            $statuses = array("New","Continue","Complete");
-                            @endphp
-                            <div class="col-md-6">
-                                <label id="status_label" for="status">Status</label>
-                                <select class="form-select form-control form-control-sm" name="status">
-                                    @foreach ($statuses as $status)
-                                    @if (old('status') == $status)
-                                    <option name="status" value="{{ $status }}" selected>{{ $status }}</option>
-                                    @else
-                                    <option name="status" value="{{ $status }}">{{ $status }}</option>
-                                    @endif
-                                    @endforeach
-                                </select>
-                            </div>
+                    </div>
+                    <div class="row mb-3">
+                        @php
+                        $statuses = array("New","Continue","Over Due","Complete","Closed");
+                        $statuses = array("New","Continue","Complete");
+                        @endphp
+                        <div class="col-md-6">
+                            <label id="status_label" for="status">Status</label>
+                            <select class="form-select form-control form-control-sm" name="status">
+                                @foreach ($statuses as $status)
+                                @if (old('status') == $status)
+                                <option name="status" value="{{ $status }}" selected>{{ $status }}</option>
+                                @else
+                                <option name="status" value="{{ $status }}">{{ $status }}</option>
+                                @endif
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="col-6">
                             <label id="priority_label" for="priority">Priority</label>
                             <select class="form-select form-control form-control-sm" name="priority">
                                 <option name="priority" value="Low" selected>Low</option>
-                                <option name="priority" value="Medium" selected>Medium</option>
+                                <option name="priority" value="Medium">Medium</option>
                                 <option name="priority" value="High" selected>High</option>
                             </select>
                             @error('priority')
@@ -161,7 +161,6 @@
                         
                         
                        
-                    </div>
                     <div class="row mb-3">
                             <div class="col-md-6">
                                 <label id="assignee_label" for="assignee">Assignee</label>
@@ -224,61 +223,8 @@
                     </form>
                 </div>
             </div>
-        </div>
-
-    <script>
-        $(document).ready(function() {
-            // Hide and Show Columns
-            $('#toggleColumns').on('change', function() {
-                var column = $(this).attr('id');
-                $('.' + column).toggle();
-            });
-
-                // Expandable Columns
-                $('.expandable-column').on('click', function() {
-                    $(this).toggleClass('expanded');
-                    $(this).siblings('.expand-content').toggle();
-                });
-            });
-
-        </script>
-
-        <script>
-            $(document).ready(function() {
-                // Hide and Show Columns
-                $('#toggleColumns').on('change', function() {
-                    var column = $(this).val();
-                    $('.' + column).toggle();
-                });
-            });
-
-        </script>
-
-
+        </div>    </div>
 </div>
-</div>
-</div>
+<!-- end page wrapper -->
 
-<script>
-    const olfFile = document.getElementById('oldFile');
-    const newFile = document.getElementById('file');
-
-    newFile.addEventListener('change', function(e) {
-        oldFile.style.display = 'none';
-    });
-
-    const showPreview = (objFileInput) => {
-        if (objFileInput.files[0]) {
-            var fileReader = new FileReader();
-            fileReader.onload = function(e) {
-                $('#blah').attr('src', e.target.result);
-                $("#targetLayer").html('<img src="' + e.target.result +
-                    '" class="img-responsive w-25 h-25 img-fluid m-md-2" />');
-                $("#targetLayer").css('opacity', '0.7');
-                $(".icon-choose-image").css('opacity', '0.5');
-            }
-            fileReader.readAsDataURL(objFileInput.files[0]);
-        }
-    }
-</script>
 @endsection

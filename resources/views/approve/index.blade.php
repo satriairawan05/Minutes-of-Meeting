@@ -8,7 +8,6 @@ $update = 0;
 $delete = 0;
 @endphp
 
-
 @section('content')
 <!--start page wrapper -->
 <link href="{{ asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
@@ -54,24 +53,41 @@ $delete = 0;
                                 @endif
                             @endif
                             @if(count($app_dwm) > 0)
-                            <a href="?module=dwm" class="list-group-item list-group-item-action mt-1 text-center text-uppercase">DWM Report ( {!! count($app_dwm) !!} )</a>
+                                @php
+                                    $total_issues = 0;
+                                    foreach($app_dwm as $app){
+                                        $app_before = App\Models\DailyApproval::where('daily_id','=',$app->daily_id)
+                                        ->where('dai_app_ordinal','=',$app->app_ordinal - 1)
+                                        ->first();
+                                        if($app_before){
+                                            if($app_before->dai_app_status == 'Approved'){
+                                                $total_issues ++;
+                                            }
+                                        }else{
+                                            $total_issues ++;
+                                        }
+                                    }
+                                @endphp
+                                @if($total_issues > 0 )
+                                    <a href="?module=dwm" class="list-group-item list-group-item-action mt-1 text-center text-uppercase">DWM Report ( {!! $total_issues !!} )</a>
+                                @endif
                             @endif
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
-    @endsection
+</div>
+@endsection
 
-    @section('scripts')
-    <!-- DataTables -->
-    <script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
-    <!-- Buttons -->
-    <script src="{{ asset('assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
-    @endsection
+@section('scripts')
+<!-- DataTables -->
+<script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
+<!-- Buttons -->
+<script src="{{ asset('assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
+@endsection

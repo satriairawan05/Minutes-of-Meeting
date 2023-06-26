@@ -9,35 +9,35 @@ $delete = 0;
 @endphp
 
 @foreach ($pages as $page)
-@if($page->action == "Approval")
-@php
-$approval = $page->access;
-@endphp
-@endif
+    @if($page->action == "Approval")
+        @php
+        $approval = $page->access;
+        @endphp
+    @endif
 
-@if($page->action == "Create")
-@php
-$create = $page->access;
-@endphp
-@endif
+    @if($page->action == "Create")
+        @php
+        $create = $page->access;
+        @endphp
+    @endif
 
-@if($page->action == "Read")
-@php
-$read = $page->access;
-@endphp
-@endif
+    @if($page->action == "Read")
+        @php
+        $read = $page->access;
+        @endphp
+    @endif
 
-@if($page->action == "Update")
-@php
-$update = $page->access;
-@endphp
-@endif
+    @if($page->action == "Update")
+        @php
+        $update = $page->access;
+        @endphp
+    @endif
 
-@if($page->action == "Delete")
-@php
-$delete = $page->access;
-@endphp
-@endif
+    @if($page->action == "Delete")
+        @php
+        $delete = $page->access;
+        @endphp
+    @endif
 @endforeach
 
 @section('content')
@@ -73,16 +73,16 @@ $delete = $page->access;
                         </thead>
                         <tbody>
                             @foreach ($tracker as $tr)
-                            <tr>
-                                <td style="text-align: left;">
-                                    <a href="{!! url('/daily?departemen=' . $tr->tracker_header . '&tracker=' . $tr->tracker_name) !!}" class="text-decoration-underline">
-                                        {!! $tr->tracker_name !!}
-                                    </a>
-                                </td>
-                                <td style="text-align: center;">{!! $tr->total_open !!}</td>
-                                <td style="text-align: center;">{!! $tr->total_close !!}</td>
-                                <td style="text-align: center;">{!! $tr->total !!}</td>
-                            </tr>
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <a href="{!! url('/daily?departemen=' . $tr->tracker_header . '&tracker=' . $tr->tracker_name) !!}" class="text-decoration-underline">
+                                            {!! $tr->tracker_name !!}
+                                        </a>
+                                    </td>
+                                    <td style="text-align: center;">{!! $tr->total_open !!}</td>
+                                    <td style="text-align: center;">{!! $tr->total_close !!}</td>
+                                    <td style="text-align: center;">{!! $tr->total !!}</td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -95,4 +95,5 @@ $delete = $page->access;
             </div>
         </div>
     </div>
-    @endsection
+</div>
+@endsection
