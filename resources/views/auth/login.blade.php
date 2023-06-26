@@ -48,7 +48,7 @@
                             <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
 
                             <div class="card-body">
-                                <div class="mr-4" speed="1"  style="width: 700px;">
+                                <div class="mr-4" speed="1"  style="width: 600px;">
                                     <div id="animationContainer" style="width: 100%; height: 100%;"></div>
                                     <script>
                                         var animation = bodymovin.loadAnimation({
