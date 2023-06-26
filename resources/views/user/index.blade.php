@@ -68,9 +68,7 @@ $delete = $page->access;
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Roles</th>
-                                @if($update || $delete)
                                 <th style="text-align:center; width:100px">Action</th>
-                                @endif
                             </tr>
                         </thead>
                         <tbody>

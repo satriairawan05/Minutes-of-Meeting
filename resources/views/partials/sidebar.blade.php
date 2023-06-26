@@ -111,7 +111,7 @@ $admin = auth()->user()->name == "Super Admin";
                             <a href="javascript:;">
                                 <div class="msg-header">
                                     <p class="msg-header-title">Notifications</p>
-                                    <p class="msg-header-badge">8 New</p>
+                                    <p class="msg-header-badge">New</p>
                                 </div>
                             </a>
                             <div class="header-notifications-list">
