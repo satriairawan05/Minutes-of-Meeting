@@ -62,22 +62,51 @@ $delete = $page->access;
             <div class="card d-flex justify-content-end">
             </div>
             <div class="card-body bg-transparent">
-                <div class="table table-filter">
-                    <div class="list-group">
-                        @foreach ($departemen as $i)
-                        @if (isset($_GET['departemen']))
-                        <a href="?departemen={!! $i->name !!}" style="display: none;" class="list-group-item list-group-item-action mt-1 text-center text-uppercase">DEPARTEMEN {{ $i->name }}</a>
-                        @else
-                        <a href="?departemen={!! $i->name !!}" class="list-group-item list-group-item-action mt-1 text-center text-uppercase">DEPARTEMEN {{ $i->name }}</a>
-                        @endif
-                        @endforeach
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="table table-filter">
+                            <div class="list-group">
+                                @php
+                                $departemenArray = $departemen->toArray();
+                                $halfCount = ceil(count($departemenArray) / 2);
+                                $column1 = array_slice($departemenArray, 0, $halfCount);
+                                $column2 = array_slice($departemenArray, $halfCount);
+                                @endphp
+                                <div class="column">
+                                    @foreach ($column1 as $i)
+                                        @if (isset($_GET['departemen']))
+                                            <a href="?departemen={!! $i['name'] !!}" style="display: none;" class="list-group-item list-group-item-action mt-1 text-center text-uppercase">DEPARTEMEN {{ $i['name'] }}</a>
+                                        @else
+                                            <a href="?departemen={!! $i['name'] !!}" class="list-group-item list-group-item-action mt-1 text-center text-uppercase">DEPARTEMEN {{ $i['name'] }}</a>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="table table-filter">
+                            <div class="list-group">
+                                <div class="column">
+                                    @foreach ($column2 as $i)
+                                        @if (isset($_GET['departemen']))
+                                            <a href="?departemen={!! $i['name'] !!}" style="display: none;" class="list-group-item list-group-item-action mt-1 text-center text-uppercase">DEPARTEMEN {{ $i['name'] }}</a>
+                                        @else
+                                            <a href="?departemen={!! $i['name'] !!}" class="list-group-item list-group-item-action mt-1 text-center text-uppercase">DEPARTEMEN {{ $i['name'] }}</a>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    </div>
 
-        @if ($message = Session::get('success'))
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    @if ($message = Session::get('success'))
         <script>
             Toastify({
                 text: "{{ $message }}",
@@ -90,17 +119,17 @@ $delete = $page->access;
                 }
             }).showToast();
         </script>
-        @endif
-    </div>
-    @endsection
+    @endif
+</div>
+@endsection
 
-    @section('scripts')
-    <!-- DataTables -->
-    <script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
-    <!-- Buttons -->
-    <script src="{{ asset('assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
-    @endsection
+@section('scripts')
+<!-- DataTables -->
+<script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
+<!-- Buttons -->
+<script src="{{ asset('assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
+@endsection

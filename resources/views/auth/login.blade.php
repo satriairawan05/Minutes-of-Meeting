@@ -20,7 +20,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
     <link href="assets/css/app.css" rel="stylesheet">
     <link href="assets/css/icons.css" rel="stylesheet">
-    <title>Minutes of Meeting | PT BUMI SEMERU SEJAHTERA</title>
+    <title>Minutes of Meeting | PT BANGUN SEMERU SEJAHTERA</title>
     <style>
         .flex {
             display: flex;
@@ -48,7 +48,7 @@
                             <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
 
                             <div class="card-body">
-                                <div class="mr-4" style="width: 100%; height: 100%;">
+                                <div class="mr-4" speed="1"  style="width: 600px;">
                                     <div id="animationContainer" style="width: 100%; height: 100%;"></div>
                                     <script>
                                         var animation = bodymovin.loadAnimation({
@@ -73,7 +73,7 @@
                                         <img src="assets/img/brand/icon.png" width="120" alt="">
                                     </div>
                                     <div class="text-center mb-4">
-                                        <h5 class="russo">PT BUMI SEMERU SEJAHTERA</h5>
+                                        <h5 class="russo">PT BANGUN SEMERU SEJAHTERA</h5>
                                         <h5 class="russo">Minutes of Meeting</h5>
                                         <p class="mb-0">Please log in to your account</p>
                                     </div>
